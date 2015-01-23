@@ -91,15 +91,19 @@ class AppWarpHelper: NSObject
         println("receivedEnemyStatus...1")
         println(data)
         
+        
+        
         println("receivedEnemyStatus...2")
             
         var error: NSErrorPointer? = nil
+        var errortwo: NSError?
         var propertyListFormat:NSPropertyListFormat? = nil
-        var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data,options: NSJSONReadingOptionsMutableContainers, error:error!) as NSDictionary
-        //var responseDict: NSDictionary = NSPropertyListSerialization.propertyListWithData(data, options: 0, format:&propertyListFormat, error: nil) as NSDictionary
+        //var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data,options: NSJSONReadingOptions.MutableContainers, error:error!) as NSDictionary
+        var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error:&errortwo) as NSDictionary
+        //var responseDict: NSDictionary = NSPropertyListSerialization.propertyListWithData(data, options: 0, error: nil) as NSDictionary
             
         println(responseDict)
-        println(error!.debugDescription)
+        println(errortwo?.debugDescription)
         //gameScene!.updateEnemyStatus(responseDict)
         
 
