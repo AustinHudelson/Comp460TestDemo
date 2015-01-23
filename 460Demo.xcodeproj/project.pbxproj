@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4B84FA41A72F40F00321355 /* RoomListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84FA31A72F40F00321355 /* RoomListener.swift */; };
+		F4B84FA61A72F51B00321355 /* ZoneListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84FA51A72F51B00321355 /* ZoneListener.swift */; };
+		F4B84FA81A72FFF700321355 /* NotificationListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84FA71A72FFF700321355 /* NotificationListener.swift */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
 		F4D33B5B1A71EF7300DCD868 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B5A1A71EF7300DCD868 /* GameScene.sks */; };
 		F4D33B5D1A71EF7300DCD868 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B5C1A71EF7300DCD868 /* GameScene.swift */; };
@@ -15,6 +18,10 @@
 		F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B631A71EF7300DCD868 /* Images.xcassets */; };
 		F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */; };
 		F4D33B731A71EF7300DCD868 /* _60DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */; };
+		F4D33B7E1A71EF9A00DCD868 /* AppWarp_iOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D33B7D1A71EF9A00DCD868 /* AppWarp_iOS_SDK.framework */; };
+		F4D33B821A71F21200DCD868 /* AppWarpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B811A71F21200DCD868 /* AppWarpHelper.swift */; };
+		F4D33B841A71F25A00DCD868 /* ConnectionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B831A71F25A00DCD868 /* ConnectionListener.swift */; };
+		F4D33B8C1A71F5C400DCD868 /* 460Demo-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B8B1A71F5C300DCD868 /* 460Demo-Bridging-Header.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F4B84FA31A72F40F00321355 /* RoomListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListener.swift; sourceTree = "<group>"; };
+		F4B84FA51A72F51B00321355 /* ZoneListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneListener.swift; sourceTree = "<group>"; };
+		F4B84FA71A72FFF700321355 /* NotificationListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListener.swift; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B571A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D33B581A71EF7300DCD868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +50,11 @@
 		F4D33B6C1A71EF7300DCD868 /* 460DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 460DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B711A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _60DemoTests.swift; sourceTree = "<group>"; };
+		F4D33B7D1A71EF9A00DCD868 /* AppWarp_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppWarp_iOS_SDK.framework; sourceTree = "<group>"; };
+		F4D33B811A71F21200DCD868 /* AppWarpHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWarpHelper.swift; sourceTree = "<group>"; };
+		F4D33B831A71F25A00DCD868 /* ConnectionListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionListener.swift; sourceTree = "<group>"; };
+		F4D33B8A1A71F5C300DCD868 /* 460Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "460Demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		F4D33B8B1A71F5C300DCD868 /* 460Demo-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "460Demo-Bridging-Header.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D33B7E1A71EF9A00DCD868 /* AppWarp_iOS_SDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +97,7 @@
 		F4D33B551A71EF7300DCD868 /* 460Demo */ = {
 			isa = PBXGroup;
 			children = (
+				F4D33B7C1A71EF8800DCD868 /* AppWarpHelperClasses */,
 				F4D33B581A71EF7300DCD868 /* AppDelegate.swift */,
 				F4D33B5A1A71EF7300DCD868 /* GameScene.sks */,
 				F4D33B5C1A71EF7300DCD868 /* GameScene.swift */,
@@ -116,6 +133,21 @@
 				F4D33B711A71EF7300DCD868 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4D33B7C1A71EF8800DCD868 /* AppWarpHelperClasses */ = {
+			isa = PBXGroup;
+			children = (
+				F4D33B7D1A71EF9A00DCD868 /* AppWarp_iOS_SDK.framework */,
+				F4D33B8A1A71F5C300DCD868 /* 460Demo-Bridging-Header.h */,
+				F4D33B8B1A71F5C300DCD868 /* 460Demo-Bridging-Header.m */,
+				F4D33B831A71F25A00DCD868 /* ConnectionListener.swift */,
+				F4B84FA31A72F40F00321355 /* RoomListener.swift */,
+				F4B84FA71A72FFF700321355 /* NotificationListener.swift */,
+				F4B84FA51A72F51B00321355 /* ZoneListener.swift */,
+				F4D33B811A71F21200DCD868 /* AppWarpHelper.swift */,
+			);
+			name = AppWarpHelperClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +252,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4D33B5D1A71EF7300DCD868 /* GameScene.swift in Sources */,
+				F4D33B821A71F21200DCD868 /* AppWarpHelper.swift in Sources */,
+				F4D33B8C1A71F5C400DCD868 /* 460Demo-Bridging-Header.m in Sources */,
+				F4D33B841A71F25A00DCD868 /* ConnectionListener.swift in Sources */,
+				F4B84FA41A72F40F00321355 /* RoomListener.swift in Sources */,
+				F4B84FA81A72FFF700321355 /* NotificationListener.swift in Sources */,
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
+				F4B84FA61A72F51B00321355 /* ZoneListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,9 +384,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/460Demo",
+				);
 				INFOPLIST_FILE = 460Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "460Demo/460Demo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -356,9 +403,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/460Demo",
+				);
 				INFOPLIST_FILE = 460Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "460Demo/460Demo-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -415,6 +470,7 @@
 				F4D33B781A71EF7300DCD868 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F4D33B791A71EF7300DCD868 /* Build configuration list for PBXNativeTarget "460DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +479,7 @@
 				F4D33B7B1A71EF7300DCD868 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

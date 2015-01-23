@@ -29,7 +29,15 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        println("Appwarp init start")
+        //INITIALIZE APP WARP
+        AppWarpHelper.sharedInstance.initializeWarp()
+        AppWarpHelper.sharedInstance.gameViewController = self
+        println("Appwarp init done connecting with user name GUEST")
+        AppWarpHelper.sharedInstance.connectWithAppWarpWithUserName("GUESTGHJKLI")
+        println("Completed GUEST connection")
+        
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
             // Configure the view.
             let skView = self.view as SKView
