@@ -14,7 +14,7 @@ class AppWarpHelper: NSObject
 
     var api_key = "8f4823c2a1bca11bb4ad1349d127b62a312481af36cc74cda1994f9ca6564857"
     var secret_key = "c36ad65cbc48eb1df497ee91ccac5a19693ba83d6ac4b72d2aa537f563a94069"
-    var roomId = "848913829"
+    var roomId = "1506717553"
     var enemyName: String = ""
     //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
     var playerName: String = ""
