@@ -89,35 +89,30 @@ class GameScene: SKScene {
     func updateEnemyStatus(dataDict: NSDictionary){
         println("Running Update Status")
         
-        //Get the touched location from the recieved dictionary
         var touchLocStr = dataDict.objectForKey("playerPosition") as String
         var touchLoc = CGPointFromString(touchLocStr)
         
-        //Check the local sprite dictionary if it has a sprite for the user name stored in the recieved dictionary
         if let sprite = PlayerSprites[dataDict.objectForKey("userName") as String] {
             let charPos = sprite.position;
             //localSprite.position = sprite.position
             let xdif = touchLoc.x-charPos.x
             let ydif = touchLoc.y-charPos.y
-            //Calculate distance
+            
             let distance = sqrt((xdif*xdif)+(ydif*ydif))
-            //Calculate travel time
             let duration = distance/PlayerSpeed
-            //Set up a move action "Move to touchLoc over duration"
             let action = SKAction.moveTo(touchLoc, duration:NSTimeInterval(duration))
             //sprite.runAction(action)
             sprite.runAction(action)
-        } else {
+            
+        }
+        else {
             //This is a new user that has not been seen before
             //Create a new sprite for this user
             let newSprite = SKSpriteNode(imageNamed:"Spaceship")
             newSprite.xScale = 0.3
             newSprite.yScale = 0.3
-            //Spawn the sprite at the first touch location
             newSprite.position = touchLoc
-            //Add the sprite to the scene (so we can see it)
             self.addChild(newSprite)
-            //Add the sprite to the local Sprite Dictionary
             PlayerSprites[dataDict.objectForKey("userName") as String] = newSprite
         }
     }

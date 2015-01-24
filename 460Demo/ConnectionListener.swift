@@ -20,8 +20,8 @@ class ConnectionListener: NSObject,ConnectionRequestListener
         if event.result == 0 // SUCCESS
         {
             println("onConnectDone SUCCESS")
-            //WarpClient.getInstance().joinRoomInRangeBetweenMinUsers(0, andMaxUsers: 1, maxPrefered: true)
             WarpClient.getInstance().joinRoom("1506717553")
+            //WarpClient.getInstance().joinRoomInRangeBetweenMinUsers(0, andMaxUsers: 3, maxPrefered: true)
         }
         else if event.result == 1  // AUTH_ERROR
         {
