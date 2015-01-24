@@ -16,6 +16,7 @@ class AppWarpHelper: NSObject
     var secret_key = "c36ad65cbc48eb1df497ee91ccac5a19693ba83d6ac4b72d2aa537f563a94069"
     var roomId = "848913829"
     var enemyName: String = ""
+    //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
     var playerName: String = ""
     
     var gameViewController: GameViewController? = nil
@@ -55,6 +56,7 @@ class AppWarpHelper: NSObject
     
     func connectWithAppWarpWithUserName(userName:String)
     {
+        playerName = userName
         var uNameLength = userName.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
         if uNameLength>0
         {
@@ -109,24 +111,26 @@ class AppWarpHelper: NSObject
 
         println("receivedEnemyStatus...3")
         
-        if enemyName.isEmpty
-        {
-            var userName : (String!) = responseDict.objectForKey("userName") as String
-            let isEqual = playerName.hasPrefix(userName)
-            if !isEqual
-            {
-                enemyName = responseDict.objectForKey("userName") as String
-                gameScene!.updateEnemyStatus(responseDict)
-            }
-        }
-        else
-        {
-            var userName : (String!) = responseDict.objectForKey("userName") as String
-            let isEqual = enemyName.hasPrefix(userName)
-            if !isEqual
-            {
-                gameScene!.updateEnemyStatus(responseDict)
-            }
-        }
+        
+        gameScene!.updateEnemyStatus(responseDict)
+//        if enemyName.isEmpty
+//        {
+//            var userName : (String!) = responseDict.objectForKey("userName") as String
+//            let isEqual = playerName.hasPrefix(userName)
+//            if !isEqual
+//            {
+//                enemyName = responseDict.objectForKey("userName") as String
+//                gameScene!.updateEnemyStatus(responseDict)
+//            }
+//        }
+//        else
+//        {
+//            var userName : (String!) = responseDict.objectForKey("userName") as String
+//            let isEqual = enemyName.hasPrefix(userName)
+//            if !isEqual
+//            {
+//                
+//            }
+//        }
     }
 }

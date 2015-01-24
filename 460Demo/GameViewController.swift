@@ -32,10 +32,22 @@ class GameViewController: UIViewController {
         
         println("Appwarp init start")
         //INITIALIZE APP WARP
+        //Get a Random user name (Hopefully differant on each device)
+        let len = 10
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        
+        var randomString : NSMutableString = NSMutableString(capacity: len)
+        
+        for (var i=0; i < len; i++){
+            var length = UInt32 (letters.length)
+            var rand = arc4random_uniform(length)
+            randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
         AppWarpHelper.sharedInstance.initializeWarp()
         AppWarpHelper.sharedInstance.gameViewController = self
         println("Appwarp init done connecting with user name GUEST")
-        AppWarpHelper.sharedInstance.connectWithAppWarpWithUserName("GUESTGHJKLI")
+        AppWarpHelper.sharedInstance.connectWithAppWarpWithUserName(randomString)
         println("Completed GUEST connection")
         
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {

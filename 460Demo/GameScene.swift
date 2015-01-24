@@ -9,6 +9,10 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    
+    var PlayerSprites: [String:SKSpriteNode] = [:]
+    let PlayerSpeed = CGFloat(100.0)
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         AppWarpHelper.sharedInstance.gameScene = self
@@ -28,25 +32,12 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-            
             //Make a muteable dictionary to send over appwarp
             var dataDict = NSMutableDictionary()
+            
+            //Store the userName/playerName in the sending dictionary
             //Set the username for the muteable dictionary
             dataDict.setObject(AppWarpHelper.sharedInstance.playerName, forKey: "userName")
-            
-            
-            //dataDict.setObject(NSValue(CGPoint: destination), forKey: "projectileDest")
             
             
             ////Convert the touched location to a string for projectile position
@@ -59,37 +50,37 @@ class GameScene: SKScene {
             dataDict.setObject(playerPosition, forKey: "playerPosition")
             //dataDict.setObject(NSValue(CGPoint: player!.position), forKey: "playerPosition")
             
-            
-            //dataDict.setObject(String(realTimeDuration), forKey: "realMoveDuration")
-            ////dataDict.setObject(NSValue(nonretainedObject: realTimeDuration), forKey: "realMoveDuration")
-            
-            //Send the update message
+            //Notify Room of updated data
             AppWarpHelper.sharedInstance.updatePlayerDataToServer(dataDict)
         }
     }
     
-    func updateEnemyStatus(dataDict: NSDictionary)
-    {
-        println("updateEnemyStatus...1")
+    func updateEnemyStatus(dataDict: NSDictionary){
+        println("Running Update Status")
         
-        //playerPositon
-        let count = dataDict.count
-        //if count < 2
-        //{
-        //    return
-        //}
+        var touchLocStr = dataDict.objectForKey("playerPosition") as String
+        var touchLoc = CGPointFromString(touchLocStr)
         
-        let sprite = SKSpriteNode(imageNamed:"Spaceship")
-        
-        //Ship spawned by other player should be slightly smaller
-        sprite.xScale = 0.3
-        sprite.yScale = 0.3
-        
-        //get the sprite's spawn location
-        var spawnLocStr = dataDict.objectForKey("playerPosition") as String
-        var spawnLoc = CGPointFromString(spawnLocStr)
-        sprite.position = spawnLoc
-        self.addChild(sprite)
+        if let sprite = PlayerSprites[dataDict.objectForKey("userName") as String] {
+            let charPos = sprite.position;
+            let xdif = touchLoc.x-charPos.x
+            let ydif = touchLoc.y-charPos.y
+            
+            let distance = sqrt((xdif*xdif)+(ydif*ydif))
+            let duration = distance/PlayerSpeed
+            let action = SKAction.moveTo(touchLoc, duration:NSTimeInterval(duration))
+            sprite.runAction(action)
+            
+        } else {
+            //This is a new user that has not been seen before
+            //Create a new sprite for this user
+            let newSprite = SKSpriteNode(imageNamed:"Spaceship")
+            newSprite.xScale = 0.3
+            newSprite.yScale = 0.3
+            newSprite.position = touchLoc
+            self.addChild(newSprite)
+            PlayerSprites[dataDict.objectForKey("userName") as String] = newSprite
+        }
     }
    
     override func update(currentTime: CFTimeInterval) {
