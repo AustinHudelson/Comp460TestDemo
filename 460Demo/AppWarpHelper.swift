@@ -92,11 +92,7 @@ class AppWarpHelper: NSObject
     {
         println("receivedEnemyStatus...1")
         println(data)
-        
-        
-        
         println("receivedEnemyStatus...2")
-            
         var error: NSErrorPointer? = nil
         var errortwo: NSError?
         var propertyListFormat:NSPropertyListFormat? = nil
