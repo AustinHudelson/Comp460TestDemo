@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7AA6F211A7D97910075002F /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AA6F201A7D97910075002F /* Unit.swift */; };
+		E7AA6F231A7D98510075002F /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AA6F221A7D98510075002F /* Warrior.swift */; };
+		E7AA6F251A7DEE290075002F /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AA6F241A7DEE290075002F /* Projectile.swift */; };
 		F4B84FA41A72F40F00321355 /* RoomListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84FA31A72F40F00321355 /* RoomListener.swift */; };
 		F4B84FA61A72F51B00321355 /* ZoneListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84FA51A72F51B00321355 /* ZoneListener.swift */; };
 		F4B84FA81A72FFF700321355 /* NotificationListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84FA71A72FFF700321355 /* NotificationListener.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E7AA6F201A7D97910075002F /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
+		E7AA6F221A7D98510075002F /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
+		E7AA6F241A7DEE290075002F /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		F4B84FA31A72F40F00321355 /* RoomListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListener.swift; sourceTree = "<group>"; };
 		F4B84FA51A72F51B00321355 /* ZoneListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneListener.swift; sourceTree = "<group>"; };
 		F4B84FA71A72FFF700321355 /* NotificationListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListener.swift; sourceTree = "<group>"; };
@@ -109,6 +115,9 @@
 				F4D33B581A71EF7300DCD868 /* AppDelegate.swift */,
 				F4D33B5A1A71EF7300DCD868 /* GameScene.sks */,
 				F4D33B5C1A71EF7300DCD868 /* GameScene.swift */,
+				E7AA6F241A7DEE290075002F /* Projectile.swift */,
+				E7AA6F201A7D97910075002F /* Unit.swift */,
+				E7AA6F221A7D98510075002F /* Warrior.swift */,
 				F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */,
 				F4D33B601A71EF7300DCD868 /* Main.storyboard */,
 				F4D33B631A71EF7300DCD868 /* Images.xcassets */,
@@ -260,11 +269,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7AA6F251A7DEE290075002F /* Projectile.swift in Sources */,
 				F4D33B5D1A71EF7300DCD868 /* GameScene.swift in Sources */,
 				F4D33B821A71F21200DCD868 /* AppWarpHelper.swift in Sources */,
+				E7AA6F231A7D98510075002F /* Warrior.swift in Sources */,
 				F4D33B8C1A71F5C400DCD868 /* 460Demo-Bridging-Header.m in Sources */,
 				F4D33B841A71F25A00DCD868 /* ConnectionListener.swift in Sources */,
 				F4B84FA41A72F40F00321355 /* RoomListener.swift in Sources */,
+				E7AA6F211A7D97910075002F /* Unit.swift in Sources */,
 				F4B84FA81A72FFF700321355 /* NotificationListener.swift in Sources */,
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
@@ -394,6 +406,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/460Demo",
@@ -402,6 +416,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "460Demo/460Demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -413,6 +428,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/460Demo",
@@ -421,6 +438,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "460Demo/460Demo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

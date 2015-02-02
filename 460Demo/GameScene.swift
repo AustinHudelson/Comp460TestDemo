@@ -9,11 +9,13 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    let war = Warrior()
+    //var localSprite = war.sprite
     
-    var localSprite = SKSpriteNode(imageNamed:"Spaceship")
+    //var localSprite = SKSpriteNode(imageNamed:"Spaceship")
     
     var PlayerSprites: [String:SKSpriteNode] = [:]
-    let PlayerSpeed = CGFloat(100.0)
+    //let PlayerSpeed = CGFloat(100.0)
     var objectTouched = false;
     
     override func didMoveToView(view: SKView) {
@@ -26,12 +28,12 @@ class GameScene: SKScene {
         myLabel.fontSize = 65;
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
-        self.addChild(myLabel)
-        localSprite.xScale = 0.5
-        localSprite.yScale = 0.5
-        localSprite.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        self.addChild(localSprite)
-        PlayerSprites[AppWarpHelper.sharedInstance.playerName] = localSprite
+        //self.addChild(myLabel)
+        war.sprite.xScale = 0.5
+        war.sprite.yScale = 0.5
+        war.sprite.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        self.addChild(war.sprite)
+        PlayerSprites[AppWarpHelper.sharedInstance.playerName] = war.sprite
 //        self.addChild(myLabel)
     }
     
@@ -41,7 +43,7 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
                         var loc2 = touch.locationInNode(self)
             
-                        var dist = pow(pow(localSprite.position.x - loc2.x,2)+pow(localSprite.position.y - loc2.y,2),0.5)
+                        var dist = pow(pow(war.sprite.position.x - loc2.x,2)+pow(war.sprite.position.y - loc2.y,2),0.5)
                         if dist < 175
                         {
                             objectTouched = true
@@ -50,6 +52,7 @@ class GameScene: SKScene {
                         
                         //sprite1.position = location
                     }
+        
        
     }
     override func touchesEnded(touches:NSSet, withEvent event: UIEvent)
@@ -81,6 +84,10 @@ class GameScene: SKScene {
                 AppWarpHelper.sharedInstance.updatePlayerDataToServer(dataDict)
                 objectTouched = false
             }
+            else
+            {
+                
+            }
             
         }
     }
@@ -99,7 +106,7 @@ class GameScene: SKScene {
             let ydif = touchLoc.y-charPos.y
             
             let distance = sqrt((xdif*xdif)+(ydif*ydif))
-            let duration = distance/PlayerSpeed
+            let duration = distance/war.speed//PlayerSpeed
             let action = SKAction.moveTo(touchLoc, duration:NSTimeInterval(duration))
             //sprite.runAction(action)
             sprite.runAction(action)
