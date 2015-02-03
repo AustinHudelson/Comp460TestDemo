@@ -13,8 +13,9 @@ class GameScene: SKScene {
     //var localSprite = war.sprite
     
     //var localSprite = SKSpriteNode(imageNamed:"Spaceship")
+    var Players: [String:Unit] = [:]
     
-    var PlayerSprites: [String:SKSpriteNode] = [:]
+    //var PlayerSprites: [String:SKSpriteNode] = [:]
     //let PlayerSpeed = CGFloat(100.0)
     var objectTouched = false;
     
@@ -33,7 +34,8 @@ class GameScene: SKScene {
         war.sprite.yScale = 0.5
         war.sprite.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         self.addChild(war.sprite)
-        PlayerSprites[AppWarpHelper.sharedInstance.playerName] = war.sprite
+        //PlayerSprites[AppWarpHelper.sharedInstance.playerName] = war.sprite
+        Players[AppWarpHelper.sharedInstance.playerName] = war
 //        self.addChild(myLabel)
     }
     
@@ -75,10 +77,15 @@ class GameScene: SKScene {
                 //dataDict.setObject(destStr, forKey: "projectileDest")
                 
                 //Convert the player position to a string
-                var playerPosition:String = NSStringFromCGPoint(location)
+            //var playerPosition:String = NSStringFromCGPoint(location)
                 //Add the string to the dictionary
-                dataDict.setObject(playerPosition, forKey: "playerPosition")
+            //dataDict.setObject(playerPosition, forKey: "playerPosition")
                 //dataDict.setObject(NSValue(CGPoint: player!.position), forKey: "playerPosition")
+                
+                var move = Move(position1: location)
+                //println(move);
+                dataDict.setObject(move.description, forKey: "order")
+                
                 
                 //Notify Room of updated data
                 AppWarpHelper.sharedInstance.updatePlayerDataToServer(dataDict)
@@ -95,33 +102,52 @@ class GameScene: SKScene {
     
     func updateEnemyStatus(dataDict: NSDictionary){
         println("Running Update Status")
+        //println(dataDict.objectForKey("order")as String)
+        //println(war.sprite.position)
+        var receivedOrder = Move(positionString: (dataDict.objectForKey("order")as String))
+        //println(receivedOrder.position)
         
-        var touchLocStr = dataDict.objectForKey("playerPosition") as String
-        var touchLoc = CGPointFromString(touchLocStr)
+        //var touchLocStr = dataDict.objectForKey("playerPosition") as String
+        //var touchLoc = CGPointFromString(touchLocStr)
         
-        if let sprite = PlayerSprites[dataDict.objectForKey("userName") as String] {
-            let charPos = sprite.position;
-            //localSprite.position = sprite.position
-            let xdif = touchLoc.x-charPos.x
-            let ydif = touchLoc.y-charPos.y
-            
-            let distance = sqrt((xdif*xdif)+(ydif*ydif))
-            let duration = distance/war.speed//PlayerSpeed
-            let action = SKAction.moveTo(touchLoc, duration:NSTimeInterval(duration))
-            //sprite.runAction(action)
-            sprite.runAction(action)
-            
+        if let unit = Players[dataDict.objectForKey("userName") as String]
+        {
+            //println("here")
+            unit.apply(receivedOrder)
         }
-        else {
-            //This is a new user that has not been seen before
-            //Create a new sprite for this user
-            let newSprite = SKSpriteNode(imageNamed:"Spaceship")
-            newSprite.xScale = 0.3
-            newSprite.yScale = 0.3
-            newSprite.position = touchLoc
-            self.addChild(newSprite)
-            PlayerSprites[dataDict.objectForKey("userName") as String] = newSprite
+        else
+        {
+            let newWarrior = Warrior()
+            newWarrior.sprite.xScale = 0.3
+            newWarrior.sprite.yScale = 0.3
+            newWarrior.sprite.position = receivedOrder.position
+            self.addChild(newWarrior.sprite)
+            Players[dataDict.objectForKey("userName") as String] = newWarrior
         }
+        //if let sprite = PlayerSprites[dataDict.objectForKey("userName") as String] {
+            
+//            let charPos = sprite.position;
+//            //localSprite.position = sprite.position
+//            let xdif = touchLoc.x-charPos.x
+//            let ydif = touchLoc.y-charPos.y
+//            
+//            let distance = sqrt((xdif*xdif)+(ydif*ydif))
+//            let duration = distance/war.speed//PlayerSpeed
+//            let action = SKAction.moveTo(touchLoc, duration:NSTimeInterval(duration))
+//            //sprite.runAction(action)
+//            sprite.runAction(action)
+            
+       // }
+//        else {
+//            //This is a new user that has not been seen before
+//            //Create a new sprite for this user
+//            let newSprite = SKSpriteNode(imageNamed:"Spaceship")
+//            newSprite.xScale = 0.3
+//            newSprite.yScale = 0.3
+//            newSprite.position = touchLoc
+//            self.addChild(newSprite)
+//            PlayerSprites[dataDict.objectForKey("userName") as String] = newSprite
+//        }
     }
    
     override func update(currentTime: CFTimeInterval) {
