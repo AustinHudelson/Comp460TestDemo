@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E74C57641A80210F00DFFF30 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C57631A80210F00DFFF30 /* Order.swift */; };
 		E74C57661A80213400DFFF30 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C57651A80213400DFFF30 /* Move.swift */; };
+		E76E0DD11A82B5C7006623D5 /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76E0DD01A82B5C7006623D5 /* Attack.swift */; };
 		E7AA6F211A7D97910075002F /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AA6F201A7D97910075002F /* Unit.swift */; };
 		E7AA6F231A7D98510075002F /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AA6F221A7D98510075002F /* Warrior.swift */; };
 		E7AA6F251A7DEE290075002F /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AA6F241A7DEE290075002F /* Projectile.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		E74C57631A80210F00DFFF30 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		E74C57651A80213400DFFF30 /* Move.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		E76E0DD01A82B5C7006623D5 /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 		E7AA6F201A7D97910075002F /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		E7AA6F221A7D98510075002F /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
 		E7AA6F241A7DEE290075002F /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				F4D33B5A1A71EF7300DCD868 /* GameScene.sks */,
 				F4D33B5C1A71EF7300DCD868 /* GameScene.swift */,
 				E74C57631A80210F00DFFF30 /* Order.swift */,
+				E76E0DD01A82B5C7006623D5 /* Attack.swift */,
 				E74C57651A80213400DFFF30 /* Move.swift */,
 				E7AA6F241A7DEE290075002F /* Projectile.swift */,
 				E7AA6F201A7D97910075002F /* Unit.swift */,
@@ -283,6 +286,7 @@
 				F4D33B841A71F25A00DCD868 /* ConnectionListener.swift in Sources */,
 				F4B84FA41A72F40F00321355 /* RoomListener.swift in Sources */,
 				E7AA6F211A7D97910075002F /* Unit.swift in Sources */,
+				E76E0DD11A82B5C7006623D5 /* Attack.swift in Sources */,
 				F4B84FA81A72FFF700321355 /* NotificationListener.swift in Sources */,
 				E74C57661A80213400DFFF30 /* Move.swift in Sources */,
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,

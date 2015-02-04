@@ -8,8 +8,10 @@
 
 
 import SpriteKit
-class Unit 
+class Unit
 {
+    var name = "hi"
+    var health = 100;
     var speed = CGFloat(100.0)
     var sprite =  SKSpriteNode(imageNamed:"Spaceship")
     
@@ -31,6 +33,21 @@ class Unit
             
             sprite.runAction(action)
         }
+        else if order is Attack
+        {
+            var target = (order as Attack).target
+            if(sprite.intersectsNode(target.sprite))
+            {
+                target.takeDamage(1)
+            }
+        }
     }
+    
+    func takeDamage(damage:Int)
+    {
+        health-=damage
+        println("\(name), \(health)")
+    }
+    
     
 }

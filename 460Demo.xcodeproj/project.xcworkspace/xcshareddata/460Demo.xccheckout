@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CAF11452-B35A-4784-A98C-140E10028B8A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>460Demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>11CC2CA40D401644296D4433BDDBEB608463A13D</key>
+		<string>https://github.com/AustinHudelson/Comp460TestDemo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>460Demo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>11CC2CA40D401644296D4433BDDBEB608463A13D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/AustinHudelson/Comp460TestDemo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>11CC2CA40D401644296D4433BDDBEB608463A13D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>11CC2CA40D401644296D4433BDDBEB608463A13D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Comp460TestDemo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

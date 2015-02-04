@@ -45,11 +45,14 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
                         var loc2 = touch.locationInNode(self)
             
-                        var dist = pow(pow(war.sprite.position.x - loc2.x,2)+pow(war.sprite.position.y - loc2.y,2),0.5)
-                        if dist < 175
-                        {
-                            objectTouched = true
-                        }
+                    if(war.sprite.containsPoint(loc2)){
+                    objectTouched = true;
+                    }
+//                        var dist = pow(pow(war.sprite.position.x - loc2.x,2)+pow(war.sprite.position.y - loc2.y,2),0.5)
+//                        if dist < 175
+//                        {
+//                            objectTouched = true
+//                        }
             
                         
                         //sprite1.position = location
@@ -63,38 +66,58 @@ class GameScene: SKScene {
             if(objectTouched == true)
             {
                 let location = touch.locationInNode(self)
-                
                 //Make a muteable dictionary to send over appwarp
-                var dataDict = NSMutableDictionary()
+                    var dataDict = NSMutableDictionary()
+                    
+                    //Store the userName/playerName in the sending dictionary
+                    //Set the username for the muteable dictionary
+                    dataDict.setObject(AppWarpHelper.sharedInstance.playerName, forKey: "userName")
                 
-                //Store the userName/playerName in the sending dictionary
-                //Set the username for the muteable dictionary
-                dataDict.setObject(AppWarpHelper.sharedInstance.playerName, forKey: "userName")
+                var touchedUnit = war as Unit
+                var unitTouched = false;
+                for(player,unit) in Players
+                {
+                    if(unit.sprite.containsPoint(location))
+                    {
+                        touchedUnit = unit
+                        unitTouched = true;
+                        break
+                    }
+                }
                 
-                
-                ////Convert the touched location to a string for projectile position
-                //var destStr:String = NSStringFromCGPoint(location)
-                //dataDict.setObject(destStr, forKey: "projectileDest")
-                
-                //Convert the player position to a string
-            //var playerPosition:String = NSStringFromCGPoint(location)
-                //Add the string to the dictionary
-            //dataDict.setObject(playerPosition, forKey: "playerPosition")
-                //dataDict.setObject(NSValue(CGPoint: player!.position), forKey: "playerPosition")
-                
-                var move = Move(position1: location)
-                //println(move);
-                dataDict.setObject(move.description, forKey: "order")
-                
-                
-                //Notify Room of updated data
+                if(unitTouched)
+                {
+                    var attack = Attack(tar: touchedUnit)
+                    dataDict.setObject(attack.description, forKey: "attack")
+                    
+                }
+                else
+                {
+                    
+                    
+                    
+                    ////Convert the touched location to a string for projectile position
+                    //var destStr:String = NSStringFromCGPoint(location)
+                    //dataDict.setObject(destStr, forKey: "projectileDest")
+                    
+                    //Convert the player position to a string
+                //var playerPosition:String = NSStringFromCGPoint(location)
+                    //Add the string to the dictionary
+                //dataDict.setObject(playerPosition, forKey: "playerPosition")
+                    //dataDict.setObject(NSValue(CGPoint: player!.position), forKey: "playerPosition")
+                    
+                    var move = Move(position1: location)
+                    //println(move);
+                    dataDict.setObject(move.description, forKey: "move")
+                    
+                    
+                    //Notify Room of updated data
+                    
+                }
                 AppWarpHelper.sharedInstance.updatePlayerDataToServer(dataDict)
-                objectTouched = false
+                    objectTouched = false
             }
-            else
-            {
-                
-            }
+           
             
         }
     }
@@ -104,7 +127,29 @@ class GameScene: SKScene {
         println("Running Update Status")
         //println(dataDict.objectForKey("order")as String)
         //println(war.sprite.position)
-        var receivedOrder = Move(positionString: (dataDict.objectForKey("order")as String))
+        var receivedOrder: Order
+        if(dataDict.objectForKey("move") != nil)
+        {
+           receivedOrder = Move(positionString: (dataDict.objectForKey("move")as String))
+        }
+        else if (dataDict.objectForKey("attack") != nil)
+        {
+            var attackedUnit = war as Unit
+            for(player,unit) in Players
+            {
+                if(unit.name == dataDict.objectForKey("attack") as String)
+                {
+                    attackedUnit = unit
+                    break
+                }
+            }
+            receivedOrder = Attack(unit: attackedUnit)
+        }
+        else
+        {
+            receivedOrder = Move(positionString: (dataDict.objectForKey("move")as String))
+        }
+        
         //println(receivedOrder.position)
         
         //var touchLocStr = dataDict.objectForKey("playerPosition") as String
@@ -120,7 +165,7 @@ class GameScene: SKScene {
             let newWarrior = Warrior()
             newWarrior.sprite.xScale = 0.3
             newWarrior.sprite.yScale = 0.3
-            newWarrior.sprite.position = receivedOrder.position
+            newWarrior.sprite.position = (receivedOrder as Move).position
             self.addChild(newWarrior.sprite)
             Players[dataDict.objectForKey("userName") as String] = newWarrior
         }
