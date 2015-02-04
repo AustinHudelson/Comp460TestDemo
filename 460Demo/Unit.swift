@@ -21,25 +21,19 @@ class Unit
         if order is Move
         {
             let moveLoc = (order as Move).position
-            println(moveLoc)
-            let charPos = sprite.position
-            println(charPos)
-            let xdif = moveLoc.x-charPos.x
-            let ydif = moveLoc.y-charPos.y
-            
-            let distance = sqrt((xdif*xdif)+(ydif*ydif))
-            let duration = distance/speed
-            let action = SKAction.moveTo(moveLoc, duration:NSTimeInterval(duration))
-            
-            sprite.runAction(action)
+            move(moveLoc)
+           
         }
         else if order is Attack
         {
             var target = (order as Attack).target
+            
+            move(target.sprite.position)
             if(sprite.intersectsNode(target.sprite))
             {
                 target.takeDamage(1)
             }
+            
         }
     }
     
@@ -48,6 +42,18 @@ class Unit
         health-=damage
         println("\(name), \(health)")
     }
-    
+    func move(destination:CGPoint )
+    {
+        let charPos = sprite.position
+        println(charPos)
+        let xdif = destination.x-charPos.x
+        let ydif = destination.y-charPos.y
+        
+        let distance = sqrt((xdif*xdif)+(ydif*ydif))
+        let duration = distance/speed
+        let action = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
+        
+        sprite.runAction(action)
+    }
     
 }
