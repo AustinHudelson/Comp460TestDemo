@@ -1,3 +1,3 @@
 # Ignore Xcode's metafiles (i.e. Some file that Xcode uses to determine what the project tree looks like, which checkout the project is currently on...etc)
-.*xccheckout
+xcshareddata/
 xcuserdata/
