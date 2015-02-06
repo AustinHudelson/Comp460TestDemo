@@ -8,12 +8,22 @@
 
 
 import SpriteKit
-class Unit
+class Unit: Printable
 {
-    var name = "hi"
-    var health = 100;
-    var speed = CGFloat(100.0)
-    var sprite =  SKSpriteNode(imageNamed:"Spaceship")
+    var name: String
+    var health: Int
+    var speed: CGFloat
+    var sprite: SKSpriteNode
+    var description: String {
+        return "Unit(name: \(name), health: \(health), speed: \(speed), sprite:\(sprite))"
+    }
+    
+    init(name: String, health: Int, speed: CGFloat) {
+        self.name = name
+        self.health = health
+        self.speed = speed
+        self.sprite = SKSpriteNode(imageNamed:"Spaceship")
+    }
     
     
     func apply(order: Order)

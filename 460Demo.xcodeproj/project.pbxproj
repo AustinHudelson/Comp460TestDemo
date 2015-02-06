@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		681FA5EC1A84C8F900FB5E39 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681FA5EB1A84C8F900FB5E39 /* SwiftyJSON.swift */; };
 		68B7DBF61A84C306003D9398 /* 460Demo-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF01A84C306003D9398 /* 460Demo-Bridging-Header.m */; };
 		68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF11A84C306003D9398 /* AppWarpHelper.swift */; };
 		68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF21A84C306003D9398 /* ConnectionListener.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		681FA5EB1A84C8F900FB5E39 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		68B7DBEF1A84C306003D9398 /* 460Demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "460Demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		68B7DBF01A84C306003D9398 /* 460Demo-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "460Demo-Bridging-Header.m"; sourceTree = "<group>"; };
 		68B7DBF11A84C306003D9398 /* AppWarpHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWarpHelper.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				68F35CA81A84C4D5004905BF /* GameSceneClasses */,
 				F4D33B581A71EF7300DCD868 /* AppDelegate.swift */,
 				F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */,
+				681FA5EB1A84C8F900FB5E39 /* SwiftyJSON.swift */,
 				F4D33B601A71EF7300DCD868 /* Main.storyboard */,
 				F4D33B631A71EF7300DCD868 /* Images.xcassets */,
 				F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */,
@@ -297,6 +300,7 @@
 				68B7DBFB1A84C306003D9398 /* ZoneListener.swift in Sources */,
 				68F35CB61A84C540004905BF /* Order.swift in Sources */,
 				68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */,
+				681FA5EC1A84C8F900FB5E39 /* SwiftyJSON.swift in Sources */,
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,
 				68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
