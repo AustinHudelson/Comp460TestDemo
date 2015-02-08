@@ -20,7 +20,7 @@ class GameScene: SKScene {
         - It only creates a player of type Warrior right now
     */
     func createUnit(unitName: String) -> Unit {
-        return Warrior(name: unitName, health: 100, speed: CGFloat(100.0))
+        return Warrior(name: unitName, health: 100, speed: CGFloat(10.0))
     }
     /*
         Update the game state according to data received over the network

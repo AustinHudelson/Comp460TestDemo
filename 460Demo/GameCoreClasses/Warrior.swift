@@ -16,5 +16,8 @@ class Warrior: Unit
         self.sprite.xScale = 0.5
         self.sprite.yScale = 0.5
         //self.sprite = SKSpriteNode(imageNamed:AnimationName+"-Stand")
+        
+        //self.apply(Move(position1: CGPoint(x: 1.0, y: 2.0)))
+        self.move(CGPoint(x: 100.0, y: 100.0))
     }
 }

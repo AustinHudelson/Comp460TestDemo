@@ -13,6 +13,9 @@ class Unit: SerializableJSON
     var health: Int
     var speed: CGFloat
     var sprite: SKSpriteNode
+    var walkAnim: SKAction
+    var attackAnim: SKAction
+    var standAnim: SKAction
     
     init(name: String, health: Int, speed: CGFloat) {
         self.name = name
@@ -24,38 +27,67 @@ class Unit: SerializableJSON
         //
         
         let walkAtlas = SKTextureAtlas(named: "Walk")
+        let attackAtlas = SKTextureAtlas(named: "Attack")
+        let unitName = "Character1BaseColorization"
+        let walkAnimName = "-Walk2"
+        let attackAnimName = "-Attack"
+        let standAnimName = "-Attack"
         
-        let walkAnim = SKAction.animateWithTextures([
-            walkAtlas.textureNamed("Character1BaseColorization-Walk20"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk21"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk22"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk23"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk24"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk25"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk26"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk27"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk28"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk29"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk210"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk211"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk212"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk213"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk214"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk215"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk216"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk217"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk218"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk219"),
-            walkAtlas.textureNamed("Character1BaseColorization-Walk220")
+        var walkTextures = SKAction.animateWithTextures([
+            walkAtlas.textureNamed(unitName+walkAnimName+"0"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"1"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"2"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"3"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"4"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"5"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"6"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"7"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"8"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"9"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"10"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"11"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"12"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"13"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"14"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"15"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"16"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"17"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"18"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"19"),
+            walkAtlas.textureNamed(unitName+walkAnimName+"20")
         ], timePerFrame: 0.05)
         
-        var walking = SKAction.repeatActionForever(walkAnim)
+        var attackTextures = SKAction.animateWithTextures([
+            walkAtlas.textureNamed(unitName+attackAnimName+"0"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"1"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"2"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"3"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"4"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"5"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"6"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"7"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"8"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"9"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"10"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"11"),
+            walkAtlas.textureNamed(unitName+attackAnimName+"12"),
+        ], timePerFrame: 0.05)
+        
+        var standTextures = SKAction.animateWithTextures([
+            attackAtlas.textureNamed(unitName+standAnimName+"0")
+        ], timePerFrame: 0.1)
+        
+        self.walkAnim = SKAction.repeatActionForever(walkTextures)
+        self.standAnim = SKAction.repeatActionForever(standTextures)
+        self.attackAnim = SKAction.repeatAction(attackTextures, count: 1)
         
         self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
         var mir = SKAction.scaleXTo(-0.25, duration: 0.0)
         
-        self.sprite.runAction(walking)
-        self.sprite.runAction(mir)
+        //self.sprite.runAction(self.walkAnim)
+        //self.sprite.runAction(mir)
+        
+        
     }
     
     
@@ -85,6 +117,7 @@ class Unit: SerializableJSON
         health-=damage
         println("\(name), \(health)")
     }
+    
     func move(destination:CGPoint )
     {
         let charPos = sprite.position
@@ -94,9 +127,14 @@ class Unit: SerializableJSON
         
         let distance = sqrt((xdif*xdif)+(ydif*ydif))
         let duration = distance/speed
-        let action = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
+        let movementAction = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
+        let walkAnimationAction = self.walkAnim
+        let action = SKAction.group([walkAnimationAction, movementAction])
         
-        sprite.runAction(action)
+        
+        //sprite.runAction(action)
+        self.sprite.runAction(movementAction)
+        //sprite.runAction(self.walkAnim)
     }
     
 }
