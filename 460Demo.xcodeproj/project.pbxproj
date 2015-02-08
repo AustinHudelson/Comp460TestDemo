@@ -105,6 +105,7 @@
 				68B7DBF31A84C306003D9398 /* NotificationListener.swift */,
 				68B7DBF41A84C306003D9398 /* RoomListener.swift */,
 				68B7DBF51A84C306003D9398 /* ZoneListener.swift */,
+				68FA90F21A87EEF2005FE64A /* UpdateRequestListener.swift */,
 			);
 			path = AppWarpHelperClasses;
 			sourceTree = "<group>";
@@ -297,6 +298,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68FA90F31A87EEF2005FE64A /* UpdateRequestListener.swift in Sources */,
+				68FCBD031A87815100BBFDA4 /* SerializableJSON.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
 				68B7DBF61A84C306003D9398 /* 460Demo-Bridging-Header.m in Sources */,

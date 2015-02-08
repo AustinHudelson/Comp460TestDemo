@@ -18,6 +18,7 @@ class AppWarpHelper: NSObject
     var enemyName: String = ""
     //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
     var playerName: String = ""
+    var connected: Bool = false // variable used to check if we've established connection. This needs to be true b4 we actually send stuff
     
     var gameViewController: GameViewController? = nil
     var gameScene: GameScene? = nil
@@ -52,6 +53,9 @@ class AppWarpHelper: NSObject
         
         var roomListener: RoomListener = RoomListener()
         warpClient.addRoomRequestListener(roomListener)
+        
+//        var updateReqListener: UpdateReqListener = UpdateReqListener()
+//        warpClient.addUpdateRequestListener(UpdateReqListener)
     }
     
     func connectWithAppWarpWithUserName(userName:String)
@@ -82,7 +86,7 @@ class AppWarpHelper: NSObject
                             ]
                     }
     */
-    func sendUpdate(data: Dictionary<String, Array<AnyObject>>) {
+    func sendUpdate(data: Dictionary<String, AnyObject>) {
         var error: NSError? // Used to store error msgs in case when error occured during serialization to JSON
         
         /*
@@ -94,17 +98,20 @@ class AppWarpHelper: NSObject
             /*
                 send over the converted data if conversion is success
             */
-            if WarpClient.getInstance().getConnectionState()==0 {
-                println("Sending msg...")
+            var error = WarpClient.getInstance().getConnectionState()
+            if error == 0 {
+                // error = 0 means success in getting connection state
+                println("Sending msg (\(convertedData.length) bytes) ...")
                 WarpClient.getInstance().sendUpdatePeers(convertedData)
             } else {
-                println("Error in sending msg!")
+                println("!!!WARNING: Error in sending msg (\(convertedData.length) bytes)!!!!") // print data's number of bytes
+                println("!!!Error code: \(error)!!!")
             }
         } else {
             /*
                 print error msg if convertion failed
             */
-            println("Error in sending msg!")
+            println("!!!WARNING: Error in converting the msg to be sent!!!!")
             println(error!)
             return
         }
@@ -122,7 +129,9 @@ class AppWarpHelper: NSObject
                     // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
     func recvUpdate(data: NSData) {
+        println("Received data (\(data.length) bytes)")
         let recvData: JSON = JSON(data)
+        println(recvData["Units"].stringValue)
         gameScene!.updateGameState(recvData)
     }
     

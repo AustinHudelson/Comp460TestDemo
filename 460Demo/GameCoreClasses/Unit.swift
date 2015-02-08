@@ -6,17 +6,13 @@
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
 
-
 import SpriteKit
-class Unit: Printable
+class Unit: SerializableJSON
 {
     var name: String
     var health: Int
     var speed: CGFloat
     var sprite: SKSpriteNode
-    var description: String {
-        return "Unit(name: \(name), health: \(health), speed: \(speed), sprite:\(sprite))"
-    }
     
     init(name: String, health: Int, speed: CGFloat) {
         self.name = name
