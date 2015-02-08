@@ -37,7 +37,8 @@ class GameScene: SKScene {
         for recv_unit in recv_unit_list {
             for local_unit in unit_list {
                 if (local_unit.name != (recv_unit as Unit).name) {
-                    new_local_unit_list.append(recv_unit as Unit)
+                    // Create this new unit
+                    println("hi")
                 }
             }
         }
@@ -63,8 +64,16 @@ class GameScene: SKScene {
         }
         
         // Send the initial units data over appwarp
-        let sendData: Dictionary<String, Array<AnyObject>> = ["Units": unit_list]
-        AppWarpHelper.sharedInstance.sendUpdate(sendData)
+        var sendData: Dictionary<String, Array<AnyObject>> = [:]
+        sendData["Units"] = []
+        for unit in unit_list {
+            sendData["Units"]!.append(unit.toJSONDict())
+        }
+        
+        // TEST
+//        var sendData2: Dictionary<String, Array<AnyObject>> = ["Units": [["health": 100, "name": "aaa", "speed": 100, "unitType": "Warrior"]]]
+        var sendData2: Dictionary<String, String> = ["Units": "hi"]
+//        AppWarpHelper.sharedInstance.sendUpdate(sendData2)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {

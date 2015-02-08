@@ -18,6 +18,7 @@ class AppWarpHelper: NSObject
     var enemyName: String = ""
     //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
     var playerName: String = ""
+    var connected: Bool = false // variable used to check if we've established connection. This needs to be true b4 we actually send stuff
     
     var gameViewController: GameViewController? = nil
     var gameScene: GameScene? = nil
@@ -82,7 +83,7 @@ class AppWarpHelper: NSObject
                             ]
                     }
     */
-    func sendUpdate(data: Dictionary<String, Array<AnyObject>>) {
+    func sendUpdate(data: Dictionary<String, AnyObject>) {
         var error: NSError? // Used to store error msgs in case when error occured during serialization to JSON
         
         /*
@@ -94,11 +95,13 @@ class AppWarpHelper: NSObject
             /*
                 send over the converted data if conversion is success
             */
-            if WarpClient.getInstance().getConnectionState()==0 {
+            println(WarpClient.getInstance().getConnectionState())
+            if WarpClient.getInstance().getConnectionState() == 0 {
                 println("Sending msg...")
                 WarpClient.getInstance().sendUpdatePeers(convertedData)
             } else {
                 println("Error in sending msg!")
+                println("data size: \(convertedData.length) bytes") // print number of bytes of the data
             }
         } else {
             /*

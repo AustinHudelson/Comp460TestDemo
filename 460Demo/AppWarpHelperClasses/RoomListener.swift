@@ -14,11 +14,12 @@ class RoomListener: NSObject,RoomRequestListener
     {
         if roomEvent.result == 0 // SUCESS
         {
-           var roomData:RoomData = roomEvent.roomData
-           AppWarpHelper.sharedInstance.roomId = roomData.roomId
+            AppWarpHelper.sharedInstance.connected = true
+            var roomData:RoomData = roomEvent.roomData
+            AppWarpHelper.sharedInstance.roomId = roomData.roomId
             WarpClient.getInstance().subscribeRoom(roomData.roomId)
             println("onJoinRoomDone Success")
-            
+
             println("Joined a room:\t roomId=\(roomData.roomId!)\n \t roomOwner=\(roomData.owner!)\n \t roomName=\(roomData.name)\n \t roomMaxUsers=\(roomData.maxUsers)")
 
         }
