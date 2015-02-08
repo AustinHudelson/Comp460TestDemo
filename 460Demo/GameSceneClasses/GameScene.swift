@@ -19,8 +19,8 @@ class GameScene: SKScene {
         This function creates a unit on the screen & sends this unit over the network to peers
         - It only creates a player of type Warrior right now
     */
-    func createUnit(unitName: String) -> Unit {
-        return Warrior(name: unitName, health: 100, speed: CGFloat(100.0))
+    func createUnit(unitName: String, health: Int, speed: CGFloat) -> Unit {
+        return Warrior(name: unitName, health: health, speed: speed)
     }
     /*
         Update the game state according to data received over the network
@@ -29,26 +29,32 @@ class GameScene: SKScene {
             // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
     func updateGameState(recvData: JSON) {
-        println(recvData["Units"].arrayObject)
-//        let recv_unit_list = (recvData["Units"].arrayObject! as Array)
-//        /*
-//            Check the recieved unit list against our local unit list, if there are any new units, add them
-//        */
-//        var new_local_unit_list = unit_list // might be a bug here if Swift doesnt do a deep copy of arrays
-//        for recv_unit in recv_unit_list {
-//            for local_unit in unit_list {
-//                if (local_unit.name != (recv_unit as Unit).name) {
-//                    // Create this new unit
-//                    println("hi")
-//                }
-//            }
-//        }
-//        unit_list = new_local_unit_list
+        let recv_unit_list: Array<JSON> = recvData["Units"].arrayValue
+        /*
+            Check the recieved unit list against our local unit list, if there are any new units, add them
+        */
+        var new_local_unit_list = unit_list // might be a bug here if Swift doesnt do a deep copy of arrays
+        for recv_unit in recv_unit_list {
+            for local_unit in unit_list {
+                if (local_unit.name != recv_unit["name"].stringValue) {
+                    // Create this new unit
+                    var unit_name = recv_unit["name"].stringValue
+                    var unit_health = recv_unit["health"].intValue
+                    var unit_speed = recv_unit["speed"].floatValue
+                    var new_unit = createUnit(unit_name, health: unit_health, speed: CGFloat(unit_speed))
+                    new_unit.sprite.xScale = 0.25
+                    new_unit.sprite.xScale = 0.25
+                    // put it on our local unit list
+                    new_local_unit_list.append(new_unit)
+                }
+            }
+        }
+        unit_list = new_local_unit_list
     }
     
     func startGameScene() {
         // Create a warrior unit with name = player name
-        let war = createUnit(AppWarpHelper.sharedInstance.playerName)
+        let war = createUnit(AppWarpHelper.sharedInstance.playerName, health: 100, speed: CGFloat(100.1))
         war.sprite.xScale = 0.5
         war.sprite.yScale = 0.5
         war.sprite.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
@@ -67,10 +73,7 @@ class GameScene: SKScene {
             sendData["Units"]!.append(unit.toJSONDict())
         }
         
-        // TEST
-//        var sendData2: Dictionary<String, Array<AnyObject>> = ["Units": [["health": 100, "name": "aaa", "speed": 100, "unitType": "Warrior"]]]
-        var sendData2: Dictionary<String, String> = ["Units": "1"]
-        AppWarpHelper.sharedInstance.sendUpdate(sendData2)
+        AppWarpHelper.sharedInstance.sendUpdate(sendData)
     }
     
     override func didMoveToView(view: SKView) {
