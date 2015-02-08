@@ -93,8 +93,10 @@ class Unit: SerializableJSON
     
     func apply(order: Order)
     {
+        println("APPLY")
         if order is Move
         {
+            println("APPLYMOVE")
             let moveLoc = (order as Move).position
             move(moveLoc)
            
@@ -120,6 +122,7 @@ class Unit: SerializableJSON
     
     func move(destination:CGPoint )
     {
+        println("MOVING")
         let charPos = sprite.position
         println(charPos)
         let xdif = destination.x-charPos.x

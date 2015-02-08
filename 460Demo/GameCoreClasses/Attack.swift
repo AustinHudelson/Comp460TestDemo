@@ -11,16 +11,22 @@ import SpriteKit
 class Attack: Order
 {
     var target:Unit
-    init(tar:Unit)
+    /* CHANGE THIS */
+    override init(sender: String, receiver: String)
     {
-        target = tar;
+        target = Unit(name: "a", health: 100, speed: CGFloat(100))
+        super.init(sender: sender, receiver: receiver)
     }
-    init(unit:Unit)
-    {
-        target = unit
-    }
-    override var description: String {
-        return "\(target.name)"
-    }
+//    init(tar:Unit)
+//    {
+//        target = tar;
+//    }
+//    init(unit:Unit)
+//    {
+//        target = unit
+//    }
+//    override var description: String {
+//        return "\(target.name)"
+//    }
     
 }

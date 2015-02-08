@@ -12,20 +12,21 @@ class Move : Order
 {
     var position: CGPoint
     
-    init(position1: CGPoint)
+    init(sender: String, receiver: String, position1: CGPoint)
     {
         position = position1
+        super.init(sender: sender, receiver: receiver)
     }
-    init(positionString:String)
-    {
-        //println(positionString)
-        var temp = positionString.stringByReplacingOccurrencesOfString("\\(", withString: "{", options: .RegularExpressionSearch).stringByReplacingOccurrencesOfString("\\)", withString: "}", options: .RegularExpressionSearch) as String
-        //println(temp)
-        position = CGPointFromString(temp)
-    }
-    override var description: String {
-        return "\(position)"
-    }
+//    init(positionString:String)
+//    {
+//        //println(positionString)
+//        var temp = positionString.stringByReplacingOccurrencesOfString("\\(", withString: "{", options: .RegularExpressionSearch).stringByReplacingOccurrencesOfString("\\)", withString: "}", options: .RegularExpressionSearch) as String
+//        //println(temp)
+//        position = CGPointFromString(temp)
+//    }
+//    override var description: String {
+//        return "\(position)"
+//    }
     
     
     
