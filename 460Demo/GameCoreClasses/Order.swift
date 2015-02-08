@@ -6,10 +6,16 @@
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
 
-class Order: Printable
+class Order: SerializableJSON
 {
+    var sender: String
+    var receiver: String
     
-    var description: String {
-        return "MyType: Order"
+    init(sender: String, receiver: String) {
+        self.sender = sender
+        self.receiver = receiver
     }
+//    var description: String {
+//        return "MyType: Order"
+//    }
 }

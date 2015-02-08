@@ -29,27 +29,59 @@ class GameScene: SKScene {
             // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
     func updateGameState(recvData: JSON) {
-        let recv_unit_list: Array<JSON> = recvData["Units"].arrayValue
-        /*
-            Check the recieved unit list against our local unit list, if there are any new units, add them
-        */
-        var new_local_unit_list = unit_list // might be a bug here if Swift doesnt do a deep copy of arrays
-        for recv_unit in recv_unit_list {
-            for local_unit in unit_list {
-                if (local_unit.name != recv_unit["name"].stringValue) {
-                    // Create this new unit
-                    var unit_name = recv_unit["name"].stringValue
-                    var unit_health = recv_unit["health"].intValue
-                    var unit_speed = recv_unit["speed"].floatValue
-                    var new_unit = createUnit(unit_name, health: unit_health, speed: CGFloat(unit_speed))
-                    new_unit.sprite.xScale = 0.25
-                    new_unit.sprite.xScale = 0.25
-                    // put it on our local unit list
-                    new_local_unit_list.append(new_unit)
+        /* ========== Units ========== */
+        if let recv_unit_list: Array<JSON> = recvData["Units"].array {
+            /*
+                Check the recieved unit list against our local unit list, if there are any new units, add them
+            */
+            var new_local_unit_list = unit_list // might be a bug here if Swift doesnt do a deep copy of arrays
+            for recv_unit in recv_unit_list {
+                for local_unit in unit_list {
+                    if (local_unit.name != recv_unit["name"].stringValue) {
+                        // Create this new unit
+                        var unit_name = recv_unit["name"].stringValue
+                        var unit_health = recv_unit["health"].intValue
+                        var unit_speed = recv_unit["speed"].floatValue
+                        var new_unit = createUnit(unit_name, health: unit_health, speed: CGFloat(unit_speed))
+                        new_unit.sprite.xScale = 0.25
+                        new_unit.sprite.xScale = 0.25
+                        // put it on our local unit list
+                        new_local_unit_list.append(new_unit)
+                    }
+                }
+            }
+            unit_list = new_local_unit_list
+        }
+        /* ========== Orders =========== */
+        else if let recv_order_list: Array<JSON> = recvData["Orders"].array {
+            
+            println("before order list for loop")
+            for order in recv_order_list {
+                var orderType = order["orderType"].stringValue
+                var sender = order["sender"].stringValue
+                
+                println("Got order list")
+                if (orderType == "Move") {
+                    var pos_x = order["x"].intValue
+                    var pos_y = order["y"].intValue
+                    var new_order = Move(sender: sender, receiver: "", position1: CGPoint(x: pos_x, y: pos_y))
+                    
+                    
+                    println(new_order.sender)
+                    for unit in unit_list {
+                        println(unit.name)
+                        if unit.name == new_order.sender {
+                            
+                            unit.apply(new_order)
+                            break
+                        }
+                    }
                 }
             }
         }
-        unit_list = new_local_unit_list
+       
+        
+        
     }
     
     func startGameScene() {
@@ -105,7 +137,7 @@ class GameScene: SKScene {
     {
         for touch: AnyObject in touches {
             if playerIsTouched == true {
-//                let touchLocation = touch.locationInNode(self)
+                let touchLocation = touch.locationInNode(self)
 //                //Make a muteable dictionary to send over appwarp
 //                    var dataDict = NSMutableDictionary()
 //                    
@@ -114,7 +146,7 @@ class GameScene: SKScene {
 //                    dataDict.setObject(AppWarpHelper.sharedInstance.playerName, forKey: "userName")
 //                
 //                var touchedUnit = war as Unit
-//                var unitTouched = false;
+                var unitTouched = false;
 //                for(player,unit) in Players
 //                {
 //                    if(unit.sprite.containsPoint(location))
@@ -125,15 +157,23 @@ class GameScene: SKScene {
 //                    }
 //                }
 //                
-//                if(unitTouched)
-//                {
+                if(unitTouched)
+                {
 //                    var attack = Attack(tar: touchedUnit)
 //                    dataDict.setObject(attack.description, forKey: "attack")
-//                    
-//                }
-//                else
-//                {
-//                    
+                    
+                }
+                else
+                {
+                    var move_loc: Move = Move(sender: AppWarpHelper.sharedInstance.playerName, receiver: "", position1: touchLocation)
+                    // Send the initial units data over appwarp
+                    var sendData: Dictionary<String, Array<AnyObject>> = [:]
+                    sendData["Units"] = []
+                    sendData["Orders"] = []
+                    sendData["Orders"]!.append(move_loc.toJSONDict())
+                    AppWarpHelper.sharedInstance.sendUpdate(sendData)
+                    playerIsTouched = false
+//
 //                    
 //                    
 //                    ////Convert the touched location to a string for projectile position
@@ -153,7 +193,7 @@ class GameScene: SKScene {
 //                    
 //                    //Notify Room of updated data
 //                    
-//                }
+                }
 //                AppWarpHelper.sharedInstance.updatePlayerDataToServer(dataDict)
 //                    objectTouched = false
             }
