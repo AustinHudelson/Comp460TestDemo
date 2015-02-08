@@ -9,10 +9,9 @@
 import SpriteKit
 class Warrior: Unit
 {
-    override init()
+    override init(name: String, health: Int, speed: CGFloat)
     {
-        super.init()
-        speed = CGFloat(100.0);
-        sprite = SKSpriteNode(imageNamed:"Mage")
+        super.init(name: name, health: health, speed: speed)
+        self.sprite = SKSpriteNode(imageNamed:"Mage")
     }
 }

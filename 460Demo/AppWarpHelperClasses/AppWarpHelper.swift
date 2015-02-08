@@ -65,6 +65,67 @@ class AppWarpHelper: NSObject
         }
     }
     
+    /*
+        Call this function when you need to send a msg over the network
+        - Params:
+            data: Dictionary<String, Array<AnyObject>>
+                - Eg. a data that contains units & orders to each unit might look like this
+                    data = {
+                        "Units":
+                            [Unit(player1),
+                                Unit(player2),
+                                Unit(enemy1),
+                                Unit(enemey2)],
+                        "Order":
+                            [Order(player1, Move(location)),
+                                Order(player2, Attack(enemy1))
+                            ]
+                    }
+    */
+    func sendUpdate(data: Dictionary<String, Array<AnyObject>>) {
+        var error: NSError? // Used to store error msgs in case when error occured during serialization to JSON
+        
+        /*
+            options = 0 here b/c we wanna send a data that's as compact as possible
+                - Can be set to NSJSONWritingOPtions.PrettyPrinted if you want the resulting JSON file to be human reable
+        */
+        println(data)
+        if let convertedData = NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(0), error: &error) {
+            /*
+                send over the converted data if conversion is success
+            */
+            if WarpClient.getInstance().getConnectionState()==0 {
+                println("Sending msg...")
+                WarpClient.getInstance().sendUpdatePeers(convertedData)
+            } else {
+                println("Error in sending msg!")
+            }
+        } else {
+            /*
+                print error msg if convertion failed
+            */
+            println("Error in sending msg!")
+            println(error!)
+            return
+        }
+    }
+    
+    /*
+        Call this function when you need to receive a msg from the network
+        - Params:
+            data: NSData
+                - This should be a JSON serialized data
+            - Converts the JSON data & its corresponding dictionary as "JSON" object (see sendUpate()'s comments for an example of a data) & calls gameScene.updateGameState
+            - Even though the returned object is a "JSON" object, its use is similar to a dictionary
+                - Eg. usage, assuming the data sent is the example from sendUpdate():
+                    let unit_list = JSON["Units"].arrayObject
+                    // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
+    */
+    func recvUpdate(data: NSData) {
+        let recvData: JSON = JSON(data)
+        gameScene!.updateGameState(recvData)
+    }
+    
     
     func updatePlayerDataToServer(dataDict:NSMutableDictionary)
     {

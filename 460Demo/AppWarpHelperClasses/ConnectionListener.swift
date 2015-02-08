@@ -15,8 +15,6 @@ class ConnectionListener: NSObject,ConnectionRequestListener
 {
     func onConnectDone(event: ConnectEvent!)
     {
-        //println("onConnectDone ErrorCode=%d",event.result)
-
         if event.result == 0 // SUCCESS
         {
             println("onConnectDone SUCCESS")
