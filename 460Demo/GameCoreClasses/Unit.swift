@@ -52,8 +52,10 @@ class Unit: SerializableJSON
         var walking = SKAction.repeatActionForever(walkAnim)
         
         self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
+        var mir = SKAction.scaleXTo(-.25, duration: 0.0)
         
         self.sprite.runAction(walking)
+        self.sprite.runAction(mir)
     }
     
     
