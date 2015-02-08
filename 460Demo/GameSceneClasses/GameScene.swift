@@ -29,8 +29,11 @@ class GameScene: SKScene {
             // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
     func updateGameState(recvData: JSON) {
+        println("updategamestate")
+        println((recvData["Orders"].array! as Array).count)
         /* ========== Units ========== */
-        if let recv_unit_list: Array<JSON> = recvData["Units"].array {
+        if (recvData["Units"].array! as Array).count != 0 {
+            let recv_unit_list: Array<JSON> = recvData["Units"].array!
             /*
                 Check the recieved unit list against our local unit list, if there are any new units, add them
             */
@@ -53,8 +56,9 @@ class GameScene: SKScene {
             unit_list = new_local_unit_list
         }
         /* ========== Orders =========== */
-        else if let recv_order_list: Array<JSON> = recvData["Orders"].array {
-            
+    
+        if  ((recvData["Orders"].array! as Array).count != 0) {
+            let recv_order_list: Array<JSON> = recvData["Orders"].array!
             println("before order list for loop")
             for order in recv_order_list {
                 var orderType = order["orderType"].stringValue
@@ -101,6 +105,7 @@ class GameScene: SKScene {
         // Send the initial units data over appwarp
         var sendData: Dictionary<String, Array<AnyObject>> = [:]
         sendData["Units"] = []
+        sendData["Orders"]=[]
         for unit in unit_list {
             sendData["Units"]!.append(unit.toJSONDict())
         }
@@ -173,6 +178,17 @@ class GameScene: SKScene {
                     sendData["Orders"]!.append(move_loc.toJSONDict())
                     AppWarpHelper.sharedInstance.sendUpdate(sendData)
                     playerIsTouched = false
+                    
+//                    for unit in unit_list
+//                    {
+//                        if unit.name == AppWarpHelper.sharedInstance.playerName
+//                        {
+//                            unit.apply(move_loc)
+//                            break
+//                        }
+//                        
+//                    }
+                    
 //
 //                    
 //                    

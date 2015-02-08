@@ -13,9 +13,9 @@ class Unit: SerializableJSON
     var health: Int
     var speed: CGFloat
     var sprite: SKSpriteNode
-    var walkAnim: SKAction
-    var attackAnim: SKAction
-    var standAnim: SKAction
+    //var walkAnim: SKAction
+    //var attackAnim: SKAction
+    //var standAnim: SKAction
     
     init(name: String, health: Int, speed: CGFloat) {
         self.name = name
@@ -77,16 +77,16 @@ class Unit: SerializableJSON
             attackAtlas.textureNamed(unitName+standAnimName+"0")
         ], timePerFrame: 0.1)
         
-        self.walkAnim = SKAction.repeatActionForever(walkTextures)
-        self.standAnim = SKAction.repeatActionForever(standTextures)
-        self.attackAnim = SKAction.repeatAction(attackTextures, count: 1)
+        //self.walkAnim = SKAction.repeatActionForever(walkTextures)
+        //self.standAnim = SKAction.repeatActionForever(standTextures)
+        //self.attackAnim = SKAction.repeatAction(attackTextures, count: 1)
         
-        self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
-        var mir = SKAction.scaleXTo(-0.25, duration: 0.0)
+        //self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
+        //var mir = SKAction.scaleXTo(-0.25, duration: 0.0)
         
         //self.sprite.runAction(self.walkAnim)
         //self.sprite.runAction(mir)
-        
+        sprite = SKSpriteNode(imageNamed: "Mage")
         
     }
     
@@ -131,8 +131,8 @@ class Unit: SerializableJSON
         let distance = sqrt((xdif*xdif)+(ydif*ydif))
         let duration = distance/speed
         let movementAction = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
-        let walkAnimationAction = self.walkAnim
-        let action = SKAction.group([walkAnimationAction, movementAction])
+        //let walkAnimationAction = self.walkAnim
+        //let action = SKAction.group([walkAnimationAction, movementAction])
         
         
         //sprite.runAction(action)
