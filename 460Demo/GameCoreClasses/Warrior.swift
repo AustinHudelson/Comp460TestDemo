@@ -9,9 +9,10 @@
 import SpriteKit
 class Warrior: Unit
 {
+    let AnimationName = "Character1BaseColorization"
     override init(name: String, health: Int, speed: CGFloat)
     {
         super.init(name: name, health: health, speed: speed)
-        self.sprite = SKSpriteNode(imageNamed:"Mage")
+        //self.sprite = SKSpriteNode(imageNamed:AnimationName+"-Stand")
     }
 }

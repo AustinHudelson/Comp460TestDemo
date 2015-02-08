@@ -22,7 +22,42 @@ class Unit: Printable
         self.name = name
         self.health = health
         self.speed = speed
-        self.sprite = SKSpriteNode(imageNamed:"Spaceship")
+        
+        //
+        //Define Animations here
+        //
+        
+        let walkAtlas = SKTextureAtlas(named: "Walk")
+        
+        let walkAnim = SKAction.animateWithTextures([
+            walkAtlas.textureNamed("Character1BaseColorization-Walk20"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk21"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk22"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk23"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk24"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk25"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk26"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk27"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk28"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk29"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk210"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk211"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk212"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk213"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk214"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk215"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk216"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk217"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk218"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk219"),
+            walkAtlas.textureNamed("Character1BaseColorization-Walk220")
+        ], timePerFrame: 0.05)
+        
+        var walking = SKAction.repeatActionForever(walkAnim)
+        
+        self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
+        
+        self.sprite.runAction(walking)
     }
     
     
