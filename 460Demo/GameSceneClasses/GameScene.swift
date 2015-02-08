@@ -29,27 +29,24 @@ class GameScene: SKScene {
             // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
     func updateGameState(recvData: JSON) {
-        let recv_unit_list = (recvData["Units"].arrayObject! as Array)
-        /*
-            Check the recieved unit list against our local unit list, if there are any new units, add them
-        */
-        var new_local_unit_list = unit_list // might be a bug here if Swift doesnt do a deep copy of arrays
-        for recv_unit in recv_unit_list {
-            for local_unit in unit_list {
-                if (local_unit.name != (recv_unit as Unit).name) {
-                    // Create this new unit
-                    println("hi")
-                }
-            }
-        }
-        unit_list = new_local_unit_list
+        println(recvData["Units"].arrayObject)
+//        let recv_unit_list = (recvData["Units"].arrayObject! as Array)
+//        /*
+//            Check the recieved unit list against our local unit list, if there are any new units, add them
+//        */
+//        var new_local_unit_list = unit_list // might be a bug here if Swift doesnt do a deep copy of arrays
+//        for recv_unit in recv_unit_list {
+//            for local_unit in unit_list {
+//                if (local_unit.name != (recv_unit as Unit).name) {
+//                    // Create this new unit
+//                    println("hi")
+//                }
+//            }
+//        }
+//        unit_list = new_local_unit_list
     }
     
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        println("Game Scene Init")
-        AppWarpHelper.sharedInstance.gameScene = self
-        
+    func startGameScene() {
         // Create a warrior unit with name = player name
         let war = createUnit(AppWarpHelper.sharedInstance.playerName)
         war.sprite.xScale = 0.5
@@ -72,9 +69,16 @@ class GameScene: SKScene {
         
         // TEST
 //        var sendData2: Dictionary<String, Array<AnyObject>> = ["Units": [["health": 100, "name": "aaa", "speed": 100, "unitType": "Warrior"]]]
-        var sendData2: Dictionary<String, String> = ["Units": "hi"]
-//        AppWarpHelper.sharedInstance.sendUpdate(sendData2)
+        var sendData2: Dictionary<String, String> = ["Units": "1"]
+        AppWarpHelper.sharedInstance.sendUpdate(sendData2)
     }
+    
+    override func didMoveToView(view: SKView) {
+        /* Setup your scene here */
+        println("Game Scene Init")
+        AppWarpHelper.sharedInstance.gameScene = self
+    }
+    
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */

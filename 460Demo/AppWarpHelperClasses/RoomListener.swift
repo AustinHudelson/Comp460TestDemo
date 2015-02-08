@@ -14,7 +14,6 @@ class RoomListener: NSObject,RoomRequestListener
     {
         if roomEvent.result == 0 // SUCESS
         {
-            AppWarpHelper.sharedInstance.connected = true
             var roomData:RoomData = roomEvent.roomData
             AppWarpHelper.sharedInstance.roomId = roomData.roomId
             WarpClient.getInstance().subscribeRoom(roomData.roomId)
@@ -35,7 +34,13 @@ class RoomListener: NSObject,RoomRequestListener
         if roomEvent.result == 0 // SUCESS
         {
             println("onSubscribeRoomDone Success")
-            //AppWarpHelper.sharedInstance.gameViewController!.startGameScene()
+            AppWarpHelper.sharedInstance.connected = true
+            if let gameScene = AppWarpHelper.sharedInstance.gameScene {
+                gameScene.startGameScene()
+            } else {
+                println("!!!Error: gameScene is nil!!!")
+            }
+            
         }
         else // Failed to join
         {
