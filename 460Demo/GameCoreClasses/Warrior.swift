@@ -13,6 +13,8 @@ class Warrior: Unit
     override init(name: String, health: Int, speed: CGFloat)
     {
         super.init(name: name, health: health, speed: speed)
+        self.sprite.xScale = 0.5
+        self.sprite.yScale = 0.5
         //self.sprite = SKSpriteNode(imageNamed:AnimationName+"-Stand")
     }
 }
