@@ -50,9 +50,11 @@ class GameScene: SKScene {
                         new_unit.sprite.xScale = 0.25
                         // put it on our local unit list
                         new_local_unit_list.append(new_unit)
+                        self.addChild(new_unit.sprite)
                     }
                 }
             }
+            println("unit_ls length: \(unit_list.count)")
             unit_list = new_local_unit_list
         }
         /* ========== Orders =========== */
@@ -174,6 +176,11 @@ class GameScene: SKScene {
                     // Send the initial units data over appwarp
                     var sendData: Dictionary<String, Array<AnyObject>> = [:]
                     sendData["Units"] = []
+                    for unit in unit_list {
+                        if unit.name == AppWarpHelper.sharedInstance.playerName {
+                            sendData.append!(unit.toJSONDict())
+                        }
+                    }
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(move_loc.toJSONDict())
                     AppWarpHelper.sharedInstance.sendUpdate(sendData)
