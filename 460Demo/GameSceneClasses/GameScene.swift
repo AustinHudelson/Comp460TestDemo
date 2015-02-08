@@ -19,8 +19,8 @@ class GameScene: SKScene {
         This function creates a unit on the screen & sends this unit over the network to peers
         - It only creates a player of type Warrior right now
     */
-    func createUnit(unitName: String) -> Unit {
-        return Warrior(name: unitName, health: 100, speed: CGFloat(10.0))
+    func createUnit(unitName: String, health: Int, speed: CGFloat) -> Unit {
+        return Warrior(name: unitName, health: health, speed: speed)
     }
     /*
         Update the game state according to data received over the network
