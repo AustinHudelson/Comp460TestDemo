@@ -178,7 +178,7 @@ class GameScene: SKScene {
                     sendData["Units"] = []
                     for unit in unit_list {
                         if unit.name == AppWarpHelper.sharedInstance.playerName {
-                            sendData.append!(unit.toJSONDict())
+                            sendData["Units"]!.append(unit.toJSONDict())
                         }
                     }
                     sendData["Orders"] = []
