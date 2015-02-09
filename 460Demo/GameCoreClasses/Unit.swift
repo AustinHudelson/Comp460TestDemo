@@ -13,9 +13,9 @@ class Unit: SerializableJSON
     var health: Int
     var speed: CGFloat
     var sprite: SKSpriteNode
-    //var walkAnim: SKAction
-    //var attackAnim: SKAction
-    //var standAnim: SKAction
+    var walkAnim: SKAction
+    var attackAnim: SKAction
+    var standAnim: SKAction
     var health_txt: SKLabelNode
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
     
@@ -38,7 +38,7 @@ class Unit: SerializableJSON
         let unitName = "Character1BaseColorization"
         let walkAnimName = "-Walk2"
         let attackAnimName = "-Attack"
-        let standAnimName = "-Attack"
+        let standAnimName = "-Walk2"
         
         var walkTextures = SKAction.animateWithTextures([
             walkAtlas.textureNamed(unitName+walkAnimName+"0"),
@@ -65,28 +65,28 @@ class Unit: SerializableJSON
         ], timePerFrame: 0.05)
         
         var attackTextures = SKAction.animateWithTextures([
-            walkAtlas.textureNamed(unitName+attackAnimName+"0"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"1"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"2"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"3"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"4"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"5"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"6"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"7"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"8"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"9"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"10"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"11"),
-            walkAtlas.textureNamed(unitName+attackAnimName+"12"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"0"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"1"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"2"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"3"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"4"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"5"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"6"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"7"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"8"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"9"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"10"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"11"),
+            attackAtlas.textureNamed(unitName+attackAnimName+"12"),
         ], timePerFrame: 0.05)
         
         var standTextures = SKAction.animateWithTextures([
-            attackAtlas.textureNamed(unitName+standAnimName+"0")
+            walkAtlas.textureNamed(unitName+standAnimName+"0")
         ], timePerFrame: 0.1)
         
-        //self.walkAnim = SKAction.repeatActionForever(walkTextures)
-        //self.standAnim = SKAction.repeatActionForever(standTextures)
-        //self.attackAnim = SKAction.repeatAction(attackTextures, count: 1)
+        self.walkAnim = SKAction.repeatActionForever(walkTextures)
+        self.standAnim = SKAction.repeatActionForever(standTextures)
+        self.attackAnim = SKAction.repeatAction(attackTextures, count: 1)
         
         //self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
         //var mir = SKAction.scaleXTo(-0.25, duration: 0.0)
@@ -94,6 +94,7 @@ class Unit: SerializableJSON
         //self.sprite.runAction(self.walkAnim)
         //self.sprite.runAction(mir)
         sprite = SKSpriteNode(imageNamed: "Mage")
+        self.sprite.runAction(self.standAnim)
         
     }
     
@@ -154,14 +155,25 @@ class Unit: SerializableJSON
         let ydif = destination.y-charPos.y
         
         let distance = sqrt((xdif*xdif)+(ydif*ydif))
-        let duration = Double(distance/speed)
-        println("ASDFASDFASDFASDFASDFASDFASDFASDFASDFSADFASDF")
-        println(distance)
-        println(duration)
-        println(self.speed)
-        let action = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
+        let duration = distance/speed
+        let movementAction = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
+        let walkAnimationAction = self.walkAnim
+        //let action = SKAction.group([SKAction., movementAction])
         
-        sprite.runAction(SKAction.group([action, walkAnim]))
+        
+        //sprite.runAction(action)
+        sprite.runAction(walkAnimationAction)
+        sprite.runAction(movementAction, completion: {
+            self.sprite.runAction(self.standAnim)
+        })
+        //self.sprite.runAction(movementAction)
+        //sprite.runAction(self.walkAnim)
+        
+        /* Move the health text */
+        var health_txt_des = destination
+        health_txt_des.y += health_txt_y_dspl
+        let moveHealthTxtAction = SKAction.moveTo(health_txt_des, duration: NSTimeInterval(duration))
+        self.health_txt.runAction(moveHealthTxtAction)
     }
     
 }
