@@ -12,7 +12,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var unit_list: [Unit] = [] // Our list of units in the scene
+    var unit_list: Dictionary<String, Unit> = [:] // Our list of units in the scene
     var playerIsTouched = false
     
     /*
@@ -37,10 +37,9 @@ class GameScene: SKScene {
             /*
                 Check the recieved unit list against our local unit list, if there are any new units, add them
             */
-            var new_local_unit_list = unit_list // might be a bug here if Swift doesnt do a deep copy of arrays
             for recv_unit in recv_unit_list {
-                for local_unit in unit_list {
-                    if (local_unit.name != recv_unit["name"].stringValue) {
+                var recv_name = recv_unit["name"].stringValue
+                if unit_list[recv_name] == nil {
                         // Create this new unit
                         var unit_name = recv_unit["name"].stringValue
                         var unit_health = recv_unit["health"].intValue
@@ -53,14 +52,12 @@ class GameScene: SKScene {
                         new_unit.sprite.xScale = 0.25
                         new_unit.sprite.position = CGPoint(x: CGFloat(unit_posX), y: CGFloat(unit_posY))
                         // put it on our local unit list
-                        new_local_unit_list.append(new_unit)
+                        unit_list[recv_name] = new_unit
                         self.addChild(new_unit.sprite)
-                    }
                 }
             }
-            println("unit_ls length: \(unit_list.count)")
-            unit_list = new_local_unit_list
         }
+            println("unit_ls length: \(unit_list.count)")
         /* ========== Orders =========== */
     
         if  ((recvData["Orders"].array! as Array).count != 0) {
@@ -78,30 +75,24 @@ class GameScene: SKScene {
                     
                     
                     println(new_order.sender)
-                    for unit in unit_list {
-                        println(unit.name)
-                        if unit.name == new_order.sender {
-                            
-                            unit.apply(new_order)
-                            break
-                        }
-                    }
+                    unit_list[sender]!.apply(new_order)
+
                 }
             }
         }
        
-        
-        
-    }
     
+    }
+
     func startGameScene() {
         // Create a warrior unit with name = player name
-        let war = createUnit(AppWarpHelper.sharedInstance.playerName, health: 100, speed: CGFloat(100.1))
+        var playerName = AppWarpHelper.sharedInstance.playerName
+        let war = createUnit(playerName, health: 100, speed: CGFloat(100.1))
         war.sprite.xScale = 0.5
         war.sprite.yScale = 0.5
         war.sprite.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         // Add the warrior to our list of units in the scene
-        unit_list.append(war)
+        unit_list[playerName] = war
         
         // Tell SpriteKit to actually draw the the initially create Units in scene
         for unit in unit_list {
@@ -112,9 +103,8 @@ class GameScene: SKScene {
         var sendData: Dictionary<String, Array<AnyObject>> = [:]
         sendData["Units"] = []
         sendData["Orders"]=[]
-        for unit in unit_list {
-            sendData["Units"]!.append(unit.toJSONDict())
-        }
+
+        sendData["Units"]!.append(unit_list[playerName]!.toJSONDict())
         
         AppWarpHelper.sharedInstance.sendUpdate(sendData)
     }
@@ -135,13 +125,10 @@ class GameScene: SKScene {
             /*
                 Determine if the touch is on your own character's sprite
             */
-            for unit in unit_list {
-                if unit.name == AppWarpHelper.sharedInstance.playerName {
-                    if unit.sprite.containsPoint(touchLocation) {
-                        playerIsTouched = true
-                    }
+
+                if unit_list[AppWarpHelper.sharedInstance.playerName]!.sprite.containsPoint(touchLocation) {
+                    playerIsTouched = true
                 }
-            }
         }
     }
     override func touchesEnded(touches:NSSet, withEvent event: UIEvent)
@@ -180,11 +167,7 @@ class GameScene: SKScene {
                     // Send the initial units data over appwarp
                     var sendData: Dictionary<String, Array<AnyObject>> = [:]
                     sendData["Units"] = []
-                    for unit in unit_list {
-                        if unit.name == AppWarpHelper.sharedInstance.playerName {
-                            sendData["Units"]!.append(unit.toJSONDict())
-                        }
-                    }
+                    sendData["Units"]!.append(unit_list[AppWarpHelper.sharedInstance.playerName]!.toJSONDict())
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(move_loc.toJSONDict())
                     AppWarpHelper.sharedInstance.sendUpdate(sendData)
