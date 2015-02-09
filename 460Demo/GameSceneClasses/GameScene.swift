@@ -51,12 +51,11 @@ class GameScene: SKScene {
                         var unit_posY = recv_unit["posY"].floatValue
 
                         var new_unit = createUnit(unit_name, health: unit_health, speed: CGFloat(unit_speed))
-                        new_unit.sprite.xScale = 0.25
-                        new_unit.sprite.xScale = 0.25
-                        new_unit.sprite.position = CGPoint(x: CGFloat(unit_posX), y: CGFloat(unit_posY))
+
                         // put it in our local unit list
                         unit_list[recv_name] = new_unit
-                        self.addChild(new_unit.sprite)
+                        // Add this Unit's sprite to scene
+                        new_unit.addUnitToGameScene(self, pos: CGPoint(x: CGFloat(unit_posX), y: CGFloat(unit_posY)), scaleX: 0.25, scaleY: 0.25)
 
                         /*
                             !!!CHANGE THIS LATER!!!
@@ -99,15 +98,13 @@ class GameScene: SKScene {
         // Create a warrior unit with name = player name
         var playerName = AppWarpHelper.sharedInstance.playerName
         let war = createUnit(playerName, health: 100, speed: CGFloat(100.1))
-        war.sprite.xScale = 0.5
-        war.sprite.yScale = 0.5
-        war.sprite.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        let war_position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         // Add the warrior to our list of units in the scene
         unit_list[playerName] = war
         
         // Tell SpriteKit to actually draw the the initially create Units in scene
         for unit in unit_list {
-            self.addChild(war.sprite)
+            war.addUnitToGameScene(self, pos: war_position, scaleX: 0.5, scaleY: 0.5)
         }
         
         // Send the initial units data over appwarp

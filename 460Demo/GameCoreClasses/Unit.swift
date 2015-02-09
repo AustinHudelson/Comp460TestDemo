@@ -16,11 +16,18 @@ class Unit: SerializableJSON
     //var walkAnim: SKAction
     //var attackAnim: SKAction
     //var standAnim: SKAction
+    var health_txt: SKLabelNode
+    var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
     
     init(name: String, health: Int, speed: CGFloat) {
         self.name = name
         self.health = health
         self.speed = speed
+        /* Configure our health text */
+        self.health_txt = SKLabelNode(text: self.health.description)
+        self.health_txt.fontColor = UIColor.redColor()
+        self.health_txt.fontSize = 40
+        
         
         //
         //Define Animations here
@@ -90,6 +97,24 @@ class Unit: SerializableJSON
         
     }
     
+    /*
+        Used to add a unit to the game scene at position 'pos', with sprite.xScale = 'scaleX' & sprite.yScale = 'scaleY'.
+        Also displays a health text on top of this unit
+    */
+    func addUnitToGameScene(gameScene: GameScene, pos: CGPoint, scaleX: CGFloat, scaleY: CGFloat)
+    {
+        self.sprite.xScale = scaleX
+        self.sprite.yScale = scaleY
+        self.sprite.position = pos
+        gameScene.addChild(self.sprite)
+        
+        /* Add health text */
+        var health_txt_pos: CGPoint = pos
+        health_txt_pos.y += self.health_txt_y_dspl
+        self.health_txt.position = health_txt_pos
+        gameScene.addChild(self.health_txt)
+        
+    }
     /* !!!!!!NEED TO CHANGE THESE TWO IN FUTURE!!!!!! */
     /* Apply Move */
     func apply(order: Order)
@@ -110,6 +135,7 @@ class Unit: SerializableJSON
         {
             move(target.sprite.position)
             target.takeDamage(1)
+            target.health_txt.text = target.health.description
         }
     }
     
@@ -137,6 +163,12 @@ class Unit: SerializableJSON
         //sprite.runAction(action)
         self.sprite.runAction(movementAction)
         //sprite.runAction(self.walkAnim)
+        
+        /* Move the health text */
+        var health_txt_des = destination
+        health_txt_des.y += health_txt_y_dspl
+        let moveHealthTxtAction = SKAction.moveTo(health_txt_des, duration: NSTimeInterval(duration))
+        self.health_txt.runAction(moveHealthTxtAction)
     }
     
 }
