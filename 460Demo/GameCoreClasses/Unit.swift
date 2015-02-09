@@ -129,15 +129,14 @@ class Unit: SerializableJSON
         let ydif = destination.y-charPos.y
         
         let distance = sqrt((xdif*xdif)+(ydif*ydif))
-        let duration = distance/speed
-        let movementAction = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
-        let walkAnimationAction = self.walkAnim
-        let action = SKAction.group([walkAnimationAction, movementAction])
+        let duration = Double(distance/speed)
+        println("ASDFASDFASDFASDFASDFASDFASDFASDFASDFSADFASDF")
+        println(distance)
+        println(duration)
+        println(self.speed)
+        let action = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
         
-        
-        //sprite.runAction(action)
-        self.sprite.runAction(movementAction)
-        //sprite.runAction(self.walkAnim)
+        sprite.runAction(SKAction.group([action, walkAnim]))
     }
     
 }
