@@ -164,6 +164,7 @@ class GameScene: SKScene {
 //                    dataDict.setObject(attack.description, forKey: "attack")
                     var attack: Attack = Attack(sender: AppWarpHelper.sharedInstance.playerName, receiver: touchedUnitName)
                     sendData["Units"] = []
+                    sendData["Orders"] = []
                     sendData["Orders"]!.append(attack.toJSONDict())
                     
                 }
