@@ -62,21 +62,22 @@ class GameScene: SKScene {
     
         if  ((recvData["Orders"].array! as Array).count != 0) {
             let recv_order_list: Array<JSON> = recvData["Orders"].array!
-            println("before order list for loop")
             for order in recv_order_list {
                 var orderType = order["orderType"].stringValue
                 var sender = order["sender"].stringValue
                 
-                println("Got order list")
                 if (orderType == "Move") {
                     var pos_x = order["x"].intValue
                     var pos_y = order["y"].intValue
                     var new_order = Move(sender: sender, receiver: "", position1: CGPoint(x: pos_x, y: pos_y))
                     
-                    
-                    println(new_order.sender)
                     unit_list[sender]!.apply(new_order)
-
+                }
+                if (orderType == "Attack") {
+                    var sender = order["sender"].stringValue
+                    var receiver = order["receiver"].stringValue
+                    var new_order = Attack(sender: sender, receiver: receiver)
+                    unit_list[sender]!.apply(new_order, target: unit_list[receiver]!)
                 }
             }
         }
@@ -145,33 +146,35 @@ class GameScene: SKScene {
 //                
 //                var touchedUnit = war as Unit
                 var unitTouched = false;
-//                for(player,unit) in Players
-//                {
-//                    if(unit.sprite.containsPoint(location))
-//                    {
-//                        touchedUnit = unit
-//                        unitTouched = true;
-//                        break
-//                    }
-//                }
-//                
+                var touchedUnitName: String = ""
+                for (name, unit) in unit_list
+                {
+                    if(unit.sprite.containsPoint(touchLocation) && (unit.name != AppWarpHelper.sharedInstance.playerName))
+                    {
+                        unitTouched = true;
+                        touchedUnitName = unit.name
+                        break
+                    }
+                }
+                
+                var sendData: Dictionary<String, Array<AnyObject>> = [:]
                 if(unitTouched)
                 {
 //                    var attack = Attack(tar: touchedUnit)
 //                    dataDict.setObject(attack.description, forKey: "attack")
+                    var attack: Attack = Attack(sender: AppWarpHelper.sharedInstance.playerName, receiver: touchedUnitName)
+                    sendData["Units"] = []
+                    sendData["Orders"]!.append(attack.toJSONDict())
                     
                 }
                 else
                 {
                     var move_loc: Move = Move(sender: AppWarpHelper.sharedInstance.playerName, receiver: "", position1: touchLocation)
                     // Send the initial units data over appwarp
-                    var sendData: Dictionary<String, Array<AnyObject>> = [:]
                     sendData["Units"] = []
                     sendData["Units"]!.append(unit_list[AppWarpHelper.sharedInstance.playerName]!.toJSONDict())
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(move_loc.toJSONDict())
-                    AppWarpHelper.sharedInstance.sendUpdate(sendData)
-                    playerIsTouched = false
                     
 //                    for unit in unit_list
 //                    {
@@ -204,6 +207,8 @@ class GameScene: SKScene {
 //                    //Notify Room of updated data
 //                    
                 }
+                AppWarpHelper.sharedInstance.sendUpdate(sendData)
+                playerIsTouched = false
 //                AppWarpHelper.sharedInstance.updatePlayerDataToServer(dataDict)
 //                    objectTouched = false
             }

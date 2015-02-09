@@ -90,7 +90,8 @@ class Unit: SerializableJSON
         
     }
     
-    
+    /* !!!!!!NEED TO CHANGE THESE TWO IN FUTURE!!!!!! */
+    /* Apply Move */
     func apply(order: Order)
     {
         println("APPLY")
@@ -101,16 +102,14 @@ class Unit: SerializableJSON
             move(moveLoc)
            
         }
-        else if order is Attack
+    }
+    /* Apply Attack */
+    func apply(order: Order, target: Unit)
+    {
+        if order is Attack
         {
-            var target = (order as Attack).target
-            
             move(target.sprite.position)
-            if(sprite.intersectsNode(target.sprite))
-            {
-                target.takeDamage(1)
-            }
-            
+            target.takeDamage(1)
         }
     }
     

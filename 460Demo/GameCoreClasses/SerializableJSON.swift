@@ -55,6 +55,14 @@ class SerializableJSON: NSObject {
             output_dict["x"] = pos_x
             output_dict["y"] = pos_y
         }
+        else if self is Attack {
+            var orderType = "Attack"
+            var sender = (self as Move).sender
+            var receiver = (self as Attack).receiver
+            output_dict["sender"] = sender
+            output_dict["orderType"] = orderType
+            output_dict["receiver"] = receiver
+        }
         return output_dict
     }
     
