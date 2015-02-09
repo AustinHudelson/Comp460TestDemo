@@ -12,15 +12,15 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var unit_list: [Unit] = [] // Our list of units in the scene
+    var unit_list: Dictionary<String, Unit> = [:] // Our list of units in the scene
     var playerIsTouched = false
     
     /*
         This function creates a unit on the screen & sends this unit over the network to peers
         - It only creates a player of type Warrior right now
     */
-    func createUnit(unitName: String) -> Unit {
-        return Warrior(name: unitName, health: 100, speed: CGFloat(10.0))
+    func createUnit(unitName: String, health: Int, speed: CGFloat) -> Unit {
+        return Warrior(name: unitName, health: health, speed: speed)
     }
     /*
         Update the game state according to data received over the network
@@ -29,81 +29,89 @@ class GameScene: SKScene {
             // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
     func updateGameState(recvData: JSON) {
-        /* ========== Units ========== */
-        if let recv_unit_list: Array<JSON> = recvData["Units"].array {
-            /*
-                Check the recieved unit list against our local unit list, if there are any new units, add them
-            */
-            var new_local_unit_list = unit_list // might be a bug here if Swift doesnt do a deep copy of arrays
-            for recv_unit in recv_unit_list {
-                for local_unit in unit_list {
-                    if (local_unit.name != recv_unit["name"].stringValue) {
+        /* 
+            Loop through all the avaiable keys in the received JSON, which, at the outer most layer,
+            should be a dictionary
+        */
+        for (key: String, subArray: JSON) in recvData {
+            /* ========== Units ========== */
+            if key == "Units" {
+                let recv_unit_list: Array<JSON> = recvData["Units"].array!
+                /*
+                    Check the recieved unit list against our local unit list, if there are any new units, add them
+                */
+                for recv_unit in recv_unit_list {
+                    var recv_name = recv_unit["name"].stringValue
+                    if unit_list[recv_name] == nil {
                         // Create this new unit
                         var unit_name = recv_unit["name"].stringValue
                         var unit_health = recv_unit["health"].intValue
                         var unit_speed = recv_unit["speed"].floatValue
+                        var unit_posX = recv_unit["posX"].floatValue
+                        var unit_posY = recv_unit["posY"].floatValue
+
                         var new_unit = createUnit(unit_name, health: unit_health, speed: CGFloat(unit_speed))
-                        new_unit.sprite.xScale = 0.25
-                        new_unit.sprite.xScale = 0.25
-                        // put it on our local unit list
-                        new_local_unit_list.append(new_unit)
+
+                        // put it in our local unit list
+                        unit_list[recv_name] = new_unit
+                        // Add this Unit's sprite to scene
+                        new_unit.addUnitToGameScene(self, pos: CGPoint(x: CGFloat(unit_posX), y: CGFloat(unit_posY)), scaleX: 0.25, scaleY: 0.25)
+
+                        /*
+                            !!!CHANGE THIS LATER!!!
+                            Since the only new unit we'll be receiving right now is a new player unit,
+                            broadcast my player's Unit over the network to whoever sent me his new player unit
+                        */
+                        var sendData: Dictionary<String, Array<AnyObject>> = [:]
+                        sendData["Units"] = []
+                        sendData["Units"]!.append(unit_list[AppWarpHelper.sharedInstance.playerName]!.toJSONDict())
+                        AppWarpHelper.sharedInstance.sendUpdate(sendData)
                     }
                 }
             }
-            unit_list = new_local_unit_list
-        }
-        /* ========== Orders =========== */
-        else if let recv_order_list: Array<JSON> = recvData["Orders"].array {
-            
-            println("before order list for loop")
-            for order in recv_order_list {
-                var orderType = order["orderType"].stringValue
-                var sender = order["sender"].stringValue
-                
-                println("Got order list")
-                if (orderType == "Move") {
-                    var pos_x = order["x"].intValue
-                    var pos_y = order["y"].intValue
-                    var new_order = Move(sender: sender, receiver: "", position1: CGPoint(x: pos_x, y: pos_y))
+            /* ========== Orders =========== */
+            if key == "Orders" {
+                let recv_order_list: Array<JSON> = recvData["Orders"].array!
+                for order in recv_order_list {
+                    var orderType = order["orderType"].stringValue
+                    var sender = order["sender"].stringValue
                     
-                    
-                    println(new_order.sender)
-                    for unit in unit_list {
-                        println(unit.name)
-                        if unit.name == new_order.sender {
-                            
-                            unit.apply(new_order)
-                            break
-                        }
+                    if (orderType == "Move") {
+                        var pos_x = order["x"].intValue
+                        var pos_y = order["y"].intValue
+                        var new_order = Move(sender: sender, receiver: "", position1: CGPoint(x: pos_x, y: pos_y))
+                        
+                        unit_list[sender]!.apply(new_order)
+                    }
+                    if (orderType == "Attack") {
+                        var sender = order["sender"].stringValue
+                        var receiver = order["receiver"].stringValue
+                        var new_order = Attack(sender: sender, receiver: receiver)
+                        unit_list[sender]!.apply(new_order, target: unit_list[receiver]!)
                     }
                 }
             }
         }
-       
-        
-        
     }
-    
+
     func startGameScene() {
         // Create a warrior unit with name = player name
-        let war = createUnit(AppWarpHelper.sharedInstance.playerName, health: 100, speed: CGFloat(100.1))
-        war.sprite.xScale = 0.5
-        war.sprite.yScale = 0.5
-        war.sprite.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        var playerName = AppWarpHelper.sharedInstance.playerName
+        let war = createUnit(playerName, health: 100, speed: CGFloat(100.1))
+        let war_position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         // Add the warrior to our list of units in the scene
-        unit_list.append(war)
+        unit_list[playerName] = war
         
         // Tell SpriteKit to actually draw the the initially create Units in scene
         for unit in unit_list {
-            self.addChild(war.sprite)
+            war.addUnitToGameScene(self, pos: war_position, scaleX: 0.5, scaleY: 0.5)
         }
         
         // Send the initial units data over appwarp
         var sendData: Dictionary<String, Array<AnyObject>> = [:]
         sendData["Units"] = []
-        for unit in unit_list {
-            sendData["Units"]!.append(unit.toJSONDict())
-        }
+//        sendData["Orders"]=[]
+        sendData["Units"]!.append(unit_list[playerName]!.toJSONDict())
         
         AppWarpHelper.sharedInstance.sendUpdate(sendData)
     }
@@ -124,13 +132,10 @@ class GameScene: SKScene {
             /*
                 Determine if the touch is on your own character's sprite
             */
-            for unit in unit_list {
-                if unit.name == AppWarpHelper.sharedInstance.playerName {
-                    if unit.sprite.containsPoint(touchLocation) {
-                        playerIsTouched = true
-                    }
+
+                if unit_list[AppWarpHelper.sharedInstance.playerName]!.sprite.containsPoint(touchLocation) {
+                    playerIsTouched = true
                 }
-            }
         }
     }
     override func touchesEnded(touches:NSSet, withEvent event: UIEvent)
@@ -147,32 +152,44 @@ class GameScene: SKScene {
 //                
 //                var touchedUnit = war as Unit
                 var unitTouched = false;
-//                for(player,unit) in Players
-//                {
-//                    if(unit.sprite.containsPoint(location))
-//                    {
-//                        touchedUnit = unit
-//                        unitTouched = true;
-//                        break
-//                    }
-//                }
-//                
+                var touchedUnitName: String = ""
+                for (name, unit) in unit_list
+                {
+                    if(unit.sprite.containsPoint(touchLocation) && (unit.name != AppWarpHelper.sharedInstance.playerName))
+                    {
+                        unitTouched = true;
+                        touchedUnitName = unit.name
+                        break
+                    }
+                }
+                
+                var sendData: Dictionary<String, Array<AnyObject>> = [:]
                 if(unitTouched)
                 {
 //                    var attack = Attack(tar: touchedUnit)
 //                    dataDict.setObject(attack.description, forKey: "attack")
+                    var attack: Attack = Attack(sender: AppWarpHelper.sharedInstance.playerName, receiver: touchedUnitName)
+//                    sendData["Units"] = []
+                    sendData["Orders"] = []
+                    sendData["Orders"]!.append(attack.toJSONDict())
                     
                 }
                 else
                 {
                     var move_loc: Move = Move(sender: AppWarpHelper.sharedInstance.playerName, receiver: "", position1: touchLocation)
-                    // Send the initial units data over appwarp
-                    var sendData: Dictionary<String, Array<AnyObject>> = [:]
-                    sendData["Units"] = []
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(move_loc.toJSONDict())
-                    AppWarpHelper.sharedInstance.sendUpdate(sendData)
-                    playerIsTouched = false
+                    
+//                    for unit in unit_list
+//                    {
+//                        if unit.name == AppWarpHelper.sharedInstance.playerName
+//                        {
+//                            unit.apply(move_loc)
+//                            break
+//                        }
+//                        
+//                    }
+                    
 //
 //                    
 //                    
@@ -194,6 +211,8 @@ class GameScene: SKScene {
 //                    //Notify Room of updated data
 //                    
                 }
+                AppWarpHelper.sharedInstance.sendUpdate(sendData)
+                playerIsTouched = false
 //                AppWarpHelper.sharedInstance.updatePlayerDataToServer(dataDict)
 //                    objectTouched = false
             }

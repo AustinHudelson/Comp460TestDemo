@@ -13,14 +13,21 @@ class Unit: SerializableJSON
     var health: Int
     var speed: CGFloat
     var sprite: SKSpriteNode
-    var walkAnim: SKAction
-    var attackAnim: SKAction
-    var standAnim: SKAction
+    //var walkAnim: SKAction
+    //var attackAnim: SKAction
+    //var standAnim: SKAction
+    var health_txt: SKLabelNode
+    var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
     
     init(name: String, health: Int, speed: CGFloat) {
         self.name = name
         self.health = health
         self.speed = speed
+        /* Configure our health text */
+        self.health_txt = SKLabelNode(text: self.health.description)
+        self.health_txt.fontColor = UIColor.redColor()
+        self.health_txt.fontSize = 40
+        
         
         //
         //Define Animations here
@@ -77,20 +84,39 @@ class Unit: SerializableJSON
             attackAtlas.textureNamed(unitName+standAnimName+"0")
         ], timePerFrame: 0.1)
         
-        self.walkAnim = SKAction.repeatActionForever(walkTextures)
-        self.standAnim = SKAction.repeatActionForever(standTextures)
-        self.attackAnim = SKAction.repeatAction(attackTextures, count: 1)
+        //self.walkAnim = SKAction.repeatActionForever(walkTextures)
+        //self.standAnim = SKAction.repeatActionForever(standTextures)
+        //self.attackAnim = SKAction.repeatAction(attackTextures, count: 1)
         
-        self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
-        var mir = SKAction.scaleXTo(-0.25, duration: 0.0)
+        //self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
+        //var mir = SKAction.scaleXTo(-0.25, duration: 0.0)
         
         //self.sprite.runAction(self.walkAnim)
         //self.sprite.runAction(mir)
-        
+        sprite = SKSpriteNode(imageNamed: "Mage")
         
     }
     
-    
+    /*
+        Used to add a unit to the game scene at position 'pos', with sprite.xScale = 'scaleX' & sprite.yScale = 'scaleY'.
+        Also displays a health text on top of this unit
+    */
+    func addUnitToGameScene(gameScene: GameScene, pos: CGPoint, scaleX: CGFloat, scaleY: CGFloat)
+    {
+        self.sprite.xScale = scaleX
+        self.sprite.yScale = scaleY
+        self.sprite.position = pos
+        gameScene.addChild(self.sprite)
+        
+        /* Add health text */
+        var health_txt_pos: CGPoint = pos
+        health_txt_pos.y += self.health_txt_y_dspl
+        self.health_txt.position = health_txt_pos
+        gameScene.addChild(self.health_txt)
+        
+    }
+    /* !!!!!!NEED TO CHANGE THESE TWO IN FUTURE!!!!!! */
+    /* Apply Move */
     func apply(order: Order)
     {
         println("APPLY")
@@ -101,16 +127,15 @@ class Unit: SerializableJSON
             move(moveLoc)
            
         }
-        else if order is Attack
+    }
+    /* Apply Attack */
+    func apply(order: Order, target: Unit)
+    {
+        if order is Attack
         {
-            var target = (order as Attack).target
-            
             move(target.sprite.position)
-            if(sprite.intersectsNode(target.sprite))
-            {
-                target.takeDamage(1)
-            }
-            
+            target.takeDamage(1)
+            target.health_txt.text = target.health.description
         }
     }
     

@@ -10,11 +10,9 @@ import SpriteKit
 
 class Attack: Order
 {
-    var target:Unit
     /* CHANGE THIS */
     override init(sender: String, receiver: String)
     {
-        target = Unit(name: "a", health: 100, speed: CGFloat(100))
         super.init(sender: sender, receiver: receiver)
     }
 //    init(tar:Unit)

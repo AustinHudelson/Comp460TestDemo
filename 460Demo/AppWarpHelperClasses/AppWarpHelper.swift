@@ -130,7 +130,6 @@ class AppWarpHelper: NSObject
     */
     func recvUpdate(data: NSData) {
         println("Received data (\(data.length) bytes)")
-        println(data)
 //        var error: NSError?
 //        /* Convert received data back to Swift Objects */
 //        if let recvData: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) {
