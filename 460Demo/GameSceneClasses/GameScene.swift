@@ -45,9 +45,13 @@ class GameScene: SKScene {
                         var unit_name = recv_unit["name"].stringValue
                         var unit_health = recv_unit["health"].intValue
                         var unit_speed = recv_unit["speed"].floatValue
+                        var unit_posX = recv_unit["posX"].floatValue
+                        var unit_posY = recv_unit["posY"].floatValue
+                        
                         var new_unit = createUnit(unit_name, health: unit_health, speed: CGFloat(unit_speed))
                         new_unit.sprite.xScale = 0.25
                         new_unit.sprite.xScale = 0.25
+                        new_unit.sprite.position = CGPoint(x: CGFloat(unit_posX), y: CGFloat(unit_posY))
                         // put it on our local unit list
                         new_local_unit_list.append(new_unit)
                         self.addChild(new_unit.sprite)
