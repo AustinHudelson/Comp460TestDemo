@@ -13,7 +13,7 @@ class Unit: SerializableJSON
     var health: Int
     var speed: CGFloat
     var sprite: SKSpriteNode
-   // var order: Order
+    //var order: Order
     var walkAnim: SKAction
     var attackAnim: SKAction
     var standAnim: SKAction

@@ -38,7 +38,7 @@ class Attack: Order
         self.sender.sprite.runAction(walkAnimationAction, withKey: "position")
         self.sender.sprite.runAction(movementAction, completion: {
             
-            self.receiver.takeDamage(-1)
+            self.receiver.takeDamage(1)
             self.sender.sprite.runAction(self.sender.attackAnim, withKey: "attack")
         })
         
