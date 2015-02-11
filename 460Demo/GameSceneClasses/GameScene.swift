@@ -81,7 +81,8 @@ class GameScene: SKScene {
                         var pos_y = order["y"].intValue
                         var new_order = Move(sender: sender, receiver: "", position1: CGPoint(x: pos_x, y: pos_y))
                         
-                        unit_list[sender]!.apply(new_order)
+                        //unit_list[sender]!.apply(new_order)
+                        new_order.apply(unit_list[sender]!)
                     }
                     if (orderType == "Attack") {
                         var sender = order["sender"].stringValue
