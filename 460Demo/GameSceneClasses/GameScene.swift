@@ -79,7 +79,7 @@ class GameScene: SKScene {
                     if (orderType == "Move") {
                         var pos_x = order["x"].intValue
                         var pos_y = order["y"].intValue
-                        var new_order = Move(sender: unit_list[sender]!, receiver: unit_list[sender]!, position1: CGPoint(x: pos_x, y: pos_y))
+                        var new_order = Move(sender: unit_list[sender]!, receiver: unit_list[sender]!, moveToLoc: CGPoint(x: pos_x, y: pos_y))
                         
                         //unit_list[sender]!.apply(new_order)
                         new_order.apply()
@@ -155,14 +155,6 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             if playerIsTouched == true {
                 let touchLocation = touch.locationInNode(self)
-//                //Make a muteable dictionary to send over appwarp
-//                    var dataDict = NSMutableDictionary()
-//                    
-//                    //Store the userName/playerName in the sending dictionary
-//                    //Set the username for the muteable dictionary
-//                    dataDict.setObject(AppWarpHelper.sharedInstance.playerName, forKey: "userName")
-//                
-//                var touchedUnit = war as Unit
                 var unitTouched = false;
                 var touchedUnitName: String = ""
                 for (name, unit) in unit_list
@@ -178,17 +170,14 @@ class GameScene: SKScene {
                 var sendData: Dictionary<String, Array<AnyObject>> = [:]
                 if(unitTouched)
                 {
-//                    var attack = Attack(tar: touchedUnit)
-//                    dataDict.setObject(attack.description, forKey: "attack")
                     var attack: Attack = Attack(sender: unit_list[AppWarpHelper.sharedInstance.playerName]!, receiver: unit_list[touchedUnitName]!)
-//                    sendData["Units"] = []
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(attack.toJSONDict())
                     
                 }
                 else
                 {
-                    var move_loc: Move = Move(sender: unit_list[AppWarpHelper.sharedInstance.playerName]!, receiver: unit_list[AppWarpHelper.sharedInstance.playerName]!, position1: touchLocation)
+                    var move_loc: Move = Move(sender: unit_list[AppWarpHelper.sharedInstance.playerName]!, receiver: unit_list[AppWarpHelper.sharedInstance.playerName]!, moveToLoc: touchLocation)
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(move_loc.toJSONDict())
                     

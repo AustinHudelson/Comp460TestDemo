@@ -13,7 +13,7 @@ class Unit: SerializableJSON
     var health: Int
     var speed: CGFloat
     var sprite: SKSpriteNode
-    //var order: Order
+    var order: Order? = nil
     var walkAnim: SKAction
     var attackAnim: SKAction
     var standAnim: SKAction
@@ -22,7 +22,6 @@ class Unit: SerializableJSON
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
     
     init(name: String, health: Int, speed: CGFloat) {
-        //self.order = Order(sender:"",receiver:"")
         self.name = name
         self.health = health
         self.speed = speed
@@ -127,7 +126,7 @@ class Unit: SerializableJSON
         if order is Move
         {
             println("APPLYMOVE")
-            let moveLoc = (order as Move).position
+            let moveLoc = (order as Move).moveToLoc
             move(moveLoc)
            
         }

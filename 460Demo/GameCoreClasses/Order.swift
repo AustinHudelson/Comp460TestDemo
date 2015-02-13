@@ -8,6 +8,13 @@
 
 class Order: SerializableJSON
 {
+    /*
+        sender is the unit that's the host.
+        receiver is the target
+        Eg.
+            Move(unit_A, nil) means unit_A is moving to a position
+            Attack(unit_A, unit_B) means unit_A is attacking unit_B
+    */
     var sender: Unit
     var receiver: Unit
     
@@ -15,7 +22,4 @@ class Order: SerializableJSON
         self.sender = sender
         self.receiver = receiver
     }
-//    var description: String {
-//        return "MyType: Order"
-//    }
 }
