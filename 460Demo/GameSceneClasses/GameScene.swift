@@ -97,6 +97,7 @@ class GameScene: SKScene {
     }
 
     func startGameScene() {
+        println("GAME SCENE START")
         // Create a warrior unit with name = player name
         var playerName = AppWarpHelper.sharedInstance.playerName
         let war = createUnit(playerName, health: 100, speed: CGFloat(100.1))
@@ -129,6 +130,8 @@ class GameScene: SKScene {
         //background.position = CGPoint(x: 0, y: 0)
         //background.anchorPoint = CGPoint(x: 0, y: 1.0)
         addChild(background)
+        
+        
     }
     
     
@@ -231,13 +234,13 @@ class GameScene: SKScene {
     }
 
        override func update(currentTime: CFTimeInterval) {
-        if unit_list[AppWarpHelper.sharedInstance.playerName] != nil
-        {
-            
-            var temp = SKAction.moveTo(CGPoint(x: 600, y: 384), duration: NSTimeInterval(10))
-            unit_list[AppWarpHelper.sharedInstance.playerName]!.sprite.runAction(temp)
-            println(unit_list[AppWarpHelper.sharedInstance.playerName]!.sprite.position)
-        }
+//        if unit_list[AppWarpHelper.sharedInstance.playerName] != nil
+//        {
+//            
+//            var temp = SKAction.moveTo(CGPoint(x: 600, y: 384), duration: NSTimeInterval(10))
+//            unit_list[AppWarpHelper.sharedInstance.playerName]!.sprite.runAction(temp)
+//            println(unit_list[AppWarpHelper.sharedInstance.playerName]!.sprite.position)
+//        }
         
     }
 }
