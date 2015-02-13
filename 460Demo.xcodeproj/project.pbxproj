@@ -24,6 +24,7 @@
 		68F35CB81A84C540004905BF /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB21A84C540004905BF /* Unit.swift */; };
 		68F35CB91A84C540004905BF /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB31A84C540004905BF /* Warrior.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
+		F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */ = {isa = PBXBuildFile; fileRef = F42FD5AE1A895D4F002C6624 /* Background1.png */; };
 		F4C0F5D91A87F63D0075F2A3 /* Attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */; };
 		F4C0F5DB1A87F6500075F2A3 /* Walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
@@ -63,6 +64,7 @@
 		68F35CB21A84C540004905BF /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		68F35CB31A84C540004905BF /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
+		F42FD5AE1A895D4F002C6624 /* Background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background1.png; path = ../Background1.png; sourceTree = "<group>"; };
 		F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Attack.atlas; sourceTree = "<group>"; };
 		F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Walk.atlas; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				68F35CA91A84C4D5004905BF /* GameScene.sks */,
+				F42FD5AE1A895D4F002C6624 /* Background1.png */,
 				68F35CAA1A84C4D5004905BF /* GameScene.swift */,
 			);
 			path = GameSceneClasses;
@@ -281,6 +284,7 @@
 				68F35CAB1A84C4D5004905BF /* GameScene.sks in Resources */,
 				F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */,
 				F4C0F5D91A87F63D0075F2A3 /* Attack.atlas in Resources */,
+				F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */,
 				F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */,
 				F4D33B621A71EF7300DCD868 /* Main.storyboard in Resources */,
 			);

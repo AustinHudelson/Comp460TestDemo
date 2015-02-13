@@ -120,6 +120,13 @@ class GameScene: SKScene {
         /* Setup your scene here */
         println("Game Scene Init")
         AppWarpHelper.sharedInstance.gameScene = self
+        
+        let background = SKSpriteNode(imageNamed: "background1")
+        background.position = CGPointMake(self.size.width/2, self.size.height/2)
+        background.size = CGSize(width: CGFloat(self.size.width), height: CGFloat(self.size.height));
+        //background.position = CGPoint(x: 0, y: 0)
+        //background.anchorPoint = CGPoint(x: 0, y: 1.0)
+        addChild(background)
     }
     
     
