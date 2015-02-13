@@ -13,13 +13,16 @@ class Unit: SerializableJSON
     var health: Int
     var speed: CGFloat
     var sprite: SKSpriteNode
+    //var order: Order
     var walkAnim: SKAction
     var attackAnim: SKAction
     var standAnim: SKAction
+    
     var health_txt: SKLabelNode
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
     
     init(name: String, health: Int, speed: CGFloat) {
+        //self.order = Order(sender:"",receiver:"")
         self.name = name
         self.health = health
         self.speed = speed
@@ -135,6 +138,7 @@ class Unit: SerializableJSON
         if order is Attack
         {
             move(target.sprite.position)
+            //sprite.runAction(<#action: SKAction!#>, completion: <#(() -> Void)!##() -> Void#>)
             target.takeDamage(1)
             target.health_txt.text = target.health.description
         }
@@ -162,10 +166,16 @@ class Unit: SerializableJSON
         
         
         //sprite.runAction(action)
-        sprite.runAction(walkAnimationAction)
+        //sprite.removeActionForKey("position")
+        //sprite.removeActionForKey("stand")
+        sprite.removeAllActions()
+        health_txt.removeAllActions()
+        sprite.runAction(walkAnimationAction, withKey: "position")
         sprite.runAction(movementAction, completion: {
-            self.sprite.runAction(self.standAnim)
+            
+            self.sprite.runAction(self.standAnim, withKey: "stand")
         })
+        
         //self.sprite.runAction(movementAction)
         //sprite.runAction(self.walkAnim)
         

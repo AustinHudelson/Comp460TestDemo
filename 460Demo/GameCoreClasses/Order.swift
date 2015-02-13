@@ -8,10 +8,10 @@
 
 class Order: SerializableJSON
 {
-    var sender: String
-    var receiver: String
+    var sender: Unit
+    var receiver: Unit
     
-    init(sender: String, receiver: String) {
+    init(sender: Unit, receiver: Unit) {
         self.sender = sender
         self.receiver = receiver
     }

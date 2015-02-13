@@ -79,15 +79,17 @@ class GameScene: SKScene {
                     if (orderType == "Move") {
                         var pos_x = order["x"].intValue
                         var pos_y = order["y"].intValue
-                        var new_order = Move(sender: sender, receiver: "", position1: CGPoint(x: pos_x, y: pos_y))
+                        var new_order = Move(sender: unit_list[sender]!, receiver: unit_list[sender]!, position1: CGPoint(x: pos_x, y: pos_y))
                         
-                        unit_list[sender]!.apply(new_order)
+                        //unit_list[sender]!.apply(new_order)
+                        new_order.apply()
                     }
                     if (orderType == "Attack") {
                         var sender = order["sender"].stringValue
                         var receiver = order["receiver"].stringValue
-                        var new_order = Attack(sender: sender, receiver: receiver)
-                        unit_list[sender]!.apply(new_order, target: unit_list[receiver]!)
+                        var new_order = Attack(sender: unit_list[sender]!, receiver: unit_list[receiver]!)
+                        new_order.apply()
+                        //unit_list[sender]!.apply(new_order, target: unit_list[receiver]!)
                     }
                 }
             }
@@ -175,7 +177,7 @@ class GameScene: SKScene {
                 {
 //                    var attack = Attack(tar: touchedUnit)
 //                    dataDict.setObject(attack.description, forKey: "attack")
-                    var attack: Attack = Attack(sender: AppWarpHelper.sharedInstance.playerName, receiver: touchedUnitName)
+                    var attack: Attack = Attack(sender: unit_list[AppWarpHelper.sharedInstance.playerName]!, receiver: unit_list[touchedUnitName]!)
 //                    sendData["Units"] = []
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(attack.toJSONDict())
@@ -183,7 +185,7 @@ class GameScene: SKScene {
                 }
                 else
                 {
-                    var move_loc: Move = Move(sender: AppWarpHelper.sharedInstance.playerName, receiver: "", position1: touchLocation)
+                    var move_loc: Move = Move(sender: unit_list[AppWarpHelper.sharedInstance.playerName]!, receiver: unit_list[AppWarpHelper.sharedInstance.playerName]!, position1: touchLocation)
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(move_loc.toJSONDict())
                     
@@ -228,80 +230,14 @@ class GameScene: SKScene {
         }
     }
 
-    
-    func updateEnemyStatus(dataDict: NSDictionary){
-//        println("Running Update Status")
-//        //println(dataDict.objectForKey("order")as String)
-//        //println(war.sprite.position)
-//        var receivedOrder: Order
-//        if(dataDict.objectForKey("move") != nil)
-//        {
-//           receivedOrder = Move(positionString: (dataDict.objectForKey("move")as String))
-//        }
-//        else if (dataDict.objectForKey("attack") != nil)
-//        {
-//            var attackedUnit = war as Unit
-//            for(player,unit) in Players
-//            {
-//                if(unit.name == dataDict.objectForKey("attack") as String)
-//                {
-//                    attackedUnit = unit
-//                    break
-//                }
-//            }
-//            receivedOrder = Attack(unit: attackedUnit)
-//        }
-//        else
-//        {
-//            receivedOrder = Move(positionString: (dataDict.objectForKey("move")as String))
-//        }
-//        
-//        //println(receivedOrder.position)
-//        
-//        //var touchLocStr = dataDict.objectForKey("playerPosition") as String
-//        //var touchLoc = CGPointFromString(touchLocStr)
-//        
-//        if let unit = Players[dataDict.objectForKey("userName") as String]
-//        {
-//            //println("here")
-//            unit.apply(receivedOrder)
-//        }
-//        else
-//        {
-//            let newWarrior = Warrior(name: "hi2", health: 100, speed: CGFloat(100.0))
-//            newWarrior.sprite.xScale = 0.3
-//            newWarrior.sprite.yScale = 0.3
-//            newWarrior.sprite.position = (receivedOrder as Move).position
-//            self.addChild(newWarrior.sprite)
-//            Players[dataDict.objectForKey("userName") as String] = newWarrior
-//        }
-//        //if let sprite = PlayerSprites[dataDict.objectForKey("userName") as String] {
-//            
-////            let charPos = sprite.position;
-////            //localSprite.position = sprite.position
-////            let xdif = touchLoc.x-charPos.x
-////            let ydif = touchLoc.y-charPos.y
-////            
-////            let distance = sqrt((xdif*xdif)+(ydif*ydif))
-////            let duration = distance/war.speed//PlayerSpeed
-////            let action = SKAction.moveTo(touchLoc, duration:NSTimeInterval(duration))
-////            //sprite.runAction(action)
-////            sprite.runAction(action)
-//            
-//       // }
-////        else {
-////            //This is a new user that has not been seen before
-////            //Create a new sprite for this user
-////            let newSprite = SKSpriteNode(imageNamed:"Spaceship")
-////            newSprite.xScale = 0.3
-////            newSprite.yScale = 0.3
-////            newSprite.position = touchLoc
-////            self.addChild(newSprite)
-////            PlayerSprites[dataDict.objectForKey("userName") as String] = newSprite
-////        }
-    }
-   
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+       override func update(currentTime: CFTimeInterval) {
+        if unit_list[AppWarpHelper.sharedInstance.playerName] != nil
+        {
+            
+            var temp = SKAction.moveTo(CGPoint(x: 600, y: 384), duration: NSTimeInterval(10))
+            unit_list[AppWarpHelper.sharedInstance.playerName]!.sprite.runAction(temp)
+            println(unit_list[AppWarpHelper.sharedInstance.playerName]!.sprite.position)
+        }
+        
     }
 }

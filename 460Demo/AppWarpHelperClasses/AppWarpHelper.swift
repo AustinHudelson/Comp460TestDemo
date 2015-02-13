@@ -166,45 +166,45 @@ class AppWarpHelper: NSObject
         }
     }
     
-    func receivedEnemyStatus(data:NSData)
-    {
-        println("receivedEnemyStatus...1")
-        println(data)
-        println("receivedEnemyStatus...2")
-        var error: NSErrorPointer? = nil
-        var errortwo: NSError?
-        var propertyListFormat:NSPropertyListFormat? = nil
-        //var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data,options: NSJSONReadingOptions.MutableContainers, error:error!) as NSDictionary
-        var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error:&errortwo) as NSDictionary
-        //var responseDict: NSDictionary = NSPropertyListSerialization.propertyListWithData(data, options: 0, error: nil) as NSDictionary
-            
-        println(responseDict)
-        println(errortwo?.debugDescription)
-        //gameScene!.updateEnemyStatus(responseDict)
-        
-
-        println("receivedEnemyStatus...3")
-        
-        
-        gameScene!.updateEnemyStatus(responseDict)
-//        if enemyName.isEmpty
-//        {
-//            var userName : (String!) = responseDict.objectForKey("userName") as String
-//            let isEqual = playerName.hasPrefix(userName)
-//            if !isEqual
-//            {
-//                enemyName = responseDict.objectForKey("userName") as String
-//                gameScene!.updateEnemyStatus(responseDict)
-//            }
-//        }
-//        else
-//        {
-//            var userName : (String!) = responseDict.objectForKey("userName") as String
-//            let isEqual = enemyName.hasPrefix(userName)
-//            if !isEqual
-//            {
-//                
-//            }
-//        }
-    }
+//    func receivedEnemyStatus(data:NSData)
+//    {
+//        println("receivedEnemyStatus...1")
+//        println(data)
+//        println("receivedEnemyStatus...2")
+//        var error: NSErrorPointer? = nil
+//        var errortwo: NSError?
+//        var propertyListFormat:NSPropertyListFormat? = nil
+//        //var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data,options: NSJSONReadingOptions.MutableContainers, error:error!) as NSDictionary
+//        var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error:&errortwo) as NSDictionary
+//        //var responseDict: NSDictionary = NSPropertyListSerialization.propertyListWithData(data, options: 0, error: nil) as NSDictionary
+//            
+//        println(responseDict)
+//        println(errortwo?.debugDescription)
+//        //gameScene!.updateEnemyStatus(responseDict)
+//        
+//
+//        println("receivedEnemyStatus...3")
+//        
+//        
+//        gameScene!.updateEnemyStatus(responseDict)
+////        if enemyName.isEmpty
+////        {
+////            var userName : (String!) = responseDict.objectForKey("userName") as String
+////            let isEqual = playerName.hasPrefix(userName)
+////            if !isEqual
+////            {
+////                enemyName = responseDict.objectForKey("userName") as String
+////                gameScene!.updateEnemyStatus(responseDict)
+////            }
+////        }
+////        else
+////        {
+////            var userName : (String!) = responseDict.objectForKey("userName") as String
+////            let isEqual = enemyName.hasPrefix(userName)
+////            if !isEqual
+////            {
+////                
+////            }
+////        }
+//    }
 }
