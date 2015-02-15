@@ -73,24 +73,25 @@ class GameScene: SKScene {
             if key == "Orders" {
                 let recv_order_list: Array<JSON> = recvData["Orders"].array!
                 for order in recv_order_list {
+                    //WARNING SENDER AND RECEIVER GET CONFUSED HERE!
+                    //IN ORDER OBJECTS RECIEVER IS THE UNIT RECEIVING THE ORDER
+                    //HERE THE SENDER IS THE NAME OF THE UNIT RECEIVING THE ORDER
                     var orderType = order["orderType"].stringValue
-                    var sender = order["sender"].stringValue
+                    var sender: Unit = unit_list[order["sender"].stringValue]!
                     
                     if (orderType == "Move") {
                         var pos_x = order["x"].intValue
                         var pos_y = order["y"].intValue
-                        var new_order = Move(sender: unit_list[sender]!, receiver: unit_list[sender]!, moveToLoc: CGPoint(x: pos_x, y: pos_y))
-                        
-                        //unit_list[sender]!.apply(new_order)
-                        new_order.apply()
+                        var new_order = Move(receiverIn: sender, moveToLoc: CGPoint(x: pos_x, y: pos_y))
+                        sender.sendOrder(new_order)
                     }
                     if (orderType == "Attack") {
-                        var sender = order["sender"].stringValue
-                        var receiver = order["receiver"].stringValue
-                        var new_order = Attack(sender: unit_list[sender]!, receiver: unit_list[receiver]!)
-                        new_order.apply()
+                        var receiver: Unit = unit_list[order["receiver"].stringValue]!
+                        var new_order = Attack(receiverIn: sender, target: receiver)
                         //unit_list[sender]!.apply(new_order, target: unit_list[receiver]!)
+                        sender.sendOrder(new_order)
                     }
+                    
                 }
             }
         }
@@ -222,14 +223,10 @@ class GameScene: SKScene {
         }
     }
 
-       override func update(currentTime: CFTimeInterval) {
-//        if unit_list[AppWarpHelper.sharedInstance.playerName] != nil
-//        {
-//            
-//            var temp = SKAction.moveTo(CGPoint(x: 600, y: 384), duration: NSTimeInterval(10))
-//            unit_list[AppWarpHelper.sharedInstance.playerName]!.sprite.runAction(temp)
-//            println(unit_list[AppWarpHelper.sharedInstance.playerName]!.sprite.position)
-//        }
+    override func update(currentTime: CFTimeInterval) {
+        /*
+            Go through each unit in the unit_list and do a runAction on their corresponding Order
+        */
         
     }
 }

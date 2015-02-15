@@ -6,12 +6,20 @@
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
 
-import Foundation
-
 /*
     This Order is what a unit does if it's standing around
     - For now, there's nothing, but maybe later on we can add an idle animation
 */
-class Idle: Order {
+class Idle: Order, POrder {
+    
+    var receiver: Unit
+    
+    override var type: String {
+        return "Idle"
+    }
+    
+    init (receiverIn: Unit){
+        self.receiver = receiverIn
+    }
     
 }

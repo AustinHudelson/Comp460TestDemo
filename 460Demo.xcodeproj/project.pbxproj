@@ -26,6 +26,8 @@
 		68F35CB91A84C540004905BF /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB31A84C540004905BF /* Warrior.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
 		F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */ = {isa = PBXBuildFile; fileRef = F42FD5AE1A895D4F002C6624 /* Background1.png */; };
+		F4B5047C1A90175B007CDBA8 /* POrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* POrder.swift */; };
+		F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047F1A908339007CDBA8 /* NoneOrder.swift */; };
 		F4C0F5D91A87F63D0075F2A3 /* Attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */; };
 		F4C0F5DB1A87F6500075F2A3 /* Walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
@@ -67,6 +69,8 @@
 		68F35CB31A84C540004905BF /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F42FD5AE1A895D4F002C6624 /* Background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background1.png; path = ../Background1.png; sourceTree = "<group>"; };
+		F4B5047B1A90175B007CDBA8 /* POrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POrder.swift; sourceTree = "<group>"; };
+		F4B5047F1A908339007CDBA8 /* NoneOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoneOrder.swift; sourceTree = "<group>"; };
 		F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Attack.atlas; sourceTree = "<group>"; };
 		F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Walk.atlas; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,17 +133,51 @@
 			isa = PBXGroup;
 			children = (
 				F42FD5AC1A880282002C6624 /* SerializableJSON.swift */,
-				68F35CAE1A84C540004905BF /* Attack.swift */,
-				68F35CAF1A84C540004905BF /* Move.swift */,
-				68F35CB01A84C540004905BF /* Order.swift */,
-				6827FE531A8E95C2007E7DB9 /* Idle.swift */,
+				F4B5047D1A906B70007CDBA8 /* Orders */,
 				68F35CB11A84C540004905BF /* Projectile.swift */,
-				68F35CB21A84C540004905BF /* Unit.swift */,
-				68F35CB31A84C540004905BF /* Warrior.swift */,
-				F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */,
-				F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */,
+				F4B5047E1A907A2A007CDBA8 /* Units */,
 			);
 			path = GameCoreClasses;
+			sourceTree = "<group>";
+		};
+		F4B5047A1A900D98007CDBA8 /* Target Dummy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Target Dummy";
+			sourceTree = "<group>";
+		};
+		F4B5047D1A906B70007CDBA8 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				F4B5047B1A90175B007CDBA8 /* POrder.swift */,
+				68F35CB01A84C540004905BF /* Order.swift */,
+				68F35CAE1A84C540004905BF /* Attack.swift */,
+				68F35CAF1A84C540004905BF /* Move.swift */,
+				6827FE531A8E95C2007E7DB9 /* Idle.swift */,
+				F4B5047F1A908339007CDBA8 /* NoneOrder.swift */,
+			);
+			name = Orders;
+			sourceTree = "<group>";
+		};
+		F4B5047E1A907A2A007CDBA8 /* Units */ = {
+			isa = PBXGroup;
+			children = (
+				68F35CB21A84C540004905BF /* Unit.swift */,
+				F4BC9DC81A900C9A00F3B617 /* Warrior */,
+				F4B5047A1A900D98007CDBA8 /* Target Dummy */,
+			);
+			name = Units;
+			sourceTree = "<group>";
+		};
+		F4BC9DC81A900C9A00F3B617 /* Warrior */ = {
+			isa = PBXGroup;
+			children = (
+				68F35CB31A84C540004905BF /* Warrior.swift */,
+				F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */,
+				F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */,
+			);
+			name = Warrior;
 			sourceTree = "<group>";
 		};
 		F4D33B4A1A71EF7300DCD868 = {
@@ -308,9 +346,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */,
+				F4B5047C1A90175B007CDBA8 /* POrder.swift in Sources */,
 				6827FE541A8E95C2007E7DB9 /* Idle.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
+				F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */,
 				68B7DBF61A84C306003D9398 /* 460Demo-Bridging-Header.m in Sources */,
 				68F35CB81A84C540004905BF /* Unit.swift in Sources */,
 				68F35CB71A84C540004905BF /* Projectile.swift in Sources */,

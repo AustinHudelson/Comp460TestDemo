@@ -13,7 +13,7 @@ class Unit: SerializableJSON
     var health: Int
     var speed: CGFloat
     var sprite: SKSpriteNode
-    var order: Order? = nil
+    var currentOrder: Order = NoneOrder()
     var walkAnim: SKAction
     var attackAnim: SKAction
     var standAnim: SKAction
@@ -41,6 +41,11 @@ class Unit: SerializableJSON
         let walkAnimName = "-Walk2"
         let attackAnimName = "-Attack"
         let standAnimName = "-Walk2"
+//        if ([[NSFileManager defaultManager] fileExistsAtPath:pathAndFileName]) {
+//            NSLog(@"File exists in BUNDLE");
+//        } else {
+//            NSLog(@"File not found");
+//        }
         
         var walkTextures = SKAction.animateWithTextures([
             walkAtlas.textureNamed(unitName+walkAnimName+"0"),
@@ -119,6 +124,11 @@ class Unit: SerializableJSON
         
     }
     /* !!!!!!NEED TO CHANGE THESE TWO IN FUTURE!!!!!! */
+    func sendOrder(order: Order){
+        currentOrder.remove()
+        currentOrder = order
+        currentOrder.apply()
+    }
     /* Apply Move */
     func apply(order: Order)
     {
@@ -127,7 +137,7 @@ class Unit: SerializableJSON
         {
             println("APPLYMOVE")
             let moveLoc = (order as Move).moveToLoc
-            move(moveLoc)
+            move(moveLoc, {})
            
         }
     }
@@ -136,7 +146,7 @@ class Unit: SerializableJSON
     {
         if order is Attack
         {
-            move(target.sprite.position)
+            move(target.sprite.position, {})
             //sprite.runAction(<#action: SKAction!#>, completion: <#(() -> Void)!##() -> Void#>)
             target.takeDamage(1)
             target.health_txt.text = target.health.description
@@ -149,7 +159,7 @@ class Unit: SerializableJSON
         println("\(name), \(health)")
     }
     
-    func move(destination:CGPoint )
+    func move(destination:CGPoint, complete:(()->Void)!)
     {
         println("MOVING")
         let charPos = sprite.position
@@ -161,28 +171,22 @@ class Unit: SerializableJSON
         let duration = distance/speed
         let movementAction = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
         let walkAnimationAction = self.walkAnim
-        //let action = SKAction.group([SKAction., movementAction])
-        
-        
-        //sprite.runAction(action)
-        //sprite.removeActionForKey("position")
-        //sprite.removeActionForKey("stand")
-        sprite.removeAllActions()
-        health_txt.removeAllActions()
-        sprite.runAction(walkAnimationAction, withKey: "position")
-        sprite.runAction(movementAction, completion: {
-            
-            self.sprite.runAction(self.standAnim, withKey: "stand")
-        })
-        
-        //self.sprite.runAction(movementAction)
-        //sprite.runAction(self.walkAnim)
-        
+        //Create action for "Walk to point then do "complete""
+        let walkSequence = SKAction.sequence([movementAction, SKAction.runBlock(complete)])
         /* Move the health text */
         var health_txt_des = destination
+        
         health_txt_des.y += health_txt_y_dspl
         let moveHealthTxtAction = SKAction.moveTo(health_txt_des, duration: NSTimeInterval(duration))
-        self.health_txt.runAction(moveHealthTxtAction)
+        health_txt.runAction(moveHealthTxtAction, withKey: "move")
+        sprite.runAction(walkSequence, withKey: "move")
+        sprite.runAction(self.walkAnim, withKey: "moveAnim")
+    }
+    
+    func clearMove(){
+        self.sprite.removeActionForKey("move")
+        self.sprite.removeActionForKey("moveAnim")
+        self.health_txt.removeActionForKey("move")
     }
     
 }

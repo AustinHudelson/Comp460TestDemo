@@ -6,20 +6,25 @@
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
 
-class Order: SerializableJSON
+
+//ORDER CLASS
+//Should be treated like a java "Abstract class" for orders 
+//that conform to the "Interface" (swift "Protocall") POrder
+class Order: SerializableJSON, POrder
 {
-    /*
-        sender is the unit that's the host.
-        receiver is the target
-        Eg.
-            Move(unit_A, nil) means unit_A is moving to a position
-            Attack(unit_A, unit_B) means unit_A is attacking unit_B
-    */
-    var sender: Unit
-    var receiver: Unit
+    var type: String {
+        return "UNDEFINED"
+    }
     
-    init(sender: Unit, receiver: Unit) {
-        self.sender = sender
-        self.receiver = receiver
+    func apply(){
+        //Print error message
+    }
+    
+    func remove(){
+        //Print error message
+    }
+    
+    func update(){
+        //Print error message
     }
 }

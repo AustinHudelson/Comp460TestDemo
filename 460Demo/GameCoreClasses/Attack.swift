@@ -8,58 +8,40 @@
 
 import SpriteKit
 
-class Attack: Order
+class Attack: Order, POrder
 {
-    /* CHANGE THIS */
-    override init(sender: Unit, receiver: Unit)
-    {
-        super.init(sender: sender, receiver: receiver)
+    var target: Unit
+    var receiver: Unit
+    
+    override var type: String {
+        return "Attack"
     }
-    func apply()
-    {
-        println("MOVING")
-        let charPos = self.sender.sprite.position
-        //println(charPos)
-        let xdif = self.receiver.sprite.position.x-charPos.x
-        let ydif = self.receiver.sprite.position.y-charPos.y
-        
-        let distance = sqrt((xdif*xdif)+(ydif*ydif))
-        let duration = distance/self.sender.speed
-        let movementAction = SKAction.moveTo(self.receiver.sprite.position, duration:NSTimeInterval(duration))
-        let walkAnimationAction = self.sender.walkAnim
-        //let action = SKAction.group([SKAction., movementAction])
-        
-        
-        //sprite.runAction(action)
-        //sprite.removeActionForKey("position")
-        //sprite.removeActionForKey("stand")
-        self.sender.sprite.removeAllActions()
-        self.sender.health_txt.removeAllActions()
-        self.sender.sprite.runAction(walkAnimationAction, withKey: "position")
-        self.sender.sprite.runAction(movementAction, completion: {
-            
-            self.receiver.takeDamage(1)
-            self.sender.sprite.runAction(self.sender.attackAnim, withKey: "attack")
+    
+    init(receiverIn: Unit, target: Unit){
+        receiver = receiveRIn
+        self.target = target
+        super.init()
+    }
+    
+    override func apply(){
+        receiver.move(target.sprite.position, complete:{
+            self.receiver.clearMove()
+            self.attackCycle()
         })
-        
-        //self.sprite.runAction(movementAction)
-        //sprite.runAction(self.walkAnim)
-        
-        /* Move the health text */
-        var health_txt_des = self.receiver.sprite.position
-        health_txt_des.y += self.sender.health_txt_y_dspl
-        let moveHealthTxtAction = SKAction.moveTo(health_txt_des, duration: NSTimeInterval(duration))
-        self.sender.health_txt.runAction(moveHealthTxtAction)    }
-//    init(tar:Unit)
-//    {
-//        target = tar;
-//    }
-//    init(unit:Unit)
-//    {
-//        target = unit
-//    }
-//    override var description: String {
-//        return "\(target.name)"
-//    }
+    }
+    
+    func attackCycle(){
+        target.takeDamage(1)
+    }
+    
+    override func update(){
+        //Check things like, the target is still in range... etc.
+    }
+    
+    override func remove(){
+        receiver.clearMove()
+    }
+    
+    
     
 }

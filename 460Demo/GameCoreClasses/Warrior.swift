@@ -15,6 +15,7 @@ class Warrior: Unit
         super.init(name: name, health: health, speed: speed)
         self.sprite.xScale = 0.5
         self.sprite.yScale = 0.5
+        
         //self.sprite = SKSpriteNode(imageNamed:AnimationName+"-Stand")
         
         //self.apply(Move(position1: CGPoint(x: 1.0, y: 2.0)))
