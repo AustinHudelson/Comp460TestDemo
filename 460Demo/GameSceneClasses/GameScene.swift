@@ -77,19 +77,19 @@ class GameScene: SKScene {
                     //IN ORDER OBJECTS RECIEVER IS THE UNIT RECEIVING THE ORDER
                     //HERE THE SENDER IS THE NAME OF THE UNIT RECEIVING THE ORDER
                     var orderType = order["orderType"].stringValue
-                    var sender: Unit = unit_list[order["sender"].stringValue]!
+                    var receiver: Unit = unit_list[order["receiver"].stringValue]!
                     
                     if (orderType == "Move") {
                         var pos_x = order["x"].intValue
                         var pos_y = order["y"].intValue
-                        var new_order = Move(receiverIn: sender, moveToLoc: CGPoint(x: pos_x, y: pos_y))
-                        sender.sendOrder(new_order)
+                        var new_order = Move(receiverIn: receiver, moveToLoc: CGPoint(x: pos_x, y: pos_y))
+                        receiver.sendOrder(new_order)
                     }
                     if (orderType == "Attack") {
                         var receiver: Unit = unit_list[order["receiver"].stringValue]!
-                        var new_order = Attack(receiverIn: sender, target: receiver)
-                        //unit_list[sender]!.apply(new_order, target: unit_list[receiver]!)
-                        sender.sendOrder(new_order)
+                        var target: Unit = unit_list[order["target"].stringValue]!
+                        var new_order = Attack(receiverIn: receiver, target: target)
+                        receiver.sendOrder(new_order)
                     }
                     
                 }
