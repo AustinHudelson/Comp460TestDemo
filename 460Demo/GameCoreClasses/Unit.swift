@@ -100,7 +100,9 @@ class Unit: SerializableJSON
         
         //self.sprite.runAction(self.walkAnim)
         //self.sprite.runAction(mir)
+        
         sprite = SKSpriteNode(imageNamed: "Mage")
+        //sprite.
         self.sprite.runAction(self.standAnim)
         
     }
@@ -181,6 +183,7 @@ class Unit: SerializableJSON
         health_txt.runAction(moveHealthTxtAction, withKey: "move")
         sprite.runAction(walkSequence, withKey: "move")
         sprite.runAction(self.walkAnim, withKey: "moveAnim")
+        
     }
     
     func clearMove(){

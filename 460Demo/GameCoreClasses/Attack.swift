@@ -24,10 +24,20 @@ class Attack: Order, POrder
     }
     
     override func apply(){
-        receiver.move(target.sprite.position, complete:{
-            self.receiver.clearMove()
-            self.attackCycle()
-        })
+        if self.receiver.currentOrder is Attack
+        {
+            receiver.move(target.sprite.position, complete:{
+                self.receiver.clearMove()
+                
+                self.attackCycle()
+                
+                self.receiver.sprite.runAction(self.receiver.attackAnim, withKey: "AttackAnim")
+                let delay = SKAction.waitForDuration(1.0)
+                self.receiver.sprite.runAction(delay, completion: self.apply)
+                
+            })
+        }
+        
     }
     
     func attackCycle(){
