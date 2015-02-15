@@ -10,7 +10,7 @@ import SpriteKit
 
 
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var unit_list: Dictionary<String, Unit> = [:] // Our list of units in the scene
     var playerIsTouched = false
@@ -132,9 +132,29 @@ class GameScene: SKScene {
         //background.anchorPoint = CGPoint(x: 0, y: 1.0)
         addChild(background)
         
+        //// physics
+        self.physicsWorld.gravity = CGVectorMake(0, 0)
+        self.physicsWorld.contactDelegate = self
+        ////
         
     }
     
+    /// physics
+    func didBeginContact(contact: SKPhysicsContact) {
+        let firstNode = contact.bodyA.node as SKSpriteNode
+        let secondNode = contact.bodyB.node as SKSpriteNode
+                
+        let contactPoint = contact.contactPoint
+        let contact_y = contactPoint.y
+        let target_y = secondNode.position.y
+        let margin = secondNode.frame.size.height/2 - 25
+        
+        if (contact_y > (target_y - margin)) &&
+            (contact_y < (target_y + margin)) {
+                println("Hit")
+        }
+    }
+    ////
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */

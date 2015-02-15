@@ -9,6 +9,8 @@
 import SpriteKit
 class Unit: SerializableJSON
 {
+    let UnitCategory: UInt32 = 0x1 << 0
+    
     var name: String
     var health: Int
     var speed: CGFloat
@@ -104,6 +106,14 @@ class Unit: SerializableJSON
         sprite = SKSpriteNode(imageNamed: "Mage")
         //sprite.
         self.sprite.runAction(self.standAnim)
+        
+        //// physics stuff
+        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
+        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
+        self.sprite.physicsBody?.categoryBitMask = UnitCategory
+        self.sprite.physicsBody?.collisionBitMask = UnitCategory
+        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
+        ////
         
     }
     
