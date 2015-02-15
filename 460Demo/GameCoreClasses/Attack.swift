@@ -18,7 +18,7 @@ class Attack: Order, POrder
     }
     
     init(receiverIn: Unit, target: Unit){
-        receiver = receiveRIn
+        receiver = receiverIn
         self.target = target
         super.init()
     }

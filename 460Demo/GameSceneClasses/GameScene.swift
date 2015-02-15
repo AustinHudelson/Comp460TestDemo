@@ -171,14 +171,14 @@ class GameScene: SKScene {
                 var sendData: Dictionary<String, Array<AnyObject>> = [:]
                 if(unitTouched)
                 {
-                    var attack: Attack = Attack(sender: unit_list[AppWarpHelper.sharedInstance.playerName]!, receiver: unit_list[touchedUnitName]!)
+                    var attack: Attack = Attack(receiverIn: unit_list[AppWarpHelper.sharedInstance.playerName]!, target: unit_list[touchedUnitName]!)
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(attack.toJSONDict())
                     
                 }
                 else
                 {
-                    var move_loc: Move = Move(sender: unit_list[AppWarpHelper.sharedInstance.playerName]!, receiver: unit_list[AppWarpHelper.sharedInstance.playerName]!, moveToLoc: touchLocation)
+                    var move_loc: Move = Move(receiverIn: unit_list[AppWarpHelper.sharedInstance.playerName]!, moveToLoc: touchLocation)
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(move_loc.toJSONDict())
                     
