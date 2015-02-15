@@ -26,14 +26,33 @@ class Attack: Order, POrder
     override func apply(){
         if self.receiver.currentOrder is Attack
         {
-            receiver.move(target.sprite.position, complete:{
+            var movePos: CGPoint
+            if(receiver.sprite.position.x < target.sprite.position.x)
+            {
+                movePos = CGPoint(x: target.sprite.frame.minX,y : target.sprite.frame.midY)
+            }
+            else
+            {
+                movePos = CGPoint(x: target.sprite.frame.maxX,y : target.sprite.frame.midY)
+            }
+            
+            
+            receiver.move(movePos, complete:{
                 self.receiver.clearMove()
                 
-                self.attackCycle()
+                if  self.target.sprite.frame.contains(self.receiver.sprite.position)
+                {
+                    self.attackCycle()
+                    self.receiver.sprite.runAction(self.receiver.attackAnim, withKey: "AttackAnim")
+                    let delay = SKAction.waitForDuration(1.0)
+                    self.receiver.sprite.runAction(delay, completion: self.apply)
+                }
+                else
+                {
+                    self.apply()
+                }
                 
-                self.receiver.sprite.runAction(self.receiver.attackAnim, withKey: "AttackAnim")
-                let delay = SKAction.waitForDuration(1.0)
-                self.receiver.sprite.runAction(delay, completion: self.apply)
+                
                 
             })
         }

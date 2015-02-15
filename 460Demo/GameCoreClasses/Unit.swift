@@ -111,8 +111,11 @@ class Unit: SerializableJSON
         self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
         self.sprite.physicsBody?.usesPreciseCollisionDetection = true
         self.sprite.physicsBody?.categoryBitMask = UnitCategory
-        self.sprite.physicsBody?.collisionBitMask = UnitCategory
+        self.sprite.physicsBody?.collisionBitMask = 0
         self.sprite.physicsBody?.contactTestBitMask = UnitCategory
+        //self.sprite.physicsBody?.restitution = 0
+        //self.sprite.physicsBody?.
+        
         ////
         
     }

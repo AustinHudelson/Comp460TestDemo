@@ -141,18 +141,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     /// physics
     func didBeginContact(contact: SKPhysicsContact) {
+        
         let firstNode = contact.bodyA.node as SKSpriteNode
         let secondNode = contact.bodyB.node as SKSpriteNode
-                
+        
+        //firstNode.removeActionForKey("move")
+        //firstNode.removeActionForKey("moveAnim")
         let contactPoint = contact.contactPoint
         let contact_y = contactPoint.y
         let target_y = secondNode.position.y
         let margin = secondNode.frame.size.height/2 - 25
-        
-        if (contact_y > (target_y - margin)) &&
-            (contact_y < (target_y + margin)) {
+     
                 println("Hit")
-        }
+        
     }
     ////
     
