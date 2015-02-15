@@ -96,7 +96,7 @@ class Unit: SerializableJSON
         self.attackAnim = SKAction.repeatAction(attackTextures, count: 1)
         
         //self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
-        //var mir = SKAction.scaleXTo(-0.25, duration: 0.0)
+        
         
         //self.sprite.runAction(self.walkAnim)
         //self.sprite.runAction(mir)
@@ -166,6 +166,13 @@ class Unit: SerializableJSON
         println(charPos)
         let xdif = destination.x-charPos.x
         let ydif = destination.y-charPos.y
+        
+        //Check facing
+        if (xdif < 0) {
+            self.sprite.runAction(SKAction.scaleXTo(-0.5, duration: 0.0))
+        } else {
+            self.sprite.runAction(SKAction.scaleXTo(0.5, duration: 0.0))
+        }
         
         let distance = sqrt((xdif*xdif)+(ydif*ydif))
         let duration = distance/speed
