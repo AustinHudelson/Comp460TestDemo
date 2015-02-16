@@ -12,6 +12,7 @@ class Unit: SerializableJSON
     let UnitCategory: UInt32 = 0x1 << 0
     
     var name: String
+    var ID: String
     var health: Int
     var speed: CGFloat
     var sprite: SKSpriteNode
@@ -23,10 +24,11 @@ class Unit: SerializableJSON
     var health_txt: SKLabelNode
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
     
-    init(name: String, health: Int, speed: CGFloat) {
+    init(name: String, ID: String, health: Int, speed: CGFloat) {
         self.name = name
         self.health = health
         self.speed = speed
+        self.ID = ID
         /* Configure our health text */
         self.health_txt = SKLabelNode(text: self.health.description)
         self.health_txt.fontColor = UIColor.redColor()
@@ -156,22 +158,12 @@ class Unit: SerializableJSON
            
         }
     }
-    /* Apply Attack */
-    func apply(order: Order, target: Unit)
-    {
-        if order is Attack
-        {
-            move(target.sprite.position, {})
-            //sprite.runAction(<#action: SKAction!#>, completion: <#(() -> Void)!##() -> Void#>)
-            target.takeDamage(1)
-            target.health_txt.text = target.health.description
-        }
-    }
     
     func takeDamage(damage:Int)
     {
         health-=damage
         println("\(name), \(health)")
+        self.health_txt.text = self.health.description
     }
     
     func move(destination:CGPoint, complete:(()->Void)!)
@@ -183,9 +175,9 @@ class Unit: SerializableJSON
         let ydif = destination.y-charPos.y
         
         //Check facing
-        if (xdif < 0) {
+        if (xdif < -3) {
             self.sprite.runAction(SKAction.scaleXTo(-0.5, duration: 0.0))
-        } else {
+        } else if (xdif > 3) {
             self.sprite.runAction(SKAction.scaleXTo(0.5, duration: 0.0))
         }
         

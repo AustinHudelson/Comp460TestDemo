@@ -21,7 +21,7 @@ class Attack: Order, POrder
     init(receiverIn: Unit, target: Unit){
         receiver = receiverIn
         self.target = target
-        self.animationGapDistance = 10
+        self.animationGapDistance = 20
         super.init()
     }
     

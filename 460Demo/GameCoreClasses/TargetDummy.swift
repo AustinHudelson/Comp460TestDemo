@@ -1,5 +1,5 @@
 //
-//  Warrior.swift
+//  TargetDummy.swift
 //  460Demo
 //
 //  Created by Olyver on 1/31/15.
@@ -7,12 +7,12 @@
 //
 
 import SpriteKit
-class Warrior: Unit
+class TargetDummy: Unit
 {
     let AnimationName = "Character1BaseColorization"
-    override init(name: String, ID:String, health: Int, speed: CGFloat)
+    override init(name: String, ID: String, health: Int, speed: CGFloat)
     {
-        super.init(name: name, ID:ID, health: health, speed: speed)
+        super.init(name: name, ID: ID, health: health, speed: speed)
         self.sprite.xScale = 0.5
         self.sprite.yScale = 0.5
         

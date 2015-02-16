@@ -31,6 +31,7 @@ class SerializableJSON: NSObject {
             var name = (self as Unit).name
             var health = (self as Unit).health
             var speed = (self as Unit).speed
+            let ID = (self as Unit).ID
             var unitType: String = ""
             var posX = Float((self as Unit).sprite.position.x)
             var posY = Float((self as Unit).sprite.position.y)
@@ -39,6 +40,7 @@ class SerializableJSON: NSObject {
             }
             output_dict["unitType"] = unitType
             output_dict["name"] = name
+            output_dict["ID"] = ID
             output_dict["health"] = health
             output_dict["speed"] = Float(speed)
             output_dict["posX"] = posX
@@ -49,7 +51,7 @@ class SerializableJSON: NSObject {
             var orderType = (self as Move).type
             var pos_x = (self as Move).moveToLoc.x
             var pos_y = (self as Move).moveToLoc.y
-            var receiver = (self as Move).receiver.name
+            var receiver = (self as Move).receiver.ID
             output_dict["receiver"] = receiver
             output_dict["orderType"] = orderType
             output_dict["x"] = pos_x
@@ -57,8 +59,8 @@ class SerializableJSON: NSObject {
         }
         else if self is Attack {
             var orderType = (self as Attack).type
-            var receiver = (self as Attack).receiver.name
-            var target = (self as Attack).target.name
+            var receiver = (self as Attack).receiver.ID
+            var target = (self as Attack).target.ID
             output_dict["receiver"] = receiver
             output_dict["orderType"] = orderType
             output_dict["target"] = target
