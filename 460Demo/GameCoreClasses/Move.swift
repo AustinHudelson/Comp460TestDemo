@@ -26,8 +26,10 @@ class Move : Order, POrder
     
     override func apply()
     {
+        //receiver.sprite.frame.
         receiver.move(moveToLoc, complete: {
             self.receiver.sendOrder(Idle(receiverIn: self.receiver))
+            
         })
     }
     

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		681FA5EC1A84C8F900FB5E39 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681FA5EB1A84C8F900FB5E39 /* SwiftyJSON.swift */; };
 		6827FE541A8E95C2007E7DB9 /* Idle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6827FE531A8E95C2007E7DB9 /* Idle.swift */; };
+		6850A0861A91606100B8CAD4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0851A91606100B8CAD4 /* MainViewController.swift */; };
+		6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */; };
 		68B7DBF61A84C306003D9398 /* 460Demo-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF01A84C306003D9398 /* 460Demo-Bridging-Header.m */; };
 		68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF11A84C306003D9398 /* AppWarpHelper.swift */; };
 		68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF21A84C306003D9398 /* ConnectionListener.swift */; };
@@ -51,6 +53,8 @@
 /* Begin PBXFileReference section */
 		681FA5EB1A84C8F900FB5E39 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		6827FE531A8E95C2007E7DB9 /* Idle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Idle.swift; sourceTree = "<group>"; };
+		6850A0851A91606100B8CAD4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		68B7DBEF1A84C306003D9398 /* 460Demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "460Demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		68B7DBF01A84C306003D9398 /* 460Demo-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "460Demo-Bridging-Header.m"; sourceTree = "<group>"; };
 		68B7DBF11A84C306003D9398 /* AppWarpHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWarpHelper.swift; sourceTree = "<group>"; };
@@ -206,8 +210,10 @@
 				68F35CA81A84C4D5004905BF /* GameSceneClasses */,
 				F4D33B581A71EF7300DCD868 /* AppDelegate.swift */,
 				F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */,
+				6850A0851A91606100B8CAD4 /* MainViewController.swift */,
 				681FA5EB1A84C8F900FB5E39 /* SwiftyJSON.swift */,
 				F4D33B601A71EF7300DCD868 /* Main.storyboard */,
+				6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */,
 				F4D33B631A71EF7300DCD868 /* Images.xcassets */,
 				F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */,
 				F4D33B561A71EF7300DCD868 /* Supporting Files */,
@@ -345,12 +351,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6850A0861A91606100B8CAD4 /* MainViewController.swift in Sources */,
 				F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */,
 				F4B5047C1A90175B007CDBA8 /* POrder.swift in Sources */,
 				6827FE541A8E95C2007E7DB9 /* Idle.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
 				F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */,
+				6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */,
 				68B7DBF61A84C306003D9398 /* 460Demo-Bridging-Header.m in Sources */,
 				68F35CB81A84C540004905BF /* Unit.swift in Sources */,
 				68F35CB71A84C540004905BF /* Projectile.swift in Sources */,
