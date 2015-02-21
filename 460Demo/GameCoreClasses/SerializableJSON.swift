@@ -84,6 +84,17 @@ class SerializableJSON: NSObject {
         */
         if superClass === Unit.self || superClass === Order.self {
             var superClassPropertiesDict = toDictionary(superClass)
+            
+            
+            //SPECIAL CASE: ADD A POSITION FOR THE SPRITE WITH THE KEY "posX" and "posY"
+            if superClass === Unit.self{
+                let pos = (self as Unit).sprite.position
+                let posX = pos.x
+                let posY = pos.y
+                superClassPropertiesDict["posX"] = posX
+                superClassPropertiesDict["posY"] = posY
+            }
+            
             // Put the superClass's properties in our results dictionary
             propertiesDictionary += superClassPropertiesDict
         }
@@ -108,6 +119,9 @@ class SerializableJSON: NSObject {
             REF: http://stackoverflow.com/questions/24034043/how-do-i-check-if-a-string-contains-another-string-in-swift
             */
             if propName.rangeOfString("DS_") != nil {
+                continue
+            }
+            if propName.rangeOfString("sprite") != nil {
                 continue
             }
             
