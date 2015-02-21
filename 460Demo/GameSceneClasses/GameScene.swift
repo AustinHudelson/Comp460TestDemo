@@ -21,74 +21,74 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let unit_list = recvData["Units"].arrayObject
             // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
-    func updateGameState(recvData: JSON) {
+    func updateGameState(recvDict: Dictionary<String, AnyObject>) {
         /* 
             Loop through all the avaiable keys in the received JSON, which, at the outer most layer,
             should be a dictionary
         */
-        for (key: String, subArray: JSON) in recvData {
-            /* ========== Units ========== */
-            if key == "Units" {
-                let recv_unit_list: Array<JSON> = recvData["Units"].array!
-                /*
-                    Check the recieved unit list against our local unit list, if there are any new units, add them
-                */
-                for recv_unit in recv_unit_list {
-                    var recv_name = recv_unit["ID"].stringValue
-                    if unit_list[recv_name] == nil {
-                        // Create this new unit
-                        var unit_name = recv_unit["name"].stringValue
-                        var unit_ID = recv_unit["ID"].stringValue
-                        var unit_health = recv_unit["health"].intValue
-                        var unit_speed = recv_unit["speed"].floatValue
-                        var unit_posX = recv_unit["posX"].floatValue
-                        var unit_posY = recv_unit["posY"].floatValue
-
-                        var new_unit = Unit(name: unit_name, ID: unit_ID, health: unit_health, speed: CGFloat(unit_speed))
-
-                        // put it in our local unit list
-                        unit_list[recv_name] = new_unit
-                        // Add this Unit's sprite to scene
-                        new_unit.addUnitToGameScene(self, pos: CGPoint(x: CGFloat(unit_posX), y: CGFloat(unit_posY)), scaleX: 0.25, scaleY: 0.25)
-
-                        /*
-                            !!!CHANGE THIS LATER!!!
-                            Since the only new unit we'll be receiving right now is a new player unit,
-                            broadcast my player's Unit over the network to whoever sent me his new player unit
-                        */
-                        var sendData: Dictionary<String, Array<AnyObject>> = [:]
-                        sendData["Units"] = []
-                        sendData["Units"]!.append(unit_list[AppWarpHelper.sharedInstance.playerName]!.toJSON())
-                        AppWarpHelper.sharedInstance.sendUpdate(sendData)
-                    }
-                }
-            }
-            /* ========== Orders =========== */
-            if key == "Orders" {
-                let recv_order_list: Array<JSON> = recvData["Orders"].array!
-                for order in recv_order_list {
-                    //WARNING SENDER AND RECEIVER GET CONFUSED HERE!
-                    //IN ORDER OBJECTS RECIEVER IS THE UNIT RECEIVING THE ORDER
-                    //HERE THE SENDER IS THE NAME OF THE UNIT RECEIVING THE ORDER
-                    var orderType = order["orderType"].stringValue
-                    var receiver: Unit = unit_list[order["receiver"].stringValue]!
-                    
-                    if (orderType == "Move") {
-                        var pos_x = order["x"].intValue
-                        var pos_y = order["y"].intValue
-                        var new_order = Move(receiverIn: receiver, moveToLoc: CGPoint(x: pos_x, y: pos_y))
-                        receiver.sendOrder(new_order)
-                    }
-                    if (orderType == "Attack") {
-                        var receiver: Unit = unit_list[order["receiver"].stringValue]!
-                        var target: Unit = unit_list[order["target"].stringValue]!
-                        var new_order = Attack(receiverIn: receiver, target: target)
-                        receiver.sendOrder(new_order)
-                    }
-                    
-                }
-            }
-        }
+//        for (key: String, subArray: JSON) in recvData {
+//            /* ========== Units ========== */
+//            if key == "Units" {
+//                let recv_unit_list: Array<JSON> = recvData["Units"].array!
+//                /*
+//                    Check the recieved unit list against our local unit list, if there are any new units, add them
+//                */
+//                for recv_unit in recv_unit_list {
+//                    var recv_name = recv_unit["ID"].stringValue
+//                    if unit_list[recv_name] == nil {
+//                        // Create this new unit
+//                        var unit_name = recv_unit["name"].stringValue
+//                        var unit_ID = recv_unit["ID"].stringValue
+//                        var unit_health = recv_unit["health"].intValue
+//                        var unit_speed = recv_unit["speed"].floatValue
+//                        var unit_posX = recv_unit["posX"].floatValue
+//                        var unit_posY = recv_unit["posY"].floatValue
+//
+//                        var new_unit = Unit(name: unit_name, ID: unit_ID, health: unit_health, speed: CGFloat(unit_speed))
+//
+//                        // put it in our local unit list
+//                        unit_list[recv_name] = new_unit
+//                        // Add this Unit's sprite to scene
+//                        new_unit.addUnitToGameScene(self, pos: CGPoint(x: CGFloat(unit_posX), y: CGFloat(unit_posY)), scaleX: 0.25, scaleY: 0.25)
+//
+//                        /*
+//                            !!!CHANGE THIS LATER!!!
+//                            Since the only new unit we'll be receiving right now is a new player unit,
+//                            broadcast my player's Unit over the network to whoever sent me his new player unit
+//                        */
+//                        var sendData: Dictionary<String, Array<AnyObject>> = [:]
+//                        sendData["Units"] = []
+//                        sendData["Units"]!.append(unit_list[AppWarpHelper.sharedInstance.playerName]!.toJSON())
+//                        AppWarpHelper.sharedInstance.sendUpdate(sendData)
+//                    }
+//                }
+//            }
+//            /* ========== Orders =========== */
+//            if key == "Orders" {
+//                let recv_order_list: Array<JSON> = recvData["Orders"].array!
+//                for order in recv_order_list {
+//                    //WARNING SENDER AND RECEIVER GET CONFUSED HERE!
+//                    //IN ORDER OBJECTS RECIEVER IS THE UNIT RECEIVING THE ORDER
+//                    //HERE THE SENDER IS THE NAME OF THE UNIT RECEIVING THE ORDER
+//                    var orderType = order["orderType"].stringValue
+//                    var receiver: Unit = unit_list[order["receiver"].stringValue]!
+//                    
+//                    if (orderType == "Move") {
+//                        var pos_x = order["x"].intValue
+//                        var pos_y = order["y"].intValue
+//                        var new_order = Move(receiverIn: receiver, moveToLoc: CGPoint(x: pos_x, y: pos_y))
+//                        receiver.sendOrder(new_order)
+//                    }
+//                    if (orderType == "Attack") {
+//                        var receiver: Unit = unit_list[order["receiver"].stringValue]!
+//                        var target: Unit = unit_list[order["target"].stringValue]!
+//                        var new_order = Attack(receiverIn: receiver, target: target)
+//                        receiver.sendOrder(new_order)
+//                    }
+//                    
+//                }
+//            }
+//        }
     }
 
     func startGameScene() {

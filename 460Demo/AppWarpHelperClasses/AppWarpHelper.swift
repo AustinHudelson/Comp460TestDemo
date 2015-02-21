@@ -92,7 +92,7 @@ class AppWarpHelper: NSObject
             options = 0 here b/c we wanna send a data that's as compact as possible
                 - Can be set to NSJSONWritingOPtions.PrettyPrinted if you want the resulting JSON file to be human reable
         */
-        println(data)
+//        println(data)
         if let convertedData = NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(0), error: &error) {
             /*
                 send over the converted data if conversion is success
@@ -129,17 +129,29 @@ class AppWarpHelper: NSObject
     */
     func recvUpdate(data: NSData) {
         println("Received data (\(data.length) bytes)")
-//        var error: NSError?
-//        /* Convert received data back to Swift Objects */
-//        if let recvData: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) {
-//            
-//            gameScene!.updateGameState(data)
-//        } else {
-//            println("!!!Error in converting recv data!!!")
-//            println(error!)
-//        }
-        let recvData = JSON(data: data)
-        gameScene!.updateGameState(recvData)
+        
+        var recvDict: Dictionary<String, AnyObject> = [:]
+        
+        var error: NSError?
+        /* Convert received data back to Swift Objects */
+        if let recvData: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) {
+            
+            if let outerDict = recvData as? Dictionary<String, AnyObject> {
+                for (key: String, blob: AnyObject) in outerDict {
+                    if let arrayOfObjects = blob as? Array<AnyObject> {
+                        recvDict[key] = arrayOfObjects
+                    }
+                }
+            }
+            println(recvDict)
+            
+            gameScene!.updateGameState(recvDict)
+        } else {
+            println("!!!Error in converting recv data!!!")
+            println(error!)
+        }
+        
+//        gameScene!.updateGameState(recvData)
     }
     
     

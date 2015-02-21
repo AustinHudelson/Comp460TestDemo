@@ -112,12 +112,14 @@ class SerializableJSON: NSObject {
                     subArray.append(item.toJSON())
                 }
                 propertiesDictionary[propName] = subArray
-            } else if propValue is SKSpriteNode {
+            } else if (propValue is SKSpriteNode) {
                 /*
                 - Convert generally unserializable propValues, such as SKSpriteNode, into NSData and store it as an encoded string in the JSON file
                 */
-                let data: NSData = NSKeyedArchiver.archivedDataWithRootObject(propValue)
-                propertiesDictionary[propName] = data.base64EncodedStringWithOptions(nil)
+//                let data: NSData = NSKeyedArchiver.archivedDataWithRootObject(propValue)
+//                propertiesDictionary[propName] = data.base64EncodedStringWithOptions(nil)
+            } else if (propValue is SKLabelNode || propValue is SKAction) {
+                // skip
             } else {
                 propertiesDictionary[propName] = propValue
             }
