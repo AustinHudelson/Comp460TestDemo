@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let unit_list = recvData["Units"].arrayObject
             // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
-    func updateGameState(recvData: JSON) {
+    func updateGameState(recvDict: Dictionary<String, AnyObject>) {
         /* 
             Loop through all the avaiable keys in the received JSON, which, at the outer most layer,
             should be a dictionary
@@ -136,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         newUnit.addUnitToGameScene(self, pos: position, scaleX: 0.5, scaleY: 0.5)
         var sendData: Dictionary<String, Array<AnyObject>> = [:]
         sendData["Units"] = []
-        sendData["Units"]!.append(unit_list[newUnit.ID]!.toJSONDict())
+        sendData["Units"]!.append(unit_list[newUnit.ID]!.toJSON())
         AppWarpHelper.sharedInstance.sendUpdate(sendData)
     }
     
@@ -221,14 +221,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 {
                     var attack: Attack = Attack(receiverIn: unit_list[AppWarpHelper.sharedInstance.playerName]!, target: unit_list[touchedUnitID]!)
                     sendData["Orders"] = []
-                    sendData["Orders"]!.append(attack.toJSONDict())
+                    sendData["Orders"]!.append(attack.toJSON())
                     
                 }
                 else
                 {
                     var move_loc: Move = Move(receiverIn: unit_list[AppWarpHelper.sharedInstance.playerName]!, moveToLoc: touchLocation)
                     sendData["Orders"] = []
-                    sendData["Orders"]!.append(move_loc.toJSONDict())
+                    sendData["Orders"]!.append(move_loc.toJSON())
                     
 //                    for unit in unit_list
 //                    {

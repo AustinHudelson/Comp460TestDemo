@@ -7,67 +7,63 @@
 //
 
 import Foundation
+import SpriteKit
 
 /*
-    Any class that is to be sent over the network should inheriet from this class so it can
-    be serialized into JSON
+    REF: http://stackoverflow.com/questions/24051904/how-do-you-add-a-dictionary-of-items-into-another-dictionary
+    - Used to concatenate two dictionaries
 */
 public class SerializableJSON: NSObject {
     
     
     
     /*
-        Convert object to a dictionary of properties.
-        Eg. if self = Warrior, we have a dictionary that looks something like:
-            {
-                "unitType": "Warrior"
-                "name": "warrior1"
-                "health": 100
-                "speed": 1.1
-            }
+    - A method that is shared between toJSON() and fromJSON()
+    - This method returns an array of properties in the given class
     */
     public func toJSONDict() -> [String: AnyObject] {
         var output_dict: [String: AnyObject] = [:]
         
-        if self is Unit {
-            var name = (self as Unit).name
-            var health = (self as Unit).health
-            var speed = (self as Unit).speed
-            let ID = (self as Unit).ID
-            var unitType: String = ""
-            var posX = Float((self as Unit).sprite.position.x)
-            var posY = Float((self as Unit).sprite.position.y)
-            if self is Warrior {
-                unitType = "Warrior"
-            }
-            output_dict["unitType"] = unitType
-            output_dict["name"] = name
-            output_dict["ID"] = ID
-            output_dict["health"] = health
-            output_dict["speed"] = Float(speed)
-            output_dict["posX"] = posX
-            output_dict["posY"] = posY
-            
+        for var i = 0; i < Int(propertiesCount); i++ {
+            var property = propertiesInAClass[i]
+            var propName = String.fromCString(property_getName(property))!
+            propNames.append(propName)
         }
-        else if self is Move {
-            var orderType = (self as Move).type
-            var pos_x = (self as Move).moveToLoc.x
-            var pos_y = (self as Move).moveToLoc.y
-            var receiver = (self as Move).receiver.ID
-            output_dict["receiver"] = receiver
-            output_dict["orderType"] = orderType
-            output_dict["x"] = pos_x
-            output_dict["y"] = pos_y
+        free(propertiesInAClass)
+        return propNames
+    }
+    
+    /*
+    ===============================================================================
+    METHODS USED TO CONVERT THIS OBJECT TO A DICTIONARY ENTRY IN JSON
+    REF:
+    https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html
+    https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/WritingSwiftClassesWithObjective-CBehavior.html
+    https://gist.github.com/turowicz/e7746a9c035356f9483d
+    http://blog.mailcloud.com/technology/apple-swift-code-strong-type-object-serialization-to-json/
+    http://stackoverflow.com/questions/25476740/how-can-i-test-if-an-instance-is-a-specific-class-or-type-in-swift
+    http://stackoverflow.com/questions/26630447/serializing-custom-bag-object-to-json-string-int-to-bool-in-swift
+    
+    - This method goes through this object's properties and serialize it into a JSON dictionary
+    */
+    func toJSON() -> [String: AnyObject] {
+        var aClass: AnyClass? = self.dynamicType
+        var superClass: AnyClass! = class_getSuperclass(aClass)
+        var propertiesDictionary: [String: AnyObject] = [:]
+        
+        // Get this class's properties & put it in our results dictionary
+        var classPropertiesDict = toDictionary(aClass)
+        propertiesDictionary += classPropertiesDict
+        
+        /*
+        - if this obj's superclass is a specific class (eg. Unit, Order...etc), then get that super class's properties too. We're only doing this check because sometimes we might get an Object whose superclass is not the class we're expecting (eg. NSObject), and we don't really want to serialize those superclass's properties
+        */
+        if superClass === Unit.self || superClass === Order.self {
+            var superClassPropertiesDict = toDictionary(superClass)
+            // Put the superClass's properties in our results dictionary
+            propertiesDictionary += superClassPropertiesDict
         }
-        else if self is Attack {
-            var orderType = (self as Attack).type
-            var receiver = (self as Attack).receiver.ID
-            var target = (self as Attack).target.ID
-            output_dict["receiver"] = receiver
-            output_dict["orderType"] = orderType
-            output_dict["target"] = target
-        }
-        return output_dict
+        return propertiesDictionary
     }
     
     public func toDictionary() -> NSDictionary {
