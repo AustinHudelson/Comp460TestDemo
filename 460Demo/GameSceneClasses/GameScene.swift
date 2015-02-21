@@ -16,16 +16,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var playerIsTouched = false
     
     /*
-        Update the game state according to data received over the network
-        - Eg. usage of recvData assuming the data sent is the example from sendUpdate():
-            let unit_list = recvData["Units"].arrayObject
-            // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
+        Update the game state according to dictionary received over the network
     */
     func updateGameState(recvDict: Dictionary<String, Array<Dictionary<String, AnyObject>>>) {
         for (key: String, arrayOfObjects: Array<Dictionary<String, AnyObject>>) in recvDict {
             if key == "Units" {
                 for unit in arrayOfObjects {
-                    
+                    // Make a new unit by calling its corresponding constructor
                 }
             }
             if key == "Orders" {
