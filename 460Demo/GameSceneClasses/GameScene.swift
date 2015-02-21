@@ -24,16 +24,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if key == "Units" {
                 for unit in arrayOfObjects {
                     // Make a new unit by calling its corresponding constructor
-                    println("UNIT RECIEVED")
-                    println(unit)
-                    if (unit["type"] as String) == "Warrior" {
-                        let newUnit = Warrior(receivedData: unit)
+                    if unit_list[unit["ID"] as String] == nil {
+                        var anyobjecttype: AnyObject.Type = NSClassFromString(unit["type"] as NSString)
+                        var nsobjecttype: Unit.Type = anyobjecttype as Unit.Type
+                        var newUnit: Unit = nsobjecttype(receivedData: unit)
+                        
                         unit_list[newUnit.ID] = newUnit
                         let spawnLoc = CGPoint(x: (unit["posX"] as CGFloat), y: (unit["posY"] as CGFloat))
                         newUnit.addUnitToGameScene(self, pos: spawnLoc, scaleX: 1.0, scaleY: 1.0)
-                    } else {
-                        println("Invalid recieved unit")
-                        println(unit["type"] as String)
+                        
+                        addUnitToGame(unit_list[AppWarpHelper.sharedInstance.playerName]!) // send myself to everyone who hasn't got me
                     }
                 }
             }
@@ -41,83 +41,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //TODO
             }
         }
-        /*
-            Loop through all the avaiable keys in the received JSON, which, at the outer most layer,
-            should be a dictionary
-        */
-//        for (key: String, subArray: JSON) in recvData {
-//            /* ========== Units ========== */
-//            if key == "Units" {
-//                let recv_unit_list: Array<JSON> = recvData["Units"].array!
-//                /*
-//                    Check the recieved unit list against our local unit list, if there are any new units, add them
-//                */
-//                for recv_unit in recv_unit_list {
-//                    var recv_name = recv_unit["ID"].stringValue
-//                    if unit_list[recv_name] == nil {
-//                        // Create this new unit
-//                        var unit_name = recv_unit["name"].stringValue
-//                        var unit_ID = recv_unit["ID"].stringValue
-//                        var unit_health = recv_unit["health"].intValue
-//                        var unit_speed = recv_unit["speed"].floatValue
-//                        var unit_posX = recv_unit["posX"].floatValue
-//                        var unit_posY = recv_unit["posY"].floatValue
-//
-//                        var new_unit = Unit(name: unit_name, ID: unit_ID, health: unit_health, speed: CGFloat(unit_speed))
-//
-//                        // put it in our local unit list
-//                        unit_list[recv_name] = new_unit
-//                        // Add this Unit's sprite to scene
-//                        new_unit.addUnitToGameScene(self, pos: CGPoint(x: CGFloat(unit_posX), y: CGFloat(unit_posY)), scaleX: 0.25, scaleY: 0.25)
-//
-//                        /*
-//                            !!!CHANGE THIS LATER!!!
-//                            Since the only new unit we'll be receiving right now is a new player unit,
-//                            broadcast my player's Unit over the network to whoever sent me his new player unit
-//                        */
-//                        var sendData: Dictionary<String, Array<AnyObject>> = [:]
-//                        sendData["Units"] = []
-//                        sendData["Units"]!.append(unit_list[AppWarpHelper.sharedInstance.playerName]!.toJSON())
-//                        AppWarpHelper.sharedInstance.sendUpdate(sendData)
-//                    }
-//                }
-//            }
-//            /* ========== Orders =========== */
-//            if key == "Orders" {
-//                let recv_order_list: Array<JSON> = recvData["Orders"].array!
-//                for order in recv_order_list {
-//                    //WARNING SENDER AND RECEIVER GET CONFUSED HERE!
-//                    //IN ORDER OBJECTS RECIEVER IS THE UNIT RECEIVING THE ORDER
-//                    //HERE THE SENDER IS THE NAME OF THE UNIT RECEIVING THE ORDER
-//                    var orderType = order["orderType"].stringValue
-//                    var receiver: Unit = unit_list[order["receiver"].stringValue]!
-//                    
-//                    if (orderType == "Move") {
-//                        var pos_x = order["x"].intValue
-//                        var pos_y = order["y"].intValue
-//                        var new_order = Move(receiverIn: receiver, moveToLoc: CGPoint(x: pos_x, y: pos_y))
-//                        receiver.sendOrder(new_order)
-//                    }
-//                    if (orderType == "Attack") {
-//                        var receiver: Unit = unit_list[order["receiver"].stringValue]!
-//                        var target: Unit = unit_list[order["target"].stringValue]!
-//                        var new_order = Attack(receiverIn: receiver, target: target)
-//                        receiver.sendOrder(new_order)
-//                    }
-//                    
-//                }
-//            }
-//        }
     }
 
     func startGameScene() {
         println("GAME SCENE START")
-        
-        // Tell SpriteKit to actually draw the the initial Units in scene
-        //for unit in unit_list {
-        //    war.addUnitToGameScene(self, pos: war_position, scaleX: 0.5, scaleY: 0.5)
-        //}
-        
         
         // Create a warrior unit with name = player name
         var playerName = AppWarpHelper.sharedInstance.playerName
@@ -131,36 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let dummy_position = CGPoint(x:CGRectGetMidX(self.frame)+50, y:CGRectGetMidY(self.frame));
         let dummy = Warrior(name: "Dummy", ID: DUMMY_ID, health: 100, speed: CGFloat(80.0), spawnLocation: dummy_position)
         
-        println("SERIALIZE AND DESERIALIZE dummy JUST BECAUSE WE CAN!!! (:")
-        
-        var sendData = dummy.toJSON()
-        
-        //println(NSStringFromClass(SerializableJSON.Type))
-        
-        var classString = sendData["type"] as NSString
-        //println(classString)
-        
-        var anyobjecttype: AnyObject.Type = NSClassFromString(classString)
-        var nsobjecttype: Unit.Type = anyobjecttype as Unit.Type
-        var dumbwarrior: Unit = nsobjecttype(receivedData: sendData)
-        
-        println("Unserialized Dummy done! (:")
-        
-        
-        //println(dummy.toJsonString())
-        
-        addUnitToGame(dumbwarrior)
-        
-        
-        
-        
-        // Send the initial unit data over appwarp
-        //var sendData: Dictionary<String, Array<AnyObject>> = [:]
-        //sendData["Units"] = []
-        //sendData["Orders"]=[]
-        //sendData["Units"]!.append(unit_list[playerName]!.toJSONDict())
-        
-        //AppWarpHelper.sharedInstance.sendUpdate(sendData)
+//        addUnitToGame(dummy)
     }
     
     //Does all work necessary to add a unit to the game for all connected players
