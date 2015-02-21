@@ -21,8 +21,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let unit_list = recvData["Units"].arrayObject
             // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
-    func updateGameState(recvDict: Dictionary<String, AnyObject>) {
-        /* 
+    func updateGameState(recvDict: Dictionary<String, Array<Dictionary<String, AnyObject>>>) {
+        for (key: String, arrayOfObjects: Array<Dictionary<String, AnyObject>>) in recvDict {
+            if key == "Units" {
+                for unit in arrayOfObjects {
+                    
+                }
+            }
+            if key == "Orders" {
+                //TODO
+            }
+        }
+        /*
             Loop through all the avaiable keys in the received JSON, which, at the outer most layer,
             should be a dictionary
         */
@@ -107,7 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //Create a unit on the scene, should have the same ID for all players so should only create one time
         let DUMMY_ID = "1"
-        let dummy = Unit(name: "Dummy", ID: DUMMY_ID, health: 100, speed: CGFloat(80.0))
+        let dummy = Warrior(name: "Dummy", ID: DUMMY_ID, health: 100, speed: CGFloat(80.0))
         let dummy_position = CGPoint(x:CGRectGetMidX(self.frame)+50, y:CGRectGetMidY(self.frame));
         
         //println(dummy.toJsonString())

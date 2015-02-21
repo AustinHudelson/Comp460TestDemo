@@ -130,16 +130,22 @@ class AppWarpHelper: NSObject
     func recvUpdate(data: NSData) {
         println("Received data (\(data.length) bytes)")
         
-        var recvDict: Dictionary<String, AnyObject> = [:]
+        var recvDict: Dictionary<String, Array<Dictionary<String, AnyObject>>> = [:]
         
         var error: NSError?
         /* Convert received data back to Swift Objects */
         if let recvData: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) {
             
             if let outerDict = recvData as? Dictionary<String, AnyObject> {
-                for (key: String, blob: AnyObject) in outerDict {
-                    if let arrayOfObjects = blob as? Array<AnyObject> {
-                        recvDict[key] = arrayOfObjects
+                for (key: String, blob1: AnyObject) in outerDict {
+                    recvDict[key] = [] // initialize our empty array
+                    
+                    if let arrayOfObjects = blob1 as? Array<AnyObject> {
+                        for blob2 in arrayOfObjects {
+                            if let object = blob2 as? Dictionary<String, AnyObject> {
+                                recvDict[key]!.append(object)
+                            }
+                        }
                     }
                 }
             }
