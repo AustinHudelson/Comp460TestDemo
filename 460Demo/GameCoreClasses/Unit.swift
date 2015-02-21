@@ -10,29 +10,54 @@ import SpriteKit
 class Unit: SerializableJSON
 {
     let UnitCategory: UInt32 = 0x1 << 0
-    
-    var name: String
-    var ID: String
-    var health: Int
-    var speed: CGFloat
-    var sprite: SKSpriteNode
+    var name: String = ""
+    var ID: String = ""
+    var health: Int = 0
+    var speed: CGFloat = 0.0
+    var sprite: SKNode = SKSpriteNode(imageNamed: "Mage")
     var currentOrder: Order = NoneOrder()
-    var walkAnim: SKAction
-    var attackAnim: SKAction
-    var standAnim: SKAction
+    var DS_walkAnim: SKAction = SKAction.alloc()
+    var DS_attackAnim: SKAction = SKAction.alloc()
+    var DS_standAnim: SKAction = SKAction.alloc()
     
-    var health_txt: SKLabelNode
+    var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
+    
+    init(recievedData: Dictionary<String, AnyObject>){
+        //Special case for sprite
+        super.init()
+        
+        
+        
+        var aClass : AnyClass? = Unit.self
+        var propertiesCount : CUnsignedInt = 0
+        let propertiesInAClass : UnsafeMutablePointer<objc_property_t> = class_copyPropertyList(aClass, &propertiesCount)
+        var propertiesDictionary : NSMutableDictionary = NSMutableDictionary()
+        
+        for var i = 0; i < Int(propertiesCount); i++ {
+            var property = propertiesInAClass[i]
+            var propName = NSString(CString: property_getName(property), encoding: NSUTF8StringEncoding)! as String
+            var propType = property_getAttributes(property)
+            
+            let propValue = recievedData[propName]
+            
+            self.setValue(propValue, forKey: propName)
+        }
+        
+        
+        
+    }
     
     init(name: String, ID: String, health: Int, speed: CGFloat) {
         self.name = name
         self.health = health
         self.speed = speed
         self.ID = ID
+        self.currentOrder = NoneOrder()
         /* Configure our health text */
-        self.health_txt = SKLabelNode(text: self.health.description)
-        self.health_txt.fontColor = UIColor.redColor()
-        self.health_txt.fontSize = 40
+        self.DS_health_txt.fontColor = UIColor.redColor()
+        self.DS_health_txt.text = self.health.description
+        self.DS_health_txt.fontSize = 40
         
         
         //
@@ -45,11 +70,6 @@ class Unit: SerializableJSON
         let walkAnimName = "-Walk2"
         let attackAnimName = "-Attack"
         let standAnimName = "-Walk2"
-//        if ([[NSFileManager defaultManager] fileExistsAtPath:pathAndFileName]) {
-//            NSLog(@"File exists in BUNDLE");
-//        } else {
-//            NSLog(@"File not found");
-//        }
         
         var walkTextures = SKAction.animateWithTextures([
             walkAtlas.textureNamed(unitName+walkAnimName+"0"),
@@ -95,19 +115,19 @@ class Unit: SerializableJSON
             walkAtlas.textureNamed(unitName+standAnimName+"0")
         ], timePerFrame: 0.1)
         
-        self.walkAnim = SKAction.repeatActionForever(walkTextures)
-        self.standAnim = SKAction.repeatActionForever(standTextures)
-        self.attackAnim = SKAction.repeatAction(attackTextures, count: 1)
+        self.DS_walkAnim = SKAction.repeatActionForever(walkTextures)
+        self.DS_standAnim = SKAction.repeatActionForever(standTextures)
+        self.DS_attackAnim = SKAction.repeatAction(attackTextures, count: 1)
         
         //self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
         
         
-        //self.sprite.runAction(self.walkAnim)
+        //self.sprite.runAction(self.DS_walkAnim)
         //self.sprite.runAction(mir)
         
         sprite = SKSpriteNode(imageNamed: "Mage")
         //sprite.
-        self.sprite.runAction(self.standAnim)
+        self.sprite.runAction(self.DS_standAnim)
         
         //// physics stuff
         self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
@@ -136,8 +156,12 @@ class Unit: SerializableJSON
         /* Add health text */
         var health_txt_pos: CGPoint = pos
         health_txt_pos.y += self.health_txt_y_dspl
-        self.health_txt.position = health_txt_pos
-        gameScene.addChild(self.health_txt)
+        self.DS_health_txt.position = health_txt_pos
+        gameScene.addChild(self.DS_health_txt)
+        
+        //PRINTLN MYSELF AS JSON
+        println("PRINTING SELF AS JSON LOOK HERE!!!!")
+        println(self.toJsonString())
         
     }
     /* !!!!!!NEED TO CHANGE THESE TWO IN FUTURE!!!!!! */
@@ -163,7 +187,7 @@ class Unit: SerializableJSON
     {
         health-=damage
         println("\(name), \(health)")
-        self.health_txt.text = self.health.description
+        self.DS_health_txt.text = self.health.description
     }
     
     func move(destination:CGPoint, complete:(()->Void)!)
@@ -175,16 +199,16 @@ class Unit: SerializableJSON
         let ydif = destination.y-charPos.y
         
         //Check facing
-        if (xdif < -3) {
+        if (xdif < -0.1) {
             self.sprite.runAction(SKAction.scaleXTo(-0.5, duration: 0.0))
-        } else if (xdif > 3) {
+        } else if (xdif > 0.1) {
             self.sprite.runAction(SKAction.scaleXTo(0.5, duration: 0.0))
         }
         
         let distance = sqrt((xdif*xdif)+(ydif*ydif))
         let duration = distance/speed
         let movementAction = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
-        let walkAnimationAction = self.walkAnim
+        let walkAnimationAction = self.DS_walkAnim
         //Create action for "Walk to point then do "complete""
         let walkSequence = SKAction.sequence([movementAction, SKAction.runBlock(complete)])
         /* Move the health text */
@@ -192,16 +216,27 @@ class Unit: SerializableJSON
         
         health_txt_des.y += health_txt_y_dspl
         let moveHealthTxtAction = SKAction.moveTo(health_txt_des, duration: NSTimeInterval(duration))
-        health_txt.runAction(moveHealthTxtAction, withKey: "move")
+        DS_health_txt.runAction(moveHealthTxtAction, withKey: "move")
         sprite.runAction(walkSequence, withKey: "move")
-        sprite.runAction(self.walkAnim, withKey: "moveAnim")
+        sprite.runAction(self.DS_walkAnim, withKey: "moveAnim")
         
     }
     
     func clearMove(){
         self.sprite.removeActionForKey("move")
         self.sprite.removeActionForKey("moveAnim")
-        self.health_txt.removeActionForKey("move")
+        self.DS_health_txt.removeActionForKey("move")
+    }
+    
+    func notifyDeath(){
+        
+    }
+    
+    /*
+    Removes the unit from the game scene.
+    */
+    func kill(){
+        
     }
     
 }

@@ -12,7 +12,9 @@ import Foundation
     Any class that is to be sent over the network should inheriet from this class so it can
     be serialized into JSON
 */
-class SerializableJSON: NSObject {
+public class SerializableJSON: NSObject {
+    
+    
     
     /*
         Convert object to a dictionary of properties.
@@ -24,7 +26,7 @@ class SerializableJSON: NSObject {
                 "speed": 1.1
             }
     */
-    func toJSONDict() -> [String: AnyObject] {
+    public func toJSONDict() -> [String: AnyObject] {
         var output_dict: [String: AnyObject] = [:]
         
         if self is Unit {
@@ -67,5 +69,62 @@ class SerializableJSON: NSObject {
         }
         return output_dict
     }
+    
+    public func toDictionary() -> NSDictionary {
+        var aClass : AnyClass? = self.dynamicType
+        var propertiesCount : CUnsignedInt = 0
+        let propertiesInAClass : UnsafeMutablePointer<objc_property_t> = class_copyPropertyList(aClass, &propertiesCount)
+        var propertiesDictionary : NSMutableDictionary = NSMutableDictionary()
+        
+        for var i = 0; i < Int(propertiesCount); i++ {
+            var property = propertiesInAClass[i]
+            var propName = NSString(CString: property_getName(property), encoding: NSUTF8StringEncoding)!
+            var propType = property_getAttributes(property)
+            var propValue : AnyObject! = self.valueForKey(propName);
+            
+            //if (propName == "currentOrder" || propName == "sprite" || propName == "health_txt"){
+            //    continue
+            //}
+            
+            println(propName)
+            
+            if propValue is SerializableJSON {
+                propertiesDictionary.setValue((propValue as SerializableJSON).toDictionary(), forKey: propName)
+            } else if propValue is Array<SerializableJSON> {
+                var subArray = Array<NSDictionary>()
+                for item in (propValue as Array<SerializableJSON>) {
+                    subArray.append(item.toDictionary())
+                }
+                propertiesDictionary.setValue(subArray, forKey: propName)
+            } else if propValue is NSData {
+                propertiesDictionary.setValue((propValue as NSData).base64EncodedStringWithOptions(nil), forKey: propName)
+            } else if propValue is Bool {
+                propertiesDictionary.setValue((propValue as Bool).boolValue, forKey: propName)
+            } else {
+                //println("Cannot Serialize "+propName)
+                propertiesDictionary.setValue(propValue, forKey: propName)
+            }
+        }
+        println("DONE1")
+        // class_copyPropertyList retaints all the
+        propertiesInAClass.dealloc(Int(propertiesCount))
+        
+        return propertiesDictionary
+    }
+    
+    public func toJson() -> NSData! {
+        var dictionary = self.toDictionary()
+        println(dictionary)
+        var err: NSError?
+        return NSJSONSerialization.dataWithJSONObject(dictionary, options:NSJSONWritingOptions(0), error: &err)
+    }
+    
+    public func toJsonString() -> NSString! {
+        println("DONE2")
+        let ret = NSString(data: self.toJson(), encoding: NSUTF8StringEncoding)
+        println("DONE3")
+        return ret
+    }
+    
     
 }

@@ -88,6 +88,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
             }
+            /* ========== Kill =========== */
+            if key == "Kill"{
+                let killID: String = recvData["Kill"].stringValue
+                println("REMOVED UNIT")
+                unit_list[killID] = nil
+                
+            }
         }
     }
 
@@ -107,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //Create a unit on the scene, should have the same ID for all players so should only create one time
         let DUMMY_ID = "1"
-        let dummy = Warrior(name: "Dummy", ID: DUMMY_ID, health: 100, speed: CGFloat(80.0))
+        let dummy = Unit(name: "Dummy", ID: DUMMY_ID, health: 100, speed: CGFloat(80.0))
         let dummy_position = CGPoint(x:CGRectGetMidX(self.frame)+50, y:CGRectGetMidY(self.frame));
         addUnitToGame(dummy, position: dummy_position)
         
@@ -133,6 +140,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         AppWarpHelper.sharedInstance.sendUpdate(sendData)
     }
     
+    func removeUnitFromGame(unit: Unit){
+        var sendData: Dictionary<String, Array<AnyObject>> = [:]
+        sendData["Kill"]!.append(unit.ID)
+        AppWarpHelper.sharedInstance.sendUpdate(sendData)
+    }
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         println("Game Scene Init")
@@ -145,10 +158,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //background.anchorPoint = CGPoint(x: 0, y: 1.0)
         addChild(background)
         
-        //// physics
+        // physics
         self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsWorld.contactDelegate = self
-        ////
+        //
         
     }
     

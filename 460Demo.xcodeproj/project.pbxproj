@@ -31,6 +31,7 @@
 		F4B5047C1A90175B007CDBA8 /* POrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* POrder.swift */; };
 		F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047F1A908339007CDBA8 /* NoneOrder.swift */; };
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
+		F4B504841A92B4D9007CDBA8 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504831A92B4D9007CDBA8 /* Serializable.swift */; };
 		F4C0F5D91A87F63D0075F2A3 /* Attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */; };
 		F4C0F5DB1A87F6500075F2A3 /* Walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
@@ -77,6 +78,7 @@
 		F4B5047B1A90175B007CDBA8 /* POrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POrder.swift; sourceTree = "<group>"; };
 		F4B5047F1A908339007CDBA8 /* NoneOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoneOrder.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
+		F4B504831A92B4D9007CDBA8 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Attack.atlas; sourceTree = "<group>"; };
 		F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Walk.atlas; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 				F4B5047D1A906B70007CDBA8 /* Orders */,
 				68F35CB11A84C540004905BF /* Projectile.swift */,
 				F4B5047E1A907A2A007CDBA8 /* Units */,
+				F4B504831A92B4D9007CDBA8 /* Serializable.swift */,
 			);
 			path = GameCoreClasses;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				68B7DBF61A84C306003D9398 /* 460Demo-Bridging-Header.m in Sources */,
 				68F35CB81A84C540004905BF /* Unit.swift in Sources */,
 				68F35CB71A84C540004905BF /* Projectile.swift in Sources */,
+				F4B504841A92B4D9007CDBA8 /* Serializable.swift in Sources */,
 				68F35CB41A84C540004905BF /* Attack.swift in Sources */,
 				68F35CB91A84C540004905BF /* Warrior.swift in Sources */,
 				68B7DBFA1A84C306003D9398 /* RoomListener.swift in Sources */,

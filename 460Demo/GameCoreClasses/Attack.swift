@@ -47,7 +47,7 @@ class Attack: Order, POrder
                 if  self.target.sprite.frame.contains(frontConnection)||self.target.sprite.frame.contains(backConnection)
                 {
                     self.attackCycle()
-                    self.receiver.sprite.runAction(self.receiver.attackAnim, withKey: "AttackAnim")
+                    self.receiver.sprite.runAction(self.receiver.DS_attackAnim, withKey: "AttackAnim")
                     let delay = SKAction.waitForDuration(1.0)
                     self.receiver.sprite.runAction(delay, completion: self.apply)
                 }
