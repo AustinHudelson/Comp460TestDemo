@@ -151,7 +151,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         println("Game Scene Init")
         AppWarpHelper.sharedInstance.gameScene = self
         
-        let background = SKSpriteNode(imageNamed: "background1")
+        let background = SKSpriteNode(imageNamed: "Background1")
         background.position = CGPointMake(self.size.width/2, self.size.height/2)
         background.size = CGSize(width: CGFloat(self.size.width), height: CGFloat(self.size.height));
         //background.position = CGPoint(x: 0, y: 0)
