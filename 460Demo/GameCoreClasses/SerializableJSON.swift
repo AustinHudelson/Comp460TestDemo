@@ -27,6 +27,19 @@ class SerializableJSON: NSObject {
     
     required init(receivedData: Dictionary<String, AnyObject>){
         
+        for var i = 0; i < Int(propertiesCount); i++ {
+            var property = propertiesInAClass[i]
+            var propName = NSString(CString: property_getName(property), encoding: NSUTF8StringEncoding)! as String
+            var propType = property_getAttributes(property)
+            
+            //Check if the key is in the dictionary (only DS_ and sprite should not appear here)
+            if receivedData[propName] != nil {
+                let propValue = receivedData[propName]
+                self.setValue(propValue, forKey: propName)
+            } else {
+                println("Unable to find value for property: "+propName)
+            }
+        }
     }
     
     /*

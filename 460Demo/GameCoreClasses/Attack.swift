@@ -22,6 +22,10 @@ class Attack: Order, PType
         super.init()
         type = "Attack"
     }
+
+    required init(receivedData: Dictionary<String, AnyObject>, unitList: Dictionary<String, Unit>) {
+        fatalError("init(receivedData:) has not been implemented")
+    }
     
     override func apply(){
         if self.receiver.currentOrder is Attack
@@ -45,7 +49,7 @@ class Attack: Order, PType
                 if  self.target.sprite.frame.contains(frontConnection)||self.target.sprite.frame.contains(backConnection)
                 {
                     self.attackCycle()
-                    self.receiver.sprite.runAction(self.receiver.DS_attackAnim, withKey: "AttackAnim")
+                    self.receiver.sprite.runAction(self.receiver.DS_attackAnim!, withKey: "AttackAnim")
                     let delay = SKAction.waitForDuration(1.0)
                     self.receiver.sprite.runAction(delay, completion: self.apply)
                 }

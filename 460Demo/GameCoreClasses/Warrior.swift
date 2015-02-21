@@ -15,11 +15,6 @@ class Warrior: Unit, PType
     var AnimationName = "Character1BaseColorization"
     var testProperty = "WRONG!"
     
-    required init() {
-        println("Warrior!!!!!")
-        super.init()
-    }
-    
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init(receivedData: receivedData)
