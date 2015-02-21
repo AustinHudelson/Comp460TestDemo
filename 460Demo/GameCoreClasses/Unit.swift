@@ -26,35 +26,54 @@ class Unit: SerializableJSON, PType
     
     var type: String {
         //Should not send a bare unit type ever.
-        return "UNDEFINED"
+        return "Unit"
     }
     
     init(recievedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init()
         
+        /* Configure Health Text (SHOULD MATH OTHER INIT() FUNCTION) */
+        self.DS_health_txt.fontColor = UIColor.redColor()
+        self.DS_health_txt.text = self.health.description
+        self.DS_health_txt.fontSize = 40
         
+        //Initializes all the DS_ animations
+        initializeAnimations()
         
-        var aClass : AnyClass? = Unit.self
+        /* Sprite setup (SHOULD MATCH OTHER INIT() FUNCTION) */
+        sprite = SKSpriteNode(imageNamed: "Mage")
+        self.sprite.runAction(self.DS_standAnim)
+        
+        // physics stuff
+        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
+        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
+        self.sprite.physicsBody?.categoryBitMask = UnitCategory
+        self.sprite.physicsBody?.collisionBitMask = 0
+        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
+        
+        var aClass : AnyClass? = Unit.self      //ADJUST FOR EACH CLASS?
         var propertiesCount : CUnsignedInt = 0
         let propertiesInAClass : UnsafeMutablePointer<objc_property_t> = class_copyPropertyList(aClass, &propertiesCount)
-        var propertiesDictionary : NSMutableDictionary = NSMutableDictionary()
+        //var propertiesDictionary : NSMutableDictionary = NSMutableDictionary()
         
         for var i = 0; i < Int(propertiesCount); i++ {
             var property = propertiesInAClass[i]
             var propName = NSString(CString: property_getName(property), encoding: NSUTF8StringEncoding)! as String
             var propType = property_getAttributes(property)
             
-            let propValue = recievedData[propName]
-            
-            self.setValue(propValue, forKey: propName)
+            //Check if the key is in the dictionary (only DS_ and sprite should not appear here)
+            if recievedData[propName] != nil {
+                let propValue = recievedData[propName]
+                self.setValue(propValue, forKey: propName)
+            } else {
+                println("Unable to find value for property: "+propName)
+            }
         }
-        
-        
-        
     }
     
     init(name: String, ID: String, health: Int, speed: CGFloat) {
+        super.init()
         self.name = name
         self.health = health
         self.speed = speed
@@ -65,7 +84,27 @@ class Unit: SerializableJSON, PType
         self.DS_health_txt.text = self.health.description
         self.DS_health_txt.fontSize = 40
         
+        initializeAnimations()
         
+        /* Sprite setup */
+        sprite = SKSpriteNode(imageNamed: "Mage")
+        self.sprite.runAction(self.DS_standAnim)
+        
+        //// physics stuff
+        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
+        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
+        self.sprite.physicsBody?.categoryBitMask = UnitCategory
+        self.sprite.physicsBody?.collisionBitMask = 0
+        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
+        //self.sprite.physicsBody?.restitution = 0
+        //self.sprite.physicsBody?.
+        
+    }
+    
+    /*
+     * Initializes the animations for this class
+     */
+    func initializeAnimations(){
         //
         //Define Animations here
         //
@@ -99,7 +138,7 @@ class Unit: SerializableJSON, PType
             walkAtlas.textureNamed(unitName+walkAnimName+"18"),
             walkAtlas.textureNamed(unitName+walkAnimName+"19"),
             walkAtlas.textureNamed(unitName+walkAnimName+"20")
-        ], timePerFrame: 0.05)
+            ], timePerFrame: 0.05)
         
         var attackTextures = SKAction.animateWithTextures([
             attackAtlas.textureNamed(unitName+attackAnimName+"0"),
@@ -115,37 +154,15 @@ class Unit: SerializableJSON, PType
             attackAtlas.textureNamed(unitName+attackAnimName+"10"),
             attackAtlas.textureNamed(unitName+attackAnimName+"11"),
             attackAtlas.textureNamed(unitName+attackAnimName+"12"),
-        ], timePerFrame: 0.05)
+            ], timePerFrame: 0.05)
         
         var standTextures = SKAction.animateWithTextures([
             walkAtlas.textureNamed(unitName+standAnimName+"0")
-        ], timePerFrame: 0.1)
+            ], timePerFrame: 0.1)
         
         self.DS_walkAnim = SKAction.repeatActionForever(walkTextures)
         self.DS_standAnim = SKAction.repeatActionForever(standTextures)
         self.DS_attackAnim = SKAction.repeatAction(attackTextures, count: 1)
-        
-        //self.sprite = SKSpriteNode(imageNamed:"Character1BaseColorization-Stand")
-        
-        
-        //self.sprite.runAction(self.DS_walkAnim)
-        //self.sprite.runAction(mir)
-        
-        sprite = SKSpriteNode(imageNamed: "Mage")
-        //sprite.
-        self.sprite.runAction(self.DS_standAnim)
-        
-        //// physics stuff
-        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
-        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
-        self.sprite.physicsBody?.categoryBitMask = UnitCategory
-        self.sprite.physicsBody?.collisionBitMask = 0
-        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
-        //self.sprite.physicsBody?.restitution = 0
-        //self.sprite.physicsBody?.
-        
-        ////
-        
     }
     
     /*
