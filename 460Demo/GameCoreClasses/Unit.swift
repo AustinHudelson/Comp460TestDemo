@@ -18,9 +18,9 @@ class Unit: SerializableJSON, PType
     var speed: CGFloat = 0.0
     var sprite: SKNode = SKSpriteNode(imageNamed: "Mage")
     var currentOrder: Order = NoneOrder()
-    var DS_walkAnim: SKAction = SKAction.alloc()
-    var DS_attackAnim: SKAction = SKAction.alloc()
-    var DS_standAnim: SKAction = SKAction.alloc()
+    var DS_walkAnim: SKAction?
+    var DS_attackAnim: SKAction?
+    var DS_standAnim: SKAction?
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
@@ -215,7 +215,7 @@ class Unit: SerializableJSON, PType
         let moveHealthTxtAction = SKAction.moveTo(health_txt_des, duration: NSTimeInterval(duration))
         DS_health_txt.runAction(moveHealthTxtAction, withKey: "move")
         sprite.runAction(walkSequence, withKey: "move")
-        sprite.runAction(self.DS_walkAnim, withKey: "moveAnim")
+        sprite.runAction(self.DS_walkAnim!, withKey: "moveAnim")
         
     }
     

@@ -11,8 +11,8 @@ import SpriteKit
 @objc(Move)
 class Move : Order, PType
 {
-    var DS_moveToLoc: CGPoint = CGPoint.zeroPoint
-    var DS_receiver: Unit = nil
+    var DS_moveToLoc: CGPoint?
+    var DS_receiver: Unit?
     var ID = ""
     var posX = CGFloat(0.0)
     var posY = CGFloat(0.0)
@@ -31,18 +31,21 @@ class Move : Order, PType
     required init(receivedData: Dictionary<String, AnyObject>, unitList: Dictionary<String, Unit>) {
         super.init(receivedData: receivedData, unitList: unitList)
         restoreProperties(Move.self, receivedData: receivedData)
+        
+        DS_receiver = unitList[ID]!
+        DS_moveToLoc = CGPoint(x:posX, y:posY)
     }
     
     override func apply()
     {
         //receiver.sprite.frame.
-        DS_receiver.move(DS_moveToLoc, complete: {
-            self.DS_receiver.sendOrder(Idle(receiverIn: self.DS_receiver))
+        DS_receiver!.move(DS_moveToLoc!, complete: {
+            self.DS_receiver!.sendOrder(Idle(receiverIn: self.DS_receiver!))
             
         })
     }
     
     override func remove(){
-        DS_receiver.clearMove()
+        DS_receiver!.clearMove()
     }
 }
