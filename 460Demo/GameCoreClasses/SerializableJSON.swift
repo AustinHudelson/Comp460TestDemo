@@ -22,6 +22,10 @@ func +=<K, V> (inout left: Dictionary<K, V>, right: Dictionary<K, V>) -> Diction
 
 class SerializableJSON: NSObject {
     
+    override init() {
+        print("SerializableJSON")
+    }
+    
     /*
     - A method that is shared between toJSON() and fromJSON()
     - This method returns an array of properties in the given class

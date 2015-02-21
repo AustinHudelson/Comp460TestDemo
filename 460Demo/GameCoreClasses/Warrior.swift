@@ -8,10 +8,14 @@
 
 import SpriteKit
 @objc(Warrior)
-class Warrior: Unit, PType
+class Warrior: Unit
 {
     var AnimationName = "Character1BaseColorization"
     var testProperty = "WRONG!"
+    
+    //override init() {
+    //    println("Warrior")
+    //}
     
     override init(recievedData: Dictionary<String, AnyObject>){
         //Special case for sprite

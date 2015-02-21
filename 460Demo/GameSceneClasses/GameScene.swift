@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import Foundation
 
 
 
@@ -117,6 +118,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //    war.addUnitToGameScene(self, pos: war_position, scaleX: 0.5, scaleY: 0.5)
         //}
         
+        println("HERE")
+        //println(NSStringFromClass(SerializableJSON.Type))
+        //var classString = NSStringFromClass(Warrior)
+        //println(classString)
+        
+        //var anyobjecttype: AnyObject.Type = NSClassFromString(classString)
+        //var nsobjecttype: NSObject.Type = anyobjecttype as NSObject.Type
+        //var dumbwarrior: AnyObject = nsobjecttype()
+        
+        
         // Create a warrior unit with name = player name
         var playerName = AppWarpHelper.sharedInstance.playerName
         let war_position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
@@ -166,6 +177,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         println("Game Scene Init")
+        
+        
+        
         AppWarpHelper.sharedInstance.gameScene = self
         
         let background = SKSpriteNode(imageNamed: "Background1")

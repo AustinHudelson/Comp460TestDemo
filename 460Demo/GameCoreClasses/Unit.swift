@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import Foundation
 @objc(Unit)
 class Unit: SerializableJSON, PType
 {
@@ -25,6 +26,10 @@ class Unit: SerializableJSON, PType
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
     
     var type: String = "Unit"
+    
+    override init(){
+        println("Unit")
+    }
     
     init(recievedData: Dictionary<String, AnyObject>){
         //Special case for sprite
@@ -96,6 +101,8 @@ class Unit: SerializableJSON, PType
         self.sprite.physicsBody?.contactTestBitMask = UnitCategory
         //self.sprite.physicsBody?.restitution = 0
         //self.sprite.physicsBody?.
+        
+        
         
     }
     
