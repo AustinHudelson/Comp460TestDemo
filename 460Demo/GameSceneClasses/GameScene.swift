@@ -33,7 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         let spawnLoc = CGPoint(x: (unit["posX"] as CGFloat), y: (unit["posY"] as CGFloat))
                         newUnit.addUnitToGameScene(self, pos: spawnLoc, scaleX: 1.0, scaleY: 1.0)
                         
-                        addUnitToGame(unit_list[AppWarpHelper.sharedInstance.playerName]!) // send myself to everyone who hasn't got me
+                        sendUnit(unit_list[AppWarpHelper.sharedInstance.playerName]!) // send myself to everyone who hasn't got me
                     }
                 }
             }
@@ -49,20 +49,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Create a warrior unit with name = player name
         var playerName = AppWarpHelper.sharedInstance.playerName
         let war_position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        let war = Warrior(name: playerName, ID:playerName, health: 100, speed: CGFloat(100.1), spawnLocation: war_position)
+        let war = Warrior(ID:playerName, health: 100, speed: CGFloat(100.1), spawnLocation: war_position)
         
-        addUnitToGame(war) //Adds and send the unit
+        sendUnit(war) //Adds and send the unit
         
         //Create a unit on the scene, should have the same ID for all players so should only create one time
         let DUMMY_ID = "1"
         let dummy_position = CGPoint(x:CGRectGetMidX(self.frame)+50, y:CGRectGetMidY(self.frame));
-        let dummy = Warrior(name: "Dummy", ID: DUMMY_ID, health: 100, speed: CGFloat(80.0), spawnLocation: dummy_position)
+        let dummy = Warrior(ID: DUMMY_ID, health: 100, speed: CGFloat(80.0), spawnLocation: dummy_position)
         
-//        addUnitToGame(dummy)
+//        sendUnit(dummy)
     }
     
     //Does all work necessary to add a unit to the game for all connected players
-    func addUnitToGame(newUnit: Unit){
+    func sendUnit(newUnit: Unit){
         //unit_list[newUnit.ID] = newUnit
         //newUnit.addUnitToGameScene(self, pos: position, scaleX: 0.5, scaleY: 0.5)
         
