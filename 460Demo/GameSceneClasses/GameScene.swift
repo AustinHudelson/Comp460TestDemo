@@ -24,16 +24,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if key == "Units" {
                 for unit in arrayOfObjects {
                     // Make a new unit by calling its corresponding constructor
-                    println("UNIT RECIEVED")
-                    println(unit)
-                    if (unit["type"] as String) == "Warrior" {
-                        let newUnit = Warrior(receivedData: unit)
+                    if unit_list[unit["ID"] as String] == nil {
+                        var anyobjecttype: AnyObject.Type = NSClassFromString(unit["type"] as NSString)
+                        var nsobjecttype: Unit.Type = anyobjecttype as Unit.Type
+                        var newUnit: Unit = nsobjecttype(receivedData: unit)
+                        
                         unit_list[newUnit.ID] = newUnit
                         let spawnLoc = CGPoint(x: (unit["posX"] as CGFloat), y: (unit["posY"] as CGFloat))
                         newUnit.addUnitToGameScene(self, pos: spawnLoc, scaleX: 1.0, scaleY: 1.0)
-                    } else {
-                        println("Invalid recieved unit")
-                        println(unit["type"] as String)
                     }
                 }
             }
