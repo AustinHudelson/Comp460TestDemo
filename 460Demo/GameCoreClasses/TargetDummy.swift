@@ -21,4 +21,13 @@ class TargetDummy: Unit
         //self.apply(Move(position1: CGPoint(x: 1.0, y: 2.0)))
         //self.move(CGPoint(x: 400, y: 300))
     }
+
+    required init() {
+        println("Target Dummy!!!")
+        super.init()
+    }
+
+    required init(receivedData: Dictionary<String, AnyObject>) {
+        fatalError("init(recievedData:) has not been implemented")
+    }
 }

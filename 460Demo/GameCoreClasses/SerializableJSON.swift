@@ -22,8 +22,14 @@ func +=<K, V> (inout left: Dictionary<K, V>, right: Dictionary<K, V>) -> Diction
 
 class SerializableJSON: NSObject {
     
-    override init() {
-        print("SerializableJSON")
+    var test = "ASDF"
+    
+    override required init() {
+        println("SerializableJSON!!!!")
+    }
+    
+    required init(receivedData: Dictionary<String, AnyObject>){
+        
     }
     
     /*

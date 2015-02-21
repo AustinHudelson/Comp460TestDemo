@@ -27,13 +27,14 @@ class Unit: SerializableJSON, PType
     
     var type: String = "Unit"
     
-    override init(){
-        println("Unit")
+    required init(){
+        println("Unit!!!!")
+        super.init()
     }
     
-    init(recievedData: Dictionary<String, AnyObject>){
+    required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
-        super.init()
+        super.init(receivedData: receivedData)
         
         var aClass : AnyClass? = Unit.self      //ADJUST FOR EACH CLASS?
         var propertiesCount : CUnsignedInt = 0
@@ -46,8 +47,8 @@ class Unit: SerializableJSON, PType
             var propType = property_getAttributes(property)
             
             //Check if the key is in the dictionary (only DS_ and sprite should not appear here)
-            if recievedData[propName] != nil {
-                let propValue = recievedData[propName]
+            if receivedData[propName] != nil {
+                let propValue = receivedData[propName]
                 self.setValue(propValue, forKey: propName)
             } else {
                 println("Unable to find value for property: "+propName)
@@ -65,6 +66,8 @@ class Unit: SerializableJSON, PType
         /* Sprite setup (SHOULD MATCH OTHER INIT() FUNCTION) */
         sprite = SKSpriteNode(imageNamed: "Mage")
         self.sprite.runAction(self.DS_standAnim)
+        let spawnLoc = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
+        sprite.position = spawnLoc
         
         // physics stuff
         self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)

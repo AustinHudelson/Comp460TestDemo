@@ -27,7 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     println("UNIT RECIEVED")
                     println(unit)
                     if (unit["type"] as String) == "Warrior" {
-                        let newUnit = Warrior(recievedData: unit)
+                        let newUnit = Warrior(receivedData: unit)
                         unit_list[newUnit.ID] = newUnit
                         let spawnLoc = CGPoint(x: (unit["posX"] as CGFloat), y: (unit["posY"] as CGFloat))
                         newUnit.addUnitToGameScene(self, pos: spawnLoc, scaleX: 1.0, scaleY: 1.0)
@@ -118,15 +118,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //    war.addUnitToGameScene(self, pos: war_position, scaleX: 0.5, scaleY: 0.5)
         //}
         
-        println("HERE")
-        //println(NSStringFromClass(SerializableJSON.Type))
-        //var classString = NSStringFromClass(Warrior)
-        //println(classString)
-        
-        //var anyobjecttype: AnyObject.Type = NSClassFromString(classString)
-        //var nsobjecttype: NSObject.Type = anyobjecttype as NSObject.Type
-        //var dumbwarrior: AnyObject = nsobjecttype()
-        
         
         // Create a warrior unit with name = player name
         var playerName = AppWarpHelper.sharedInstance.playerName
@@ -140,10 +131,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let dummy_position = CGPoint(x:CGRectGetMidX(self.frame)+50, y:CGRectGetMidY(self.frame));
         let dummy = Warrior(name: "Dummy", ID: DUMMY_ID, health: 100, speed: CGFloat(80.0), spawnLocation: dummy_position)
         
+        println("SERIALIZE AND DESERIALIZE dummy JUST BECAUSE WE CAN!!! (:")
+        
+        var sendData = dummy.toJSON()
+        
+        //println(NSStringFromClass(SerializableJSON.Type))
+        
+        var classString = sendData["type"] as NSString
+        //println(classString)
+        
+        var anyobjecttype: AnyObject.Type = NSClassFromString(classString)
+        var nsobjecttype: Unit.Type = anyobjecttype as Unit.Type
+        var dumbwarrior: Unit = nsobjecttype(receivedData: sendData)
+        
+        println("Unserialized Dummy done! (:")
+        
         
         //println(dummy.toJsonString())
         
-        addUnitToGame(dummy)
+        addUnitToGame(dumbwarrior)
         
         
         

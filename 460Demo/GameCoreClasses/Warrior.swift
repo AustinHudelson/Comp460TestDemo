@@ -7,19 +7,22 @@
 //
 
 import SpriteKit
+import Foundation
+
 @objc(Warrior)
-class Warrior: Unit
+class Warrior: Unit, PType
 {
     var AnimationName = "Character1BaseColorization"
     var testProperty = "WRONG!"
     
-    //override init() {
-    //    println("Warrior")
-    //}
+    required init() {
+        println("Warrior!!!!!")
+        super.init()
+    }
     
-    override init(recievedData: Dictionary<String, AnyObject>){
+    required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
-        super.init(recievedData: recievedData)
+        super.init(receivedData: receivedData)
         
         var aClass : AnyClass? = Warrior.self       //ADJUST FOR EACH CLASS?
         var propertiesCount : CUnsignedInt = 0
@@ -32,8 +35,8 @@ class Warrior: Unit
             var propType = property_getAttributes(property)
             
             //Check if the key is in the dictionary (only DS_ and sprite should not appear here)
-            if recievedData[propName] != nil {
-                let propValue = recievedData[propName]
+            if receivedData[propName] != nil {
+                let propValue = receivedData[propName]
                 self.setValue(propValue, forKey: propName)
             } else {
                 println("Unable to find value for property: "+propName)
