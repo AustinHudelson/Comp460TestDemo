@@ -110,7 +110,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let dummy = Unit(name: "Dummy", ID: DUMMY_ID, health: 100, speed: CGFloat(80.0))
         let dummy_position = CGPoint(x:CGRectGetMidX(self.frame)+50, y:CGRectGetMidY(self.frame));
         
-        println(dummy.toJsonString())
+        //println(dummy.toJsonString())
         
         addUnitToGame(dummy, position: dummy_position)
         
