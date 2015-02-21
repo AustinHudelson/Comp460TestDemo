@@ -27,33 +27,11 @@ class Unit: SerializableJSON, PType
     
     var type: String = "Unit"
     
-    required init(){
-        println("Unit!!!!")
-        super.init()
-    }
-    
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
-        super.init(receivedData: receivedData)
+        super.init()
         
-        var aClass : AnyClass? = Unit.self      //ADJUST FOR EACH CLASS?
-        var propertiesCount : CUnsignedInt = 0
-        let propertiesInAClass : UnsafeMutablePointer<objc_property_t> = class_copyPropertyList(aClass, &propertiesCount)
-        //var propertiesDictionary : NSMutableDictionary = NSMutableDictionary()
-        
-        for var i = 0; i < Int(propertiesCount); i++ {
-            var property = propertiesInAClass[i]
-            var propName = NSString(CString: property_getName(property), encoding: NSUTF8StringEncoding)! as String
-            var propType = property_getAttributes(property)
-            
-            //Check if the key is in the dictionary (only DS_ and sprite should not appear here)
-            if receivedData[propName] != nil {
-                let propValue = receivedData[propName]
-                self.setValue(propValue, forKey: propName)
-            } else {
-                println("Unable to find value for property: "+propName)
-            }
-        }
+        restoreProperties(Unit.self, receivedData: receivedData)
         
         /* Configure Health Text (SHOULD MATH OTHER INIT() FUNCTION) */
         self.DS_health_txt.fontColor = UIColor.redColor()
@@ -200,18 +178,6 @@ class Unit: SerializableJSON, PType
         currentOrder.remove()
         currentOrder = order
         currentOrder.apply()
-    }
-    /* Apply Move */
-    func apply(order: Order)
-    {
-        println("APPLY")
-        if order is Move
-        {
-            println("APPLYMOVE")
-            let moveLoc = (order as Move).moveToLoc
-            move(moveLoc, {})
-           
-        }
     }
     
     func takeDamage(damage:Int)

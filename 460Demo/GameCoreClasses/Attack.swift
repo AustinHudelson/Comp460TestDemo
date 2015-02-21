@@ -22,6 +22,10 @@ class Attack: Order, PType
         super.init()
         type = "Attack"
     }
+
+    required init(receivedData: Dictionary<String, AnyObject>, unitList: Dictionary<String, Unit>) {
+        fatalError("init(receivedData:) has not been implemented")
+    }
     
     override func apply(){
         if self.receiver.currentOrder is Attack

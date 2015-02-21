@@ -22,14 +22,24 @@ func +=<K, V> (inout left: Dictionary<K, V>, right: Dictionary<K, V>) -> Diction
 
 class SerializableJSON: NSObject {
     
-    var test = "ASDF"
-    
-    override required init() {
-        println("SerializableJSON!!!!")
-    }
-    
-    required init(receivedData: Dictionary<String, AnyObject>){
+    func restoreProperties(aClass: AnyClass?, receivedData: Dictionary<String, AnyObject>){
+        var propertiesCount : CUnsignedInt = 0
+        let propertiesInAClass : UnsafeMutablePointer<objc_property_t> = class_copyPropertyList(aClass, &propertiesCount)
+        //var propertiesDictionary : NSMutableDictionary = NSMutableDictionary()
         
+        for var i = 0; i < Int(propertiesCount); i++ {
+            var property = propertiesInAClass[i]
+            var propName = NSString(CString: property_getName(property), encoding: NSUTF8StringEncoding)! as String
+            var propType = property_getAttributes(property)
+            
+            //Check if the key is in the dictionary (only DS_ and sprite should not appear here)
+            if receivedData[propName] != nil {
+                let propValue = receivedData[propName]
+                self.setValue(propValue, forKey: propName)
+            } else {
+                println("Unable to find value for property: "+propName)
+            }
+        }
     }
     
     /*

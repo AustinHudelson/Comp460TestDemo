@@ -10,9 +10,20 @@
 //ORDER CLASS
 //Should be treated like a java "Abstract class" for orders 
 //that conform to the "Interface" (swift "Protocall") POrder
+@objc(Order)
 class Order: SerializableJSON, PType
 {
     var type: String = "UNDEFINED"
+    
+    required init(receivedData: Dictionary<String, AnyObject>, unitList: Dictionary<String, Unit>){
+        super.init()
+        //Leave empty as there are no types in this class
+        restoreProperties(Order.self, receivedData: receivedData)
+    }
+    
+    override init(){
+        //IN ALL SUBCLASSES INIT MUST INITIALIZE TYPE
+    }
     
     func apply(){
         //Print error message
