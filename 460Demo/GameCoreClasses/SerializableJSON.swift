@@ -128,6 +128,11 @@ class SerializableJSON: NSObject {
         return propertiesDictionary
     }
     
+    /*
+    * MODIFIED SERIALIZE CLASS FROM GIT REPOSITORY. NO LONGER USED IN SERIALIZATION PROCESS.
+    * COMMENT OUT THE FOLLOWING THREE FUNCTIONS
+    */
+    
     public func toDictionary() -> NSDictionary {
         var aClass : AnyClass? = self.dynamicType
         var propertiesCount : CUnsignedInt = 0
@@ -144,21 +149,28 @@ class SerializableJSON: NSObject {
             //    continue
             //}
             
+            if (propName as String).rangeOfString("DS_") != nil {
+                continue
+            }
             println(propName)
-            
             if propValue is SerializableJSON {
+                println("Serializable")
                 propertiesDictionary.setValue((propValue as SerializableJSON).toDictionary(), forKey: propName)
             } else if propValue is Array<SerializableJSON> {
+                println("Array serializeable")
                 var subArray = Array<NSDictionary>()
                 for item in (propValue as Array<SerializableJSON>) {
                     subArray.append(item.toDictionary())
                 }
                 propertiesDictionary.setValue(subArray, forKey: propName)
             } else if propValue is NSData {
+                println("NSData Serializeable")
                 propertiesDictionary.setValue((propValue as NSData).base64EncodedStringWithOptions(nil), forKey: propName)
             } else if propValue is Bool {
+                println("Bool Serializeable")
                 propertiesDictionary.setValue((propValue as Bool).boolValue, forKey: propName)
             } else {
+                println("Whatever serializeable")
                 //println("Cannot Serialize "+propName)
                 propertiesDictionary.setValue(propValue, forKey: propName)
             }
@@ -171,6 +183,7 @@ class SerializableJSON: NSObject {
     }
     
     public func toJson() -> NSData! {
+        println("pubtoJSON")
         var dictionary = self.toDictionary()
         println(dictionary)
         var err: NSError?

@@ -6,6 +6,6 @@
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
 
-class NoneOrder: Order, POrder {
+class NoneOrder: Order, PType {
     //Dummy order that does nothing
 }

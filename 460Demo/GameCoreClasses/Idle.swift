@@ -10,7 +10,7 @@
     This Order is what a unit does if it's standing around
     - For now, there's nothing, but maybe later on we can add an idle animation
 */
-class Idle: Order, POrder {
+class Idle: Order, PType {
     
     var receiver: Unit
     

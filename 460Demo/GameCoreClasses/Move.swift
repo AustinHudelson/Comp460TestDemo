@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Move : Order, POrder
+class Move : Order, PType
 {
     var moveToLoc: CGPoint
     var receiver: Unit

@@ -7,9 +7,14 @@
 //
 
 import SpriteKit
-class Warrior: Unit
+@objc(Warrior)
+class Warrior: Unit, PType
 {
     let AnimationName = "Character1BaseColorization"
+    override var type: String {
+        return "Warrior"
+    }
+    
     override init(name: String, ID:String, health: Int, speed: CGFloat)
     {
         super.init(name: name, ID:ID, health: health, speed: speed)

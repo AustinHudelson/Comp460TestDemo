@@ -10,7 +10,7 @@
 //ORDER CLASS
 //Should be treated like a java "Abstract class" for orders 
 //that conform to the "Interface" (swift "Protocall") POrder
-class Order: SerializableJSON, POrder
+class Order: SerializableJSON, PType
 {
     var type: String {
         return "UNDEFINED"

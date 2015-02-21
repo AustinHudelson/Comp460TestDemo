@@ -7,7 +7,8 @@
 //
 
 import SpriteKit
-class Unit: SerializableJSON
+@objc(Unit)
+class Unit: SerializableJSON, PType
 {
     let UnitCategory: UInt32 = 0x1 << 0
     var name: String = ""
@@ -22,6 +23,11 @@ class Unit: SerializableJSON
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
+    
+    var type: String {
+        //Should not send a bare unit type ever.
+        return "UNDEFINED"
+    }
     
     init(recievedData: Dictionary<String, AnyObject>){
         //Special case for sprite
@@ -161,7 +167,7 @@ class Unit: SerializableJSON
         
         //PRINTLN MYSELF AS JSON
         println("PRINTING SELF AS JSON LOOK HERE!!!!")
-        println(self.toJsonString())
+        println(self.toJSON())
         
     }
     /* !!!!!!NEED TO CHANGE THESE TWO IN FUTURE!!!!!! */
@@ -228,15 +234,29 @@ class Unit: SerializableJSON
         self.DS_health_txt.removeActionForKey("move")
     }
     
-    func notifyDeath(){
+    /*
+    * Call the synchronize this unit with the host. Will correct current life and 
+    * position if it has deviated too far from the host.
+    */
+    func synchronize(syncTime: NSTimeInterval, recievedLife: Int, recievedPosition: CGPoint){
         
     }
     
     /*
-    Removes the unit from the game scene.
+    * LOCAL DEATH
+    * playes the units death animation and prevents further actions
+    */
+    func death(){
+        
+    }
+    
+    /*
+    * Actually removes the unit from memory. Should not be called until a negitive update unit is called
     */
     func kill(){
         
     }
+    
+    
     
 }

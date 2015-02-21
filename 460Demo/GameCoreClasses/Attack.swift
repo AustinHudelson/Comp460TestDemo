@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Attack: Order, POrder
+class Attack: Order, PType
 {
     var target: Unit
     var receiver: Unit
