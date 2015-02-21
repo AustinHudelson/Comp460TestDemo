@@ -10,16 +10,15 @@
     This Order is what a unit does if it's standing around
     - For now, there's nothing, but maybe later on we can add an idle animation
 */
+@objc(Idle)
 class Idle: Order, PType {
     
     var receiver: Unit
     
-    override var type: String {
-        return "Idle"
-    }
-    
     init (receiverIn: Unit){
         self.receiver = receiverIn
+        super.init()
+        type = "Idle"
     }
     
 }

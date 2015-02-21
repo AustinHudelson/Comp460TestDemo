@@ -8,21 +8,19 @@
 
 import SpriteKit
 
+@objc(Attack)
 class Attack: Order, PType
 {
     var target: Unit
     var receiver: Unit
     var animationGapDistance: CGFloat
     
-    override var type: String {
-        return "Attack"
-    }
-    
     init(receiverIn: Unit, target: Unit){
         receiver = receiverIn
         self.target = target
         self.animationGapDistance = 20
         super.init()
+        type = "Attack"
     }
     
     override func apply(){

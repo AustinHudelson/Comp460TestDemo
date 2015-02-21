@@ -13,10 +13,6 @@ class Warrior: Unit, PType
     var AnimationName = "Character1BaseColorization"
     var testProperty = "WRONG!"
     
-    override var type: String {
-        return "Warrior"
-    }
-    
     override init(recievedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init(recievedData: recievedData)
@@ -41,16 +37,19 @@ class Warrior: Unit, PType
         }
     }
     
-    override init(name: String, ID:String, health: Int, speed: CGFloat)
+    override init(name: String, ID:String, health: Int, speed: CGFloat, spawnLocation: CGPoint)
     {
-        super.init(name: name, ID:ID, health: health, speed: speed)
+        super.init(name: name, ID:ID, health: health, speed: speed, spawnLocation: spawnLocation)
         self.sprite.xScale = 0.5
         self.sprite.yScale = 0.5
-        self.testProperty = "RIGHT!"
+        self.testProperty = "kinda Wrong!"
+        self.setValue("TOTALLY RIGHT!", forKey: "testProperty")
         
         //self.sprite = SKSpriteNode(imageNamed:AnimationName+"-Stand")
         
         //self.apply(Move(position1: CGPoint(x: 1.0, y: 2.0)))
         //self.move(CGPoint(x: 400, y: 300))
+        
+        self.type = "Warrior"
     }
 }

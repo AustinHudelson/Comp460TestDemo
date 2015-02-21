@@ -8,20 +8,18 @@
 
 import SpriteKit
 
+@objc(Move)
 class Move : Order, PType
 {
     var moveToLoc: CGPoint
     var receiver: Unit
-    
-    override var type: String {
-        return "Move"
-    }
     
     init(receiverIn: Unit, moveToLoc: CGPoint)
     {
         self.receiver = receiverIn
         self.moveToLoc = moveToLoc
         super.init()
+        self.type = "Move"
     }
     
     override func apply()

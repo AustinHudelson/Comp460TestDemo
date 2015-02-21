@@ -23,6 +23,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if key == "Units" {
                 for unit in arrayOfObjects {
                     // Make a new unit by calling its corresponding constructor
+                    println("UNIT RECIEVED")
+                    println(unit)
+                    if (unit["type"] as String) == "Warrior" {
+                        let newUnit = Warrior(recievedData: unit)
+                        unit_list[newUnit.ID] = newUnit
+                        let spawnLoc = CGPoint(x: (unit["posX"] as CGFloat), y: (unit["posY"] as CGFloat))
+                        newUnit.addUnitToGameScene(self, pos: spawnLoc, scaleX: 1.0, scaleY: 1.0)
+                    } else {
+                        println("Invalid recieved unit")
+                        println(unit["type"] as String)
+                    }
                 }
             }
             if key == "Orders" {
@@ -108,18 +119,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Create a warrior unit with name = player name
         var playerName = AppWarpHelper.sharedInstance.playerName
-        let war = Warrior(name: playerName, ID:playerName, health: 100, speed: CGFloat(100.1))
         let war_position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        addUnitToGame(war, position: war_position) //Adds and send the unit
+        let war = Warrior(name: playerName, ID:playerName, health: 100, speed: CGFloat(100.1), spawnLocation: war_position)
+        
+        addUnitToGame(war) //Adds and send the unit
         
         //Create a unit on the scene, should have the same ID for all players so should only create one time
         let DUMMY_ID = "1"
-        let dummy = Warrior(name: "Dummy", ID: DUMMY_ID, health: 100, speed: CGFloat(80.0))
         let dummy_position = CGPoint(x:CGRectGetMidX(self.frame)+50, y:CGRectGetMidY(self.frame));
+        let dummy = Warrior(name: "Dummy", ID: DUMMY_ID, health: 100, speed: CGFloat(80.0), spawnLocation: dummy_position)
+        
         
         //println(dummy.toJsonString())
         
-        addUnitToGame(dummy, position: dummy_position)
+        addUnitToGame(dummy)
         
         
         
@@ -134,12 +147,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //Does all work necessary to add a unit to the game for all connected players
-    func addUnitToGame(newUnit: Unit, position: CGPoint){
-        unit_list[newUnit.ID] = newUnit
-        newUnit.addUnitToGameScene(self, pos: position, scaleX: 0.5, scaleY: 0.5)
+    func addUnitToGame(newUnit: Unit){
+        //unit_list[newUnit.ID] = newUnit
+        //newUnit.addUnitToGameScene(self, pos: position, scaleX: 0.5, scaleY: 0.5)
+        
         var sendData: Dictionary<String, Array<AnyObject>> = [:]
         sendData["Units"] = []
-        sendData["Units"]!.append(unit_list[newUnit.ID]!.toJSON())
+        sendData["Units"]!.append(newUnit.toJSON())
         AppWarpHelper.sharedInstance.sendUpdate(sendData)
     }
     

@@ -10,7 +10,7 @@ import SpriteKit
 @objc(Unit)
 class Unit: SerializableJSON, PType
 {
-    let UnitCategory: UInt32 = 0x1 << 0
+    var UnitCategory: UInt32 = 0x1 << 0
     var name: String = ""
     var ID: String = ""
     var health: Int = 0
@@ -24,33 +24,11 @@ class Unit: SerializableJSON, PType
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
     
-    var type: String {
-        //Should not send a bare unit type ever.
-        return "Unit"
-    }
+    var type: String = "Unit"
     
     init(recievedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init()
-        
-        /* Configure Health Text (SHOULD MATH OTHER INIT() FUNCTION) */
-        self.DS_health_txt.fontColor = UIColor.redColor()
-        self.DS_health_txt.text = self.health.description
-        self.DS_health_txt.fontSize = 40
-        
-        //Initializes all the DS_ animations
-        initializeAnimations()
-        
-        /* Sprite setup (SHOULD MATCH OTHER INIT() FUNCTION) */
-        sprite = SKSpriteNode(imageNamed: "Mage")
-        self.sprite.runAction(self.DS_standAnim)
-        
-        // physics stuff
-        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
-        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
-        self.sprite.physicsBody?.categoryBitMask = UnitCategory
-        self.sprite.physicsBody?.collisionBitMask = 0
-        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
         
         var aClass : AnyClass? = Unit.self      //ADJUST FOR EACH CLASS?
         var propertiesCount : CUnsignedInt = 0
@@ -70,9 +48,28 @@ class Unit: SerializableJSON, PType
                 println("Unable to find value for property: "+propName)
             }
         }
+        
+        /* Configure Health Text (SHOULD MATH OTHER INIT() FUNCTION) */
+        self.DS_health_txt.fontColor = UIColor.redColor()
+        self.DS_health_txt.text = self.health.description
+        self.DS_health_txt.fontSize = 40
+        
+        //Initializes all the DS_ animations
+        initializeAnimations()
+        
+        /* Sprite setup (SHOULD MATCH OTHER INIT() FUNCTION) */
+        sprite = SKSpriteNode(imageNamed: "Mage")
+        self.sprite.runAction(self.DS_standAnim)
+        
+        // physics stuff
+        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
+        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
+        self.sprite.physicsBody?.categoryBitMask = UnitCategory
+        self.sprite.physicsBody?.collisionBitMask = 0
+        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
     }
     
-    init(name: String, ID: String, health: Int, speed: CGFloat) {
+    init(name: String, ID: String, health: Int, speed: CGFloat, spawnLocation: CGPoint) {
         super.init()
         self.name = name
         self.health = health
@@ -88,6 +85,7 @@ class Unit: SerializableJSON, PType
         
         /* Sprite setup */
         sprite = SKSpriteNode(imageNamed: "Mage")
+        sprite.position = spawnLocation
         self.sprite.runAction(self.DS_standAnim)
         
         //// physics stuff

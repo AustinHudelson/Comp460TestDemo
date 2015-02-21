@@ -12,9 +12,7 @@
 //that conform to the "Interface" (swift "Protocall") POrder
 class Order: SerializableJSON, PType
 {
-    var type: String {
-        return "UNDEFINED"
-    }
+    var type: String = "UNDEFINED"
     
     func apply(){
         //Print error message
