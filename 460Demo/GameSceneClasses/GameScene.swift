@@ -38,7 +38,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             if key == "Orders" {
-                //TODO
+                for order in arrayOfObjects {
+                    // Make an Order object out of what is received
+                    var anyobjecttype: AnyObject.Type = NSClassFromString(order["type"] as NSString)
+                    var nsobjecttype: Order.Type = anyobjecttype as Order.Type
+                    var newOrder: Order = nsobjecttype(receivedData: order, unitList: unit_list)
+                    
+                    newOrder.apply()
+                    
+                }
             }
         }
     }

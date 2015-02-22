@@ -95,6 +95,8 @@ class Unit: SerializableJSON, PType
     }
     /* !!!!!!NEED TO CHANGE THESE TWO IN FUTURE!!!!!! */
     func sendOrder(order: Order){
+        println("hi")
+        println(currentOrder.type)
         currentOrder.remove()
         currentOrder = order
         currentOrder.apply()
