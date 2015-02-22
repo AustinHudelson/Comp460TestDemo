@@ -21,11 +21,11 @@ func +=<K, V> (inout left: Dictionary<K, V>, right: Dictionary<K, V>) -> Diction
 }
 
 class SerializableJSON: NSObject {
-    override required init() {
-        
-    }
     
-    required init(receivedData: Dictionary<String, AnyObject>){
+    func restoreProperties(aClass: AnyClass?, receivedData: Dictionary<String, AnyObject>){
+        var propertiesCount : CUnsignedInt = 0
+        let propertiesInAClass : UnsafeMutablePointer<objc_property_t> = class_copyPropertyList(aClass, &propertiesCount)
+        //var propertiesDictionary : NSMutableDictionary = NSMutableDictionary()
         
         for var i = 0; i < Int(propertiesCount); i++ {
             var property = propertiesInAClass[i]

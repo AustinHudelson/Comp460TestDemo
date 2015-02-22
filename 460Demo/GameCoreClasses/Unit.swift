@@ -26,11 +26,6 @@ class Unit: SerializableJSON, PType
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
     
-    required init() {
-        // take this out eventually
-        super.init()
-    }
-    
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init()
