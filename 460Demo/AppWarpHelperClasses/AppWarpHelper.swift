@@ -13,13 +13,13 @@ class AppWarpHelper: NSObject
 {
     var api_key = "8f4823c2a1bca11bb4ad1349d127b62a312481af36cc74cda1994f9ca6564857"
     var secret_key = "c36ad65cbc48eb1df497ee91ccac5a19693ba83d6ac4b72d2aa537f563a94069"
-    var roomId = "1506717553"
+    var roomId: String = "1506717553"
     var enemyName: String = ""
     //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
     var playerName: String = ""
     var connected: Bool = false // variable used to check if we've established connection. This needs to be true b4 we actually send stuff
+    var userName_list: Array<String> = [] // used to store the list of users currently in room
     
-    var gameViewController: GameViewController? = nil
     var gameScene: GameScene? = nil
     
     class var sharedInstance:AppWarpHelper{
@@ -156,72 +156,10 @@ class AppWarpHelper: NSObject
             println("!!!Error in converting recv data!!!")
             println(error!)
         }
-        
-//        gameScene!.updateGameState(recvData)
     }
     
-    
-    func updatePlayerDataToServer(dataDict:NSMutableDictionary)
-    {
-        //if let y = dataDict as? String
-        //{
-        //    return
-        //}
-        
-        var convertedData = NSJSONSerialization.dataWithJSONObject(dataDict, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
-        //var convertedData = NSPropertyListSerialization.dataWithPropertyList(dataDict, format: NSPropertyListFormat.XMLFormat_v1_0, options: 0, error: nil)
-        
-        if convertedData == nil
-        {
-            return
-        }
-        
-        if WarpClient.getInstance().getConnectionState()==0
-        {
-            println("updatePlayerDataToServer")
-            WarpClient.getInstance().sendUpdatePeers(convertedData)
-        }
+    func getLiveRoomInfo() {
+        WarpClient.getInstance().getLiveRoomInfo(roomId)
     }
     
-//    func receivedEnemyStatus(data:NSData)
-//    {
-//        println("receivedEnemyStatus...1")
-//        println(data)
-//        println("receivedEnemyStatus...2")
-//        var error: NSErrorPointer? = nil
-//        var errortwo: NSError?
-//        var propertyListFormat:NSPropertyListFormat? = nil
-//        //var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data,options: NSJSONReadingOptions.MutableContainers, error:error!) as NSDictionary
-//        var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error:&errortwo) as NSDictionary
-//        //var responseDict: NSDictionary = NSPropertyListSerialization.propertyListWithData(data, options: 0, error: nil) as NSDictionary
-//            
-//        println(responseDict)
-//        println(errortwo?.debugDescription)
-//        //gameScene!.updateEnemyStatus(responseDict)
-//        
-//
-//        println("receivedEnemyStatus...3")
-//        
-//        
-//        gameScene!.updateEnemyStatus(responseDict)
-////        if enemyName.isEmpty
-////        {
-////            var userName : (String!) = responseDict.objectForKey("userName") as String
-////            let isEqual = playerName.hasPrefix(userName)
-////            if !isEqual
-////            {
-////                enemyName = responseDict.objectForKey("userName") as String
-////                gameScene!.updateEnemyStatus(responseDict)
-////            }
-////        }
-////        else
-////        {
-////            var userName : (String!) = responseDict.objectForKey("userName") as String
-////            let isEqual = enemyName.hasPrefix(userName)
-////            if !isEqual
-////            {
-////                
-////            }
-////        }
-//    }
 }

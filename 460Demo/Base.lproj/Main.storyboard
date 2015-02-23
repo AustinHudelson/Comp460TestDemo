@@ -25,9 +25,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="by4-gA-Hf9" kind="presentation" id="MiD-Zj-IU0"/>
+                                    <segue destination="by4-gA-Hf9" kind="presentation" identifier="playerNameSegue" id="MiD-Zj-IU0"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Player Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzJ-mn-bze">
+                                <rect key="frame" x="211" y="235" width="178" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.20409617592886675" green="0.26883070372341328" blue="0.66997367143630981" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.20409617590000001" green="0.26883070370000001" blue="0.66997367139999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,6 +43,9 @@
                             <constraint firstItem="sWx-W1-Kxd" firstAttribute="top" secondItem="maK-i9-Uhn" secondAttribute="bottom" constant="250" id="zdD-HE-Ww7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="crp-bz-6Tv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
