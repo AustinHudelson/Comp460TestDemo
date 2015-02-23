@@ -35,6 +35,11 @@ class SerializableJSON: NSObject {
             //Check if the key is in the dictionary (only DS_ and sprite should not appear here)
             if receivedData[propName] != nil {
                 let propValue = receivedData[propName]
+                
+                //NEED TO CHECK IF THE RECEIVED DATA IS PRIMITIVE, SERIALIZEABLEJSON OR ARRAY<SERIALIZEABLEJSON>.
+                //
+                
+                //Primitive Case
                 self.setValue(propValue, forKey: propName)
             } else {
                 println("Unable to find value for property: "+propName)

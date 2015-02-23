@@ -93,10 +93,10 @@ class Unit: SerializableJSON, PType
         println(self.toJSON())
         
     }
-    /* !!!!!!NEED TO CHANGE THESE TWO IN FUTURE!!!!!! */
+    
     func sendOrder(order: Order){
         println("hi")
-        println(currentOrder.type)
+        println(order.type)
         currentOrder.remove()
         currentOrder = order
         currentOrder.apply()

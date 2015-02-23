@@ -14,6 +14,8 @@
 class Order: SerializableJSON, PType
 {
     var type: String = "UNDEFINED"
+    var DS_receiver: Unit?
+    var ID: String?
     
     required init(receivedData: Dictionary<String, AnyObject>, unitList: Dictionary<String, Unit>){
         super.init()

@@ -12,18 +12,18 @@ import SpriteKit
 class Attack: Order, PType
 {
     var DS_target: Unit?
-    var DS_receiver: Unit?
+    //var DS_receiver: Unit?
     var animationGapDistance: CGFloat = 20.0 //Default value is overwritten in init
     var tID: String = ""
-    var rID: String = ""
+    //var ID: String = ""
     
     init(receiverIn: Unit, target: Unit){
-        DS_receiver = receiverIn
+        super.init()
+        self.DS_receiver = receiverIn
         self.DS_target = target
         self.animationGapDistance = 20.0
         tID = target.ID
-        rID = receiverIn.ID
-        super.init()
+        ID = receiverIn.ID
         type = "Attack"
     }
 
@@ -31,7 +31,7 @@ class Attack: Order, PType
         super.init(receivedData: receivedData, unitList: unitList)
         restoreProperties(Move.self, receivedData: receivedData)
         
-        DS_receiver = unitList[rID]!
+        DS_receiver = unitList[self.ID!]!
         DS_target = unitList[tID]!
     }
     

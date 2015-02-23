@@ -13,12 +13,12 @@
 @objc(Idle)
 class Idle: Order, PType {
     
-    var receiver: Unit
+    //var DS_receiver: Unit
     
     init (receiverIn: Unit){
-        self.receiver = receiverIn
         super.init()
-        type = "Idle"
+        self.DS_receiver = receiverIn
+        self.type = "Idle"
     }
 
     required init(receivedData: Dictionary<String, AnyObject>, unitList:Dictionary<String, Unit>) {

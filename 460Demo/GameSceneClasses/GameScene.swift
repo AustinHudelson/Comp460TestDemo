@@ -31,6 +31,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         
                         unit_list[newUnit.ID] = newUnit
                         let spawnLoc = CGPoint(x: (unit["posX"] as CGFloat), y: (unit["posY"] as CGFloat))
+                        
+                        newUnit.currentOrder = Idle(receiverIn: newUnit) //TEMPORARY WORKAROUND FOR ORDERS THAT DO NOT DESERIALIZE PROPERLY
+                        
                         newUnit.addUnitToGameScene(self, pos: spawnLoc, scaleX: 1.0, scaleY: 1.0)
                         
                         sendUnit(unit_list[AppWarpHelper.sharedInstance.playerName]!) // send myself to everyone who hasn't got me
@@ -44,8 +47,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     var nsobjecttype: Order.Type = anyobjecttype as Order.Type
                     var newOrder: Order = nsobjecttype(receivedData: order, unitList: unit_list)
                     
-                    newOrder.apply()
-                    
+                    (unit_list[newOrder.ID!]!).sendOrder(newOrder) //SEND THE ORDER TO ITS UNIT
+                    //newOrder.valueForKey("DS_receiver")
                 }
             }
         }
