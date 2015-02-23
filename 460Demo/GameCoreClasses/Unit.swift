@@ -89,8 +89,8 @@ class Unit: SerializableJSON, PType
         gameScene.addChild(self.DS_health_txt)
         
         //PRINTLN MYSELF AS JSON
-        println("PRINTING SELF AS JSON LOOK HERE!!!!")
-        println(self.toJSON())
+        //println("PRINTING SELF AS JSON LOOK HERE!!!!")
+        //println(self.toJSON())
         
     }
     

@@ -8,8 +8,8 @@
 
 import SpriteKit
 
-@objc(Attack)
-class Attack: Order, PType
+@objc(RoamAttack)
+class RoamAttack: Order, PType
 {
     var DS_target: Unit?
     //var DS_receiver: Unit?
@@ -17,21 +17,20 @@ class Attack: Order, PType
     var tID: String = ""
     //var ID: String = ""
     
-    init(receiverIn: Unit, target: Unit){
+    init(receiverIn: Unit){
         super.init()
         self.DS_receiver = receiverIn
-        self.DS_target = target
+        //self.DS_target = target
         self.animationGapDistance = 20.0
-        tID = target.ID
+        //tID = target.ID
         ID = receiverIn.ID
-        type = "Attack"
+        type = "RoamAttack"
     }
-
+    
     required init(receivedData: Dictionary<String, AnyObject>, unitList: Dictionary<String, Unit>) {
         super.init(receivedData: receivedData, unitList: unitList)
-        restoreProperties(Attack.self, receivedData: receivedData)
-        println(unitList)
-        println(tID)
+        restoreProperties(Move.self, receivedData: receivedData)
+        
         DS_receiver = unitList[self.ID!]!
         DS_target = unitList[tID]!
     }
