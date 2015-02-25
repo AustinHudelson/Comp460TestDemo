@@ -18,7 +18,8 @@ class AppWarpHelper: NSObject
     //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
     var playerName: String = ""
     var connected: Bool = false // variable used to check if we've established connection. This needs to be true b4 we actually send stuff
-    var userName_list: Array<String> = [] // used to store the list of users currently in room
+    var userName_list: NSMutableArray = [] // used to store the list of users currently in room
+    var lobby: LobbyViewController? = nil
     
     var gameScene: GameScene? = nil
     
@@ -160,6 +161,10 @@ class AppWarpHelper: NSObject
     
     func getLiveRoomInfo() {
         WarpClient.getInstance().getLiveRoomInfo(roomId)
+    }
+    
+    func updateUserList() {
+        lobby!.updateUserList()
     }
     
 }

@@ -31,6 +31,12 @@ class LobbyViewController: UIViewController {
         println("Now connecting w/ username = \(myPlayerName)")
         AppWarpHelper.sharedInstance.connectWithAppWarpWithUserName(myPlayerName)
         println("Completed connection w/ username = \(myPlayerName)")
+        
+        AppWarpHelper.sharedInstance.lobby = self
+    }
+    
+    func updateUserList() {
+        println(AppWarpHelper.sharedInstance.userName_list)
     }
     
     @IBAction func startButtonAction(sender: UIButton) {

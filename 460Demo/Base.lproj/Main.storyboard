@@ -63,8 +63,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKd-0Z-ygp">
-                                <rect key="frame" x="245" y="240" width="111" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKd-0Z-ygp">
+                                <rect key="frame" x="226" y="336" width="111" height="30"/>
                                 <state key="normal" title="Start Game">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -73,8 +73,8 @@
                                     <segue destination="2ym-kd-4K2" kind="presentation" id="JYk-0f-OoS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAz-7P-qzZ">
-                                <rect key="frame" x="277" y="328" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAz-7P-qzZ">
+                                <rect key="frame" x="258" y="424" width="46" height="30"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -84,14 +84,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="uKd-0Z-ygp" firstAttribute="top" secondItem="yRe-Yf-8Mf" secondAttribute="bottom" constant="250" id="45c-TR-LJl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gAz-7P-qzZ" secondAttribute="trailing" constant="250" id="GCb-cw-MQ3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uKd-0Z-ygp" secondAttribute="trailing" constant="250" id="M1B-LH-VLt"/>
-                            <constraint firstItem="uKd-0Z-ygp" firstAttribute="leading" secondItem="tVp-UM-yKM" secondAttribute="leadingMargin" constant="250" id="Unc-5w-BZb"/>
-                            <constraint firstItem="gAz-7P-qzZ" firstAttribute="leading" secondItem="tVp-UM-yKM" secondAttribute="leadingMargin" constant="250" id="bOe-vU-hUU"/>
-                            <constraint firstItem="gAz-7P-qzZ" firstAttribute="top" secondItem="uKd-0Z-ygp" secondAttribute="bottom" constant="100" id="yw8-wk-drn"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="startButton" destination="uKd-0Z-ygp" id="edo-7J-nZc"/>
