@@ -21,6 +21,7 @@ class Unit: SerializableJSON, PType
     var speed: CGFloat = 0.0
     var sprite: SKNode = SKSpriteNode(imageNamed: "Mage")
     var currentOrder: Order = NoneOrder()
+    var alive: Bool = true
     var DS_walkAnim: SKAction?
     var DS_attackAnim: SKAction?
     var DS_standAnim: SKAction?
@@ -196,7 +197,7 @@ class Unit: SerializableJSON, PType
             self.takeDamage(-self.healthregen)
         }
         
-        self.currentOrder.update()
+        //self.currentOrder.update()
     }
     
     /*
@@ -204,8 +205,19 @@ class Unit: SerializableJSON, PType
     * playes the units death animation and prevents further actions
     */
     func death(){
+        if alive == false {
+            return
+        }
+        alive = false
         applyTint(SKColor.blackColor(), factor: 1.0, blendDuration: 1.0)
         sendOrder(Idle(receiverIn: self))
+        
+        GameScene.global.removeUnitFromGame(ID) //REMOVE UNIT LOCALLY: (DANGEROUS)
+        
+        var remove: SKAction = SKAction.removeFromParent()
+        self.DS_health_txt.runAction(remove)
+        self.sprite.runAction(remove)
+        
     }
     
     /*

@@ -40,7 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if key == "Units" {
                 for unit in arrayOfObjects {
                     // Make a new unit by calling its corresponding constructor
-                    if unit_list[unit["ID"] as String] == nil {
+                    if GameScene.global.unit_list[unit["ID"] as String] == nil {
                         var anyobjecttype: AnyObject.Type = NSClassFromString(unit["type"] as NSString)
                         var nsobjecttype: Unit.Type = anyobjecttype as Unit.Type
                         var newUnit: Unit = nsobjecttype(receivedData: unit)
@@ -70,7 +70,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-
+    
+    
     func startGameScene() {
         println("GAME SCENE START")
         
@@ -82,9 +83,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sendUnit(war) //Adds and send the unit
         
         //Create a unit on the scene, should have the same ID for all players so should only create one time
-        let DUMMY_ID = "1"
-        let dummy_position = CGPoint(x:CGRectGetMidX(self.frame)-50, y:CGRectGetMidY(self.frame));
-        let dummy = Enemy(ID: DUMMY_ID, health: 30, speed: CGFloat(20.0), spawnLocation: dummy_position)
+        let DUMMY_ID = playerName+"ENEMY"
+        let dummy_position = CGPoint(x:CGRectGetMaxX(self.frame)+50, y:CGRectGetMidY(self.frame));
+        let dummy = Enemy(ID: DUMMY_ID, health: 30, speed: CGFloat(35.0), spawnLocation: dummy_position)
         
         sendUnit(dummy)
     }
@@ -100,10 +101,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         AppWarpHelper.sharedInstance.sendUpdate(sendData)
     }
     
-    func removeUnitFromGame(unit: Unit){
-        var sendData: Dictionary<String, Array<AnyObject>> = [:]
-        sendData["Kill"]!.append(unit.ID)
-        AppWarpHelper.sharedInstance.sendUpdate(sendData)
+    func removeUnitFromGame(ID: String){
+//        var sendData: Dictionary<String, Array<AnyObject>> = [:]
+//        sendData["Kill"]!.append(unit.ID)
+//        AppWarpHelper.sharedInstance.sendUpdate(sendData)
+        
+        let DUMMY_ID = ID
+        unit_list[ID] = nil
+        GameScene.global.unit_list[ID] = nil
+        
+        println("REMOVING UNITS")
+        
+        //Create a unit on the scene, should have the same ID for all players so should only create one time
+        let dummy_position = CGPoint(x:CGRectGetMaxX(self.frame)+50, y:CGRectGetMidY(self.frame));
+        let dummy = Enemy(ID: DUMMY_ID, health: 30, speed: CGFloat(35.0), spawnLocation: dummy_position)
+        
+        sendUnit(dummy)
+        
     }
     
     override func didMoveToView(view: SKView) {
@@ -243,7 +257,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //SIMULATE UPDATE LOOP. THIS IS LIKE THE WORST WAY TO DO THIS EVER!
         TEMPREMOVECOUNTER += 1
-        if (TEMPREMOVECOUNTER == 15){
+        if (TEMPREMOVECOUNTER == 10){
             TEMPREMOVECOUNTER = 0
             for (id, unit) in unit_list {
                 unit.update()

@@ -89,6 +89,7 @@ class RoamAttack: Order, PType
     override func update(){
         if DS_moveState == true {
             DS_receiver!.clearMove()
+            DS_moveState = false
             attackCycle()
         }
         
