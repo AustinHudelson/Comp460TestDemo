@@ -111,5 +111,10 @@ class Enemy: Unit, PType
         self.DS_attackAnim = SKAction.repeatAction(attackTextures, count: 1)
     }
     
+    override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint, scaleX: CGFloat, scaleY: CGFloat) {
+        super.addUnitToGameScene(gameScene, pos: pos, scaleX: scaleX, scaleY: scaleY)
+        self.sendOrder(RoamAttack(receiverIn: self))
+    }
+    
     
 }

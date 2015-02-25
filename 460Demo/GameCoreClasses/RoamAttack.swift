@@ -20,9 +20,9 @@ class RoamAttack: Order, PType
     init(receiverIn: Unit){
         super.init()
         self.DS_receiver = receiverIn
-        //self.DS_target = target
+        self.DS_target = GameScene.global.getClosestPlayer(receiverIn.sprite.position)
         self.animationGapDistance = 20.0
-        //tID = target.ID
+        tID = DS_target!.ID
         ID = receiverIn.ID
         type = "RoamAttack"
     }
@@ -36,7 +36,7 @@ class RoamAttack: Order, PType
     }
     
     override func apply(){
-        if self.DS_receiver!.currentOrder is Attack
+        if self.DS_receiver!.currentOrder is RoamAttack
         {
             var movePos: CGPoint
             if(DS_receiver!.sprite.position.x < DS_target!.sprite.position.x)

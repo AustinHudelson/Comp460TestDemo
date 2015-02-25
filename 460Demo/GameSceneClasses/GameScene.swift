@@ -13,8 +13,24 @@ import Foundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    
+    /* WARNING: CURRENTLY TWO COPPIES OF unit_list EXIST. THE ONE THAT IS LOCAL TO GAME SCENE AND THE ONE
+     * ACCESSED THROUGH GameScene.global.unit_list[]. THIS NEEDS TO BE FIXED AT SOME POINT EXTREMELY SOON
+     */
     var unit_list: Dictionary<String, Unit> = [:] // Our list of units in the scene
     var playerIsTouched = false
+    
+    class var global:GameScene{
+        struct Static{
+            static var instance:GameScene?
+            static var token: dispatch_once_t = 0
+        }
+        
+        dispatch_once(&Static.token){
+            Static.instance = GameScene()
+        }
+        return Static.instance!
+    }
     
     /*
         Update the game state according to dictionary received over the network
@@ -30,6 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         var newUnit: Unit = nsobjecttype(receivedData: unit)
                         
                         unit_list[newUnit.ID] = newUnit
+                        GameScene.global.unit_list[newUnit.ID] = newUnit
                         let spawnLoc = CGPoint(x: (unit["posX"] as CGFloat), y: (unit["posY"] as CGFloat))
                         
                         newUnit.currentOrder = Idle(receiverIn: newUnit) //TEMPORARY WORKAROUND FOR ORDERS THAT DO NOT DESERIALIZE PROPERLY
@@ -66,10 +83,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //Create a unit on the scene, should have the same ID for all players so should only create one time
         let DUMMY_ID = "1"
-        let dummy_position = CGPoint(x:CGRectGetMidX(self.frame)+50, y:CGRectGetMidY(self.frame));
-        let dummy = Warrior(ID: DUMMY_ID, health: 100, speed: CGFloat(80.0), spawnLocation: dummy_position)
+        let dummy_position = CGPoint(x:CGRectGetMidX(self.frame)-50, y:CGRectGetMidY(self.frame));
+        let dummy = Enemy(ID: DUMMY_ID, health: 30, speed: CGFloat(20.0), spawnLocation: dummy_position)
         
-//        sendUnit(dummy)
+        sendUnit(dummy)
     }
     
     //Does all work necessary to add a unit to the game for all connected players
@@ -222,5 +239,58 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Go through each unit in the unit_list and do a runAction on their corresponding Order
         */
         
+    }
+    
+    
+    /*
+     * GLOBAL HELPER FUNCTIONS FOR GETTING UNITS! GAME SCENE MIGHT
+     * NOT BE THE BEST PLACE TO STORE THESE. MAYBE A UTIL FILE?
+     * CONSIDER CHANGING THIS STRUCTURE LATER
+     */
+    
+    /*
+     *Function to get distance between 2 CGPoints
+     */
+    func getDistance(p1: CGPoint, p2: CGPoint) -> CGFloat{
+        let xDist = (p2.x - p1.x);
+        let yDist = (p2.y - p1.y);
+        return sqrt((xDist * xDist) + (yDist * yDist));
+    }
+    
+    /*
+     * Function to QUICKLY get a RELATIVE distance.
+     * Does not run the sqrt function, instead simply returns its square.
+     * When comparing distances it is not required to know the actual distance.
+     */
+    func getRelativeDistance(p1: CGPoint, p2: CGPoint) -> CGFloat{
+        let xDist = (p2.x - p1.x);
+        let yDist = (p2.y - p1.y);
+        return ((xDist * xDist) + (yDist * yDist));
+    }
+    
+    /*
+     * Returns the closest PLAYER to the given point
+     */
+    func getClosestPlayer(p1: CGPoint) -> Unit {
+        var nearby: Unit?
+        var near: CGFloat = CGFloat.infinity
+        
+        for (id, unit) in unit_list {
+            if unit is Enemy{   //WARNING: THIS IS A TERRIBLE WAY TO CHECK ALLIANCE... MUST UPDATE LATER
+                continue
+            }
+            var p2 = unit.sprite.position
+            var dist = getRelativeDistance(p1, p2:p2)
+            if dist < near{
+                nearby = unit
+                near = dist
+            }
+        }
+        
+        if nearby == nil {
+            fatalError("Unable to find closest player to point. Empty player list?")
+        }
+        
+        return nearby!
     }
 }
