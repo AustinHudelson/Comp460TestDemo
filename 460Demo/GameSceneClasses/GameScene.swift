@@ -78,14 +78,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Create a warrior unit with name = player name
         var playerName = AppWarpHelper.sharedInstance.playerName
         let war_position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        let war = Warrior(ID:playerName, health: 100, speed: CGFloat(100.1), spawnLocation: war_position)
+        let war = Warrior(ID:playerName, health: 50, speed: CGFloat(100.1), spawnLocation: war_position)
         
         sendUnit(war) //Adds and send the unit
         
         //Create a unit on the scene, should have the same ID for all players so should only create one time
         let DUMMY_ID = playerName+"ENEMY"
         let dummy_position = CGPoint(x:CGRectGetMaxX(self.frame)+50, y:CGRectGetMidY(self.frame));
-        let dummy = Enemy(ID: DUMMY_ID, health: 30, speed: CGFloat(35.0), spawnLocation: dummy_position)
+        let dummy = Enemy(ID: DUMMY_ID, health: 30, speed: CGFloat(45.0), spawnLocation: dummy_position)
         
         sendUnit(dummy)
     }
@@ -114,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //Create a unit on the scene, should have the same ID for all players so should only create one time
         let dummy_position = CGPoint(x:CGRectGetMaxX(self.frame)+50, y:CGRectGetMidY(self.frame));
-        let dummy = Enemy(ID: DUMMY_ID, health: 30, speed: CGFloat(35.0), spawnLocation: dummy_position)
+        let dummy = Enemy(ID: DUMMY_ID, health: 30, speed: CGFloat(45.0), spawnLocation: dummy_position)
         
         sendUnit(dummy)
         
