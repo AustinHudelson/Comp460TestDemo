@@ -88,6 +88,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let dummy = Enemy(ID: DUMMY_ID, health: 30, speed: CGFloat(45.0), spawnLocation: dummy_position)
         
         sendUnit(dummy)
+        
+        let DUMMY_ID2 = playerName+"ENEMY2"
+        let dummy_position2 = CGPoint(x:CGRectGetMaxX(self.frame)+100, y:CGRectGetMidY(self.frame));
+        let dummy2 = Enemy(ID: DUMMY_ID2, health: 30, speed: CGFloat(45.0), spawnLocation: dummy_position2)
+        
+        sendUnit(dummy2)
     }
     
     //Does all work necessary to add a unit to the game for all connected players

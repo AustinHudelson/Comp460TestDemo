@@ -37,8 +37,8 @@ class Warrior: Unit, PType
         self.health = 100
         self.maxhealth = 100
         self.healthregen = 1
-        self.sprite.xScale = 0.5
-        self.sprite.yScale = 0.5
+        self.sprite.xScale = 1.0
+        self.sprite.yScale = 1.0
         self.testProperty = "kinda Wrong!"
         self.setValue("TOTALLY RIGHT!", forKey: "testProperty")
         

@@ -36,8 +36,8 @@ class Enemy: Unit, PType
         self.health = 30
         self.maxhealth = 30
         self.healthregen = 0
-        self.sprite.xScale = 0.5
-        self.sprite.yScale = 0.5
+        self.sprite.xScale = 0.75
+        self.sprite.yScale = 0.75
         self.testProperty = "kinda Wrong!"
         self.setValue("TOTALLY RIGHT!", forKey: "testProperty")
         
@@ -117,6 +117,7 @@ class Enemy: Unit, PType
     override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint, scaleX: CGFloat, scaleY: CGFloat) {
         super.addUnitToGameScene(gameScene, pos: pos, scaleX: scaleX, scaleY: scaleY)
         self.sendOrder(RoamAttack(receiverIn: self))
+        self.applyTint(SKColor.redColor(), factor: 0.75, blendDuration: NSTimeInterval(0.0))
 
     }
     
