@@ -33,6 +33,9 @@ class Enemy: Unit, PType
     override init(ID:String, health: Int, speed: CGFloat, spawnLocation: CGPoint)
     {
         super.init(ID:ID, health: health, speed: speed, spawnLocation: spawnLocation)
+        self.health = 30
+        self.maxhealth = 30
+        self.healthregen = 0
         self.sprite.xScale = 0.5
         self.sprite.yScale = 0.5
         self.testProperty = "kinda Wrong!"
@@ -114,6 +117,7 @@ class Enemy: Unit, PType
     override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint, scaleX: CGFloat, scaleY: CGFloat) {
         super.addUnitToGameScene(gameScene, pos: pos, scaleX: scaleX, scaleY: scaleY)
         self.sendOrder(RoamAttack(receiverIn: self))
+
     }
     
     

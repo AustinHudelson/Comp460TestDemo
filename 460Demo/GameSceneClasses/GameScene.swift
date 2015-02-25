@@ -233,11 +233,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
     }
-
+    
+    var TEMPREMOVECOUNTER: Int = 0
+    
     override func update(currentTime: CFTimeInterval) {
         /*
             Go through each unit in the unit_list and do a runAction on their corresponding Order
         */
+        
+        //SIMULATE UPDATE LOOP. THIS IS LIKE THE WORST WAY TO DO THIS EVER!
+        TEMPREMOVECOUNTER += 1
+        if (TEMPREMOVECOUNTER == 15){
+            TEMPREMOVECOUNTER = 0
+            for (id, unit) in unit_list {
+                unit.update()
+            }
+        }
         
     }
     

@@ -19,6 +19,7 @@ class Warrior: Unit, PType
         //Special case for sprite
         super.init(receivedData: receivedData)
         
+        
         restoreProperties(Warrior.self, receivedData: receivedData)
         
         //Initializes all the DS_ animations
@@ -33,6 +34,9 @@ class Warrior: Unit, PType
     override init(ID:String, health: Int, speed: CGFloat, spawnLocation: CGPoint)
     {
         super.init(ID:ID, health: health, speed: speed, spawnLocation: spawnLocation)
+        self.health = 100
+        self.maxhealth = 100
+        self.healthregen = 1
         self.sprite.xScale = 0.5
         self.sprite.yScale = 0.5
         self.testProperty = "kinda Wrong!"

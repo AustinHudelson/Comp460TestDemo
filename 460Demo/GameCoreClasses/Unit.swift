@@ -16,6 +16,8 @@ class Unit: SerializableJSON, PType
     var type: String = "Unit"
     var ID: String = ""
     var health: Int = 0
+    var maxhealth: Int = 0
+    var healthregen: Int = 0
     var speed: CGFloat = 0.0
     var sprite: SKNode = SKSpriteNode(imageNamed: "Mage")
     var currentOrder: Order = NoneOrder()
@@ -105,8 +107,36 @@ class Unit: SerializableJSON, PType
     func takeDamage(damage:Int)
     {
         health-=damage
+        
+        if health < 0 {
+            health = 0
+            death()
+        }
+        
         println("\(ID), \(health)")
         self.DS_health_txt.text = self.health.description
+    }
+    
+    func faceLeft(){
+        self.sprite.runAction(SKAction.scaleXTo(-0.5, duration: 0.0))
+    }
+    
+    func faceRight(){
+        self.sprite.runAction(SKAction.scaleXTo(0.5, duration: 0.0))
+    }
+    
+    func applyTint(tint: SKColor, factor: CGFloat, blendDuration: NSTimeInterval){
+        let changeColorAction = SKAction.colorizeWithColor(tint, colorBlendFactor: factor, duration: blendDuration)
+        self.sprite.runAction(changeColorAction) {
+            (self.sprite as SKSpriteNode).color = tint //On completion of action, we set color so after in comparison method not have conflicts while comparing color components
+        }
+    }
+    
+    func isLocalPlayer() -> Bool{
+        if self.ID == AppWarpHelper.sharedInstance.playerName {
+            return true
+        }
+        return false
     }
     
     func move(destination:CGPoint, complete:(()->Void)!)
@@ -119,9 +149,9 @@ class Unit: SerializableJSON, PType
         
         //Check facing
         if (xdif < -0.1) {
-            self.sprite.runAction(SKAction.scaleXTo(-0.5, duration: 0.0))
+            self.faceLeft()
         } else if (xdif > 0.1) {
-            self.sprite.runAction(SKAction.scaleXTo(0.5, duration: 0.0))
+            self.faceRight()
         }
         
         let distance = sqrt((xdif*xdif)+(ydif*ydif))
@@ -138,7 +168,6 @@ class Unit: SerializableJSON, PType
         DS_health_txt.runAction(moveHealthTxtAction, withKey: "move")
         sprite.runAction(walkSequence, withKey: "move")
         sprite.runAction(self.DS_walkAnim!, withKey: "moveAnim")
-        
     }
     
     func clearMove(){
@@ -156,11 +185,27 @@ class Unit: SerializableJSON, PType
     }
     
     /*
+     * Call every 1 second or so to update units.
+     */
+    func update(){
+        /*
+         * AUTOMATIC LIFE REGEN
+         */
+        
+        if self.health < self.maxhealth{
+            self.takeDamage(-self.healthregen)
+        }
+        
+        self.currentOrder.update()
+    }
+    
+    /*
     * LOCAL DEATH
     * playes the units death animation and prevents further actions
     */
     func death(){
-        
+        applyTint(SKColor.blackColor(), factor: 1.0, blendDuration: 1.0)
+        sendOrder(Idle(receiverIn: self))
     }
     
     /*

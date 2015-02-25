@@ -16,6 +16,7 @@ class RoamAttack: Order, PType
     var animationGapDistance: CGFloat = 20.0 //Default value is overwritten in init
     var tID: String = ""
     //var ID: String = ""
+    var DS_moveState = false
     
     init(receiverIn: Unit){
         super.init()
@@ -36,6 +37,11 @@ class RoamAttack: Order, PType
     }
     
     override func apply(){
+        attackCycle()
+    }
+    
+    func attackCycle(){
+        let tolerence = CGFloat(20.0)
         if self.DS_receiver!.currentOrder is RoamAttack
         {
             var movePos: CGPoint
@@ -48,34 +54,44 @@ class RoamAttack: Order, PType
                 movePos = CGPoint(x: DS_target!.sprite.frame.maxX-1+animationGapDistance,y : DS_target!.sprite.frame.midY)
             }
             
-            
-            DS_receiver!.move(movePos, complete:{
-                self.DS_receiver!.clearMove()
-                var frontConnection = CGPoint(x: self.DS_receiver!.sprite.position.x+self.animationGapDistance,y: self.DS_receiver!.sprite.position.y)
-                var backConnection=CGPoint(x: self.DS_receiver!.sprite.position.x-self.animationGapDistance,y: self.DS_receiver!.sprite.position.y)
-                
-                if  self.DS_target!.sprite.frame.contains(frontConnection)||self.DS_target!.sprite.frame.contains(backConnection)
-                {
+            if GameScene.global.getDistance(DS_receiver!.sprite.position, p2: movePos) > tolerence {
+                DS_moveState = true
+                DS_receiver!.move(movePos, complete:{
+                    self.DS_moveState = false
+                    self.DS_receiver!.clearMove()
                     self.attackCycle()
-                    self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_attackAnim!, withKey: "AttackAnim")
-                    let delay = SKAction.waitForDuration(1.0)
-                    self.DS_receiver!.sprite.runAction(delay, completion: self.apply)
+                    //
+                    //                    var frontConnection = CGPoint(x: self.DS_receiver!.sprite.position.x+self.animationGapDistance,y: self.DS_receiver!.sprite.position.y)
+                    //                    var backConnection=CGPoint(x: self.DS_receiver!.sprite.position.x-self.animationGapDistance,y: self.DS_receiver!.sprite.position.y)
+                    //
+                    //                    if  self.DS_target!.sprite.frame.contains(frontConnection)||self.DS_target!.sprite.frame.contains(backConnection) {
+                    //
+                    //                    }
+                    //                    else
+                    //                    {
+                    //                        self.apply()
+                    //                    }
+                })
+            } else {
+                if DS_receiver!.sprite.position.x < DS_target!.sprite.position.x {
+                    DS_receiver!.faceRight()
+                } else {
+                    DS_receiver!.faceLeft()
                 }
-                else
-                {
-                    self.apply()
-                }
-            })
+                self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_attackAnim!, withKey: "AttackAnim")
+                let delay = SKAction.waitForDuration(1.0)
+                self.DS_receiver!.sprite.runAction(delay, completion: self.attackCycle)
+                DS_target!.takeDamage(3)
+            }
         }
-        
-    }
-    
-    func attackCycle(){
-        DS_target!.takeDamage(1)
     }
     
     override func update(){
-        //Check things like, the target is still in range... etc.
+        if DS_moveState == true {
+            DS_receiver!.clearMove()
+            attackCycle()
+        }
+        
     }
     
     override func remove(){
