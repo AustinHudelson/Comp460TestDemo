@@ -100,7 +100,7 @@ class AppWarpHelper: NSObject
             var error = WarpClient.getInstance().getConnectionState()
             if error == 0 {
                 // error = 0 means success in getting connection state
-                println("Sending msg (\(convertedData.length) bytes) ...")
+                //println("Sending msg (\(convertedData.length) bytes) ...")
                 WarpClient.getInstance().sendUpdatePeers(convertedData)
             } else {
                 println("!!!WARNING: Error in sending msg (\(convertedData.length) bytes)!!!!") // print data's number of bytes
@@ -128,7 +128,7 @@ class AppWarpHelper: NSObject
                     // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
     func recvUpdate(data: NSData) {
-        println("Received data (\(data.length) bytes)")
+        //println("Received data (\(data.length) bytes)")
         
         var recvDict: Dictionary<String, Array<Dictionary<String, AnyObject>>> = [:]
         
@@ -149,7 +149,7 @@ class AppWarpHelper: NSObject
                     }
                 }
             }
-            println(recvDict)
+            //println(recvDict)
             
             gameScene!.updateGameState(recvDict)
         } else {
@@ -178,7 +178,7 @@ class AppWarpHelper: NSObject
         
         if WarpClient.getInstance().getConnectionState()==0
         {
-            println("updatePlayerDataToServer")
+            //println("updatePlayerDataToServer")
             WarpClient.getInstance().sendUpdatePeers(convertedData)
         }
     }

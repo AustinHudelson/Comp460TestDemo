@@ -161,7 +161,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let target_y = secondNode.position.y
         let margin = secondNode.frame.size.height/2 - 25
      
-                println("Hit")
+        //println("Hit")
         
     }
     ////

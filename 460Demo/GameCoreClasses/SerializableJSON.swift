@@ -42,7 +42,7 @@ class SerializableJSON: NSObject {
                 //Primitive Case
                 self.setValue(propValue, forKey: propName)
             } else {
-                println("Unable to find value for property: "+propName)
+                //println("Unable to find value for property: "+propName)
             }
         }
     }
