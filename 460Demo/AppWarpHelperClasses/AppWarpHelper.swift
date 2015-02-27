@@ -65,8 +65,8 @@ class AppWarpHelper: NSObject
         var roomListener: RoomListener = RoomListener()
         warpClient.addRoomRequestListener(roomListener)
         
-        var turnListener: TurnListener = TurnListener()
-        warpClient.addTurnBasedRoomListener(turnListener)
+//        var turnListener: TurnListener = TurnListener()
+//        warpClient.addTurnBasedRoomListener(turnListener)
     }
     
     func connectWithAppWarpWithUserName(userName:String)
@@ -189,6 +189,7 @@ class AppWarpHelper: NSObject
         It should only be called by TurnListner.onStartGameDone()
     */
     func startGame() {
+        println("AppWarpHelper startGame()")
         lobby!.performSegueWithIdentifier("gameSegue", sender: nil)
     }
 }

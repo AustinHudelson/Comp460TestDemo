@@ -42,4 +42,10 @@ class NotificationListener: NSObject,NotifyListener
         WarpClient.getInstance().getLiveRoomInfo(AppWarpHelper.sharedInstance.roomId)
     }
     
+    func onGameStarted(sender: NSString, roomId: NSString, nextTurn: NSString)
+    {
+        println("Game starting...")
+        AppWarpHelper.sharedInstance.startGame()
+    }
+    
 }
