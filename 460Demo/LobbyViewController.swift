@@ -36,6 +36,12 @@ class LobbyViewController: UIViewController {
     }
     
     func updateUserList() {
+        /*
+            Send a request to AppWarp to get live room info.
+            If success, RoomListener.onGetLiveRoomInfoDone() will be called and that function
+            updates AppWarpHelper.userName_list
+        */
+        WarpClient.getInstance().getLiveRoomInfo(AppWarpHelper.sharedInstance.roomId)
         println(AppWarpHelper.sharedInstance.userName_list)
     }
     

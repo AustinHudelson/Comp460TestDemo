@@ -130,10 +130,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Setup your scene here */
         println("Game Scene Init")
         
-        
-        
-        AppWarpHelper.sharedInstance.gameScene = self
-        
         let background = SKSpriteNode(imageNamed: "Background1")
         background.position = CGPointMake(self.size.width/2, self.size.height/2)
         background.size = CGSize(width: CGFloat(self.size.width), height: CGFloat(self.size.height));
@@ -146,6 +142,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         //
         
+        AppWarpHelper.sharedInstance.gameScene = self
+        startGameScene()
     }
     
     /// physics

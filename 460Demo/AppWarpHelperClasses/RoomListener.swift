@@ -36,7 +36,6 @@ class RoomListener: NSObject,RoomRequestListener
         if roomEvent.result == 0 // SUCESS
         {
             println("onSubscribeRoomDone Success")
-            AppWarpHelper.sharedInstance.connected = true
             
             
 //            if let gameScene = AppWarpHelper.sharedInstance.gameScene {

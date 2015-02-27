@@ -9,6 +9,17 @@
 import UIKit
 
 
+/*
+    Program flow (as of 2/27/15):
+        - LobbyViewController -> AppWarpHelper.initializeWarp()
+        - LobbyViewController -> AppWarpHelper.connectWithAppWarpWithUserName()
+
+        - AppWarpHelper.connectWithAppWarpWithUserName() -> ConnectionListener.onConnectDone()
+
+        - ConnectionListener.onConnectDone() -> RoomListener.onJoinRoomDone()
+
+        - RoomListener.onJoinRoomDone() -> RoomListener.onSubscribeRoomDone()
+*/
 class AppWarpHelper: NSObject
 {
     var api_key = "8f4823c2a1bca11bb4ad1349d127b62a312481af36cc74cda1994f9ca6564857"
@@ -17,7 +28,6 @@ class AppWarpHelper: NSObject
     var enemyName: String = ""
     //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
     var playerName: String = ""
-    var connected: Bool = false // variable used to check if we've established connection. This needs to be true b4 we actually send stuff
     var userName_list: NSMutableArray = [] // used to store the list of users currently in room
     var lobby: LobbyViewController? = nil
     
@@ -64,8 +74,8 @@ class AppWarpHelper: NSObject
         var uNameLength = userName.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
         if uNameLength>0
         {
-            var warpClient:WarpClient = WarpClient.getInstance()
-            warpClient.connectWithUserName(userName)
+            // can only call WarpClient.getInstance() after the initializeWarp() function is called
+            WarpClient.getInstance().connectWithUserName(userName)
         }
     }
     
@@ -159,9 +169,6 @@ class AppWarpHelper: NSObject
         }
     }
     
-    func getLiveRoomInfo() {
-        WarpClient.getInstance().getLiveRoomInfo(roomId)
-    }
     
     func updateUserList() {
         lobby!.updateUserList()
