@@ -48,10 +48,8 @@ class Unit: SerializableJSON, PType
 //        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
     }
     
-    init(ID: String, health: Int, speed: CGFloat, spawnLocation: CGPoint) {
+    init(ID: String, spawnLocation: CGPoint) {
         super.init()
-        self.health = health
-        self.speed = speed
         self.ID = ID
         self.currentOrder = NoneOrder()
         /* Configure our health text */
@@ -78,10 +76,8 @@ class Unit: SerializableJSON, PType
         Used to add a unit to the game scene at position 'pos', with sprite.xScale = 'scaleX' & sprite.yScale = 'scaleY'.
         Also displays a health text on top of this unit
     */
-    func addUnitToGameScene(gameScene: GameScene, pos: CGPoint, scaleX: CGFloat, scaleY: CGFloat)
+    func addUnitToGameScene(gameScene: GameScene, pos: CGPoint)
     {
-        self.sprite.xScale = scaleX
-        self.sprite.yScale = scaleY
         self.sprite.position = pos
         gameScene.addChild(self.sprite)
         
@@ -98,8 +94,8 @@ class Unit: SerializableJSON, PType
     }
     
     func sendOrder(order: Order){
-        println("hi")
-        println(order.type)
+        //println("hi")
+        //println(order.type)
         currentOrder.remove()
         currentOrder = order
         currentOrder.apply()
@@ -114,7 +110,7 @@ class Unit: SerializableJSON, PType
             death()
         }
         
-        println("\(ID), \(health)")
+        //println("\(ID), \(health)")
         self.DS_health_txt.text = self.health.description
     }
     
@@ -142,9 +138,7 @@ class Unit: SerializableJSON, PType
     
     func move(destination:CGPoint, complete:(()->Void)!)
     {
-        println("MOVING")
         let charPos = sprite.position
-        println(charPos)
         let xdif = destination.x-charPos.x
         let ydif = destination.y-charPos.y
         

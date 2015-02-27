@@ -28,14 +28,11 @@ class Move : Order, PType
         self.type = "Move"
     }
 
-    required init(receivedData: Dictionary<String, AnyObject>, unitList: Dictionary<String, Unit>) {
-        super.init(receivedData: receivedData, unitList: unitList)
+    required init(receivedData: Dictionary<String, AnyObject>) {
+        super.init(receivedData: receivedData)
         self.restoreProperties(Move.self, receivedData: receivedData)
         
-        if unitList[ID!] == nil {
-            println("Issue setting receiver!")
-        }
-        self.DS_receiver = unitList[ID!]!
+        self.DS_receiver = Game.global.unit(ID!)
         self.DS_moveToLoc = CGPoint(x:posX, y:posY)
     }
     

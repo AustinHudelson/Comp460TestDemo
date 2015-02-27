@@ -21,7 +21,7 @@ class Idle: Order, PType {
         self.type = "Idle"
     }
 
-    required init(receivedData: Dictionary<String, AnyObject>, unitList:Dictionary<String, Unit>) {
+    required init(receivedData: Dictionary<String, AnyObject>) {
         fatalError("init(receivedData:) has not been implemented: Idle being sent over network?")
     }
 }

@@ -22,11 +22,19 @@ func +=<K, V> (inout left: Dictionary<K, V>, right: Dictionary<K, V>) -> Diction
 
 class SerializableJSON: NSObject {
     
+    required init(receivedData: Dictionary<String, AnyObject>){
+        
+    }
+    
+    override init(){
+        super.init()
+    }
+    
     func restoreProperties(aClass: AnyClass?, receivedData: Dictionary<String, AnyObject>){
         var propertiesCount : CUnsignedInt = 0
         let propertiesInAClass : UnsafeMutablePointer<objc_property_t> = class_copyPropertyList(aClass, &propertiesCount)
         //var propertiesDictionary : NSMutableDictionary = NSMutableDictionary()
-        
+        println("Restoring for "+(receivedData["type"] as String))
         for var i = 0; i < Int(propertiesCount); i++ {
             var property = propertiesInAClass[i]
             var propName = NSString(CString: property_getName(property), encoding: NSUTF8StringEncoding)! as String
@@ -34,13 +42,25 @@ class SerializableJSON: NSObject {
             
             //Check if the key is in the dictionary (only DS_ and sprite should not appear here)
             if receivedData[propName] != nil {
+                
                 let propValue = receivedData[propName]
+                
+                //println("RESTORING PROP: "+propName)
+                //println(propValue.Type)
+                //println(propType)
                 
                 //NEED TO CHECK IF THE RECEIVED DATA IS PRIMITIVE, SERIALIZEABLEJSON OR ARRAY<SERIALIZEABLEJSON>.
                 //
-                
-                //Primitive Case
-                self.setValue(propValue, forKey: propName)
+                if let serValue = propValue as? Dictionary<String, AnyObject>{
+                    println(propName+":Deserializing SerailizeJSON")
+                    var anyobjecttype: AnyObject.Type = NSClassFromString(propValue!["type"] as NSString)
+                    var nsobjecttype: SerializableJSON.Type = anyobjecttype as SerializableJSON.Type
+                    var newObject: SerializableJSON = nsobjecttype(receivedData: (propValue as Dictionary<String, AnyObject>))
+                    self.setValue(newObject, forKey: propName)
+                } else {
+                    //Primitive Case
+                    self.setValue(propValue, forKey: propName)
+                }
             } else {
                 //println("Unable to find value for property: "+propName)
             }

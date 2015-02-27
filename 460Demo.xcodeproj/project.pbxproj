@@ -40,6 +40,7 @@
 		F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B631A71EF7300DCD868 /* Images.xcassets */; };
 		F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */; };
 		F4D33B731A71EF7300DCD868 /* _60DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */; };
+		F4E896421AA128E000406784 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E896411AA128E000406784 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		F4D33B6C1A71EF7300DCD868 /* 460DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 460DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B711A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _60DemoTests.swift; sourceTree = "<group>"; };
+		F4E896411AA128E000406784 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				68F35CA91A84C4D5004905BF /* GameScene.sks */,
 				F42FD5AE1A895D4F002C6624 /* Background1.png */,
 				68F35CAA1A84C4D5004905BF /* GameScene.swift */,
+				F4E896411AA128E000406784 /* Game.swift */,
 			);
 			path = GameSceneClasses;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				68F35CB71A84C540004905BF /* Projectile.swift in Sources */,
 				68F35CB41A84C540004905BF /* Attack.swift in Sources */,
 				68F35CB91A84C540004905BF /* Warrior.swift in Sources */,
+				F4E896421AA128E000406784 /* Game.swift in Sources */,
 				68B7DBFA1A84C306003D9398 /* RoomListener.swift in Sources */,
 				68B7DBFB1A84C306003D9398 /* ZoneListener.swift in Sources */,
 				68F35CB61A84C540004905BF /* Order.swift in Sources */,

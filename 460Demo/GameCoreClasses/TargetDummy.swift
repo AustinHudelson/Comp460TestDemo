@@ -11,9 +11,9 @@ import SpriteKit
 class TargetDummy: Unit
 {
     let AnimationName = "Character1BaseColorization"
-    override init(ID: String, health: Int, speed: CGFloat, spawnLocation: CGPoint)
+    override init(ID: String, spawnLocation: CGPoint)
     {
-        super.init(ID: ID, health: health, speed: speed, spawnLocation: spawnLocation)
+        super.init(ID: ID, spawnLocation: spawnLocation)
         self.sprite.xScale = 0.5
         self.sprite.yScale = 0.5
         

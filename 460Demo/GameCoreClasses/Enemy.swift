@@ -13,7 +13,6 @@ import Foundation
 class Enemy: Unit, PType
 {
     var AnimationName = "Character1BaseColorization"
-    var testProperty = "WRONG!"
     
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
@@ -30,18 +29,17 @@ class Enemy: Unit, PType
         self.sprite.runAction(self.DS_standAnim)
     }
     
-    override init(ID:String, health: Int, speed: CGFloat, spawnLocation: CGPoint)
+    override init(ID:String, spawnLocation: CGPoint)
     {
-        super.init(ID:ID, health: health, speed: speed, spawnLocation: spawnLocation)
+        super.init(ID:ID, spawnLocation: spawnLocation)
+        //INITILIZE THE UNITS STATS HERE!!!
+        self.type = "Enemy"
         self.health = 30
         self.maxhealth = 30
-        self.healthregen = 0
-        self.sprite.xScale = 0.75
-        self.sprite.yScale = 0.75
-        self.testProperty = "kinda Wrong!"
-        self.setValue("TOTALLY RIGHT!", forKey: "testProperty")
-        
-        self.type = "Enemy"
+        self.healthregen = 1
+        self.speed = 30.0
+        self.sprite.xScale = 1.0
+        self.sprite.yScale = 1.0
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -114,8 +112,8 @@ class Enemy: Unit, PType
         self.DS_attackAnim = SKAction.repeatAction(attackTextures, count: 1)
     }
     
-    override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint, scaleX: CGFloat, scaleY: CGFloat) {
-        super.addUnitToGameScene(gameScene, pos: pos, scaleX: scaleX, scaleY: scaleY)
+    override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint) {
+        super.addUnitToGameScene(gameScene, pos: pos)
         self.sendOrder(RoamAttack(receiverIn: self))
         self.applyTint(SKColor.redColor(), factor: 0.75, blendDuration: NSTimeInterval(0.0))
 

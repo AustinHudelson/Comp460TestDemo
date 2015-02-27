@@ -17,13 +17,14 @@ class Order: SerializableJSON, PType
     var DS_receiver: Unit?
     var ID: String?
     
-    required init(receivedData: Dictionary<String, AnyObject>, unitList: Dictionary<String, Unit>){
-        super.init()
+    required init(receivedData: Dictionary<String, AnyObject>){
+        super.init(receivedData: receivedData)
         //Leave empty as there are no types in this class
         restoreProperties(Order.self, receivedData: receivedData)
     }
     
     override init(){
+        super.init()
         //IN ALL SUBCLASSES INIT MUST INITIALIZE TYPE
     }
     

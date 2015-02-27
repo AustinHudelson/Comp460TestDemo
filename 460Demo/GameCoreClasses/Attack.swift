@@ -28,13 +28,12 @@ class Attack: Order, PType
         type = "Attack"
     }
 
-    required init(receivedData: Dictionary<String, AnyObject>, unitList: Dictionary<String, Unit>) {
-        super.init(receivedData: receivedData, unitList: unitList)
+    required init(receivedData: Dictionary<String, AnyObject>) {
+        super.init(receivedData: receivedData)
         restoreProperties(Attack.self, receivedData: receivedData)
-        println(unitList)
         println(tID)
-        DS_receiver = unitList[self.ID!]!
-        DS_target = unitList[tID]!
+        DS_receiver = Game.global.unit(self.ID!)
+        DS_target = Game.global.unit(tID)
     }
     
     override func apply(){

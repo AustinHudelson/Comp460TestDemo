@@ -14,7 +14,7 @@ class NoneOrder: Order, PType {
         self.type = "NoneOrder"
     }
 
-    required init(receivedData: Dictionary<String, AnyObject>, unitList:Dictionary<String, Unit>) {
-        super.init(receivedData: receivedData, unitList: unitList)
+    required init(receivedData: Dictionary<String, AnyObject>) {
+        super.init(receivedData: receivedData)
     }
 }

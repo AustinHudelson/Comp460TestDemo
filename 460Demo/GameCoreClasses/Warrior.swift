@@ -13,7 +13,6 @@ import Foundation
 class Warrior: Unit, PType
 {
     var AnimationName = "Character1BaseColorization"
-    var testProperty = "WRONG!"
     
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
@@ -31,18 +30,19 @@ class Warrior: Unit, PType
         self.sprite.runAction(self.DS_standAnim)
     }
     
-    override init(ID:String, health: Int, speed: CGFloat, spawnLocation: CGPoint)
+    override init(ID:String, spawnLocation: CGPoint)
     {
-        super.init(ID:ID, health: health, speed: speed, spawnLocation: spawnLocation)
+        super.init(ID:ID, spawnLocation: spawnLocation)
+        //INITILIZE THE UNITS STATS HERE!!!
+        self.type = "Warrior"
         self.health = 100
         self.maxhealth = 100
         self.healthregen = 1
+        self.speed = 50.0
         self.sprite.xScale = 1.0
         self.sprite.yScale = 1.0
-        self.testProperty = "kinda Wrong!"
-        self.setValue("TOTALLY RIGHT!", forKey: "testProperty")
         
-        self.type = "Warrior"
+        
         
         //Initializes all the DS_ animations
         initializeAnimations()
