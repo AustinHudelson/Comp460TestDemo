@@ -10,9 +10,20 @@ import UIKit
 import SpriteKit
 
 class LobbyViewController: UIViewController {
-    var myPlayerName: String = ""
+    var myPlayerName: String? = nil
     
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var startGameButton: UIButton!
+    @IBAction func startGameButtonAction(sender: AnyObject) {
+        if myPlayerName != nil && myPlayerName == AppWarpHelper.sharedInstance.host {
+            /*
+                Send a msg to AppWarp to tell everyone to start the game.
+                The game won't start until everyone receives this message, which will happen in TurnListner.onStartGameDone()
+            */
+            AppWarpHelper.sharedInstance.sendStartGame()
+        } else {
+            println("You need to wait for host to start the game!")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,23 +40,18 @@ class LobbyViewController: UIViewController {
         println("Finished initializing AppWarp")
         
         println("Now connecting w/ username = \(myPlayerName)")
-        AppWarpHelper.sharedInstance.connectWithAppWarpWithUserName(myPlayerName)
+        AppWarpHelper.sharedInstance.connectWithAppWarpWithUserName(myPlayerName!)
         println("Completed connection w/ username = \(myPlayerName)")
         
         AppWarpHelper.sharedInstance.lobby = self
     }
     
     func updateUserList() {
-        /*
-            Send a request to AppWarp to get live room info.
-            If success, RoomListener.onGetLiveRoomInfoDone() will be called and that function
-            updates AppWarpHelper.userName_list
-        */
-        WarpClient.getInstance().getLiveRoomInfo(AppWarpHelper.sharedInstance.roomId)
+        /* print the updated user list and set host to be the first guy in that list*/
+        println("Current users in the lobby:")
         println(AppWarpHelper.sharedInstance.userName_list)
-    }
-    
-    @IBAction func startButtonAction(sender: UIButton) {
+        
+        AppWarpHelper.sharedInstance.host = (AppWarpHelper.sharedInstance.userName_list[0] as String) // designate host
     }
 
     override func didReceiveMemoryWarning() {

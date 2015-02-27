@@ -32,6 +32,7 @@ class AppWarpHelper: NSObject
     var lobby: LobbyViewController? = nil
     
     var gameScene: GameScene? = nil
+    var host: String? = nil
     
     class var sharedInstance:AppWarpHelper{
         struct Static{
@@ -64,8 +65,8 @@ class AppWarpHelper: NSObject
         var roomListener: RoomListener = RoomListener()
         warpClient.addRoomRequestListener(roomListener)
         
-//        var updateReqListener: UpdateReqListener = UpdateReqListener()
-//        warpClient.addUpdateRequestListener(UpdateReqListener)
+        var turnListener: TurnListener = TurnListener()
+        warpClient.addTurnBasedRoomListener(turnListener)
     }
     
     func connectWithAppWarpWithUserName(userName:String)
@@ -170,8 +171,24 @@ class AppWarpHelper: NSObject
     }
     
     
+    /* ======= Lobby and designate host stuff ========= */
     func updateUserList() {
         lobby!.updateUserList()
     }
     
+    /*
+        Send a msg to AppWarp to tell everyone to start the game.
+        The game won't start until everyone receives this message, which will happen in TurnListner.onStartGameDone()
+    */
+    func sendStartGame() {
+        WarpClient.getInstance().startGame()
+    }
+    
+    /*
+        This function is the one that actually tells everyone to segue to GameViewController.
+        It should only be called by TurnListner.onStartGameDone()
+    */
+    func startGame() {
+        lobby!.performSegueWithIdentifier("gameSegue", sender: nil)
+    }
 }
