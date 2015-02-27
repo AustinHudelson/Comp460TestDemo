@@ -20,6 +20,8 @@ class RoomListener: NSObject,RoomRequestListener
             println("onJoinRoomDone Success")
 
             println("Joined a room:\t roomId=\(roomData.roomId!)\n \t roomOwner=\(roomData.owner!)\n \t roomName=\(roomData.name)\n \t roomMaxUsers=\(roomData.maxUsers)")
+            
+            WarpClient.getInstance().getLiveRoomInfo(AppWarpHelper.sharedInstance.roomId)
 
         }
         else // Failed to join
@@ -35,16 +37,23 @@ class RoomListener: NSObject,RoomRequestListener
         {
             println("onSubscribeRoomDone Success")
             AppWarpHelper.sharedInstance.connected = true
-            if let gameScene = AppWarpHelper.sharedInstance.gameScene {
-                gameScene.startGameScene()
-            } else {
-                println("!!!Error: gameScene is nil!!!")
-            }
+            
+            
+//            if let gameScene = AppWarpHelper.sharedInstance.gameScene {
+//                gameScene.startGameScene()
+//            } else {
+//                println("!!!Error: gameScene is nil!!!")
+//            }
             
         }
         else // Failed to join
         {
             println("onSubscribeRoomDone Failed")
         }
+    }
+    
+    func onGetLiveRoomInfoDone(event: LiveRoomInfoEvent)
+    {
+        AppWarpHelper.sharedInstance.userName_list = event.joinedUsers
     }
 }

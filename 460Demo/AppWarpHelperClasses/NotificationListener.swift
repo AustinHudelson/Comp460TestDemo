@@ -33,6 +33,8 @@ class NotificationListener: NSObject,NotifyListener
     
     func onUserJoinedRoom(roomData: RoomData!, username: String!)
     {
+        println("\(username) joined the room!")
+        AppWarpHelper.sharedInstance.updateUserList()
         
     }
     
