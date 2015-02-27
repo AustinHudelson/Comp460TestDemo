@@ -64,9 +64,6 @@ class AppWarpHelper: NSObject
         
         var roomListener: RoomListener = RoomListener()
         warpClient.addRoomRequestListener(roomListener)
-        
-//        var turnListener: TurnListener = TurnListener()
-//        warpClient.addTurnBasedRoomListener(turnListener)
     }
     
     func connectWithAppWarpWithUserName(userName:String)
@@ -178,15 +175,17 @@ class AppWarpHelper: NSObject
     
     /*
         Send a msg to AppWarp to tell everyone to start the game.
-        The game won't start until everyone receives this message, which will happen in TurnListner.onStartGameDone()
+        The game won't start until everyone receives this message.
     */
     func sendStartGame() {
-        WarpClient.getInstance().startGame()
+        var startGameMsg: String = "Start Game!"
+        var data = startGameMsg.dataUsingEncoding(NSUTF8StringEncoding)
+        WarpClient.getInstance().sendUpdatePeers(data)
     }
     
     /*
         This function is the one that actually tells everyone to segue to GameViewController.
-        It should only be called by TurnListner.onStartGameDone()
+        It should only be called when 
     */
     func startGame() {
         println("AppWarpHelper startGame()")

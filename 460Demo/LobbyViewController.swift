@@ -17,7 +17,7 @@ class LobbyViewController: UIViewController {
         if myPlayerName != nil && myPlayerName == AppWarpHelper.sharedInstance.host {
             /*
                 Send a msg to AppWarp to tell everyone to start the game.
-                The game won't start until everyone receives this message, which will happen in TurnListner.onStartGameDone()
+                The game won't start until everyone receives this message.
             */
             AppWarpHelper.sharedInstance.sendStartGame()
         } else {
