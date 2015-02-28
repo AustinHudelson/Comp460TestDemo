@@ -53,7 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         
                         newUnit.addUnitToGameScene(self, pos: spawnLoc, scaleX: 1.0, scaleY: 1.0)
                         
-                        sendUnit(unit_list[AppWarpHelper.sharedInstance.playerName]!) // send myself to everyone who hasn't got me
+//                        sendUnit(unit_list[AppWarpHelper.sharedInstance.playerName]!) // send myself to everyone who hasn't got me
                     }
                 }
             }
@@ -143,7 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //
         
         AppWarpHelper.sharedInstance.gameScene = self
-//        startGameScene()
+        startGameScene()
     }
     
     /// physics
