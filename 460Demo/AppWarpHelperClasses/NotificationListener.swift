@@ -14,20 +14,7 @@ class NotificationListener: NSObject,NotifyListener
     {
         println("onUpdatePeersReceived")
         
-        /*
-            if gameScene is not initialized yet, that means this msg received is host's start game msg,
-            so start the game instead of calling the recvUpdate() function, which should only be called
-            when the game has actually started
-        */
-        if AppWarpHelper.sharedInstance.gameScene == nil {
-            var recvData = updateEvent.update
-            var recvMsg = NSString(data: recvData, encoding: NSUTF8StringEncoding) as String
-            if recvMsg == "Start Game!" {
-                AppWarpHelper.sharedInstance.startGame()
-            }
-        } else {
-            AppWarpHelper.sharedInstance.recvUpdate(updateEvent.update)
-        }
+        AppWarpHelper.sharedInstance.recvUpdate(updateEvent.update)
     }
     func onUserLeftRoom(roomData: RoomData!, username: String!)
     {

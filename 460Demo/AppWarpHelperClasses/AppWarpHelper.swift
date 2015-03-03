@@ -92,18 +92,12 @@ class AppWarpHelper: NSObject
                             [Order(player1, Move(location)),
                                 Order(player2, Attack(enemy1))
                             ],
-                        "SentTime": "3/3/15, 4:44:45 AM GMT"
+                        "SentTime": ["3/3/15, 4:44:45 AM GMT"]
                     }
-        - Since function arguments are immutable by default, but we want to append an entry that tells us the sent time, we need to declare the param as 'inout'
     */
-    func sendUpdate(inout data: Dictionary<String, AnyObject>) {
-        /*
-        ====================================================
-            Append the entry ["SentTime": (curent Time)] to the given sending dictionary to log the sending time
-        */
-        let now = Timer.getCurrentTime()
-        data["SentTime"] = Timer.NSDateToStr(now)
-        
+    func sendUpdate(inout data: Dictionary<String, Array<AnyObject>>) {
+        // add sent time
+        Timer.logSendTime(&data)
         /*
         ====================================================
             Send the data
@@ -151,7 +145,7 @@ class AppWarpHelper: NSObject
     func recvUpdate(data: NSData) {
         println("Received data (\(data.length) bytes)")
         
-        var recvDict: Dictionary<String, Array<Dictionary<String, AnyObject>>> = [:]
+        var recvDict: Dictionary<String, Array<AnyObject>> = [:]
         
         var error: NSError?
         /* Convert received data back to Swift Objects */
@@ -166,16 +160,33 @@ class AppWarpHelper: NSObject
                             if let object = blob2 as? Dictionary<String, AnyObject> {
                                 recvDict[key]!.append(object)
                             }
+                            if let timeStr = blob2 as? String {
+                                recvDict[key]!.append(timeStr)
+                            }
                         }
-                    }
-                    if let sentTimeStr = blob1 as? String {
-                        recvDict[key] = blob1
                     }
                 }
             }
+            
             println(recvDict)
             
-            gameScene!.updateGameState(recvDict)
+            /*
+                if gameScene is not initialized yet, that means this msg received is host's start game msg, so don't call gameScene.updateGameState; start the game instead.
+            */
+            if gameScene == nil {
+                /* Print the start time and received time */
+                let sentTimeStr = (recvDict["SentTime"]!)[0] as String
+                var sentTime: NSDate = Timer.StrToDate(sentTimeStr)!
+                var recvTime: NSDate = Timer.getCurrentTime()
+                var recvTimeStr = Timer.DateToStr(recvTime)
+                var diff: NSTimeInterval = Timer.diffDateNow(sentTime) // get difference between sent time and now
+                println("SentTime: \(sentTimeStr); RecvTime: \(recvTimeStr); diff between SentTime & recvTime: \(diff) seconds")
+                
+                /* start the game */
+                startGame()
+            } else {
+                gameScene!.updateGameState(recvDict)
+            }
         } else {
             println("!!!Error in converting recv data!!!")
             println(error!)
@@ -193,9 +204,9 @@ class AppWarpHelper: NSObject
         The game won't start until everyone receives this message.
     */
     func sendStartGame() {
-        var startGameMsg: String = "Start Game!"
-        var data = startGameMsg.dataUsingEncoding(NSUTF8StringEncoding)
-        WarpClient.getInstance().sendUpdatePeers(data)
+        var startGameMsg: Dictionary<String, Array<AnyObject>> = [:]
+        startGameMsg["Start Game!"] = []
+        sendUpdate(&startGameMsg)
     }
     
     /*
