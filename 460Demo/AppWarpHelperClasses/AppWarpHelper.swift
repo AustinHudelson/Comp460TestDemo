@@ -91,17 +91,29 @@ class AppWarpHelper: NSObject
                         "Order":
                             [Order(player1, Move(location)),
                                 Order(player2, Attack(enemy1))
-                            ]
+                            ],
+                        "SentTime": "3/3/15, 4:44:45 AM GMT"
                     }
+        - Since function arguments are immutable by default, but we want to append an entry that tells us the sent time, we need to declare the param as 'inout'
     */
-    func sendUpdate(data: Dictionary<String, AnyObject>) {
+    func sendUpdate(inout data: Dictionary<String, AnyObject>) {
+        /*
+        ====================================================
+            Append the entry ["SentTime": (curent Time)] to the given sending dictionary to log the sending time
+        */
+        let now = Timer.getCurrentTime()
+        data["SentTime"] = Timer.NSDateToStr(now)
+        
+        /*
+        ====================================================
+            Send the data
+        */
         var error: NSError? // Used to store error msgs in case when error occured during serialization to JSON
         
         /*
             options = 0 here b/c we wanna send a data that's as compact as possible
                 - Can be set to NSJSONWritingOPtions.PrettyPrinted if you want the resulting JSON file to be human reable
         */
-//        println(data)
         if let convertedData = NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(0), error: &error) {
             /*
                 send over the converted data if conversion is success
@@ -155,6 +167,9 @@ class AppWarpHelper: NSObject
                                 recvDict[key]!.append(object)
                             }
                         }
+                    }
+                    if let sentTimeStr = blob1 as? String {
+                        recvDict[key] = blob1
                     }
                 }
             }
