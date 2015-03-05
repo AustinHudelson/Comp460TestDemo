@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "playerNameSegue") {
             var svc = segue.destinationViewController as LobbyViewController

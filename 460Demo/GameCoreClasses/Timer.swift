@@ -18,7 +18,8 @@ class Timer
         NSDate() returns a NSDate object initialized to the current date and time.
     */
     class func getCurrentTime() -> NSDate {
-        var now: NSDate = NSDate()
+        var netClock: NetworkClock = NetworkClock.sharedNetworkClock() // network clock used to get time from ntp servers defined in 460Demo/iosNtp/ntp.hosts
+        var now: NSDate = netClock.networkTime // get the network time
         return now
     }
     
