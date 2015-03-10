@@ -60,8 +60,8 @@ class Warrior: Unit, PType
         //Define Animations here
         //
         
-        let walkAtlas = SKTextureAtlas(named: "Warrior")
-        let attackAtlas = SKTextureAtlas(named: "Warrior")
+        let walkAtlas = SKTextureAtlas(named: "Walk")
+        let attackAtlas = SKTextureAtlas(named: "Attack")
         let walkAnimName = "-walk2"
         let attackAnimName = "-attack"
         let standAnimName = "-walk2"
