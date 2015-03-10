@@ -34,10 +34,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     /*
         Update the game state according to dictionary received over the network
     */
-    func updateGameState(recvDict: Dictionary<String, Array<Dictionary<String, AnyObject>>>) {
-        for (key: String, arrayOfObjects: Array<Dictionary<String, AnyObject>>) in recvDict {
+    func updateGameState(recvDict: Dictionary<String, Array<AnyObject>>) {
+        for (key: String, arrayOfObjects: Array<AnyObject>) in recvDict  {
             if key == "Units" {
-                for unit in arrayOfObjects {
+                for object in arrayOfObjects {
+                    let unit = object as Dictionary<String, AnyObject> // had to do this to get around Swift compile error
                     // Make a new unit by calling its corresponding constructor
                     if Game.global.unitMap[unit["ID"] as String] == nil {
                         var anyobjecttype: AnyObject.Type = NSClassFromString(unit["type"] as NSString)
@@ -56,13 +57,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             if key == "Orders" {
-                for order in arrayOfObjects {
+                for object in arrayOfObjects {
+                    let order = object as Dictionary<String, AnyObject>
                     // Make an Order object out of what is received
                     var anyobjecttype: AnyObject.Type = NSClassFromString(order["type"] as NSString)
                     var nsobjecttype: Order.Type = anyobjecttype as Order.Type
                     var newOrder: Order = nsobjecttype(receivedData: order)
                     Game.global.getUnit(newOrder.ID!).sendOrder(newOrder)   //SEND THE ORDER TO ITS UNIT
                     //newOrder.valueForKey("DS_receiver")
+                }
+            }
+            if key == "SentTime" {
+                // Have to put the sent time in an array (even though it contains only 1 element) to get around Swift's compile error
+                for object in arrayOfObjects {
+                    let sentTimeStr = object as String
+                    var sentTime: NSDate = Timer.StrToDate(sentTimeStr)!
+                    var recvTime: NSDate = Timer.getCurrentTime()
+                    var recvTimeStr = Timer.DateToStr(recvTime)
+                    var diff: NSTimeInterval = Timer.diffDateNow(sentTime) // get difference between sent time and now
+                    println("SentTime: \(sentTimeStr); RecvTime: \(recvTimeStr); diff between SentTime & recvTime: \(diff) seconds")
                 }
             }
         }
@@ -101,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var sendData: Dictionary<String, Array<AnyObject>> = [:]
         sendData["Units"] = []
         sendData["Units"]!.append(newUnit.toJSON())
-        AppWarpHelper.sharedInstance.sendUpdate(sendData)
+        AppWarpHelper.sharedInstance.sendUpdate(&sendData)
     }
     
     func removeUnitFromGame(ID: String){
@@ -126,10 +139,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Setup your scene here */
         println("Game Scene Init")
         
-        
-        
-        AppWarpHelper.sharedInstance.gameScene = self
-        
         let background = SKSpriteNode(imageNamed: "Background1")
         background.position = CGPointMake(self.size.width/2, self.size.height/2)
         background.size = CGSize(width: CGFloat(self.size.width), height: CGFloat(self.size.height));
@@ -142,6 +151,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         //
         
+        AppWarpHelper.sharedInstance.gameScene = self
+        startGameScene()
     }
     
     /// physics
@@ -208,42 +219,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     var move_loc: Move = Move(receiverIn: Game.global.getMyPlayer(), moveToLoc: touchLocation)
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(move_loc.toJSON())
-                    
-//                    for unit in unit_list
-//                    {
-//                        if unit.name == AppWarpHelper.sharedInstance.playerName
-//                        {
-//                            unit.apply(move_loc)
-//                            break
-//                        }
-//                        
-//                    }
-                    
-//
-//                    
-//                    
-//                    ////Convert the touched location to a string for projectile position
-//                    //var destStr:String = NSStringFromCGPoint(location)
-//                    //dataDict.setObject(destStr, forKey: "projectileDest")
-//                    
-//                    //Convert the player position to a string
-//                //var playerPosition:String = NSStringFromCGPoint(location)
-//                    //Add the string to the dictionary
-//                //dataDict.setObject(playerPosition, forKey: "playerPosition")
-//                    //dataDict.setObject(NSValue(CGPoint: player!.position), forKey: "playerPosition")
-//                    
-//                    var move = Move(position1: location)
-//                    //println(move);
-//                    dataDict.setObject(move.description, forKey: "move")
-//                    
-//                    
-//                    //Notify Room of updated data
-//                    
                 }
-                AppWarpHelper.sharedInstance.sendUpdate(sendData)
+                AppWarpHelper.sharedInstance.sendUpdate(&sendData)
                 playerIsTouched = false
-//                AppWarpHelper.sharedInstance.updatePlayerDataToServer(dataDict)
-//                    objectTouched = false
             }
            
             

@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68038FE11AA56B8C0053A963 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68038FE01AA56B8C0053A963 /* Timer.swift */; };
 		6827FE541A8E95C2007E7DB9 /* Idle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6827FE531A8E95C2007E7DB9 /* Idle.swift */; };
 		6850A0861A91606100B8CAD4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0851A91606100B8CAD4 /* MainViewController.swift */; };
 		6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */; };
-		68B7DBF61A84C306003D9398 /* 460Demo-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF01A84C306003D9398 /* 460Demo-Bridging-Header.m */; };
+		68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A18D441AA8719E001CCE1D /* NetAssociation.m */; };
+		68A18D4F1AA8719E001CCE1D /* NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A18D461AA8719E001CCE1D /* NetworkClock.m */; };
+		68A18D501AA8719E001CCE1D /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 68A18D471AA8719E001CCE1D /* Notes */; };
+		68A18D511AA8719E001CCE1D /* NSDate+NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A18D491AA8719E001CCE1D /* NSDate+NetworkClock.m */; };
+		68A18D521AA8719E001CCE1D /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A18D4C1AA8719E001CCE1D /* GCDAsyncUdpSocket.m */; };
+		68A18D531AA8719E001CCE1D /* ntp.hosts in Resources */ = {isa = PBXBuildFile; fileRef = 68A18D4D1AA8719E001CCE1D /* ntp.hosts */; };
 		68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF11A84C306003D9398 /* AppWarpHelper.swift */; };
 		68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF21A84C306003D9398 /* ConnectionListener.swift */; };
 		68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF31A84C306003D9398 /* NotificationListener.swift */; };
@@ -54,11 +60,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68038FE01AA56B8C0053A963 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		6827FE531A8E95C2007E7DB9 /* Idle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Idle.swift; sourceTree = "<group>"; };
 		6850A0851A91606100B8CAD4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
-		68B7DBEF1A84C306003D9398 /* 460Demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "460Demo-Bridging-Header.h"; sourceTree = "<group>"; };
-		68B7DBF01A84C306003D9398 /* 460Demo-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "460Demo-Bridging-Header.m"; sourceTree = "<group>"; };
+		68A18D411AA8719E001CCE1D /* ios-ntp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ios-ntp.h"; sourceTree = "<group>"; };
+		68A18D421AA8719E001CCE1D /* ios-ntp.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ios-ntp.pch"; sourceTree = "<group>"; };
+		68A18D431AA8719E001CCE1D /* NetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetAssociation.h; sourceTree = "<group>"; };
+		68A18D441AA8719E001CCE1D /* NetAssociation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetAssociation.m; sourceTree = "<group>"; };
+		68A18D451AA8719E001CCE1D /* NetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkClock.h; sourceTree = "<group>"; };
+		68A18D461AA8719E001CCE1D /* NetworkClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkClock.m; sourceTree = "<group>"; };
+		68A18D471AA8719E001CCE1D /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
+		68A18D481AA8719E001CCE1D /* NSDate+NetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NetworkClock.h"; sourceTree = "<group>"; };
+		68A18D491AA8719E001CCE1D /* NSDate+NetworkClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NetworkClock.m"; sourceTree = "<group>"; };
+		68A18D4B1AA8719E001CCE1D /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		68A18D4C1AA8719E001CCE1D /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		68A18D4D1AA8719E001CCE1D /* ntp.hosts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ntp.hosts; sourceTree = "<group>"; };
+		68A18D551AA8732F001CCE1D /* 460Demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "460Demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		68B7DBF11A84C306003D9398 /* AppWarpHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWarpHelper.swift; sourceTree = "<group>"; };
 		68B7DBF21A84C306003D9398 /* ConnectionListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionListener.swift; sourceTree = "<group>"; };
 		68B7DBF31A84C306003D9398 /* NotificationListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListener.swift; sourceTree = "<group>"; };
@@ -114,12 +132,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68A18D3F1AA8719E001CCE1D /* iosNtp */ = {
+			isa = PBXGroup;
+			children = (
+				68A18D401AA8719E001CCE1D /* ios-ntp-lib */,
+				68A18D4A1AA8719E001CCE1D /* network-udp */,
+				68A18D4D1AA8719E001CCE1D /* ntp.hosts */,
+			);
+			path = iosNtp;
+			sourceTree = "<group>";
+		};
+		68A18D401AA8719E001CCE1D /* ios-ntp-lib */ = {
+			isa = PBXGroup;
+			children = (
+				68A18D411AA8719E001CCE1D /* ios-ntp.h */,
+				68A18D421AA8719E001CCE1D /* ios-ntp.pch */,
+				68A18D431AA8719E001CCE1D /* NetAssociation.h */,
+				68A18D441AA8719E001CCE1D /* NetAssociation.m */,
+				68A18D451AA8719E001CCE1D /* NetworkClock.h */,
+				68A18D461AA8719E001CCE1D /* NetworkClock.m */,
+				68A18D471AA8719E001CCE1D /* Notes */,
+				68A18D481AA8719E001CCE1D /* NSDate+NetworkClock.h */,
+				68A18D491AA8719E001CCE1D /* NSDate+NetworkClock.m */,
+			);
+			path = "ios-ntp-lib";
+			sourceTree = "<group>";
+		};
+		68A18D4A1AA8719E001CCE1D /* network-udp */ = {
+			isa = PBXGroup;
+			children = (
+				68A18D4B1AA8719E001CCE1D /* GCDAsyncUdpSocket.h */,
+				68A18D4C1AA8719E001CCE1D /* GCDAsyncUdpSocket.m */,
+			);
+			path = "network-udp";
+			sourceTree = "<group>";
+		};
 		68B7DBEE1A84C306003D9398 /* AppWarpHelperClasses */ = {
 			isa = PBXGroup;
 			children = (
 				68B7DBFC1A84C316003D9398 /* AppWarp_iOS_SDK.framework */,
-				68B7DBEF1A84C306003D9398 /* 460Demo-Bridging-Header.h */,
-				68B7DBF01A84C306003D9398 /* 460Demo-Bridging-Header.m */,
 				68B7DBF11A84C306003D9398 /* AppWarpHelper.swift */,
 				68B7DBF21A84C306003D9398 /* ConnectionListener.swift */,
 				68B7DBF31A84C306003D9398 /* NotificationListener.swift */,
@@ -148,6 +199,7 @@
 				F4B5047D1A906B70007CDBA8 /* Orders */,
 				68F35CB11A84C540004905BF /* Projectile.swift */,
 				F4B5047E1A907A2A007CDBA8 /* Units */,
+				68038FE01AA56B8C0053A963 /* Timer.swift */,
 			);
 			path = GameCoreClasses;
 			sourceTree = "<group>";
@@ -215,6 +267,8 @@
 		F4D33B551A71EF7300DCD868 /* 460Demo */ = {
 			isa = PBXGroup;
 			children = (
+				68A18D551AA8732F001CCE1D /* 460Demo-Bridging-Header.h */,
+				68A18D3F1AA8719E001CCE1D /* iosNtp */,
 				68B7DBEE1A84C306003D9398 /* AppWarpHelperClasses */,
 				68F35CAD1A84C540004905BF /* GameCoreClasses */,
 				68F35CA81A84C4D5004905BF /* GameSceneClasses */,
@@ -336,12 +390,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68A18D531AA8719E001CCE1D /* ntp.hosts in Resources */,
 				F4C0F5DB1A87F6500075F2A3 /* Walk.atlas in Resources */,
 				68F35CAB1A84C4D5004905BF /* GameScene.sks in Resources */,
 				F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */,
 				F4C0F5D91A87F63D0075F2A3 /* Attack.atlas in Resources */,
 				F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */,
 				F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */,
+				68A18D501AA8719E001CCE1D /* Notes in Resources */,
 				F4D33B621A71EF7300DCD868 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +418,7 @@
 			files = (
 				6850A0861A91606100B8CAD4 /* MainViewController.swift in Sources */,
 				F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */,
+				68A18D521AA8719E001CCE1D /* GCDAsyncUdpSocket.m in Sources */,
 				F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */,
 				6827FE541A8E95C2007E7DB9 /* Idle.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
@@ -369,9 +426,9 @@
 				F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */,
 				F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */,
 				6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */,
-				68B7DBF61A84C306003D9398 /* 460Demo-Bridging-Header.m in Sources */,
 				F4B834921A9BC1D500A839E5 /* RoamAttack.swift in Sources */,
 				F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */,
+				68A18D511AA8719E001CCE1D /* NSDate+NetworkClock.m in Sources */,
 				68F35CB81A84C540004905BF /* Unit.swift in Sources */,
 				68F35CB71A84C540004905BF /* Projectile.swift in Sources */,
 				68F35CB41A84C540004905BF /* Attack.swift in Sources */,
@@ -384,7 +441,10 @@
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,
 				68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
+				68038FE11AA56B8C0053A963 /* Timer.swift in Sources */,
 				68F35CB51A84C540004905BF /* Move.swift in Sources */,
+				68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */,
+				68A18D4F1AA8719E001CCE1D /* NetworkClock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +568,7 @@
 		F4D33B771A71EF7300DCD868 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -517,20 +578,23 @@
 					"$(PROJECT_DIR)/460Demo",
 					"$(PROJECT_DIR)/460Demo/AppWarpHelperClasses",
 				);
+				GCC_PREFIX_HEADER = "$SRCROOT/460Demo/iosNtp/ios-ntp-lib/ios-ntp.pch";
 				INFOPLIST_FILE = 460Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "460Demo/AppWarpHelperClasses/460Demo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "460Demo/460Demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
 			};
 			name = Debug;
 		};
 		F4D33B781A71EF7300DCD868 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -540,13 +604,15 @@
 					"$(PROJECT_DIR)/460Demo",
 					"$(PROJECT_DIR)/460Demo/AppWarpHelperClasses",
 				);
+				GCC_PREFIX_HEADER = "$SRCROOT/460Demo/iosNtp/ios-ntp-lib/ios-ntp.pch";
 				INFOPLIST_FILE = 460Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "460Demo/AppWarpHelperClasses/460Demo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "460Demo/460Demo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
 			};
 			name = Release;
 		};

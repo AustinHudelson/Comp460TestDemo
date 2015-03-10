@@ -25,9 +25,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="by4-gA-Hf9" kind="presentation" id="MiD-Zj-IU0"/>
+                                    <segue destination="by4-gA-Hf9" kind="presentation" identifier="playerNameSegue" id="MiD-Zj-IU0"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Player Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzJ-mn-bze">
+                                <rect key="frame" x="211" y="235" width="178" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.20409617592886675" green="0.26883070372341328" blue="0.66997367143630981" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.20409617590000001" green="0.26883070370000001" blue="0.66997367139999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,6 +43,9 @@
                             <constraint firstItem="sWx-W1-Kxd" firstAttribute="top" secondItem="maK-i9-Uhn" secondAttribute="bottom" constant="250" id="zdD-HE-Ww7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="crp-bz-6Tv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,18 +63,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKd-0Z-ygp">
-                                <rect key="frame" x="245" y="240" width="111" height="30"/>
-                                <state key="normal" title="Start Game">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="YPu-P5-1IP"/>
-                                    <segue destination="2ym-kd-4K2" kind="presentation" id="JYk-0f-OoS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAz-7P-qzZ">
-                                <rect key="frame" x="277" y="328" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAz-7P-qzZ">
+                                <rect key="frame" x="258" y="424" width="46" height="30"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -74,19 +72,21 @@
                                     <segue destination="BV1-FR-VrT" kind="presentation" id="y30-hW-jlj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9D-1P-Scm">
+                                <rect key="frame" x="229" y="338" width="105" height="30"/>
+                                <state key="normal" title="Start Game">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startGameButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="4fi-wH-bAc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="uKd-0Z-ygp" firstAttribute="top" secondItem="yRe-Yf-8Mf" secondAttribute="bottom" constant="250" id="45c-TR-LJl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gAz-7P-qzZ" secondAttribute="trailing" constant="250" id="GCb-cw-MQ3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uKd-0Z-ygp" secondAttribute="trailing" constant="250" id="M1B-LH-VLt"/>
-                            <constraint firstItem="uKd-0Z-ygp" firstAttribute="leading" secondItem="tVp-UM-yKM" secondAttribute="leadingMargin" constant="250" id="Unc-5w-BZb"/>
-                            <constraint firstItem="gAz-7P-qzZ" firstAttribute="leading" secondItem="tVp-UM-yKM" secondAttribute="leadingMargin" constant="250" id="bOe-vU-hUU"/>
-                            <constraint firstItem="gAz-7P-qzZ" firstAttribute="top" secondItem="uKd-0Z-ygp" secondAttribute="bottom" constant="100" id="yw8-wk-drn"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="startButton" destination="uKd-0Z-ygp" id="edo-7J-nZc"/>
+                        <outlet property="startGameButton" destination="D9D-1P-Scm" id="gzQ-o5-BtI"/>
+                        <segue destination="2ym-kd-4K2" kind="presentation" identifier="gameSegue" id="EZS-Fw-Yde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVX-m0-sSh" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -34,17 +34,24 @@ class RoomListener: NSObject,RoomRequestListener
         if roomEvent.result == 0 // SUCESS
         {
             println("onSubscribeRoomDone Success")
-            AppWarpHelper.sharedInstance.connected = true
-            if let gameScene = AppWarpHelper.sharedInstance.gameScene {
-                gameScene.startGameScene()
-            } else {
-                println("!!!Error: gameScene is nil!!!")
-            }
             
+            /*
+                Send a request to AppWarp to get live room info.
+                If success, RoomListener.onGetLiveRoomInfoDone() will be called and that function
+                updates AppWarpHelper.userName_list
+            */
+            WarpClient.getInstance().getLiveRoomInfo(AppWarpHelper.sharedInstance.roomId)
         }
         else // Failed to join
         {
             println("onSubscribeRoomDone Failed")
         }
+    }
+    
+    func onGetLiveRoomInfoDone(event: LiveRoomInfoEvent)
+    {
+        AppWarpHelper.sharedInstance.userName_list = event.joinedUsers
+        
+        AppWarpHelper.sharedInstance.updateUserList()
     }
 }

@@ -9,18 +9,30 @@
 import UIKit
 
 
+/*
+    Program flow (as of 2/27/15):
+        - LobbyViewController -> AppWarpHelper.initializeWarp()
+        - LobbyViewController -> AppWarpHelper.connectWithAppWarpWithUserName()
+
+        - AppWarpHelper.connectWithAppWarpWithUserName() -> ConnectionListener.onConnectDone()
+
+        - ConnectionListener.onConnectDone() -> RoomListener.onJoinRoomDone()
+
+        - RoomListener.onJoinRoomDone() -> RoomListener.onSubscribeRoomDone()
+*/
 class AppWarpHelper: NSObject
 {
     var api_key = "8f4823c2a1bca11bb4ad1349d127b62a312481af36cc74cda1994f9ca6564857"
     var secret_key = "c36ad65cbc48eb1df497ee91ccac5a19693ba83d6ac4b72d2aa537f563a94069"
-    var roomId = "1506717553"
+    var roomId: String = "1506717553"
     var enemyName: String = ""
     //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
     var playerName: String = ""
-    var connected: Bool = false // variable used to check if we've established connection. This needs to be true b4 we actually send stuff
+    var userName_list: NSMutableArray = [] // used to store the list of users currently in room
+    var lobby: LobbyViewController? = nil
     
-    var gameViewController: GameViewController? = nil
     var gameScene: GameScene? = nil
+    var host: String? = nil
     
     class var sharedInstance:AppWarpHelper{
         struct Static{
@@ -52,9 +64,6 @@ class AppWarpHelper: NSObject
         
         var roomListener: RoomListener = RoomListener()
         warpClient.addRoomRequestListener(roomListener)
-        
-//        var updateReqListener: UpdateReqListener = UpdateReqListener()
-//        warpClient.addUpdateRequestListener(UpdateReqListener)
     }
     
     func connectWithAppWarpWithUserName(userName:String)
@@ -63,8 +72,8 @@ class AppWarpHelper: NSObject
         var uNameLength = userName.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
         if uNameLength>0
         {
-            var warpClient:WarpClient = WarpClient.getInstance()
-            warpClient.connectWithUserName(userName)
+            // can only call WarpClient.getInstance() after the initializeWarp() function is called
+            WarpClient.getInstance().connectWithUserName(userName)
         }
     }
     
@@ -82,17 +91,23 @@ class AppWarpHelper: NSObject
                         "Order":
                             [Order(player1, Move(location)),
                                 Order(player2, Attack(enemy1))
-                            ]
+                            ],
+                        "SentTime": ["3/3/15, 4:44:45 AM GMT"]
                     }
     */
-    func sendUpdate(data: Dictionary<String, AnyObject>) {
+    func sendUpdate(inout data: Dictionary<String, Array<AnyObject>>) {
+        // add sent time
+        Timer.logSendTime(&data)
+        /*
+        ====================================================
+            Send the data
+        */
         var error: NSError? // Used to store error msgs in case when error occured during serialization to JSON
         
         /*
             options = 0 here b/c we wanna send a data that's as compact as possible
                 - Can be set to NSJSONWritingOPtions.PrettyPrinted if you want the resulting JSON file to be human reable
         */
-//        println(data)
         if let convertedData = NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(0), error: &error) {
             /*
                 send over the converted data if conversion is success
@@ -130,7 +145,7 @@ class AppWarpHelper: NSObject
     func recvUpdate(data: NSData) {
         //println("Received data (\(data.length) bytes)")
         
-        var recvDict: Dictionary<String, Array<Dictionary<String, AnyObject>>> = [:]
+        var recvDict: Dictionary<String, Array<AnyObject>> = [:]
         
         var error: NSError?
         /* Convert received data back to Swift Objects */
@@ -145,19 +160,36 @@ class AppWarpHelper: NSObject
                             if let object = blob2 as? Dictionary<String, AnyObject> {
                                 recvDict[key]!.append(object)
                             }
+                            if let timeStr = blob2 as? String {
+                                recvDict[key]!.append(timeStr)
+                            }
                         }
                     }
                 }
             }
             //println(recvDict)
             
-            gameScene!.updateGameState(recvDict)
+            /*
+                if gameScene is not initialized yet, that means this msg received is host's start game msg, so don't call gameScene.updateGameState; start the game instead.
+            */
+            if gameScene == nil {
+                /* Print the start time and received time */
+                let sentTimeStr = (recvDict["SentTime"]!)[0] as String
+                var sentTime: NSDate = Timer.StrToDate(sentTimeStr)!
+                var recvTime: NSDate = Timer.getCurrentTime()
+                var recvTimeStr = Timer.DateToStr(recvTime)
+                var diff: NSTimeInterval = Timer.diffDateNow(sentTime) // get difference between sent time and now
+                println("SentTime: \(sentTimeStr); RecvTime: \(recvTimeStr); diff between SentTime & recvTime: \(diff) seconds")
+                
+                /* start the game */
+                startGame()
+            } else {
+                gameScene!.updateGameState(recvDict)
+            }
         } else {
             println("!!!Error in converting recv data!!!")
             println(error!)
         }
-        
-//        gameScene!.updateGameState(recvData)
     }
     
     
@@ -183,45 +215,22 @@ class AppWarpHelper: NSObject
         }
     }
     
-//    func receivedEnemyStatus(data:NSData)
-//    {
-//        println("receivedEnemyStatus...1")
-//        println(data)
-//        println("receivedEnemyStatus...2")
-//        var error: NSErrorPointer? = nil
-//        var errortwo: NSError?
-//        var propertyListFormat:NSPropertyListFormat? = nil
-//        //var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data,options: NSJSONReadingOptions.MutableContainers, error:error!) as NSDictionary
-//        var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error:&errortwo) as NSDictionary
-//        //var responseDict: NSDictionary = NSPropertyListSerialization.propertyListWithData(data, options: 0, error: nil) as NSDictionary
-//            
-//        println(responseDict)
-//        println(errortwo?.debugDescription)
-//        //gameScene!.updateEnemyStatus(responseDict)
-//        
-//
-//        println("receivedEnemyStatus...3")
-//        
-//        
-//        gameScene!.updateEnemyStatus(responseDict)
-////        if enemyName.isEmpty
-////        {
-////            var userName : (String!) = responseDict.objectForKey("userName") as String
-////            let isEqual = playerName.hasPrefix(userName)
-////            if !isEqual
-////            {
-////                enemyName = responseDict.objectForKey("userName") as String
-////                gameScene!.updateEnemyStatus(responseDict)
-////            }
-////        }
-////        else
-////        {
-////            var userName : (String!) = responseDict.objectForKey("userName") as String
-////            let isEqual = enemyName.hasPrefix(userName)
-////            if !isEqual
-////            {
-////                
-////            }
-////        }
-//    }
+    /*
+        Send a msg to AppWarp to tell everyone to start the game.
+        The game won't start until everyone receives this message.
+    */
+    func sendStartGame() {
+        var startGameMsg: Dictionary<String, Array<AnyObject>> = [:]
+        startGameMsg["Start Game!"] = []
+        sendUpdate(&startGameMsg)
+    }
+    
+    /*
+        This function is the one that actually tells everyone to segue to GameViewController.
+        It should only be called when 
+    */
+    func startGame() {
+        println("AppWarpHelper startGame()")
+        lobby!.performSegueWithIdentifier("gameSegue", sender: nil)
+    }
 }

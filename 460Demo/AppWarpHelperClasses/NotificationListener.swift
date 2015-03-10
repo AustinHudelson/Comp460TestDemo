@@ -33,7 +33,13 @@ class NotificationListener: NSObject,NotifyListener
     
     func onUserJoinedRoom(roomData: RoomData!, username: String!)
     {
-        
+        println("\(username) joined the room!")
+        /*
+            Send a request to AppWarp to get live room info.
+            If success, RoomListener.onGetLiveRoomInfoDone() will be called and that function
+            updates AppWarpHelper.userName_list
+        */
+        WarpClient.getInstance().getLiveRoomInfo(AppWarpHelper.sharedInstance.roomId)
     }
     
 }
