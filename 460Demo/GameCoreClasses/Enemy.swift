@@ -85,7 +85,7 @@ class Enemy: Unit, PType
             walkAtlas.textureNamed(AnimationName+walkAnimName+"18"),
             walkAtlas.textureNamed(AnimationName+walkAnimName+"19"),
             walkAtlas.textureNamed(AnimationName+walkAnimName+"20")
-            ], timePerFrame: 0.05)
+            ], timePerFrame: 0.05, resize: true, restore: true)
         
         var attackTextures = SKAction.animateWithTextures([
             attackAtlas.textureNamed(AnimationName+attackAnimName+"0"),
@@ -101,11 +101,11 @@ class Enemy: Unit, PType
             attackAtlas.textureNamed(AnimationName+attackAnimName+"10"),
             attackAtlas.textureNamed(AnimationName+attackAnimName+"11"),
             attackAtlas.textureNamed(AnimationName+attackAnimName+"12"),
-            ], timePerFrame: 0.05)
+            ], timePerFrame: 0.05, resize: true, restore: true)
         
         var standTextures = SKAction.animateWithTextures([
             walkAtlas.textureNamed(AnimationName+standAnimName+"0")
-            ], timePerFrame: 0.1)
+            ], timePerFrame: 0.1, resize: true, restore: true)
         
         self.DS_walkAnim = SKAction.repeatActionForever(walkTextures)
         self.DS_standAnim = SKAction.repeatActionForever(standTextures)

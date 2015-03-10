@@ -39,8 +39,8 @@ class Warrior: Unit, PType
         self.maxhealth = 100
         self.healthregen = 1
         self.speed = 50.0
-        self.sprite.xScale = 1.0
-        self.sprite.yScale = 1.0
+        self.sprite.xScale = 1.00
+        self.sprite.yScale = 1.00
         
         
         
@@ -60,14 +60,13 @@ class Warrior: Unit, PType
         //Define Animations here
         //
         
-        let walkAtlas = SKTextureAtlas(named: "Walk")
-        let attackAtlas = SKTextureAtlas(named: "Attack")
-        let walkAnimName = "-Walk2"
-        let attackAnimName = "-Attack"
-        let standAnimName = "-Walk2"
+        let walkAtlas = SKTextureAtlas(named: "Warrior")
+        let attackAtlas = SKTextureAtlas(named: "Warrior")
+        let walkAnimName = "-walk2"
+        let attackAnimName = "-attack"
+        let standAnimName = "-walk2"
         
         var walkTextures = SKAction.animateWithTextures([
-            walkAtlas.textureNamed(AnimationName+walkAnimName+"0"),
             walkAtlas.textureNamed(AnimationName+walkAnimName+"1"),
             walkAtlas.textureNamed(AnimationName+walkAnimName+"2"),
             walkAtlas.textureNamed(AnimationName+walkAnimName+"3"),
@@ -87,7 +86,8 @@ class Warrior: Unit, PType
             walkAtlas.textureNamed(AnimationName+walkAnimName+"17"),
             walkAtlas.textureNamed(AnimationName+walkAnimName+"18"),
             walkAtlas.textureNamed(AnimationName+walkAnimName+"19"),
-            walkAtlas.textureNamed(AnimationName+walkAnimName+"20")
+            walkAtlas.textureNamed(AnimationName+walkAnimName+"20"),
+            walkAtlas.textureNamed(AnimationName+walkAnimName+"21")
             ], timePerFrame: 0.05)
         
         var attackTextures = SKAction.animateWithTextures([
