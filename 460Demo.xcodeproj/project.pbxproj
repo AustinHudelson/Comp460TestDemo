@@ -31,6 +31,8 @@
 		68F35CB71A84C540004905BF /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB11A84C540004905BF /* Projectile.swift */; };
 		68F35CB81A84C540004905BF /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB21A84C540004905BF /* Unit.swift */; };
 		68F35CB91A84C540004905BF /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB31A84C540004905BF /* Warrior.swift */; };
+		E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */; };
+		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
 		F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */ = {isa = PBXBuildFile; fileRef = F42FD5AE1A895D4F002C6624 /* Background1.png */; };
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
@@ -93,6 +95,8 @@
 		68F35CB11A84C540004905BF /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		68F35CB21A84C540004905BF /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		68F35CB31A84C540004905BF /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Warrior.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
+		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F42FD5AE1A895D4F002C6624 /* Background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background1.png; path = ../Background1.png; sourceTree = "<group>"; };
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 				F42FD5AE1A895D4F002C6624 /* Background1.png */,
 				68F35CAA1A84C4D5004905BF /* GameScene.swift */,
 				F4E896411AA128E000406784 /* Game.swift */,
+				E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */,
+				E75F4FBA1AB0DE1B00C3D76E /* Level.swift */,
 			);
 			path = GameSceneClasses;
 			sourceTree = "<group>";
@@ -435,6 +441,7 @@
 				68A18D521AA8719E001CCE1D /* GCDAsyncUdpSocket.m in Sources */,
 				F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */,
 				6827FE541A8E95C2007E7DB9 /* Idle.swift in Sources */,
+				E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
 				F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */,
