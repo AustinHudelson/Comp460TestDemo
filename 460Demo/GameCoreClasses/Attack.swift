@@ -58,7 +58,7 @@ class Attack: Order, PType
             }
             
             self.DS_moveState = true
-            if GameScene.global.getDistance(DS_receiver!.sprite.position, p2: movePos) > tolerence {
+            if Game.global.getDistance(DS_receiver!.sprite.position, p2: movePos) > tolerence {
                 DS_receiver!.move(movePos, complete:{
                     self.DS_moveState = false
                     self.DS_receiver!.clearMove()

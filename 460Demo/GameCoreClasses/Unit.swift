@@ -206,12 +206,7 @@ class Unit: SerializableJSON, PType
         applyTint(SKColor.blackColor(), factor: 1.0, blendDuration: 1.0)
         sendOrder(Idle(receiverIn: self))
         
-        GameScene.global.removeUnitFromGame(ID) //REMOVE UNIT LOCALLY: (DANGEROUS)
-        
-        var remove: SKAction = SKAction.removeFromParent()
-        self.DS_health_txt.runAction(remove)
-        self.sprite.runAction(remove)
-        
+        Game.global.removeUnit(ID) //REMOVE UNIT LOCALLY: (DANGEROUS)
     }
     
     /*

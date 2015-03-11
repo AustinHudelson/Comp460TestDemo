@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import SpriteKit
 
 
 class Game {
     
     var unitMap: Dictionary<String, Unit> = [:] // Our list of units in the scene
+    var scene: GameScene?
     
     class var global:Game{
         struct Static{
@@ -35,7 +37,11 @@ class Game {
     
     func removeUnit(unit: Unit){
         if unitMap[unit.ID] != nil{
+            scene!.removeUnitFromGame(unit.ID)
             unitMap[unit.ID] = nil
+            let remove: SKAction = SKAction.removeFromParent()
+            unit.DS_health_txt.runAction(remove)
+            unit.sprite.runAction(remove)
         } else {
             println("WARNING: ATTEMPTED TO REMOVE UNIT FROM UNITMAP THAT COULD NOT BE FOUND")
         }
@@ -55,5 +61,51 @@ class Game {
     
     func getMyPlayer() -> Unit {
         return unit(AppWarpHelper.sharedInstance.playerName)
+    }
+    
+    /*
+    *Function to get distance between 2 CGPoints
+    */
+    func getDistance(p1: CGPoint, p2: CGPoint) -> CGFloat{
+        let xDist = (p2.x - p1.x);
+        let yDist = (p2.y - p1.y);
+        return sqrt((xDist * xDist) + (yDist * yDist));
+    }
+    
+    /*
+    * Function to QUICKLY get a RELATIVE distance.
+    * Does not run the sqrt function, instead simply returns its square.
+    * When comparing distances it is not required to know the actual distance.
+    */
+    func getRelativeDistance(p1: CGPoint, p2: CGPoint) -> CGFloat{
+        let xDist = (p2.x - p1.x);
+        let yDist = (p2.y - p1.y);
+        return ((xDist * xDist) + (yDist * yDist));
+    }
+    
+    /*
+    * Returns the closest PLAYER to the given point
+    */
+    func getClosestPlayer(p1: CGPoint) -> Unit {
+        var nearby: Unit?
+        var near: CGFloat = CGFloat.infinity
+        
+        for (id, unit) in Game.global.unitMap {
+            if unit is Enemy{   //WARNING: THIS IS A TERRIBLE WAY TO CHECK ALLIANCE... MUST UPDATE LATER
+                continue
+            }
+            var p2 = unit.sprite.position
+            var dist = getRelativeDistance(p1, p2:p2)
+            if dist < near{
+                nearby = unit
+                near = dist
+            }
+        }
+        
+        if nearby == nil {
+            fatalError("Unable to find closest player to point. Empty player list?")
+        }
+        
+        return nearby!
     }
 }

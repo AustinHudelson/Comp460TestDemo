@@ -197,9 +197,9 @@
 				F42FD5AC1A880282002C6624 /* SerializableJSON.swift */,
 				F4B5047B1A90175B007CDBA8 /* PType.swift */,
 				F4B5047D1A906B70007CDBA8 /* Orders */,
-				68F35CB11A84C540004905BF /* Projectile.swift */,
 				F4B5047E1A907A2A007CDBA8 /* Units */,
 				68038FE01AA56B8C0053A963 /* Timer.swift */,
+				68F35CB11A84C540004905BF /* Projectile.swift */,
 			);
 			path = GameCoreClasses;
 			sourceTree = "<group>";

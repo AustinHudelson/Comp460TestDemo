@@ -21,7 +21,7 @@ class RoamAttack: Order, PType
     init(receiverIn: Unit){
         super.init()
         self.DS_receiver = receiverIn
-        self.DS_target = GameScene.global.getClosestPlayer(receiverIn.sprite.position)
+        self.DS_target = Game.global.getClosestPlayer(receiverIn.sprite.position)
         self.animationGapDistance = 20.0
         tID = DS_target!.ID
         ID = receiverIn.ID
@@ -54,7 +54,7 @@ class RoamAttack: Order, PType
                 movePos = CGPoint(x: DS_target!.sprite.frame.maxX-1+animationGapDistance,y : DS_target!.sprite.frame.midY)
             }
             
-            if GameScene.global.getDistance(DS_receiver!.sprite.position, p2: movePos) > tolerence {
+            if Game.global.getDistance(DS_receiver!.sprite.position, p2: movePos) > tolerence {
                 DS_moveState = true
                 DS_receiver!.move(movePos, complete:{
                     self.DS_moveState = false
