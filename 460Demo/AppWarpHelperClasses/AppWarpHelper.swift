@@ -115,7 +115,7 @@ class AppWarpHelper: NSObject
             var error = WarpClient.getInstance().getConnectionState()
             if error == 0 {
                 // error = 0 means success in getting connection state
-                //println("Sending msg (\(convertedData.length) bytes) ...")
+                println("Sending msg (\(convertedData.length) bytes) ...")
                 WarpClient.getInstance().sendUpdatePeers(convertedData)
             } else {
                 println("!!!WARNING: Error in sending msg (\(convertedData.length) bytes)!!!!") // print data's number of bytes
@@ -143,7 +143,7 @@ class AppWarpHelper: NSObject
                     // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
     func recvUpdate(data: NSData) {
-        //println("Received data (\(data.length) bytes)")
+        println("Received data (\(data.length) bytes)")
         
         var recvDict: Dictionary<String, Array<AnyObject>> = [:]
         
@@ -167,7 +167,8 @@ class AppWarpHelper: NSObject
                     }
                 }
             }
-            //println(recvDict)
+            
+            println(recvDict)
             
             /*
                 if gameScene is not initialized yet, that means this msg received is host's start game msg, so don't call gameScene.updateGameState; start the game instead.
@@ -193,26 +194,9 @@ class AppWarpHelper: NSObject
     }
     
     
-    func updatePlayerDataToServer(dataDict:NSMutableDictionary)
-    {
-        //if let y = dataDict as? String
-        //{
-        //    return
-        //}
-        
-        var convertedData = NSJSONSerialization.dataWithJSONObject(dataDict, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
-        //var convertedData = NSPropertyListSerialization.dataWithPropertyList(dataDict, format: NSPropertyListFormat.XMLFormat_v1_0, options: 0, error: nil)
-        
-        if convertedData == nil
-        {
-            return
-        }
-        
-        if WarpClient.getInstance().getConnectionState()==0
-        {
-            //println("updatePlayerDataToServer")
-            WarpClient.getInstance().sendUpdatePeers(convertedData)
-        }
+    /* ======= Lobby and designate host stuff ========= */
+    func updateUserList() {
+        lobby!.updateUserList()
     }
     
     /*
