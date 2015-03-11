@@ -153,10 +153,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             /*
                 Determine if the touch is on your own character's sprite
             */
-
+            if !Game.global.myPlayerIsDead
+            {
                 if Game.global.getMyPlayer().sprite.containsPoint(touchLocation) {
-                    playerIsTouched = true
-                }
+                        playerIsTouched = true
+                    }
+            }
+                
         }
     }
     
@@ -167,7 +170,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let touchLocation = touch.locationInNode(self)
                 var unitTouched = false;
                 var touchedUnitID: String = ""
-                for (name, unit) in Game.global.unitMap
+                for (name, unit) in Game.global.playerMap
                 {
                     //Attack target conditions go here
                     if(unit.sprite.containsPoint(touchLocation) && (unit.ID != AppWarpHelper.sharedInstance.playerName))
@@ -181,7 +184,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var sendData: Dictionary<String, Array<AnyObject>> = [:]
                 if(unitTouched)
                 {
-                    var attack: Attack = Attack(receiverIn: Game.global.getMyPlayer(), target: Game.global.unit(touchedUnitID))
+                    var attack: Attack = Attack(receiverIn: Game.global.getMyPlayer(), target: Game.global.getUnit(touchedUnitID)!)
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(attack.toJSON())
                     

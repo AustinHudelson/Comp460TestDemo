@@ -16,7 +16,7 @@ class LevelOne:Level
         super.init()
         //wave 1
         let DUMMY_ID1 = "ENEMY1"
-        let dummy_position1 = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+10);
+        let dummy_position1 = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+50);
         let dummy1 = Enemy(ID: DUMMY_ID1, spawnLocation: dummy_position1)
         
         let DUMMY_ID2 = "ENEMY2"
@@ -24,9 +24,9 @@ class LevelOne:Level
         let dummy2 = Enemy(ID: DUMMY_ID2, spawnLocation: dummy_position2)
         
         let DUMMY_ID3 = "ENEMY3"
-        let dummy_position3 = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-10);
+        let dummy_position3 = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-50);
         let dummy3 = Enemy(ID: DUMMY_ID3, spawnLocation: dummy_position3)
-        
+        enemyWaves.append(Array<Enemy>())
         enemyWaves[0].append(dummy1)
         enemyWaves[0].append(dummy2)
         enemyWaves[0].append(dummy3)
@@ -44,6 +44,7 @@ class LevelOne:Level
         let DUMMY_ID6 = "ENEMY6"
         let dummy_position6 = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-10);
         let dummy6 = Enemy(ID: DUMMY_ID3, spawnLocation: dummy_position6)
+        enemyWaves.append(Array<Enemy>())
         enemyWaves[1].append(dummy4)
         enemyWaves[1].append(dummy5)
         enemyWaves[1].append(dummy6)

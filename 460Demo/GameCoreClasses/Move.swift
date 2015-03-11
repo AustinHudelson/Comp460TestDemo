@@ -32,7 +32,7 @@ class Move : Order, PType
         super.init(receivedData: receivedData)
         self.restoreProperties(Move.self, receivedData: receivedData)
         
-        self.DS_receiver = Game.global.unit(ID!)
+        self.DS_receiver = Game.global.getUnit(ID!)
         self.DS_moveToLoc = CGPoint(x:posX, y:posY)
     }
     

@@ -34,8 +34,8 @@ class RoamAttack: Order, PType
         super.init(receivedData: receivedData)
         restoreProperties(Move.self, receivedData: receivedData)
         
-        DS_receiver = Game.global.unit(self.ID!)
-        DS_target = Game.global.unit(tID)
+        DS_receiver = Game.global.getUnit(self.ID!)
+        DS_target = Game.global.getUnit(tID)
     }
     
     override func apply(){

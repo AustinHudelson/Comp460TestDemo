@@ -19,6 +19,7 @@ class Game {
     var enemyMap: Dictionary<String,Unit> = [:] //our list of AI characters
     var scene: GameScene?
     var level: Level?
+    var myPlayerIsDead = false
     
     class var global:Game{
         struct Static{
@@ -43,25 +44,13 @@ class Game {
             println("WARNING: ADDED UNIT WITH ALREADY EXISTING ID TO GAME")
         }
     }
-    
-    func removeUnit(unit: Unit){
-        if unitMap[unit.ID] != nil{
-//            scene!.removeUnitFromGame(unit.ID)
-            unitMap[unit.ID] = nil
-            let remove: SKAction = SKAction.removeFromParent()
-            unit.DS_health_txt.runAction(remove)
-            unit.sprite.runAction(remove)
-            
-            // Temporary Lose Screen for if the unit removed is your character
-            if unit.ID == AppWarpHelper.sharedInstance.playerName {
-                // Show Game over text
-                var GameOver_txt: SKLabelNode = SKLabelNode(text: "Game Over")
-                GameOver_txt.fontColor = UIColor.whiteColor()
-                GameOver_txt.fontSize = 100
-                
-                GameOver_txt.position = CGPointMake(scene!.size.width/2, scene!.size.height*(5/6))
-                scene!.addChild(GameOver_txt)
-            }
+    /*
+     *Adds an enemy
+     */
+    func addEnemy(enemy: Unit)
+    {
+        if enemyMap[enemy.ID] == nil{
+            enemyMap[enemy.ID] = enemy
         } else {
             println("WARNING: ADDED UNIT WITH ALREADY EXISTING ID TO GAME")
         }
@@ -72,12 +61,16 @@ class Game {
     func removeUnit(ID:String){
         if playerMap[ID] != nil
         {
+            
             var player = playerMap[ID]!
             playerMap[ID] = nil
             let remove: SKAction = SKAction.removeFromParent()
             player.DS_health_txt.runAction(remove)
             player.sprite.runAction(remove)
-           
+            if ID == AppWarpHelper.sharedInstance.playerName
+            {
+                myPlayerIsDead = true
+            }
         }
             
         else if enemyMap[ID] != nil//it's an enemy
@@ -88,6 +81,11 @@ class Game {
             enemy.DS_health_txt.runAction(remove)
             enemy.sprite.runAction(remove)
             
+            if enemyMap.count == 0
+            {
+                loadLevel()
+            }
+            
         }
         else
         {
@@ -95,23 +93,37 @@ class Game {
             
         }
      }
-    
+    /** loads a new wave if you are the host
+    */
     func loadLevel()
     {
         if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
         {
-            var firstWave: Array<Enemy> = Game.global.level!.loadWave()!
+            var firstWave: Array<Enemy>? = Game.global.level!.loadWave()
             
-            for enemy in firstWave
+            if firstWave != nil
             {
-                scene!.sendUnitOverNetwork(enemy)
+                for enemy in firstWave!
+                {
+                    scene!.sendUnitOverNetwork(enemy)
+                }
             }
+            else
+            {
+                winGame()
+            }
+            
+            
         }
     }
     
+    /** Once all waves are complete then we show this text/screen
+    */
     
-    
-
+func winGame()
+{
+    println("We won")
+}
     
     
     /* Gets a unit given a String
