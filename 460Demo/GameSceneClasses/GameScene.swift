@@ -105,13 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         AppWarpHelper.sharedInstance.sendUpdate(&sendData)
     }
     
-    func removeUnitFromGame(ID: String){
-        println("REMOVING UNIT")
-        //Create a unit on the scene, should have the same ID for all players so should only create one time
-        let dummy_position = CGPoint(x:CGRectGetMaxX(self.frame)+50, y:CGRectGetMidY(self.frame));
-        let dummy = Enemy(ID: ID, spawnLocation: dummy_position)
-        sendUnit(dummy)
-    }
+  
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
