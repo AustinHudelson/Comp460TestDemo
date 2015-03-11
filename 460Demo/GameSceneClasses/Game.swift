@@ -37,11 +37,22 @@ class Game {
     
     func removeUnit(unit: Unit){
         if unitMap[unit.ID] != nil{
-            scene!.removeUnitFromGame(unit.ID)
+//            scene!.removeUnitFromGame(unit.ID)
             unitMap[unit.ID] = nil
             let remove: SKAction = SKAction.removeFromParent()
             unit.DS_health_txt.runAction(remove)
             unit.sprite.runAction(remove)
+            
+            // Temporary Lose Screen for if the unit removed is your character
+            if unit.ID == AppWarpHelper.sharedInstance.playerName {
+                // Show Game over text
+                var GameOver_txt: SKLabelNode = SKLabelNode(text: "Game Over")
+                GameOver_txt.fontColor = UIColor.whiteColor()
+                GameOver_txt.fontSize = 100
+                
+                GameOver_txt.position = CGPointMake(scene!.size.width/2, scene!.size.height*(5/6))
+                scene!.addChild(GameOver_txt)
+            }
         } else {
             println("WARNING: ATTEMPTED TO REMOVE UNIT FROM UNITMAP THAT COULD NOT BE FOUND")
         }
@@ -86,8 +97,8 @@ class Game {
     /*
     * Returns the closest PLAYER to the given point
     */
-    func getClosestPlayer(p1: CGPoint) -> Unit {
-        var nearby: Unit?
+    func getClosestPlayer(p1: CGPoint) -> Unit? {
+        var nearby: Unit? = nil
         var near: CGFloat = CGFloat.infinity
         
         for (id, unit) in Game.global.unitMap {
@@ -102,10 +113,10 @@ class Game {
             }
         }
         
-        if nearby == nil {
-            fatalError("Unable to find closest player to point. Empty player list?")
-        }
+//        if nearby == nil {
+//            fatalError("Unable to find closest player to point. Empty player list?")
+//        }
         
-        return nearby!
+        return nearby
     }
 }

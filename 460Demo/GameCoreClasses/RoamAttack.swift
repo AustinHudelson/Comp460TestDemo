@@ -21,9 +21,11 @@ class RoamAttack: Order, PType
     init(receiverIn: Unit){
         super.init()
         self.DS_receiver = receiverIn
-        self.DS_target = Game.global.getClosestPlayer(receiverIn.sprite.position)
+        self.DS_target = Game.global.getClosestPlayer(receiverIn.sprite.position) // might be nil when all the players die
         self.animationGapDistance = 20.0
-        tID = DS_target!.ID
+        if self.DS_target != nil {
+            tID = DS_target!.ID
+        } // else tID's an empty string
         ID = receiverIn.ID
         type = "RoamAttack"
     }
@@ -37,7 +39,13 @@ class RoamAttack: Order, PType
     }
     
     override func apply(){
-        attackCycle()
+        if self.DS_target == nil {
+            // no more players to kill so send idle order to this unit
+            var idle: Idle = Idle(receiverIn: self.DS_receiver!)
+            self.DS_receiver?.sendOrder(idle)
+        } else {
+            attackCycle()
+        }
     }
     
     func attackCycle(){
