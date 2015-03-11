@@ -13,7 +13,7 @@ class Attack: Order, PType
 {
     var DS_target: Unit?
     //var DS_receiver: Unit?
-    var animationGapDistance: CGFloat = 20.0 //Default value is overwritten in init
+    var animationGapDistance: CGFloat = 20.0
     var tID: String = ""
     //var ID: String = ""
     var DS_moveState = false
@@ -63,17 +63,6 @@ class Attack: Order, PType
                     self.DS_moveState = false
                     self.DS_receiver!.clearMove()
                     self.attackCycle()
-                    //
-                    //                    var frontConnection = CGPoint(x: self.DS_receiver!.sprite.position.x+self.animationGapDistance,y: self.DS_receiver!.sprite.position.y)
-                    //                    var backConnection=CGPoint(x: self.DS_receiver!.sprite.position.x-self.animationGapDistance,y: self.DS_receiver!.sprite.position.y)
-                    //
-                    //                    if  self.DS_target!.sprite.frame.contains(frontConnection)||self.DS_target!.sprite.frame.contains(backConnection) {
-                    //
-                    //                    }
-                    //                    else
-                    //                    {
-                    //                        self.apply()
-                    //                    }
                 })
             } else {
                 if DS_receiver!.sprite.position.x < DS_target!.sprite.position.x {

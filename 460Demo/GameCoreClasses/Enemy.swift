@@ -40,6 +40,7 @@ class Enemy: Unit, PType
         self.speed = 30.0
         self.sprite.xScale = 1.0
         self.sprite.yScale = 1.0
+        self.isEnemy = true
         
         //Initializes all the DS_ animations
         initializeAnimations()

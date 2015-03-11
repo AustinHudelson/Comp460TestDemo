@@ -25,6 +25,7 @@ class Unit: SerializableJSON, PType
     var DS_walkAnim: SKAction?
     var DS_attackAnim: SKAction?
     var DS_standAnim: SKAction?
+    var isEnemy: Bool = true
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
@@ -169,6 +170,51 @@ class Unit: SerializableJSON, PType
         self.sprite.removeActionForKey("move")
         self.sprite.removeActionForKey("moveAnim")
         self.DS_health_txt.removeActionForKey("move")
+    }
+    
+    func attack(target: Unit){
+        
+    }
+    
+    func attackCycle(target: Unit){
+        let tolerence = CGFloat(20.0)
+        let animationGapDistance: CGFloat = 20.0 //Default value is overwritten in init
+        
+        if target.alive == true         //ENSURE ATTACK IS STILL VALID
+        {
+            var movePos: CGPoint
+            if(self.sprite.position.x < target.sprite.position.x)
+            {
+                movePos = CGPoint(x: target.sprite.frame.minX-animationGapDistance, y: target.sprite.frame.midY)
+            }
+            else
+            {
+                movePos = CGPoint(x: target.sprite.frame.maxX-1+animationGapDistance,y : target.sprite.frame.midY)
+            }
+            
+            if Game.global.getDistance(self.sprite.position, p2: movePos) > tolerence {
+                self.move(movePos, complete:{
+                    self.clearMove()
+                    self.attackCycle(target)
+                })
+            } else {
+                if self.sprite.position.x < target.sprite.position.x {
+                    self.faceRight()
+                } else {
+                    self.faceLeft()
+                }
+                self.sprite.runAction(self.DS_attackAnim!, withKey: "AttackAnim")
+                let delay = SKAction.waitForDuration(1.0)
+                self.sprite.runAction(delay, completion: {
+                        self.attackCycle(target)
+                    })
+                target.takeDamage(3)
+            }
+        }
+    }
+    
+    func clearAttack(){
+        
     }
     
     /*

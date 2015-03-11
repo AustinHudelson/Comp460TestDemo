@@ -41,6 +41,7 @@ class Warrior: Unit, PType
         self.speed = 50.0
         self.sprite.xScale = 1.00
         self.sprite.yScale = 1.00
+        self.isEnemy = false
         
         
         

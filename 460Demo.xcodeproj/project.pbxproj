@@ -36,6 +36,8 @@
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
 		F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047F1A908339007CDBA8 /* NoneOrder.swift */; };
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
+		F4B562EA1AB0D82E0094B2A7 /* Heal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562E91AB0D82E0094B2A7 /* Heal.swift */; };
+		F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562EB1AB0D8C20094B2A7 /* Ability.swift */; };
 		F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8348F1A9BB95200A839E5 /* Enemy.swift */; };
 		F4B834921A9BC1D500A839E5 /* RoamAttack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B834911A9BC1D500A839E5 /* RoamAttack.swift */; };
 		F4C0F5D91A87F63D0075F2A3 /* Attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */; };
@@ -96,6 +98,8 @@
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
 		F4B5047F1A908339007CDBA8 /* NoneOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoneOrder.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
+		F4B562E91AB0D82E0094B2A7 /* Heal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heal.swift; sourceTree = "<group>"; };
+		F4B562EB1AB0D8C20094B2A7 /* Ability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ability.swift; sourceTree = "<group>"; };
 		F4B8348F1A9BB95200A839E5 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		F4B834911A9BC1D500A839E5 /* RoamAttack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoamAttack.swift; sourceTree = "<group>"; };
 		F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Attack.atlas; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 			children = (
 				F42FD5AC1A880282002C6624 /* SerializableJSON.swift */,
 				F4B5047B1A90175B007CDBA8 /* PType.swift */,
+				F4B562E81AB0D8180094B2A7 /* Abilities */,
 				F4B5047D1A906B70007CDBA8 /* Orders */,
 				F4B5047E1A907A2A007CDBA8 /* Units */,
 				68038FE01AA56B8C0053A963 /* Timer.swift */,
@@ -233,6 +238,15 @@
 				F4B5047A1A900D98007CDBA8 /* Target Dummy */,
 			);
 			name = Units;
+			sourceTree = "<group>";
+		};
+		F4B562E81AB0D8180094B2A7 /* Abilities */ = {
+			isa = PBXGroup;
+			children = (
+				F4B562E91AB0D82E0094B2A7 /* Heal.swift */,
+				F4B562EB1AB0D8C20094B2A7 /* Ability.swift */,
+			);
+			name = Abilities;
 			sourceTree = "<group>";
 		};
 		F4BC9DC81A900C9A00F3B617 /* Warrior */ = {
@@ -427,6 +441,7 @@
 				F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */,
 				6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */,
 				F4B834921A9BC1D500A839E5 /* RoamAttack.swift in Sources */,
+				F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */,
 				F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */,
 				68A18D511AA8719E001CCE1D /* NSDate+NetworkClock.m in Sources */,
 				68F35CB81A84C540004905BF /* Unit.swift in Sources */,
@@ -441,6 +456,7 @@
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,
 				68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
+				F4B562EA1AB0D82E0094B2A7 /* Heal.swift in Sources */,
 				68038FE11AA56B8C0053A963 /* Timer.swift in Sources */,
 				68F35CB51A84C540004905BF /* Move.swift in Sources */,
 				68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */,
