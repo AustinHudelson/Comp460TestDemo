@@ -39,8 +39,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         //newUnit.currentOrder = Idle(receiverIn: newUnit) //TEMPORARY WORKAROUND FOR ORDERS THAT DO NOT DESERIALIZE PROPERLY
                         
                         newUnit.addUnitToGameScene(self, pos: spawnLoc)
-                        
-                        sendUnit(Game.global.unitMap[AppWarpHelper.sharedInstance.playerName]!) // send myself to everyone who hasn't got me
                     }
                 }
             }
