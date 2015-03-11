@@ -50,12 +50,5 @@ class LevelOne:Level
         
     }
     
-    func loadWave()-> Array<Enemy>?
-    {
-        if counter < enemyWaves.count
-        {
-            return enemyWaves[counter++]
-        }
-        return nil
-    }
+    
 }

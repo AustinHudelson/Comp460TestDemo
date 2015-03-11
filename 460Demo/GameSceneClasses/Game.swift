@@ -75,6 +75,7 @@ class Game {
             let remove: SKAction = SKAction.removeFromParent()
             enemy.DS_health_txt.runAction(remove)
             enemy.sprite.runAction(remove)
+            
         }
         else
         {
@@ -82,6 +83,19 @@ class Game {
             
         }
      }
+    
+    func loadLevel()
+    {
+        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
+        {
+            var firstWave: Array<Enemy> = Game.global.level!.loadWave()!
+            
+            for enemy in firstWave
+            {
+                scene!.sendUnitOverNetwork(enemy)
+            }
+        }
+    }
     
     
     

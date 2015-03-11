@@ -13,4 +13,13 @@ class Level
     
     var enemyWaves: Array<Array<Enemy>> = Array<Array<Enemy>>()
     var counter = 0
+    
+    func loadWave()-> Array<Enemy>?
+    {
+        if counter < enemyWaves.count
+        {
+            return enemyWaves[counter++]
+        }
+        return nil
+    }
 }

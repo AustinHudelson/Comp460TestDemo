@@ -88,11 +88,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         sendUnitOverNetwork(war) //Adds and send the unit
         
-        Game.global.scene = LevelOne()
-        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
-        {
-            var firstWave: Array<Enemy> 
-        }
+        Game.global.level = LevelOne(scene: Game.global.scene!)
+        Game.global.loadLevel()
         
         
     }
