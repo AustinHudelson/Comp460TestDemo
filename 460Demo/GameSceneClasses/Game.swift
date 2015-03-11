@@ -9,11 +9,16 @@
 import Foundation
 import SpriteKit
 
-
+/*
+* Global class that handles units and game interaction
+*/
 class Game {
     
-    var unitMap: Dictionary<String, Unit> = [:] // Our list of units in the scene
+    //var unitMap: Dictionary<String, Unit> = [:]
+    var playerMap: Dictionary<String, Unit> = [:] // Our list of players in the scene
+    var enemyMap: Dictionary<String,Unit> = [:] //our list of AI characters
     var scene: GameScene?
+    var level: Level?
     
     class var global:Game{
         struct Static{
@@ -27,40 +32,88 @@ class Game {
         return Static.instance!
     }
     
-    func addUnit(unit: Unit){
-        if unitMap[unit.ID] == nil{
-            unitMap[unit.ID] = unit
+    
+    /*
+     *  Adds a Unit respresenting a player
+     */
+    func addPlayer(player: Unit){
+        if playerMap[player.ID] == nil{
+            playerMap[player.ID] = player
+        } else {
+            println("WARNING: ADDED UNIT WITH ALREADY EXISTING ID TO GAME")
+        }
+    }
+    /*
+     *Adds an enemy
+     */
+    func addEnemy(enemy: Unit)
+    {
+        if enemyMap[enemy.ID] == nil{
+            enemyMap[enemy.ID] = enemy
         } else {
             println("WARNING: ADDED UNIT WITH ALREADY EXISTING ID TO GAME")
         }
     }
     
-    func removeUnit(unit: Unit){
-        if unitMap[unit.ID] != nil{
-            scene!.removeUnitFromGame(unit.ID)
-            unitMap[unit.ID] = nil
+    /*
+     */
+    func removeUnit(ID:String){
+        if playerMap[ID] != nil
+        {
+            var player = playerMap[ID]!
+            playerMap[ID] = nil
             let remove: SKAction = SKAction.removeFromParent()
-            unit.DS_health_txt.runAction(remove)
-            unit.sprite.runAction(remove)
-        } else {
-            println("WARNING: ATTEMPTED TO REMOVE UNIT FROM UNITMAP THAT COULD NOT BE FOUND")
+            player.DS_health_txt.runAction(remove)
+            player.sprite.runAction(remove)
+           
         }
-    }
+            
+        else if enemyMap[ID] != nil//it's an enemy
+        {
+            var enemy = enemyMap[ID]!
+            playerMap[ID] = nil
+            let remove: SKAction = SKAction.removeFromParent()
+            enemy.DS_health_txt.runAction(remove)
+            enemy.sprite.runAction(remove)
+        }
+        else
+        {
+            println("The ID of this unit does not exist")
+            
+        }
+     }
     
-    func removeUnit(ID: String){
-        removeUnit(unit(ID))
-    }
     
-    func unit(ID: String) -> Unit{
-        return unitMap[ID]!
-    }
     
-    func getUnit(ID: String) -> Unit{
-        return unit(ID)
-    }
+
     
+    
+    /* Gets a unit given a String
+    */
+    func getUnit(ID: String) -> Unit?{
+        if playerMap[ID] != nil
+        {
+            return playerMap[ID]!
+        }
+            
+        else if enemyMap[ID] != nil//it's an enemy
+        {
+            return enemyMap[ID]!
+        }
+        else
+        {
+            println("The ID of this unit does not exist")
+            return nil
+        }
+            
+    }
+   
+    
+    
+    /* Returns your Unit
+    */
     func getMyPlayer() -> Unit {
-        return unit(AppWarpHelper.sharedInstance.playerName)
+        return playerMap[AppWarpHelper.sharedInstance.playerName]!
     }
     
     /*
@@ -90,7 +143,7 @@ class Game {
         var nearby: Unit?
         var near: CGFloat = CGFloat.infinity
         
-        for (id, unit) in Game.global.unitMap {
+        for (id, unit) in Game.global.playerMap {
             if unit is Enemy{   //WARNING: THIS IS A TERRIBLE WAY TO CHECK ALLIANCE... MUST UPDATE LATER
                 continue
             }
