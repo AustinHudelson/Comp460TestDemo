@@ -38,8 +38,8 @@ class Enemy: Unit, PType
         self.maxhealth = 30
         self.healthregen = 1
         self.speed = 30.0
-        self.sprite.xScale = 1.0
-        self.sprite.yScale = 1.0
+        self.sprite.xScale = 3.0
+        self.sprite.yScale = 3.0
         self.isEnemy = true
         
         //Initializes all the DS_ animations

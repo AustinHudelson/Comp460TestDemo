@@ -32,8 +32,8 @@ class Attack: Order, PType
         super.init(receivedData: receivedData)
         restoreProperties(Attack.self, receivedData: receivedData)
         println(tID)
-        DS_receiver = Game.global.unit(self.ID!)
-        DS_target = Game.global.unit(tID)
+        DS_receiver = Game.global.getUnit(self.ID!)
+        DS_target = Game.global.getUnit(tID)
     }
     
     override func apply(){

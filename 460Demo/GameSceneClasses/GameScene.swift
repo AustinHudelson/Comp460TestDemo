@@ -28,12 +28,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 for object in arrayOfObjects {
                     let unit = object as Dictionary<String, AnyObject> // had to do this to get around Swift compile error
                     // Make a new unit by calling its corresponding constructor
-                    if Game.global.unitMap[unit["ID"] as String] == nil {
+                    if Game.global.getUnit(unit["ID"] as String) == nil
+                    {
                         var anyobjecttype: AnyObject.Type = NSClassFromString(unit["type"] as NSString)
                         var nsobjecttype: Unit.Type = anyobjecttype as Unit.Type
                         var newUnit: Unit = nsobjecttype(receivedData: unit)
+                        if !newUnit.isEnemy
+                        {
+                            Game.global.addPlayer(newUnit)
+                        }
+                        else
+                        {
+                            Game.global.addEnemy(newUnit)
+                        }
                         
-                        Game.global.addUnit(newUnit)
                         let spawnLoc = CGPoint(x: (unit["posX"] as CGFloat), y: (unit["posY"] as CGFloat))
                         
                         //newUnit.currentOrder = Idle(receiverIn: newUnit) //TEMPORARY WORKAROUND FOR ORDERS THAT DO NOT DESERIALIZE PROPERLY
@@ -49,7 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     var anyobjecttype: AnyObject.Type = NSClassFromString(order["type"] as NSString)
                     var nsobjecttype: Order.Type = anyobjecttype as Order.Type
                     var newOrder: Order = nsobjecttype(receivedData: order)
-                    Game.global.getUnit(newOrder.ID!).sendOrder(newOrder)   //SEND THE ORDER TO ITS UNIT
+                    Game.global.getUnit(newOrder.ID!)!.sendOrder(newOrder)   //SEND THE ORDER TO ITS UNIT
                     //newOrder.valueForKey("DS_receiver")
                 }
             }
@@ -67,7 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    
+    //begins game scene by making your player and loading enemy waves if you are host
     func startGameScene() {
         println("GAME SCENE START")
         
@@ -78,24 +86,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let war_position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         let war = Warrior(ID:playerName, spawnLocation: war_position)
         
-        sendUnit(war) //Adds and send the unit
+        sendUnitOverNetwork(war) //Adds and send the unit
         
-        //Create a unit on the scene, should have the same ID for all players so should only create one time
-        let DUMMY_ID = playerName+"ENEMY"
-        let dummy_position = CGPoint(x:CGRectGetMaxX(self.frame)+50, y:CGRectGetMidY(self.frame));
-        let dummy = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
+        Game.global.level = LevelOne(scene: Game.global.scene!)
+        Game.global.loadLevel()
         
-        sendUnit(dummy)
         
-        let DUMMY_ID2 = playerName+"ENEMY2"
-        let dummy_position2 = CGPoint(x:CGRectGetMaxX(self.frame)+100, y:CGRectGetMidY(self.frame));
-        let dummy2 = Enemy(ID: DUMMY_ID2, spawnLocation: dummy_position2)
-        
-        sendUnit(dummy2)
     }
     
     //Does all work necessary to add a unit to the game for all connected players
-    func sendUnit(newUnit: Unit){
+    func sendUnitOverNetwork(newUnit: Unit){
         //unit_list[newUnit.ID] = newUnit
         //newUnit.addUnitToGameScene(self, pos: position, scaleX: 0.5, scaleY: 0.5)
         
@@ -105,13 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         AppWarpHelper.sharedInstance.sendUpdate(&sendData)
     }
     
-    func removeUnitFromGame(ID: String){
-        println("REMOVING UNIT")
-        //Create a unit on the scene, should have the same ID for all players so should only create one time
-        let dummy_position = CGPoint(x:CGRectGetMaxX(self.frame)+50, y:CGRectGetMidY(self.frame));
-        let dummy = Enemy(ID: ID, spawnLocation: dummy_position)
-        sendUnit(dummy)
-    }
+  
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -159,10 +153,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             /*
                 Determine if the touch is on your own character's sprite
             */
-
+            if !Game.global.myPlayerIsDead
+            {
                 if Game.global.getMyPlayer().sprite.containsPoint(touchLocation) {
-                    playerIsTouched = true
-                }
+                        playerIsTouched = true
+                    }
+            }
+                
         }
     }
     
@@ -173,7 +170,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let touchLocation = touch.locationInNode(self)
                 var unitTouched = false;
                 var touchedUnitID: String = ""
-                for (name, unit) in Game.global.unitMap
+                for (name, unit) in Game.global.playerMap
                 {
                     //Attack target conditions go here
                     if(unit.sprite.containsPoint(touchLocation) && (unit.ID != AppWarpHelper.sharedInstance.playerName))
@@ -187,7 +184,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var sendData: Dictionary<String, Array<AnyObject>> = [:]
                 if(unitTouched)
                 {
-                    var attack: Attack = Attack(receiverIn: Game.global.getMyPlayer(), target: Game.global.unit(touchedUnitID))
+                    var attack: Attack = Attack(receiverIn: Game.global.getMyPlayer(), target: Game.global.getUnit(touchedUnitID)!)
                     sendData["Orders"] = []
                     sendData["Orders"]!.append(attack.toJSON())
                     
