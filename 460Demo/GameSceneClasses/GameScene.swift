@@ -10,7 +10,6 @@ import SpriteKit
 import Foundation
 
 
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
@@ -79,8 +78,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func startGameScene() {
         println("GAME SCENE START")
         
-        Game.global.scene = self
-        
         // Create a warrior unit with name = player name
         var playerName = AppWarpHelper.sharedInstance.playerName
         let war_position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
@@ -110,13 +107,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         println("Game Scene Init")
-        
+        Game.global.scene = self
+        /* Setup game background image */
         let background = SKSpriteNode(imageNamed: "Background1")
         background.position = CGPointMake(self.size.width/2, self.size.height/2)
         background.size = CGSize(width: CGFloat(self.size.width), height: CGFloat(self.size.height));
         //background.position = CGPoint(x: 0, y: 0)
         //background.anchorPoint = CGPoint(x: 0, y: 1.0)
         addChild(background)
+        
+        /* Initialize buttons. They will automatically be added to the scene */
+        let Button0: Ability = ButtonHeal(slot: 0)
         
         // physics
         self.physicsWorld.gravity = CGVectorMake(0, 0)
@@ -173,7 +174,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 for (name, unit) in Game.global.playerMap
                 {
                     //Attack target conditions go here
-                    if(unit.sprite.containsPoint(touchLocation) && (unit.ID != AppWarpHelper.sharedInstance.playerName))
+                    /* you touched the sprite, The target is not you, and the target is an enemy. */
+                    if(unit.sprite.containsPoint(touchLocation) && (unit.isEnemy == true))
                     {
                         unitTouched = true;
                         touchedUnitID = unit.ID

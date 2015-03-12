@@ -37,9 +37,10 @@ class Attack: Order, PType
     }
     
     override func apply(){
-        if (DS_receiver!.isLocalPlayer()){
-            DS_target!.applyTint(SKColor.blueColor(), factor: 0.5, blendDuration: 0.0)
-        }
+        //apply blue tint to target
+        //if (DS_receiver!.isLocalPlayer()){
+        //    DS_target!.applyTint(SKColor.blueColor(), factor: 0.5, blendDuration: 0.0)
+        //}
         self.attackCycle()
     }
     
@@ -87,9 +88,10 @@ class Attack: Order, PType
     }
     
     override func remove(){
-        if (DS_receiver!.isLocalPlayer()){
-            DS_target!.applyTint(SKColor.whiteColor(), factor: 0.5, blendDuration: 0.0)
-        }
+        //remove blue tint from target
+        //if (DS_receiver!.isLocalPlayer()){
+        //    DS_target!.applyTint(SKColor.whiteColor(), factor: 0.5, blendDuration: 0.0)
+        //}
         DS_receiver!.clearMove()
     }
     

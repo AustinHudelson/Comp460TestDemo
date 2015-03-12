@@ -93,8 +93,10 @@ class Game {
             
         }
      }
-    /** loads a new wave if you are the host
-    */
+    
+    /*
+     * loads a new wave if you are the host
+     */
     func loadLevel()
     {
         if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
@@ -120,10 +122,10 @@ class Game {
     /** Once all waves are complete then we show this text/screen
     */
     
-func winGame()
-{
-    println("We won")
-}
+    func winGame()
+    {
+        println("We won")
+    }
     
     
     /* Gets a unit given a String

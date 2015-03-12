@@ -38,8 +38,8 @@
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
 		F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047F1A908339007CDBA8 /* NoneOrder.swift */; };
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
-		F4B562EA1AB0D82E0094B2A7 /* Heal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562E91AB0D82E0094B2A7 /* Heal.swift */; };
 		F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562EB1AB0D8C20094B2A7 /* Ability.swift */; };
+		F4B562EE1AB21B290094B2A7 /* ButtonHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */; };
 		F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8348F1A9BB95200A839E5 /* Enemy.swift */; };
 		F4B834921A9BC1D500A839E5 /* RoamAttack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B834911A9BC1D500A839E5 /* RoamAttack.swift */; };
 		F4C0F5D91A87F63D0075F2A3 /* Attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */; };
@@ -102,7 +102,7 @@
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
 		F4B5047F1A908339007CDBA8 /* NoneOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoneOrder.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
-		F4B562E91AB0D82E0094B2A7 /* Heal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heal.swift; sourceTree = "<group>"; };
+		F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonHeal.swift; sourceTree = "<group>"; };
 		F4B562EB1AB0D8C20094B2A7 /* Ability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ability.swift; sourceTree = "<group>"; };
 		F4B8348F1A9BB95200A839E5 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		F4B834911A9BC1D500A839E5 /* RoamAttack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoamAttack.swift; sourceTree = "<group>"; };
@@ -249,8 +249,8 @@
 		F4B562E81AB0D8180094B2A7 /* Abilities */ = {
 			isa = PBXGroup;
 			children = (
-				F4B562E91AB0D82E0094B2A7 /* Heal.swift */,
 				F4B562EB1AB0D8C20094B2A7 /* Ability.swift */,
+				F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */,
 			);
 			name = Abilities;
 			sourceTree = "<group>";
@@ -468,6 +468,7 @@
 				68F35CB51A84C540004905BF /* Move.swift in Sources */,
 				68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */,
 				68A18D4F1AA8719E001CCE1D /* NetworkClock.m in Sources */,
+				F4B562EE1AB21B290094B2A7 /* ButtonHeal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
