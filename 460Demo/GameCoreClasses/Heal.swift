@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import SpriteKit
+
+class Heal: Ability {
+    
+    /*
+     * Creates a heal icon at the specified ability use slot
+     */
+    init(slot: Int){
+        super.init(imageNamed: "S_Buff03", slot: slot)
+    }
+    
+    /*
+    * Required initializer to implement SKSpriteNode
+    */
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
