@@ -25,6 +25,9 @@ class Unit: SerializableJSON, PType
     var DS_walkAnim: SKAction?
     var DS_attackAnim: SKAction?
     var DS_standAnim: SKAction?
+    var DS_deathAnim: SKAction?
+    var DS_stumbleAnim: SKAction?
+    var DS_abilityAnim: SKAction?
     var isEnemy: Bool = true
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")

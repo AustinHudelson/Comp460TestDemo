@@ -121,6 +121,10 @@ class SerializableJSON: NSObject {
                 let posY = pos.y
                 superClassPropertiesDict["posX"] = posX
                 superClassPropertiesDict["posY"] = posY
+                let scaleX = (self as Unit).sprite.xScale
+                let scaleY = (self as Unit).sprite.yScale
+                superClassPropertiesDict["scaleX"] = scaleX
+                superClassPropertiesDict["scaleY"] = scaleY
             }
             
             // Put the superClass's properties in our results dictionary
