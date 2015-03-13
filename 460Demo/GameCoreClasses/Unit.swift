@@ -19,6 +19,8 @@ class Unit: SerializableJSON, PType
     var maxhealth: Int = 0
     var healthregen: Int = 0
     var speed: CGFloat = 0.0
+    var xSize: CGFloat = 200.0
+    var ySize: CGFloat = 200.0
     var sprite: SKNode = SKSpriteNode(imageNamed: "Mage")
     var currentOrder: Order = NoneOrder()
     var alive: Bool = true
@@ -119,11 +121,11 @@ class Unit: SerializableJSON, PType
     }
     
     func faceLeft(){
-        self.sprite.runAction(SKAction.scaleXTo(-0.5, duration: 0.0))
+        self.sprite.runAction(SKAction.scaleXTo(-1.0, duration: 0.0))
     }
     
     func faceRight(){
-        self.sprite.runAction(SKAction.scaleXTo(0.5, duration: 0.0))
+        self.sprite.runAction(SKAction.scaleXTo(1.0, duration: 0.0))
     }
     
     func applyTint(tint: SKColor, factor: CGFloat, blendDuration: NSTimeInterval){

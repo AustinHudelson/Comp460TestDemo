@@ -21,17 +21,9 @@ class Warrior: Unit, PType
         
         restoreProperties(Warrior.self, receivedData: receivedData)
         
-        //Initializes all the DS_ animations
-        initializeAnimations()
         /* Sprite setup. Needs to be done in every subclass of Unit */
-        sprite = SKSpriteNode(imageNamed: "Mage")
-        let spawnLoc = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
-        sprite.position = spawnLoc
-        self.sprite.xScale = receivedData["scaleX"] as CGFloat
-        self.sprite.yScale = receivedData["scaleY"] as CGFloat
-        let scaleAction: SKAction = SKAction.scaleTo(receivedData["scaleX"] as CGFloat, duration: NSTimeInterval(0.0))
-        self.sprite.runAction(scaleAction)
-        self.sprite.runAction(self.DS_standAnim)
+        initializeAnimations()
+        self.sprite.position = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
     }
     
     override init(ID:String, spawnLocation: CGPoint)
@@ -43,22 +35,17 @@ class Warrior: Unit, PType
         self.maxhealth = 100
         self.healthregen = 1
         self.speed = 50.0
-        self.sprite.xScale = 3.00
-        self.sprite.yScale = 3.00
         self.isEnemy = false
-        
-        
+        self.xSize = 300.0
+        self.ySize = 300.0
         
         //Initializes all the DS_ animations
         initializeAnimations()
-        /* Sprite setup */
-        sprite = SKSpriteNode(imageNamed: "Mage")
-        sprite.position = spawnLocation
-        self.sprite.runAction(self.DS_standAnim)
+        self.sprite.position = spawnLocation
     }
     
     /*
-    * Initializes the animations for this class
+    * Initializes the animations for this class. And creates the sprite
     */
     func initializeAnimations(){
         //
@@ -174,5 +161,11 @@ class Warrior: Unit, PType
         self.DS_stumbleAnim = SKAction.repeatAction(stumbleTextures, count: 1)
         self.DS_deathAnim = SKAction.repeatAction(deathTextures, count: 1)
         self.DS_abilityAnim = SKAction.repeatAction(abilityTextures, count: 1)
+        
+        /* Sprite setup */
+        self.sprite = SKSpriteNode(imageNamed: "Mage")
+        self.sprite.runAction(self.DS_standAnim)
+        self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
+        self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
     }
 }
