@@ -33,7 +33,7 @@ class Unit: SerializableJSON, PType
     var isEnemy: Bool = true
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
-    var health_txt_y_dspl: CGFloat = 40 // The y displacement of health text relative to this unit's sprite
+    var health_txt_y_dspl: CGFloat = 70 // The y displacement of health text relative to this unit's sprite
     
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
@@ -109,7 +109,13 @@ class Unit: SerializableJSON, PType
     
     func takeDamage(damage:Int)
     {
+        
         health-=damage
+        if health>maxhealth
+        {
+            health=maxhealth
+        }
+        
         
         if health < 0 {
             health = 0

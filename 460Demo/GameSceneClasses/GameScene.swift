@@ -153,8 +153,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode(self)
 
+            
+            
             /*
-                Determine if the touch is on your own character's sprite
+            *  Determines if touch end button
             */
             if exitButton!.containsPoint(touchLocation)
             {
@@ -162,6 +164,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 println("exit pressed")
                 self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
             }
+            
+            /* When touching your own player
+            */
+
             if !Game.global.myPlayerIsDead
             {
                 if Game.global.getMyPlayer().sprite.containsPoint(touchLocation) {
@@ -175,8 +181,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(touches:NSSet, withEvent event: UIEvent)
     {
         for touch: AnyObject in touches {
+            let touchLocation = touch.locationInNode(self)
             if playerIsTouched == true {
-                let touchLocation = touch.locationInNode(self)
+                
                 var unitTouched = false;
                 var touchedUnitID: String = ""
                 for (name, unit) in Game.global.enemyMap
@@ -208,9 +215,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 AppWarpHelper.sharedInstance.sendUpdate(&sendData)
                 playerIsTouched = false
             }
-           
+            /* If Pressing Ability buttons
+            */
             
-        }
+            else if self.childNodeWithName("Ability0")!.containsPoint(touchLocation)
+            {
+                (self.childNodeWithName("Ability0") as ButtonHeal).apply(Game.global.playerMap[AppWarpHelper.sharedInstance.playerName]!)
+            }
+          }
     }
     
     var TEMPREMOVECOUNTER: Int = 0
