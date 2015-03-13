@@ -116,6 +116,7 @@ class AppWarpHelper: NSObject
             if error == 0 {
                 // error = 0 means success in getting connection state
                 println("Sending msg (\(convertedData.length) bytes) ...")
+                println(data)
                 WarpClient.getInstance().sendUpdatePeers(convertedData)
             } else {
                 println("!!!WARNING: Error in sending msg (\(convertedData.length) bytes)!!!!") // print data's number of bytes

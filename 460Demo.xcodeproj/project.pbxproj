@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		68038FE11AA56B8C0053A963 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68038FE01AA56B8C0053A963 /* Timer.swift */; };
 		6827FE541A8E95C2007E7DB9 /* Idle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6827FE531A8E95C2007E7DB9 /* Idle.swift */; };
+		6839FD281AB37BE800A9B303 /* Heal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6839FD271AB37BE800A9B303 /* Heal.swift */; };
 		6850A0861A91606100B8CAD4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0851A91606100B8CAD4 /* MainViewController.swift */; };
 		6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */; };
 		68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A18D441AA8719E001CCE1D /* NetAssociation.m */; };
@@ -67,6 +68,7 @@
 /* Begin PBXFileReference section */
 		68038FE01AA56B8C0053A963 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		6827FE531A8E95C2007E7DB9 /* Idle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Idle.swift; sourceTree = "<group>"; };
+		6839FD271AB37BE800A9B303 /* Heal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heal.swift; sourceTree = "<group>"; };
 		6850A0851A91606100B8CAD4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		68A18D411AA8719E001CCE1D /* ios-ntp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ios-ntp.h"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		F4B5047D1A906B70007CDBA8 /* Orders */ = {
 			isa = PBXGroup;
 			children = (
+				6839FD271AB37BE800A9B303 /* Heal.swift */,
 				68F35CB01A84C540004905BF /* Order.swift */,
 				68F35CAE1A84C540004905BF /* Attack.swift */,
 				F4B834911A9BC1D500A839E5 /* RoamAttack.swift */,
@@ -466,6 +469,7 @@
 				F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */,
 				F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */,
 				6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */,
+				6839FD281AB37BE800A9B303 /* Heal.swift in Sources */,
 				F4B834921A9BC1D500A839E5 /* RoamAttack.swift in Sources */,
 				F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */,
 				F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */,
