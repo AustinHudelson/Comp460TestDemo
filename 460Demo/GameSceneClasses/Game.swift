@@ -102,24 +102,22 @@ class Game {
      */
     func loadLevel()
     {
-        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
+        if Game.global.level!.hasMoreWaves()
         {
             var firstWave: Array<Enemy>? = Game.global.level!.loadWave()
-            
-            if firstWave != nil
+            if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
             {
                 for enemy in firstWave!
                 {
                     scene!.sendUnitOverNetwork(enemy)
                 }
             }
-            else
-            {
-                winGame()
-            }
-            
-            
         }
+        else
+        {
+            winGame()
+        }
+        
     }
     
     /** Once all waves are complete then we show this text/screen
