@@ -46,35 +46,44 @@ class Attack: Order, PType
     
     func attackCycle(){
         let tolerence = CGFloat(20.0)
+        
         if self.DS_receiver!.currentOrder is Attack
         {
-            var movePos: CGPoint
-            if(DS_receiver!.sprite.position.x < DS_target!.sprite.position.x)
+            if self.DS_target!.alive
             {
-                movePos = CGPoint(x: DS_target!.sprite.frame.minX-animationGapDistance,y : DS_target!.sprite.frame.midY)
+                var movePos: CGPoint
+                if(DS_receiver!.sprite.position.x < DS_target!.sprite.position.x)
+                {
+                    movePos = CGPoint(x: DS_target!.sprite.frame.minX-animationGapDistance,y : DS_target!.sprite.frame.midY)
+                }
+                else
+                {
+                    movePos = CGPoint(x: DS_target!.sprite.frame.maxX-1+animationGapDistance,y : DS_target!.sprite.frame.midY)
+                }
+                
+                self.DS_moveState = true
+                if Game.global.getDistance(DS_receiver!.sprite.position, p2: movePos) > tolerence {
+                    DS_receiver!.move(movePos, complete:{
+                        self.DS_moveState = false
+                        self.DS_receiver!.clearMove()
+                        self.attackCycle()
+                    })
+                } else {
+                    if DS_receiver!.sprite.position.x < DS_target!.sprite.position.x {
+                        DS_receiver!.faceRight()
+                    } else {
+                        DS_receiver!.faceLeft()
+                    }
+                    self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_attackAnim!, withKey: "AttackAnim")
+                    let delay = SKAction.waitForDuration(1.0)
+                    self.DS_receiver!.sprite.runAction(delay, completion: self.attackCycle)
+                    DS_target!.takeDamage(3)
+                }
+
             }
             else
             {
-                movePos = CGPoint(x: DS_target!.sprite.frame.maxX-1+animationGapDistance,y : DS_target!.sprite.frame.midY)
-            }
-            
-            self.DS_moveState = true
-            if Game.global.getDistance(DS_receiver!.sprite.position, p2: movePos) > tolerence {
-                DS_receiver!.move(movePos, complete:{
-                    self.DS_moveState = false
-                    self.DS_receiver!.clearMove()
-                    self.attackCycle()
-                })
-            } else {
-                if DS_receiver!.sprite.position.x < DS_target!.sprite.position.x {
-                    DS_receiver!.faceRight()
-                } else {
-                    DS_receiver!.faceLeft()
-                }
-                self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_attackAnim!, withKey: "AttackAnim")
-                let delay = SKAction.waitForDuration(1.0)
-                self.DS_receiver!.sprite.runAction(delay, completion: self.attackCycle)
-                DS_target!.takeDamage(3)
+                DS_receiver!.sendOrder(Idle(receiverIn: DS_receiver!))
             }
         }
     }
