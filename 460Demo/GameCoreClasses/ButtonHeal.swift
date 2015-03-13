@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class ButtonEnrage: Ability
+class ButtonHeal: Ability
 {
     
     /*

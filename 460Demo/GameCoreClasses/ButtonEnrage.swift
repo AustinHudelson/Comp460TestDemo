@@ -9,18 +9,22 @@
 import Foundation
 import SpriteKit
 
-class ButtonHeal: Ability
+class ButtonEnrage: Ability
 {
     
     /*
-    * Creates a heal icon at the specified ability use slot
+    * Creates a enrage icon at the specified ability use slot
     */
     init(slot: Int){
-        super.init(imageNamed: "S_Buff03", slot: slot)
+        super.init(imageNamed: "S_Buff01", slot: slot)
     }
     
     override func apply(receiverIn: Unit) {
-        receiverIn.takeDamage(-20)
+        var sendData: Dictionary<String, Array<AnyObject>> = [:]
+        var heal: Heal = Heal(receiverIn: receiverIn, healAmount: 20)
+        sendData["Orders"] = []
+        sendData["Orders"]!.append(heal.toJSON())
+        AppWarpHelper.sharedInstance.sendUpdate(&sendData)
     }
     
     /*
