@@ -33,5 +33,6 @@ class Heal: Order, PType
     {
         self.DS_receiver?.takeDamage(-self.healAmount)
         println("\(self.DS_receiver!.ID) health after Heal: \(self.DS_receiver!.health)")
+        self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }
 }

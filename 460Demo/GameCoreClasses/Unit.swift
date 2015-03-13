@@ -104,11 +104,16 @@ class Unit: SerializableJSON, PType
     }
     
     func sendOrder(order: Order){
-        //println("hi")
-        //println(order.type)
+        println(order.type)
+        if order is Transient {
+            println("Running transient ability")
+            order.apply()
+            order.remove()
+            return
+        }
         currentOrder.remove()
         currentOrder = order
-        currentOrder.apply()
+        order.apply()
     }
     
     func takeDamage(damage:Int)

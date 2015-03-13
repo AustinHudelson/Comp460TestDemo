@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 @objc(Enrage)
-class Enrage: Order, PType
+class Enrage: Order, PType, Transient
 {
     var speedInc: CGFloat = 0.0 // The speed to add or multiply to a Unit's movement and attack speed
     var duration: NSTimeInterval = 0.0 // The time, in seconds, of how long this buff lasts
@@ -37,20 +37,24 @@ class Enrage: Order, PType
         let applyAction: SKAction = SKAction.runBlock(applyBuff)
         let waitAction: SKAction = SKAction.waitForDuration(self.duration)
         let removeAction: SKAction = SKAction.runBlock(removeBuff)
-        
         let applySeq: SKAction = SKAction.sequence([applyAction, waitAction, removeAction])
-        
         self.DS_receiver!.sprite.runAction(applySeq)
     }
     
     func applyBuff()
     {
         self.DS_receiver!.speed *= self.speedInc
+        self.DS_receiver!.applyTint(SKColor.redColor(), factor: 0.75, blendDuration: NSTimeInterval(0.25))
     }
     
     func removeBuff()
     {
         self.DS_receiver!.speed /= self.speedInc
+        self.DS_receiver!.applyTint(SKColor.whiteColor(), factor: 1.00, blendDuration: NSTimeInterval(1.0))
+    }
+    
+    override func remove() {
+        
     }
     
     

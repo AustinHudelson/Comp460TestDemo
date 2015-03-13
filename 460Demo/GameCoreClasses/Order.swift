@@ -28,6 +28,12 @@ class Order: SerializableJSON, PType
         //IN ALL SUBCLASSES INIT MUST INITIALIZE TYPE
     }
     
+    /*
+     * Called when a unit is sent a new order. of the
+     * unit is not undated until AFTER apply has been run.
+     * you can reference the last order by self.DS_receiver.order
+     * in this function
+     */
     func apply(){
         //Print error message
     }
