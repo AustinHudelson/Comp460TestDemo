@@ -28,8 +28,8 @@ class LevelOne:Level
         let dummy3 = Enemy(ID: DUMMY_ID3, spawnLocation: dummy_position3)
         enemyWaves.append(Array<Enemy>())
         enemyWaves[0].append(dummy1)
-        enemyWaves[0].append(dummy2)
-        enemyWaves[0].append(dummy3)
+        //enemyWaves[0].append(dummy2)
+        //enemyWaves[0].append(dummy3)
         
         
         //wave 2

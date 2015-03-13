@@ -59,6 +59,7 @@ class Game {
     /*
      */
     func removeUnit(ID:String){
+        println("removing unit")
         if playerMap[ID] != nil
         {
             
@@ -75,21 +76,23 @@ class Game {
             
         else if enemyMap[ID] != nil//it's an enemy
         {
+            println("removing enemy")
             var enemy = enemyMap[ID]!
-            playerMap[ID] = nil
+            enemyMap[ID] = nil
             let remove: SKAction = SKAction.removeFromParent()
             enemy.DS_health_txt.runAction(remove)
             enemy.sprite.runAction(remove)
-            
+           
             if enemyMap.count == 0
             {
+                println("getting new wave")
                 loadLevel()
             }
             
         }
         else
         {
-            println("The ID of this unit does not exist")
+            println("The ID of this unit does not exist to remove")
             
         }
      }
@@ -142,7 +145,7 @@ class Game {
         }
         else
         {
-            println("The ID of this unit does not exist")
+            println("The ID of this unit does not exist to get")
             return nil
         }
             

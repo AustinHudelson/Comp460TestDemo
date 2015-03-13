@@ -114,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.size = CGSize(width: CGFloat(self.size.width), height: CGFloat(self.size.height));
         //background.position = CGPoint(x: 0, y: 0)
         //background.anchorPoint = CGPoint(x: 0, y: 1.0)
-        addChild(background)
+        //addChild(background)
         
         /* Initialize buttons. They will automatically be added to the scene */
         let Button0: Ability = ButtonHeal(slot: 0)
@@ -148,12 +148,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
         
+        let exitButton = self.childNodeWithName("exitButton")
+        
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode(self)
 
             /*
                 Determine if the touch is on your own character's sprite
             */
+            if exitButton!.containsPoint(touchLocation)
+            {
+            
+            }
             if !Game.global.myPlayerIsDead
             {
                 if Game.global.getMyPlayer().sprite.containsPoint(touchLocation) {
@@ -171,7 +177,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let touchLocation = touch.locationInNode(self)
                 var unitTouched = false;
                 var touchedUnitID: String = ""
-                for (name, unit) in Game.global.playerMap
+                for (name, unit) in Game.global.enemyMap
                 {
                     //Attack target conditions go here
                     /* you touched the sprite, The target is not you, and the target is an enemy. */
