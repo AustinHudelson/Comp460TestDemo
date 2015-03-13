@@ -17,7 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      * ACCESSED THROUGH GameScene.global.unit_list[]. THIS NEEDS TO BE FIXED AT SOME POINT EXTREMELY SOON
      */
     var playerIsTouched = false
-    
+    var viewController: UIViewController?
     /*
         Update the game state according to dictionary received over the network
     */
@@ -158,7 +158,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             */
             if exitButton!.containsPoint(touchLocation)
             {
-            
+                AppWarpHelper.sharedInstance.leaveGame()
+                println("exit pressed")
+                self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
             }
             if !Game.global.myPlayerIsDead
             {

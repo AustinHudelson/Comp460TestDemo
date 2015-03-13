@@ -217,4 +217,9 @@ class AppWarpHelper: NSObject
         println("AppWarpHelper startGame()")
         lobby!.performSegueWithIdentifier("gameSegue", sender: nil)
     }
+    
+    func leaveGame(){
+        WarpClient.getInstance().unsubscribeRoom(self.roomId)
+        //WarpClient.getInstance().leaveRoom(self.roomId)
+    }
 }

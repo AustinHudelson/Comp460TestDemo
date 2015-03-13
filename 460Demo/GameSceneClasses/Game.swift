@@ -128,8 +128,19 @@ class Game {
     func winGame()
     {
         println("We won")
+        let winText: SKLabelNode = SKLabelNode(text: "We won")
+        winText.fontSize = 50
+        winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
+        self.scene!.addChild(winText)
     }
-    
+    func loseGame()
+    {
+        println("We lost")
+        let winText: SKLabelNode = SKLabelNode(text: "You Lose")
+        winText.fontSize = 50
+        winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
+        self.scene!.addChild(winText)
+    }
     
     /* Gets a unit given a String
     */

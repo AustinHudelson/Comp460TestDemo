@@ -60,7 +60,7 @@ class GameViewController: UIViewController {
             /* Set the scale mode to scale to fit the window */
             scene.size = skView.bounds.size
             scene.scaleMode = .AspectFill
-            
+            scene.viewController = self
             skView.presentScene(scene)
         }
     }

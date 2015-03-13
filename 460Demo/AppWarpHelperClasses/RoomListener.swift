@@ -54,4 +54,11 @@ class RoomListener: NSObject,RoomRequestListener
         
         AppWarpHelper.sharedInstance.updateUserList()
     }
+    func onUnSubscribeRoomDone(event: RoomEvent)
+    {
+        WarpClient.getInstance().leaveRoom(AppWarpHelper.sharedInstance.roomId)
+    }
+    func onLeaveRoomDone(roomEvent: RoomEvent!) {
+        WarpClient.getInstance().disconnect()
+    }
 }
