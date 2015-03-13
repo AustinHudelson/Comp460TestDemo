@@ -21,9 +21,9 @@ class ButtonEnrage: Ability
     
     override func apply(receiverIn: Unit) {
         var sendData: Dictionary<String, Array<AnyObject>> = [:]
-        var heal: Heal = Heal(receiverIn: receiverIn, healAmount: 20)
+        var enrage: Enrage = Enrage(receiverIn: receiverIn, speedInc: 7.0, duration: 2.0)
         sendData["Orders"] = []
-        sendData["Orders"]!.append(heal.toJSON())
+        sendData["Orders"]!.append(enrage.toJSON())
         AppWarpHelper.sharedInstance.sendUpdate(&sendData)
     }
     

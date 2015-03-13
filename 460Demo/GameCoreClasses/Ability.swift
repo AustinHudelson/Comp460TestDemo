@@ -27,9 +27,7 @@ class Ability: SKSpriteNode
         
         let position: CGPoint = CGPoint(x: CGFloat((topLeftSpacing)+(CGFloat(slot)*(abilitySpacing+buttonSize.width))), y: topLeftSpacing)
         self.position = position
-        println("CREATING BUTTON")
-        println(self.position)
-        self.name="Ability0"
+        self.name="Ability\(slot)"
         self.zPosition = 100
         
         Game.global.scene!.addChild(self)

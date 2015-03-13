@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		68038FE11AA56B8C0053A963 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68038FE01AA56B8C0053A963 /* Timer.swift */; };
 		6827FE541A8E95C2007E7DB9 /* Idle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6827FE531A8E95C2007E7DB9 /* Idle.swift */; };
-		6839FD281AB37BE800A9B303 /* Heal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6839FD271AB37BE800A9B303 /* Heal.swift */; };
 		6850A0861A91606100B8CAD4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0851A91606100B8CAD4 /* MainViewController.swift */; };
 		6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */; };
+		686AA7611AB38EAE00C03FD7 /* Heal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AA7601AB38EAE00C03FD7 /* Heal.swift */; };
+		686AA7631AB38EBD00C03FD7 /* Enrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AA7621AB38EBD00C03FD7 /* Enrage.swift */; };
 		68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A18D441AA8719E001CCE1D /* NetAssociation.m */; };
 		68A18D4F1AA8719E001CCE1D /* NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A18D461AA8719E001CCE1D /* NetworkClock.m */; };
 		68A18D501AA8719E001CCE1D /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 68A18D471AA8719E001CCE1D /* Notes */; };
@@ -69,9 +70,10 @@
 /* Begin PBXFileReference section */
 		68038FE01AA56B8C0053A963 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		6827FE531A8E95C2007E7DB9 /* Idle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Idle.swift; sourceTree = "<group>"; };
-		6839FD271AB37BE800A9B303 /* Heal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heal.swift; sourceTree = "<group>"; };
 		6850A0851A91606100B8CAD4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		686AA7601AB38EAE00C03FD7 /* Heal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heal.swift; sourceTree = "<group>"; };
+		686AA7621AB38EBD00C03FD7 /* Enrage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enrage.swift; sourceTree = "<group>"; };
 		68A18D411AA8719E001CCE1D /* ios-ntp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ios-ntp.h"; sourceTree = "<group>"; };
 		68A18D421AA8719E001CCE1D /* ios-ntp.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ios-ntp.pch"; sourceTree = "<group>"; };
 		68A18D431AA8719E001CCE1D /* NetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetAssociation.h; sourceTree = "<group>"; };
@@ -146,6 +148,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		686AA75F1AB38EAE00C03FD7 /* Abilities */ = {
+			isa = PBXGroup;
+			children = (
+				686AA7601AB38EAE00C03FD7 /* Heal.swift */,
+				686AA7621AB38EBD00C03FD7 /* Enrage.swift */,
+			);
+			path = Abilities;
+			sourceTree = "<group>";
+		};
 		68A18D3F1AA8719E001CCE1D /* iosNtp */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +243,7 @@
 		F4B5047D1A906B70007CDBA8 /* Orders */ = {
 			isa = PBXGroup;
 			children = (
-				6839FD271AB37BE800A9B303 /* Heal.swift */,
+				686AA75F1AB38EAE00C03FD7 /* Abilities */,
 				68F35CB01A84C540004905BF /* Order.swift */,
 				68F35CAE1A84C540004905BF /* Attack.swift */,
 				F4B834911A9BC1D500A839E5 /* RoamAttack.swift */,
@@ -472,12 +483,12 @@
 				F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */,
 				F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */,
 				6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */,
-				6839FD281AB37BE800A9B303 /* Heal.swift in Sources */,
 				F4B834921A9BC1D500A839E5 /* RoamAttack.swift in Sources */,
 				F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */,
 				F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */,
 				68A18D511AA8719E001CCE1D /* NSDate+NetworkClock.m in Sources */,
 				F4B562F41AB287F40094B2A7 /* Mage.swift in Sources */,
+				686AA7631AB38EBD00C03FD7 /* Enrage.swift in Sources */,
 				68F35CB81A84C540004905BF /* Unit.swift in Sources */,
 				68F35CB71A84C540004905BF /* Projectile.swift in Sources */,
 				68F35CB41A84C540004905BF /* Attack.swift in Sources */,
@@ -489,6 +500,7 @@
 				68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */,
 				F4B562F81AB38A9A0094B2A7 /* ButtonEnrage.swift in Sources */,
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,
+				686AA7611AB38EAE00C03FD7 /* Heal.swift in Sources */,
 				68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
 				E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */,

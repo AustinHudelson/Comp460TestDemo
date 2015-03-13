@@ -77,13 +77,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //begins game scene by making your player and loading enemy waves if you are host
     func startGameScene() {
         println("GAME SCENE START")
-        
-        // Create a warrior unit with name = player name
         var playerName = AppWarpHelper.sharedInstance.playerName
-        let war_position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        let war = Warrior(ID:playerName, spawnLocation: war_position)
+        var playerChar: Unit
+        let playerCharPos: CGPoint = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         
-        sendUnitOverNetwork(war) //Adds and send the unit
+        if playerName == "Mage" {
+            /*
+                TEMPORARY to test a mage class: If playerName == "Mage", give him a mage & set ID = playerName
+            */
+            playerChar = Mage(ID: playerName, spawnLocation: playerCharPos)
+        }
+        else {
+            /*
+                Else create a warrior unit with ID = playerName
+            */
+            playerChar = Warrior(ID: playerName, spawnLocation: playerCharPos)
+        }
+        
+        
+        sendUnitOverNetwork(playerChar) //Adds and send the unit
         
         Game.global.level = LevelOne(scene: Game.global.scene!)
         Game.global.loadLevel()
@@ -118,11 +130,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         /* Initialize buttons. They will automatically be added to the scene */
         let Button0: Ability = ButtonHeal(slot: 0)
+        let Button1: Ability = ButtonEnrage(slot: 1)
         
-        // physics
-        self.physicsWorld.gravity = CGVectorMake(0, 0)
-        self.physicsWorld.contactDelegate = self
-        //
+//        // physics
+//        self.physicsWorld.gravity = CGVectorMake(0, 0)
+//        self.physicsWorld.contactDelegate = self
+//        //
         
         AppWarpHelper.sharedInstance.gameScene = self
         startGameScene()
@@ -218,9 +231,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             /* If Pressing Ability buttons
             */
             
-            else if self.childNodeWithName("Ability0")!.containsPoint(touchLocation)
+            else
             {
-                (self.childNodeWithName("Ability0") as ButtonHeal).apply(Game.global.playerMap[AppWarpHelper.sharedInstance.playerName]!)
+                // Heal button at slot 0
+                if self.childNodeWithName("Ability0")!.containsPoint(touchLocation) {
+                    (self.childNodeWithName("Ability0") as ButtonHeal).apply(Game.global.playerMap[AppWarpHelper.sharedInstance.playerName]!)
+                }
+                // Enrage button at slot 1
+                if self.childNodeWithName("Ability1")!.containsPoint(touchLocation) {
+                    (self.childNodeWithName("Ability1") as ButtonEnrage).apply(Game.global.playerMap[AppWarpHelper.sharedInstance.playerName]!)
+                }
             }
           }
     }
