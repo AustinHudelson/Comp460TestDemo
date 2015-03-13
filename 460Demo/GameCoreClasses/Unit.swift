@@ -22,6 +22,7 @@ class Unit: SerializableJSON, PType
     var xSize: CGFloat = 200.0
     var ySize: CGFloat = 200.0
     var attackRange: CGFloat = 20.0
+    var attackSpeed: NSTimeInterval = NSTimeInterval(3.0)
     var sprite: SKNode = SKSpriteNode(imageNamed: "Mage")
     var currentOrder: Order = NoneOrder()
     var alive: Bool = true
@@ -193,16 +194,25 @@ class Unit: SerializableJSON, PType
     }
     
     func attack(target: Unit, complete:(()->Void)!){
-        attackCycle(target, complete: complete)
-        
+        clearAttack()
+        attackCycle(target, complete)
     }
     
+    /*
+     * Recursive function that calls itself to make this unit move in to range and attack
+     * target. If the target is not in range, then a small move command is called. If the target
+     * is within range then an attack animation is played. If the target is no longer valid then
+     * complete parameter block is called. This cycle can be interupted by calling clearAttack()
+     * or clearMove() if the unit is in the process of moving to the attack target.
+     */
     func attackCycle(target: Unit, complete:(()->Void)!){
         let tolerence = attackRange
         let animationGapDistance: CGFloat = 20.0 //Default value is overwritten in init
         let refreshRate: CGFloat = 0.5
         
         if target.alive == true{         //ENSURE ATTACK IS STILL VALID
+            
+            /* Determine move position */
             var movePos: CGPoint
             if(self.sprite.position.x < target.sprite.position.x){
                 movePos = CGPoint(x: target.sprite.frame.minX-animationGapDistance, y: target.sprite.frame.midY)
@@ -210,9 +220,10 @@ class Unit: SerializableJSON, PType
                 movePos = CGPoint(x: target.sprite.frame.maxX-1+animationGapDistance,y : target.sprite.frame.midY)
             }
             
+            
             if Game.global.getDistance(self.sprite.position, p2: movePos) > tolerence {
-                //Need to move towards target.
-                let adjustedMove: CGPoint = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:movePos, distance: self.speed*refreshRate)
+                //Move a short distance towards the movePos. Dont move more than the distance to the move pos (hence the min function for distance). And call attack cycle again once the move is complete.
+                let adjustedMove: CGPoint = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:movePos, distance: min(self.speed*refreshRate, Game.global.getDistance(self.sprite.position, p2:movePos)))
                 self.move(adjustedMove, complete:{
                     self.attackCycle(target, complete: complete)
                 })
@@ -222,18 +233,25 @@ class Unit: SerializableJSON, PType
                 } else {
                     self.faceLeft()
                 }
-                self.sprite.runAction(self.DS_attackAnim!, withKey: "AttackAnim")
-                let delay = SKAction.waitForDuration(1.0)
-                self.sprite.runAction(delay, completion: {
+                
+                let delay = SKAction.waitForDuration(attackSpeed)
+                let completeBlock = SKAction.runBlock({
                     self.attackCycle(target, complete: complete)
                 })
+                let attackSequence = SKAction.sequence([delay, completeBlock])
+                self.sprite.runAction(attackSequence, withKey: "attack")
+                self.sprite.runAction(self.DS_attackAnim!, withKey: "attackAnim")
                 target.takeDamage(3)
             }
+        } else {
+            //target is invalid. call the complete block.
+            self.sprite.runAction(SKAction.runBlock(complete))
         }
     }
     
     func clearAttack(){
-        
+        clearMove()
+        self.sprite.removeActionForKey("attack")
     }
     
     /*

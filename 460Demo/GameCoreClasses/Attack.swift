@@ -40,7 +40,7 @@ class Attack: Order, PType
         //if (DS_receiver!.isLocalPlayer()){
         //    DS_target!.applyTint(SKColor.blueColor(), factor: 0.5, blendDuration: 0.0)
         //}
-        self.attackCycle()
+        DS_receiver!.attack(DS_target!, complete:{self.DS_receiver!.sendOrder(Idle(receiverIn: self.DS_receiver!))})
     }
     
     func attackCycle(){
@@ -100,7 +100,7 @@ class Attack: Order, PType
         //if (DS_receiver!.isLocalPlayer()){
         //    DS_target!.applyTint(SKColor.whiteColor(), factor: 0.5, blendDuration: 0.0)
         //}
-        DS_receiver!.clearMove()
+        DS_receiver!.clearAttack()
     }
     
     

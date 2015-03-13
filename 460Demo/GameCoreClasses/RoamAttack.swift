@@ -39,12 +39,14 @@ class RoamAttack: Order, PType
     }
     
     override func apply(){
+        self.DS_target = Game.global.getClosestPlayer(self.DS_receiver!.sprite.position) // might be nil when all the players die
         if self.DS_target == nil {
             // no more players to kill so send idle order to this unit
-            var idle: Idle = Idle(receiverIn: self.DS_receiver!)
+            let idle: Idle = Idle(receiverIn: self.DS_receiver!)
             self.DS_receiver?.sendOrder(idle)
         } else {
-            attackCycle()
+            //Players left alive. Send attack to unit with complete to recall apply and find a new player to attack.
+            self.DS_receiver!.attack(self.DS_target!, complete: {self.apply()})
         }
     }
     
@@ -104,7 +106,7 @@ class RoamAttack: Order, PType
     }
     
     override func remove(){
-        DS_receiver!.clearMove()
+        DS_receiver!.clearAttack()
     }
     
     
