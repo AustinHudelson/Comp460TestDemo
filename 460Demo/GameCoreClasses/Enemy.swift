@@ -32,14 +32,14 @@ class Enemy: Unit, PType
         super.init(ID:ID, spawnLocation: spawnLocation)
         //INITILIZE THE UNITS STATS HERE!!!
         self.type = "Enemy"
-        self.health = 1
-        self.maxhealth = 30
+        self.health = 15
+        self.maxhealth = 15
         self.healthregen = 0
         self.speed = 30.0
         self.attackRange = 20.0
         self.isEnemy = true
-        self.xSize = 300.0
-        self.ySize = 300.0
+        self.xSize = 200.0
+        self.ySize = 200.0
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -54,7 +54,7 @@ class Enemy: Unit, PType
         //Define Animations here
         //
         
-        let Atlas = SKTextureAtlas(named: "Mage")
+        let Atlas = SKTextureAtlas(named: "Warrior")
         let walkAnimName = "-walk"
         let attackAnimName = "-attack"
         let abilityAnimName = "-ability"
@@ -174,7 +174,7 @@ class Enemy: Unit, PType
     override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint) {
         super.addUnitToGameScene(gameScene, pos: pos)
         self.sendOrder(RoamAttack(receiverIn: self))
-        //self.applyTint(SKColor.redColor(), factor: 0.75, blendDuration: NSTimeInterval(0.0))
+        self.applyTint(SKColor.redColor(), factor: 0.75, blendDuration: NSTimeInterval(0.0))
 
     }
 }

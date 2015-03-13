@@ -32,6 +32,8 @@ class Unit: SerializableJSON, PType
     var DS_stumbleAnim: SKAction?
     var DS_abilityAnim: SKAction?
     var isEnemy: Bool = true
+    //var isMoving: Bool = false
+    var isAttacking: Bool = false
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var health_txt_y_dspl: CGFloat = 70 // The y displacement of health text relative to this unit's sprite
@@ -169,6 +171,7 @@ class Unit: SerializableJSON, PType
         
         let distance = sqrt((xdif*xdif)+(ydif*ydif))
         let duration = distance/speed
+        
         let movementAction = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
         let walkAnimationAction = self.DS_walkAnim
         //Create action for "Walk to point then do "complete""
@@ -189,30 +192,29 @@ class Unit: SerializableJSON, PType
         self.DS_health_txt.removeActionForKey("move")
     }
     
-    func attack(target: Unit){
+    func attack(target: Unit, complete:(()->Void)!){
+        attackCycle(target, complete: complete)
         
     }
     
-    func attackCycle(target: Unit){
-        let tolerence = CGFloat(20.0)
+    func attackCycle(target: Unit, complete:(()->Void)!){
+        let tolerence = attackRange
         let animationGapDistance: CGFloat = 20.0 //Default value is overwritten in init
+        let refreshRate: CGFloat = 0.5
         
-        if target.alive == true         //ENSURE ATTACK IS STILL VALID
-        {
+        if target.alive == true{         //ENSURE ATTACK IS STILL VALID
             var movePos: CGPoint
-            if(self.sprite.position.x < target.sprite.position.x)
-            {
+            if(self.sprite.position.x < target.sprite.position.x){
                 movePos = CGPoint(x: target.sprite.frame.minX-animationGapDistance, y: target.sprite.frame.midY)
-            }
-            else
-            {
+            }else{
                 movePos = CGPoint(x: target.sprite.frame.maxX-1+animationGapDistance,y : target.sprite.frame.midY)
             }
             
             if Game.global.getDistance(self.sprite.position, p2: movePos) > tolerence {
-                self.move(movePos, complete:{
-                    self.clearMove()
-                    self.attackCycle(target)
+                //Need to move towards target.
+                let adjustedMove: CGPoint = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:movePos, distance: self.speed*refreshRate)
+                self.move(adjustedMove, complete:{
+                    self.attackCycle(target, complete: complete)
                 })
             } else {
                 if self.sprite.position.x < target.sprite.position.x {
@@ -223,8 +225,8 @@ class Unit: SerializableJSON, PType
                 self.sprite.runAction(self.DS_attackAnim!, withKey: "AttackAnim")
                 let delay = SKAction.waitForDuration(1.0)
                 self.sprite.runAction(delay, completion: {
-                        self.attackCycle(target)
-                    })
+                    self.attackCycle(target, complete: complete)
+                })
                 target.takeDamage(3)
             }
         }
@@ -268,8 +270,9 @@ class Unit: SerializableJSON, PType
         alive = false
         //applyTint(SKColor.blackColor(), factor: 1.0, blendDuration: 1.0)
         sendOrder(Idle(receiverIn: self))
+        self.sprite.removeActionForKey("stand")
         //SETUP DEATH SEQUENCE! Play Death. Wait. Then remove. REMOVING LOCALLY IS DANGEROUS
-        let waitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(3.0))
+        let waitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(0.0))
         let removeBlockAction:SKAction = SKAction.runBlock({
             Game.global.removeUnit(self.ID)
         })

@@ -9,12 +9,12 @@
 import Foundation
 import SpriteKit
 
-class ButtonEnrage: Ability
+class ButtonHeal: Ability
 {
     
     /*
-     * Creates a heal icon at the specified ability use slot
-     */
+    * Creates a heal icon at the specified ability use slot
+    */
     init(slot: Int){
         super.init(imageNamed: "S_Buff03", slot: slot)
     }

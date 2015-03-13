@@ -189,6 +189,16 @@ class Game {
     }
     
     /*
+     * Gets the CGPoint offset towards offset towards the target point.
+     */
+    func getPointOffsetTowardPoint(p1: CGPoint, p2: CGPoint, distance: CGFloat) -> CGPoint{
+        let theta = atan2((p2.y-p1.y), (p2.x-p1.x))
+        let x = p1.x+(distance*cos(theta))
+        let y = p1.y+(distance*sin(theta))
+        return CGPoint(x:x, y:y)
+    }
+    
+    /*
     * Returns the closest PLAYER to the given point
     */
     func getClosestPlayer(p1: CGPoint) -> Unit? {
@@ -196,9 +206,6 @@ class Game {
         var near: CGFloat = CGFloat.infinity
         
         for (id, unit) in Game.global.playerMap {
-            if unit is Enemy{   //WARNING: THIS IS A TERRIBLE WAY TO CHECK ALLIANCE... MUST UPDATE LATER
-                continue
-            }
             var p2 = unit.sprite.position
             var dist = getRelativeDistance(p1, p2:p2)
             if dist < near{
