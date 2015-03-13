@@ -29,6 +29,9 @@ class Ability: SKSpriteNode
         self.position = position
         println("CREATING BUTTON")
         println(self.position)
+        self.name="Ability0"
+        self.zPosition = 100
+        
         Game.global.scene!.addChild(self)
         self.hidden = false
     }
