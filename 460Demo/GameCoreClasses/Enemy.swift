@@ -126,7 +126,7 @@ class Enemy: Unit, PType
             Atlas.textureNamed(AnimationName+deathAnimName+"21"),
             Atlas.textureNamed(AnimationName+deathAnimName+"22"),
             Atlas.textureNamed(AnimationName+deathAnimName+"23"),
-            ], timePerFrame: 0.05)
+            ], timePerFrame: 0.05, resize: false, restore: false)
         
         var abilityTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+abilityAnimName+"0"),

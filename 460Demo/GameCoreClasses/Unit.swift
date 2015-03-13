@@ -118,9 +118,14 @@ class Unit: SerializableJSON, PType
         }
         
         
+        
         if health < 0 {
             health = 0
             death()
+        } else {
+            if damage > 0 {
+                self.sprite.runAction(DS_stumbleAnim)
+            }
         }
         
         //println("\(ID), \(health)")
@@ -261,10 +266,15 @@ class Unit: SerializableJSON, PType
             return
         }
         alive = false
-        applyTint(SKColor.blackColor(), factor: 1.0, blendDuration: 1.0)
+        //applyTint(SKColor.blackColor(), factor: 1.0, blendDuration: 1.0)
         sendOrder(Idle(receiverIn: self))
-        
-        Game.global.removeUnit(ID) //REMOVE UNIT LOCALLY: (DANGEROUS)
+        //SETUP DEATH SEQUENCE! Play Death. Wait. Then remove. REMOVING LOCALLY IS DANGEROUS
+        let waitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(3.0))
+        let removeBlockAction:SKAction = SKAction.runBlock({
+            Game.global.removeUnit(self.ID)
+        })
+        let deathThenRemove: SKAction = SKAction.sequence([DS_deathAnim!, waitAction, removeBlockAction])
+        self.sprite.runAction(deathThenRemove)
     }
     
     /*
