@@ -40,10 +40,10 @@
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
 		F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562EB1AB0D8C20094B2A7 /* Ability.swift */; };
 		F4B562EE1AB21B290094B2A7 /* ButtonHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */; };
+		F4B562F11AB26E1A0094B2A7 /* Mage.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B562EF1AB26E1A0094B2A7 /* Mage.atlas */; };
+		F4B562F21AB26E1A0094B2A7 /* Warrior.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B562F01AB26E1A0094B2A7 /* Warrior.atlas */; };
 		F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8348F1A9BB95200A839E5 /* Enemy.swift */; };
 		F4B834921A9BC1D500A839E5 /* RoamAttack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B834911A9BC1D500A839E5 /* RoamAttack.swift */; };
-		F4C0F5D91A87F63D0075F2A3 /* Attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */; };
-		F4C0F5DB1A87F6500075F2A3 /* Walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
 		F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */; };
 		F4D33B621A71EF7300DCD868 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B601A71EF7300DCD868 /* Main.storyboard */; };
@@ -104,10 +104,10 @@
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
 		F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonHeal.swift; sourceTree = "<group>"; };
 		F4B562EB1AB0D8C20094B2A7 /* Ability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ability.swift; sourceTree = "<group>"; };
+		F4B562EF1AB26E1A0094B2A7 /* Mage.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Mage.atlas; sourceTree = "<group>"; };
+		F4B562F01AB26E1A0094B2A7 /* Warrior.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Warrior.atlas; sourceTree = "<group>"; };
 		F4B8348F1A9BB95200A839E5 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		F4B834911A9BC1D500A839E5 /* RoamAttack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoamAttack.swift; sourceTree = "<group>"; };
-		F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Attack.atlas; sourceTree = "<group>"; };
-		F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Walk.atlas; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B571A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D33B581A71EF7300DCD868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -260,8 +260,8 @@
 			children = (
 				68F35CB31A84C540004905BF /* Warrior.swift */,
 				F4B8348F1A9BB95200A839E5 /* Enemy.swift */,
-				F4C0F5D81A87F63D0075F2A3 /* Attack.atlas */,
-				F4C0F5DA1A87F6500075F2A3 /* Walk.atlas */,
+				F4B562EF1AB26E1A0094B2A7 /* Mage.atlas */,
+				F4B562F01AB26E1A0094B2A7 /* Warrior.atlas */,
 			);
 			name = Warrior;
 			sourceTree = "<group>";
@@ -410,11 +410,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B562F21AB26E1A0094B2A7 /* Warrior.atlas in Resources */,
 				68A18D531AA8719E001CCE1D /* ntp.hosts in Resources */,
-				F4C0F5DB1A87F6500075F2A3 /* Walk.atlas in Resources */,
 				68F35CAB1A84C4D5004905BF /* GameScene.sks in Resources */,
 				F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */,
-				F4C0F5D91A87F63D0075F2A3 /* Attack.atlas in Resources */,
+				F4B562F11AB26E1A0094B2A7 /* Mage.atlas in Resources */,
 				F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */,
 				F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */,
 				68A18D501AA8719E001CCE1D /* Notes in Resources */,
