@@ -21,6 +21,7 @@ class Unit: SerializableJSON, PType
     var speed: CGFloat = 0.0
     var xSize: CGFloat = 200.0
     var ySize: CGFloat = 200.0
+    var attackRange: CGFloat = 20.0
     var sprite: SKNode = SKSpriteNode(imageNamed: "Mage")
     var currentOrder: Order = NoneOrder()
     var alive: Bool = true

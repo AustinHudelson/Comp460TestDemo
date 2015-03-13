@@ -35,6 +35,7 @@ class Warrior: Unit, PType
         self.maxhealth = 100
         self.healthregen = 1
         self.speed = 50.0
+        self.attackRange = 20.0
         self.isEnemy = false
         self.xSize = 300.0
         self.ySize = 300.0

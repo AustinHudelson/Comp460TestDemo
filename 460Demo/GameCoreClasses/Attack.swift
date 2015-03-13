@@ -12,7 +12,6 @@ import SpriteKit
 class Attack: Order, PType
 {
     var DS_target: Unit?
-    //var DS_receiver: Unit?
     var animationGapDistance: CGFloat = 20.0
     var tID: String = ""
     //var ID: String = ""
@@ -45,7 +44,7 @@ class Attack: Order, PType
     }
     
     func attackCycle(){
-        let tolerence = CGFloat(20.0)
+        let tolerence = DS_receiver!.attackRange
         
         if self.DS_receiver!.currentOrder is Attack
         {

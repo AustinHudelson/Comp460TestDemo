@@ -49,7 +49,7 @@ class RoamAttack: Order, PType
     }
     
     func attackCycle(){
-        let tolerence = CGFloat(20.0)
+        let tolerence = DS_receiver!.attackRange
         if self.DS_receiver!.currentOrder is RoamAttack
         {
             var movePos: CGPoint

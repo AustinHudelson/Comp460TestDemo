@@ -36,6 +36,7 @@ class Enemy: Unit, PType
         self.maxhealth = 30
         self.healthregen = 0
         self.speed = 30.0
+        self.attackRange = 20.0
         self.isEnemy = true
         self.xSize = 300.0
         self.ySize = 300.0
