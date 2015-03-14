@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,32 +19,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWx-W1-Kxd">
-                                <rect key="frame" x="246" y="273" width="109" height="30"/>
-                                <state key="normal" title="Enter Lobby">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="671" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="vcW-7f-CbY" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="671"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="671" id="QOp-Oy-hja"/>
+                                    <constraint firstAttribute="width" constant="600" id="itk-Nf-tlj"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QOp-Oy-hja"/>
+                                        <exclude reference="itk-Nf-tlj"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Player Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzJ-mn-bze">
+                                <rect key="frame" x="211" y="297" width="178" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" returnKeyType="done"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="SplashArt1" translatesAutoresizingMaskIntoConstraints="NO" id="QkX-kG-UfX">
+                                <rect key="frame" x="74" y="70" width="452" height="128"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWx-W1-Kxd" colorLabel="IBBuiltInLabel-Red">
+                                <rect key="frame" x="203" y="212" width="195" height="64"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <state key="normal" title="S t a r t" backgroundImage="GreyBackgroundBar">
                                     <color key="titleColor" red="0.98567255565191503" green="0.89777552887159773" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="by4-gA-Hf9" kind="presentation" identifier="playerNameSegue" id="MiD-Zj-IU0"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Player Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzJ-mn-bze">
-                                <rect key="frame" x="211" y="235" width="178" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.20409617592886675" green="0.26883070372341328" blue="0.66997367143630981" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="0.20409617590000001" green="0.26883070370000001" blue="0.66997367139999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="sWx-W1-Kxd" firstAttribute="top" secondItem="mzJ-mn-bze" secondAttribute="bottom" constant="10" id="4Mx-xY-ARe"/>
+                            <constraint firstItem="sWx-W1-Kxd" firstAttribute="centerX" secondItem="vcW-7f-CbY" secondAttribute="centerX" constant="0.5" id="1lm-Xx-vMO"/>
+                            <constraint firstItem="sWx-W1-Kxd" firstAttribute="top" secondItem="mzJ-mn-bze" secondAttribute="bottom" constant="50" id="4Mx-xY-ARe"/>
+                            <constraint firstItem="vcW-7f-CbY" firstAttribute="centerX" secondItem="mzJ-mn-bze" secondAttribute="centerX" id="4sV-V8-5Lp"/>
+                            <constraint firstItem="mzJ-mn-bze" firstAttribute="top" secondItem="sWx-W1-Kxd" secondAttribute="bottom" constant="40" id="62d-YF-E6I"/>
+                            <constraint firstItem="QkX-kG-UfX" firstAttribute="width" secondItem="vcW-7f-CbY" secondAttribute="height" multiplier="452:671" id="6Xd-B9-Trl"/>
+                            <constraint firstItem="vcW-7f-CbY" firstAttribute="width" secondItem="3se-qz-xqx" secondAttribute="width" id="7D3-i9-Joh"/>
                             <constraint firstAttribute="centerX" secondItem="mzJ-mn-bze" secondAttribute="centerX" id="CAH-I3-6a7"/>
+                            <constraint firstItem="vcW-7f-CbY" firstAttribute="width" secondItem="3se-qz-xqx" secondAttribute="width" id="DMN-Xh-epq"/>
                             <constraint firstAttribute="centerX" secondItem="sWx-W1-Kxd" secondAttribute="centerX" id="EgC-94-4x2"/>
+                            <constraint firstItem="sWx-W1-Kxd" firstAttribute="top" secondItem="QkX-kG-UfX" secondAttribute="bottom" constant="40" id="LKs-Qk-ONY"/>
+                            <constraint firstItem="QkX-kG-UfX" firstAttribute="top" secondItem="maK-i9-Uhn" secondAttribute="bottom" constant="50" id="VQ1-0t-iA1"/>
+                            <constraint firstItem="vcW-7f-CbY" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" id="XVC-SJ-jM7"/>
+                            <constraint firstItem="vcW-7f-CbY" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" id="YEh-gT-60G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mzJ-mn-bze" secondAttribute="trailing" constant="50" id="ZiY-m9-tTJ"/>
                             <constraint firstItem="mzJ-mn-bze" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" constant="50" id="m1G-WY-Ls3"/>
                             <constraint firstAttribute="centerY" secondItem="mzJ-mn-bze" secondAttribute="centerY" id="q1b-e6-cwj"/>
+                            <constraint firstItem="QkX-kG-UfX" firstAttribute="centerX" secondItem="vcW-7f-CbY" secondAttribute="centerX" id="xYQ-JF-4ry"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4sV-V8-5Lp"/>
+                                <exclude reference="DMN-Xh-epq"/>
+                                <exclude reference="YEh-gT-60G"/>
+                                <exclude reference="4Mx-xY-ARe"/>
+                                <exclude reference="EgC-94-4x2"/>
+                                <exclude reference="q1b-e6-cwj"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="crp-bz-6Tv"/>
@@ -51,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144" y="165"/>
+            <point key="canvasLocation" x="3" y="184"/>
         </scene>
         <!--Lobby View Controller-->
         <scene sceneID="n9G-As-8Mi">
@@ -123,7 +166,13 @@
             <point key="canvasLocation" x="1509" y="129"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="GreyBackgroundBar" width="361" height="51"/>
+        <image name="SplashArt1" width="523" height="124"/>
+        <image name="gate" width="1034" height="1000"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uEM-lo-oZ7"/>
+        <segue reference="y30-hW-jlj"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

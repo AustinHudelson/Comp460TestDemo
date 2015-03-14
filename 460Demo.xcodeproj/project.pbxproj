@@ -47,6 +47,102 @@
 		F4B562F41AB287F40094B2A7 /* Mage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562F31AB287F40094B2A7 /* Mage.swift */; };
 		F4B562F81AB38A9A0094B2A7 /* ButtonEnrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562F71AB38A9A0094B2A7 /* ButtonEnrage.swift */; };
 		F4B562FA1AB39E740094B2A7 /* Transient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562F91AB39E740094B2A7 /* Transient.swift */; };
+		F4B563691AB3A5CF0094B2A7 /* magic1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B562FD1AB3A5CE0094B2A7 /* magic1.wav */; };
+		F4B5636A1AB3A5CF0094B2A7 /* spell.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B562FE1AB3A5CE0094B2A7 /* spell.wav */; };
+		F4B5636B1AB3A5CF0094B2A7 /* swing.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B562FF1AB3A5CE0094B2A7 /* swing.wav */; };
+		F4B5636C1AB3A5CF0094B2A7 /* swing2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563001AB3A5CE0094B2A7 /* swing2.wav */; };
+		F4B5636D1AB3A5CF0094B2A7 /* swing3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563011AB3A5CE0094B2A7 /* swing3.wav */; };
+		F4B5636E1AB3A5CF0094B2A7 /* sword-unsheathe.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563021AB3A5CE0094B2A7 /* sword-unsheathe.wav */; };
+		F4B5636F1AB3A5CF0094B2A7 /* sword-unsheathe2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563031AB3A5CE0094B2A7 /* sword-unsheathe2.wav */; };
+		F4B563701AB3A5CF0094B2A7 /* sword-unsheathe3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563041AB3A5CE0094B2A7 /* sword-unsheathe3.wav */; };
+		F4B563711AB3A5CF0094B2A7 /* sword-unsheathe4.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563051AB3A5CE0094B2A7 /* sword-unsheathe4.wav */; };
+		F4B563721AB3A5CF0094B2A7 /* sword-unsheathe5.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563061AB3A5CE0094B2A7 /* sword-unsheathe5.wav */; };
+		F4B563731AB3A5CF0094B2A7 /* interface1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563081AB3A5CE0094B2A7 /* interface1.wav */; };
+		F4B563741AB3A5CF0094B2A7 /* interface2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563091AB3A5CE0094B2A7 /* interface2.wav */; };
+		F4B563751AB3A5CF0094B2A7 /* interface3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5630A1AB3A5CE0094B2A7 /* interface3.wav */; };
+		F4B563761AB3A5CF0094B2A7 /* interface4.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5630B1AB3A5CE0094B2A7 /* interface4.wav */; };
+		F4B563771AB3A5CF0094B2A7 /* interface5.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5630C1AB3A5CE0094B2A7 /* interface5.wav */; };
+		F4B563781AB3A5CF0094B2A7 /* interface6.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5630D1AB3A5CE0094B2A7 /* interface6.wav */; };
+		F4B563791AB3A5CF0094B2A7 /* armor-light.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5630F1AB3A5CE0094B2A7 /* armor-light.wav */; };
+		F4B5637A1AB3A5CF0094B2A7 /* beads.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563101AB3A5CE0094B2A7 /* beads.wav */; };
+		F4B5637B1AB3A5CF0094B2A7 /* bottle.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563111AB3A5CE0094B2A7 /* bottle.wav */; };
+		F4B5637C1AB3A5CF0094B2A7 /* bubble.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563121AB3A5CE0094B2A7 /* bubble.wav */; };
+		F4B5637D1AB3A5CF0094B2A7 /* bubble2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563131AB3A5CE0094B2A7 /* bubble2.wav */; };
+		F4B5637E1AB3A5CF0094B2A7 /* bubble3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563141AB3A5CE0094B2A7 /* bubble3.wav */; };
+		F4B5637F1AB3A5CF0094B2A7 /* chainmail1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563151AB3A5CE0094B2A7 /* chainmail1.wav */; };
+		F4B563801AB3A5CF0094B2A7 /* chainmail2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563161AB3A5CE0094B2A7 /* chainmail2.wav */; };
+		F4B563811AB3A5CF0094B2A7 /* cloth-heavy.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563171AB3A5CE0094B2A7 /* cloth-heavy.wav */; };
+		F4B563821AB3A5CF0094B2A7 /* cloth.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563181AB3A5CE0094B2A7 /* cloth.wav */; };
+		F4B563831AB3A5CF0094B2A7 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563191AB3A5CE0094B2A7 /* coin.wav */; };
+		F4B563841AB3A5CF0094B2A7 /* coin2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5631A1AB3A5CE0094B2A7 /* coin2.wav */; };
+		F4B563851AB3A5CF0094B2A7 /* coin3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5631B1AB3A5CE0094B2A7 /* coin3.wav */; };
+		F4B563861AB3A5CF0094B2A7 /* metal-ringing.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5631C1AB3A5CE0094B2A7 /* metal-ringing.wav */; };
+		F4B563871AB3A5CF0094B2A7 /* metal-small1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5631D1AB3A5CE0094B2A7 /* metal-small1.wav */; };
+		F4B563881AB3A5CF0094B2A7 /* metal-small2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5631E1AB3A5CE0094B2A7 /* metal-small2.wav */; };
+		F4B563891AB3A5CF0094B2A7 /* metal-small3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5631F1AB3A5CF0094B2A7 /* metal-small3.wav */; };
+		F4B5638A1AB3A5CF0094B2A7 /* wood-small.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563201AB3A5CF0094B2A7 /* wood-small.wav */; };
+		F4B5638B1AB3A5CF0094B2A7 /* burp.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563221AB3A5CF0094B2A7 /* burp.wav */; };
+		F4B5638C1AB3A5CF0094B2A7 /* random1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563231AB3A5CF0094B2A7 /* random1.wav */; };
+		F4B5638D1AB3A5CF0094B2A7 /* random2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563241AB3A5CF0094B2A7 /* random2.wav */; };
+		F4B5638E1AB3A5CF0094B2A7 /* random3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563251AB3A5CF0094B2A7 /* random3.wav */; };
+		F4B5638F1AB3A5CF0094B2A7 /* random4.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563261AB3A5CF0094B2A7 /* random4.wav */; };
+		F4B563901AB3A5CF0094B2A7 /* random5.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563271AB3A5CF0094B2A7 /* random5.wav */; };
+		F4B563911AB3A5CF0094B2A7 /* random6.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563281AB3A5CF0094B2A7 /* random6.wav */; };
+		F4B563921AB3A5CF0094B2A7 /* bite-small.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5632B1AB3A5CF0094B2A7 /* bite-small.wav */; };
+		F4B563931AB3A5CF0094B2A7 /* bite-small2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5632C1AB3A5CF0094B2A7 /* bite-small2.wav */; };
+		F4B563941AB3A5CF0094B2A7 /* bite-small3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5632D1AB3A5CF0094B2A7 /* bite-small3.wav */; };
+		F4B563951AB3A5CF0094B2A7 /* giant1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5632F1AB3A5CF0094B2A7 /* giant1.wav */; };
+		F4B563961AB3A5CF0094B2A7 /* giant2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563301AB3A5CF0094B2A7 /* giant2.wav */; };
+		F4B563971AB3A5CF0094B2A7 /* giant3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563311AB3A5CF0094B2A7 /* giant3.wav */; };
+		F4B563981AB3A5CF0094B2A7 /* giant4.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563321AB3A5CF0094B2A7 /* giant4.wav */; };
+		F4B563991AB3A5CF0094B2A7 /* giant5.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563331AB3A5CF0094B2A7 /* giant5.wav */; };
+		F4B5639A1AB3A5CF0094B2A7 /* mnstr1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563351AB3A5CF0094B2A7 /* mnstr1.wav */; };
+		F4B5639B1AB3A5CF0094B2A7 /* mnstr10.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563361AB3A5CF0094B2A7 /* mnstr10.wav */; };
+		F4B5639C1AB3A5CF0094B2A7 /* mnstr11.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563371AB3A5CF0094B2A7 /* mnstr11.wav */; };
+		F4B5639D1AB3A5CF0094B2A7 /* mnstr12.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563381AB3A5CF0094B2A7 /* mnstr12.wav */; };
+		F4B5639E1AB3A5CF0094B2A7 /* mnstr13.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563391AB3A5CF0094B2A7 /* mnstr13.wav */; };
+		F4B5639F1AB3A5CF0094B2A7 /* mnstr14.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5633A1AB3A5CF0094B2A7 /* mnstr14.wav */; };
+		F4B563A01AB3A5CF0094B2A7 /* mnstr15.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5633B1AB3A5CF0094B2A7 /* mnstr15.wav */; };
+		F4B563A11AB3A5CF0094B2A7 /* mnstr2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5633C1AB3A5CF0094B2A7 /* mnstr2.wav */; };
+		F4B563A21AB3A5CF0094B2A7 /* mnstr3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5633D1AB3A5CF0094B2A7 /* mnstr3.wav */; };
+		F4B563A31AB3A5CF0094B2A7 /* mnstr4.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5633E1AB3A5CF0094B2A7 /* mnstr4.wav */; };
+		F4B563A41AB3A5CF0094B2A7 /* mnstr5.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5633F1AB3A5CF0094B2A7 /* mnstr5.wav */; };
+		F4B563A51AB3A5CF0094B2A7 /* mnstr6.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563401AB3A5CF0094B2A7 /* mnstr6.wav */; };
+		F4B563A61AB3A5CF0094B2A7 /* mnstr7.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563411AB3A5CF0094B2A7 /* mnstr7.wav */; };
+		F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563421AB3A5CF0094B2A7 /* mnstr8.wav */; };
+		F4B563A81AB3A5CF0094B2A7 /* mnstr9.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563431AB3A5CF0094B2A7 /* mnstr9.wav */; };
+		F4B563A91AB3A5CF0094B2A7 /* wolfman.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563451AB3A5CF0094B2A7 /* wolfman.wav */; };
+		F4B563AA1AB3A5CF0094B2A7 /* ogre1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563471AB3A5CF0094B2A7 /* ogre1.wav */; };
+		F4B563AB1AB3A5CF0094B2A7 /* ogre2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563481AB3A5CF0094B2A7 /* ogre2.wav */; };
+		F4B563AC1AB3A5CF0094B2A7 /* ogre3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563491AB3A5CF0094B2A7 /* ogre3.wav */; };
+		F4B563AD1AB3A5CF0094B2A7 /* ogre4.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5634A1AB3A5CF0094B2A7 /* ogre4.wav */; };
+		F4B563AE1AB3A5CF0094B2A7 /* ogre5.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5634B1AB3A5CF0094B2A7 /* ogre5.wav */; };
+		F4B563AF1AB3A5CF0094B2A7 /* shade1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5634D1AB3A5CF0094B2A7 /* shade1.wav */; };
+		F4B563B01AB3A5CF0094B2A7 /* shade10.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5634E1AB3A5CF0094B2A7 /* shade10.wav */; };
+		F4B563B11AB3A5CF0094B2A7 /* shade11.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5634F1AB3A5CF0094B2A7 /* shade11.wav */; };
+		F4B563B21AB3A5CF0094B2A7 /* shade12.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563501AB3A5CF0094B2A7 /* shade12.wav */; };
+		F4B563B31AB3A5CF0094B2A7 /* shade13.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563511AB3A5CF0094B2A7 /* shade13.wav */; };
+		F4B563B41AB3A5CF0094B2A7 /* shade14.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563521AB3A5CF0094B2A7 /* shade14.wav */; };
+		F4B563B51AB3A5CF0094B2A7 /* shade15.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563531AB3A5CF0094B2A7 /* shade15.wav */; };
+		F4B563B61AB3A5CF0094B2A7 /* shade2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563541AB3A5CF0094B2A7 /* shade2.wav */; };
+		F4B563B71AB3A5CF0094B2A7 /* shade3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563551AB3A5CF0094B2A7 /* shade3.wav */; };
+		F4B563B81AB3A5CF0094B2A7 /* shade4.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563561AB3A5CF0094B2A7 /* shade4.wav */; };
+		F4B563B91AB3A5CF0094B2A7 /* shade5.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563571AB3A5CF0094B2A7 /* shade5.wav */; };
+		F4B563BA1AB3A5CF0094B2A7 /* shade6.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563581AB3A5CF0094B2A7 /* shade6.wav */; };
+		F4B563BB1AB3A5CF0094B2A7 /* shade7.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563591AB3A5CF0094B2A7 /* shade7.wav */; };
+		F4B563BC1AB3A5CF0094B2A7 /* shade8.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5635A1AB3A5CF0094B2A7 /* shade8.wav */; };
+		F4B563BD1AB3A5CF0094B2A7 /* shade9.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5635B1AB3A5CF0094B2A7 /* shade9.wav */; };
+		F4B563BE1AB3A5CF0094B2A7 /* slime1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5635D1AB3A5CF0094B2A7 /* slime1.wav */; };
+		F4B563BF1AB3A5CF0094B2A7 /* slime10.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5635E1AB3A5CF0094B2A7 /* slime10.wav */; };
+		F4B563C01AB3A5CF0094B2A7 /* slime2.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B5635F1AB3A5CF0094B2A7 /* slime2.wav */; };
+		F4B563C11AB3A5CF0094B2A7 /* slime3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563601AB3A5CF0094B2A7 /* slime3.wav */; };
+		F4B563C21AB3A5CF0094B2A7 /* slime4.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563611AB3A5CF0094B2A7 /* slime4.wav */; };
+		F4B563C31AB3A5CF0094B2A7 /* slime5.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563621AB3A5CF0094B2A7 /* slime5.wav */; };
+		F4B563C41AB3A5CF0094B2A7 /* slime6.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563631AB3A5CF0094B2A7 /* slime6.wav */; };
+		F4B563C51AB3A5CF0094B2A7 /* slime7.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563641AB3A5CF0094B2A7 /* slime7.wav */; };
+		F4B563C61AB3A5CF0094B2A7 /* slime8.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563651AB3A5CF0094B2A7 /* slime8.wav */; };
+		F4B563C71AB3A5CF0094B2A7 /* slime9.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563661AB3A5CF0094B2A7 /* slime9.wav */; };
+		F4B563C81AB3A5CF0094B2A7 /* door.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563681AB3A5CF0094B2A7 /* door.wav */; };
 		F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8348F1A9BB95200A839E5 /* Enemy.swift */; };
 		F4B834921A9BC1D500A839E5 /* RoamAttack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B834911A9BC1D500A839E5 /* RoamAttack.swift */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
@@ -116,6 +212,102 @@
 		F4B562F31AB287F40094B2A7 /* Mage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mage.swift; sourceTree = "<group>"; };
 		F4B562F71AB38A9A0094B2A7 /* ButtonEnrage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonEnrage.swift; sourceTree = "<group>"; };
 		F4B562F91AB39E740094B2A7 /* Transient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transient.swift; sourceTree = "<group>"; };
+		F4B562FD1AB3A5CE0094B2A7 /* magic1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = magic1.wav; sourceTree = "<group>"; };
+		F4B562FE1AB3A5CE0094B2A7 /* spell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spell.wav; sourceTree = "<group>"; };
+		F4B562FF1AB3A5CE0094B2A7 /* swing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swing.wav; sourceTree = "<group>"; };
+		F4B563001AB3A5CE0094B2A7 /* swing2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swing2.wav; sourceTree = "<group>"; };
+		F4B563011AB3A5CE0094B2A7 /* swing3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swing3.wav; sourceTree = "<group>"; };
+		F4B563021AB3A5CE0094B2A7 /* sword-unsheathe.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sword-unsheathe.wav"; sourceTree = "<group>"; };
+		F4B563031AB3A5CE0094B2A7 /* sword-unsheathe2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sword-unsheathe2.wav"; sourceTree = "<group>"; };
+		F4B563041AB3A5CE0094B2A7 /* sword-unsheathe3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sword-unsheathe3.wav"; sourceTree = "<group>"; };
+		F4B563051AB3A5CE0094B2A7 /* sword-unsheathe4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sword-unsheathe4.wav"; sourceTree = "<group>"; };
+		F4B563061AB3A5CE0094B2A7 /* sword-unsheathe5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sword-unsheathe5.wav"; sourceTree = "<group>"; };
+		F4B563081AB3A5CE0094B2A7 /* interface1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = interface1.wav; sourceTree = "<group>"; };
+		F4B563091AB3A5CE0094B2A7 /* interface2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = interface2.wav; sourceTree = "<group>"; };
+		F4B5630A1AB3A5CE0094B2A7 /* interface3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = interface3.wav; sourceTree = "<group>"; };
+		F4B5630B1AB3A5CE0094B2A7 /* interface4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = interface4.wav; sourceTree = "<group>"; };
+		F4B5630C1AB3A5CE0094B2A7 /* interface5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = interface5.wav; sourceTree = "<group>"; };
+		F4B5630D1AB3A5CE0094B2A7 /* interface6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = interface6.wav; sourceTree = "<group>"; };
+		F4B5630F1AB3A5CE0094B2A7 /* armor-light.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "armor-light.wav"; sourceTree = "<group>"; };
+		F4B563101AB3A5CE0094B2A7 /* beads.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beads.wav; sourceTree = "<group>"; };
+		F4B563111AB3A5CE0094B2A7 /* bottle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bottle.wav; sourceTree = "<group>"; };
+		F4B563121AB3A5CE0094B2A7 /* bubble.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bubble.wav; sourceTree = "<group>"; };
+		F4B563131AB3A5CE0094B2A7 /* bubble2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bubble2.wav; sourceTree = "<group>"; };
+		F4B563141AB3A5CE0094B2A7 /* bubble3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bubble3.wav; sourceTree = "<group>"; };
+		F4B563151AB3A5CE0094B2A7 /* chainmail1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chainmail1.wav; sourceTree = "<group>"; };
+		F4B563161AB3A5CE0094B2A7 /* chainmail2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chainmail2.wav; sourceTree = "<group>"; };
+		F4B563171AB3A5CE0094B2A7 /* cloth-heavy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "cloth-heavy.wav"; sourceTree = "<group>"; };
+		F4B563181AB3A5CE0094B2A7 /* cloth.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cloth.wav; sourceTree = "<group>"; };
+		F4B563191AB3A5CE0094B2A7 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
+		F4B5631A1AB3A5CE0094B2A7 /* coin2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin2.wav; sourceTree = "<group>"; };
+		F4B5631B1AB3A5CE0094B2A7 /* coin3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin3.wav; sourceTree = "<group>"; };
+		F4B5631C1AB3A5CE0094B2A7 /* metal-ringing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "metal-ringing.wav"; sourceTree = "<group>"; };
+		F4B5631D1AB3A5CE0094B2A7 /* metal-small1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "metal-small1.wav"; sourceTree = "<group>"; };
+		F4B5631E1AB3A5CE0094B2A7 /* metal-small2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "metal-small2.wav"; sourceTree = "<group>"; };
+		F4B5631F1AB3A5CF0094B2A7 /* metal-small3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "metal-small3.wav"; sourceTree = "<group>"; };
+		F4B563201AB3A5CF0094B2A7 /* wood-small.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "wood-small.wav"; sourceTree = "<group>"; };
+		F4B563221AB3A5CF0094B2A7 /* burp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = burp.wav; sourceTree = "<group>"; };
+		F4B563231AB3A5CF0094B2A7 /* random1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = random1.wav; sourceTree = "<group>"; };
+		F4B563241AB3A5CF0094B2A7 /* random2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = random2.wav; sourceTree = "<group>"; };
+		F4B563251AB3A5CF0094B2A7 /* random3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = random3.wav; sourceTree = "<group>"; };
+		F4B563261AB3A5CF0094B2A7 /* random4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = random4.wav; sourceTree = "<group>"; };
+		F4B563271AB3A5CF0094B2A7 /* random5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = random5.wav; sourceTree = "<group>"; };
+		F4B563281AB3A5CF0094B2A7 /* random6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = random6.wav; sourceTree = "<group>"; };
+		F4B5632B1AB3A5CF0094B2A7 /* bite-small.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "bite-small.wav"; sourceTree = "<group>"; };
+		F4B5632C1AB3A5CF0094B2A7 /* bite-small2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "bite-small2.wav"; sourceTree = "<group>"; };
+		F4B5632D1AB3A5CF0094B2A7 /* bite-small3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "bite-small3.wav"; sourceTree = "<group>"; };
+		F4B5632F1AB3A5CF0094B2A7 /* giant1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = giant1.wav; sourceTree = "<group>"; };
+		F4B563301AB3A5CF0094B2A7 /* giant2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = giant2.wav; sourceTree = "<group>"; };
+		F4B563311AB3A5CF0094B2A7 /* giant3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = giant3.wav; sourceTree = "<group>"; };
+		F4B563321AB3A5CF0094B2A7 /* giant4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = giant4.wav; sourceTree = "<group>"; };
+		F4B563331AB3A5CF0094B2A7 /* giant5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = giant5.wav; sourceTree = "<group>"; };
+		F4B563351AB3A5CF0094B2A7 /* mnstr1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr1.wav; sourceTree = "<group>"; };
+		F4B563361AB3A5CF0094B2A7 /* mnstr10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr10.wav; sourceTree = "<group>"; };
+		F4B563371AB3A5CF0094B2A7 /* mnstr11.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr11.wav; sourceTree = "<group>"; };
+		F4B563381AB3A5CF0094B2A7 /* mnstr12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr12.wav; sourceTree = "<group>"; };
+		F4B563391AB3A5CF0094B2A7 /* mnstr13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr13.wav; sourceTree = "<group>"; };
+		F4B5633A1AB3A5CF0094B2A7 /* mnstr14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr14.wav; sourceTree = "<group>"; };
+		F4B5633B1AB3A5CF0094B2A7 /* mnstr15.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr15.wav; sourceTree = "<group>"; };
+		F4B5633C1AB3A5CF0094B2A7 /* mnstr2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr2.wav; sourceTree = "<group>"; };
+		F4B5633D1AB3A5CF0094B2A7 /* mnstr3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr3.wav; sourceTree = "<group>"; };
+		F4B5633E1AB3A5CF0094B2A7 /* mnstr4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr4.wav; sourceTree = "<group>"; };
+		F4B5633F1AB3A5CF0094B2A7 /* mnstr5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr5.wav; sourceTree = "<group>"; };
+		F4B563401AB3A5CF0094B2A7 /* mnstr6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr6.wav; sourceTree = "<group>"; };
+		F4B563411AB3A5CF0094B2A7 /* mnstr7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr7.wav; sourceTree = "<group>"; };
+		F4B563421AB3A5CF0094B2A7 /* mnstr8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr8.wav; sourceTree = "<group>"; };
+		F4B563431AB3A5CF0094B2A7 /* mnstr9.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mnstr9.wav; sourceTree = "<group>"; };
+		F4B563451AB3A5CF0094B2A7 /* wolfman.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wolfman.wav; sourceTree = "<group>"; };
+		F4B563471AB3A5CF0094B2A7 /* ogre1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ogre1.wav; sourceTree = "<group>"; };
+		F4B563481AB3A5CF0094B2A7 /* ogre2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ogre2.wav; sourceTree = "<group>"; };
+		F4B563491AB3A5CF0094B2A7 /* ogre3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ogre3.wav; sourceTree = "<group>"; };
+		F4B5634A1AB3A5CF0094B2A7 /* ogre4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ogre4.wav; sourceTree = "<group>"; };
+		F4B5634B1AB3A5CF0094B2A7 /* ogre5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ogre5.wav; sourceTree = "<group>"; };
+		F4B5634D1AB3A5CF0094B2A7 /* shade1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade1.wav; sourceTree = "<group>"; };
+		F4B5634E1AB3A5CF0094B2A7 /* shade10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade10.wav; sourceTree = "<group>"; };
+		F4B5634F1AB3A5CF0094B2A7 /* shade11.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade11.wav; sourceTree = "<group>"; };
+		F4B563501AB3A5CF0094B2A7 /* shade12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade12.wav; sourceTree = "<group>"; };
+		F4B563511AB3A5CF0094B2A7 /* shade13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade13.wav; sourceTree = "<group>"; };
+		F4B563521AB3A5CF0094B2A7 /* shade14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade14.wav; sourceTree = "<group>"; };
+		F4B563531AB3A5CF0094B2A7 /* shade15.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade15.wav; sourceTree = "<group>"; };
+		F4B563541AB3A5CF0094B2A7 /* shade2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade2.wav; sourceTree = "<group>"; };
+		F4B563551AB3A5CF0094B2A7 /* shade3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade3.wav; sourceTree = "<group>"; };
+		F4B563561AB3A5CF0094B2A7 /* shade4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade4.wav; sourceTree = "<group>"; };
+		F4B563571AB3A5CF0094B2A7 /* shade5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade5.wav; sourceTree = "<group>"; };
+		F4B563581AB3A5CF0094B2A7 /* shade6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade6.wav; sourceTree = "<group>"; };
+		F4B563591AB3A5CF0094B2A7 /* shade7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade7.wav; sourceTree = "<group>"; };
+		F4B5635A1AB3A5CF0094B2A7 /* shade8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade8.wav; sourceTree = "<group>"; };
+		F4B5635B1AB3A5CF0094B2A7 /* shade9.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shade9.wav; sourceTree = "<group>"; };
+		F4B5635D1AB3A5CF0094B2A7 /* slime1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime1.wav; sourceTree = "<group>"; };
+		F4B5635E1AB3A5CF0094B2A7 /* slime10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime10.wav; sourceTree = "<group>"; };
+		F4B5635F1AB3A5CF0094B2A7 /* slime2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime2.wav; sourceTree = "<group>"; };
+		F4B563601AB3A5CF0094B2A7 /* slime3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime3.wav; sourceTree = "<group>"; };
+		F4B563611AB3A5CF0094B2A7 /* slime4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime4.wav; sourceTree = "<group>"; };
+		F4B563621AB3A5CF0094B2A7 /* slime5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime5.wav; sourceTree = "<group>"; };
+		F4B563631AB3A5CF0094B2A7 /* slime6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime6.wav; sourceTree = "<group>"; };
+		F4B563641AB3A5CF0094B2A7 /* slime7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime7.wav; sourceTree = "<group>"; };
+		F4B563651AB3A5CF0094B2A7 /* slime8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime8.wav; sourceTree = "<group>"; };
+		F4B563661AB3A5CF0094B2A7 /* slime9.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime9.wav; sourceTree = "<group>"; };
+		F4B563681AB3A5CF0094B2A7 /* door.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = door.wav; sourceTree = "<group>"; };
 		F4B8348F1A9BB95200A839E5 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		F4B834911A9BC1D500A839E5 /* RoamAttack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoamAttack.swift; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,6 +488,213 @@
 			name = Enemy;
 			sourceTree = "<group>";
 		};
+		F4B562FB1AB3A5AC0094B2A7 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F4B562FC1AB3A5CE0094B2A7 /* battle */,
+				F4B563071AB3A5CE0094B2A7 /* interface */,
+				F4B5630E1AB3A5CE0094B2A7 /* inventory */,
+				F4B563211AB3A5CF0094B2A7 /* misc */,
+				F4B563291AB3A5CF0094B2A7 /* NPC */,
+				F4B563671AB3A5CF0094B2A7 /* world */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		F4B562FC1AB3A5CE0094B2A7 /* battle */ = {
+			isa = PBXGroup;
+			children = (
+				F4B562FD1AB3A5CE0094B2A7 /* magic1.wav */,
+				F4B562FE1AB3A5CE0094B2A7 /* spell.wav */,
+				F4B562FF1AB3A5CE0094B2A7 /* swing.wav */,
+				F4B563001AB3A5CE0094B2A7 /* swing2.wav */,
+				F4B563011AB3A5CE0094B2A7 /* swing3.wav */,
+				F4B563021AB3A5CE0094B2A7 /* sword-unsheathe.wav */,
+				F4B563031AB3A5CE0094B2A7 /* sword-unsheathe2.wav */,
+				F4B563041AB3A5CE0094B2A7 /* sword-unsheathe3.wav */,
+				F4B563051AB3A5CE0094B2A7 /* sword-unsheathe4.wav */,
+				F4B563061AB3A5CE0094B2A7 /* sword-unsheathe5.wav */,
+			);
+			path = battle;
+			sourceTree = "<group>";
+		};
+		F4B563071AB3A5CE0094B2A7 /* interface */ = {
+			isa = PBXGroup;
+			children = (
+				F4B563081AB3A5CE0094B2A7 /* interface1.wav */,
+				F4B563091AB3A5CE0094B2A7 /* interface2.wav */,
+				F4B5630A1AB3A5CE0094B2A7 /* interface3.wav */,
+				F4B5630B1AB3A5CE0094B2A7 /* interface4.wav */,
+				F4B5630C1AB3A5CE0094B2A7 /* interface5.wav */,
+				F4B5630D1AB3A5CE0094B2A7 /* interface6.wav */,
+			);
+			path = interface;
+			sourceTree = "<group>";
+		};
+		F4B5630E1AB3A5CE0094B2A7 /* inventory */ = {
+			isa = PBXGroup;
+			children = (
+				F4B5630F1AB3A5CE0094B2A7 /* armor-light.wav */,
+				F4B563101AB3A5CE0094B2A7 /* beads.wav */,
+				F4B563111AB3A5CE0094B2A7 /* bottle.wav */,
+				F4B563121AB3A5CE0094B2A7 /* bubble.wav */,
+				F4B563131AB3A5CE0094B2A7 /* bubble2.wav */,
+				F4B563141AB3A5CE0094B2A7 /* bubble3.wav */,
+				F4B563151AB3A5CE0094B2A7 /* chainmail1.wav */,
+				F4B563161AB3A5CE0094B2A7 /* chainmail2.wav */,
+				F4B563171AB3A5CE0094B2A7 /* cloth-heavy.wav */,
+				F4B563181AB3A5CE0094B2A7 /* cloth.wav */,
+				F4B563191AB3A5CE0094B2A7 /* coin.wav */,
+				F4B5631A1AB3A5CE0094B2A7 /* coin2.wav */,
+				F4B5631B1AB3A5CE0094B2A7 /* coin3.wav */,
+				F4B5631C1AB3A5CE0094B2A7 /* metal-ringing.wav */,
+				F4B5631D1AB3A5CE0094B2A7 /* metal-small1.wav */,
+				F4B5631E1AB3A5CE0094B2A7 /* metal-small2.wav */,
+				F4B5631F1AB3A5CF0094B2A7 /* metal-small3.wav */,
+				F4B563201AB3A5CF0094B2A7 /* wood-small.wav */,
+			);
+			path = inventory;
+			sourceTree = "<group>";
+		};
+		F4B563211AB3A5CF0094B2A7 /* misc */ = {
+			isa = PBXGroup;
+			children = (
+				F4B563221AB3A5CF0094B2A7 /* burp.wav */,
+				F4B563231AB3A5CF0094B2A7 /* random1.wav */,
+				F4B563241AB3A5CF0094B2A7 /* random2.wav */,
+				F4B563251AB3A5CF0094B2A7 /* random3.wav */,
+				F4B563261AB3A5CF0094B2A7 /* random4.wav */,
+				F4B563271AB3A5CF0094B2A7 /* random5.wav */,
+				F4B563281AB3A5CF0094B2A7 /* random6.wav */,
+			);
+			path = misc;
+			sourceTree = "<group>";
+		};
+		F4B563291AB3A5CF0094B2A7 /* NPC */ = {
+			isa = PBXGroup;
+			children = (
+				F4B5632A1AB3A5CF0094B2A7 /* beetle */,
+				F4B5632E1AB3A5CF0094B2A7 /* giant */,
+				F4B563341AB3A5CF0094B2A7 /* gutteral beast */,
+				F4B563441AB3A5CF0094B2A7 /* misc */,
+				F4B563461AB3A5CF0094B2A7 /* ogre */,
+				F4B5634C1AB3A5CF0094B2A7 /* shade */,
+				F4B5635C1AB3A5CF0094B2A7 /* slime */,
+			);
+			path = NPC;
+			sourceTree = "<group>";
+		};
+		F4B5632A1AB3A5CF0094B2A7 /* beetle */ = {
+			isa = PBXGroup;
+			children = (
+				F4B5632B1AB3A5CF0094B2A7 /* bite-small.wav */,
+				F4B5632C1AB3A5CF0094B2A7 /* bite-small2.wav */,
+				F4B5632D1AB3A5CF0094B2A7 /* bite-small3.wav */,
+			);
+			path = beetle;
+			sourceTree = "<group>";
+		};
+		F4B5632E1AB3A5CF0094B2A7 /* giant */ = {
+			isa = PBXGroup;
+			children = (
+				F4B5632F1AB3A5CF0094B2A7 /* giant1.wav */,
+				F4B563301AB3A5CF0094B2A7 /* giant2.wav */,
+				F4B563311AB3A5CF0094B2A7 /* giant3.wav */,
+				F4B563321AB3A5CF0094B2A7 /* giant4.wav */,
+				F4B563331AB3A5CF0094B2A7 /* giant5.wav */,
+			);
+			path = giant;
+			sourceTree = "<group>";
+		};
+		F4B563341AB3A5CF0094B2A7 /* gutteral beast */ = {
+			isa = PBXGroup;
+			children = (
+				F4B563351AB3A5CF0094B2A7 /* mnstr1.wav */,
+				F4B563361AB3A5CF0094B2A7 /* mnstr10.wav */,
+				F4B563371AB3A5CF0094B2A7 /* mnstr11.wav */,
+				F4B563381AB3A5CF0094B2A7 /* mnstr12.wav */,
+				F4B563391AB3A5CF0094B2A7 /* mnstr13.wav */,
+				F4B5633A1AB3A5CF0094B2A7 /* mnstr14.wav */,
+				F4B5633B1AB3A5CF0094B2A7 /* mnstr15.wav */,
+				F4B5633C1AB3A5CF0094B2A7 /* mnstr2.wav */,
+				F4B5633D1AB3A5CF0094B2A7 /* mnstr3.wav */,
+				F4B5633E1AB3A5CF0094B2A7 /* mnstr4.wav */,
+				F4B5633F1AB3A5CF0094B2A7 /* mnstr5.wav */,
+				F4B563401AB3A5CF0094B2A7 /* mnstr6.wav */,
+				F4B563411AB3A5CF0094B2A7 /* mnstr7.wav */,
+				F4B563421AB3A5CF0094B2A7 /* mnstr8.wav */,
+				F4B563431AB3A5CF0094B2A7 /* mnstr9.wav */,
+			);
+			path = "gutteral beast";
+			sourceTree = "<group>";
+		};
+		F4B563441AB3A5CF0094B2A7 /* misc */ = {
+			isa = PBXGroup;
+			children = (
+				F4B563451AB3A5CF0094B2A7 /* wolfman.wav */,
+			);
+			path = misc;
+			sourceTree = "<group>";
+		};
+		F4B563461AB3A5CF0094B2A7 /* ogre */ = {
+			isa = PBXGroup;
+			children = (
+				F4B563471AB3A5CF0094B2A7 /* ogre1.wav */,
+				F4B563481AB3A5CF0094B2A7 /* ogre2.wav */,
+				F4B563491AB3A5CF0094B2A7 /* ogre3.wav */,
+				F4B5634A1AB3A5CF0094B2A7 /* ogre4.wav */,
+				F4B5634B1AB3A5CF0094B2A7 /* ogre5.wav */,
+			);
+			path = ogre;
+			sourceTree = "<group>";
+		};
+		F4B5634C1AB3A5CF0094B2A7 /* shade */ = {
+			isa = PBXGroup;
+			children = (
+				F4B5634D1AB3A5CF0094B2A7 /* shade1.wav */,
+				F4B5634E1AB3A5CF0094B2A7 /* shade10.wav */,
+				F4B5634F1AB3A5CF0094B2A7 /* shade11.wav */,
+				F4B563501AB3A5CF0094B2A7 /* shade12.wav */,
+				F4B563511AB3A5CF0094B2A7 /* shade13.wav */,
+				F4B563521AB3A5CF0094B2A7 /* shade14.wav */,
+				F4B563531AB3A5CF0094B2A7 /* shade15.wav */,
+				F4B563541AB3A5CF0094B2A7 /* shade2.wav */,
+				F4B563551AB3A5CF0094B2A7 /* shade3.wav */,
+				F4B563561AB3A5CF0094B2A7 /* shade4.wav */,
+				F4B563571AB3A5CF0094B2A7 /* shade5.wav */,
+				F4B563581AB3A5CF0094B2A7 /* shade6.wav */,
+				F4B563591AB3A5CF0094B2A7 /* shade7.wav */,
+				F4B5635A1AB3A5CF0094B2A7 /* shade8.wav */,
+				F4B5635B1AB3A5CF0094B2A7 /* shade9.wav */,
+			);
+			path = shade;
+			sourceTree = "<group>";
+		};
+		F4B5635C1AB3A5CF0094B2A7 /* slime */ = {
+			isa = PBXGroup;
+			children = (
+				F4B5635D1AB3A5CF0094B2A7 /* slime1.wav */,
+				F4B5635E1AB3A5CF0094B2A7 /* slime10.wav */,
+				F4B5635F1AB3A5CF0094B2A7 /* slime2.wav */,
+				F4B563601AB3A5CF0094B2A7 /* slime3.wav */,
+				F4B563611AB3A5CF0094B2A7 /* slime4.wav */,
+				F4B563621AB3A5CF0094B2A7 /* slime5.wav */,
+				F4B563631AB3A5CF0094B2A7 /* slime6.wav */,
+				F4B563641AB3A5CF0094B2A7 /* slime7.wav */,
+				F4B563651AB3A5CF0094B2A7 /* slime8.wav */,
+				F4B563661AB3A5CF0094B2A7 /* slime9.wav */,
+			);
+			path = slime;
+			sourceTree = "<group>";
+		};
+		F4B563671AB3A5CF0094B2A7 /* world */ = {
+			isa = PBXGroup;
+			children = (
+				F4B563681AB3A5CF0094B2A7 /* door.wav */,
+			);
+			path = world;
+			sourceTree = "<group>";
+		};
 		F4BC9DC81A900C9A00F3B617 /* Warrior */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +737,7 @@
 				6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */,
 				F4D33B631A71EF7300DCD868 /* Images.xcassets */,
 				F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */,
+				F4B562FB1AB3A5AC0094B2A7 /* Sounds */,
 				F4D33B561A71EF7300DCD868 /* Supporting Files */,
 			);
 			path = 460Demo;
@@ -449,15 +849,111 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B563C81AB3A5CF0094B2A7 /* door.wav in Resources */,
+				F4B563B31AB3A5CF0094B2A7 /* shade13.wav in Resources */,
+				F4B563A81AB3A5CF0094B2A7 /* mnstr9.wav in Resources */,
+				F4B5638A1AB3A5CF0094B2A7 /* wood-small.wav in Resources */,
+				F4B563771AB3A5CF0094B2A7 /* interface5.wav in Resources */,
+				F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */,
+				F4B563C01AB3A5CF0094B2A7 /* slime2.wav in Resources */,
+				F4B563991AB3A5CF0094B2A7 /* giant5.wav in Resources */,
+				F4B563941AB3A5CF0094B2A7 /* bite-small3.wav in Resources */,
+				F4B5637F1AB3A5CF0094B2A7 /* chainmail1.wav in Resources */,
+				F4B563B21AB3A5CF0094B2A7 /* shade12.wav in Resources */,
+				F4B563761AB3A5CF0094B2A7 /* interface4.wav in Resources */,
+				F4B563911AB3A5CF0094B2A7 /* random6.wav in Resources */,
+				F4B563731AB3A5CF0094B2A7 /* interface1.wav in Resources */,
+				F4B563B11AB3A5CF0094B2A7 /* shade11.wav in Resources */,
 				F4B562F21AB26E1A0094B2A7 /* Warrior.atlas in Resources */,
+				F4B5636D1AB3A5CF0094B2A7 /* swing3.wav in Resources */,
+				F4B5637C1AB3A5CF0094B2A7 /* bubble.wav in Resources */,
+				F4B563BD1AB3A5CF0094B2A7 /* shade9.wav in Resources */,
+				F4B563A91AB3A5CF0094B2A7 /* wolfman.wav in Resources */,
+				F4B563741AB3A5CF0094B2A7 /* interface2.wav in Resources */,
+				F4B563C41AB3A5CF0094B2A7 /* slime6.wav in Resources */,
+				F4B563861AB3A5CF0094B2A7 /* metal-ringing.wav in Resources */,
+				F4B563AB1AB3A5CF0094B2A7 /* ogre2.wav in Resources */,
+				F4B563821AB3A5CF0094B2A7 /* cloth.wav in Resources */,
+				F4B563C11AB3A5CF0094B2A7 /* slime3.wav in Resources */,
+				F4B563701AB3A5CF0094B2A7 /* sword-unsheathe3.wav in Resources */,
+				F4B5638F1AB3A5CF0094B2A7 /* random4.wav in Resources */,
+				F4B5637E1AB3A5CF0094B2A7 /* bubble3.wav in Resources */,
+				F4B5636B1AB3A5CF0094B2A7 /* swing.wav in Resources */,
+				F4B563A51AB3A5CF0094B2A7 /* mnstr6.wav in Resources */,
+				F4B5636F1AB3A5CF0094B2A7 /* sword-unsheathe2.wav in Resources */,
+				F4B5639E1AB3A5CF0094B2A7 /* mnstr13.wav in Resources */,
+				F4B563A11AB3A5CF0094B2A7 /* mnstr2.wav in Resources */,
+				F4B563B41AB3A5CF0094B2A7 /* shade14.wav in Resources */,
+				F4B5637A1AB3A5CF0094B2A7 /* beads.wav in Resources */,
+				F4B563B01AB3A5CF0094B2A7 /* shade10.wav in Resources */,
+				F4B563C61AB3A5CF0094B2A7 /* slime8.wav in Resources */,
+				F4B563801AB3A5CF0094B2A7 /* chainmail2.wav in Resources */,
+				F4B563B81AB3A5CF0094B2A7 /* shade4.wav in Resources */,
+				F4B563BB1AB3A5CF0094B2A7 /* shade7.wav in Resources */,
+				F4B5637D1AB3A5CF0094B2A7 /* bubble2.wav in Resources */,
+				F4B5638D1AB3A5CF0094B2A7 /* random2.wav in Resources */,
+				F4B563C21AB3A5CF0094B2A7 /* slime4.wav in Resources */,
 				68A18D531AA8719E001CCE1D /* ntp.hosts in Resources */,
+				F4B563A61AB3A5CF0094B2A7 /* mnstr7.wav in Resources */,
+				F4B563781AB3A5CF0094B2A7 /* interface6.wav in Resources */,
+				F4B563B51AB3A5CF0094B2A7 /* shade15.wav in Resources */,
+				F4B563751AB3A5CF0094B2A7 /* interface3.wav in Resources */,
+				F4B5638B1AB3A5CF0094B2A7 /* burp.wav in Resources */,
+				F4B563981AB3A5CF0094B2A7 /* giant4.wav in Resources */,
+				F4B563C51AB3A5CF0094B2A7 /* slime7.wav in Resources */,
+				F4B5636C1AB3A5CF0094B2A7 /* swing2.wav in Resources */,
+				F4B5636A1AB3A5CF0094B2A7 /* spell.wav in Resources */,
+				F4B563931AB3A5CF0094B2A7 /* bite-small2.wav in Resources */,
+				F4B5639F1AB3A5CF0094B2A7 /* mnstr14.wav in Resources */,
+				F4B5638C1AB3A5CF0094B2A7 /* random1.wav in Resources */,
 				68F35CAB1A84C4D5004905BF /* GameScene.sks in Resources */,
+				F4B563881AB3A5CF0094B2A7 /* metal-small2.wav in Resources */,
+				F4B563B91AB3A5CF0094B2A7 /* shade5.wav in Resources */,
+				F4B563BA1AB3A5CF0094B2A7 /* shade6.wav in Resources */,
+				F4B563951AB3A5CF0094B2A7 /* giant1.wav in Resources */,
+				F4B563AC1AB3A5CF0094B2A7 /* ogre3.wav in Resources */,
+				F4B5637B1AB3A5CF0094B2A7 /* bottle.wav in Resources */,
+				F4B5639C1AB3A5CF0094B2A7 /* mnstr11.wav in Resources */,
 				F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */,
+				F4B563C71AB3A5CF0094B2A7 /* slime9.wav in Resources */,
+				F4B5636E1AB3A5CF0094B2A7 /* sword-unsheathe.wav in Resources */,
+				F4B563721AB3A5CF0094B2A7 /* sword-unsheathe5.wav in Resources */,
 				F4B562F11AB26E1A0094B2A7 /* Mage.atlas in Resources */,
+				F4B563C31AB3A5CF0094B2A7 /* slime5.wav in Resources */,
+				F4B563791AB3A5CF0094B2A7 /* armor-light.wav in Resources */,
+				F4B5639D1AB3A5CF0094B2A7 /* mnstr12.wav in Resources */,
+				F4B563B61AB3A5CF0094B2A7 /* shade2.wav in Resources */,
+				F4B563811AB3A5CF0094B2A7 /* cloth-heavy.wav in Resources */,
+				F4B563BF1AB3A5CF0094B2A7 /* slime10.wav in Resources */,
+				F4B563851AB3A5CF0094B2A7 /* coin3.wav in Resources */,
 				F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */,
+				F4B563921AB3A5CF0094B2A7 /* bite-small.wav in Resources */,
+				F4B563AA1AB3A5CF0094B2A7 /* ogre1.wav in Resources */,
+				F4B563AD1AB3A5CF0094B2A7 /* ogre4.wav in Resources */,
+				F4B563A31AB3A5CF0094B2A7 /* mnstr4.wav in Resources */,
+				F4B563BC1AB3A5CF0094B2A7 /* shade8.wav in Resources */,
+				F4B563AF1AB3A5CF0094B2A7 /* shade1.wav in Resources */,
+				F4B5638E1AB3A5CF0094B2A7 /* random3.wav in Resources */,
+				F4B563971AB3A5CF0094B2A7 /* giant3.wav in Resources */,
+				F4B563691AB3A5CF0094B2A7 /* magic1.wav in Resources */,
+				F4B563841AB3A5CF0094B2A7 /* coin2.wav in Resources */,
 				F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */,
+				F4B563961AB3A5CF0094B2A7 /* giant2.wav in Resources */,
+				F4B563891AB3A5CF0094B2A7 /* metal-small3.wav in Resources */,
+				F4B5639B1AB3A5CF0094B2A7 /* mnstr10.wav in Resources */,
+				F4B563A01AB3A5CF0094B2A7 /* mnstr15.wav in Resources */,
 				68A18D501AA8719E001CCE1D /* Notes in Resources */,
+				F4B563B71AB3A5CF0094B2A7 /* shade3.wav in Resources */,
+				F4B563901AB3A5CF0094B2A7 /* random5.wav in Resources */,
+				F4B563831AB3A5CF0094B2A7 /* coin.wav in Resources */,
+				F4B563AE1AB3A5CF0094B2A7 /* ogre5.wav in Resources */,
+				F4B563A21AB3A5CF0094B2A7 /* mnstr3.wav in Resources */,
 				F4D33B621A71EF7300DCD868 /* Main.storyboard in Resources */,
+				F4B563BE1AB3A5CF0094B2A7 /* slime1.wav in Resources */,
+				F4B563871AB3A5CF0094B2A7 /* metal-small1.wav in Resources */,
+				F4B5639A1AB3A5CF0094B2A7 /* mnstr1.wav in Resources */,
+				F4B563711AB3A5CF0094B2A7 /* sword-unsheathe4.wav in Resources */,
+				F4B563A41AB3A5CF0094B2A7 /* mnstr5.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

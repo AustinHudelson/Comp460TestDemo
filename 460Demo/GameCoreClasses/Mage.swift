@@ -36,6 +36,7 @@ class Mage: Unit, PType
         self.healthregen = 1
         self.speed = 50.0
         self.attackRange = 1000.0
+        self.attackSpeed = 2.0
         self.isEnemy = false
         self.xSize = 300.0
         self.ySize = 300.0
@@ -59,7 +60,7 @@ class Mage: Unit, PType
         let abilityAnimName = "-ability"
         let deathAnimName = "-death"
         let stumbleAnimName = "-stumble"
-        let standAnimName = "-walk"
+        let standAnimName = "-attack"
         
         var walkTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+walkAnimName+"0"),

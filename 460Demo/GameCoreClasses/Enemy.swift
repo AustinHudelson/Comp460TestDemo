@@ -35,6 +35,7 @@ class Enemy: Unit, PType
         self.health = 15
         self.maxhealth = 15
         self.healthregen = 0
+        self.attackSpeed = 1.88
         self.speed = 30.0
         self.attackRange = 20.0
         self.isEnemy = true
@@ -60,7 +61,7 @@ class Enemy: Unit, PType
         let abilityAnimName = "-ability"
         let deathAnimName = "-death"
         let stumbleAnimName = "-stumble"
-        let standAnimName = "-walk"
+        let standAnimName = "-attack"
         
         var walkTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+walkAnimName+"0"),

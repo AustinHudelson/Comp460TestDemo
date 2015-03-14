@@ -127,7 +127,7 @@ class Unit: SerializableJSON, PType
         
         
         
-        if health < 0 {
+        if health <= 0 {
             health = 0
             death()
         } else {
@@ -233,19 +233,24 @@ class Unit: SerializableJSON, PType
                     self.attackCycle(target, complete: complete)
                 })
             } else {
+                //Correct Facing
                 if self.sprite.position.x < target.sprite.position.x {
                     self.faceRight()
                 } else {
                     self.faceLeft()
                 }
-                
+                //Clear movement. (should not be executing a move action, just a walk animation action)
+                clearMove()
+                //Setup action. Delay by attack speed then call attack again.
                 let delay = SKAction.waitForDuration(attackSpeed)
                 let completeBlock = SKAction.runBlock({
                     self.attackCycle(target, complete: complete)
                 })
                 let attackSequence = SKAction.sequence([delay, completeBlock])
+                //Run the attack sequence and the attack animation
                 self.sprite.runAction(attackSequence, withKey: "attack")
                 self.sprite.runAction(self.DS_attackAnim!, withKey: "attackAnim")
+                //Apply the damage to the enemy. NOTE: Might be more realistic to do this half way though the attack animation.
                 target.takeDamage(3)
             }
         } else {
@@ -304,8 +309,8 @@ class Unit: SerializableJSON, PType
     }
     
     /*
-    * Actually removes the unit from memory. Should not be called until a negitive update unit is called
-    */
+     * Actually removes the unit from memory. Should not be called until a negitive update unit is called
+     */
     func kill(){
         
     }
