@@ -51,8 +51,13 @@ class Enrage: Order, PType, Transient
     func removeBuff()
     {
         self.DS_receiver!.speed /= self.speedInc
+        //SPECIAL CASE. BECAUSE MULTIPLE TINTS IS NOT YET IMPLEMENTED BE SURE TO RESTORE TO GREY COLOR AFTER ENRAGE ENDS IF THE AFFECTED PLAYER IS NOT THE LOCALLY CONTROLLED PLAYER. Because players that are not you are tinted grey atm so you can tell the differance. REMOVE THIS ONCE WE CHANGE HOW THIS WORKS.
+        if Game.global.getMyPlayer() == self.DS_receiver!{
+            self.DS_receiver!.applyTint(SKColor.whiteColor(), factor: 1.00, blendDuration: NSTimeInterval(1.0))
+        } else {
+            self.DS_receiver!.applyTint(SKColor.blackColor(), factor: 0.20, blendDuration: NSTimeInterval(1.0))
+        }
         
-        self.DS_receiver!.applyTint(SKColor.whiteColor(), factor: 1.00, blendDuration: NSTimeInterval(1.0))
     }
     
     override func remove() {
