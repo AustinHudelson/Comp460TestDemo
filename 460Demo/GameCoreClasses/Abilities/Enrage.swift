@@ -44,12 +44,14 @@ class Enrage: Order, PType, Transient
     func applyBuff()
     {
         self.DS_receiver!.speed *= self.speedInc
-        self.DS_receiver!.applyTint(SKColor.redColor(), factor: 0.75, blendDuration: NSTimeInterval(0.25))
+        
+        self.DS_receiver!.applyTint(SKColor.redColor(), factor: 0.5, blendDuration: NSTimeInterval(0.25))
     }
     
     func removeBuff()
     {
         self.DS_receiver!.speed /= self.speedInc
+        
         self.DS_receiver!.applyTint(SKColor.whiteColor(), factor: 1.00, blendDuration: NSTimeInterval(1.0))
     }
     

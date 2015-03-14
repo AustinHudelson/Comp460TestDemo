@@ -36,10 +36,10 @@ class Ability: SKSpriteNode
     
     /*
      * Default action handeler for this button being pressed.
-     * should be overwritten by subclasses
+     * should be overwritten by subclasses. Triggers ability cooldown.
      */
     func apply(user: Unit){
-        user.sendOrder(Idle(receiverIn: user))
+        
     }
     
     /*

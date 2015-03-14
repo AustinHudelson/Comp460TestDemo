@@ -20,6 +20,7 @@ class ButtonEnrage: Ability
     }
     
     override func apply(receiverIn: Unit) {
+        super.apply(receiverIn)
         var sendData: Dictionary<String, Array<AnyObject>> = [:]
         var enrage: Enrage = Enrage(receiverIn: receiverIn, speedInc: 7.0, duration: 2.0)
         sendData["Orders"] = []
