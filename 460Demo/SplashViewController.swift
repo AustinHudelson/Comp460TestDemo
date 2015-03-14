@@ -8,15 +8,22 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class SplashViewController: UIViewController {
 
     @IBOutlet weak var playerNameTxtField: UITextField!
+    @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+        /*
+            If playerName is empty string or character not selected, disable the Start button
+        */
+        
+        if countElements(playerNameTxtField.text) < 1 {
+            startButton.enabled = false
+        }
+}
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "playerNameSegue") {
