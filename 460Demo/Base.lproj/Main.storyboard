@@ -54,6 +54,9 @@
                                 <state key="disabled" title="S t a r t" backgroundImage="GreyBackgroundBarDisabled">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="by4-gA-Hf9" kind="presentation" identifier="playerNameSegue" id="LAN-Bu-tSn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQD-pF-9Vz" userLabel="Mage">
                                 <rect key="frame" x="405" y="398" width="150" height="150"/>

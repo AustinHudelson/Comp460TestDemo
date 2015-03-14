@@ -20,9 +20,9 @@ class SplashViewController: UIViewController {
             If playerName is empty string or character not selected, disable the Start button
         */
         
-        if countElements(playerNameTxtField.text) < 1 {
-            startButton.enabled = false
-        }
+//        if countElements(playerNameTxtField.text) < 1 {
+//            startButton.enabled = false
+//        }
 }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
