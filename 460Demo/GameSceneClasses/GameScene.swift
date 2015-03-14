@@ -36,7 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         {
                             Game.global.addPlayer(newUnit)
                             //If the player is NOT YOU give it a slightly grey tint.
-                            if Game.global.getMyPlayer() != newUnit {
+                            if newUnit.ID != AppWarpHelper.sharedInstance.playerName {
                                 newUnit.applyTint(UIColor.blackColor(), factor: 0.20, blendDuration: 0.0)
                             }
                         }
