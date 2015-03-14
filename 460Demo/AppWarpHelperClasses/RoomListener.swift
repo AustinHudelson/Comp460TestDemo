@@ -22,10 +22,11 @@ class RoomListener: NSObject,RoomRequestListener
             println("Joined a room:\t roomId=\(roomData.roomId!)\n \t roomOwner=\(roomData.owner!)\n \t roomName=\(roomData.name)\n \t roomMaxUsers=\(roomData.maxUsers)")
 
         }
-        else // Failed to join
+        else
         {
+            // Failed to join...This should never happen other than AppWarp errors, so disconnect when it happens
             println("onJoinRoomDone Failed")
-            WarpClient.getInstance().createRoomWithRoomName("", roomOwner: "", properties: nil, maxUsers: 10)
+            AppWarpHelper.sharedInstance.disconnectFromAppWarp()
         }
     }
     
@@ -42,23 +43,33 @@ class RoomListener: NSObject,RoomRequestListener
             */
             WarpClient.getInstance().getLiveRoomInfo(AppWarpHelper.sharedInstance.roomId)
         }
-        else // Failed to join
+        else // Failed to subscribe
         {
             println("onSubscribeRoomDone Failed")
+            AppWarpHelper.sharedInstance.disconnectFromAppWarp()
         }
     }
     
     func onGetLiveRoomInfoDone(event: LiveRoomInfoEvent)
     {
+        /* update the user list */
         AppWarpHelper.sharedInstance.userName_list = event.joinedUsers
         
         AppWarpHelper.sharedInstance.updateUserList()
+        
+        /* Update this room's "joinable" property based on whether room is full or not full */
+        AppWarpHelper.sharedInstance.updateRoomJoinable(event)
+        
     }
     func onUnSubscribeRoomDone(event: RoomEvent)
     {
         WarpClient.getInstance().leaveRoom(AppWarpHelper.sharedInstance.roomId)
     }
     func onLeaveRoomDone(roomEvent: RoomEvent!) {
-        WarpClient.getInstance().disconnect()
+        AppWarpHelper.sharedInstance.disconnectFromAppWarp()
+    }
+    
+    func onUpdatePropertyDone(event: LiveRoomInfoEvent!) {
+        println("onUpdatePropertyDone")
     }
 }
