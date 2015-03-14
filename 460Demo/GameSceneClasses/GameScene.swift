@@ -233,13 +233,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             else
             {
-                // Heal button at slot 0
                 if self.childNodeWithName("Ability0")!.containsPoint(touchLocation) {
-                    (self.childNodeWithName("Ability0") as ButtonHeal).apply(Game.global.playerMap[AppWarpHelper.sharedInstance.playerName]!)
-                }
-                // Enrage button at slot 1
-                if self.childNodeWithName("Ability1")!.containsPoint(touchLocation) {
-                    (self.childNodeWithName("Ability1") as ButtonEnrage).apply(Game.global.playerMap[AppWarpHelper.sharedInstance.playerName]!)
+                    //Button at slot 0
+                    let button = self.childNodeWithName("Ability0") as Ability
+                    if button.cooldownReady == true {
+                        button.apply(Game.global.getMyPlayer())
+                    }
+                } else if self.childNodeWithName("Ability1")!.containsPoint(touchLocation) {
+                    //Button at slot 1
+                    let button = self.childNodeWithName("Ability1") as Ability
+                    if button.cooldownReady == true {
+                        button.apply(Game.global.getMyPlayer())
+                    }
                 }
             }
           }
