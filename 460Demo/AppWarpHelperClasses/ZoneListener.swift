@@ -37,13 +37,14 @@ class ZoneListener: NSObject,ZoneRequestListener
                 WarpClient.getInstance().joinRoom(joinRoomId)
             }
             else {
-                println("onGetMatchedRoomsDone: Failed to join a room! Creating a new one dynamically instead")
+                println("onGetMatchedRoomsDone: Failed to find a room with the \"joinable\" property! Creating a new one dynamically instead")
                 var roomProperties: Dictionary<String, AnyObject> = [:]
                 roomProperties["joinable"] = true
                 
-                // Create a room name with roomName = playerName & maxUsers = 4
+                // Create a room name with roomName = playerName & maxUsers = roomMaxUsers
                 let playerName = AppWarpHelper.sharedInstance.playerName
-                AppWarpHelper.sharedInstance.createRoom(playerName, maxUsers: 4)
+                let maxUsers = AppWarpHelper.sharedInstance.roomMaxUsers
+                AppWarpHelper.sharedInstance.createRoom(playerName, maxUsers: maxUsers)
             }
         }
         else
@@ -51,5 +52,9 @@ class ZoneListener: NSObject,ZoneRequestListener
             println("onGetMatchedRoomsDone: Failed")
             AppWarpHelper.sharedInstance.disconnectFromAppWarp()
         }
+    }
+    
+    func onDeleteRoomDone(roomEvent: RoomEvent!) {
+        println("onDeleteRoomDone")
     }
 }

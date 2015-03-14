@@ -24,9 +24,14 @@ class RoomListener: NSObject,RoomRequestListener
         }
         else
         {
-            // Failed to join...This should never happen other than AppWarp errors, so disconnect when it happens
-            println("onJoinRoomDone Failed")
-            AppWarpHelper.sharedInstance.disconnectFromAppWarp()
+            /*
+                Failed to join the room. This probably happens when room a room is joinable because host hasnt started the game
+                yet but the room is full. Therefore we should create a new room
+            */
+            println("onJoinRoomDone: Failed to find a room that isn't full! Creating one instead")
+            let playerName = AppWarpHelper.sharedInstance.playerName
+            let maxUsers = AppWarpHelper.sharedInstance.roomMaxUsers
+            AppWarpHelper.sharedInstance.createRoom(playerName, maxUsers: maxUsers)
         }
     }
     
@@ -56,9 +61,6 @@ class RoomListener: NSObject,RoomRequestListener
         AppWarpHelper.sharedInstance.userName_list = event.joinedUsers
         
         AppWarpHelper.sharedInstance.updateUserList()
-        
-        /* Update this room's "joinable" property based on whether room is full or not full */
-        AppWarpHelper.sharedInstance.updateRoomJoinable(event)
         
     }
     func onUnSubscribeRoomDone(event: RoomEvent)

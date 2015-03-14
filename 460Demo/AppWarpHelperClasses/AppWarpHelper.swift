@@ -19,18 +19,23 @@ import UIKit
         - ConnectionListener.onConnectDone() -> ZoneListner.onGetMatchedRoomsDone()
 
             1. ZoneListner.onGetMatchedRoomsDone() -> RoomListner.onJoinRoomDone()
-                RoomListner.onJoinRoomDone() -> RoomListner.onSubscribeRoomDone()
+                a. RoomListner.onJoinRoomDone() -> RoomListner.onSubscribeRoomDone()
+                b. RoomListner.onJoinRoomDone() -> ZoneListener.onCreateRoomDone()
+
             2. ZoneListner.onGetMatchedRoomsDone() -> ZoneListener.onCreateRoomDone()
+
+        - NotificationListener.onUserJoinedRoom() -> RoomListner.onGetLiveRoomInfoDone()
 */
 class AppWarpHelper: NSObject
 {
-    /* Austin's AppWarp key */
-    var api_key = "8f4823c2a1bca11bb4ad1349d127b62a312481af36cc74cda1994f9ca6564857"
-    var secret_key = "c36ad65cbc48eb1df497ee91ccac5a19693ba83d6ac4b72d2aa537f563a94069"
+//    /* Austin's AppWarp key */
+//    var api_key = "8f4823c2a1bca11bb4ad1349d127b62a312481af36cc74cda1994f9ca6564857"
+//    var secret_key = "c36ad65cbc48eb1df497ee91ccac5a19693ba83d6ac4b72d2aa537f563a94069"
     var roomId: String?
-//   /* Robert's AppWarp key */
-//    var api_key = "7eab7838469013d4378f912ce41c1dcb2801686185fc7ae48694976b9d67380f"
-//    var secret_key = "e493311e8192cb2d424d16c7588e834abbbf35a7fbd0d2459d53ccc7a990ebf1"
+    var roomMaxUsers: Int32 = 4
+   /* Robert's AppWarp key */
+    var api_key = "7eab7838469013d4378f912ce41c1dcb2801686185fc7ae48694976b9d67380f"
+    var secret_key = "e493311e8192cb2d424d16c7588e834abbbf35a7fbd0d2459d53ccc7a990ebf1"
     
     var enemyName: String = ""
     //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
@@ -88,7 +93,8 @@ class AppWarpHelper: NSObject
     }
     
     /*
-        Create a room on AppWarp with the given roomName. This should be called after you've connected to AppWarp and see that there are no avaiable rooms to join
+        Create a room on AppWarp with the given roomName. This should be called after you've connected to AppWarp and see that there are no avaiable rooms to join.
+        The gameStarted parameter is defaulted to false
     */
     func createRoom(roomName: String, maxUsers: Int32)
     {
@@ -99,20 +105,20 @@ class AppWarpHelper: NSObject
     }
     
     /*
-        Update the room's "joinable" property based on whether room is full or empty & whether host has already started the game
+        Update the room's "joinable" property based on whether room host has already started the game
     */
-    func updateRoomJoinable(event: LiveRoomInfoEvent)
+    func updateRoomJoinable(gameStarted: Bool)
     {
         var roomProperties: Dictionary<String, AnyObject> = [:]
-        let maxUsers: Int = Int(event.roomData.maxUsers) // convert Int32 to Int
-        if userName_list.count >= maxUsers {
+        
+        /* We want to remove the "joinable" property so it can no longer be found as a joinable room */
+        if gameStarted {
             roomProperties["joinable"] = false
-           
         } else {
             roomProperties["joinable"] = true
         }
         
-        WarpClient.getInstance().updateRoom(event.roomData.roomId, addProperties: roomProperties, removeProperties: nil)
+        WarpClient.getInstance().updateRoom(roomId, addProperties: roomProperties, removeProperties: nil)
     }
     
     /*
@@ -254,6 +260,12 @@ class AppWarpHelper: NSObject
     */
     func startGame() {
         println("AppWarpHelper startGame()")
+        
+        /* if you're the host, set roomProperty to unjoinable */
+        if playerName == host {
+            updateRoomJoinable(true)
+        }
+        
         lobby!.performSegueWithIdentifier("gameSegue", sender: nil)
     }
     
