@@ -35,6 +35,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         if !newUnit.isEnemy
                         {
                             Game.global.addPlayer(newUnit)
+                            //If the player is NOT YOU give it a slightly grey tint.
+                            if Game.global.getMyPlayer() != newUnit {
+                                newUnit.applyTint(UIColor.blackColor(), factor: 0.20, blendDuration: 0.0)
+                            }
                         }
                         else
                         {

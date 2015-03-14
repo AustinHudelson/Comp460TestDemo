@@ -131,7 +131,7 @@ class Unit: SerializableJSON, PType
             health = 0
             death()
         } else {
-            if damage > 0 {
+            if self.sprite.actionForKey("attackAnim") == nil && damage > 0{
                 self.sprite.runAction(DS_stumbleAnim)
             }
         }
@@ -189,7 +189,9 @@ class Unit: SerializableJSON, PType
         let moveHealthTxtAction = SKAction.moveTo(health_txt_des, duration: NSTimeInterval(duration))
         DS_health_txt.runAction(moveHealthTxtAction, withKey: "move")
         sprite.runAction(walkSequence, withKey: "move")
-        sprite.runAction(self.DS_walkAnim!, withKey: "moveAnim")
+        if self.sprite.actionForKey("moveAnim") == nil {
+            sprite.runAction(self.DS_walkAnim!, withKey: "moveAnim")
+        }
     }
     
     func clearMove(){
