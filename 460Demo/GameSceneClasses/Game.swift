@@ -71,6 +71,12 @@ class Game {
             if ID == AppWarpHelper.sharedInstance.playerName
             {
                 myPlayerIsDead = true
+                localPlayerloseGame()
+            }
+            
+            // Check if this player removal results in empty playerMap, if it is, the team loses
+            if playerMap.count <= 0 {
+                loseGame()
             }
         }
             
@@ -131,13 +137,31 @@ class Game {
         winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         self.scene!.addChild(winText)
     }
+    func localPlayerloseGame()
+    {
+        println("Your have died...")
+        let localLoseText: SKLabelNode = SKLabelNode(text: "Your have died...")
+        localLoseText.name = "localLoseText"
+        localLoseText.fontSize = 50
+        localLoseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
+        self.scene!.addChild(localLoseText)
+    }
     func loseGame()
     {
-        println("We lost")
-        let winText: SKLabelNode = SKLabelNode(text: "You Lose")
-        winText.fontSize = 50
-        winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
-        self.scene!.addChild(winText)
+        println("Your team has lost...")
+        let loseText: SKLabelNode = SKLabelNode(text: "Your team has lost...")
+        loseText.name = "loseText"
+        loseText.fontSize = 50
+        loseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
+        
+        /*
+            Check if the localLoseText is there, if it is, remove it
+        */
+        if let localLoseText = self.scene!.childNodeWithName("localLoseText") {
+            localLoseText.removeFromParent()
+        }
+        
+        self.scene!.addChild(loseText)
     }
     
     /* Gets a unit given a String
