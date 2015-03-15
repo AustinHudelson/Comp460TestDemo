@@ -25,6 +25,7 @@ class Enemy: Unit, PType
         /* Sprite setup */
         let spawnLoc = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
         sprite.position = spawnLoc
+        self.sprite.zPosition = 1
     }
     
     override init(ID:String, spawnLocation: CGPoint)
@@ -46,6 +47,7 @@ class Enemy: Unit, PType
         //Initializes all the DS_ animations
         initializeAnimations()
         self.sprite.position = spawnLocation
+        self.sprite.zPosition = 1
     }
     
     /*
@@ -154,13 +156,12 @@ class Enemy: Unit, PType
         
         Atlas = SKTextureAtlas(named: animPrefix+stumbleAnimName)
         var stumbleTextures = SKAction.animateWithTextures([
-            Atlas.textureNamed(AnimationName+stumbleAnimName+"0"),
-            Atlas.textureNamed(AnimationName+stumbleAnimName+"1"),
-            Atlas.textureNamed(AnimationName+stumbleAnimName+"2"),
-            Atlas.textureNamed(AnimationName+stumbleAnimName+"3"),
-            Atlas.textureNamed(AnimationName+stumbleAnimName+"4")
+            SKTexture(imageNamed: AnimationName+stumbleAnimName+"0"),
+            SKTexture(imageNamed: AnimationName+stumbleAnimName+"1"),
+            SKTexture(imageNamed: AnimationName+stumbleAnimName+"2"),
+            SKTexture(imageNamed: AnimationName+stumbleAnimName+"3"),
+            SKTexture(imageNamed: AnimationName+stumbleAnimName+"4")
             ], timePerFrame: 0.05)
-        
         Atlas = SKTextureAtlas(named: animPrefix+standAnimName)
         var standTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+standAnimName+"0")

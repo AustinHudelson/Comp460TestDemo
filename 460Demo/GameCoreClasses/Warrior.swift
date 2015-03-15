@@ -71,7 +71,7 @@ class Warrior: Unit, PType
         
         Atlas = SKTextureAtlas(named: animPrefix+walkAnimName)
         var walkTextures = SKAction.animateWithTextures([
-            SKTexture(imageNamed: AnimationName+walkAnimName+"1"),
+            SKTexture(imageNamed: AnimationName+walkAnimName+"0"),
             SKTexture(imageNamed: AnimationName+walkAnimName+"1"),
             SKTexture(imageNamed: AnimationName+walkAnimName+"2"),
             SKTexture(imageNamed: AnimationName+walkAnimName+"3"),

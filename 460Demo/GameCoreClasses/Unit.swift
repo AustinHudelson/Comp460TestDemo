@@ -138,6 +138,7 @@ class Unit: SerializableJSON, PType
             death()
         } else {
             if self.sprite.actionForKey("attackAnim") == nil && damage > 0{
+                println("taking damage")
                 self.sprite.runAction(DS_stumbleAnim)
             }
         }

@@ -25,6 +25,7 @@ class EnemyMage: Unit, PType
         /* Sprite setup */
         let spawnLoc = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
         sprite.position = spawnLoc
+        self.sprite.zPosition = 1
     }
     
     override init(ID:String, spawnLocation: CGPoint)
@@ -46,6 +47,7 @@ class EnemyMage: Unit, PType
         //Initializes all the DS_ animations
         initializeAnimations()
         self.sprite.position = spawnLocation
+        self.sprite.zPosition = 1
     }
     
     /*
