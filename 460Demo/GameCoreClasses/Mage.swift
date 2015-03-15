@@ -45,6 +45,9 @@ class Mage: Unit, PType
         //Initializes all the DS_ animations
         initializeAnimations()
         self.sprite.position = spawnLocation
+        
+        /* Initialize Warrior buttons. They will automatically be added to the scene */
+        let Button0: Ability = ButtonAreaHeal(slot: 0)
     }
     
     /*
