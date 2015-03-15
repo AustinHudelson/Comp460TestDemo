@@ -32,8 +32,8 @@ class EnemyMage: Unit, PType
         super.init(ID:ID, spawnLocation: spawnLocation)
         //INITILIZE THE UNITS STATS HERE!!!
         self.type = "EnemyMage"
-        self.health = 10
-        self.maxhealth = 10
+        self.health = 30
+        self.maxhealth = 30
         self.healthregen = 0
         self.attackSpeed = 1.88
         self.attackDamage = 4
