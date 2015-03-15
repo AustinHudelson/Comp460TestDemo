@@ -86,12 +86,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var playerChar: Unit
         let playerCharPos: CGPoint = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         
-        if playerName == "Mage" {
+        if AppWarpHelper.sharedInstance.playerClass == "Mage" {
             /*
                 TEMPORARY to test a mage class: If playerName == "Mage", give him a mage & set ID = playerName
             */
             playerChar = Mage(ID: playerName, spawnLocation: playerCharPos)
         }
+            //change for class 3
+        else if AppWarpHelper.sharedInstance.playerClass == "saldfjals;jkf" {
+            playerChar = Warrior(ID: playerName, spawnLocation: playerCharPos)}
+            
+            //change for class 4
+        else if AppWarpHelper.sharedInstance.playerClass == "sadfkasdjf;" {
+            playerChar = Warrior(ID: playerName, spawnLocation: playerCharPos)}
         else {
             /*
                 Else create a warrior unit with ID = playerName

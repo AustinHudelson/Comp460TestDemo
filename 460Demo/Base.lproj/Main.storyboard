@@ -55,11 +55,23 @@
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="by4-gA-Hf9" kind="presentation" identifier="playerNameSegue" id="LAN-Bu-tSn"/>
+                                    <action selector="startButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="wzC-le-b0v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
+                                <rect key="frame" x="74" y="398" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="khG-UC-iQ0"/>
+                                    <constraint firstAttribute="height" constant="150" id="qK0-5L-g4c"/>
+                                </constraints>
+                                <state key="normal" image="Warrior Icon"/>
+                                <state key="selected" image="Warrior Icon_selected"/>
+                                <connections>
+                                    <action selector="warriorSelectionButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="OeL-gq-d0r"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQD-pF-9Vz" userLabel="Mage">
-                                <rect key="frame" x="405" y="398" width="150" height="150"/>
+                                <rect key="frame" x="407" y="398" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="G6y-va-Mnc"/>
                                     <constraint firstAttribute="width" constant="150" id="Gey-A3-Zas"/>
@@ -67,16 +79,9 @@
                                 <state key="normal" image="Mage Icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
-                                <rect key="frame" x="74" y="398" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="khG-UC-iQ0"/>
-                                    <constraint firstAttribute="height" constant="150" id="qK0-5L-g4c"/>
-                                </constraints>
-                                <state key="normal" image="Warrior Icon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <connections>
+                                    <action selector="mageSelectionButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="hqQ-ul-zaX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,8 +123,11 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="mageSelectionButton" destination="sQD-pF-9Vz" id="1U1-tR-P5K"/>
                         <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="crp-bz-6Tv"/>
                         <outlet property="startButton" destination="sWx-W1-Kxd" id="IQt-ur-sKN"/>
+                        <outlet property="warriorSelectionButton" destination="W4s-Kd-Kh5" id="m49-Kc-bsp"/>
+                        <segue destination="by4-gA-Hf9" kind="presentation" identifier="playerNameSegue" id="zCE-ET-SiP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -199,6 +207,7 @@
         <image name="Mage Icon" width="128" height="128"/>
         <image name="SplashArt1" width="523" height="124"/>
         <image name="Warrior Icon" width="128" height="128"/>
+        <image name="Warrior Icon_selected" width="128" height="128"/>
         <image name="gate" width="1034" height="1000"/>
     </resources>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>

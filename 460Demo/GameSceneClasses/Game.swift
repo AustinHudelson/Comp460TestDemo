@@ -80,6 +80,12 @@ class Game {
             if ID == AppWarpHelper.sharedInstance.playerName
             {
                 myPlayerIsDead = true
+                localPlayerloseGame()
+            }
+            
+            // Check if this player removal results in empty playerMap, if it is, the team loses
+            if playerMap.count <= 0 {
+                loseGame()
             }
         }
             
@@ -140,6 +146,15 @@ class Game {
         winText.fontName = "AvenirNext-Bold"
         winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         self.scene!.addChild(winText)
+    }
+    func localPlayerloseGame()
+    {
+        println("Your have died...")
+        let localLoseText: SKLabelNode = SKLabelNode(text: "Your have died...")
+        localLoseText.name = "localLoseText"
+        localLoseText.fontSize = 50
+        localLoseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
+        self.scene!.addChild(localLoseText)
     }
     func loseGame()
     {

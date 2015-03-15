@@ -42,7 +42,7 @@ class AppWarpHelper: NSObject
     var playerName: String = ""
     var userName_list: NSMutableArray = [] // used to store the list of users currently in room
     var lobby: LobbyViewController? = nil
-    
+    var playerClass: String = ""
     var gameScene: GameScene? = nil
     var host: String? = nil
     
