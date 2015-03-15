@@ -77,11 +77,8 @@ class LobbyViewController: UIViewController {
         println(playerNames.count)
         setIcons()
         
-        if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host
-        {
-            startGameButton.enabled = false
-        }
         
+        println("button state \(startGameButton.enabled)")
         
     }
     
@@ -111,6 +108,16 @@ class LobbyViewController: UIViewController {
         println(AppWarpHelper.sharedInstance.userName_list)
         
         AppWarpHelper.sharedInstance.host = (AppWarpHelper.sharedInstance.userName_list[0] as String) // designate host
+        if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host
+        {
+            println(AppWarpHelper.sharedInstance.playerName)
+            println(AppWarpHelper.sharedInstance.host)
+            startGameButton.enabled = false
+        }
+        else
+        {
+            startGameButton.enabled = true
+        }
         
         setIcons()
     }
