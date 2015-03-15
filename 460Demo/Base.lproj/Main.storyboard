@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -127,12 +127,39 @@
                         <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="crp-bz-6Tv"/>
                         <outlet property="startButton" destination="sWx-W1-Kxd" id="IQt-ur-sKN"/>
                         <outlet property="warriorSelectionButton" destination="W4s-Kd-Kh5" id="m49-Kc-bsp"/>
-                        <segue destination="by4-gA-Hf9" kind="presentation" identifier="playerNameSegue" id="zCE-ET-SiP"/>
+                        <segue destination="Wvv-Pi-nam" kind="presentation" identifier="playerNameSegue" id="NM1-iR-IVA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-427" y="165"/>
+        </scene>
+        <!--Lobby Table View Controller-->
+        <scene sceneID="aiF-dp-Yad">
+            <objects>
+                <tableViewController id="Wvv-Pi-nam" customClass="LobbyTableViewController" customModule="_60Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="I2O-cx-d6h">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sEk-Pr-J9q">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sEk-Pr-J9q" id="4N1-oX-Qlw">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Wvv-Pi-nam" id="FLv-sg-aE9"/>
+                            <outlet property="delegate" destination="Wvv-Pi-nam" id="giL-hQ-mJm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="LU6-Bc-1NS"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cXV-GV-jGI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119" y="-489"/>
         </scene>
         <!--Lobby View Controller-->
         <scene sceneID="n9G-As-8Mi">
@@ -146,6 +173,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="671" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="W4B-si-CTa" userLabel="Background">
+                                <rect key="frame" x="0.0" y="-26" width="600" height="671"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="671" id="YUS-zB-HwP"/>
+                                    <constraint firstAttribute="width" constant="600" id="rUk-qM-UCi"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YUS-zB-HwP"/>
+                                        <exclude reference="rUk-qM-UCi"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAz-7P-qzZ">
                                 <rect key="frame" x="277" y="332" width="46" height="30"/>
                                 <state key="normal" title="Back">
@@ -177,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVX-m0-sSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="321" y="165"/>
+            <point key="canvasLocation" x="371" y="175"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="n3C-XH-PIy">
@@ -198,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qz-R0-fPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="129"/>
+            <point key="canvasLocation" x="2321" y="129"/>
         </scene>
     </scenes>
     <resources>

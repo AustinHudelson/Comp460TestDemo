@@ -41,7 +41,7 @@ class AppWarpHelper: NSObject
     //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
     var playerName: String = ""
     var userName_list: NSMutableArray = [] // used to store the list of users currently in room
-    var lobby: LobbyViewController? = nil
+    var lobby: LobbyTableViewController? = nil
     var playerClass: String = ""
     var gameScene: GameScene? = nil
     var host: String? = nil

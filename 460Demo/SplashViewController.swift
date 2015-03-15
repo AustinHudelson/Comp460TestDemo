@@ -81,7 +81,7 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "playerNameSegue") {
-            var svc = segue.destinationViewController as LobbyViewController
+            var svc = segue.destinationViewController as LobbyTableViewController
             svc.myPlayerName = playerNameTxtField.text
             svc.myClass = selectedClass
             

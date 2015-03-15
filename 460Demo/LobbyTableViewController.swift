@@ -9,9 +9,12 @@
 import UIKit
 import SpriteKit
 
-class LobbyViewController: UIViewController {
+class LobbyTableViewController: UITableViewController {
     var myPlayerName: String? = nil
     var myClass: String = ""
+    
+    @IBOutlet weak var cell1: UITableViewCell!
+    
     @IBOutlet weak var startGameButton: UIButton!
     @IBAction func startGameButtonAction(sender: AnyObject) {
         if myPlayerName != nil && myPlayerName == AppWarpHelper.sharedInstance.host {
@@ -47,9 +50,15 @@ class LobbyViewController: UIViewController {
         AppWarpHelper.sharedInstance.playerClass = myClass
         
     }
-    
-    func updateUserList() {
-        /* print the updated user list and set host to be the first guy in that list*/
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell1",forIndexPath: indexPath) as UITableViewCell
+        cell.textLabel!.text = "Hello"
+        
+        return cell
+        
+    }
+    func updateUserList()
+    { /* print the updated user list and set host to be the first guy in that list*/
         println("Current users in the room lobby:")
         println(AppWarpHelper.sharedInstance.userName_list)
         
