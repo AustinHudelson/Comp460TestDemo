@@ -158,12 +158,20 @@ class Game {
     }
     func loseGame()
     {
-        println("We lost")
-        let winText: SKLabelNode = SKLabelNode(text: "Game Over")
-        winText.fontSize = 50
-        winText.fontName = "AvenirNext-Bold"
-        winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
-        self.scene!.addChild(winText)
+        println("Your team has lost...")
+        let loseText: SKLabelNode = SKLabelNode(text: "Your team has lost...")
+        loseText.name = "loseText"
+        loseText.fontSize = 50
+        loseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
+        
+        /*
+            Check if the localLoseText is there, if it is, remove it
+        */
+        if let localLoseText = self.scene!.childNodeWithName("localLoseText") {
+            localLoseText.removeFromParent()
+        }
+        
+        self.scene!.addChild(loseText)
     }
     
     /* Gets a unit given a String
