@@ -37,6 +37,12 @@ class Game {
      * Clears all the global data in this class to the default values
      */
     func clearGlobals(){
+        for (id, unit) in Game.global.playerMap{
+            unit.death()
+        }
+        for (id, unit) in Game.global.enemyMap{
+            unit.death()
+        }
         playerMap = [:]
         enemyMap = [:]
         myPlayerIsDead = false

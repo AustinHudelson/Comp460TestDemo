@@ -56,7 +56,7 @@ class Mage: Unit, PType
         //
         
         let animPrefix = "Mage"
-        var Atlas = SKTextureAtlas(named: "Mage")
+        var Atlas:SKTextureAtlas
         let walkAnimName = "-walk"
         let attackAnimName = "-attack"
         let abilityAnimName = "-ability"

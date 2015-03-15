@@ -146,6 +146,7 @@
 		F4B563C81AB3A5CF0094B2A7 /* door.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563681AB3A5CF0094B2A7 /* door.wav */; };
 		F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8348F1A9BB95200A839E5 /* Enemy.swift */; };
 		F4B834921A9BC1D500A839E5 /* RoamAttack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B834911A9BC1D500A839E5 /* RoamAttack.swift */; };
+		F4CA5DE31AB55D92006DB177 /* TextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
 		F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */; };
 		F4D33B621A71EF7300DCD868 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B601A71EF7300DCD868 /* Main.storyboard */; };
@@ -218,8 +219,8 @@
 		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F42FD5AE1A895D4F002C6624 /* Background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background1.png; path = ../Background1.png; sourceTree = "<group>"; };
-		F440A5591AB5301900D97278 /* Warrior.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Warrior.atlas; sourceTree = "<group>"; };
-		F440A55B1AB5303800D97278 /* Mage.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Mage.atlas; sourceTree = "<group>"; };
+		F440A5591AB5301900D97278 /* Warrior.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Warrior.atlas; path = GameCoreClasses/Warrior.atlas; sourceTree = "<group>"; };
+		F440A55B1AB5303800D97278 /* Mage.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Mage.atlas; path = GameCoreClasses/Mage.atlas; sourceTree = "<group>"; };
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
 		F4B5047F1A908339007CDBA8 /* NoneOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoneOrder.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
@@ -326,6 +327,7 @@
 		F4B563681AB3A5CF0094B2A7 /* door.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = door.wav; sourceTree = "<group>"; };
 		F4B8348F1A9BB95200A839E5 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		F4B834911A9BC1D500A839E5 /* RoamAttack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoamAttack.swift; sourceTree = "<group>"; };
+		F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextureLoader.swift; path = GameSceneClasses/TextureLoader.swift; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B571A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D33B581A71EF7300DCD868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -522,7 +524,6 @@
 				F4DD1DD51AB552CB006B200A /* Mage-stand.atlas */,
 				F4DD1DD61AB552CB006B200A /* Mage-stumble.atlas */,
 				F4DD1DD71AB552CB006B200A /* Mage-walk.atlas */,
-				F440A55B1AB5303800D97278 /* Mage.atlas */,
 			);
 			name = Mage;
 			sourceTree = "<group>";
@@ -752,7 +753,6 @@
 				F4DD1DDB1AB552CB006B200A /* Warrior-stand.atlas */,
 				F4DD1DDC1AB552CB006B200A /* Warrior-stumble.atlas */,
 				F4DD1DDD1AB552CB006B200A /* Warrior-walk.atlas */,
-				F440A5591AB5301900D97278 /* Warrior.atlas */,
 			);
 			name = Warrior;
 			sourceTree = "<group>";
@@ -788,6 +788,9 @@
 				6850A0851A91606100B8CAD4 /* SplashViewController.swift */,
 				F4D33B601A71EF7300DCD868 /* Main.storyboard */,
 				6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */,
+				F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */,
+				F440A55B1AB5303800D97278 /* Mage.atlas */,
+				F440A5591AB5301900D97278 /* Warrior.atlas */,
 				F4D33B631A71EF7300DCD868 /* Images.xcassets */,
 				F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */,
 				F4B562FB1AB3A5AC0094B2A7 /* Sounds */,
@@ -1038,6 +1041,7 @@
 			files = (
 				6850A0861A91606100B8CAD4 /* SplashViewController.swift in Sources */,
 				F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */,
+				F4CA5DE31AB55D92006DB177 /* TextureLoader.swift in Sources */,
 				68A18D521AA8719E001CCE1D /* GCDAsyncUdpSocket.m in Sources */,
 				F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */,
 				6827FE541A8E95C2007E7DB9 /* Idle.swift in Sources */,

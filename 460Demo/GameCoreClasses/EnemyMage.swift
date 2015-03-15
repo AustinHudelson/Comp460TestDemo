@@ -56,7 +56,7 @@ class EnemyMage: Unit, PType
         //Define Animations here
         //
         
-        let Atlas = SKTextureAtlas(named: "Mage")
+        let Atlas = TextureLoader.global.Warrior
         let walkAnimName = "-walk"
         let attackAnimName = "-attack"
         let abilityAnimName = "-ability"

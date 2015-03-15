@@ -237,9 +237,9 @@ class Unit: SerializableJSON, PType
         }
         
         //Check facing
-        if (self.sprite.position.x > destination.x-1.0) {
+        if (self.sprite.position.x > destination.x+1.0) {
             self.faceLeft()
-        } else if (self.sprite.position.x < destination.x+1.0) {
+        } else if (self.sprite.position.x < destination.x-1.0) {
             self.faceRight()
         }
         
@@ -353,6 +353,8 @@ class Unit: SerializableJSON, PType
         }
         alive = false
         //applyTint(SKColor.blackColor(), factor: 1.0, blendDuration: 1.0)
+        self.clearAttack()
+        self.clearMove()
         sendOrder(Idle(receiverIn: self))
         self.sprite.removeActionForKey("stand")
         //SETUP DEATH SEQUENCE! Play Death. Wait. Then remove. REMOVING LOCALLY IS DANGEROUS

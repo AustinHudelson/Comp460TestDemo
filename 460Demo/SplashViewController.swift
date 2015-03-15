@@ -63,6 +63,9 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //PRELOAD GAME TEXTURE ATLASES
+        TextureLoader.global.preload()
 
         /*
             set this SplashViewController to be playerNameTxtField's delegate so it can know when a user is entering text in the text field

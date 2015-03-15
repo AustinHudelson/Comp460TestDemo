@@ -56,7 +56,7 @@ class Warrior: Unit, PType
         //
         
         let animPrefix = "Warrior"
-        var Atlas = SKTextureAtlas(named: "Warrior")
+        var Atlas: SKTextureAtlas
         let walkAnimName = "-walk"
         let attackAnimName = "-attack"
         let abilityAnimName = "-ability"

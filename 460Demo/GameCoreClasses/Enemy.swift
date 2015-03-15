@@ -56,7 +56,7 @@ class Enemy: Unit, PType
         //Define Animations here
         //
         
-        let Atlas = SKTextureAtlas(named: "Warrior")
+        let Atlas = TextureLoader.global.Warrior
         let walkAnimName = "-walk"
         let attackAnimName = "-attack"
         let abilityAnimName = "-ability"
