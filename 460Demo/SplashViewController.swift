@@ -10,8 +10,27 @@ import UIKit
 
 class SplashViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var mageSelectionButton: UIButton!
+    @IBOutlet weak var warriorSelectionButton: UIButton!
     @IBOutlet weak var playerNameTxtField: UITextField!
     @IBOutlet weak var startButton: UIButton!
+    
+    var selectedClass:String = "Warrior"
+    
+    @IBAction func mageSelectionButtonAction(sender: AnyObject) {
+        
+        selectedClass = "Mage"
+        println(selectedClass)
+        mageSelectionButton.highlighted = true
+        warriorSelectionButton.highlighted = false
+    }
+    
+    @IBAction func warriorSelectionButtonAction(sender: AnyObject) {
+        selectedClass = "Warrior"
+        println(selectedClass)
+        mageSelectionButton.highlighted = false
+        warriorSelectionButton.highlighted = true
+    }
     
     @IBAction func startButtonAction(sender: AnyObject) {
         let letter = NSCharacterSet.letterCharacterSet()
@@ -33,6 +52,7 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             if notWhitespace{
+                println(selectedClass)
                 performSegueWithIdentifier("playerNameSegue",  sender: self)
             }
             
@@ -56,12 +76,14 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
 //        if countElements(playerNameTxtField.text) < 1 {
 //            startButton.enabled = false
 //        }
+        warriorSelectionButton.highlighted = true
 }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "playerNameSegue") {
             var svc = segue.destinationViewController as LobbyViewController
             svc.myPlayerName = playerNameTxtField.text
+            svc.myClass = selectedClass
             
         }
     }

@@ -45,26 +45,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="SplashArt1" translatesAutoresizingMaskIntoConstraints="NO" id="QkX-kG-UfX">
                                 <rect key="frame" x="74" y="70" width="452" height="128"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQD-pF-9Vz" userLabel="Mage">
-                                <rect key="frame" x="405" y="398" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="G6y-va-Mnc"/>
-                                    <constraint firstAttribute="width" constant="150" id="Gey-A3-Zas"/>
-                                </constraints>
-                                <state key="normal" image="Mage Icon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
-                                <rect key="frame" x="74" y="398" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="khG-UC-iQ0"/>
-                                    <constraint firstAttribute="height" constant="150" id="qK0-5L-g4c"/>
-                                </constraints>
-                                <state key="normal" image="Warrior Icon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWx-W1-Kxd" colorLabel="IBBuiltInLabel-Red">
                                 <rect key="frame" x="203" y="212" width="195" height="64"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
@@ -76,6 +56,32 @@
                                 </state>
                                 <connections>
                                     <action selector="startButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="wzC-le-b0v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
+                                <rect key="frame" x="74" y="398" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="khG-UC-iQ0"/>
+                                    <constraint firstAttribute="height" constant="150" id="qK0-5L-g4c"/>
+                                </constraints>
+                                <state key="normal" image="Warrior Icon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="warriorSelectionButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="OeL-gq-d0r"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQD-pF-9Vz" userLabel="Mage">
+                                <rect key="frame" x="407" y="398" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="G6y-va-Mnc"/>
+                                    <constraint firstAttribute="width" constant="150" id="Gey-A3-Zas"/>
+                                </constraints>
+                                <state key="normal" image="Mage Icon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="mageSelectionButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="hqQ-ul-zaX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -118,8 +124,10 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="mageSelectionButton" destination="sQD-pF-9Vz" id="1U1-tR-P5K"/>
                         <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="crp-bz-6Tv"/>
                         <outlet property="startButton" destination="sWx-W1-Kxd" id="IQt-ur-sKN"/>
+                        <outlet property="warriorSelectionButton" destination="W4s-Kd-Kh5" id="m49-Kc-bsp"/>
                         <segue destination="by4-gA-Hf9" kind="presentation" identifier="playerNameSegue" id="zCE-ET-SiP"/>
                     </connections>
                 </viewController>

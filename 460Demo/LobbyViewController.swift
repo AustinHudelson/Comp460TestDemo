@@ -11,7 +11,7 @@ import SpriteKit
 
 class LobbyViewController: UIViewController {
     var myPlayerName: String? = nil
-    
+    var myClass: String = ""
     @IBOutlet weak var startGameButton: UIButton!
     @IBAction func startGameButtonAction(sender: AnyObject) {
         if myPlayerName != nil && myPlayerName == AppWarpHelper.sharedInstance.host {
@@ -27,7 +27,7 @@ class LobbyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        println(myClass)
         // Do any additional setup after loading the view.
         /*
             Initalize AppWarp
