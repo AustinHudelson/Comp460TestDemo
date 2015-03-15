@@ -12,7 +12,7 @@ import Foundation
 @objc(EnemyMage)
 class EnemyMage: Unit, PType
 {
-    var AnimationName = "Character1BaseColorization"
+    var AnimationName = "Character2BaseColorization"
     
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
