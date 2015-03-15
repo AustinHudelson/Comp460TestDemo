@@ -173,7 +173,7 @@ class Mage: Unit, PType
         self.DS_abilityAnim = SKAction.repeatAction(abilityTextures, count: 1)
         
         /* Sprite setup */
-        self.sprite = SKSpriteNode(imageNamed: "Mage")
+        self.sprite = SKSpriteNode(imageNamed: "Spaceship")
         //self.DS_health_txt.fontColor = UIColor.redColor()
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
