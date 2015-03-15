@@ -104,7 +104,7 @@ class Game {
     {
         if Game.global.level!.hasMoreWaves()
         {
-            var firstWave: Array<Enemy>? = Game.global.level!.loadWave()
+            var firstWave: Array<Unit>? = Game.global.level!.loadWave()
             if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
             {
                 for enemy in firstWave!
@@ -125,17 +125,19 @@ class Game {
     
     func winGame()
     {
-        println("We won")
-        let winText: SKLabelNode = SKLabelNode(text: "We won")
+        println("You Win!!!")
+        let winText: SKLabelNode = SKLabelNode(text: "You Win!")
         winText.fontSize = 50
+        winText.fontName = "AvenirNext-Bold"
         winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         self.scene!.addChild(winText)
     }
     func loseGame()
     {
         println("We lost")
-        let winText: SKLabelNode = SKLabelNode(text: "You Lose")
+        let winText: SKLabelNode = SKLabelNode(text: "Game Over")
         winText.fontSize = 50
+        winText.fontName = "AvenirNext-Bold"
         winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         self.scene!.addChild(winText)
     }
@@ -206,6 +208,9 @@ class Game {
         var near: CGFloat = CGFloat.infinity
         
         for (id, unit) in Game.global.playerMap {
+            if unit.alive == false {
+                continue
+            }
             var p2 = unit.sprite.position
             var dist = getRelativeDistance(p1, p2:p2)
             if dist < near{

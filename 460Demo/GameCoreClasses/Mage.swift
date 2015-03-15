@@ -31,12 +31,13 @@ class Mage: Unit, PType
         super.init(ID:ID, spawnLocation: spawnLocation)
         //INITILIZE THE UNITS STATS HERE!!!
         self.type = "Mage"
-        self.health = 30
+        self.health = 100
         self.maxhealth = 100
         self.healthregen = 1
         self.speed = 50.0
         self.attackRange = 1000.0
         self.attackSpeed = 2.0
+        self.attackDamage = 5
         self.isEnemy = false
         self.xSize = 300.0
         self.ySize = 300.0
@@ -166,6 +167,7 @@ class Mage: Unit, PType
         
         /* Sprite setup */
         self.sprite = SKSpriteNode(imageNamed: "Mage")
+        self.DS_health_txt.fontColor = UIColor.redColor()
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))

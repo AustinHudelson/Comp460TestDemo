@@ -11,11 +11,11 @@ import SpriteKit
 class Level
 {
     
-    var enemyWaves: Array<Array<Enemy>> = Array<Array<Enemy>>()
+    var enemyWaves: Array<Array<Unit>> = Array<Array<Unit>>()
     var counter = 0
     
     
-    func loadWave()-> Array<Enemy>?
+    func loadWave()-> Array<Unit>?
     {
         if counter < enemyWaves.count
         {

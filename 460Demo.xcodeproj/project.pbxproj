@@ -33,9 +33,9 @@
 		68F35CB71A84C540004905BF /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB11A84C540004905BF /* Projectile.swift */; };
 		68F35CB81A84C540004905BF /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB21A84C540004905BF /* Unit.swift */; };
 		68F35CB91A84C540004905BF /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB31A84C540004905BF /* Warrior.swift */; };
-		68FEB9621AB4141700AE5F99 /* CharSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEB9611AB4141700AE5F99 /* CharSelectViewController.swift */; };
 		E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */; };
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
+		F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402F68E1AB51AF300A930C2 /* EnemyMage.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
 		F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */ = {isa = PBXBuildFile; fileRef = F42FD5AE1A895D4F002C6624 /* Background1.png */; };
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
@@ -199,9 +199,9 @@
 		68F35CB11A84C540004905BF /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		68F35CB21A84C540004905BF /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		68F35CB31A84C540004905BF /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Warrior.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		68FEB9611AB4141700AE5F99 /* CharSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharSelectViewController.swift; sourceTree = "<group>"; };
 		E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F42FD5AE1A895D4F002C6624 /* Background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background1.png; path = ../Background1.png; sourceTree = "<group>"; };
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
@@ -428,6 +428,14 @@
 			path = GameCoreClasses;
 			sourceTree = "<group>";
 		};
+		F402F68D1AB51AC200A930C2 /* Enemy Mage */ = {
+			isa = PBXGroup;
+			children = (
+				F402F68E1AB51AF300A930C2 /* EnemyMage.swift */,
+			);
+			name = "Enemy Mage";
+			sourceTree = "<group>";
+		};
 		F4B5047A1A900D98007CDBA8 /* Target Dummy */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				68F35CB21A84C540004905BF /* Unit.swift */,
+				F402F68D1AB51AC200A930C2 /* Enemy Mage */,
 				F4B562F61AB2880A0094B2A7 /* Enemy */,
 				F4B562F51AB287FB0094B2A7 /* Mage */,
 				F4BC9DC81A900C9A00F3B617 /* Warrior */,
@@ -736,7 +745,6 @@
 				F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */,
 				6850A0851A91606100B8CAD4 /* SplashViewController.swift */,
 				F4D33B601A71EF7300DCD868 /* Main.storyboard */,
-				68FEB9611AB4141700AE5F99 /* CharSelectViewController.swift */,
 				6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */,
 				F4D33B631A71EF7300DCD868 /* Images.xcassets */,
 				F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */,
@@ -982,9 +990,9 @@
 				E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */,
 				F4B562FA1AB39E740094B2A7 /* Transient.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
-				68FEB9621AB4141700AE5F99 /* CharSelectViewController.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
 				F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */,
+				F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */,
 				F4B504801A908339007CDBA8 /* NoneOrder.swift in Sources */,
 				6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */,
 				F4B834921A9BC1D500A839E5 /* RoamAttack.swift in Sources */,

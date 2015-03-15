@@ -237,6 +237,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             else
             {
+                if Game.global.myPlayerIsDead == true || Game.global.getMyPlayer().alive == false {
+                    return
+                }
                 if self.childNodeWithName("Ability0")!.containsPoint(touchLocation) {
                     //Button at slot 0
                     let button = self.childNodeWithName("Ability0") as Ability

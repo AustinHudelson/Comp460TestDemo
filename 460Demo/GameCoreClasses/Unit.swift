@@ -23,6 +23,7 @@ class Unit: SerializableJSON, PType
     var ySize: CGFloat = 200.0
     var attackRange: CGFloat = 20.0
     var attackSpeed: NSTimeInterval = NSTimeInterval(3.0)
+    var attackDamage: Int = 3
     var sprite: SKNode = SKSpriteNode(imageNamed: "Mage")
     var currentOrder: Order = NoneOrder()
     var alive: Bool = true
@@ -46,8 +47,9 @@ class Unit: SerializableJSON, PType
         restoreProperties(Unit.self, receivedData: receivedData)
         
         /* Configure Health Text (SHOULD MATH OTHER INIT() FUNCTION) */
-        self.DS_health_txt.fontColor = UIColor.redColor()
+        self.DS_health_txt.fontColor = UIColor.greenColor()
         self.DS_health_txt.text = self.health.description
+        self.DS_health_txt.fontName = "AvenirNext-Bold"
         self.DS_health_txt.fontSize = 40
         
 //        // physics stuff
@@ -237,7 +239,7 @@ class Unit: SerializableJSON, PType
         //Check facing
         if (self.sprite.position.x > destination.x) {
             self.faceLeft()
-        } else {
+        } else if (self.sprite.position.x < destination.x) {
             self.faceRight()
         }
         
@@ -305,7 +307,7 @@ class Unit: SerializableJSON, PType
                 self.sprite.runAction(attackSequence, withKey: "attack")
                 self.sprite.runAction(self.DS_attackAnim!, withKey: "attackAnim")
                 //Apply the damage to the enemy. NOTE: Might be more realistic to do this half way though the attack animation.
-                target.takeDamage(3)
+                target.takeDamage(self.attackDamage)
             }
         } else {
             //target is invalid. call the complete block.
