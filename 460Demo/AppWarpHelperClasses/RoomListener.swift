@@ -87,7 +87,7 @@ class RoomListener: NSObject,RoomRequestListener
             let oldHost = AppWarpHelper.sharedInstance.host
             
             if (!userName_list.containsObject(oldHost!)) && (userName_list.count > 0) {
-                let newHost = userName_list[0]
+                let newHost = userName_list[0] as String
                 AppWarpHelper.sharedInstance.host = newHost
                 println("Transfering host from \"\(oldHost)\" to \"\(newHost)\"")
             }
