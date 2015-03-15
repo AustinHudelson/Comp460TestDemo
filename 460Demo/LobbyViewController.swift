@@ -48,7 +48,7 @@ class LobbyViewController: UIViewController {
     
     func updateUserList() {
         /* print the updated user list and set host to be the first guy in that list*/
-        println("Current users in the lobby:")
+        println("Current users in the room lobby:")
         println(AppWarpHelper.sharedInstance.userName_list)
         
         AppWarpHelper.sharedInstance.host = (AppWarpHelper.sharedInstance.userName_list[0] as String) // designate host
