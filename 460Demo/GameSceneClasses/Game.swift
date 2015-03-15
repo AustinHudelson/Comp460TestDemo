@@ -257,4 +257,30 @@ class Game {
         
         return nearby
     }
+
+    /*
+    * Returns the closest ENEMY to the given point
+    */
+    func getClosestEnemy(p1: CGPoint) -> Unit? {
+        var nearby: Unit? = nil
+        var near: CGFloat = CGFloat.infinity
+        
+        for (id, unit) in Game.global.playerMap {
+            if unit.alive == false {
+                continue
+            }
+            var p2 = unit.sprite.position
+            var dist = getRelativeDistance(p1, p2:p2)
+            if dist < near{
+                nearby = unit
+                near = dist
+            }
+        }
+        
+//        if nearby == nil {
+//            fatalError("Unable to find closest player to point. Empty player list?")
+//        }
+        
+        return nearby
+    }
 }

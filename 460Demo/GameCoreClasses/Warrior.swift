@@ -55,7 +55,8 @@ class Warrior: Unit, PType
         //Define Animations here
         //
         
-        let Atlas = SKTextureAtlas(named: "Warrior")
+        let animPrefix = "Warrior"
+        var Atlas = SKTextureAtlas(named: "Warrior")
         let walkAnimName = "-walk"
         let attackAnimName = "-attack"
         let abilityAnimName = "-ability"
@@ -63,6 +64,7 @@ class Warrior: Unit, PType
         let stumbleAnimName = "-stumble"
         let standAnimName = "-attack"
         
+        Atlas = SKTextureAtlas(named: animPrefix+walkAnimName)
         var walkTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+walkAnimName+"0"),
             Atlas.textureNamed(AnimationName+walkAnimName+"1"),
@@ -87,6 +89,7 @@ class Warrior: Unit, PType
             Atlas.textureNamed(AnimationName+walkAnimName+"20"),
             ], timePerFrame: 0.05)
         
+        Atlas = SKTextureAtlas(named: animPrefix+attackAnimName)
         var attackTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+attackAnimName+"0"),
             Atlas.textureNamed(AnimationName+attackAnimName+"1"),
@@ -102,6 +105,7 @@ class Warrior: Unit, PType
             Atlas.textureNamed(AnimationName+attackAnimName+"11"),
             ], timePerFrame: 0.05)
         
+        Atlas = SKTextureAtlas(named: animPrefix+deathAnimName)
         var deathTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+deathAnimName+"0"),
             Atlas.textureNamed(AnimationName+deathAnimName+"1"),
@@ -129,6 +133,7 @@ class Warrior: Unit, PType
             Atlas.textureNamed(AnimationName+deathAnimName+"23"),
             ], timePerFrame: 0.05)
         
+        Atlas = SKTextureAtlas(named: animPrefix+abilityAnimName)
         var abilityTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+abilityAnimName+"0"),
             Atlas.textureNamed(AnimationName+abilityAnimName+"1"),
@@ -146,6 +151,7 @@ class Warrior: Unit, PType
             Atlas.textureNamed(AnimationName+abilityAnimName+"13"),
             ], timePerFrame: 0.1)
         
+        Atlas = SKTextureAtlas(named: animPrefix+stumbleAnimName)
         var stumbleTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+stumbleAnimName+"0"),
             Atlas.textureNamed(AnimationName+stumbleAnimName+"1"),
@@ -154,6 +160,7 @@ class Warrior: Unit, PType
             Atlas.textureNamed(AnimationName+stumbleAnimName+"4")
             ], timePerFrame: 0.05)
         
+        Atlas = SKTextureAtlas(named: animPrefix+standAnimName)
         var standTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+standAnimName+"0")
             ], timePerFrame: 0.1)
@@ -167,6 +174,7 @@ class Warrior: Unit, PType
         
         /* Sprite setup */
         self.sprite = SKSpriteNode(imageNamed: "Mage")
+        //self.DS_health_txt.fontColor = UIColor.redColor()
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))

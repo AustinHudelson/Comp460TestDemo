@@ -9,14 +9,14 @@
 import Foundation
 import SpriteKit
 
-class ButtonHeal: Ability
+class ButtonAreaHeal: Ability
 {
     
     /*
-     * Creates a heal icon at the specified ability use slot
-     */
+    * Creates a heal icon at the specified ability use slot
+    */
     init(slot: Int){
-        super.init(imageNamed: "S_Holy01", slot: slot)
+        super.init(imageNamed: "S_Holy05", slot: slot)
     }
     
     override func apply(receiverIn: Unit) {
