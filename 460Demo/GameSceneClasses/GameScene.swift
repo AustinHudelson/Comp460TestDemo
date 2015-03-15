@@ -152,14 +152,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //background.anchorPoint = CGPoint(x: 0, y: 1.0)
         //addChild(background)
         
-        /* Initialize buttons. They will automatically be added to the scene */
-        let Button0: Ability = ButtonHeal(slot: 0)
-        let Button1: Ability = ButtonEnrage(slot: 1)
-        
-//        // physics
-//        self.physicsWorld.gravity = CGVectorMake(0, 0)
-//        self.physicsWorld.contactDelegate = self
-//        //
         
         AppWarpHelper.sharedInstance.gameScene = self
         startGameScene()
