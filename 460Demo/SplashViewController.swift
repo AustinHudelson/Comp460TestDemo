@@ -21,15 +21,15 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
         
         selectedClass = "Mage"
         println(selectedClass)
-        mageSelectionButton.highlighted = true
-        warriorSelectionButton.highlighted = false
+        mageSelectionButton.selected = true
+        warriorSelectionButton.selected = false
     }
     
     @IBAction func warriorSelectionButtonAction(sender: AnyObject) {
         selectedClass = "Warrior"
         println(selectedClass)
-        mageSelectionButton.highlighted = false
-        warriorSelectionButton.highlighted = true
+        mageSelectionButton.selected = false
+        warriorSelectionButton.selected = true
     }
     
     @IBAction func startButtonAction(sender: AnyObject) {
@@ -76,7 +76,7 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
 //        if countElements(playerNameTxtField.text) < 1 {
 //            startButton.enabled = false
 //        }
-        warriorSelectionButton.highlighted = true
+        warriorSelectionButton.selected = true
 }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
