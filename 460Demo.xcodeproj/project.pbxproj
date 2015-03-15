@@ -382,6 +382,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		686AA75F1AB38EAE00C03FD7 /* Abilities */ = {
+			isa = PBXGroup;
+			children = (
+				686AA7601AB38EAE00C03FD7 /* Heal.swift */,
+				F4DD1DD01AB54F96006B200A /* AreaHeal.swift */,
+				686AA7621AB38EBD00C03FD7 /* Enrage.swift */,
+				F42A96101AB56D3300E07C67 /* Shrink.swift */,
+			);
+			path = Abilities;
+			sourceTree = "<group>";
+		};
 		68A18D3F1AA8719E001CCE1D /* iosNtp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1083,7 +1094,8 @@
 				F4B562F81AB38A9A0094B2A7 /* ButtonEnrage.swift in Sources */,
 				F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */,
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,
-				68DADF5B1AB5738800A20800 /* Heal.swift in Sources */,
+				F42A96111AB56D3300E07C67 /* Shrink.swift in Sources */,
+				686AA7611AB38EAE00C03FD7 /* Heal.swift in Sources */,
 				68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */,
 				68DADF5A1AB5738800A20800 /* Enrage.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
