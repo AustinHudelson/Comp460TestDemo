@@ -51,7 +51,9 @@ class Unit: SerializableJSON, PType
         self.DS_health_txt.text = self.health.description
         self.DS_health_txt.fontName = "AvenirNext-Bold"
         self.DS_health_txt.fontSize = 40
-        self.DS_health_txt.zPosition = 100
+        // ===TESTING
+        self.DS_health_txt.zPosition = 1
+        
 //        // physics stuff
 //        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
 //        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
@@ -68,7 +70,8 @@ class Unit: SerializableJSON, PType
         self.DS_health_txt.fontColor = UIColor.redColor()
         self.DS_health_txt.text = self.health.description
         self.DS_health_txt.fontSize = 40
-        self.DS_health_txt.zPosition = 100
+        // ===TESTING
+        self.DS_health_txt.zPosition = 1
         
 //        //// physics stuff
 //        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
