@@ -51,7 +51,7 @@ class AppWarpHelper: NSObject
         WarpClient.initWarp(api_key, secretKey: secret_key)
         var warpClient:WarpClient = WarpClient.getInstance()
         warpClient.enableTrace(true)
-        warpClient.setRecoveryAllowance(60);
+        warpClient.setRecoveryAllowance(10);
         
         var connectionListener: ConnectionListener = ConnectionListener()
         warpClient.addConnectionRequestListener(connectionListener)

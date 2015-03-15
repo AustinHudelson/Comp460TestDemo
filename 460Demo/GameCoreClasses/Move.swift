@@ -38,13 +38,15 @@ class Move : Order, PType
     
     override func apply()
     {
-        //receiver.sprite.frame.
-        self.DS_receiver!.move(self.DS_moveToLoc!, complete: {
-            self.DS_receiver!.sendOrder(Idle(receiverIn: self.DS_receiver!))
-        })
+        if self.DS_receiver != nil {
+            //receiver.sprite.frame.
+            self.DS_receiver!.move(self.DS_moveToLoc!, complete: {
+                self.DS_receiver!.sendOrder(Idle(receiverIn: self.DS_receiver!))
+            })
+        }
     }
     
     override func remove(){
-        self.DS_receiver!.clearMove()
+        self.DS_receiver?.clearMove()
     }
 }
