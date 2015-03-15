@@ -18,8 +18,12 @@ class ConnectionListener: NSObject,ConnectionRequestListener
         if event.result == 0 // SUCCESS
         {
             println("onConnectDone SUCCESS")
-            WarpClient.getInstance().joinRoom("1506717553")
-            //WarpClient.getInstance().joinRoomInRangeBetweenMinUsers(0, andMaxUsers: 3, maxPrefered: true)
+            /*
+                Get a list of joinable rooms
+            */
+            var roomProperties: Dictionary<String, AnyObject> = [:]
+            roomProperties["joinable"] = true
+            WarpClient.getInstance().getRoomWithProperties(roomProperties)
         }
         else if event.result == 1  // AUTH_ERROR
         {
@@ -64,6 +68,6 @@ class ConnectionListener: NSObject,ConnectionRequestListener
     }
     
     func onDisconnectDone(event: ConnectEvent!) {
-        println("disconnect done")
+        println("Disconnect done")
     }
 }

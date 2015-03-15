@@ -162,36 +162,88 @@ class Unit: SerializableJSON, PType
         return false
     }
     
-    func move(destination:CGPoint, complete:(()->Void)!)
-    {
-        let charPos = sprite.position
-        let xdif = destination.x-charPos.x
-        let ydif = destination.y-charPos.y
+    func move(destination:CGPoint, complete:(()->Void)!) {
+        moveCycle(destination, complete: complete)
+//        let charPos = sprite.position
+//        let xdif = destination.x-charPos.x
+//        let ydif = destination.y-charPos.y
+//        
+//        //Check facing
+//        if (xdif < -0.1) {
+//            self.faceLeft()
+//        } else if (xdif > 0.1) {
+//            self.faceRight()
+//        }
+//        
+//        let distance = sqrt((xdif*xdif)+(ydif*ydif))
+//        let duration = distance/speed
+//        
+//        let movementAction = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
+//        let walkAnimationAction = self.DS_walkAnim
+//        //Create action for "Walk to point then do "complete""
+//        let walkSequence = SKAction.sequence([movementAction, SKAction.runBlock(complete)])
+//        /* Move the health text */
+//        var health_txt_des = destination
+//        
+//        health_txt_des.y += health_txt_y_dspl
+//        let moveHealthTxtAction = SKAction.moveTo(health_txt_des, duration: NSTimeInterval(duration))
+//        DS_health_txt.runAction(moveHealthTxtAction, withKey: "move")
+//        sprite.runAction(walkSequence, withKey: "move")
+//        if self.sprite.actionForKey("moveAnim") == nil {
+//            sprite.runAction(self.DS_walkAnim!, withKey: "moveAnim")
+//        }
+    }
+    
+    
+    /*
+     * Recursive function that moves the unit a short distance towards destination
+     * and then calls itself again. calls complete upon reaching the destination
+     */
+    func moveCycle(destination: CGPoint, complete:(()->Void)!){
+        let refreshRate: CGFloat = 0.25
+        let maxMoveDistance: CGFloat = self.speed*refreshRate
+        let remainingDistance: CGFloat = Game.global.getDistance(self.sprite.position, p2: destination)
         
-        //Check facing
-        if (xdif < -0.1) {
-            self.faceLeft()
-        } else if (xdif > 0.1) {
-            self.faceRight()
+        var adjustedMove: CGPoint
+        var duration: CGFloat
+        var walkSequence: SKAction
+            
+        if maxMoveDistance < remainingDistance {
+            //Move a short distance towards the destination.
+            adjustedMove = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:destination, distance: maxMoveDistance)
+            duration = maxMoveDistance/speed
+            let movementAction = SKAction.moveTo(adjustedMove, duration:NSTimeInterval(duration))
+            //Set up move action to call move cycle again at the end
+            walkSequence = SKAction.sequence([movementAction, SKAction.runBlock({self.moveCycle(destination, complete: complete)})])
+        } else {
+            //Move the rest of the distance to the destination
+            adjustedMove = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:destination, distance: remainingDistance)
+            duration = remainingDistance/speed
+            let movementAction = SKAction.moveTo(adjustedMove, duration:NSTimeInterval(duration))
+            //Set up the move action to call complete block at the end
+            walkSequence = SKAction.sequence([movementAction, SKAction.runBlock(complete)])
         }
         
-        let distance = sqrt((xdif*xdif)+(ydif*ydif))
-        let duration = distance/speed
+        //Create movement action for health text
+        var healthTextAdjustedMove = adjustedMove
+        healthTextAdjustedMove.y += health_txt_y_dspl
+        let healthTextMovementAction = SKAction.moveTo(healthTextAdjustedMove, duration:NSTimeInterval(duration))
         
-        let movementAction = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
-        let walkAnimationAction = self.DS_walkAnim
-        //Create action for "Walk to point then do "complete""
-        let walkSequence = SKAction.sequence([movementAction, SKAction.runBlock(complete)])
-        /* Move the health text */
-        var health_txt_des = destination
-        
-        health_txt_des.y += health_txt_y_dspl
-        let moveHealthTxtAction = SKAction.moveTo(health_txt_des, duration: NSTimeInterval(duration))
-        DS_health_txt.runAction(moveHealthTxtAction, withKey: "move")
-        sprite.runAction(walkSequence, withKey: "move")
+        //Start looping the walk animation if it is not already playing.
         if self.sprite.actionForKey("moveAnim") == nil {
             sprite.runAction(self.DS_walkAnim!, withKey: "moveAnim")
         }
+        
+        //Check facing
+        if (self.sprite.position.x > destination.x) {
+            self.faceLeft()
+        } else {
+            self.faceRight()
+        }
+        
+        //Apply the actions to the health text and sprite
+        DS_health_txt.runAction(healthTextMovementAction, withKey: "move")
+        sprite.runAction(walkSequence, withKey: "move")
     }
     
     func clearMove(){
@@ -215,7 +267,7 @@ class Unit: SerializableJSON, PType
     func attackCycle(target: Unit, complete:(()->Void)!){
         let tolerence = attackRange
         let animationGapDistance: CGFloat = 20.0 //Default value is overwritten in init
-        let refreshRate: CGFloat = 0.5
+        let refreshRate: CGFloat = 0.25
         
         if target.alive == true{         //ENSURE ATTACK IS STILL VALID
             
