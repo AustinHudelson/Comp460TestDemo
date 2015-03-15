@@ -42,6 +42,7 @@
 		68F35CB91A84C540004905BF /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB31A84C540004905BF /* Warrior.swift */; };
 		E72E672B1AB624DC0082E7B4 /* Warrior-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E672A1AB624DC0082E7B4 /* Warrior-walk.atlas */; };
 		E72E672D1AB626B20082E7B4 /* Warrior-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E672C1AB626B20082E7B4 /* Warrior-attack.atlas */; };
+		E72E672F1AB629CB0082E7B4 /* Warrior-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E672E1AB629CB0082E7B4 /* Warrior-stumble.atlas */; };
 		E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */; };
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
 		F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402F68E1AB51AF300A930C2 /* EnemyMage.swift */; };
@@ -215,6 +216,7 @@
 		68F35CB31A84C540004905BF /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Warrior.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E72E672A1AB624DC0082E7B4 /* Warrior-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-walk.atlas"; sourceTree = "<group>"; };
 		E72E672C1AB626B20082E7B4 /* Warrior-attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-attack.atlas"; sourceTree = "<group>"; };
+		E72E672E1AB629CB0082E7B4 /* Warrior-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-stumble.atlas"; sourceTree = "<group>"; };
 		E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
@@ -728,6 +730,7 @@
 		F4BC9DC81A900C9A00F3B617 /* Warrior */ = {
 			isa = PBXGroup;
 			children = (
+				E72E672E1AB629CB0082E7B4 /* Warrior-stumble.atlas */,
 				E72E672C1AB626B20082E7B4 /* Warrior-attack.atlas */,
 				E72E672A1AB624DC0082E7B4 /* Warrior-walk.atlas */,
 				68F35CB31A84C540004905BF /* Warrior.swift */,
@@ -896,6 +899,7 @@
 				F4B563911AB3A5CF0094B2A7 /* random6.wav in Resources */,
 				F4B563731AB3A5CF0094B2A7 /* interface1.wav in Resources */,
 				F4B563B11AB3A5CF0094B2A7 /* shade11.wav in Resources */,
+				E72E672F1AB629CB0082E7B4 /* Warrior-stumble.atlas in Resources */,
 				F4B5636D1AB3A5CF0094B2A7 /* swing3.wav in Resources */,
 				F4B5637C1AB3A5CF0094B2A7 /* bubble.wav in Resources */,
 				F4B563BD1AB3A5CF0094B2A7 /* shade9.wav in Resources */,
