@@ -40,14 +40,13 @@
 		68F35CB71A84C540004905BF /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB11A84C540004905BF /* Projectile.swift */; };
 		68F35CB81A84C540004905BF /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB21A84C540004905BF /* Unit.swift */; };
 		68F35CB91A84C540004905BF /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB31A84C540004905BF /* Warrior.swift */; };
+		E72E672B1AB624DC0082E7B4 /* Warrior-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E672A1AB624DC0082E7B4 /* Warrior-walk.atlas */; };
 		E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */; };
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
 		F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402F68E1AB51AF300A930C2 /* EnemyMage.swift */; };
 		F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
 		F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */ = {isa = PBXBuildFile; fileRef = F42FD5AE1A895D4F002C6624 /* Background1.png */; };
-		F440A55A1AB5301900D97278 /* Warrior.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F440A5591AB5301900D97278 /* Warrior.atlas */; };
-		F440A55C1AB5303800D97278 /* Mage.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F440A55B1AB5303800D97278 /* Mage.atlas */; };
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
 		F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562EB1AB0D8C20094B2A7 /* Ability.swift */; };
@@ -159,18 +158,6 @@
 		F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */; };
 		F4D33B731A71EF7300DCD868 /* _60DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */; };
 		F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */; };
-		F4DD1DDE1AB552CB006B200A /* Mage-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DD21AB552CB006B200A /* Mage-ability.atlas */; };
-		F4DD1DDF1AB552CB006B200A /* Mage-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DD31AB552CB006B200A /* Mage-attack.atlas */; };
-		F4DD1DE01AB552CB006B200A /* Mage-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DD41AB552CB006B200A /* Mage-death.atlas */; };
-		F4DD1DE11AB552CB006B200A /* Mage-stand.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DD51AB552CB006B200A /* Mage-stand.atlas */; };
-		F4DD1DE21AB552CB006B200A /* Mage-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DD61AB552CB006B200A /* Mage-stumble.atlas */; };
-		F4DD1DE31AB552CB006B200A /* Mage-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DD71AB552CB006B200A /* Mage-walk.atlas */; };
-		F4DD1DE41AB552CB006B200A /* Warrior-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DD81AB552CB006B200A /* Warrior-ability.atlas */; };
-		F4DD1DE51AB552CB006B200A /* Warrior-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DD91AB552CB006B200A /* Warrior-attack.atlas */; };
-		F4DD1DE61AB552CB006B200A /* Warrior-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DDA1AB552CB006B200A /* Warrior-death.atlas */; };
-		F4DD1DE71AB552CB006B200A /* Warrior-stand.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DDB1AB552CB006B200A /* Warrior-stand.atlas */; };
-		F4DD1DE81AB552CB006B200A /* Warrior-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DDC1AB552CB006B200A /* Warrior-stumble.atlas */; };
-		F4DD1DE91AB552CB006B200A /* Warrior-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DD1DDD1AB552CB006B200A /* Warrior-walk.atlas */; };
 		F4E896421AA128E000406784 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E896411AA128E000406784 /* Game.swift */; };
 /* End PBXBuildFile section */
 
@@ -225,14 +212,13 @@
 		68F35CB11A84C540004905BF /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		68F35CB21A84C540004905BF /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		68F35CB31A84C540004905BF /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Warrior.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E72E672A1AB624DC0082E7B4 /* Warrior-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-walk.atlas"; sourceTree = "<group>"; };
 		E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
 		F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonShrink.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F42FD5AE1A895D4F002C6624 /* Background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background1.png; path = ../Background1.png; sourceTree = "<group>"; };
-		F440A5591AB5301900D97278 /* Warrior.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Warrior.atlas; path = GameCoreClasses/Warrior.atlas; sourceTree = "<group>"; };
-		F440A55B1AB5303800D97278 /* Mage.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Mage.atlas; path = GameCoreClasses/Mage.atlas; sourceTree = "<group>"; };
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
 		F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonHeal.swift; sourceTree = "<group>"; };
@@ -348,18 +334,6 @@
 		F4D33B711A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _60DemoTests.swift; sourceTree = "<group>"; };
 		F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAreaHeal.swift; sourceTree = "<group>"; };
-		F4DD1DD21AB552CB006B200A /* Mage-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-ability.atlas"; sourceTree = "<group>"; };
-		F4DD1DD31AB552CB006B200A /* Mage-attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-attack.atlas"; sourceTree = "<group>"; };
-		F4DD1DD41AB552CB006B200A /* Mage-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-death.atlas"; sourceTree = "<group>"; };
-		F4DD1DD51AB552CB006B200A /* Mage-stand.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-stand.atlas"; sourceTree = "<group>"; };
-		F4DD1DD61AB552CB006B200A /* Mage-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-stumble.atlas"; sourceTree = "<group>"; };
-		F4DD1DD71AB552CB006B200A /* Mage-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-walk.atlas"; sourceTree = "<group>"; };
-		F4DD1DD81AB552CB006B200A /* Warrior-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-ability.atlas"; sourceTree = "<group>"; };
-		F4DD1DD91AB552CB006B200A /* Warrior-attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-attack.atlas"; sourceTree = "<group>"; };
-		F4DD1DDA1AB552CB006B200A /* Warrior-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-death.atlas"; sourceTree = "<group>"; };
-		F4DD1DDB1AB552CB006B200A /* Warrior-stand.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-stand.atlas"; sourceTree = "<group>"; };
-		F4DD1DDC1AB552CB006B200A /* Warrior-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-stumble.atlas"; sourceTree = "<group>"; };
-		F4DD1DDD1AB552CB006B200A /* Warrior-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-walk.atlas"; sourceTree = "<group>"; };
 		F4E896411AA128E000406784 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -530,12 +504,6 @@
 			isa = PBXGroup;
 			children = (
 				F4B562F31AB287F40094B2A7 /* Mage.swift */,
-				F4DD1DD21AB552CB006B200A /* Mage-ability.atlas */,
-				F4DD1DD31AB552CB006B200A /* Mage-attack.atlas */,
-				F4DD1DD41AB552CB006B200A /* Mage-death.atlas */,
-				F4DD1DD51AB552CB006B200A /* Mage-stand.atlas */,
-				F4DD1DD61AB552CB006B200A /* Mage-stumble.atlas */,
-				F4DD1DD71AB552CB006B200A /* Mage-walk.atlas */,
 			);
 			name = Mage;
 			sourceTree = "<group>";
@@ -758,13 +726,8 @@
 		F4BC9DC81A900C9A00F3B617 /* Warrior */ = {
 			isa = PBXGroup;
 			children = (
+				E72E672A1AB624DC0082E7B4 /* Warrior-walk.atlas */,
 				68F35CB31A84C540004905BF /* Warrior.swift */,
-				F4DD1DD81AB552CB006B200A /* Warrior-ability.atlas */,
-				F4DD1DD91AB552CB006B200A /* Warrior-attack.atlas */,
-				F4DD1DDA1AB552CB006B200A /* Warrior-death.atlas */,
-				F4DD1DDB1AB552CB006B200A /* Warrior-stand.atlas */,
-				F4DD1DDC1AB552CB006B200A /* Warrior-stumble.atlas */,
-				F4DD1DDD1AB552CB006B200A /* Warrior-walk.atlas */,
 			);
 			name = Warrior;
 			sourceTree = "<group>";
@@ -801,8 +764,6 @@
 				F4D33B601A71EF7300DCD868 /* Main.storyboard */,
 				6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */,
 				F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */,
-				F440A55B1AB5303800D97278 /* Mage.atlas */,
-				F440A5591AB5301900D97278 /* Warrior.atlas */,
 				F4D33B631A71EF7300DCD868 /* Images.xcassets */,
 				F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */,
 				F4B562FB1AB3A5AC0094B2A7 /* Sounds */,
@@ -922,7 +883,6 @@
 				F4B563A81AB3A5CF0094B2A7 /* mnstr9.wav in Resources */,
 				F4B5638A1AB3A5CF0094B2A7 /* wood-small.wav in Resources */,
 				F4B563771AB3A5CF0094B2A7 /* interface5.wav in Resources */,
-				F440A55C1AB5303800D97278 /* Mage.atlas in Resources */,
 				F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */,
 				F4B563C01AB3A5CF0094B2A7 /* slime2.wav in Resources */,
 				F4B563991AB3A5CF0094B2A7 /* giant5.wav in Resources */,
@@ -939,16 +899,11 @@
 				F4B563A91AB3A5CF0094B2A7 /* wolfman.wav in Resources */,
 				F4B563741AB3A5CF0094B2A7 /* interface2.wav in Resources */,
 				F4B563C41AB3A5CF0094B2A7 /* slime6.wav in Resources */,
-				F4DD1DDE1AB552CB006B200A /* Mage-ability.atlas in Resources */,
-				F4DD1DE71AB552CB006B200A /* Warrior-stand.atlas in Resources */,
 				F4B563861AB3A5CF0094B2A7 /* metal-ringing.wav in Resources */,
 				F4B563AB1AB3A5CF0094B2A7 /* ogre2.wav in Resources */,
-				F4DD1DE41AB552CB006B200A /* Warrior-ability.atlas in Resources */,
 				F4B563821AB3A5CF0094B2A7 /* cloth.wav in Resources */,
 				F4B563C11AB3A5CF0094B2A7 /* slime3.wav in Resources */,
-				F4DD1DE91AB552CB006B200A /* Warrior-walk.atlas in Resources */,
 				F4B563701AB3A5CF0094B2A7 /* sword-unsheathe3.wav in Resources */,
-				F4DD1DE31AB552CB006B200A /* Mage-walk.atlas in Resources */,
 				F4B5638F1AB3A5CF0094B2A7 /* random4.wav in Resources */,
 				F4B5637E1AB3A5CF0094B2A7 /* bubble3.wav in Resources */,
 				F4B5636B1AB3A5CF0094B2A7 /* swing.wav in Resources */,
@@ -959,7 +914,6 @@
 				F4B563B41AB3A5CF0094B2A7 /* shade14.wav in Resources */,
 				F4B5637A1AB3A5CF0094B2A7 /* beads.wav in Resources */,
 				F4B563B01AB3A5CF0094B2A7 /* shade10.wav in Resources */,
-				F4DD1DE21AB552CB006B200A /* Mage-stumble.atlas in Resources */,
 				F4B563C61AB3A5CF0094B2A7 /* slime8.wav in Resources */,
 				F4B563801AB3A5CF0094B2A7 /* chainmail2.wav in Resources */,
 				F4B563B81AB3A5CF0094B2A7 /* shade4.wav in Resources */,
@@ -969,12 +923,9 @@
 				F4B563C21AB3A5CF0094B2A7 /* slime4.wav in Resources */,
 				68A18D531AA8719E001CCE1D /* ntp.hosts in Resources */,
 				F4B563A61AB3A5CF0094B2A7 /* mnstr7.wav in Resources */,
-				F4DD1DE11AB552CB006B200A /* Mage-stand.atlas in Resources */,
 				F4B563781AB3A5CF0094B2A7 /* interface6.wav in Resources */,
 				F4B563B51AB3A5CF0094B2A7 /* shade15.wav in Resources */,
 				F4B563751AB3A5CF0094B2A7 /* interface3.wav in Resources */,
-				F440A55A1AB5301900D97278 /* Warrior.atlas in Resources */,
-				F4DD1DE61AB552CB006B200A /* Warrior-death.atlas in Resources */,
 				F4B5638B1AB3A5CF0094B2A7 /* burp.wav in Resources */,
 				F4B563981AB3A5CF0094B2A7 /* giant4.wav in Resources */,
 				F4B563C51AB3A5CF0094B2A7 /* slime7.wav in Resources */,
@@ -982,9 +933,9 @@
 				F4B5636A1AB3A5CF0094B2A7 /* spell.wav in Resources */,
 				F4B563931AB3A5CF0094B2A7 /* bite-small2.wav in Resources */,
 				F4B5639F1AB3A5CF0094B2A7 /* mnstr14.wav in Resources */,
+				E72E672B1AB624DC0082E7B4 /* Warrior-walk.atlas in Resources */,
 				F4B5638C1AB3A5CF0094B2A7 /* random1.wav in Resources */,
 				68F35CAB1A84C4D5004905BF /* GameScene.sks in Resources */,
-				F4DD1DE01AB552CB006B200A /* Mage-death.atlas in Resources */,
 				F4B563881AB3A5CF0094B2A7 /* metal-small2.wav in Resources */,
 				F4B563B91AB3A5CF0094B2A7 /* shade5.wav in Resources */,
 				F4B563BA1AB3A5CF0094B2A7 /* shade6.wav in Resources */,
@@ -1007,7 +958,6 @@
 				F4B563921AB3A5CF0094B2A7 /* bite-small.wav in Resources */,
 				F4B563AA1AB3A5CF0094B2A7 /* ogre1.wav in Resources */,
 				F4B563AD1AB3A5CF0094B2A7 /* ogre4.wav in Resources */,
-				F4DD1DE51AB552CB006B200A /* Warrior-attack.atlas in Resources */,
 				F4B563A31AB3A5CF0094B2A7 /* mnstr4.wav in Resources */,
 				F4B563BC1AB3A5CF0094B2A7 /* shade8.wav in Resources */,
 				F4B563AF1AB3A5CF0094B2A7 /* shade1.wav in Resources */,
@@ -1020,7 +970,6 @@
 				F4B563891AB3A5CF0094B2A7 /* metal-small3.wav in Resources */,
 				F4B5639B1AB3A5CF0094B2A7 /* mnstr10.wav in Resources */,
 				F4B563A01AB3A5CF0094B2A7 /* mnstr15.wav in Resources */,
-				F4DD1DDF1AB552CB006B200A /* Mage-attack.atlas in Resources */,
 				68A18D501AA8719E001CCE1D /* Notes in Resources */,
 				F4B563B71AB3A5CF0094B2A7 /* shade3.wav in Resources */,
 				F4B563901AB3A5CF0094B2A7 /* random5.wav in Resources */,
@@ -1033,7 +982,6 @@
 				F4B5639A1AB3A5CF0094B2A7 /* mnstr1.wav in Resources */,
 				F4B563711AB3A5CF0094B2A7 /* sword-unsheathe4.wav in Resources */,
 				F4B563A41AB3A5CF0094B2A7 /* mnstr5.wav in Resources */,
-				F4DD1DE81AB552CB006B200A /* Warrior-stumble.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
