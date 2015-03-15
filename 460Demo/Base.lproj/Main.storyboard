@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -79,6 +79,7 @@
                                 <state key="normal" image="Mage Icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" image="Mage Icon_selected"/>
                                 <connections>
                                     <action selector="mageSelectionButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="hqQ-ul-zaX"/>
                                 </connections>
@@ -146,6 +147,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="671" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="b63-TC-da9" userLabel="Background">
+                                <rect key="frame" x="0.0" y="-71" width="600" height="671"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="Tml-IY-XcI"/>
+                                    <constraint firstAttribute="height" constant="671" id="chW-rD-Lw4"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Tml-IY-XcI"/>
+                                        <exclude reference="chW-rD-Lw4"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAz-7P-qzZ">
                                 <rect key="frame" x="277" y="332" width="46" height="30"/>
                                 <state key="normal" title="Back">
@@ -161,6 +180,33 @@
                                     <action selector="startGameButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="4fi-wH-bAc"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Waiting for host to start game....." translatesAutoresizingMaskIntoConstraints="NO" id="Z3F-68-kRT">
+                                <rect key="frame" x="90" y="60" width="420" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Cm-dP-ebt">
+                                <rect key="frame" x="90" y="146" width="97" height="96"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUN-Ty-zZa">
+                                <rect key="frame" x="195" y="146" width="97" height="96"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6O2-F1-5jM">
+                                <rect key="frame" x="302" y="146" width="97" height="96"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFx-dl-Yyc">
+                                <rect key="frame" x="407" y="146" width="97" height="96"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-UG-vi2">
+                                <rect key="frame" x="90" y="116" width="97" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BKt-Bj-0Qc">
+                                <rect key="frame" x="90" y="244" width="97" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -171,6 +217,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="characterOneClass" destination="3Jb-UG-vi2" id="a9g-Ey-tg4"/>
+                        <outlet property="characterOneImage" destination="9Cm-dP-ebt" id="DR0-a6-Nke"/>
+                        <outlet property="characterOneName" destination="BKt-Bj-0Qc" id="XOV-i7-C2Y"/>
                         <outlet property="startGameButton" destination="D9D-1P-Scm" id="gzQ-o5-BtI"/>
                         <segue destination="2ym-kd-4K2" kind="presentation" identifier="gameSegue" id="EZS-Fw-Yde"/>
                     </connections>
@@ -205,10 +254,11 @@
         <image name="GreyBackgroundBar" width="361" height="51"/>
         <image name="GreyBackgroundBarDisabled" width="361" height="51"/>
         <image name="Mage Icon" width="128" height="128"/>
+        <image name="Mage Icon_selected" width="128" height="128"/>
         <image name="SplashArt1" width="523" height="124"/>
         <image name="Warrior Icon" width="128" height="128"/>
         <image name="Warrior Icon_selected" width="128" height="128"/>
         <image name="gate" width="1034" height="1000"/>
     </resources>
-    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
