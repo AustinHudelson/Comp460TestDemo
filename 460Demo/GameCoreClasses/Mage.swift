@@ -12,7 +12,7 @@ import Foundation
 @objc(Mage)
 class Mage: Unit, PType
 {
-    var AnimationName = "Character1BaseColorization"
+    var AnimationName = "Character2BaseColorization"
     
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
@@ -24,6 +24,7 @@ class Mage: Unit, PType
         /* Sprite setup. Needs to be done in every subclass of Unit */
         initializeAnimations()
         self.sprite.position = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
+        self.sprite.zPosition = 1
     }
     
     override init(ID:String, spawnLocation: CGPoint)
@@ -45,7 +46,7 @@ class Mage: Unit, PType
         //Initializes all the DS_ animations
         initializeAnimations()
         self.sprite.position = spawnLocation
-        
+        self.sprite.zPosition = 1
         /* Initialize Warrior buttons. They will automatically be added to the scene */
         let Button0: Ability = ButtonAreaHeal(slot: 0)
         let Button1: Ability = ButtonShrink(slot: 1)

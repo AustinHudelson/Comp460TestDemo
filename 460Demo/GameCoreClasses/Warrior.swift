@@ -24,6 +24,7 @@ class Warrior: Unit, PType
         /* Sprite setup. Needs to be done in every subclass of Unit */
         initializeAnimations()
         self.sprite.position = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
+        self.sprite.zPosition = 1
     }
     
     override init(ID:String, spawnLocation: CGPoint)
@@ -45,7 +46,7 @@ class Warrior: Unit, PType
         //Initializes all the DS_ animations
         initializeAnimations()
         self.sprite.position = spawnLocation
-        
+        self.sprite.zPosition = 1
         /* Initialize Warrior buttons. They will automatically be added to the scene */
         let Button0: Ability = ButtonHeal(slot: 0)
         let Button1: Ability = ButtonEnrage(slot: 1)
