@@ -38,8 +38,6 @@ class ZoneListener: NSObject,ZoneRequestListener
             }
             else {
                 println("onGetMatchedRoomsDone: Failed to find a room with the \"joinable\" property! Creating a new one dynamically instead")
-                var roomProperties: Dictionary<String, AnyObject> = [:]
-                roomProperties["joinable"] = true
                 
                 // Create a room name with roomName = playerName & maxUsers = roomMaxUsers
                 let playerName = AppWarpHelper.sharedInstance.playerName

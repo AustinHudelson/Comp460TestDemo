@@ -105,19 +105,14 @@ class AppWarpHelper: NSObject
     }
     
     /*
-        Update the room's "joinable" property based on whether room host has already started the game
+        Update the room's "joinable" property to unjoinable
     */
-    func updateRoomJoinable(gameStarted: Bool)
+    func updateRoomToUnjoinable()
     {
         var roomProperties: Dictionary<String, AnyObject> = [:]
+        roomProperties["joinable"] = false
         
         /* We want to remove the "joinable" property so it can no longer be found as a joinable room */
-        if gameStarted {
-            roomProperties["joinable"] = false
-        } else {
-            roomProperties["joinable"] = true
-        }
-        
         WarpClient.getInstance().updateRoom(roomId, addProperties: roomProperties, removeProperties: nil)
     }
     
@@ -263,7 +258,7 @@ class AppWarpHelper: NSObject
         
         /* if you're the host, set roomProperty to unjoinable */
         if playerName == host {
-            updateRoomJoinable(true)
+            updateRoomToUnjoinable()
         }
         
         lobby!.performSegueWithIdentifier("gameSegue", sender: nil)
