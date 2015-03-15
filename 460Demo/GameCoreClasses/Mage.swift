@@ -32,10 +32,10 @@ class Mage: Unit, PType
         super.init(ID:ID, spawnLocation: spawnLocation)
         //INITILIZE THE UNITS STATS HERE!!!
         self.type = "Mage"
-        self.health = 100
-        self.maxhealth = 100
+        self.health = 80
+        self.maxhealth = 80
         self.healthregen = 1
-        self.speed = 50.0
+        self.speed = 75.0
         self.attackRange = 1000.0
         self.attackSpeed = 2.0
         self.attackDamage = 5
