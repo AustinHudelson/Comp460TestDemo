@@ -210,7 +210,7 @@ class Unit: SerializableJSON, PType
         var duration: CGFloat
         var walkSequence: SKAction
             
-        if maxMoveDistance < remainingDistance {
+        if maxMoveDistance < remainingDistance+3.0 { //Give some leway for the final move. mostly to make attack work smoother.
             //Move a short distance towards the destination.
             adjustedMove = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:destination, distance: maxMoveDistance)
             duration = maxMoveDistance/speed
@@ -237,9 +237,9 @@ class Unit: SerializableJSON, PType
         }
         
         //Check facing
-        if (self.sprite.position.x > destination.x) {
+        if (self.sprite.position.x > destination.x-1.0) {
             self.faceLeft()
-        } else if (self.sprite.position.x < destination.x) {
+        } else if (self.sprite.position.x < destination.x+1.0) {
             self.faceRight()
         }
         
