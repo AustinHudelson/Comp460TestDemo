@@ -22,7 +22,7 @@ class ButtonAreaHeal: Ability
     override func apply(receiverIn: Unit) {
         super.apply(receiverIn)
         var sendData: Dictionary<String, Array<AnyObject>> = [:]
-        var heal: Heal = Heal(receiverIn: receiverIn, healAmount: 20)
+        var heal: AreaHeal = AreaHeal(receiverIn: receiverIn)
         sendData["Orders"] = []
         sendData["Orders"]!.append(heal.toJSON())
         AppWarpHelper.sharedInstance.sendUpdate(&sendData)

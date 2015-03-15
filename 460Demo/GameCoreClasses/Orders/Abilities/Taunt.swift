@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(Taunt)
+//@objc(Taunt)
 class Taunt: Order, PType
 {
 }

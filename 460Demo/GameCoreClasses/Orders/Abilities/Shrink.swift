@@ -1,8 +1,8 @@
 //
-//  Heal.swift
+//  Shrink.swift
 //  460Demo
 //
-//  Created by Robert Ko on 3/13/15.
+//  Created by Robert Ko on 3/15/15.
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
 
@@ -26,7 +26,7 @@ class Shrink: Order, PType
     
     required init(receivedData: Dictionary<String, AnyObject>) {
         super.init(receivedData: receivedData)
-        self.restoreProperties(Heal.self, receivedData: receivedData)
+        self.restoreProperties(Shrink.self, receivedData: receivedData)
         
         self.DS_receiver = Game.global.getUnit(ID!)
     }
