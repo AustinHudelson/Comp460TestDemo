@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
@@ -165,21 +165,6 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAz-7P-qzZ">
-                                <rect key="frame" x="277" y="332" width="46" height="30"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9D-1P-Scm">
-                                <rect key="frame" x="248" y="285" width="105" height="30"/>
-                                <state key="normal" title="Start Game">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startGameButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="4fi-wH-bAc"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Waiting for host to start game....." translatesAutoresizingMaskIntoConstraints="NO" id="Z3F-68-kRT">
                                 <rect key="frame" x="90" y="60" width="420" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
@@ -197,9 +182,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFx-dl-Yyc">
                                 <rect key="frame" x="407" y="146" width="97" height="96"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-UG-vi2">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-UG-vi2">
                                 <rect key="frame" x="90" y="116" width="97" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BKt-Bj-0Qc">
@@ -207,26 +192,52 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-pi-Psd">
+                                <rect key="frame" x="195" y="116" width="97" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OJg-J2-uNF">
+                                <rect key="frame" x="302" y="116" width="97" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3VK-i2-IKg">
+                                <rect key="frame" x="407" y="116" width="97" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9D-1P-Scm">
+                                <rect key="frame" x="199" y="285" width="203" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="Start Game" backgroundImage="GreyBackgroundBar">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled" backgroundImage="GreyBackgroundBarDisabled"/>
+                                <connections>
+                                    <action selector="startGameButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="4fi-wH-bAc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="D9D-1P-Scm" secondAttribute="centerY" id="FYj-7A-nG0"/>
-                            <constraint firstItem="gAz-7P-qzZ" firstAttribute="top" secondItem="D9D-1P-Scm" secondAttribute="bottom" constant="30" id="VQe-kq-ysj"/>
-                            <constraint firstAttribute="centerX" secondItem="gAz-7P-qzZ" secondAttribute="centerX" id="ZXp-T1-7Ha"/>
-                            <constraint firstAttribute="centerX" secondItem="D9D-1P-Scm" secondAttribute="centerX" id="kMm-wO-PoD"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="characterOneClass" destination="3Jb-UG-vi2" id="a9g-Ey-tg4"/>
+                        <outlet property="characterFourImage" destination="aFx-dl-Yyc" id="9oO-Do-9ZO"/>
+                        <outlet property="characterFourName" destination="3VK-i2-IKg" id="C9x-BO-xpK"/>
+                        <outlet property="characterOneClass" destination="3Jb-UG-vi2" id="jhb-eL-Y68"/>
                         <outlet property="characterOneImage" destination="9Cm-dP-ebt" id="DR0-a6-Nke"/>
-                        <outlet property="characterOneName" destination="BKt-Bj-0Qc" id="XOV-i7-C2Y"/>
+                        <outlet property="characterOneName" destination="3Jb-UG-vi2" id="wSV-XM-7pE"/>
+                        <outlet property="characterThreeImage" destination="6O2-F1-5jM" id="KYH-Xs-Ire"/>
+                        <outlet property="characterThreeName" destination="OJg-J2-uNF" id="O9f-1A-VM7"/>
+                        <outlet property="characterTwoImage" destination="SUN-Ty-zZa" id="y68-mj-feI"/>
+                        <outlet property="characterTwoName" destination="6TD-pi-Psd" id="9zL-Kp-qsN"/>
                         <outlet property="startGameButton" destination="D9D-1P-Scm" id="gzQ-o5-BtI"/>
                         <segue destination="2ym-kd-4K2" kind="presentation" identifier="gameSegue" id="EZS-Fw-Yde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVX-m0-sSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="321" y="165"/>
+            <point key="canvasLocation" x="353" y="527"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="n3C-XH-PIy">
