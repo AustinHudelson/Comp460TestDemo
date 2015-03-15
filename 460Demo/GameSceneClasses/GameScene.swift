@@ -154,7 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         /* Initialize buttons. They will automatically be added to the scene */
         let Button0: Ability = ButtonHeal(slot: 0)
-        let Button1: Ability = ButtonEnrage(slot: 1)
+        let Button1: Ability = ButtonShrink(slot: 1)
         
 //        // physics
 //        self.physicsWorld.gravity = CGVectorMake(0, 0)

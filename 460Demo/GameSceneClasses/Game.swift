@@ -271,7 +271,7 @@ class Game {
         var nearby: Unit? = nil
         var near: CGFloat = CGFloat.infinity
         
-        for (id, unit) in Game.global.playerMap {
+        for (id, unit) in Game.global.enemyMap {
             if unit.alive == false {
                 continue
             }

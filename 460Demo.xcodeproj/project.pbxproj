@@ -36,6 +36,8 @@
 		E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */; };
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
 		F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402F68E1AB51AF300A930C2 /* EnemyMage.swift */; };
+		F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */; };
+		F42A96111AB56D3300E07C67 /* Shrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A96101AB56D3300E07C67 /* Shrink.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
 		F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */ = {isa = PBXBuildFile; fileRef = F42FD5AE1A895D4F002C6624 /* Background1.png */; };
 		F440A55A1AB5301900D97278 /* Warrior.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F440A5591AB5301900D97278 /* Warrior.atlas */; };
@@ -217,6 +219,8 @@
 		E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
+		F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonShrink.swift; sourceTree = "<group>"; };
+		F42A96101AB56D3300E07C67 /* Shrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shrink.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F42FD5AE1A895D4F002C6624 /* Background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background1.png; path = ../Background1.png; sourceTree = "<group>"; };
 		F440A5591AB5301900D97278 /* Warrior.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Warrior.atlas; path = GameCoreClasses/Warrior.atlas; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 				686AA7601AB38EAE00C03FD7 /* Heal.swift */,
 				F4DD1DD01AB54F96006B200A /* AreaHeal.swift */,
 				686AA7621AB38EBD00C03FD7 /* Enrage.swift */,
+				F42A96101AB56D3300E07C67 /* Shrink.swift */,
 			);
 			path = Abilities;
 			sourceTree = "<group>";
@@ -509,6 +514,7 @@
 				F4B562EB1AB0D8C20094B2A7 /* Ability.swift */,
 				F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */,
 				F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */,
+				F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */,
 				F4B562F71AB38A9A0094B2A7 /* ButtonEnrage.swift */,
 			);
 			name = Abilities;
@@ -1071,7 +1077,9 @@
 				68F35CB61A84C540004905BF /* Order.swift in Sources */,
 				68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */,
 				F4B562F81AB38A9A0094B2A7 /* ButtonEnrage.swift in Sources */,
+				F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */,
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,
+				F42A96111AB56D3300E07C67 /* Shrink.swift in Sources */,
 				686AA7611AB38EAE00C03FD7 /* Heal.swift in Sources */,
 				68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
