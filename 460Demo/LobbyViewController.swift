@@ -13,6 +13,9 @@ class LobbyViewController: UIViewController {
     var myPlayerName: String? = nil
     var myClass: String = ""
     @IBOutlet weak var startGameButton: UIButton!
+    @IBOutlet weak var characterOneClass: UITextView!
+    @IBOutlet weak var characterOneImage: UIImageView!
+    @IBOutlet weak var characterOneName: UITextView!
     @IBAction func startGameButtonAction(sender: AnyObject) {
         if myPlayerName != nil && myPlayerName == AppWarpHelper.sharedInstance.host {
             /*
@@ -45,9 +48,25 @@ class LobbyViewController: UIViewController {
         
         AppWarpHelper.sharedInstance.lobby = self
         AppWarpHelper.sharedInstance.playerClass = myClass
+        setIcons()
+        
         
     }
     
+    func setIcons()
+    {
+        if AppWarpHelper.sharedInstance.playerClass == "Mage"
+        {
+            characterOneClass.text = "Mage"
+            characterOneImage.image = UIImage(named: "Mage Icon")
+        }
+        else
+        {
+            characterOneClass.text = "Warrior"
+            characterOneImage.image = UIImage(named: "Warrior Icon")
+        }
+        characterOneName.text = AppWarpHelper.sharedInstance.playerName
+    }
     func updateUserList() {
         /* print the updated user list and set host to be the first guy in that list*/
         println("Current users in the room lobby:")

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -159,8 +159,8 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="chW-rD-Lw4"/>
                                         <exclude reference="Tml-IY-XcI"/>
+                                        <exclude reference="chW-rD-Lw4"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -180,7 +180,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Waiting for host to start game....." translatesAutoresizingMaskIntoConstraints="NO" id="Z3F-68-kRT">
-                                <rect key="frame" x="90" y="60" width="420" height="128"/>
+                                <rect key="frame" x="90" y="60" width="420" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -196,6 +196,16 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFx-dl-Yyc">
                                 <rect key="frame" x="407" y="146" width="97" height="96"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-UG-vi2">
+                                <rect key="frame" x="90" y="116" width="97" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BKt-Bj-0Qc">
+                                <rect key="frame" x="90" y="244" width="97" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -206,6 +216,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="characterOneClass" destination="3Jb-UG-vi2" id="a9g-Ey-tg4"/>
+                        <outlet property="characterOneImage" destination="9Cm-dP-ebt" id="DR0-a6-Nke"/>
+                        <outlet property="characterOneName" destination="BKt-Bj-0Qc" id="XOV-i7-C2Y"/>
                         <outlet property="startGameButton" destination="D9D-1P-Scm" id="gzQ-o5-BtI"/>
                         <segue destination="2ym-kd-4K2" kind="presentation" identifier="gameSegue" id="EZS-Fw-Yde"/>
                     </connections>
