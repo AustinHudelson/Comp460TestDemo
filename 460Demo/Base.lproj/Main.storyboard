@@ -58,15 +58,13 @@
                                     <action selector="startButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="wzC-le-b0v"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
                                 <rect key="frame" x="74" y="398" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="khG-UC-iQ0"/>
                                     <constraint firstAttribute="height" constant="150" id="qK0-5L-g4c"/>
                                 </constraints>
-                                <state key="normal" image="Warrior Icon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" image="Warrior Icon"/>
                                 <connections>
                                     <action selector="warriorSelectionButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="OeL-gq-d0r"/>
                                 </connections>

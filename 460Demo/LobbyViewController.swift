@@ -44,6 +44,8 @@ class LobbyViewController: UIViewController {
         println("Completed connection w/ username = \(myPlayerName)")
         
         AppWarpHelper.sharedInstance.lobby = self
+        AppWarpHelper.sharedInstance.playerClass = myClass
+        
     }
     
     func updateUserList() {
