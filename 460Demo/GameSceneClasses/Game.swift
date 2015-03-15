@@ -33,6 +33,15 @@ class Game {
         return Static.instance!
     }
     
+    /*
+     * Clears all the global data in this class to the default values
+     */
+    func clearGlobals(){
+        playerMap = [:]
+        enemyMap = [:]
+        myPlayerIsDead = false
+    }
+    
     
     /*
      *  Adds a Unit respresenting a player

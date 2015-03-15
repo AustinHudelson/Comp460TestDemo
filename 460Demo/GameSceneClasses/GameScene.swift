@@ -18,6 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      */
     var playerIsTouched = false
     var viewController: UIViewController?
+    var sceneActive = true
     /*
         Update the game state according to dictionary received over the network
     */
@@ -112,6 +113,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //unit_list[newUnit.ID] = newUnit
         //newUnit.addUnitToGameScene(self, pos: position, scaleX: 0.5, scaleY: 0.5)
         
+        //Dont send anything if this scene is no longer active (destroyed)
+        if sceneActive == false {
+            println("Warning tried to send create unit from a non active scene")
+            return
+        }
+        
+        
         var sendData: Dictionary<String, Array<AnyObject>> = [:]
         sendData["Units"] = []
         sendData["Units"]!.append(newUnit.toJSON())
@@ -123,6 +131,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         println("Game Scene Init")
+        println("Moved in to scene is Active:")
+        println(sceneActive)
+        Game.global.clearGlobals()
         Game.global.scene = self
         /* Setup game background image */
         let background = SKSpriteNode(imageNamed: "Background1")
@@ -177,6 +188,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             */
             if exitButton!.containsPoint(touchLocation)
             {
+                sceneActive = false
                 AppWarpHelper.sharedInstance.leaveGame()
                 println("exit pressed")
                 self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)

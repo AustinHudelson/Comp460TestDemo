@@ -10,6 +10,12 @@ import UIKit
 
 class RoomListener: NSObject,RoomRequestListener
 {
+    //Keeps track of the last time a room was created
+    var lastCreatedRoomTime: NSDate = Timer.getCurrentTime()
+    //True if this Room Listener has never created a room.
+    var firstRoom = true
+    
+    
     func onJoinRoomDone(roomEvent:RoomEvent)
     {
         if roomEvent.result == 0 // SUCESS
@@ -26,12 +32,22 @@ class RoomListener: NSObject,RoomRequestListener
         {
             /*
                 Failed to join the room. This probably happens when room a room is joinable because host hasnt started the game
-                yet but the room is full. Therefore we should create a new room
+                yet but the room is full. Therefore we should create a new room.
+                The time check is to make sure that you do not try to create more than 1 room every 3 seconds to not bog down the appwarp servers.
             */
-            println("onJoinRoomDone: Failed to find a room that isn't full! Creating one instead")
-            let playerName = AppWarpHelper.sharedInstance.playerName
-            let maxUsers = AppWarpHelper.sharedInstance.roomMaxUsers
-            AppWarpHelper.sharedInstance.createRoom(playerName, maxUsers: maxUsers)
+            if firstRoom == true || Timer.diffDateNow(lastCreatedRoomTime) < NSTimeInterval(3.0){
+                println("onJoinRoomDone: Failed to find a room that isn't full! Creating one instead")
+                let playerName = AppWarpHelper.sharedInstance.playerName
+                let maxUsers = AppWarpHelper.sharedInstance.roomMaxUsers
+                //Update variables for last created room check
+                firstRoom = false
+                lastCreatedRoomTime = Timer.getCurrentTime()
+                AppWarpHelper.sharedInstance.createRoom(playerName, maxUsers: maxUsers)
+            } else {
+                println("Attempted to create 2 rooms within 3 seconds of one another. Exiting")
+                AppWarpHelper.sharedInstance.disconnectFromAppWarp()
+            }
+            
         }
     }
     

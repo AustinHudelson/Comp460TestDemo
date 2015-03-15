@@ -180,7 +180,7 @@ class EnemyMage: Unit, PType
         super.addUnitToGameScene(gameScene, pos: pos)
         
         //Give a light red tint.
-        self.applyTint(SKColor.redColor(), factor: 0.45, blendDuration: NSTimeInterval(0.0))
+        self.applyTint(SKColor.yellowColor(), factor: 0.45, blendDuration: NSTimeInterval(0.0))
         
         //Mage should walk on to the screen before being allowed to attack.
         if Game.global.scene != nil && (self.sprite.position.x < CGRectGetMinX(Game.global.scene!.frame)) {

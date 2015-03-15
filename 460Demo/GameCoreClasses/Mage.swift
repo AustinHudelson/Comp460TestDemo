@@ -167,7 +167,7 @@ class Mage: Unit, PType
         
         /* Sprite setup */
         self.sprite = SKSpriteNode(imageNamed: "Mage")
-        self.DS_health_txt.fontColor = UIColor.redColor()
+        //self.DS_health_txt.fontColor = UIColor.redColor()
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
