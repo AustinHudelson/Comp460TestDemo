@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -35,6 +35,9 @@
                                         <exclude reference="itk-Nf-tlj"/>
                                     </mask>
                                 </variation>
+                                <variation key="widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="801" height="671"/>
+                                </variation>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Player Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzJ-mn-bze">
                                 <rect key="frame" x="211" y="297" width="178" height="30"/>
@@ -43,6 +46,9 @@
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="SplashArt1" translatesAutoresizingMaskIntoConstraints="NO" id="QkX-kG-UfX">
                                 <rect key="frame" x="74" y="70" width="452" height="128"/>
+                                <variation key="widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="174" y="76" width="452" height="128"/>
+                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWx-W1-Kxd" colorLabel="IBBuiltInLabel-Red">
                                 <rect key="frame" x="203" y="212" width="195" height="64"/>
@@ -53,6 +59,9 @@
                                 <state key="disabled" title="S t a r t" backgroundImage="GreyBackgroundBarDisabled">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="302" y="223" width="196" height="64"/>
+                                </variation>
                                 <connections>
                                     <action selector="startButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="wzC-le-b0v"/>
                                 </connections>
@@ -65,6 +74,9 @@
                                 </constraints>
                                 <state key="normal" image="Warrior Icon"/>
                                 <state key="selected" image="Warrior Icon_selected"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="93" y="430" width="150" height="150"/>
+                                </variation>
                                 <connections>
                                     <action selector="warriorSelectionButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="OeL-gq-d0r"/>
                                 </connections>
@@ -79,6 +91,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="Mage Icon_selected"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="565" y="430" width="150" height="150"/>
+                                </variation>
                                 <connections>
                                     <action selector="mageSelectionButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="hqQ-ul-zaX"/>
                                 </connections>
@@ -146,65 +161,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="671" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="b63-TC-da9" userLabel="Background">
-                                <rect key="frame" x="0.0" y="-71" width="600" height="671"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="Tml-IY-XcI"/>
-                                    <constraint firstAttribute="height" constant="671" id="chW-rD-Lw4"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Tml-IY-XcI"/>
-                                        <exclude reference="chW-rD-Lw4"/>
-                                    </mask>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="Tg0-l4-LII" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Cm-dP-ebt" userLabel="p1Img">
+                                <rect key="frame" x="90" y="146" width="97" height="96"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="125" y="250" width="100" height="100"/>
                                 </variation>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Waiting for host to start game....." translatesAutoresizingMaskIntoConstraints="NO" id="Z3F-68-kRT">
-                                <rect key="frame" x="90" y="60" width="420" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Cm-dP-ebt">
-                                <rect key="frame" x="90" y="146" width="97" height="96"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUN-Ty-zZa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUN-Ty-zZa" userLabel="p2Img">
                                 <rect key="frame" x="195" y="146" width="97" height="96"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="275" y="250" width="100" height="100"/>
+                                </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6O2-F1-5jM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6O2-F1-5jM" userLabel="p3Img">
                                 <rect key="frame" x="302" y="146" width="97" height="96"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="425" y="250" width="100" height="100"/>
+                                </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFx-dl-Yyc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFx-dl-Yyc" userLabel="p4Img">
                                 <rect key="frame" x="407" y="146" width="97" height="96"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="575" y="250" width="100" height="100"/>
+                                </variation>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-UG-vi2">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-UG-vi2" userLabel="p1Name">
                                 <rect key="frame" x="90" y="116" width="97" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="125" y="190" width="100" height="40"/>
+                                </variation>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BKt-Bj-0Qc">
-                                <rect key="frame" x="90" y="244" width="97" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-pi-Psd">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-pi-Psd" userLabel="p2Name">
                                 <rect key="frame" x="195" y="116" width="97" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="275" y="190" width="100" height="40"/>
+                                </variation>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OJg-J2-uNF">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OJg-J2-uNF" userLabel="p3Name">
                                 <rect key="frame" x="302" y="116" width="97" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="425" y="190" width="100" height="40"/>
+                                </variation>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3VK-i2-IKg">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3VK-i2-IKg" userLabel="p4Name">
                                 <rect key="frame" x="407" y="116" width="97" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="575" y="190" width="100" height="40"/>
+                                </variation>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9D-1P-Scm">
                                 <rect key="frame" x="199" y="285" width="203" height="30"/>
@@ -213,30 +227,68 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" backgroundImage="GreyBackgroundBarDisabled"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="200" y="500" width="400" height="50"/>
+                                </variation>
                                 <connections>
                                     <action selector="startGameButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="4fi-wH-bAc"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Waiting for host to start game....." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Z3F-68-kRT" userLabel="WaitHost">
+                                <rect key="frame" x="90" y="60" width="420" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="150" y="50" width="500" height="48"/>
+                                </variation>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="Tg0-l4-LII" secondAttribute="centerY" id="NoU-Rs-IZw"/>
+                            <constraint firstAttribute="width" secondItem="Tg0-l4-LII" secondAttribute="width" id="Sm1-EQ-ZtM"/>
+                            <constraint firstAttribute="height" secondItem="Tg0-l4-LII" secondAttribute="height" id="eO6-tv-omI"/>
+                            <constraint firstAttribute="centerX" secondItem="Tg0-l4-LII" secondAttribute="centerX" id="kVt-ZA-NfU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Tg0-l4-LII"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="NoU-Rs-IZw"/>
+                                <exclude reference="Sm1-EQ-ZtM"/>
+                                <exclude reference="eO6-tv-omI"/>
+                                <exclude reference="kVt-ZA-NfU"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="Tg0-l4-LII"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="NoU-Rs-IZw"/>
+                                <include reference="Sm1-EQ-ZtM"/>
+                                <include reference="eO6-tv-omI"/>
+                                <include reference="kVt-ZA-NfU"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="characterFourImage" destination="aFx-dl-Yyc" id="9oO-Do-9ZO"/>
-                        <outlet property="characterFourName" destination="3VK-i2-IKg" id="C9x-BO-xpK"/>
-                        <outlet property="characterOneClass" destination="3Jb-UG-vi2" id="jhb-eL-Y68"/>
-                        <outlet property="characterOneImage" destination="9Cm-dP-ebt" id="DR0-a6-Nke"/>
-                        <outlet property="characterOneName" destination="3Jb-UG-vi2" id="wSV-XM-7pE"/>
-                        <outlet property="characterThreeImage" destination="6O2-F1-5jM" id="KYH-Xs-Ire"/>
-                        <outlet property="characterThreeName" destination="OJg-J2-uNF" id="O9f-1A-VM7"/>
-                        <outlet property="characterTwoImage" destination="SUN-Ty-zZa" id="y68-mj-feI"/>
-                        <outlet property="characterTwoName" destination="6TD-pi-Psd" id="9zL-Kp-qsN"/>
+                        <outlet property="p1Img" destination="9Cm-dP-ebt" id="jHg-n1-Peq"/>
+                        <outlet property="p1Name" destination="3Jb-UG-vi2" id="Mqi-QS-UHi"/>
+                        <outlet property="p2Img" destination="SUN-Ty-zZa" id="2Ex-KS-QEb"/>
+                        <outlet property="p2Name" destination="6TD-pi-Psd" id="GD2-oj-3QW"/>
+                        <outlet property="p3Img" destination="6O2-F1-5jM" id="EnP-WF-fe2"/>
+                        <outlet property="p3Name" destination="OJg-J2-uNF" id="ak9-l7-XMX"/>
+                        <outlet property="p4Img" destination="aFx-dl-Yyc" id="aoi-5f-5UL"/>
+                        <outlet property="p4Name" destination="3VK-i2-IKg" id="LPn-4G-Uqq"/>
                         <outlet property="startGameButton" destination="D9D-1P-Scm" id="gzQ-o5-BtI"/>
                         <segue destination="2ym-kd-4K2" kind="presentation" identifier="gameSegue" id="EZS-Fw-Yde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVX-m0-sSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="353" y="527"/>
+            <point key="canvasLocation" x="355.5" y="165"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="n3C-XH-PIy">

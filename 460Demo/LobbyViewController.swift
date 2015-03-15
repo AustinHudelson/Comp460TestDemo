@@ -13,18 +13,17 @@ class LobbyViewController: UIViewController {
     var myPlayerName: String? = nil
     var myClass: String = ""
     @IBOutlet weak var startGameButton: UIButton!
-    @IBOutlet weak var characterOneClass: UITextView!
-    @IBOutlet weak var characterOneName: UITextView!
-    @IBOutlet weak var characterOneImage: UIImageView!
     
+    @IBOutlet weak var p1Name: UITextView!
+    @IBOutlet weak var p2Name: UITextView!
+    @IBOutlet weak var p3Name: UITextView!
+    @IBOutlet weak var p4Name: UITextView!
     
-    @IBOutlet weak var characterTwoName: UITextView!
-    @IBOutlet weak var characterTwoImage: UIImageView!
-    @IBOutlet weak var characterFourName: UITextView!
+    @IBOutlet weak var p1Img: UIImageView!
+    @IBOutlet weak var p2Img: UIImageView!
+    @IBOutlet weak var p3Img: UIImageView!
+    @IBOutlet weak var p4Img: UIImageView!
     
-    @IBOutlet weak var characterFourImage: UIImageView!
-    @IBOutlet weak var characterThreeImage: UIImageView!
-    @IBOutlet weak var characterThreeName: UITextView!
     var classText: Array<UITextView> = Array<UITextView>()
     var classImages: Array<UIImageView> = Array<UIImageView>()
     var playerNames: Array<UITextView> = Array<UITextView>()
@@ -63,15 +62,15 @@ class LobbyViewController: UIViewController {
         
         AppWarpHelper.sharedInstance.lobby = self
         AppWarpHelper.sharedInstance.playerClass = myClass
-        playerNames.append(characterOneName)
-        playerNames.append(characterTwoName)
-        playerNames.append(characterThreeName)
-        playerNames.append(characterFourName)
+        playerNames.append(p1Name)
+        playerNames.append(p2Name)
+        playerNames.append(p3Name)
+        playerNames.append(p4Name)
         
-        classImages.append(characterOneImage)
-        classImages.append(characterTwoImage)
-        classImages.append(characterThreeImage)
-        classImages.append(characterFourImage)
+        classImages.append(p1Img)
+        classImages.append(p2Img)
+        classImages.append(p3Img)
+        classImages.append(p4Img)
         
         println(classImages.count)
         println(playerNames.count)
