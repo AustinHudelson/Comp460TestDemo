@@ -18,7 +18,14 @@ class NotificationListener: NSObject,NotifyListener
     }
     func onUserLeftRoom(roomData: RoomData!, username: String!)
     {
-        
+        println("\(username) has left the room!")
+        /*
+            Transfer host if the host left
+        */
+        let oldHost = AppWarpHelper.sharedInstance.host
+        if username == oldHost {
+            WarpClient.getInstance().getLiveRoomInfo(AppWarpHelper.sharedInstance.roomId)
+        }
     }
     
     func onUserResumed(userName: String!, withLocation locId: String!, isLobby: Bool)
