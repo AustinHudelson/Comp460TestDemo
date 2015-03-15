@@ -76,7 +76,22 @@ class RoomListener: NSObject,RoomRequestListener
         /* update the user list */
         AppWarpHelper.sharedInstance.userName_list = event.joinedUsers
         
-        AppWarpHelper.sharedInstance.updateUserList()
+        
+        /* If gameScene is nil that means we're in the lobby, so do the lobby's updateUserList() */
+        if AppWarpHelper.sharedInstance.gameScene == nil {
+            AppWarpHelper.sharedInstance.updateUserList()
+        }
+        else {
+            let userName_list = AppWarpHelper.sharedInstance.userName_list
+            // We're requesting live room info when host leaves the room, so designate new host
+            let oldHost = AppWarpHelper.sharedInstance.host
+            
+            if (!userName_list.containsObject(oldHost!)) && (userName_list.count > 0) {
+                let newHost = userName_list[0] as String
+                AppWarpHelper.sharedInstance.host = newHost
+                println("Transfering host from \"\(oldHost)\" to \"\(newHost)\"")
+            }
+        }
         
     }
     func onUnSubscribeRoomDone(event: RoomEvent)

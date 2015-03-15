@@ -14,8 +14,23 @@ class LobbyViewController: UIViewController {
     var myClass: String = ""
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var characterOneClass: UITextView!
-    @IBOutlet weak var characterOneImage: UIImageView!
     @IBOutlet weak var characterOneName: UITextView!
+    @IBOutlet weak var characterOneImage: UIImageView!
+    
+    
+    @IBOutlet weak var characterTwoName: UITextView!
+    @IBOutlet weak var characterTwoImage: UIImageView!
+    @IBOutlet weak var characterFourName: UITextView!
+    
+    @IBOutlet weak var characterFourImage: UIImageView!
+    @IBOutlet weak var characterThreeImage: UIImageView!
+    @IBOutlet weak var characterThreeName: UITextView!
+    var classText: Array<UITextView> = Array<UITextView>()
+    var classImages: Array<UIImageView> = Array<UIImageView>()
+    var playerNames: Array<UITextView> = Array<UITextView>()
+    
+    
+    
     @IBAction func startGameButtonAction(sender: AnyObject) {
         if myPlayerName != nil && myPlayerName == AppWarpHelper.sharedInstance.host {
             /*
@@ -48,24 +63,44 @@ class LobbyViewController: UIViewController {
         
         AppWarpHelper.sharedInstance.lobby = self
         AppWarpHelper.sharedInstance.playerClass = myClass
+        playerNames.append(characterOneName)
+        playerNames.append(characterTwoName)
+        playerNames.append(characterThreeName)
+        playerNames.append(characterFourName)
+        
+        classImages.append(characterOneImage)
+        classImages.append(characterTwoImage)
+        classImages.append(characterThreeImage)
+        classImages.append(characterFourImage)
+        
+        println(classImages.count)
+        println(playerNames.count)
         setIcons()
         
+        
+        println("button state \(startGameButton.enabled)")
         
     }
     
     func setIcons()
     {
-        if AppWarpHelper.sharedInstance.playerClass == "Mage"
+        println("Icons")
+        for index in 0 ..< AppWarpHelper.sharedInstance.userName_list.count
         {
-            characterOneClass.text = "Mage"
-            characterOneImage.image = UIImage(named: "Mage Icon")
+            println(index)
+            playerNames[index].text = AppWarpHelper.sharedInstance.userName_list[index] as String
+            classImages[index].image = UIImage(named: "Warrior Icon")
         }
-        else
+        if AppWarpHelper.sharedInstance.userName_list.count != 4
         {
-            characterOneClass.text = "Warrior"
-            characterOneImage.image = UIImage(named: "Warrior Icon")
+            for index in AppWarpHelper.sharedInstance.userName_list.count ..< 4
+            {
+                playerNames[index].text = ""
+                classImages[index].image = nil
+            }
         }
-        characterOneName.text = AppWarpHelper.sharedInstance.playerName
+        
+        
     }
     func updateUserList() {
         /* print the updated user list and set host to be the first guy in that list*/
@@ -73,6 +108,18 @@ class LobbyViewController: UIViewController {
         println(AppWarpHelper.sharedInstance.userName_list)
         
         AppWarpHelper.sharedInstance.host = (AppWarpHelper.sharedInstance.userName_list[0] as String) // designate host
+        if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host
+        {
+            println(AppWarpHelper.sharedInstance.playerName)
+            println(AppWarpHelper.sharedInstance.host)
+            startGameButton.enabled = false
+        }
+        else
+        {
+            startGameButton.enabled = true
+        }
+        
+        setIcons()
     }
 
     override func didReceiveMemoryWarning() {
