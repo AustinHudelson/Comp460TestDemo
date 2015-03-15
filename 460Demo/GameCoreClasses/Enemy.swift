@@ -151,6 +151,7 @@ class Enemy: Unit, PType
             Atlas.textureNamed(AnimationName+abilityAnimName+"12"),
             Atlas.textureNamed(AnimationName+abilityAnimName+"13"),
             ], timePerFrame: 0.1)
+        
         Atlas = SKTextureAtlas(named: animPrefix+stumbleAnimName)
         var stumbleTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+stumbleAnimName+"0"),
