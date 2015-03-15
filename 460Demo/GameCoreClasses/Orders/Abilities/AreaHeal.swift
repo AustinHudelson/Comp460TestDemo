@@ -38,6 +38,8 @@ class AreaHeal: Order, PType
     }
     
     func healOverTime(heal: Int, target:Unit){
+        let soundAction = SKAction.playSoundFileNamed("spell.wav", waitForCompletion: true)
+        self.DS_receiver?.sprite.runAction(soundAction)
         let wait = NSTimeInterval(0.0625)
         if (heal <= 0) {
             return

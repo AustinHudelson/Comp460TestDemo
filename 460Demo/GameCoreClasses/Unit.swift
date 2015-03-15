@@ -312,8 +312,25 @@ class Unit: SerializableJSON, PType
                 self.sprite.runAction(self.DS_attackAnim!, withKey: "attackAnim")
                 //Apply the damage to the enemy. NOTE: Might be more realistic to do this half way though the attack animation.
                 target.takeDamage(self.attackDamage)
+                if self.type == "Warrior"
+                {
+                    let soundAction = SKAction.playSoundFileNamed("swing3.wav", waitForCompletion: true)
+                    self.sprite.runAction(soundAction)
+                }
+                else if self.type == "Mage" || self.type == "EnemyMage"
+                {
+                    let soundAction = SKAction.playSoundFileNamed("magic1.wav", waitForCompletion: true)
+                    self.sprite.runAction(soundAction)
+                }
+                else
+                {
+                    let soundAction = SKAction.playSoundFileNamed("swing2.wav", waitForCompletion: true)
+                    self.sprite.runAction(soundAction)
+                }
+         
             }
-        } else {
+        }
+        else {
             //target is invalid. call the complete block.
             self.sprite.runAction(SKAction.runBlock(complete))
         }
@@ -366,6 +383,8 @@ class Unit: SerializableJSON, PType
         let removeBlockAction:SKAction = SKAction.runBlock({
             Game.global.removeUnit(self.ID)
         })
+        let soundAction = SKAction.playSoundFileNamed("mnstr12.wav", waitForCompletion: true)
+        self.sprite.runAction(soundAction)
         let deathThenRemove: SKAction = SKAction.sequence([DS_deathAnim!, waitAction, removeBlockAction])
         self.sprite.runAction(deathThenRemove)
     }
