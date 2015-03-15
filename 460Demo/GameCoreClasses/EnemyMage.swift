@@ -1,16 +1,16 @@
 //
-//  Mage.swift
+//  Warrior.swift
 //  460Demo
 //
-//  Created by Austin on 3/13/15.
+//  Created by Olyver on 1/31/15.
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
 
 import SpriteKit
 import Foundation
 
-@objc(Mage)
-class Mage: Unit, PType
+@objc(EnemyMage)
+class EnemyMage: Unit, PType
 {
     var AnimationName = "Character1BaseColorization"
     
@@ -18,29 +18,30 @@ class Mage: Unit, PType
         //Special case for sprite
         super.init(receivedData: receivedData)
         
-        
         restoreProperties(Warrior.self, receivedData: receivedData)
         
-        /* Sprite setup. Needs to be done in every subclass of Unit */
+        //Initializes all the DS_ animations
         initializeAnimations()
-        self.sprite.position = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
+        /* Sprite setup */
+        let spawnLoc = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
+        sprite.position = spawnLoc
     }
     
     override init(ID:String, spawnLocation: CGPoint)
     {
         super.init(ID:ID, spawnLocation: spawnLocation)
         //INITILIZE THE UNITS STATS HERE!!!
-        self.type = "Mage"
-        self.health = 100
-        self.maxhealth = 100
-        self.healthregen = 1
-        self.speed = 50.0
-        self.attackRange = 1000.0
-        self.attackSpeed = 2.0
-        self.attackDamage = 5
-        self.isEnemy = false
-        self.xSize = 300.0
-        self.ySize = 300.0
+        self.type = "EnemyMage"
+        self.health = 30
+        self.maxhealth = 30
+        self.healthregen = 0
+        self.attackSpeed = 1.88
+        self.attackDamage = 4
+        self.speed = 30.0
+        self.attackRange = 300.0
+        self.isEnemy = true
+        self.xSize = 250.0
+        self.ySize = 250.0
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -48,7 +49,7 @@ class Mage: Unit, PType
     }
     
     /*
-    * Initializes the animations for this class. And creates the sprite
+    * Initializes the animations for this class
     */
     func initializeAnimations(){
         //
@@ -127,7 +128,7 @@ class Mage: Unit, PType
             Atlas.textureNamed(AnimationName+deathAnimName+"21"),
             Atlas.textureNamed(AnimationName+deathAnimName+"22"),
             Atlas.textureNamed(AnimationName+deathAnimName+"23"),
-            ], timePerFrame: 0.05)
+            ], timePerFrame: 0.05, resize: false, restore: false)
         
         var abilityTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+abilityAnimName+"0"),
@@ -167,9 +168,33 @@ class Mage: Unit, PType
         
         /* Sprite setup */
         self.sprite = SKSpriteNode(imageNamed: "Mage")
-        //self.DS_health_txt.fontColor = UIColor.redColor()
-        self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
+        self.sprite.runAction(self.DS_standAnim)
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
+    }
+    
+    override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint) {
+        //Enemies have a red health text color
+        self.DS_health_txt.fontColor = UIColor.redColor()
+        
+        super.addUnitToGameScene(gameScene, pos: pos)
+        
+        //Give a light red tint.
+        self.applyTint(SKColor.yellowColor(), factor: 0.45, blendDuration: NSTimeInterval(0.0))
+        
+        //Mage should walk on to the screen before being allowed to attack.
+        if Game.global.scene != nil && (self.sprite.position.x < CGRectGetMinX(Game.global.scene!.frame)) {
+            //Mage is off the side of the screen on the left side. Send order to move on to the screen then roam attack.
+            self.move(CGPoint(x: CGRectGetMinX(Game.global.scene!.frame)+80, y: self.sprite.position.y), complete: {
+                self.sendOrder(RoamAttack(receiverIn: self))
+            })
+        } else if (Game.global.scene != nil && (self.sprite.position.y > CGRectGetMaxX(Game.global.scene!.frame))) {
+            //Mage is off the side of the screen on the right side. Send order to move on to the screen then roam attack.
+            self.move(CGPoint(x: CGRectGetMaxX(Game.global.scene!.frame)-80, y: self.sprite.position.y), complete: {
+                self.sendOrder(RoamAttack(receiverIn: self))
+            })
+        } else {
+            self.sendOrder(RoamAttack(receiverIn: self))
+        }
     }
 }

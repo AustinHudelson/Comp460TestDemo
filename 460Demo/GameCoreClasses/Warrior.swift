@@ -31,12 +31,13 @@ class Warrior: Unit, PType
         super.init(ID:ID, spawnLocation: spawnLocation)
         //INITILIZE THE UNITS STATS HERE!!!
         self.type = "Warrior"
-        self.health = 30
+        self.health = 100
         self.maxhealth = 100
         self.healthregen = 1
-        self.speed = 50.0
+        self.speed = 90.0
         self.attackSpeed = 1.88
         self.attackRange = 20.0
+        self.attackDamage = 10
         self.isEnemy = false
         self.xSize = 300.0
         self.ySize = 300.0

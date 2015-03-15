@@ -57,9 +57,15 @@ class AppWarpHelper: NSObject
             }
             return Static.instance!
     }
-
+    
+    var initializeWarpRan = false
+    
     func initializeWarp()
     {
+        if initializeWarpRan == true {
+            return
+        }
+        initializeWarpRan = true
         WarpClient.initWarp(api_key, secretKey: secret_key)
         var warpClient:WarpClient = WarpClient.getInstance()
         warpClient.enableTrace(true)
@@ -271,6 +277,16 @@ class AppWarpHelper: NSObject
     
     func disconnectFromAppWarp() {
         println("Disconnecting from AppWarp...")
+        if gameScene != nil && gameScene!.viewController != nil {
+            self.gameScene!.viewController!.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
+        } else if lobby != nil {
+            self.lobby!.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
+        } else {
+            println("Unable to move to main menu, no specified game or lobby scene")
+        }
+        gameScene?.sceneActive = false  //Flag the scene as no longer active so that it will not attempt to send any more updates.
+        self.gameScene = nil
+        self.lobby = nil
         WarpClient.getInstance().disconnect()
     }
 }

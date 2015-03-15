@@ -32,15 +32,16 @@ class Enemy: Unit, PType
         super.init(ID:ID, spawnLocation: spawnLocation)
         //INITILIZE THE UNITS STATS HERE!!!
         self.type = "Enemy"
-        self.health = 15
-        self.maxhealth = 15
+        self.health = 40
+        self.maxhealth = 40
         self.healthregen = 0
-        self.attackSpeed = 1.88
-        self.speed = 30.0
+        self.attackSpeed = 1.5
+        self.attackDamage = 8
+        self.speed = 70.0
         self.attackRange = 20.0
         self.isEnemy = true
-        self.xSize = 200.0
-        self.ySize = 200.0
+        self.xSize = 275.0
+        self.ySize = 275.0
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -173,6 +174,8 @@ class Enemy: Unit, PType
     }
     
     override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint) {
+        //Enemy has a red health text color
+        self.DS_health_txt.fontColor = UIColor.redColor()
         super.addUnitToGameScene(gameScene, pos: pos)
         self.sendOrder(RoamAttack(receiverIn: self))
         self.applyTint(SKColor.redColor(), factor: 0.75, blendDuration: NSTimeInterval(0.0))
