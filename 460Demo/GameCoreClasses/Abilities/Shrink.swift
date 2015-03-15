@@ -26,7 +26,7 @@ class Shrink: Order, PType
     
     required init(receivedData: Dictionary<String, AnyObject>) {
         super.init(receivedData: receivedData)
-        self.restoreProperties(Heal.self, receivedData: receivedData)
+        self.restoreProperties(Shrink.self, receivedData: receivedData)
         
         self.DS_receiver = Game.global.getUnit(ID!)
     }
