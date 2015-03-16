@@ -97,6 +97,10 @@ class RoomListener: NSObject,RoomRequestListener
                 let newHost = userName_list[0] as String
                 AppWarpHelper.sharedInstance.host = newHost
                 println("Transfering host from \"\(oldHost)\" to \"\(newHost)\"")
+                
+                // Get rid of the old sync msgs & add the new host one
+                Game.global.scene?.removeActionForKey("SyncAction")
+                Game.global.addSyncActionToScene()
             }
             
         }

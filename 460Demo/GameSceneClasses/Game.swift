@@ -186,6 +186,7 @@ class Game {
         }
         
         self.scene!.addChild(loseText)
+        self.scene!.removeActionForKey("SyncAction")
     }
     
     /* Gets a unit given a String
@@ -367,6 +368,22 @@ class Game {
             AppWarpHelper.sharedInstance.sendUpdate(&outerDict)
         }
 
+    }
+    
+    func addSyncActionToScene() {
+        let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(0.5))
+        
+        var syncAction: SKAction
+        // Send sync msg every X seconds if I'm host
+        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
+            syncAction = SKAction.runBlock(Game.global.sendHostSynch)
+        } else {
+            syncAction = SKAction.runBlock(Game.global.sendClientSync)
+        }
+        
+        let sendSync: SKAction = SKAction.sequence([sendInterval, syncAction])
+        let repeatAction: SKAction = SKAction.repeatActionForever(sendSync)
+        self.scene?.runAction(repeatAction, withKey: "SyncAction")
     }
 
 }
