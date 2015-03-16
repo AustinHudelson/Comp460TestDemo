@@ -298,7 +298,7 @@ class Game {
         return nearby
     }
     
-    // Host will call this to send every unit's health and position every X seconds
+    // Host will call this to send host's char and every enemy's health and position every X seconds
     /*
         Our sent dicitonary will look like this:
         ["Sync":
@@ -312,20 +312,20 @@ class Game {
             ]
         ]
     */
-    func sendPlayerSynch() {
+    func sendHostSynch() {
         var outerDict: Dictionary<String, Array<AnyObject>> = [:]
         outerDict["Sync"] = []
         
         var syncData: Dictionary<String, Dictionary<String, AnyObject>> = [:]
         
-        for (playerID, playerUnit) in playerMap {
-            var playerStats: Dictionary<String, AnyObject> = [:]
-            playerStats["health"] = playerUnit.health
-            playerStats["posX"] = Float(playerUnit.sprite.position.x)
-            playerStats["posY"] = Float(playerUnit.sprite.position.y)
-            
-            syncData[playerID] = playerStats
-        }
+        let playerID = AppWarpHelper.sharedInstance.playerName
+        let playerUnit = playerMap[playerID]!
+        
+        var playerStats: Dictionary<String, AnyObject> = [:]
+        playerStats["health"] = playerUnit.health
+        playerStats["posX"] = Float(playerUnit.sprite.position.x)
+        playerStats["posY"] = Float(playerUnit.sprite.position.y)
+        syncData[playerID] = playerStats
         
         for (enemyID, enemyUnit) in enemyMap {
             var enemyStats: Dictionary<String, AnyObject> = [:]
@@ -339,6 +339,28 @@ class Game {
         outerDict["Sync"]!.append(syncData)
         
         AppWarpHelper.sharedInstance.sendUpdate(&outerDict)
+    }
+    
+    // Clients will call this to send their own char's health and pos
+    func sendClientSync() {
+        var outerDict: Dictionary<String, Array<AnyObject>> = [:]
+        outerDict["Sync"] = []
+        
+        var syncData: Dictionary<String, Dictionary<String, AnyObject>> = [:]
+        
+        let playerID = AppWarpHelper.sharedInstance.playerName
+        let playerUnit = playerMap[playerID]!
+        
+        var playerStats: Dictionary<String, AnyObject> = [:]
+        playerStats["health"] = playerUnit.health
+        playerStats["posX"] = Float(playerUnit.sprite.position.x)
+        playerStats["posY"] = Float(playerUnit.sprite.position.y)
+        syncData[playerID] = playerStats
+        
+        outerDict["Sync"]!.append(syncData)
+        
+        AppWarpHelper.sharedInstance.sendUpdate(&outerDict)
+
     }
 
 }

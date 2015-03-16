@@ -11,5 +11,5 @@ import SpriteKit
 class Projectile
 {
     var speed = CGFloat(1.0)
-    var sprite =  SKSpriteNode(imageNamed:"Spaceship")
+    var sprite =  SKSpriteNode(imageNamed:"empty350x350")
 }

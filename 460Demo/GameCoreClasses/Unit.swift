@@ -24,7 +24,7 @@ class Unit: SerializableJSON, PType
     var attackRange: CGFloat = 20.0
     var attackSpeed: NSTimeInterval = NSTimeInterval(3.0)
     var attackDamage: Int = 3
-    var sprite: SKNode = SKSpriteNode(imageNamed: "Spaceship")
+    var sprite: SKNode = SKSpriteNode(imageNamed: "WarriorStand350x350")
     var currentOrder: Order = NoneOrder()
     var alive: Bool = true
     var DS_walkAnim: SKAction?

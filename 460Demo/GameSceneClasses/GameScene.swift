@@ -82,19 +82,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if key == "Sync" {
-                // Only sync if I'm the client
-                if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host {
                     var syncData: Dictionary<String, Dictionary<String, AnyObject>> = arrayOfObjects[0] as Dictionary<String, Dictionary<String, AnyObject>>
                     
                     for (unitID, unitStats) in syncData {
                         // Sync player
                         if Game.global.playerMap[unitID] != nil {
-                            Game.global.playerMap[unitID]!.health = unitStats["health"] as Int
-                            Game.global.playerMap[unitID]!.DS_health_txt.text = Game.global.playerMap[unitID]!.health.description
+                            if unitID != AppWarpHelper.sharedInstance.playerName {
+                                Game.global.playerMap[unitID]!.health = unitStats["health"] as Int
+                                Game.global.playerMap[unitID]!.DS_health_txt.text = Game.global.playerMap[unitID]!.health.description
+                                
+                                let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
+                                //                        Game.global.playerMap[unitID]!.sprite.position = unitPos
+                                println("Chaning player Unit!!!")
+                            } else {
+                                break
+                            }
                             
-                            let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
-    //                        Game.global.playerMap[unitID]!.sprite.position = unitPos
-                            println("Chaning player Unit!!!")
                         }
                         
                         // Sync Enemies
@@ -103,11 +106,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             Game.global.enemyMap[unitID]!.DS_health_txt.text = Game.global.enemyMap[unitID]!.health.description
                             
                             let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
-                            Game.global.playerMap[unitID]!.sprite.position = unitPos
+                            Game.global.enemyMap[unitID]!.sprite.position = unitPos
                             println("Chaning enemy Unit!!!")
                         }
                     }
-                }
                 
             }
         }
@@ -199,14 +201,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         AppWarpHelper.sharedInstance.gameScene = self
         startGameScene()
         
+        
+        let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(0.5))
+        
+        var syncAction: SKAction
         // Send sync msg every X seconds if I'm host
         if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
-            let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(0.1))
-            let syncAction: SKAction = SKAction.runBlock(Game.global.sendPlayerSynch)
-            let sendSync: SKAction = SKAction.sequence([sendInterval, syncAction])
-            let repeatAction: SKAction = SKAction.repeatActionForever(sendSync)
-            self.runAction(repeatAction)
+            syncAction = SKAction.runBlock(Game.global.sendHostSynch)
+        } else {
+            syncAction = SKAction.runBlock(Game.global.sendClientSync)
         }
+        
+        let sendSync: SKAction = SKAction.sequence([sendInterval, syncAction])
+        let repeatAction: SKAction = SKAction.repeatActionForever(sendSync)
+        self.runAction(repeatAction)
+        
     }
     
     /// physics

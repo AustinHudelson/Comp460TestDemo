@@ -175,7 +175,7 @@ class Enemy: Unit, PType
         self.DS_abilityAnim = SKAction.repeatAction(abilityTextures, count: 1)
         
         /* Sprite setup */
-        self.sprite = SKSpriteNode(imageNamed: "Spaceship")
+        self.sprite = SKSpriteNode(imageNamed: "WarriorStand350x350")
         self.sprite.runAction(self.DS_standAnim)
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
