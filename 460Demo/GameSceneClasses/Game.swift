@@ -151,6 +151,7 @@ class Game {
         winText.fontSize = 50
         winText.fontName = "AvenirNext-Bold"
         winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
+        winText.zPosition = 1
         if let localLoseText = self.scene!.childNodeWithName("localLoseText") {
             localLoseText.removeFromParent()
         }
@@ -158,18 +159,22 @@ class Game {
     }
     func localPlayerloseGame()
     {
-        println("Your have died...")
-        let localLoseText: SKLabelNode = SKLabelNode(text: "Your have died...")
+        println("You have died...")
+        let localLoseText: SKLabelNode = SKLabelNode(text: "You have died...")
         localLoseText.name = "localLoseText"
+        localLoseText.fontName = "AvenirNext-Bold"
         localLoseText.fontSize = 50
+        localLoseText.zPosition = 1
         localLoseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         self.scene!.addChild(localLoseText)
     }
     func loseGame()
     {
         println("Your team has lost...")
-        let loseText: SKLabelNode = SKLabelNode(text: "Your team has lost...")
+        let loseText: SKLabelNode = SKLabelNode(text: "You Lose!\n Game Over")
+        loseText.fontName = "HelveticaNeue-Bold"
         loseText.name = "loseText"
+        loseText.zPosition = 1
         loseText.fontSize = 50
         loseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         

@@ -87,10 +87,11 @@ class RoomListener: NSObject,RoomRequestListener
             // We're requesting live room info when host leaves the room, so designate new host
             let oldHost = AppWarpHelper.sharedInstance.host
             
-//            if userName_list.count <= 0
-//            {
-//                WarpClient
-//            }
+            if userName_list.count <= 0
+            {
+                println("Deleting room")
+                WarpClient.getInstance().deleteRoom(event.roomData.roomId)
+            }
             
             if (!userName_list.containsObject(oldHost!)) && (userName_list.count > 0) {
                 let newHost = userName_list[0] as String
