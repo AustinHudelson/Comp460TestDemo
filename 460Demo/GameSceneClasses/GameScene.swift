@@ -303,5 +303,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            }
 //        }
         
+        func synchronize(inputData: [String: [String: AnyObject]]) {
+            
+        }
+        
     }
 }

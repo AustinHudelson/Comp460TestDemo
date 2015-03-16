@@ -273,7 +273,7 @@ class Unit: SerializableJSON, PType
      */
     func attackCycle(target: Unit, complete:(()->Void)!){
         let tolerence = attackRange
-        let animationGapDistance: CGFloat = 20.0 //Default value is overwritten in init
+        let animationGapDistance: CGFloat = 80.0 //Default value is overwritten in init
         let refreshRate: CGFloat = 0.25
         
         if target.alive == true{         //ENSURE ATTACK IS STILL VALID
@@ -283,7 +283,7 @@ class Unit: SerializableJSON, PType
             if(self.sprite.position.x < target.sprite.position.x){
                 movePos = CGPoint(x: target.sprite.frame.minX-animationGapDistance, y: target.sprite.frame.midY)
             }else{
-                movePos = CGPoint(x: target.sprite.frame.maxX-1+animationGapDistance,y : target.sprite.frame.midY)
+                movePos = CGPoint(x: target.sprite.frame.maxX+animationGapDistance,y : target.sprite.frame.midY)
             }
             
             
