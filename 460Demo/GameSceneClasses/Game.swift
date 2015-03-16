@@ -297,4 +297,38 @@ class Game {
         
         return nearby
     }
+    
+    // Host will call this to send every unit's health and position every X seconds
+    /*
+        Our sent dicitonary will look like this:
+        ["Sync":
+            [
+                "ID1": [
+                        "health": 100,
+                        "posX": 50,
+                        "posY": 60
+                        ],
+                "ID2": ...
+            ]
+        ]
+    */
+    func sendPlayerSynch() {
+        var outerDict: Dictionary<String, Array<AnyObject>> = [:]
+        outerDict["Sync"] = []
+        
+        var syncData: Dictionary<String, Dictionary<String, AnyObject>> = [:]
+        
+        for (playerID, playerUnit) in playerMap {
+            var playerStats: Dictionary<String, AnyObject> = [:]
+            playerStats["health"] = playerUnit.health
+            playerStats["posX"] = Float(playerUnit.sprite.position.x)
+            playerStats["posY"] = Float(playerUnit.sprite.position.y)
+            
+            syncData[playerID] = playerStats
+        }
+        
+        outerDict["Sync"]!.append(syncData)
+        
+        AppWarpHelper.sharedInstance.sendUpdate(&outerDict)
+    }
 }

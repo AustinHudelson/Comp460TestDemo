@@ -279,8 +279,6 @@ class AppWarpHelper: NSObject
         println("Disconnecting from AppWarp...")
         if gameScene != nil && gameScene!.viewController != nil {
             self.gameScene!.viewController!.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
-        } else if lobby != nil {
-            self.lobby!.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
         } else {
             println("Unable to move to main menu, no specified game or lobby scene")
         }

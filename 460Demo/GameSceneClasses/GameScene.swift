@@ -80,6 +80,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     println("SentTime: \(sentTimeStr); RecvTime: \(recvTimeStr); diff between SentTime & recvTime: \(diff) seconds")
                 }
             }
+            
+            if key == "Sync" {
+                // Only sync if I'm the client
+                if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host {
+                    var syncData: Dictionary<String, Dictionary<String, AnyObject>> = arrayOfObjects[0] as Dictionary<String, Dictionary<String, AnyObject>>
+                    
+                    for (unitID, unitStats) in syncData {
+                        if Game.global.playerMap[unitID] != nil {
+                            Game.global.playerMap[unitID]!.health = unitStats["health"] as Int
+                            let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
+    //                        Game.global.playerMap[unitID]!.sprite.position = unitPos
+                        }
+                    }
+                }
+                
+            }
         }
     }
     
@@ -168,6 +184,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         AppWarpHelper.sharedInstance.gameScene = self
         startGameScene()
+        
+        // Send sync msg every X seconds if I'm host
+        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
+            let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(1.0))
+            let syncAction: SKAction = SKAction.runBlock(Game.global.sendPlayerSynch)
+            let sendSync: SKAction = SKAction.sequence([sendInterval, syncAction])
+            let repeatAction: SKAction = SKAction.repeatActionForever(sendSync)
+            self.runAction(repeatAction)
+        }
     }
     
     /// physics
@@ -302,10 +327,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                unit.update()
 //            }
 //        }
-        
-        func synchronize(inputData: [String: [String: AnyObject]]) {
-            
-        }
         
     }
 }
