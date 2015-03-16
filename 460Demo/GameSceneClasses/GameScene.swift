@@ -87,15 +87,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     var syncData: Dictionary<String, Dictionary<String, AnyObject>> = arrayOfObjects[0] as Dictionary<String, Dictionary<String, AnyObject>>
                     
                     for (unitID, unitStats) in syncData {
+                        // Sync player
                         if Game.global.playerMap[unitID] != nil {
                             Game.global.playerMap[unitID]!.health = unitStats["health"] as Int
+                            Game.global.playerMap[unitID]!.DS_health_txt.text = Game.global.playerMap[unitID]!.health.description
+                            
                             let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
     //                        Game.global.playerMap[unitID]!.sprite.position = unitPos
+                            println("Chaning player Unit!!!")
                         }
+                        
+                        // Sync Enemies
                         if Game.global.enemyMap[unitID] != nil {
                             Game.global.enemyMap[unitID]!.health = unitStats["health"] as Int
+                            Game.global.enemyMap[unitID]!.DS_health_txt.text = Game.global.enemyMap[unitID]!.health.description
+                            
                             let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
-//                            Game.global.playerMap[unitID]!.sprite.position = unitPos
+                            Game.global.playerMap[unitID]!.sprite.position = unitPos
+                            println("Chaning enemy Unit!!!")
                         }
                     }
                 }
@@ -192,7 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Send sync msg every X seconds if I'm host
         if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
-            let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(1.0))
+            let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(0.1))
             let syncAction: SKAction = SKAction.runBlock(Game.global.sendPlayerSynch)
             let sendSync: SKAction = SKAction.sequence([sendInterval, syncAction])
             let repeatAction: SKAction = SKAction.repeatActionForever(sendSync)
