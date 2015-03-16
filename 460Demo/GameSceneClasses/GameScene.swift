@@ -83,8 +83,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if key == "Sync" {
                     var syncData: Dictionary<String, Dictionary<String, AnyObject>> = arrayOfObjects[0] as Dictionary<String, Dictionary<String, AnyObject>>
-                    
+                    var isYourSyncMsg: Bool = false
+                
                     for (unitID, unitStats) in syncData {
+                        if isYourSyncMsg {
+                            break
+                        }
+                        
                         // Sync player
                         if Game.global.playerMap[unitID] != nil {
                             if unitID != AppWarpHelper.sharedInstance.playerName {
@@ -94,24 +99,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                 let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
                                 //                        Game.global.playerMap[unitID]!.sprite.position = unitPos
                                 println("Chaning player Unit!!!")
-                            } else {
-                                break
                             }
-                            
+                            else {
+                                isYourSyncMsg = true
+                            }
                         }
                         
                         // Sync Enemies
-                        if Game.global.enemyMap[unitID] != nil {
-                            Game.global.enemyMap[unitID]!.health = unitStats["health"] as Int
-                            Game.global.enemyMap[unitID]!.DS_health_txt.text = Game.global.enemyMap[unitID]!.health.description
-                            
-                            let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
-                            var health_txt_pos = unitPos
-                            health_txt_pos.y += Game.global.enemyMap[unitID]!.health_txt_y_dspl
-                            
-                            Game.global.enemyMap[unitID]!.sprite.position = unitPos
-                            Game.global.enemyMap[unitID]!.DS_health_txt.position = health_txt_pos
-                            println("Chaning enemy Unit!!!")
+                        if !isYourSyncMsg {
+                            if Game.global.enemyMap[unitID] != nil {
+                                Game.global.enemyMap[unitID]!.health = unitStats["health"] as Int
+                                Game.global.enemyMap[unitID]!.DS_health_txt.text = Game.global.enemyMap[unitID]!.health.description
+                                
+                                let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
+                                var health_txt_pos = unitPos
+                                health_txt_pos.y += Game.global.enemyMap[unitID]!.health_txt_y_dspl
+                                
+                                Game.global.enemyMap[unitID]!.sprite.position = unitPos
+                                Game.global.enemyMap[unitID]!.DS_health_txt.position = health_txt_pos
+                                println("Chaning enemy Unit!!!")
+                            }
                         }
                     }
                 
