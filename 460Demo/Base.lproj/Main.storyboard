@@ -239,8 +239,36 @@
                                     <rect key="frame" x="150" y="50" width="500" height="48"/>
                                 </variation>
                             </textView>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-O3-CMs">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Ey-O3-CMs" firstAttribute="width" secondItem="tVp-UM-yKM" secondAttribute="width" id="9GX-3q-0LA"/>
+                            <constraint firstItem="7Ey-O3-CMs" firstAttribute="height" secondItem="tVp-UM-yKM" secondAttribute="height" id="kT2-Zp-8o1"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="7Ey-O3-CMs"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="9GX-3q-0LA"/>
+                                <exclude reference="kT2-Zp-8o1"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="7Ey-O3-CMs"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="9GX-3q-0LA"/>
+                                <include reference="kT2-Zp-8o1"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="p1Img" destination="9Cm-dP-ebt" id="jHg-n1-Peq"/>
