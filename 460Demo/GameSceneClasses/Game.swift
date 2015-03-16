@@ -151,6 +151,9 @@ class Game {
         winText.fontSize = 50
         winText.fontName = "AvenirNext-Bold"
         winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
+        if let localLoseText = self.scene!.childNodeWithName("localLoseText") {
+            localLoseText.removeFromParent()
+        }
         self.scene!.addChild(winText)
     }
     func localPlayerloseGame()

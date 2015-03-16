@@ -42,6 +42,8 @@ class Shrink: Order, PType
         if DS_target == nil {
             return
         }
+        let soundAction = SKAction.playSoundFileNamed("bite-small.wav", waitForCompletion: true)
+        self.DS_receiver?.sprite.runAction(soundAction)
         let applyAction: SKAction = SKAction.runBlock(applyBuff)
         let waitAction: SKAction = SKAction.waitForDuration(self.DS_duration)
         let removeAction: SKAction = SKAction.runBlock(removeBuff)

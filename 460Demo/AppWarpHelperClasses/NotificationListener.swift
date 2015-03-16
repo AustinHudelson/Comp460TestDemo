@@ -26,6 +26,7 @@ class NotificationListener: NSObject,NotifyListener
         if username == oldHost {
             WarpClient.getInstance().getLiveRoomInfo(AppWarpHelper.sharedInstance.roomId)
         }
+        WarpClient.getInstance().unsubscribeRoom(AppWarpHelper.sharedInstance.roomId)
     }
     
     func onUserResumed(userName: String!, withLocation locId: String!, isLobby: Bool)

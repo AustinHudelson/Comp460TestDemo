@@ -271,8 +271,8 @@ class AppWarpHelper: NSObject
     }
     
     func leaveGame(){
-        WarpClient.getInstance().unsubscribeRoom(self.roomId)
-        //WarpClient.getInstance().leaveRoom(self.roomId)
+        //WarpClient.getInstance().unsubscribeRoom(self.roomId)
+        WarpClient.getInstance().leaveRoom(self.roomId)
     }
     
     func disconnectFromAppWarp() {

@@ -34,6 +34,8 @@ class Enrage: Order, PType, Transient
     
     override func apply()
     {
+        let soundAction = SKAction.playSoundFileNamed("ogre3.wav", waitForCompletion: true)
+        self.DS_receiver?.sprite.runAction(soundAction)
         let applyAction: SKAction = SKAction.runBlock(applyBuff)
         let waitAction: SKAction = SKAction.waitForDuration(self.duration)
         let removeAction: SKAction = SKAction.runBlock(removeBuff)

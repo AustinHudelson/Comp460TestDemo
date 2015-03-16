@@ -61,8 +61,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     var anyobjecttype: AnyObject.Type = NSClassFromString(order["type"] as NSString)
                     var nsobjecttype: Order.Type = anyobjecttype as Order.Type
                     var newOrder: Order = nsobjecttype(receivedData: order)
-                    Game.global.getUnit(newOrder.ID!)!.sendOrder(newOrder)   //SEND THE ORDER TO ITS UNIT
-                    //newOrder.valueForKey("DS_receiver")
+                    if Game.global.getUnit(newOrder.ID!) != nil
+                    {
+                        Game.global.getUnit(newOrder.ID!)!.sendOrder(newOrder)   //SEND THE ORDER TO ITS UNIT
+                        //newOrder.valueForKey("DS_receiver")
+                    }
+                    
                 }
             }
             if key == "SentTime" {
@@ -84,7 +88,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         println("GAME SCENE START")
         var playerName = AppWarpHelper.sharedInstance.playerName
         var playerChar: Unit
-        let playerCharPos: CGPoint = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        var charDisplacement = 0
+        for index in 0 ..< AppWarpHelper.sharedInstance.userName_list.count
+        {
+            if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.userName_list[index] as String
+            {
+                charDisplacement = index
+            }
+        }
+    
+        let playerCharPos: CGPoint = CGPoint(x:CGRectGetMidX(self.frame).advancedBy(CGFloat(charDisplacement*100-150)), y:CGRectGetMidY(self.frame))
         
         if AppWarpHelper.sharedInstance.playerClass == "Mage" {
             /*
@@ -192,7 +205,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 sceneActive = false
                 AppWarpHelper.sharedInstance.leaveGame()
                 println("exit pressed")
+                
                 self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
+                self.removeAllActions()
+                self.removeAllChildren()
+                
             }
             
             /* When touching your own player
