@@ -106,7 +106,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             Game.global.enemyMap[unitID]!.DS_health_txt.text = Game.global.enemyMap[unitID]!.health.description
                             
                             let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
+                            var health_txt_pos = unitPos
+                            health_txt_pos.y += Game.global.enemyMap[unitID]!.health_txt_y_dspl
+                            
                             Game.global.enemyMap[unitID]!.sprite.position = unitPos
+                            Game.global.enemyMap[unitID]!.DS_health_txt.position = health_txt_pos
                             println("Chaning enemy Unit!!!")
                         }
                     }

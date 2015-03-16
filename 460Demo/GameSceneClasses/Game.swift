@@ -345,13 +345,14 @@ class Game {
     
     // Clients will call this to send their own char's health and pos
     func sendClientSync() {
+        let playerID = AppWarpHelper.sharedInstance.playerName
+        
         if playerMap[playerID] != nil {
             var outerDict: Dictionary<String, Array<AnyObject>> = [:]
             outerDict["Sync"] = []
             
             var syncData: Dictionary<String, Dictionary<String, AnyObject>> = [:]
             
-            let playerID = AppWarpHelper.sharedInstance.playerName
             
             let playerUnit = playerMap[playerID]!
             
