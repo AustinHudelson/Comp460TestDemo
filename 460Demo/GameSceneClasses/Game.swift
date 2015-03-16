@@ -327,8 +327,18 @@ class Game {
             syncData[playerID] = playerStats
         }
         
+        for (enemyID, enemyUnit) in enemyMap {
+            var enemyStats: Dictionary<String, AnyObject> = [:]
+            enemyStats["health"] = enemyUnit.health
+            enemyStats["posX"] = Float(enemyUnit.sprite.position.x)
+            enemyStats["posY"] = Float(enemyUnit.sprite.position.y)
+            
+            syncData[enemyID] = enemyStats
+        }
+        
         outerDict["Sync"]!.append(syncData)
         
         AppWarpHelper.sharedInstance.sendUpdate(&outerDict)
     }
+
 }

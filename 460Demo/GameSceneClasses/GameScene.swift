@@ -92,6 +92,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
     //                        Game.global.playerMap[unitID]!.sprite.position = unitPos
                         }
+                        if Game.global.enemyMap[unitID] != nil {
+                            Game.global.enemyMap[unitID]!.health = unitStats["health"] as Int
+                            let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
+//                            Game.global.playerMap[unitID]!.sprite.position = unitPos
+                        }
                     }
                 }
                 
