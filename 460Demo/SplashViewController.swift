@@ -64,23 +64,12 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //PRELOAD GAME TEXTURE ATLASES
-        TextureLoader.global.preload()
-
-        /*
-            set this SplashViewController to be playerNameTxtField's delegate so it can know when a user is entering text in the text field
-        */
         playerNameTxtField.delegate = self
         
-        /*
-            If playerName is empty string or character not selected, disable the Start button
-        */
-        
-//        if countElements(playerNameTxtField.text) < 1 {
-//            startButton.enabled = false
-//        }
+        //PRELOAD GAME TEXTURE ATLASES
+        TextureLoader.global.preload()
         warriorSelectionButton.selected = true
-}
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "playerNameSegue") {
@@ -95,14 +84,8 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-        - This method is called after the text field resigns its first responder status. You can use this method to update your delegate’s state information. For example, you might use this method to hide overlay views that should be visible only while editing.
-    */
-    func textFieldDidEndEditing(textField: UITextField) {
-        
-        println(textField.text)
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-    
-    
-
 }

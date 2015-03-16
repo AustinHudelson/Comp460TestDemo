@@ -81,47 +81,48 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            if key == "Sync" {
-                    var syncData: Dictionary<String, Dictionary<String, AnyObject>> = arrayOfObjects[0] as Dictionary<String, Dictionary<String, AnyObject>>
-                    var isYourSyncMsg: Bool = false
+            // Sync players
+            if key == "SyncPlayer" {
+                    var syncPlayer: Dictionary<String, Dictionary<String, AnyObject>> = arrayOfObjects[0] as Dictionary<String, Dictionary<String, AnyObject>>
                 
-                    for (unitID, unitStats) in syncData {
-                        if isYourSyncMsg {
-                            break
-                        }
-                        
-                        // Sync player
-                        if Game.global.playerMap[unitID] != nil {
-                            if unitID != AppWarpHelper.sharedInstance.playerName {
-                                Game.global.playerMap[unitID]!.health = unitStats["health"] as Int
-                                Game.global.playerMap[unitID]!.DS_health_txt.text = Game.global.playerMap[unitID]!.health.description
+                    for (playerID, playerStats) in syncPlayer {
+                        if Game.global.playerMap[playerID] != nil {
+                            // if this sync msg's unitID is not my character, update it
+                            if playerID != AppWarpHelper.sharedInstance.playerName {
+                                Game.global.playerMap[playerID]!.health = playerStats["health"] as Int
+                                Game.global.playerMap[playerID]!.DS_health_txt.text = Game.global.playerMap[playerID]!.health.description
                                 
-                                let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
-                                //                        Game.global.playerMap[unitID]!.sprite.position = unitPos
-                                println("Chaning player Unit!!!")
-                            }
-                            else {
-                                isYourSyncMsg = true
-                            }
-                        }
-                        
-                        // Sync Enemies
-                        if !isYourSyncMsg {
-                            if Game.global.enemyMap[unitID] != nil {
-                                Game.global.enemyMap[unitID]!.health = unitStats["health"] as Int
-                                Game.global.enemyMap[unitID]!.DS_health_txt.text = Game.global.enemyMap[unitID]!.health.description
+                                let playerPos: CGPoint = CGPoint(x: (playerStats["posX"] as CGFloat), y: (playerStats["posY"] as CGFloat))
+                                var health_txt_pos = playerPos
+                                health_txt_pos.y += Game.global.playerMap[playerID]!.health_txt_y_dspl
                                 
-                                let unitPos: CGPoint = CGPoint(x: (unitStats["posX"] as CGFloat), y: (unitStats["posY"] as CGFloat))
-                                var health_txt_pos = unitPos
-                                health_txt_pos.y += Game.global.enemyMap[unitID]!.health_txt_y_dspl
-                                
-                                Game.global.enemyMap[unitID]!.sprite.position = unitPos
-                                Game.global.enemyMap[unitID]!.DS_health_txt.position = health_txt_pos
-                                println("Chaning enemy Unit!!!")
+                                Game.global.playerMap[playerID]!.sprite.position = playerPos
+                                Game.global.playerMap[playerID]!.DS_health_txt.position = health_txt_pos
                             }
                         }
                     }
+            }
+            
+            // Sync Enemies from host
+            if key == "SyncEnemies" {
+                var syncEnemies: Dictionary<String, Dictionary<String, AnyObject>> = arrayOfObjects[0] as Dictionary<String, Dictionary<String, AnyObject>>
                 
+                // If i'm not the host, sync the enemies
+                if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host {
+                    for (enemyID, enemyStats) in syncEnemies {
+                        if Game.global.enemyMap[enemyID] != nil {
+                            Game.global.enemyMap[enemyID]!.health = enemyStats["health"] as Int
+                            Game.global.enemyMap[enemyID]!.DS_health_txt.text = Game.global.enemyMap[enemyID]!.health.description
+                            
+                            let enemyPos: CGPoint = CGPoint(x: (enemyStats["posX"] as CGFloat), y: (enemyStats["posY"] as CGFloat))
+                            var health_txt_pos = enemyPos
+                            health_txt_pos.y += Game.global.enemyMap[enemyID]!.health_txt_y_dspl
+                            
+                            Game.global.enemyMap[enemyID]!.sprite.position = enemyPos
+                            Game.global.enemyMap[enemyID]!.DS_health_txt.position = health_txt_pos
+                        }
+                    }
+                }
             }
         }
     }
@@ -262,9 +263,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             if !Game.global.myPlayerIsDead
             {
-                if Game.global.getMyPlayer().sprite.containsPoint(touchLocation) {
-                        playerIsTouched = true
+                if Game.global.getMyPlayer() != nil {
+                    if Game.global.getMyPlayer()!.sprite.containsPoint(touchLocation) {
+                            playerIsTouched = true
                     }
+                }
             }
                 
         }
@@ -293,16 +296,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var sendData: Dictionary<String, Array<AnyObject>> = [:]
                 if(unitTouched)
                 {
-                    var attack: Attack = Attack(receiverIn: Game.global.getMyPlayer(), target: Game.global.getUnit(touchedUnitID)!)
-                    sendData["Orders"] = []
-                    sendData["Orders"]!.append(attack.toJSON())
+                    if Game.global.getMyPlayer() != nil {
+                        var attack: Attack = Attack(receiverIn: Game.global.getMyPlayer()!, target: Game.global.getUnit(touchedUnitID)!)
+                        sendData["Orders"] = []
+                        sendData["Orders"]!.append(attack.toJSON())
+                    }
                     
                 }
                 else
                 {
-                    var move_loc: Move = Move(receiverIn: Game.global.getMyPlayer(), moveToLoc: touchLocation)
-                    sendData["Orders"] = []
-                    sendData["Orders"]!.append(move_loc.toJSON())
+                    if Game.global.getMyPlayer() != nil {
+                        var move_loc: Move = Move(receiverIn: Game.global.getMyPlayer()!, moveToLoc: touchLocation)
+                        sendData["Orders"] = []
+                        sendData["Orders"]!.append(move_loc.toJSON())
+                    }
                 }
                 AppWarpHelper.sharedInstance.sendUpdate(&sendData)
                 playerIsTouched = false
@@ -312,20 +319,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             else
             {
-                if Game.global.myPlayerIsDead == true || Game.global.getMyPlayer().alive == false {
-                    return
-                }
-                if self.childNodeWithName("Ability0")!.containsPoint(touchLocation) {
-                    //Button at slot 0
-                    let button = self.childNodeWithName("Ability0") as Ability
-                    if button.cooldownReady == true {
-                        button.apply(Game.global.getMyPlayer())
+                if Game.global.getMyPlayer() != nil {
+                    if Game.global.myPlayerIsDead == true || Game.global.getMyPlayer()!.alive == false {
+                        return
                     }
-                } else if self.childNodeWithName("Ability1")!.containsPoint(touchLocation) {
-                    //Button at slot 1
-                    let button = self.childNodeWithName("Ability1") as Ability
-                    if button.cooldownReady == true {
-                        button.apply(Game.global.getMyPlayer())
+                
+                    if self.childNodeWithName("Ability0")!.containsPoint(touchLocation) {
+                        //Button at slot 0
+                        let button = self.childNodeWithName("Ability0") as Ability
+                        if button.cooldownReady == true {
+                            button.apply(Game.global.getMyPlayer()!)
+                        }
+                    } else if self.childNodeWithName("Ability1")!.containsPoint(touchLocation) {
+                        //Button at slot 1
+                        let button = self.childNodeWithName("Ability1") as Ability
+                        if button.cooldownReady == true {
+                            button.apply(Game.global.getMyPlayer()!)
+                        }
                     }
                 }
             }
