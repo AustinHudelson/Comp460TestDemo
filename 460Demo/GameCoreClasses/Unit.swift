@@ -41,7 +41,7 @@ class Unit: SerializableJSON, PType
     var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "health_bar_green")
     
     var health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
-    
+    var health_bar_x_dspl: CGFloat = 35
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init()
@@ -56,18 +56,12 @@ class Unit: SerializableJSON, PType
         // ===TESTING
         var barSize: CGSize = CGSize(width: CGFloat(100), height: CGFloat(25))
         self.DS_health_bar.size = barSize
+        
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
         self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
         self.DS_health_txt.zPosition = 2
         self.DS_health_bar.zPosition = 2
-        //self.DS_health_bar.anchorPoint = CGPoint(x: CGFloat(self.sprite.position.x), y: CGFloat(self.sprite.position.y + health_txt_y_dspl))
-        
-//        // physics stuff
-//        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
-//        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
-//        self.sprite.physicsBody?.categoryBitMask = UnitCategory
-//        self.sprite.physicsBody?.collisionBitMask = 0
-//        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
+       
     }
     
     init(ID: String, spawnLocation: CGPoint) {
@@ -83,16 +77,7 @@ class Unit: SerializableJSON, PType
         self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
         self.DS_health_txt.zPosition = 2
         self.DS_health_bar.zPosition = 2
-        //self.DS_health_bar.anchorPoint = CGPoint(x: CGFloat(self.sprite.position.x), y: CGFloat(self.sprite.position.y + health_txt_y_dspl))
-        
-//        //// physics stuff
-//        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
-//        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
-//        self.sprite.physicsBody?.categoryBitMask = UnitCategory
-//        self.sprite.physicsBody?.collisionBitMask = 0
-//        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
-//        //self.sprite.physicsBody?.restitution = 0
-//        //self.sprite.physicsBody?.
+       
         
         
         
@@ -116,6 +101,7 @@ class Unit: SerializableJSON, PType
         
         var health_bar_pos: CGPoint = pos
         health_bar_pos.y += self.health_txt_y_dspl
+        health_bar_pos.x = pos.x - health_bar_x_dspl //can't get it to work other than hard coding
         self.DS_health_bar.position = health_bar_pos
         //gameScene.addChild(self.DS_health_txt)
         gameScene.addChild(self.DS_health_bar)
@@ -167,7 +153,7 @@ class Unit: SerializableJSON, PType
         let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth*100), height: CGFloat(25))
         
         self.DS_health_bar.size = newSize
-        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x, y: self.sprite.position.y + health_txt_y_dspl)
+        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x - self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
         
     }
     
@@ -258,6 +244,7 @@ class Unit: SerializableJSON, PType
         //Create movement action for health text
         var healthTextAdjustedMove = adjustedMove
         healthTextAdjustedMove.y += health_txt_y_dspl
+        healthTextAdjustedMove.x -= health_bar_x_dspl
         let healthTextMovementAction = SKAction.moveTo(healthTextAdjustedMove, duration:NSTimeInterval(duration))
         
         //Start looping the walk animation if it is not already playing.
