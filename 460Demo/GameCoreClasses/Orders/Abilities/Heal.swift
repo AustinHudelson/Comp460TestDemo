@@ -48,7 +48,7 @@ class Heal: Order, PType
             let waitAction: SKAction = SKAction.waitForDuration(wait)
             let healBlock: SKAction = SKAction.runBlock({
                 if self.DS_receiver != nil && self.DS_receiver!.alive == true {
-                    self.DS_receiver?.takeDamage(-2)
+                    self.DS_receiver?.takeDamage(-2 as Float)
                     self.healOverTime(heal-2)
                 }
             })

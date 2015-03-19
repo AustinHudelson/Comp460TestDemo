@@ -183,7 +183,7 @@ class Enemy: Unit, PType
     
     override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint) {
         //Enemy has a red health text color
-        self.DS_health_txt.fontColor = UIColor.redColor()
+        //self.DS_health_txt.fontColor = UIColor.redColor()
         super.addUnitToGameScene(gameScene, pos: pos)
         self.sendOrder(RoamAttack(receiverIn: self))
         self.applyTint("Enemy", red: 1.0, blue: 0.5, green: 0.5)
