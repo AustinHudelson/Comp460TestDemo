@@ -38,7 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             Game.global.addPlayer(newUnit)
                             //If the player is NOT YOU give it a slightly grey tint.
                             if newUnit.ID != AppWarpHelper.sharedInstance.playerName {
-                                newUnit.applyTint(UIColor.blackColor(), factor: 0.20, blendDuration: 0.0)
+                                newUnit.applyTint("otherPlayer", red:0.85, blue: 0.85, green: 0.85)
                             }
                         }
                         else
@@ -89,7 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         if Game.global.playerMap[playerID] != nil {
                             // if this sync msg's unitID is not my character, update it
                             if playerID != AppWarpHelper.sharedInstance.playerName {
-                                Game.global.playerMap[playerID]!.health = playerStats["health"] as Int
+                                Game.global.playerMap[playerID]!.health = playerStats["health"] as CGFloat
                                 Game.global.playerMap[playerID]!.DS_health_txt.text = Game.global.playerMap[playerID]!.health.description
                                 
                                 let playerPos: CGPoint = CGPoint(x: (playerStats["posX"] as CGFloat), y: (playerStats["posY"] as CGFloat))
@@ -111,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host {
                     for (enemyID, enemyStats) in syncEnemies {
                         if Game.global.enemyMap[enemyID] != nil {
-                            Game.global.enemyMap[enemyID]!.health = enemyStats["health"] as Int
+                            Game.global.enemyMap[enemyID]!.health = enemyStats["health"] as CGFloat
                             Game.global.enemyMap[enemyID]!.DS_health_txt.text = Game.global.enemyMap[enemyID]!.health.description
                             
                             let enemyPos: CGPoint = CGPoint(x: (enemyStats["posX"] as CGFloat), y: (enemyStats["posY"] as CGFloat))

@@ -15,16 +15,19 @@ class Unit: SerializableJSON, PType
 //    var name: String = ""
     var type: String = "Unit"
     var ID: String = ""
-    var health: Int = 0
-    var maxhealth: Int = 0
+    var health: CGFloat = 0.0
+    var maxhealth: Attribute = Attribute(baseValue: 0.0)
     var healthregen: Int = 0
-    var speed: CGFloat = 0.0
+    var speed: Attribute = Attribute(baseValue: 0.0)
     var xSize: CGFloat = 200.0
     var ySize: CGFloat = 200.0
     var attackRange: CGFloat = 20.0
-    var attackSpeed: NSTimeInterval = NSTimeInterval(3.0)
-    var attackDamage: Int = 3
+    var attackSpeed: Attribute = Attribute(baseValue: 3.0)
+    var attackDamage: Attribute = Attribute(baseValue: 3.0)
     var sprite: SKNode = SKSpriteNode(imageNamed: "WarriorStand350x350")
+    var redColor: Attribute = Attribute(baseValue: 1.0)
+    var blueColor: Attribute = Attribute(baseValue: 1.0)
+    var greenColor: Attribute = Attribute(baseValue: 1.0)
     var currentOrder: Order = NoneOrder()
     var alive: Bool = true
     var DS_walkAnim: SKAction?
@@ -122,13 +125,13 @@ class Unit: SerializableJSON, PType
         order.apply()
     }
     
-    func takeDamage(damage:Int)
+    func takeDamage(damage:CGFloat)
     {
         
         health-=damage
-        if health>maxhealth
+        if health > maxhealth.get()
         {
-            health=maxhealth
+            health=maxhealth.get()
         }
         
         
@@ -155,10 +158,34 @@ class Unit: SerializableJSON, PType
         self.sprite.runAction(SKAction.scaleXTo(1.0, duration: 0.0))
     }
     
-    func applyTint(tint: SKColor, factor: CGFloat, blendDuration: NSTimeInterval){
-        let changeColorAction = SKAction.colorizeWithColor(tint, colorBlendFactor: factor, duration: blendDuration)
+    /* Applies a tint to this unit. You can remove this tint modifier later by calling removeTint
+     * with the provided key parameter. red blue and green should be values between 0 and 1.
+     * by default tint is 1.0 1.0 1.0. So to apply a blue tint you would use colors such as
+     * 0.1 1.0 0.1
+     */
+    func applyTint(key: String, red: CGFloat, blue: CGFloat, green: CGFloat){
+        redColor.addModifier(key, value: red)
+        blueColor.addModifier(key, value: blue)
+        greenColor.addModifier(key, value: green)
+        updateTint()
+    }
+    
+    /*
+     * Removes the tint modifier specified by key
+     */
+    func removeTint(key: String){
+        redColor.removeModifier(key)
+        blueColor.removeModifier(key)
+        greenColor.removeModifier(key)
+        updateTint()
+    }
+    
+    /* Helper function for add and remove tint */
+    func updateTint(){
+        let color = UIColor(red: redColor.get(), green: greenColor.get(), blue: blueColor.get(), alpha: 1.0)
+        let changeColorAction = SKAction.colorizeWithColor(color, colorBlendFactor: 1.0, duration: NSTimeInterval(0.5))
         self.sprite.runAction(changeColorAction) {
-            (self.sprite as SKSpriteNode).color = tint //On completion of action, we set color so after in comparison method not have conflicts while comparing color components
+            (self.sprite as SKSpriteNode).color = color //On completion of action, we set color so after in comparison method not have conflicts while comparing color components
         }
     }
     
@@ -208,7 +235,7 @@ class Unit: SerializableJSON, PType
      */
     func moveCycle(destination: CGPoint, complete:(()->Void)!){
         let refreshRate: CGFloat = 0.25
-        let maxMoveDistance: CGFloat = self.speed*refreshRate
+        let maxMoveDistance: CGFloat = self.speed.get()*refreshRate
         let remainingDistance: CGFloat = Game.global.getDistance(self.sprite.position, p2: destination)
         
         var adjustedMove: CGPoint
@@ -218,14 +245,14 @@ class Unit: SerializableJSON, PType
         if maxMoveDistance < remainingDistance+3.0 { //Give some leway for the final move. mostly to make attack work smoother.
             //Move a short distance towards the destination.
             adjustedMove = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:destination, distance: maxMoveDistance)
-            duration = maxMoveDistance/speed
+            duration = maxMoveDistance/speed.get()
             let movementAction = SKAction.moveTo(adjustedMove, duration:NSTimeInterval(duration))
             //Set up move action to call move cycle again at the end
             walkSequence = SKAction.sequence([movementAction, SKAction.runBlock({self.moveCycle(destination, complete: complete)})])
         } else {
             //Move the rest of the distance to the destination
             adjustedMove = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:destination, distance: remainingDistance)
-            duration = remainingDistance/speed
+            duration = remainingDistance/speed.get()
             let movementAction = SKAction.moveTo(adjustedMove, duration:NSTimeInterval(duration))
             //Set up the move action to call complete block at the end
             walkSequence = SKAction.sequence([movementAction, SKAction.runBlock(complete)])
@@ -289,7 +316,7 @@ class Unit: SerializableJSON, PType
             
             if Game.global.getDistance(self.sprite.position, p2: movePos) > tolerence {
                 //Move a short distance towards the movePos. Dont move more than the distance to the move pos (hence the min function for distance). And call attack cycle again once the move is complete.
-                let adjustedMove: CGPoint = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:movePos, distance: min(self.speed*refreshRate, Game.global.getDistance(self.sprite.position, p2:movePos)))
+                let adjustedMove: CGPoint = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:movePos, distance: min(self.speed.get()*refreshRate, Game.global.getDistance(self.sprite.position, p2:movePos)))
                 self.move(adjustedMove, complete:{
                     self.attackCycle(target, complete: complete)
                 })
@@ -303,7 +330,7 @@ class Unit: SerializableJSON, PType
                 //Clear movement. (should not be executing a move action, just a walk animation action)
                 clearMove()
                 //Setup action. Delay by attack speed then call attack again.
-                let delay = SKAction.waitForDuration(attackSpeed)
+                let delay = SKAction.waitForDuration(NSTimeInterval(attackSpeed.get()))
                 let completeBlock = SKAction.runBlock({
                     self.attackCycle(target, complete: complete)
                 })
@@ -312,7 +339,7 @@ class Unit: SerializableJSON, PType
                 self.sprite.runAction(attackSequence, withKey: "attack")
                 self.sprite.runAction(self.DS_attackAnim!, withKey: "attackAnim")
                 //Apply the damage to the enemy. NOTE: Might be more realistic to do this half way though the attack animation.
-                target.takeDamage(self.attackDamage)
+                target.takeDamage(self.attackDamage.get())
                 if self.type == "Warrior"
                 {
                     let soundAction = SKAction.playSoundFileNamed("swing3.wav", waitForCompletion: true)
@@ -354,14 +381,6 @@ class Unit: SerializableJSON, PType
      * Call every 1 second or so to update units.
      */
     func update(){
-        /*
-         * AUTOMATIC LIFE REGEN
-         */
-        
-        if self.health < self.maxhealth{
-            self.takeDamage(-self.healthregen)
-        }
-        
         //self.currentOrder.update()
     }
     

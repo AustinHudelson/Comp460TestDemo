@@ -166,6 +166,10 @@
 		F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B631A71EF7300DCD868 /* Images.xcassets */; };
 		F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */; };
 		F4D33B731A71EF7300DCD868 /* _60DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */; };
+		F4DC7F281ABA0BDE00E98AD6 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F271ABA0BDE00E98AD6 /* Attribute.swift */; };
+		F4DC7F2A1ABB5BDB00E98AD6 /* LevelTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F291ABB5BDB00E98AD6 /* LevelTwo.swift */; };
+		F4DC7F2C1ABB5C0E00E98AD6 /* LevelThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F2B1ABB5C0E00E98AD6 /* LevelThree.swift */; };
+		F4DC7F2F1ABB5EAD00E98AD6 /* EnemyBoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F2E1ABB5EAD00E98AD6 /* EnemyBoss.swift */; };
 		F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */; };
 		F4E896421AA128E000406784 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E896411AA128E000406784 /* Game.swift */; };
 /* End PBXBuildFile section */
@@ -351,6 +355,10 @@
 		F4D33B6C1A71EF7300DCD868 /* 460DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 460DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B711A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _60DemoTests.swift; sourceTree = "<group>"; };
+		F4DC7F271ABA0BDE00E98AD6 /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		F4DC7F291ABB5BDB00E98AD6 /* LevelTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTwo.swift; sourceTree = "<group>"; };
+		F4DC7F2B1ABB5C0E00E98AD6 /* LevelThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelThree.swift; sourceTree = "<group>"; };
+		F4DC7F2E1ABB5EAD00E98AD6 /* EnemyBoss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBoss.swift; sourceTree = "<group>"; };
 		F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAreaHeal.swift; sourceTree = "<group>"; };
 		F4E896411AA128E000406784 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -457,6 +465,8 @@
 				68F35CAA1A84C4D5004905BF /* GameScene.swift */,
 				F4E896411AA128E000406784 /* Game.swift */,
 				E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */,
+				F4DC7F291ABB5BDB00E98AD6 /* LevelTwo.swift */,
+				F4DC7F2B1ABB5C0E00E98AD6 /* LevelThree.swift */,
 				E75F4FBA1AB0DE1B00C3D76E /* Level.swift */,
 			);
 			path = GameSceneClasses;
@@ -496,11 +506,13 @@
 			isa = PBXGroup;
 			children = (
 				68F35CB21A84C540004905BF /* Unit.swift */,
+				F4DC7F2D1ABB5E8900E98AD6 /* Enemy Boss */,
 				F402F68D1AB51AC200A930C2 /* Enemy Mage */,
 				F4B562F61AB2880A0094B2A7 /* Enemy */,
 				F4B562F51AB287FB0094B2A7 /* Mage */,
 				F4BC9DC81A900C9A00F3B617 /* Warrior */,
 				F4B5047A1A900D98007CDBA8 /* Target Dummy */,
+				F4DC7F271ABA0BDE00E98AD6 /* Attribute.swift */,
 			);
 			name = Units;
 			sourceTree = "<group>";
@@ -824,6 +836,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F4DC7F2D1ABB5E8900E98AD6 /* Enemy Boss */ = {
+			isa = PBXGroup;
+			children = (
+				F4DC7F2E1ABB5EAD00E98AD6 /* EnemyBoss.swift */,
+			);
+			name = "Enemy Boss";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1046,11 +1066,13 @@
 				68DADF621AB5738800A20800 /* RoamAttack.swift in Sources */,
 				68DADF5E1AB5738800A20800 /* Idle.swift in Sources */,
 				68DADF5C1AB5738800A20800 /* Taunt.swift in Sources */,
+				F4DC7F2A1ABB5BDB00E98AD6 /* LevelTwo.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				68DADF491AB56FE800A20800 /* ButtonTaunt.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
 				F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */,
 				F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */,
+				F4DC7F2F1ABB5EAD00E98AD6 /* EnemyBoss.swift in Sources */,
 				6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */,
 				F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */,
 				F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */,
@@ -1071,6 +1093,7 @@
 				68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */,
 				68DADF5A1AB5738800A20800 /* Enrage.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
+				F4DC7F281ABA0BDE00E98AD6 /* Attribute.swift in Sources */,
 				682944DF1AB5787000680A36 /* Heal.swift in Sources */,
 				E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */,
 				68DADF5D1AB5738800A20800 /* Attack.swift in Sources */,
@@ -1080,6 +1103,7 @@
 				68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */,
 				68A18D4F1AA8719E001CCE1D /* NetworkClock.m in Sources */,
 				682944E11AB578A200680A36 /* Shrink.swift in Sources */,
+				F4DC7F2C1ABB5C0E00E98AD6 /* LevelThree.swift in Sources */,
 				F4B562EE1AB21B290094B2A7 /* ButtonHeal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -53,15 +53,13 @@ class Shrink: Order, PType
     
     func applyBuff()
     {
-        let speedInc: CGFloat = 0.25
-        self.DS_target?.speed *= speedInc
+        self.DS_target?.speed.addModifier("Shrink", value:0.25)
         self.DS_target?.sprite.runAction(SKAction.scaleBy(0.5, duration: 1.0))
     }
     
     func removeBuff()
     {
-        let speedInc: CGFloat = 0.25
-        self.DS_target?.speed /= speedInc
+        self.DS_target?.speed.removeModifier("Shrink")
         self.DS_target?.sprite.runAction(SKAction.scaleBy(2.0, duration: 1.0))
         
     }

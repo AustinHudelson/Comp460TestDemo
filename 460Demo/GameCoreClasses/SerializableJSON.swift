@@ -50,13 +50,21 @@ class SerializableJSON: NSObject {
                 //println(propType)
                 
                 //NEED TO CHECK IF THE RECEIVED DATA IS PRIMITIVE, SERIALIZEABLEJSON OR ARRAY<SERIALIZEABLEJSON>.
-                //
-                if let serValue = propValue as? Dictionary<String, AnyObject>{
-                    println(propName+":Deserializing SerailizeJSON")
-                    var anyobjecttype: AnyObject.Type = NSClassFromString(propValue!["type"] as NSString)
-                    var nsobjecttype: SerializableJSON.Type = anyobjecttype as SerializableJSON.Type
-                    var newObject: SerializableJSON = nsobjecttype(receivedData: (propValue as Dictionary<String, AnyObject>))
-                    self.setValue(newObject, forKey: propName)
+                
+                if let serValue = propValue as? Dictionary<String, AnyObject> {
+                    //SPECIAL CASE: DO NOT INTERPRET THE "m" Property from serializing an attribute to be a SerializeableJSON.
+                    //WARNING: this is a pretty bad way of doing this. But it works and it would take awhile to do it differently.
+                    if receivedData["type"] as String == "Attribute" {
+                        //keep primitive Case
+                        self.setValue(propValue, forKey: propName)
+                    }  else {
+                        //Case for all Serializeable properties not in Attribute
+                        println(propName+":Deserializing SerailizeJSON")
+                        var anyobjecttype: AnyObject.Type = NSClassFromString(propValue!["type"] as NSString)
+                        var nsobjecttype: SerializableJSON.Type = anyobjecttype as SerializableJSON.Type
+                        var newObject: SerializableJSON = nsobjecttype(receivedData: (propValue as Dictionary<String, AnyObject>))
+                        self.setValue(newObject, forKey: propName)
+                    }
                 } else {
                     //Primitive Case
                     self.setValue(propValue, forKey: propName)
@@ -170,6 +178,8 @@ class SerializableJSON: NSObject {
                 /*
                 - if this particular property's value is an array, serialize this array recursively
                 */
+                println("INVALID ARRAY")
+                fatalError("We dont support serializeableJSON arrays yet")
                 var subArray = Array<AnyObject>()
                 for item in (propValue as Array<SerializableJSON>) {
                     subArray.append(item.toJSON())

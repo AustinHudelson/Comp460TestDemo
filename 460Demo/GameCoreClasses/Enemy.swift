@@ -34,11 +34,11 @@ class Enemy: Unit, PType
         //INITILIZE THE UNITS STATS HERE!!!
         self.type = "Enemy"
         self.health = 40
-        self.maxhealth = 40
+        self.maxhealth = Attribute(baseValue: 40.0)
         self.healthregen = 0
-        self.attackSpeed = 1.5
-        self.attackDamage = 8
-        self.speed = 70.0
+        self.attackSpeed = Attribute(baseValue: 1.5)
+        self.attackDamage = Attribute(baseValue: 8.0)
+        self.speed = Attribute(baseValue: 70.0)
         self.attackRange = 20.0
         self.isEnemy = true
         self.xSize = 275.0
@@ -186,7 +186,7 @@ class Enemy: Unit, PType
         self.DS_health_txt.fontColor = UIColor.redColor()
         super.addUnitToGameScene(gameScene, pos: pos)
         self.sendOrder(RoamAttack(receiverIn: self))
-        self.applyTint(SKColor.redColor(), factor: 0.75, blendDuration: NSTimeInterval(0.0))
+        self.applyTint("Enemy", red: 1.0, blue: 0.5, green: 0.5)
 
     }
 }

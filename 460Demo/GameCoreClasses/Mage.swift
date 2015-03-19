@@ -33,12 +33,12 @@ class Mage: Unit, PType
         //INITILIZE THE UNITS STATS HERE!!!
         self.type = "Mage"
         self.health = 80
-        self.maxhealth = 80
-        self.healthregen = 1
-        self.speed = 75.0
+        self.maxhealth = Attribute(baseValue: 80.0)
+        self.healthregen = 0
+        self.speed = Attribute(baseValue: 80.0)
         self.attackRange = 1000.0
-        self.attackSpeed = 2.0
-        self.attackDamage = 5
+        self.attackSpeed = Attribute(baseValue: 2.0)
+        self.attackDamage = Attribute(baseValue: 5.0)
         self.isEnemy = false
         self.xSize = 300.0
         self.ySize = 300.0

@@ -33,12 +33,12 @@ class Warrior: Unit, PType
         //INITILIZE THE UNITS STATS HERE!!!
         self.type = "Warrior"
         self.health = 100
-        self.maxhealth = 100
+        self.maxhealth = Attribute(baseValue: 100)
         self.healthregen = 1
-        self.speed = 90.0
-        self.attackSpeed = 1.88
+        self.speed = Attribute(baseValue: 90.0)
+        self.attackSpeed = Attribute(baseValue: 1.88)
         self.attackRange = 20.0
-        self.attackDamage = 10
+        self.attackDamage = Attribute(baseValue: 10.0)
         self.isEnemy = false
         self.xSize = 300.0
         self.ySize = 300.0

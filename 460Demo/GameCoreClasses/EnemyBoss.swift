@@ -1,24 +1,24 @@
 //
-//  Warrior.swift
+//  EnemyBoss.swift
 //  460Demo
 //
-//  Created by Olyver on 1/31/15.
+//  Created by Austin on 3/19/15.
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
 
 import SpriteKit
 import Foundation
 
-@objc(EnemyMage)
-class EnemyMage: Unit, PType
+@objc(EnemyBoss)
+class EnemyBoss: Unit, PType
 {
-    var AnimationName = "Character2BaseColorization"
+    var AnimationName = "Character1BaseColorization"
     
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init(receivedData: receivedData)
         
-        restoreProperties(Warrior.self, receivedData: receivedData)
+        restoreProperties(EnemyBoss.self, receivedData: receivedData)
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -32,17 +32,17 @@ class EnemyMage: Unit, PType
     {
         super.init(ID:ID, spawnLocation: spawnLocation)
         //INITILIZE THE UNITS STATS HERE!!!
-        self.type = "EnemyMage"
-        self.health = 30
-        self.maxhealth = Attribute(baseValue: 30.0)
+        self.type = "Enemy"
+        self.health = 40
+        self.maxhealth = Attribute(baseValue: 250.0)
         self.healthregen = 0
-        self.attackSpeed = Attribute(baseValue:  1.88)
-        self.attackDamage = Attribute(baseValue: 4.0)
-        self.speed = Attribute(baseValue: 30.0)
-        self.attackRange = 300.0
+        self.attackSpeed = Attribute(baseValue: 1.5)
+        self.attackDamage = Attribute(baseValue: 35.0)
+        self.speed = Attribute(baseValue: 45.0)
+        self.attackRange = 80.0
         self.isEnemy = true
-        self.xSize = 250.0
-        self.ySize = 250.0
+        self.xSize = 450.0
+        self.ySize = 450.0
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -58,16 +58,18 @@ class EnemyMage: Unit, PType
         //Define Animations here
         //
         
-        let animPrefix = "Mage"
+        //let Atlas = TextureLoader.global.Warrior
         var Atlas:SKTextureAtlas
         
+        let animPrefix = "Warrior"
         let walkAnimName = "-walk"
         let attackAnimName = "-attack"
         let abilityAnimName = "-ability"
         let deathAnimName = "-death"
         let stumbleAnimName = "-stumble"
         let standAnimName = "-attack"
-        Atlas = SKTextureAtlas(named: animPrefix+walkAnimName)
+        
+        Atlas = SKTextureAtlas(named: animPrefix + walkAnimName)
         var walkTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+walkAnimName+"0"),
             Atlas.textureNamed(AnimationName+walkAnimName+"1"),
@@ -106,7 +108,7 @@ class EnemyMage: Unit, PType
             Atlas.textureNamed(AnimationName+attackAnimName+"10"),
             Atlas.textureNamed(AnimationName+attackAnimName+"11"),
             ], timePerFrame: 0.05)
-         Atlas = SKTextureAtlas(named: animPrefix+deathAnimName)
+        Atlas = SKTextureAtlas(named: animPrefix+deathAnimName)
         var deathTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+deathAnimName+"0"),
             Atlas.textureNamed(AnimationName+deathAnimName+"1"),
@@ -133,6 +135,7 @@ class EnemyMage: Unit, PType
             Atlas.textureNamed(AnimationName+deathAnimName+"22"),
             Atlas.textureNamed(AnimationName+deathAnimName+"23"),
             ], timePerFrame: 0.05, resize: false, restore: false)
+        
         Atlas = SKTextureAtlas(named: animPrefix+abilityAnimName)
         var abilityTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+abilityAnimName+"0"),
@@ -150,15 +153,16 @@ class EnemyMage: Unit, PType
             Atlas.textureNamed(AnimationName+abilityAnimName+"12"),
             Atlas.textureNamed(AnimationName+abilityAnimName+"13"),
             ], timePerFrame: 0.1)
+        
         Atlas = SKTextureAtlas(named: animPrefix+stumbleAnimName)
         var stumbleTextures = SKAction.animateWithTextures([
-            Atlas.textureNamed(AnimationName+stumbleAnimName+"0"),
-            Atlas.textureNamed(AnimationName+stumbleAnimName+"1"),
-            Atlas.textureNamed(AnimationName+stumbleAnimName+"2"),
-            Atlas.textureNamed(AnimationName+stumbleAnimName+"3"),
-            Atlas.textureNamed(AnimationName+stumbleAnimName+"4")
+            SKTexture(imageNamed: AnimationName+stumbleAnimName+"0"),
+            SKTexture(imageNamed: AnimationName+stumbleAnimName+"1"),
+            SKTexture(imageNamed: AnimationName+stumbleAnimName+"2"),
+            SKTexture(imageNamed: AnimationName+stumbleAnimName+"3"),
+            SKTexture(imageNamed: AnimationName+stumbleAnimName+"4")
             ], timePerFrame: 0.05)
-         Atlas = SKTextureAtlas(named: animPrefix+standAnimName)
+        Atlas = SKTextureAtlas(named: animPrefix+standAnimName)
         var standTextures = SKAction.animateWithTextures([
             Atlas.textureNamed(AnimationName+standAnimName+"0")
             ], timePerFrame: 0.1)
@@ -171,34 +175,18 @@ class EnemyMage: Unit, PType
         self.DS_abilityAnim = SKAction.repeatAction(abilityTextures, count: 1)
         
         /* Sprite setup */
-        self.sprite = SKSpriteNode(imageNamed: "MageStand350x350")
+        self.sprite = SKSpriteNode(imageNamed: "WarriorStand350x350")
         self.sprite.runAction(self.DS_standAnim)
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
     }
     
     override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint) {
-        //Enemies have a red health text color
+        //Enemy has a red health text color
         self.DS_health_txt.fontColor = UIColor.redColor()
-        
         super.addUnitToGameScene(gameScene, pos: pos)
+        self.sendOrder(RoamAttack(receiverIn: self))
+        self.applyTint("Enemy", red: 1.0, blue: 0.5, green: 0.5)
         
-        //Give a light red tint.
-        self.applyTint("Enemy", red: 0.75, blue: 0.2, green: 0.9)
-        
-        //Mage should walk on to the screen before being allowed to attack.
-        if Game.global.scene != nil && (self.sprite.position.x < CGRectGetMinX(Game.global.scene!.frame)) {
-            //Mage is off the side of the screen on the left side. Send order to move on to the screen then roam attack.
-            self.move(CGPoint(x: CGRectGetMinX(Game.global.scene!.frame)+80, y: self.sprite.position.y), complete: {
-                self.sendOrder(RoamAttack(receiverIn: self))
-            })
-        } else if (Game.global.scene != nil && (self.sprite.position.y > CGRectGetMaxX(Game.global.scene!.frame))) {
-            //Mage is off the side of the screen on the right side. Send order to move on to the screen then roam attack.
-            self.move(CGPoint(x: CGRectGetMaxX(Game.global.scene!.frame)-80, y: self.sprite.position.y), complete: {
-                self.sendOrder(RoamAttack(receiverIn: self))
-            })
-        } else {
-            self.sendOrder(RoamAttack(receiverIn: self))
-        }
     }
 }
