@@ -48,7 +48,7 @@ class AreaHeal: Order, PType
             let waitAction: SKAction = SKAction.waitForDuration(wait)
             let healBlock: SKAction = SKAction.runBlock({
                 if target.alive == true {
-                    target.takeDamage(-2 as Float)
+                    target.takeDamage(-2)
                     self.healOverTime(heal-2, target:target)
                 }
             })

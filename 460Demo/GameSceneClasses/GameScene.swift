@@ -273,73 +273,65 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func touchesEnded(touches:NSSet, withEvent event: UIEvent)
-    {
+    override func touchesEnded(touches:NSSet, withEvent event: UIEvent){
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode(self)
-            if playerIsTouched == true {
-                
-                var unitTouched = false;
-                var touchedUnitID: String = ""
-                for (name, unit) in Game.global.enemyMap
-                {
-                    //Attack target conditions go here
-                    /* you touched the sprite, The target is not you, and the target is an enemy. */
-                    if(unit.sprite.containsPoint(touchLocation) && (unit.isEnemy == true))
-                    {
-                        unitTouched = true;
-                        touchedUnitID = unit.ID
-                        break
-                    }
+            if Game.global.getMyPlayer() != nil {
+                if Game.global.myPlayerIsDead == true || Game.global.getMyPlayer()!.alive == false {
+                    return
                 }
                 
-                var sendData: Dictionary<String, Array<AnyObject>> = [:]
-                if(unitTouched)
-                {
-                    if Game.global.getMyPlayer() != nil {
-                        var attack: Attack = Attack(receiverIn: Game.global.getMyPlayer()!, target: Game.global.getUnit(touchedUnitID)!)
-                        sendData["Orders"] = []
-                        sendData["Orders"]!.append(attack.toJSON())
+                //Check each button slot first
+                if self.childNodeWithName("Ability0")!.containsPoint(touchLocation) {
+                    //Button at slot 0
+                    let button = self.childNodeWithName("Ability0") as Ability
+                    if button.cooldownReady == true {
+                        button.apply(Game.global.getMyPlayer()!)
                     }
+                } else if self.childNodeWithName("Ability1")!.containsPoint(touchLocation) {
+                    //Button at slot 1
+                    let button = self.childNodeWithName("Ability1") as Ability
+                    if button.cooldownReady == true {
+                        button.apply(Game.global.getMyPlayer()!)
+                    }
+                } else {
+                    //World touch. either an attack or move command.
+                    if playerIsTouched == true || playerIsTouched == false {    //FOR NOW TESTING IF WE DONT HAVE TO DRAG
+                        var unitTouched = false;
+                        var touchedUnitID: String = ""
+                        for (name, unit) in Game.global.enemyMap {
+                            //Attack target conditions go here
+                            /* you touched the sprite, The target is not you, and the target is an enemy. */
+                            if(unit.sprite.containsPoint(touchLocation) && (unit.isEnemy == true)) {
+                                unitTouched = true;
+                                touchedUnitID = unit.ID
+                                break
+                            }
+                        }
+                
+                        var sendData: Dictionary<String, Array<AnyObject>> = [:]
+                        if(unitTouched) {
+                            //Prep to send attack command
+                            if Game.global.getMyPlayer() != nil {
+                                var attack: Attack = Attack(receiverIn: Game.global.getMyPlayer()!, target: Game.global.getUnit(touchedUnitID)!)
+                                sendData["Orders"] = []
+                                sendData["Orders"]!.append(attack.toJSON())
+                            }
                     
-                }
-                else
-                {
-                    if Game.global.getMyPlayer() != nil {
-                        var move_loc: Move = Move(receiverIn: Game.global.getMyPlayer()!, moveToLoc: touchLocation)
-                        sendData["Orders"] = []
-                        sendData["Orders"]!.append(move_loc.toJSON())
-                    }
-                }
-                AppWarpHelper.sharedInstance.sendUpdate(&sendData)
-                playerIsTouched = false
-            }
-            /* If Pressing Ability buttons
-            */
-            
-            else
-            {
-                if Game.global.getMyPlayer() != nil {
-                    if Game.global.myPlayerIsDead == true || Game.global.getMyPlayer()!.alive == false {
-                        return
-                    }
-                
-                    if self.childNodeWithName("Ability0")!.containsPoint(touchLocation) {
-                        //Button at slot 0
-                        let button = self.childNodeWithName("Ability0") as Ability
-                        if button.cooldownReady == true {
-                            button.apply(Game.global.getMyPlayer()!)
+                        } else {
+                            //Prep to send move command
+                            if Game.global.getMyPlayer() != nil {
+                                var move_loc: Move = Move(receiverIn: Game.global.getMyPlayer()!, moveToLoc: touchLocation)
+                                sendData["Orders"] = []
+                                sendData["Orders"]!.append(move_loc.toJSON())
+                            }
                         }
-                    } else if self.childNodeWithName("Ability1")!.containsPoint(touchLocation) {
-                        //Button at slot 1
-                        let button = self.childNodeWithName("Ability1") as Ability
-                        if button.cooldownReady == true {
-                            button.apply(Game.global.getMyPlayer()!)
-                        }
+                        AppWarpHelper.sharedInstance.sendUpdate(&sendData)
+                        playerIsTouched = false
                     }
                 }
             }
-          }
+        }
     }
     
     var TEMPREMOVECOUNTER: Int = 0

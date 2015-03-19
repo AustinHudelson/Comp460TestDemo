@@ -24,7 +24,7 @@ class Unit: SerializableJSON, PType
     var attackRange: CGFloat = 20.0
     var attackSpeed: Attribute = Attribute(baseValue: 3.0)
     var attackDamage: Attribute = Attribute(baseValue: 3.0)
-    var sprite: SKNode = SKSpriteNode(imageNamed: "WarriorStand350x350")
+    var sprite: SKSpriteNode = SKSpriteNode(imageNamed: "WarriorStand350x350")
     var redColor: Attribute = Attribute(baseValue: 1.0)
     var blueColor: Attribute = Attribute(baseValue: 1.0)
     var greenColor: Attribute = Attribute(baseValue: 1.0)
@@ -80,10 +80,6 @@ class Unit: SerializableJSON, PType
         self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
         self.DS_health_txt.zPosition = 2
         self.DS_health_bar.zPosition = 2
-       
-        
-        
-        
     }
     
     
@@ -146,17 +142,16 @@ class Unit: SerializableJSON, PType
             if self.sprite.actionForKey("attackAnim") == nil && damage > 0{
                 println("taking damage")
                 self.sprite.runAction(DS_stumbleAnim)
-                
             }
         }
         
         //println("\(ID), \(health)")
-        self.DS_health_txt.text = self.health.description
         
-        let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth*100), height: CGFloat(25))
+        let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth.get()*100), height: CGFloat(25))
         
         self.DS_health_bar.size = newSize
         self.DS_health_bar.position = CGPoint(x:self.sprite.position.x - self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
+        
         
     }
     
@@ -394,9 +389,9 @@ class Unit: SerializableJSON, PType
     /*
      * Call every 1 second or so to update units.
      */
-    func update(){
+        
         //self.currentOrder.update()
-    }
+    
     
     /*
     * LOCAL DEATH
