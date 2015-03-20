@@ -48,6 +48,7 @@
 		E72E67331AB630300082E7B4 /* Warrior-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E67311AB630300082E7B4 /* Warrior-death.atlas */; };
 		E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */; };
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
+		E7E2DDBC1ABA0E1E003C9812 /* VIDA_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */; };
 		E7E5E2791AB6345E00554839 /* Mage-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E2781AB6345E00554839 /* Mage-ability.atlas */; };
 		E7E5E27E1AB6364B00554839 /* Mage-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */; };
 		E7E5E27F1AB6364B00554839 /* Mage-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27B1AB6364B00554839 /* Mage-stumble.atlas */; };
@@ -230,6 +231,7 @@
 		E72E67311AB630300082E7B4 /* Warrior-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-death.atlas"; sourceTree = "<group>"; };
 		E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VIDA_10.png; path = GameCoreClasses/VIDA_10.png; sourceTree = "<group>"; };
 		E7E5E2781AB6345E00554839 /* Mage-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-ability.atlas"; sourceTree = "<group>"; };
 		E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-walk.atlas"; sourceTree = "<group>"; };
 		E7E5E27B1AB6364B00554839 /* Mage-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-stumble.atlas"; sourceTree = "<group>"; };
@@ -803,6 +805,7 @@
 				6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */,
 				F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */,
 				F4D33B631A71EF7300DCD868 /* Images.xcassets */,
+				E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */,
 				F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */,
 				F4B562FB1AB3A5AC0094B2A7 /* Sounds */,
 				F4D33B561A71EF7300DCD868 /* Supporting Files */,
@@ -948,6 +951,7 @@
 				F4B563701AB3A5CF0094B2A7 /* sword-unsheathe3.wav in Resources */,
 				F4B5638F1AB3A5CF0094B2A7 /* random4.wav in Resources */,
 				F4B5637E1AB3A5CF0094B2A7 /* bubble3.wav in Resources */,
+				E7E2DDBC1ABA0E1E003C9812 /* VIDA_10.png in Resources */,
 				F4B5636B1AB3A5CF0094B2A7 /* swing.wav in Resources */,
 				F4B563A51AB3A5CF0094B2A7 /* mnstr6.wav in Resources */,
 				E72E67321AB630300082E7B4 /* Warrior-ability.atlas in Resources */,

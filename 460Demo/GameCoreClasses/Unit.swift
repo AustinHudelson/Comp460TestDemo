@@ -15,16 +15,16 @@ class Unit: SerializableJSON, PType
 //    var name: String = ""
     var type: String = "Unit"
     var ID: String = ""
-    var health: Int = 0
-    var maxhealth: Int = 0
+    var health: Float = 0
+    var maxhealth: Float = 0
     var healthregen: Int = 0
     var speed: CGFloat = 0.0
     var xSize: CGFloat = 200.0
     var ySize: CGFloat = 200.0
     var attackRange: CGFloat = 20.0
     var attackSpeed: NSTimeInterval = NSTimeInterval(3.0)
-    var attackDamage: Int = 3
-    var sprite: SKNode = SKSpriteNode(imageNamed: "WarriorStand350x350")
+    var attackDamage: Float = 3
+    var sprite: SKSpriteNode = SKSpriteNode(imageNamed: "WarriorStand350x350")
     var currentOrder: Order = NoneOrder()
     var alive: Bool = true
     var DS_walkAnim: SKAction?
@@ -38,8 +38,10 @@ class Unit: SerializableJSON, PType
     var isAttacking: Bool = false
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
-    var health_txt_y_dspl: CGFloat = 70 // The y displacement of health text relative to this unit's sprite
+    var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "health_bar_green")
     
+    var health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
+    var health_bar_x_dspl: CGFloat = 35
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init()
@@ -52,14 +54,14 @@ class Unit: SerializableJSON, PType
         self.DS_health_txt.fontName = "AvenirNext-Bold"
         self.DS_health_txt.fontSize = 40
         // ===TESTING
-        self.DS_health_txt.zPosition = 2
+        var barSize: CGSize = CGSize(width: CGFloat(100), height: CGFloat(25))
+        self.DS_health_bar.size = barSize
         
-//        // physics stuff
-//        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
-//        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
-//        self.sprite.physicsBody?.categoryBitMask = UnitCategory
-//        self.sprite.physicsBody?.collisionBitMask = 0
-//        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
+        self.sprite.anchorPoint = CGPoint(x:0, y:0)
+        self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
+        self.DS_health_txt.zPosition = 2
+        self.DS_health_bar.zPosition = 2
+       
     }
     
     init(ID: String, spawnLocation: CGPoint) {
@@ -71,16 +73,11 @@ class Unit: SerializableJSON, PType
         self.DS_health_txt.text = self.health.description
         self.DS_health_txt.fontSize = 40
         // ===TESTING
+        self.sprite.anchorPoint = CGPoint(x:0, y:0)
+        self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
         self.DS_health_txt.zPosition = 2
-        
-//        //// physics stuff
-//        self.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: self.sprite.frame.size)
-//        self.sprite.physicsBody?.usesPreciseCollisionDetection = true
-//        self.sprite.physicsBody?.categoryBitMask = UnitCategory
-//        self.sprite.physicsBody?.collisionBitMask = 0
-//        self.sprite.physicsBody?.contactTestBitMask = UnitCategory
-//        //self.sprite.physicsBody?.restitution = 0
-//        //self.sprite.physicsBody?.
+        self.DS_health_bar.zPosition = 2
+       
         
         
         
@@ -101,8 +98,14 @@ class Unit: SerializableJSON, PType
         var health_txt_pos: CGPoint = pos
         health_txt_pos.y += self.health_txt_y_dspl
         self.DS_health_txt.position = health_txt_pos
-        gameScene.addChild(self.DS_health_txt)
         
+        var health_bar_pos: CGPoint = pos
+        health_bar_pos.y += self.health_txt_y_dspl
+        health_bar_pos.x = pos.x - health_bar_x_dspl //can't get it to work other than hard coding
+        self.DS_health_bar.position = health_bar_pos
+        //gameScene.addChild(self.DS_health_txt)
+        gameScene.addChild(self.DS_health_bar)
+        //adjustBarAnchorPoint()
         //PRINTLN MYSELF AS JSON
         //println("PRINTING SELF AS JSON LOOK HERE!!!!")
         //println(self.toJSON())
@@ -122,10 +125,10 @@ class Unit: SerializableJSON, PType
         order.apply()
     }
     
-    func takeDamage(damage:Int)
+    func takeDamage(damage:Float)
     {
         
-        health-=damage
+        health = health - (damage as Float)
         if health>maxhealth
         {
             health=maxhealth
@@ -140,11 +143,18 @@ class Unit: SerializableJSON, PType
             if self.sprite.actionForKey("attackAnim") == nil && damage > 0{
                 println("taking damage")
                 self.sprite.runAction(DS_stumbleAnim)
+                
             }
         }
         
         //println("\(ID), \(health)")
         self.DS_health_txt.text = self.health.description
+        
+        let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth*100), height: CGFloat(25))
+        
+        self.DS_health_bar.size = newSize
+        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x - self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
+        
     }
     
     func faceLeft(){
@@ -234,6 +244,7 @@ class Unit: SerializableJSON, PType
         //Create movement action for health text
         var healthTextAdjustedMove = adjustedMove
         healthTextAdjustedMove.y += health_txt_y_dspl
+        healthTextAdjustedMove.x -= health_bar_x_dspl
         let healthTextMovementAction = SKAction.moveTo(healthTextAdjustedMove, duration:NSTimeInterval(duration))
         
         //Start looping the walk animation if it is not already playing.
@@ -250,6 +261,8 @@ class Unit: SerializableJSON, PType
         
         //Apply the actions to the health text and sprite
         DS_health_txt.runAction(healthTextMovementAction, withKey: "move")
+        DS_health_bar.runAction(healthTextMovementAction, withKey:"move")
+       // adjustBarAnchorPoint()
         sprite.runAction(walkSequence, withKey: "move")
     }
     
@@ -257,6 +270,7 @@ class Unit: SerializableJSON, PType
         self.sprite.removeActionForKey("move")
         self.sprite.removeActionForKey("moveAnim")
         self.DS_health_txt.removeActionForKey("move")
+        self.DS_health_bar.removeActionForKey("move")
     }
     
     func attack(target: Unit, complete:(()->Void)!){
@@ -359,7 +373,7 @@ class Unit: SerializableJSON, PType
          */
         
         if self.health < self.maxhealth{
-            self.takeDamage(-self.healthregen)
+            //self.takeDamage(-self.healthregen)
         }
         
         //self.currentOrder.update()
@@ -395,6 +409,13 @@ class Unit: SerializableJSON, PType
      */
     func kill(){
         
+    }
+    
+    func adjustBarAnchorPoint()
+    {
+        let spritePos:CGPoint = self.sprite.position
+        let newAnchorPoint:CGPoint = CGPoint(x: spritePos.x, y: spritePos.y + health_txt_y_dspl)
+        self.DS_health_bar.anchorPoint = newAnchorPoint
     }
     
     
