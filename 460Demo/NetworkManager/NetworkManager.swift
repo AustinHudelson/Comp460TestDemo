@@ -58,8 +58,10 @@ class NetworkManager {
         Add to this function when you want to do new things with the recevied message
     */
     class func processRecvMsg(recvDict: Dictionary<String, Array<AnyObject>>) {
+        println(recvDict)
         for (key: String, arrayOfObjects: Array<AnyObject>) in recvDict {
             switch key {
+                /* === Lobby & Start Game cases === */
                 case "Start Game!":
                     // Putting this block of code here for now. Maybe should make a function for it somewhere
                     /* Print the start time and received time */
@@ -73,8 +75,16 @@ class NetworkManager {
                     /* start the game */
                     AppWarpHelper.sharedInstance.startGame()
                 
+                case "LobbyClassIcon":
+                    println(arrayOfObjects)
+                    if let lobby = AppWarpHelper.sharedInstance.lobby {
+                        lobby.updatePlayerIcons(arrayOfObjects[0] as Dictionary<String, String>)
+                    }
+                
                 /* === Game related cases === */
-                case "Units", "SyncPlayer", "SyncEnemies":
+                case "Units":
+                    Game.global.updateNewUnits(arrayOfObjects)
+                case "SyncPlayer", "SyncEnemies":
                     Game.global.updateUnits(arrayOfObjects)
                 case "Orders":
                     Game.global.updateUnitOrders(arrayOfObjects)

@@ -391,14 +391,16 @@ class Game {
         These functions should be called from processRecvMsg()
     */
     /*
-        This func adds new unit to the game based on msg received
+        This func adds new unit to the game based on msg received.
+        (For now) This func should only be called at the start of the game b/c after game starts,
+        it will crash the game when a unit dies and you call getUnit(id), which will result in nil
     */
-    func updateUnits(arrayOfUnits: Array<AnyObject>) {
+    func updateNewUnits(arrayOfUnits: Array<AnyObject>) {
         for object in arrayOfUnits {
             let recvUnit = object as Dictionary<String, AnyObject>  // had to do this to get around Swift compile error
             let id: String = recvUnit["ID"] as String
             // Make a new unit by calling its corresponding constructor if this Unit is not in the list
-            if getUnit(id) == nil
+            if getUnit(id) == nil // !!!WATCH OUT for this nil when a unit dies and is set to nil!!!
             {
                 var anyobjecttype: AnyObject.Type = NSClassFromString(recvUnit["type"] as NSString)
                 var nsobjecttype: Unit.Type = anyobjecttype as Unit.Type
@@ -422,9 +424,16 @@ class Game {
                 
                 newUnit.addUnitToGameScene(self.scene!, pos: spawnLoc)
             }
-            // Update this Unit's health and position since this is probably a sync msg
-            else
-            {
+        }
+    }
+    func updateUnits(arrayOfUnits: Array<AnyObject>) {
+        for object in arrayOfUnits {
+            let recvUnit = object as Dictionary<String, AnyObject>  // had to do this to get around Swift compile error
+            
+            // need to check for null on recvUnit["ID"] b/c if player is dead, the recvUnit dictionary will be empty, which means recvUnit["ID"] = nil
+            if let id = recvUnit["ID"] as? String {
+            
+                // Update this Unit's health and position since this is probably a sync msg
                 if id != AppWarpHelper.sharedInstance.playerName {
                     /*
                         Check to see if I'm a client, if I am just update this unit

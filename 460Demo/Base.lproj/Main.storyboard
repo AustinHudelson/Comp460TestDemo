@@ -424,7 +424,6 @@
                                 <exclude reference="g9G-Nb-Sm0"/>
                                 <exclude reference="2xW-sq-AGF"/>
                                 <exclude reference="rG2-Ja-sx7"/>
-                                <exclude reference="gXV-xX-Gcv"/>
                                 <exclude reference="5Jg-FE-Rqm"/>
                                 <exclude reference="AOX-S6-Fwd"/>
                                 <exclude reference="N12-iU-g2M"/>
@@ -432,6 +431,7 @@
                                 <exclude reference="gJT-p8-Sk2"/>
                                 <exclude reference="irK-ch-UVE"/>
                                 <exclude reference="tyq-fM-wH2"/>
+                                <exclude reference="gXV-xX-Gcv"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -457,7 +457,6 @@
                                 <include reference="g9G-Nb-Sm0"/>
                                 <include reference="2xW-sq-AGF"/>
                                 <include reference="rG2-Ja-sx7"/>
-                                <exclude reference="gXV-xX-Gcv"/>
                                 <include reference="5Jg-FE-Rqm"/>
                                 <include reference="AOX-S6-Fwd"/>
                                 <include reference="N12-iU-g2M"/>
@@ -465,6 +464,7 @@
                                 <include reference="gJT-p8-Sk2"/>
                                 <include reference="irK-ch-UVE"/>
                                 <include reference="tyq-fM-wH2"/>
+                                <exclude reference="gXV-xX-Gcv"/>
                             </mask>
                         </variation>
                     </view>

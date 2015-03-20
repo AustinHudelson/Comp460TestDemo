@@ -182,7 +182,9 @@ class AppWarpHelper: NSObject
     
     /* ======= Lobby and designate host stuff ========= */
     func updateUserList() {
-        lobby!.updateUserList()
+        if let lobby = self.lobby {
+            lobby.updateUserList()
+        }
     }
     
     

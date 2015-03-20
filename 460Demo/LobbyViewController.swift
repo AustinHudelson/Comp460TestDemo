@@ -24,7 +24,6 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var p3Img: UIImageView!
     @IBOutlet weak var p4Img: UIImageView!
     
-    var classText: Array<UITextView> = Array<UITextView>()
     var classImages: Array<UIImageView> = Array<UIImageView>()
     var playerNames: Array<UITextView> = Array<UITextView>()
     
@@ -73,24 +72,46 @@ class LobbyViewController: UIViewController {
         classImages.append(p2Img)
         classImages.append(p3Img)
         classImages.append(p4Img)
-        
-        println(classImages.count)
-        println(playerNames.count)
-        setIcons()
-        
-        
-        println("button state \(startGameButton.enabled)")
-        
     }
     
-    func setIcons()
+    func sendMyClass() {
+        /* Send my class over the network so other ppl can set the display icon properly */
+        var sendClassMsg: Dictionary<String, Array<AnyObject>> = [:]
+        sendClassMsg["LobbyClassIcon"] = []
+        
+        var myClassDict: Dictionary<String, String> = [:]
+        myClassDict["ID"] = myPlayerName
+        myClassDict["Class"] = myClass
+        
+        sendClassMsg["LobbyClassIcon"]!.append(myClassDict)
+        
+        NetworkManager.sendMsg(&sendClassMsg)
+    }
+    
+    /*
+        This funcion receives a player's class over the network and updates the icons
+    */
+    func updatePlayerIcons(playerClass: Dictionary<String, String>) {
+        for i in 0 ..< playerNames.count {
+            if playerNames[i].text == playerClass["ID"] {
+                switch playerClass["Class"]! {
+                    case "Warrior":
+                        classImages[i].image = UIImage(named: "Warrior Icon")
+                    case "Mage":
+                        classImages[i].image = UIImage(named: "Mage Icon")
+                    default:
+                        println("updatePlayerIcon() found a class that has not yet been implemented")
+                }
+            }
+        }
+    }
+    
+    func setPlayerNames()
     {
-        println("Icons")
         for index in 0 ..< AppWarpHelper.sharedInstance.userName_list.count
         {
-            println(index)
             playerNames[index].text = AppWarpHelper.sharedInstance.userName_list[index] as String
-            classImages[index].image = UIImage(named: "Warrior Icon")
+            
         }
         if AppWarpHelper.sharedInstance.userName_list.count != 4
         {
@@ -111,8 +132,6 @@ class LobbyViewController: UIViewController {
         AppWarpHelper.sharedInstance.host = (AppWarpHelper.sharedInstance.userName_list[0] as String) // designate host
         if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host
         {
-            println(AppWarpHelper.sharedInstance.playerName)
-            println(AppWarpHelper.sharedInstance.host)
             startGameButton.enabled = false
         }
         else
@@ -120,7 +139,8 @@ class LobbyViewController: UIViewController {
             startGameButton.enabled = true
         }
         
-        setIcons()
+        setPlayerNames()
+        sendMyClass()
     }
 
     override func didReceiveMemoryWarning() {
