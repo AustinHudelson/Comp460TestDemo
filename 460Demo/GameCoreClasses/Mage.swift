@@ -92,7 +92,7 @@ class Mage: Unit, PType
             Atlas.textureNamed(AnimationName+walkAnimName+"18"),
             Atlas.textureNamed(AnimationName+walkAnimName+"19"),
             Atlas.textureNamed(AnimationName+walkAnimName+"20"),
-            ], timePerFrame: 0.05)
+            ], timePerFrame: 0.035)
         
         Atlas = SKTextureAtlas(named: animPrefix+attackAnimName)
         var attackTextures = SKAction.animateWithTextures([

@@ -410,7 +410,7 @@ class Game {
                     addPlayer(newUnit)
                     //If the player is NOT YOU give it a slightly grey tint.
                     if newUnit.ID != AppWarpHelper.sharedInstance.playerName {
-                        newUnit.applyTint(UIColor.blackColor(), factor: 0.20, blendDuration: 0.0)
+                        newUnit.applyTint("OtherPlayer", red: 0.8, blue: 0.8, green: 0.8)
                     }
                 }
                 else
@@ -440,7 +440,7 @@ class Game {
                     */
                     if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host {
                         if let updateUnit = getUnit(id) {
-                            updateUnit.health = recvUnit["health"] as Float
+                            updateUnit.health = recvUnit["health"] as CGFloat
                             updateUnit.DS_health_txt.text = updateUnit.health.description
                             
                             let recvUnitPos: CGPoint = CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat))
@@ -457,7 +457,7 @@ class Game {
                     else {
                         if playerMap[id] != nil {
                             if let updateUnit = getUnit(id) {
-                                updateUnit.health = recvUnit["health"] as Float
+                                updateUnit.health = recvUnit["health"] as CGFloat
                                 updateUnit.DS_health_txt.text = updateUnit.health.description
                                 
                                 let recvUnitPos: CGPoint = CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat))

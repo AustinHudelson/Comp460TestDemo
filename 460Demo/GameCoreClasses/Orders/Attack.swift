@@ -37,9 +37,9 @@ class Attack: Order, PType
     
     override func apply(){
         //apply blue tint to target
-        //if (DS_receiver!.isLocalPlayer()){
-        //    DS_target!.applyTint(SKColor.blueColor(), factor: 0.5, blendDuration: 0.0)
-        //}
+        if (DS_receiver!.isLocalPlayer()){
+            DS_target!.applyTint("Target", red: 0.5, blue: 2.0, green: 0.7)
+        }
         //Dont apply this if we cannot confirm the target and receiver were restored correctly
         if (DS_target != nil && DS_receiver != nil){
             DS_receiver!.attack(DS_target!, complete:{self.DS_receiver!.sendOrder(Idle(receiverIn: self.DS_receiver!))})
@@ -50,9 +50,9 @@ class Attack: Order, PType
     
     override func remove(){
         //remove blue tint from target
-        //if (DS_receiver!.isLocalPlayer()){
-        //    DS_target!.applyTint(SKColor.whiteColor(), factor: 0.5, blendDuration: 0.0)
-        //}
+        if (DS_receiver!.isLocalPlayer()){
+            DS_target?.removeTint("Target")
+        }
         DS_receiver?.clearAttack()
     }
     

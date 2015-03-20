@@ -13,114 +13,7 @@ import Foundation
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var playerIsTouched = false
     var viewController: UIViewController?
-    var sceneActive = true
-    /*
-        Update the game state according to dictionary received over the network
-    */
-    func updateGameState(recvDict: Dictionary<String, Array<AnyObject>>) {
-        for (key: String, arrayOfObjects: Array<AnyObject>) in recvDict  {
-            if key == "Units" {
-                for object in arrayOfObjects {
-                    let unit = object as Dictionary<String, AnyObject> // had to do this to get around Swift compile error
-                    // Make a new unit by calling its corresponding constructor
-                    if Game.global.getUnit(unit["ID"] as String) == nil
-                    {
-                        var anyobjecttype: AnyObject.Type = NSClassFromString(unit["type"] as NSString)
-                        var nsobjecttype: Unit.Type = anyobjecttype as Unit.Type
-                        var newUnit: Unit = nsobjecttype(receivedData: unit)
-                        if !newUnit.isEnemy
-                        {
-                            Game.global.addPlayer(newUnit)
-                            //If the player is NOT YOU give it a slightly grey tint.
-                            if newUnit.ID != AppWarpHelper.sharedInstance.playerName {
-                                newUnit.applyTint("otherPlayer", red:0.85, blue: 0.85, green: 0.85)
-                            }
-                        }
-                        else
-                        {
-                            Game.global.addEnemy(newUnit)
-                        }
-                        
-                        let spawnLoc = CGPoint(x: (unit["posX"] as CGFloat), y: (unit["posY"] as CGFloat))
-                        
-                        //newUnit.currentOrder = Idle(receiverIn: newUnit) //TEMPORARY WORKAROUND FOR ORDERS THAT DO NOT DESERIALIZE PROPERLY
-                        
-                        newUnit.addUnitToGameScene(self, pos: spawnLoc)
-                    }
-                }
-            }
-            if key == "Orders" {
-                for object in arrayOfObjects {
-                    let order = object as Dictionary<String, AnyObject>
-                    // Make an Order object out of what is received
-                    var anyobjecttype: AnyObject.Type = NSClassFromString(order["type"] as NSString)
-                    var nsobjecttype: Order.Type = anyobjecttype as Order.Type
-                    var newOrder: Order = nsobjecttype(receivedData: order)
-                    if Game.global.getUnit(newOrder.ID!) != nil
-                    {
-                        Game.global.getUnit(newOrder.ID!)!.sendOrder(newOrder)   //SEND THE ORDER TO ITS UNIT
-                        //newOrder.valueForKey("DS_receiver")
-                    }
-                    
-                }
-            }
-            if key == "SentTime" {
-                // Have to put the sent time in an array (even though it contains only 1 element) to get around Swift's compile error
-                for object in arrayOfObjects {
-                    let sentTimeStr = object as String
-                    var sentTime: NSDate = Timer.StrToDate(sentTimeStr)!
-                    var recvTime: NSDate = Timer.getCurrentTime()
-                    var recvTimeStr = Timer.DateToStr(recvTime)
-                    var diff: NSTimeInterval = Timer.diffDateNow(sentTime) // get difference between sent time and now
-                    println("SentTime: \(sentTimeStr); RecvTime: \(recvTimeStr); diff between SentTime & recvTime: \(diff) seconds")
-                }
-            }
-            
-            // Sync players
-            if key == "SyncPlayer" {
-                    var syncPlayer: Dictionary<String, Dictionary<String, AnyObject>> = arrayOfObjects[0] as Dictionary<String, Dictionary<String, AnyObject>>
-                
-                    for (playerID, playerStats) in syncPlayer {
-                        if Game.global.playerMap[playerID] != nil {
-                            // if this sync msg's unitID is not my character, update it
-                            if playerID != AppWarpHelper.sharedInstance.playerName {
-                                Game.global.playerMap[playerID]!.health = playerStats["health"] as CGFloat
-                                Game.global.playerMap[playerID]!.DS_health_txt.text = Game.global.playerMap[playerID]!.health.description
-                                
-                                let playerPos: CGPoint = CGPoint(x: (playerStats["posX"] as CGFloat), y: (playerStats["posY"] as CGFloat))
-                                var health_txt_pos = playerPos
-                                health_txt_pos.y += Game.global.playerMap[playerID]!.health_txt_y_dspl
-                                
-                                Game.global.playerMap[playerID]!.sprite.position = playerPos
-                                Game.global.playerMap[playerID]!.DS_health_txt.position = health_txt_pos
-                            }
-                        }
-                    }
-            }
-            
-            // Sync Enemies from host
-            if key == "SyncEnemies" {
-                var syncEnemies: Dictionary<String, Dictionary<String, AnyObject>> = arrayOfObjects[0] as Dictionary<String, Dictionary<String, AnyObject>>
-                
-                // If i'm not the host, sync the enemies
-                if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host {
-                    for (enemyID, enemyStats) in syncEnemies {
-                        if Game.global.enemyMap[enemyID] != nil {
-                            Game.global.enemyMap[enemyID]!.health = enemyStats["health"] as CGFloat
-                            Game.global.enemyMap[enemyID]!.DS_health_txt.text = Game.global.enemyMap[enemyID]!.health.description
-                            
-                            let enemyPos: CGPoint = CGPoint(x: (enemyStats["posX"] as CGFloat), y: (enemyStats["posY"] as CGFloat))
-                            var health_txt_pos = enemyPos
-                            health_txt_pos.y += Game.global.enemyMap[enemyID]!.health_txt_y_dspl
-                            
-                            Game.global.enemyMap[enemyID]!.sprite.position = enemyPos
-                            Game.global.enemyMap[enemyID]!.DS_health_txt.position = health_txt_pos
-                        }
-                    }
-                }
-            }
-        }
-    }
+    var sceneActive: Bool = true
     
     //begins game scene by making your player and loading enemy waves if you are host
     func startGameScene() {
@@ -161,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         sendUnitOverNetwork(playerChar) //Adds and send the unit
         
-        Game.global.level = LevelOne(scene: Game.global.scene!)
+        Game.global.level = LevelTwo(scene: Game.global.scene!)
         Game.global.loadLevel()
         
         
@@ -265,65 +158,75 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func touchesEnded(touches:NSSet, withEvent event: UIEvent){
+    override func touchesEnded(touches:NSSet, withEvent event: UIEvent)
+    {
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode(self)
+            
+            /* If Pressing Ability buttons
+            */
             if Game.global.getMyPlayer() != nil {
                 if Game.global.myPlayerIsDead == true || Game.global.getMyPlayer()!.alive == false {
                     return
                 }
                 
-                //Check each button slot first
                 if self.childNodeWithName("Ability0")!.containsPoint(touchLocation) {
                     //Button at slot 0
                     let button = self.childNodeWithName("Ability0") as Ability
                     if button.cooldownReady == true {
                         button.apply(Game.global.getMyPlayer()!)
+                        return
                     }
                 } else if self.childNodeWithName("Ability1")!.containsPoint(touchLocation) {
                     //Button at slot 1
                     let button = self.childNodeWithName("Ability1") as Ability
                     if button.cooldownReady == true {
                         button.apply(Game.global.getMyPlayer()!)
-                    }
-                } else {
-                    //World touch. either an attack or move command.
-                    if playerIsTouched == true || playerIsTouched == false {    //FOR NOW TESTING IF WE DONT HAVE TO DRAG
-                        var unitTouched = false;
-                        var touchedUnitID: String = ""
-                        for (name, unit) in Game.global.enemyMap {
-                            //Attack target conditions go here
-                            /* you touched the sprite, The target is not you, and the target is an enemy. */
-                            if(unit.sprite.containsPoint(touchLocation) && (unit.isEnemy == true)) {
-                                unitTouched = true;
-                                touchedUnitID = unit.ID
-                                break
-                            }
-                        }
-                
-                        var sendData: Dictionary<String, Array<AnyObject>> = [:]
-                        if(unitTouched) {
-                            //Prep to send attack command
-                            if Game.global.getMyPlayer() != nil {
-                                var attack: Attack = Attack(receiverIn: Game.global.getMyPlayer()!, target: Game.global.getUnit(touchedUnitID)!)
-                                sendData["Orders"] = []
-                                sendData["Orders"]!.append(attack.toJSON())
-                            }
-                    
-                        } else {
-                            //Prep to send move command
-                            if Game.global.getMyPlayer() != nil {
-                                var move_loc: Move = Move(receiverIn: Game.global.getMyPlayer()!, moveToLoc: touchLocation)
-                                sendData["Orders"] = []
-                                sendData["Orders"]!.append(move_loc.toJSON())
-                            }
-                        }
-                        AppWarpHelper.sharedInstance.sendUpdate(&sendData)
-                        playerIsTouched = false
+                        return
                     }
                 }
             }
-        }
+            
+            //Code only reaches here if touch is not a button press.
+            if playerIsTouched == true || playerIsTouched == false {
+                
+                var unitTouched = false;
+                var touchedUnitID: String = ""
+                for (name, unit) in Game.global.enemyMap
+                {
+                    //Attack target conditions go here
+                    /* you touched the sprite, The target is not you, and the target is an enemy. */
+                    if(unit.sprite.containsPoint(touchLocation) && (unit.isEnemy == true))
+                    {
+                        unitTouched = true;
+                        touchedUnitID = unit.ID
+                        break
+                    }
+                }
+                
+                var sendData: Dictionary<String, Array<AnyObject>> = [:]
+                if(unitTouched)
+                {
+                    if Game.global.getMyPlayer() != nil {
+                        var attack: Attack = Attack(receiverIn: Game.global.getMyPlayer()!, target: Game.global.getUnit(touchedUnitID)!)
+                        sendData["Orders"] = []
+                        sendData["Orders"]!.append(attack.toJSON())
+                    }
+                    
+                }
+                else
+                {
+                    if Game.global.getMyPlayer() != nil {
+                        var move_loc: Move = Move(receiverIn: Game.global.getMyPlayer()!, moveToLoc: touchLocation)
+                        sendData["Orders"] = []
+                        sendData["Orders"]!.append(move_loc.toJSON())
+                    }
+                }
+                NetworkManager.sendMsg(&sendData)
+                playerIsTouched = false
+            }
+            
+          }
     }
     
     var TEMPREMOVECOUNTER: Int = 0
