@@ -87,26 +87,26 @@ class LevelThree:Level
         enemyWaves[3].append(dummy12)
         
         //wave 5. 2 Warriors. 2 Mage.
-        DUMMY_ID = "ENEMY13"
-        dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+155);
-        let dummy13 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
-        
-        DUMMY_ID = "ENEMY14"
-        dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-120);
-        let dummy14 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
-        
-        DUMMY_ID = "ENEMY15"
-        dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+100);
-        let dummy15 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
-        
-        DUMMY_ID = "ENEMY16"
-        dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-200);
-        let dummy16 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
-        enemyWaves.append(Array<Unit>())
-        enemyWaves[4].append(dummy13)
-        enemyWaves[4].append(dummy14)
-        enemyWaves[4].append(dummy15)
-        enemyWaves[4].append(dummy16)
+//        DUMMY_ID = "ENEMY13"
+//        dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+155);
+//        let dummy13 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
+//        
+//        DUMMY_ID = "ENEMY14"
+//        dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-120);
+//        let dummy14 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+//        
+//        DUMMY_ID = "ENEMY15"
+//        dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+100);
+//        let dummy15 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+//        
+//        DUMMY_ID = "ENEMY16"
+//        dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-200);
+//        let dummy16 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
+//        enemyWaves.append(Array<Unit>())
+//        enemyWaves[4].append(dummy13)
+//        enemyWaves[4].append(dummy14)
+//        enemyWaves[4].append(dummy15)
+//        enemyWaves[4].append(dummy16)
     }
     
     
