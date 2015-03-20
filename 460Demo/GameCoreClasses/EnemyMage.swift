@@ -12,7 +12,7 @@ import Foundation
 @objc(EnemyMage)
 class EnemyMage: Unit, PType
 {
-    var AnimationName = "Character2BaseColorization"
+    var AnimationName = "Character1BaseColorization"
     
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
@@ -58,7 +58,7 @@ class EnemyMage: Unit, PType
         //Define Animations here
         //
         
-        let animPrefix = "Mage"
+        let animPrefix = "NewMage"
         var Atlas:SKTextureAtlas
         
         let walkAnimName = "-walk"

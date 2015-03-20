@@ -171,6 +171,12 @@
 		F4DC7F2A1ABB5BDB00E98AD6 /* LevelTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F291ABB5BDB00E98AD6 /* LevelTwo.swift */; };
 		F4DC7F2C1ABB5C0E00E98AD6 /* LevelThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F2B1ABB5C0E00E98AD6 /* LevelThree.swift */; };
 		F4DC7F2F1ABB5EAD00E98AD6 /* EnemyBoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F2E1ABB5EAD00E98AD6 /* EnemyBoss.swift */; };
+		F4DC7F361ABC3DAF00E98AD6 /* NewMage-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F301ABC3DAF00E98AD6 /* NewMage-ability.atlas */; };
+		F4DC7F371ABC3DAF00E98AD6 /* NewMage-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F311ABC3DAF00E98AD6 /* NewMage-attack.atlas */; };
+		F4DC7F381ABC3DAF00E98AD6 /* NewMage-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F321ABC3DAF00E98AD6 /* NewMage-death.atlas */; };
+		F4DC7F391ABC3DAF00E98AD6 /* NewMage-stand.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F331ABC3DAF00E98AD6 /* NewMage-stand.atlas */; };
+		F4DC7F3A1ABC3DAF00E98AD6 /* NewMage-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F341ABC3DAF00E98AD6 /* NewMage-stumble.atlas */; };
+		F4DC7F3B1ABC3DAF00E98AD6 /* NewMage-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F351ABC3DAF00E98AD6 /* NewMage-walk.atlas */; };
 		F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */; };
 		F4E896421AA128E000406784 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E896411AA128E000406784 /* Game.swift */; };
 /* End PBXBuildFile section */
@@ -361,6 +367,12 @@
 		F4DC7F291ABB5BDB00E98AD6 /* LevelTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTwo.swift; sourceTree = "<group>"; };
 		F4DC7F2B1ABB5C0E00E98AD6 /* LevelThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelThree.swift; sourceTree = "<group>"; };
 		F4DC7F2E1ABB5EAD00E98AD6 /* EnemyBoss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBoss.swift; sourceTree = "<group>"; };
+		F4DC7F301ABC3DAF00E98AD6 /* NewMage-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NewMage-ability.atlas"; sourceTree = "<group>"; };
+		F4DC7F311ABC3DAF00E98AD6 /* NewMage-attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NewMage-attack.atlas"; sourceTree = "<group>"; };
+		F4DC7F321ABC3DAF00E98AD6 /* NewMage-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NewMage-death.atlas"; sourceTree = "<group>"; };
+		F4DC7F331ABC3DAF00E98AD6 /* NewMage-stand.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NewMage-stand.atlas"; sourceTree = "<group>"; };
+		F4DC7F341ABC3DAF00E98AD6 /* NewMage-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NewMage-stumble.atlas"; sourceTree = "<group>"; };
+		F4DC7F351ABC3DAF00E98AD6 /* NewMage-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NewMage-walk.atlas"; sourceTree = "<group>"; };
 		F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAreaHeal.swift; sourceTree = "<group>"; };
 		F4E896411AA128E000406784 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -535,6 +547,12 @@
 		F4B562F51AB287FB0094B2A7 /* Mage */ = {
 			isa = PBXGroup;
 			children = (
+				F4DC7F301ABC3DAF00E98AD6 /* NewMage-ability.atlas */,
+				F4DC7F311ABC3DAF00E98AD6 /* NewMage-attack.atlas */,
+				F4DC7F321ABC3DAF00E98AD6 /* NewMage-death.atlas */,
+				F4DC7F331ABC3DAF00E98AD6 /* NewMage-stand.atlas */,
+				F4DC7F341ABC3DAF00E98AD6 /* NewMage-stumble.atlas */,
+				F4DC7F351ABC3DAF00E98AD6 /* NewMage-walk.atlas */,
 				E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */,
 				E7E5E27B1AB6364B00554839 /* Mage-stumble.atlas */,
 				E7E5E27C1AB6364B00554839 /* Mage-death.atlas */,
@@ -933,8 +951,10 @@
 				F4B563A81AB3A5CF0094B2A7 /* mnstr9.wav in Resources */,
 				F4B5638A1AB3A5CF0094B2A7 /* wood-small.wav in Resources */,
 				F4B563771AB3A5CF0094B2A7 /* interface5.wav in Resources */,
+				F4DC7F3B1ABC3DAF00E98AD6 /* NewMage-walk.atlas in Resources */,
 				F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */,
 				F4B563C01AB3A5CF0094B2A7 /* slime2.wav in Resources */,
+				F4DC7F381ABC3DAF00E98AD6 /* NewMage-death.atlas in Resources */,
 				E72E67331AB630300082E7B4 /* Warrior-death.atlas in Resources */,
 				F4B563991AB3A5CF0094B2A7 /* giant5.wav in Resources */,
 				F4B563941AB3A5CF0094B2A7 /* bite-small3.wav in Resources */,
@@ -956,8 +976,10 @@
 				F4B563861AB3A5CF0094B2A7 /* metal-ringing.wav in Resources */,
 				F4B563AB1AB3A5CF0094B2A7 /* ogre2.wav in Resources */,
 				F4B563821AB3A5CF0094B2A7 /* cloth.wav in Resources */,
+				F4DC7F371ABC3DAF00E98AD6 /* NewMage-attack.atlas in Resources */,
 				F4B563C11AB3A5CF0094B2A7 /* slime3.wav in Resources */,
 				F4B563701AB3A5CF0094B2A7 /* sword-unsheathe3.wav in Resources */,
+				F4DC7F3A1ABC3DAF00E98AD6 /* NewMage-stumble.atlas in Resources */,
 				F4B5638F1AB3A5CF0094B2A7 /* random4.wav in Resources */,
 				F4B5637E1AB3A5CF0094B2A7 /* bubble3.wav in Resources */,
 				E7E2DDBC1ABA0E1E003C9812 /* VIDA_10.png in Resources */,
@@ -1001,12 +1023,14 @@
 				F4B563AC1AB3A5CF0094B2A7 /* ogre3.wav in Resources */,
 				F4B5637B1AB3A5CF0094B2A7 /* bottle.wav in Resources */,
 				F4B5639C1AB3A5CF0094B2A7 /* mnstr11.wav in Resources */,
+				F4DC7F391ABC3DAF00E98AD6 /* NewMage-stand.atlas in Resources */,
 				F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */,
 				E72E672D1AB626B20082E7B4 /* Warrior-attack.atlas in Resources */,
 				F4B563C71AB3A5CF0094B2A7 /* slime9.wav in Resources */,
 				E7E5E27F1AB6364B00554839 /* Mage-stumble.atlas in Resources */,
 				F4B5636E1AB3A5CF0094B2A7 /* sword-unsheathe.wav in Resources */,
 				F4B563721AB3A5CF0094B2A7 /* sword-unsheathe5.wav in Resources */,
+				F4DC7F361ABC3DAF00E98AD6 /* NewMage-ability.atlas in Resources */,
 				F4B563C31AB3A5CF0094B2A7 /* slime5.wav in Resources */,
 				F4B563791AB3A5CF0094B2A7 /* armor-light.wav in Resources */,
 				F4B5639D1AB3A5CF0094B2A7 /* mnstr12.wav in Resources */,
