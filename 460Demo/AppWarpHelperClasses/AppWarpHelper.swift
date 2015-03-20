@@ -127,18 +127,7 @@ class AppWarpHelper: NSObject
         - Params:
             data: Dictionary<String, Array<AnyObject>>
                 - Eg. a data that contains units & orders to each unit might look like this
-                    data = {
-                        "Units":
-                            [Unit(player1),
-                                Unit(player2),
-                                Unit(enemy1),
-                                Unit(enemey2)],
-                        "Order":
-                            [Order(player1, Move(location)),
-                                Order(player2, Attack(enemy1))
-                            ],
-                        "SentTime": ["3/3/15, 4:44:45 AM GMT"]
-                    }
+
     */
     func sendUpdate(inout data: Dictionary<String, Array<AnyObject>>) {
         // add sent time

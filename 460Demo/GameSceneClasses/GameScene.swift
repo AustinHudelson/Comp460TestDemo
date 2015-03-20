@@ -11,14 +11,9 @@ import Foundation
 
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
-    
-    /* WARNING: CURRENTLY TWO COPPIES OF unit_list EXIST. THE ONE THAT IS LOCAL TO GAME SCENE AND THE ONE
-     * ACCESSED THROUGH GameScene.global.unit_list[]. THIS NEEDS TO BE FIXED AT SOME POINT EXTREMELY SOON
-     */
     var playerIsTouched = false
     var viewController: UIViewController?
-    var sceneActive = true
+    var sceneActive: Bool = true
     /*
         Update the game state according to dictionary received over the network
     */
@@ -174,8 +169,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //Does all work necessary to add a unit to the game for all connected players
     func sendUnitOverNetwork(newUnit: Unit){
-        //unit_list[newUnit.ID] = newUnit
-        //newUnit.addUnitToGameScene(self, pos: position, scaleX: 0.5, scaleY: 0.5)
         
         //Dont send anything if this scene is no longer active (destroyed)
         if sceneActive == false {
@@ -194,20 +187,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        println("Game Scene Init")
         println("Moved in to scene is Active:")
         println(sceneActive)
         println("Textures done loading: ")
         println(TextureLoader.global.preloaded)
         Game.global.clearGlobals()
         Game.global.scene = self
-        /* Setup game background image */
-        let background = SKSpriteNode(imageNamed: "Background1")
-        background.position = CGPointMake(self.size.width/2, self.size.height/2)
-        background.size = CGSize(width: CGFloat(self.size.width), height: CGFloat(self.size.height));
-        //background.position = CGPoint(x: 0, y: 0)
-        //background.anchorPoint = CGPoint(x: 0, y: 1.0)
-        //addChild(background)
+//        /* Setup game background image */
+//        let background = SKSpriteNode(imageNamed: "Background1")
+//        background.position = CGPointMake(self.size.width/2, self.size.height/2)
+//        background.size = CGSize(width: CGFloat(self.size.width), height: CGFloat(self.size.height));
+//        background.position = CGPoint(x: 0, y: 0)
+//        background.anchorPoint = CGPoint(x: 0, y: 1.0)
+//        addChild(background)
         
         
         AppWarpHelper.sharedInstance.gameScene = self

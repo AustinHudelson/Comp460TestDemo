@@ -51,11 +51,16 @@ class GameViewController: UIViewController {
             let skView = self.view as SKView
             skView.showsFPS = true
             skView.showsNodeCount = true
-            skView.multipleTouchEnabled = true;
+            skView.multipleTouchEnabled = true
+            // skView.showsPhysics = true
             
             
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
+            /*
+                Make sure spritekit renders nodes in deterministic order.
+                Parents are rendered before child. Sibilings are rendered from eldest to youngest.
+                Setting this to false forgoes some rendering optimization that SpriteKit could've took
+            */
+            skView.ignoresSiblingOrder = false
             
             /* Set the scale mode to scale to fit the window */
             scene.size = skView.bounds.size

@@ -24,6 +24,7 @@
 		68B7DBFA1A84C306003D9398 /* RoomListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF41A84C306003D9398 /* RoomListener.swift */; };
 		68B7DBFB1A84C306003D9398 /* ZoneListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF51A84C306003D9398 /* ZoneListener.swift */; };
 		68B7DBFD1A84C316003D9398 /* AppWarp_iOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B7DBFC1A84C316003D9398 /* AppWarp_iOS_SDK.framework */; };
+		68C08F6E1ABA198700AEEF3E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C08F6D1ABA198700AEEF3E /* NetworkManager.swift */; };
 		68DADF491AB56FE800A20800 /* ButtonTaunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DADF481AB56FE800A20800 /* ButtonTaunt.swift */; };
 		68DADF591AB5738800A20800 /* AreaHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DADF4E1AB5738800A20800 /* AreaHeal.swift */; };
 		68DADF5A1AB5738800A20800 /* Enrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DADF4F1AB5738800A20800 /* Enrage.swift */; };
@@ -205,6 +206,7 @@
 		68B7DBF41A84C306003D9398 /* RoomListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListener.swift; sourceTree = "<group>"; };
 		68B7DBF51A84C306003D9398 /* ZoneListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneListener.swift; sourceTree = "<group>"; };
 		68B7DBFC1A84C316003D9398 /* AppWarp_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppWarp_iOS_SDK.framework; sourceTree = "<group>"; };
+		68C08F6D1ABA198700AEEF3E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		68DADF481AB56FE800A20800 /* ButtonTaunt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTaunt.swift; path = Abilities/ButtonTaunt.swift; sourceTree = "<group>"; };
 		68DADF4E1AB5738800A20800 /* AreaHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaHeal.swift; sourceTree = "<group>"; };
 		68DADF4F1AB5738800A20800 /* Enrage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enrage.swift; sourceTree = "<group>"; };
@@ -420,6 +422,14 @@
 				68B7DBF51A84C306003D9398 /* ZoneListener.swift */,
 			);
 			path = AppWarpHelperClasses;
+			sourceTree = "<group>";
+		};
+		68C08F6C1ABA198700AEEF3E /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				68C08F6D1ABA198700AEEF3E /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 		68DADF4C1AB5738800A20800 /* Orders */ = {
@@ -780,6 +790,7 @@
 		F4D33B551A71EF7300DCD868 /* 460Demo */ = {
 			isa = PBXGroup;
 			children = (
+				68C08F6C1ABA198700AEEF3E /* NetworkManager */,
 				68A18D551AA8732F001CCE1D /* 460Demo-Bridging-Header.h */,
 				68A18D3F1AA8719E001CCE1D /* iosNtp */,
 				68B7DBEE1A84C306003D9398 /* AppWarpHelperClasses */,
@@ -1039,6 +1050,7 @@
 				6850A0861A91606100B8CAD4 /* SplashViewController.swift in Sources */,
 				F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */,
 				F4CA5DE31AB55D92006DB177 /* TextureLoader.swift in Sources */,
+				68C08F6E1ABA198700AEEF3E /* NetworkManager.swift in Sources */,
 				68A18D521AA8719E001CCE1D /* GCDAsyncUdpSocket.m in Sources */,
 				F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */,
 				68DADF611AB5738800A20800 /* Order.swift in Sources */,
