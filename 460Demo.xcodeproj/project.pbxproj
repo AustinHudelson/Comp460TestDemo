@@ -180,6 +180,7 @@
 		F4DC7F3B1ABC3DAF00E98AD6 /* NewMage-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F351ABC3DAF00E98AD6 /* NewMage-walk.atlas */; };
 		F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */; };
 		F4E896421AA128E000406784 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E896411AA128E000406784 /* Game.swift */; };
+		F4E96AE11ABCD20700021DFD /* LevelSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E96AE01ABCD20700021DFD /* LevelSelection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -377,6 +378,7 @@
 		F4DC7F351ABC3DAF00E98AD6 /* NewMage-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NewMage-walk.atlas"; sourceTree = "<group>"; };
 		F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAreaHeal.swift; sourceTree = "<group>"; };
 		F4E896411AA128E000406784 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		F4E96AE01ABCD20700021DFD /* LevelSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +486,7 @@
 		68F35CA81A84C4D5004905BF /* GameSceneClasses */ = {
 			isa = PBXGroup;
 			children = (
+				F4E96AE01ABCD20700021DFD /* LevelSelection.swift */,
 				68F35CA91A84C4D5004905BF /* GameScene.sks */,
 				F42FD5AE1A895D4F002C6624 /* Background1.png */,
 				68F35CAA1A84C4D5004905BF /* GameScene.swift */,
@@ -1135,6 +1138,7 @@
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
 				F4DC7F281ABA0BDE00E98AD6 /* Attribute.swift in Sources */,
 				682944DF1AB5787000680A36 /* Heal.swift in Sources */,
+				F4E96AE11ABCD20700021DFD /* LevelSelection.swift in Sources */,
 				E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */,
 				68DADF5D1AB5738800A20800 /* Attack.swift in Sources */,
 				68DADF631AB5738800A20800 /* Transient.swift in Sources */,

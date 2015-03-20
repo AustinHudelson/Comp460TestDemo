@@ -23,11 +23,12 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var p2Img: UIImageView!
     @IBOutlet weak var p3Img: UIImageView!
     @IBOutlet weak var p4Img: UIImageView!
+    @IBOutlet weak var LevelSelect: UIPickerView!
+    
+    let levels: LevelSelection = LevelSelection()
     
     var classImages: Array<UIImageView> = Array<UIImageView>()
     var playerNames: Array<UITextView> = Array<UITextView>()
-    
-    
     
     @IBAction func startGameButtonAction(sender: AnyObject) {
         if myPlayerName != nil && myPlayerName == AppWarpHelper.sharedInstance.host {
@@ -72,8 +73,13 @@ class LobbyViewController: UIViewController {
         classImages.append(p2Img)
         classImages.append(p3Img)
         classImages.append(p4Img)
+        
+        setLevelText()
     }
-    
+    func setLevelText() {
+        LevelSelect.dataSource = levels
+        LevelSelect.delegate = levels
+    }
     func sendMyClass() {
         /* Send my class over the network so other ppl can set the display icon properly */
         var sendClassMsg: Dictionary<String, Array<AnyObject>> = [:]

@@ -20,6 +20,7 @@ class Game {
     var scene: GameScene?
     var level: Level?
     var myPlayerIsDead = false
+    var enemyIDCounter = 0
     
     class var global:Game{
         struct Static{
@@ -46,6 +47,7 @@ class Game {
         playerMap = [:]
         enemyMap = [:]
         myPlayerIsDead = false
+        enemyIDCounter = 0
     }
     
     
@@ -69,6 +71,11 @@ class Game {
         } else {
             println("WARNING: ADDED UNIT WITH ALREADY EXISTING ID TO GAME")
         }
+    }
+    
+    func getNextEnemyID() -> String {
+        enemyIDCounter++
+        return (enemyIDCounter.description+"e")
     }
     
     /*
@@ -121,22 +128,16 @@ class Game {
     /*
      * loads a new wave if you are the host
      */
-    func loadLevel()
-    {
-        if Game.global.level!.hasMoreWaves()
-        {
-            var firstWave: Array<Unit>? = Game.global.level!.loadWave()
-            if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
-            {
-                for enemy in firstWave!
-                {
+    func loadLevel() {
+        var firstWave: Array<Unit> = Game.global.level!.loadWave(scene!)
+        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host{
+            if (firstWave.count != 0) {        //If we receive an empty wave assume that we have defeated all waves
+                for enemy in firstWave{
                     scene!.sendUnitOverNetwork(enemy)
                 }
+            } else {
+                winGame()
             }
-        }
-        else
-        {
-            winGame()
         }
         
     }

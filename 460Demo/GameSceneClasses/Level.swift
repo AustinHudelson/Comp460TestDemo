@@ -10,23 +10,16 @@ import SpriteKit
 
 class Level
 {
+    var title: String = "UNTITLED"
     
-    var enemyWaves: Array<Array<Unit>> = Array<Array<Unit>>()
+    init() {
+        
+    }
+    
     var counter = 0
     
-    
-    func loadWave()-> Array<Unit>?
+    func loadWave(scene: GameScene)-> Array<Unit>
     {
-        if counter < enemyWaves.count
-        {
-            return enemyWaves[counter++]
-        }
-        return nil
+        fatalError("Must override loadWave() for level")
     }
-    
-    func hasMoreWaves()->Bool
-    {
-        return counter<enemyWaves.count
-    }
-    
 }

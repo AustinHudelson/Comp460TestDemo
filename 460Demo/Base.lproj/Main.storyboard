@@ -364,6 +364,9 @@
                                     <action selector="startGameButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="4fi-wH-bAc"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eGV-h8-NcW">
+                                <rect key="frame" x="0.0" y="331" width="600" height="162"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -461,6 +464,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="LevelSelect" destination="eGV-h8-NcW" id="q6X-zm-QTd"/>
                         <outlet property="p1Img" destination="9Cm-dP-ebt" id="jHg-n1-Peq"/>
                         <outlet property="p1Name" destination="3Jb-UG-vi2" id="Mqi-QS-UHi"/>
                         <outlet property="p2Img" destination="SUN-Ty-zZa" id="2Ex-KS-QEb"/>
