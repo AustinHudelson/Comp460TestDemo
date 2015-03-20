@@ -122,47 +122,16 @@ class AppWarpHelper: NSObject
         WarpClient.getInstance().updateRoom(roomId, addProperties: roomProperties, removeProperties: nil)
     }
     
-    /*
-        Call this function when you need to send a msg over the network
-        - Params:
-            data: Dictionary<String, Array<AnyObject>>
-                - Eg. a data that contains units & orders to each unit might look like this
-
-    */
-    func sendUpdate(inout data: Dictionary<String, Array<AnyObject>>) {
-        // add sent time
-        Timer.logSendTime(&data)
-        /*
-        ====================================================
-            Send the data
-        */
-        var error: NSError? // Used to store error msgs in case when error occured during serialization to JSON
-        
-        /*
-            options = 0 here b/c we wanna send a data that's as compact as possible
-                - Can be set to NSJSONWritingOPtions.PrettyPrinted if you want the resulting JSON file to be human reable
-        */
-        if let convertedData = NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(0), error: &error) {
-            /*
-                send over the converted data if conversion is success
-            */
-            var error = WarpClient.getInstance().getConnectionState()
-            if error == 0 {
-                // error = 0 means success in getting connection state
-                println("Sending msg (\(convertedData.length) bytes) ...")
-                println(data)
-                WarpClient.getInstance().sendUpdatePeers(convertedData)
-            } else {
-                println("!!!WARNING: Error in sending msg (\(convertedData.length) bytes)!!!!") // print data's number of bytes
-                println("!!!Error code: \(error)!!!")
-            }
+    
+    func sendUpdate(convertedData: NSData) {
+        var error = WarpClient.getInstance().getConnectionState()
+        if error == 0 {
+            // error = 0 means success in getting connection state
+            println("Sending msg (\(convertedData.length) bytes) ...")
+            WarpClient.getInstance().sendUpdatePeers(convertedData)
         } else {
-            /*
-                print error msg if convertion failed
-            */
-            println("!!!WARNING: Error in converting the msg to be sent!!!!")
-            println(error!)
-            return
+            println("!!!WARNING: Error in sending msg (\(convertedData.length) bytes)!!!!") // print data's number of bytes
+            println("!!!Error code: \(error)!!!")
         }
     }
     
@@ -203,25 +172,7 @@ class AppWarpHelper: NSObject
                 }
             }
             
-            println(recvDict)
-            
-            /*
-                if gameScene is not initialized yet, that means this msg received is host's start game msg, so don't call gameScene.updateGameState; start the game instead.
-            */
-            if gameScene == nil {
-                /* Print the start time and received time */
-                let sentTimeStr = (recvDict["SentTime"]!)[0] as String
-                var sentTime: NSDate = Timer.StrToDate(sentTimeStr)!
-                var recvTime: NSDate = Timer.getCurrentTime()
-                var recvTimeStr = Timer.DateToStr(recvTime)
-                var diff: NSTimeInterval = Timer.diffDateNow(sentTime) // get difference between sent time and now
-                println("SentTime: \(sentTimeStr); RecvTime: \(recvTimeStr); diff between SentTime & recvTime: \(diff) seconds")
-                
-                /* start the game */
-                startGame()
-            } else {
-                gameScene!.updateGameState(recvDict)
-            }
+            NetworkManager.processRecvMsg(recvDict)
         } else {
             println("!!!Error in converting recv data!!!")
             println(error!)
@@ -234,15 +185,6 @@ class AppWarpHelper: NSObject
         lobby!.updateUserList()
     }
     
-    /*
-        Send a msg to AppWarp to tell everyone to start the game.
-        The game won't start until everyone receives this message.
-    */
-    func sendStartGame() {
-        var startGameMsg: Dictionary<String, Array<AnyObject>> = [:]
-        startGameMsg["Start Game!"] = []
-        sendUpdate(&startGameMsg)
-    }
     
     /*
         This function is the one that actually tells everyone to segue to GameViewController.

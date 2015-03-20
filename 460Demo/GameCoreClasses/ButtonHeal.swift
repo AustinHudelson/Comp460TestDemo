@@ -25,7 +25,7 @@ class ButtonHeal: Ability
         var heal: Heal = Heal(receiverIn: receiverIn, healAmount: 20)
         sendData["Orders"] = []
         sendData["Orders"]!.append(heal.toJSON())
-        AppWarpHelper.sharedInstance.sendUpdate(&sendData)
+        NetworkManager.sendMsg(&sendData)
     }
     
     /*

@@ -36,7 +36,9 @@ class LobbyViewController: UIViewController {
                 Send a msg to AppWarp to tell everyone to start the game.
                 The game won't start until everyone receives this message.
             */
-            AppWarpHelper.sharedInstance.sendStartGame()
+            var startGameMsg: Dictionary<String, Array<AnyObject>> = [:]
+            startGameMsg["Start Game!"] = []
+            NetworkManager.sendMsg(&startGameMsg)
         } else {
             println("You need to wait for host to start the game!")
         }

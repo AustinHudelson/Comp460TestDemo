@@ -304,12 +304,17 @@ class Game {
         Our sent dicitonary will look like this:
         ["Sync":
             [
-                "ID1": [
-                        "health": 100,
-                        "posX": 50,
-                        "posY": 60
-                        ],
-                "ID2": ...
+                [
+                    "ID": Unit1ID,
+                    "health": 100,
+                    "posX": 50,
+                    "posY": 60
+                ],
+                [
+                    "ID": Unit2ID
+                    ...
+                ],
+                ...
             ]
         ]
     */
@@ -318,63 +323,50 @@ class Game {
         
         // ==== syncing host's character =====
         outerDict["SyncPlayer"] = []
-        var syncPlayer: Dictionary<String, Dictionary<String, AnyObject>> = [:]
+        var playerStats: Dictionary<String, AnyObject> = [:]
         
         let playerID = AppWarpHelper.sharedInstance.playerName
-        if playerMap[playerID] != nil {
-            let playerUnit = playerMap[playerID]!
-        
-            var playerStats: Dictionary<String, AnyObject> = [:]
+        if let playerUnit = playerMap[playerID] {
             playerStats["health"] = playerUnit.health
             playerStats["posX"] = Float(playerUnit.sprite.position.x)
             playerStats["posY"] = Float(playerUnit.sprite.position.y)
-            syncPlayer[playerID] = playerStats
+            playerStats["ID"] = playerID
         }
-        outerDict["SyncPlayer"]!.append(syncPlayer)
+        outerDict["SyncPlayer"]!.append(playerStats)
         
         
         // ==== syncing enemies =====
         outerDict["SyncEnemies"] = []
-        var syncEnemies: Dictionary<String, Dictionary<String, AnyObject>> = [:]
+        var enemyStats: Dictionary<String, AnyObject> = [:]
         
         for (enemyID, enemyUnit) in enemyMap {
-            var enemyStats: Dictionary<String, AnyObject> = [:]
             enemyStats["health"] = enemyUnit.health
             enemyStats["posX"] = Float(enemyUnit.sprite.position.x)
             enemyStats["posY"] = Float(enemyUnit.sprite.position.y)
-            
-            syncEnemies[enemyID] = enemyStats
+            enemyStats["ID"] = enemyID
         }
-        outerDict["SyncEnemies"]!.append(syncPlayer)
+        outerDict["SyncEnemies"]!.append(enemyStats)
         
-        
-        
-        AppWarpHelper.sharedInstance.sendUpdate(&outerDict)
+        NetworkManager.sendMsg(&outerDict)
     }
     
     // Clients will call this to send their own char's health and pos
     func sendClientSync() {
         var outerDict: Dictionary<String, Array<AnyObject>> = [:]
         
-        let playerID = AppWarpHelper.sharedInstance.playerName
+        outerDict["SyncPlayer"] = []
+        var playerStats: Dictionary<String, AnyObject> = [:]
         
-        if playerMap[playerID] != nil {
-            outerDict["SyncPlayer"] = []
-            
-            var syncPlayer: Dictionary<String, Dictionary<String, AnyObject>> = [:]
-            
-            let playerUnit = playerMap[playerID]!
-            
-            var playerStats: Dictionary<String, AnyObject> = [:]
+        let playerID = AppWarpHelper.sharedInstance.playerName
+        if let playerUnit = playerMap[playerID] {
             playerStats["health"] = playerUnit.health
             playerStats["posX"] = Float(playerUnit.sprite.position.x)
             playerStats["posY"] = Float(playerUnit.sprite.position.y)
-            syncPlayer[playerID] = playerStats
-            
-            outerDict["SyncPlayer"]!.append(syncPlayer)
-            
-            AppWarpHelper.sharedInstance.sendUpdate(&outerDict)
+            playerStats["ID"] = playerID
         }
+        outerDict["SyncPlayer"]!.append(playerStats)
+            
+        NetworkManager.sendMsg(&outerDict)
 
     }
     
@@ -393,5 +385,101 @@ class Game {
         let repeatAction: SKAction = SKAction.repeatActionForever(sendSync)
         self.scene?.runAction(repeatAction, withKey: "SyncAction")
     }
-
+    
+    /*
+        ====================================================
+        These functions should be called from processRecvMsg()
+    */
+    /*
+        This func adds new unit to the game based on msg received
+    */
+    func updateUnits(arrayOfUnits: Array<AnyObject>) {
+        for object in arrayOfUnits {
+            let recvUnit = object as Dictionary<String, AnyObject>  // had to do this to get around Swift compile error
+            let id: String = recvUnit["ID"] as String
+            // Make a new unit by calling its corresponding constructor if this Unit is not in the list
+            if getUnit(id) == nil
+            {
+                var anyobjecttype: AnyObject.Type = NSClassFromString(recvUnit["type"] as NSString)
+                var nsobjecttype: Unit.Type = anyobjecttype as Unit.Type
+                var newUnit: Unit = nsobjecttype(receivedData: recvUnit)
+                if !newUnit.isEnemy
+                {
+                    addPlayer(newUnit)
+                    //If the player is NOT YOU give it a slightly grey tint.
+                    if newUnit.ID != AppWarpHelper.sharedInstance.playerName {
+                        newUnit.applyTint(UIColor.blackColor(), factor: 0.20, blendDuration: 0.0)
+                    }
+                }
+                else
+                {
+                    addEnemy(newUnit)
+                }
+                
+                let spawnLoc = CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat))
+                
+                //newUnit.currentOrder = Idle(receiverIn: newUnit) //TEMPORARY WORKAROUND FOR ORDERS THAT DO NOT DESERIALIZE PROPERLY
+                
+                newUnit.addUnitToGameScene(self.scene!, pos: spawnLoc)
+            }
+            // Update this Unit's health and position since this is probably a sync msg
+            else
+            {
+                if id != AppWarpHelper.sharedInstance.playerName {
+                    /*
+                        Check to see if I'm a client, if I am just update this unit
+                    */
+                    if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host {
+                        if let updateUnit = getUnit(id) {
+                            updateUnit.health = recvUnit["health"] as Float
+                            updateUnit.DS_health_txt.text = updateUnit.health.description
+                            
+                            let recvUnitPos: CGPoint = CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat))
+                            var health_txt_pos = recvUnitPos
+                            health_txt_pos.y += updateUnit.health_txt_y_dspl
+                            
+                            updateUnit.sprite.position = recvUnitPos
+                            updateUnit.DS_health_txt.position = health_txt_pos
+                        }
+                    }
+                    /*
+                        If i'm the host, I don't update enemies
+                    */
+                    else {
+                        if playerMap[id] != nil {
+                            if let updateUnit = getUnit(id) {
+                                updateUnit.health = recvUnit["health"] as Float
+                                updateUnit.DS_health_txt.text = updateUnit.health.description
+                                
+                                let recvUnitPos: CGPoint = CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat))
+                                var health_txt_pos = recvUnitPos
+                                health_txt_pos.y += updateUnit.health_txt_y_dspl
+                                
+                                updateUnit.sprite.position = recvUnitPos
+                                updateUnit.DS_health_txt.position = health_txt_pos
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    /*
+        This func update all the unit's orders based on msg received
+    */
+    func updateUnitOrders(arrayOfOrders: Array<AnyObject>) {
+        for object in arrayOfOrders {
+            let order = object as Dictionary<String, AnyObject>
+            // Make an Order object out of what is received
+            var anyobjecttype: AnyObject.Type = NSClassFromString(order["type"] as NSString)
+            var nsobjecttype: Order.Type = anyobjecttype as Order.Type
+            var newOrder: Order = nsobjecttype(receivedData: order)
+            if getUnit(newOrder.ID!) != nil
+            {
+                getUnit(newOrder.ID!)!.sendOrder(newOrder)   //SEND THE ORDER TO ITS UNIT
+                //newOrder.valueForKey("DS_receiver")
+            }
+        }
+    }
 }
