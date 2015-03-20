@@ -25,7 +25,7 @@ class ButtonEnrage: Ability
         var enrage: Enrage = Enrage(receiverIn: receiverIn, speedInc: 7.0, duration: 2.0)
         sendData["Orders"] = []
         sendData["Orders"]!.append(enrage.toJSON())
-        AppWarpHelper.sharedInstance.sendUpdate(&sendData)
+        NetworkManager.sendMsg(&sendData)
     }
     
     /*

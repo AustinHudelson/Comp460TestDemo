@@ -25,7 +25,7 @@ class ButtonShrink: Ability
         var shrink: Shrink = Shrink(receiverIn: receiverIn)
         sendData["Orders"] = []
         sendData["Orders"]!.append(shrink.toJSON())
-        AppWarpHelper.sharedInstance.sendUpdate(&sendData)
+        NetworkManager.sendMsg(&sendData)
     }
     
     /*
