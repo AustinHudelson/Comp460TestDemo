@@ -21,6 +21,7 @@ class Taunt: Order, PType
         self.type = "Taunt"
         
     }
+    
     required init(receivedData: Dictionary<String, AnyObject>) {
         super.init(receivedData: receivedData)
         self.restoreProperties(Taunt.self, receivedData: receivedData)
