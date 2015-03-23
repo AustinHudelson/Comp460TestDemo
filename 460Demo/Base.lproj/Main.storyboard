@@ -365,7 +365,7 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eGV-h8-NcW">
-                                <rect key="frame" x="0.0" y="331" width="600" height="162"/>
+                                <rect key="frame" x="16" y="458" width="99" height="162"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -479,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVX-m0-sSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="350" y="165"/>
+            <point key="canvasLocation" x="350" y="36"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="n3C-XH-PIy">

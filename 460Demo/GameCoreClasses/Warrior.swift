@@ -185,4 +185,14 @@ class Warrior: Unit, PType
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
     }
+    
+    /*
+    Warrior Attacks are special in that they force most targets to attack him.
+    */
+    override func dealDamage(damage: CGFloat, target: Unit){
+        super.dealDamage(damage, target: target)
+        if (target.currentOrder is RoamAttack){
+            (target.currentOrder as RoamAttack).redirect(self)
+        }
+    }
 }
