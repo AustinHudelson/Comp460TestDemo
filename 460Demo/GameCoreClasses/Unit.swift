@@ -352,7 +352,7 @@ class Unit: SerializableJSON, PType
                 self.sprite.runAction(attackSequence, withKey: "attack")
                 self.sprite.runAction(self.DS_attackAnim!, withKey: "attackAnim")
                 //Apply the damage to the enemy. NOTE: Might be more realistic to do this half way though the attack animation.
-                dealDamage(self.attackDamage.get(), target: target)
+                weaponHandle(target)
                 if self.type == "Warrior"
                 {
                     let soundAction = SKAction.playSoundFileNamed("swing3.wav", waitForCompletion: true)
@@ -380,6 +380,10 @@ class Unit: SerializableJSON, PType
     func clearAttack(){
         clearMove()
         self.sprite.removeActionForKey("attack")
+    }
+    
+    func weaponHandle(target: Unit){
+        dealDamage(self.attackDamage.get(), target: target)
     }
     
     

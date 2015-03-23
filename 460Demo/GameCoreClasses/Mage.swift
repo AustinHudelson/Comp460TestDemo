@@ -183,5 +183,11 @@ class Mage: Unit, PType
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
+        
+        
+    }
+    
+    override func weaponHandle(target: Unit){
+        let projectile = MageBolt(target: target, caster: self)
     }
 }
