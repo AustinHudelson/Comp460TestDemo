@@ -14,11 +14,16 @@ class ButtonTaunt: Ability
     * Creates a enrage icon at the specified ability use slot
     */
     init(slot: Int){
-        super.init(imageNamed: "S_Holy05", slot: slot)
+        super.init(imageNamed: "E_Gold01", slot: slot)
     }
     
     override func apply(receiverIn: Unit) {
         super.apply(receiverIn)
+        var sendData: Dictionary<String, Array<AnyObject>> = [:]
+        var taunt: Taunt = Taunt(receiverIn: receiverIn)
+        sendData["Orders"] = []
+        sendData["Orders"]!.append(taunt.toJSON())
+        NetworkManager.sendMsg(&sendData)
     }
     
     /*

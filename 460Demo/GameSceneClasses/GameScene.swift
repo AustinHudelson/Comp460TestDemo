@@ -185,6 +185,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         return
                     }
                 }
+//                else if self.childNodeWithName("Ability2")!.containsPoint(touchLocation) {
+//                    //Button at slot 2
+//                    let button = self.childNodeWithName("Ability2") as Ability
+//                    if button.cooldownReady == true {
+//                        button.apply(Game.global.getMyPlayer()!)
+//                        return
+//                        }
+//                    }
             }
             
             //Code only reaches here if touch is not a button press.
