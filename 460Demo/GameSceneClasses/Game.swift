@@ -298,6 +298,25 @@ class Game {
         return nearby
     }
     
+    /*
+    Get all enemies within range of a point
+    */
+    func getNearbyEnemies(point: CGPoint, distance: CGFloat) -> Array<Unit>{
+        var nearbyUnits = Array<Unit>()
+        
+        for (id, unit) in Game.global.enemyMap {
+            if unit.alive == false {
+                continue
+            }
+            if (getDistance(point, p2: unit.sprite.position) > distance){
+                continue
+            }
+            nearbyUnits.append(unit)
+        }
+        
+        return nearbyUnits
+    }
+    
     // Host will call this to send host's char and every enemy's health and position every X seconds
     /*
         Our sent dicitonary will look like this:

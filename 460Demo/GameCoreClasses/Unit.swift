@@ -39,6 +39,7 @@ class Unit: SerializableJSON, PType
     var isEnemy: Bool = true
     //var isMoving: Bool = false
     var isAttacking: Bool = false
+    var DS_attackTarget: Unit?
     var DS_isCommandable: Bool = true   /*Private*/
     var DS_queuedOrder: Order?
     
@@ -329,6 +330,7 @@ class Unit: SerializableJSON, PType
     
     func attack(target: Unit, complete:(()->Void)!){
         clearAttack()
+        DS_attackTarget = target
         attackCycle(target, complete)
     }
     
@@ -406,6 +408,7 @@ class Unit: SerializableJSON, PType
     }
     
     func clearAttack(){
+        DS_attackTarget = nil
         clearMove()
         self.sprite.removeActionForKey("attack")
     }

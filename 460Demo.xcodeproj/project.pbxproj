@@ -189,6 +189,9 @@
 		F4E96AF61AC09B5B00021DFD /* HealParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AF51AC09B5B00021DFD /* HealParticle.sks */; };
 		F4E96AF91AC0A7B300021DFD /* MageBolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E96AF81AC0A7B300021DFD /* MageBolt.swift */; };
 		F4F126131AC0BB7D00A032D1 /* ButtonFrostbolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F126121AC0BB7D00A032D1 /* ButtonFrostbolt.swift */; };
+		F4F126151AC0C0C300A032D1 /* FrostboltProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F126141AC0C0C300A032D1 /* FrostboltProjectile.swift */; };
+		F4F126181AC0D5A100A032D1 /* FrostboltProjectileParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4F126171AC0D5A100A032D1 /* FrostboltProjectileParticle.sks */; };
+		F4F1261A1AC0D90500A032D1 /* Frostbolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F126191AC0D90500A032D1 /* Frostbolt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -395,6 +398,9 @@
 		F4E96AF51AC09B5B00021DFD /* HealParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HealParticle.sks; sourceTree = "<group>"; };
 		F4E96AF81AC0A7B300021DFD /* MageBolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MageBolt.swift; sourceTree = "<group>"; };
 		F4F126121AC0BB7D00A032D1 /* ButtonFrostbolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFrostbolt.swift; sourceTree = "<group>"; };
+		F4F126141AC0C0C300A032D1 /* FrostboltProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrostboltProjectile.swift; sourceTree = "<group>"; };
+		F4F126171AC0D5A100A032D1 /* FrostboltProjectileParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FrostboltProjectileParticle.sks; sourceTree = "<group>"; };
+		F4F126191AC0D90500A032D1 /* Frostbolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Frostbolt.swift; path = ../Frostbolt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,6 +500,7 @@
 				68DADF4E1AB5738800A20800 /* AreaHeal.swift */,
 				68DADF4F1AB5738800A20800 /* Enrage.swift */,
 				68DADF511AB5738800A20800 /* Taunt.swift */,
+				F4F126191AC0D90500A032D1 /* Frostbolt.swift */,
 				682944E01AB578A200680A36 /* Shrink.swift */,
 			);
 			path = Abilities;
@@ -903,6 +910,7 @@
 			children = (
 				F4E96AEB1ABE3C0F00021DFD /* MagicBolt.sks */,
 				F4E96AF51AC09B5B00021DFD /* HealParticle.sks */,
+				F4F126171AC0D5A100A032D1 /* FrostboltProjectileParticle.sks */,
 				F4E96AEC1ABE3C0F00021DFD /* spark.png */,
 				F4E96AEF1ABE3E7300021DFD /* RainParticle.sks */,
 				F4E96AF11ABE3EAC00021DFD /* FireParticle.sks */,
@@ -915,6 +923,7 @@
 			children = (
 				68F35CB11A84C540004905BF /* Projectile.swift */,
 				F4E96AF81AC0A7B300021DFD /* MageBolt.swift */,
+				F4F126141AC0C0C300A032D1 /* FrostboltProjectile.swift */,
 			);
 			name = Projectiles;
 			sourceTree = "<group>";
@@ -1089,6 +1098,7 @@
 				F4B5636E1AB3A5CF0094B2A7 /* sword-unsheathe.wav in Resources */,
 				F4B563721AB3A5CF0094B2A7 /* sword-unsheathe5.wav in Resources */,
 				F4DC7F361ABC3DAF00E98AD6 /* NewMage-ability.atlas in Resources */,
+				F4F126181AC0D5A100A032D1 /* FrostboltProjectileParticle.sks in Resources */,
 				F4B563C31AB3A5CF0094B2A7 /* slime5.wav in Resources */,
 				F4B563791AB3A5CF0094B2A7 /* armor-light.wav in Resources */,
 				F4B5639D1AB3A5CF0094B2A7 /* mnstr12.wav in Resources */,
@@ -1184,6 +1194,7 @@
 				68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */,
 				68DADF5A1AB5738800A20800 /* Enrage.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
+				F4F1261A1AC0D90500A032D1 /* Frostbolt.swift in Sources */,
 				F4DC7F281ABA0BDE00E98AD6 /* Attribute.swift in Sources */,
 				682944DF1AB5787000680A36 /* Heal.swift in Sources */,
 				F4E96AE11ABCD20700021DFD /* LevelSelection.swift in Sources */,
@@ -1192,6 +1203,7 @@
 				68DADF631AB5738800A20800 /* Transient.swift in Sources */,
 				68038FE11AA56B8C0053A963 /* Timer.swift in Sources */,
 				68DADF601AB5738800A20800 /* NoneOrder.swift in Sources */,
+				F4F126151AC0C0C300A032D1 /* FrostboltProjectile.swift in Sources */,
 				68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */,
 				68A18D4F1AA8719E001CCE1D /* NetworkClock.m in Sources */,
 				682944E11AB578A200680A36 /* Shrink.swift in Sources */,
