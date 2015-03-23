@@ -48,8 +48,9 @@ class Warrior: Unit, PType
         self.sprite.position = spawnLocation
         self.sprite.zPosition = 1
         /* Initialize Warrior buttons. They will automatically be added to the scene */
-        let Button0: Ability = ButtonHeal(slot: 0)
+        let Button0: Ability = ButtonTaunt(slot: 0)
         let Button1: Ability = ButtonEnrage(slot: 1)
+        //let Button2: Ability = ButtonTaunt(slot: 2)
     }
     
     /*
