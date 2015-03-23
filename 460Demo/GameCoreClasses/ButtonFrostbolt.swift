@@ -18,12 +18,14 @@ class ButtonFrostbolt: Ability
     }
     
     override func apply(receiverIn: Unit) {
-        super.apply(receiverIn)
-        var sendData: Dictionary<String, Array<AnyObject>> = [:]
-        var taunt: Taunt = Taunt(receiverIn: receiverIn)
-        sendData["Orders"] = []
-        sendData["Orders"]!.append(taunt.toJSON())
-        NetworkManager.sendMsg(&sendData)
+        if (receiverIn.DS_attackTarget != nil) {
+            super.apply(receiverIn) /* Dont call super (cooldown) unless there is a valid target*/
+            var sendData: Dictionary<String, Array<AnyObject>> = [:]
+            var frostbolt: Frostbolt = Frostbolt(receiverIn: receiverIn, target: receiverIn.DS_attackTarget!)
+            sendData["Orders"] = []
+            sendData["Orders"]!.append(frostbolt.toJSON())
+            NetworkManager.sendMsg(&sendData)
+        }
     }
     
     /*

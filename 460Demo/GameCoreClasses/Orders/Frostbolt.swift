@@ -9,7 +9,7 @@
 import SpriteKit
 
 @objc(Frostbolt)
-class Frostbolt: Order, PType
+class Frostbolt: Order, PType, Transient
 {
     var DS_target: Unit?
     var tID: String = ""
