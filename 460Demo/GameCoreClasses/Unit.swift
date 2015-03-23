@@ -124,6 +124,10 @@ class Unit: SerializableJSON, PType
         order.apply()
     }
     
+    func dealDamage(damage: CGFloat, target: Unit){
+        target.takeDamage(damage)
+    }
+    
     func takeDamage(damage:CGFloat)
     {
         
@@ -348,7 +352,7 @@ class Unit: SerializableJSON, PType
                 self.sprite.runAction(attackSequence, withKey: "attack")
                 self.sprite.runAction(self.DS_attackAnim!, withKey: "attackAnim")
                 //Apply the damage to the enemy. NOTE: Might be more realistic to do this half way though the attack animation.
-                target.takeDamage(self.attackDamage.get())
+                dealDamage(self.attackDamage.get(), target: target)
                 if self.type == "Warrior"
                 {
                     let soundAction = SKAction.playSoundFileNamed("swing3.wav", waitForCompletion: true)
@@ -377,6 +381,8 @@ class Unit: SerializableJSON, PType
         clearMove()
         self.sprite.removeActionForKey("attack")
     }
+    
+    
     
     /*
     * Call the synchronize this unit with the host. Will correct current life and 
