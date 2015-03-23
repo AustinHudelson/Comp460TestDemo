@@ -267,9 +267,7 @@ class Game {
             }
         }
         
-//        if nearby == nil {
-//            fatalError("Unable to find closest player to point. Empty player list?")
-//        }
+
         
         return nearby
     }

@@ -48,6 +48,7 @@
 		E72E67331AB630300082E7B4 /* Warrior-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E67311AB630300082E7B4 /* Warrior-death.atlas */; };
 		E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */; };
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
+		E7D4B9DE1AC0AF9C002D5675 /* E_Gold01.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D4B9DD1AC0AF9C002D5675 /* E_Gold01.png */; };
 		E7E2DDBC1ABA0E1E003C9812 /* VIDA_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */; };
 		E7E5E2791AB6345E00554839 /* Mage-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E2781AB6345E00554839 /* Mage-ability.atlas */; };
 		E7E5E27E1AB6364B00554839 /* Mage-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */; };
@@ -248,6 +249,7 @@
 		E72E67311AB630300082E7B4 /* Warrior-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-death.atlas"; sourceTree = "<group>"; };
 		E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		E7D4B9DD1AC0AF9C002D5675 /* E_Gold01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = E_Gold01.png; sourceTree = "<group>"; };
 		E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VIDA_10.png; path = GameCoreClasses/VIDA_10.png; sourceTree = "<group>"; };
 		E7E5E2781AB6345E00554839 /* Mage-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-ability.atlas"; sourceTree = "<group>"; };
 		E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-walk.atlas"; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 		68F35CAD1A84C540004905BF /* GameCoreClasses */ = {
 			isa = PBXGroup;
 			children = (
+				E7D4B9DD1AC0AF9C002D5675 /* E_Gold01.png */,
 				68DADF4C1AB5738800A20800 /* Orders */,
 				F4B562E81AB0D8180094B2A7 /* Abilities */,
 				F4B5047E1A907A2A007CDBA8 /* Units */,
@@ -563,8 +566,8 @@
 				F4B562EB1AB0D8C20094B2A7 /* Ability.swift */,
 				F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */,
 				F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */,
-				F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */,
 				F4B562F71AB38A9A0094B2A7 /* ButtonEnrage.swift */,
+				F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */,
 				68DADF481AB56FE800A20800 /* ButtonTaunt.swift */,
 			);
 			name = Abilities;
@@ -1059,6 +1062,7 @@
 				F4B5638B1AB3A5CF0094B2A7 /* burp.wav in Resources */,
 				F4B563981AB3A5CF0094B2A7 /* giant4.wav in Resources */,
 				F4B563C51AB3A5CF0094B2A7 /* slime7.wav in Resources */,
+				E7D4B9DE1AC0AF9C002D5675 /* E_Gold01.png in Resources */,
 				F4B5636C1AB3A5CF0094B2A7 /* swing2.wav in Resources */,
 				F4B5636A1AB3A5CF0094B2A7 /* spell.wav in Resources */,
 				F4B563931AB3A5CF0094B2A7 /* bite-small2.wav in Resources */,
