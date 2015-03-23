@@ -23,7 +23,7 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var p2Img: UIImageView!
     @IBOutlet weak var p3Img: UIImageView!
     @IBOutlet weak var p4Img: UIImageView!
-    @IBOutlet weak var LevelSelect: UIPickerView!
+    @IBOutlet weak var levelPicker: UIPickerView!
     
     let levels: LevelSelection = LevelSelection()
     
@@ -74,12 +74,15 @@ class LobbyViewController: UIViewController {
         classImages.append(p3Img)
         classImages.append(p4Img)
         
-        setLevelText()
+        setLevelPickerDelegate()
     }
-    func setLevelText() {
-        LevelSelect.dataSource = levels
-        LevelSelect.delegate = levels
+    
+    // This function sets the level picker view's delegate & data source
+    func setLevelPickerDelegate() {
+        levelPicker.dataSource = levels
+        levelPicker.delegate = levels
     }
+    
     func sendMyClass() {
         /* Send my class over the network so other ppl can set the display icon properly */
         var sendClassMsg: Dictionary<String, Array<AnyObject>> = [:]

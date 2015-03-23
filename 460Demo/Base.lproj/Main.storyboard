@@ -236,7 +236,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-UG-vi2" userLabel="p1Name">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-UG-vi2" userLabel="p1Name">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="El7-ZL-TXi"/>
                                     <constraint firstAttribute="width" constant="100" id="YSh-Cx-mdB"/>
@@ -256,7 +256,7 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-pi-Psd" userLabel="p2Name">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-pi-Psd" userLabel="p2Name">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3x3-dA-emF"/>
                                     <constraint firstAttribute="width" constant="100" id="RUi-7O-3CB"/>
@@ -276,7 +276,7 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OJg-J2-uNF" userLabel="p3Name">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OJg-J2-uNF" userLabel="p3Name">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="2rh-8U-IO0"/>
                                     <constraint firstAttribute="height" constant="50" id="QtZ-BH-iHE"/>
@@ -296,7 +296,7 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3VK-i2-IKg" userLabel="p4Name">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3VK-i2-IKg" userLabel="p4Name">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Awz-es-GhC"/>
                                     <constraint firstAttribute="width" constant="100" id="pgA-13-cCP"/>
@@ -488,7 +488,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="LevelSelect" destination="eGV-h8-NcW" id="q6X-zm-QTd"/>
+                        <outlet property="levelPicker" destination="eGV-h8-NcW" id="bsD-v6-LAJ"/>
                         <outlet property="p1Img" destination="9Cm-dP-ebt" id="jHg-n1-Peq"/>
                         <outlet property="p1Name" destination="3Jb-UG-vi2" id="Mqi-QS-UHi"/>
                         <outlet property="p2Img" destination="SUN-Ty-zZa" id="2Ex-KS-QEb"/>
