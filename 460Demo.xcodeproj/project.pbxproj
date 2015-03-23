@@ -181,6 +181,11 @@
 		F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */; };
 		F4E896421AA128E000406784 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E896411AA128E000406784 /* Game.swift */; };
 		F4E96AE11ABCD20700021DFD /* LevelSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E96AE01ABCD20700021DFD /* LevelSelection.swift */; };
+		F4E96AED1ABE3C0F00021DFD /* MagicBolt.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AEB1ABE3C0F00021DFD /* MagicBolt.sks */; };
+		F4E96AEE1ABE3C0F00021DFD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AEC1ABE3C0F00021DFD /* spark.png */; };
+		F4E96AF01ABE3E7300021DFD /* RainParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AEF1ABE3E7300021DFD /* RainParticle.sks */; };
+		F4E96AF21ABE3EAC00021DFD /* FireParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AF11ABE3EAC00021DFD /* FireParticle.sks */; };
+		F4E96AF61AC09B5B00021DFD /* HealParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AF51AC09B5B00021DFD /* HealParticle.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -379,6 +384,11 @@
 		F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAreaHeal.swift; sourceTree = "<group>"; };
 		F4E896411AA128E000406784 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		F4E96AE01ABCD20700021DFD /* LevelSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelection.swift; sourceTree = "<group>"; };
+		F4E96AEB1ABE3C0F00021DFD /* MagicBolt.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MagicBolt.sks; sourceTree = "<group>"; };
+		F4E96AEC1ABE3C0F00021DFD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		F4E96AEF1ABE3E7300021DFD /* RainParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainParticle.sks; sourceTree = "<group>"; };
+		F4E96AF11ABE3EAC00021DFD /* FireParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticle.sks; sourceTree = "<group>"; };
+		F4E96AF51AC09B5B00021DFD /* HealParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HealParticle.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,12 +513,13 @@
 			isa = PBXGroup;
 			children = (
 				68DADF4C1AB5738800A20800 /* Orders */,
-				F42FD5AC1A880282002C6624 /* SerializableJSON.swift */,
-				F4B5047B1A90175B007CDBA8 /* PType.swift */,
 				F4B562E81AB0D8180094B2A7 /* Abilities */,
 				F4B5047E1A907A2A007CDBA8 /* Units */,
 				68038FE01AA56B8C0053A963 /* Timer.swift */,
+				F42FD5AC1A880282002C6624 /* SerializableJSON.swift */,
 				68F35CB11A84C540004905BF /* Projectile.swift */,
+				F4B5047B1A90175B007CDBA8 /* PType.swift */,
+				F4E96AE61ABE3B8400021DFD /* Particle Effects */,
 			);
 			path = GameCoreClasses;
 			sourceTree = "<group>";
@@ -879,6 +890,18 @@
 			name = "Enemy Boss";
 			sourceTree = "<group>";
 		};
+		F4E96AE61ABE3B8400021DFD /* Particle Effects */ = {
+			isa = PBXGroup;
+			children = (
+				F4E96AEB1ABE3C0F00021DFD /* MagicBolt.sks */,
+				F4E96AF51AC09B5B00021DFD /* HealParticle.sks */,
+				F4E96AEC1ABE3C0F00021DFD /* spark.png */,
+				F4E96AEF1ABE3E7300021DFD /* RainParticle.sks */,
+				F4E96AF11ABE3EAC00021DFD /* FireParticle.sks */,
+			);
+			name = "Particle Effects";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -981,6 +1004,7 @@
 				F4B563B11AB3A5CF0094B2A7 /* shade11.wav in Resources */,
 				E7E5E2801AB6364B00554839 /* Mage-death.atlas in Resources */,
 				E72E672F1AB629CB0082E7B4 /* Warrior-stumble.atlas in Resources */,
+				F4E96AED1ABE3C0F00021DFD /* MagicBolt.sks in Resources */,
 				F4B5636D1AB3A5CF0094B2A7 /* swing3.wav in Resources */,
 				F4B5637C1AB3A5CF0094B2A7 /* bubble.wav in Resources */,
 				F4B563BD1AB3A5CF0094B2A7 /* shade9.wav in Resources */,
@@ -990,6 +1014,7 @@
 				F4B563861AB3A5CF0094B2A7 /* metal-ringing.wav in Resources */,
 				F4B563AB1AB3A5CF0094B2A7 /* ogre2.wav in Resources */,
 				F4B563821AB3A5CF0094B2A7 /* cloth.wav in Resources */,
+				F4E96AF61AC09B5B00021DFD /* HealParticle.sks in Resources */,
 				F4DC7F371ABC3DAF00E98AD6 /* NewMage-attack.atlas in Resources */,
 				F4B563C11AB3A5CF0094B2A7 /* slime3.wav in Resources */,
 				F4B563701AB3A5CF0094B2A7 /* sword-unsheathe3.wav in Resources */,
@@ -1014,6 +1039,7 @@
 				F4B5638D1AB3A5CF0094B2A7 /* random2.wav in Resources */,
 				F4B563C21AB3A5CF0094B2A7 /* slime4.wav in Resources */,
 				E7E5E2791AB6345E00554839 /* Mage-ability.atlas in Resources */,
+				F4E96AEE1ABE3C0F00021DFD /* spark.png in Resources */,
 				68A18D531AA8719E001CCE1D /* ntp.hosts in Resources */,
 				F4B563A61AB3A5CF0094B2A7 /* mnstr7.wav in Resources */,
 				F4B563781AB3A5CF0094B2A7 /* interface6.wav in Resources */,
@@ -1051,6 +1077,7 @@
 				F4B563B61AB3A5CF0094B2A7 /* shade2.wav in Resources */,
 				F4B563811AB3A5CF0094B2A7 /* cloth-heavy.wav in Resources */,
 				F4B563BF1AB3A5CF0094B2A7 /* slime10.wav in Resources */,
+				F4E96AF21ABE3EAC00021DFD /* FireParticle.sks in Resources */,
 				F4B563851AB3A5CF0094B2A7 /* coin3.wav in Resources */,
 				F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */,
 				F4B563921AB3A5CF0094B2A7 /* bite-small.wav in Resources */,
@@ -1062,6 +1089,7 @@
 				F4B5638E1AB3A5CF0094B2A7 /* random3.wav in Resources */,
 				F4B563971AB3A5CF0094B2A7 /* giant3.wav in Resources */,
 				F4B563691AB3A5CF0094B2A7 /* magic1.wav in Resources */,
+				F4E96AF01ABE3E7300021DFD /* RainParticle.sks in Resources */,
 				F4B563841AB3A5CF0094B2A7 /* coin2.wav in Resources */,
 				F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */,
 				F4B563961AB3A5CF0094B2A7 /* giant2.wav in Resources */,
@@ -1290,7 +1318,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "460Demo/460Demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
 			};
 			name = Debug;
@@ -1315,7 +1343,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "460Demo/460Demo-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
 			};
 			name = Release;

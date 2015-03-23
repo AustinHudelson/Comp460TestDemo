@@ -53,4 +53,9 @@ class RoamAttack: Order, PType
     override func remove(){
         DS_receiver!.clearAttack()
     }
+    
+    func redirect(newTarget: Unit){
+        DS_target = newTarget
+        self.apply()
+    }
 }
