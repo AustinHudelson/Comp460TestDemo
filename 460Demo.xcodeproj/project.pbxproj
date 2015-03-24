@@ -41,6 +41,9 @@
 		68F35CB71A84C540004905BF /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB11A84C540004905BF /* Projectile.swift */; };
 		68F35CB81A84C540004905BF /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB21A84C540004905BF /* Unit.swift */; };
 		68F35CB91A84C540004905BF /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F35CB31A84C540004905BF /* Warrior.swift */; };
+		E722FCA01AC1262A000651E0 /* ArmorUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722FC9F1AC1262A000651E0 /* ArmorUp.swift */; };
+		E722FCA21AC12AA3000651E0 /* ButtonArmorUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722FCA11AC12AA3000651E0 /* ButtonArmorUp.swift */; };
+		E722FCA41AC12AE5000651E0 /* A_Armor04.png in Resources */ = {isa = PBXBuildFile; fileRef = E722FCA31AC12AE5000651E0 /* A_Armor04.png */; };
 		E72E672B1AB624DC0082E7B4 /* Warrior-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E672A1AB624DC0082E7B4 /* Warrior-walk.atlas */; };
 		E72E672D1AB626B20082E7B4 /* Warrior-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E672C1AB626B20082E7B4 /* Warrior-attack.atlas */; };
 		E72E672F1AB629CB0082E7B4 /* Warrior-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E672E1AB629CB0082E7B4 /* Warrior-stumble.atlas */; };
@@ -48,7 +51,6 @@
 		E72E67331AB630300082E7B4 /* Warrior-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E67311AB630300082E7B4 /* Warrior-death.atlas */; };
 		E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */; };
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
-		E7D4B9DE1AC0AF9C002D5675 /* E_Gold01.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D4B9DD1AC0AF9C002D5675 /* E_Gold01.png */; };
 		E7E2DDBC1ABA0E1E003C9812 /* VIDA_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */; };
 		E7E5E2791AB6345E00554839 /* Mage-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E2781AB6345E00554839 /* Mage-ability.atlas */; };
 		E7E5E27E1AB6364B00554839 /* Mage-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */; };
@@ -242,6 +244,9 @@
 		68F35CB11A84C540004905BF /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		68F35CB21A84C540004905BF /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		68F35CB31A84C540004905BF /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Warrior.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E722FC9F1AC1262A000651E0 /* ArmorUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArmorUp.swift; sourceTree = "<group>"; };
+		E722FCA11AC12AA3000651E0 /* ButtonArmorUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonArmorUp.swift; sourceTree = "<group>"; };
+		E722FCA31AC12AE5000651E0 /* A_Armor04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = A_Armor04.png; sourceTree = "<group>"; };
 		E72E672A1AB624DC0082E7B4 /* Warrior-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-walk.atlas"; sourceTree = "<group>"; };
 		E72E672C1AB626B20082E7B4 /* Warrior-attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-attack.atlas"; sourceTree = "<group>"; };
 		E72E672E1AB629CB0082E7B4 /* Warrior-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-stumble.atlas"; sourceTree = "<group>"; };
@@ -249,7 +254,6 @@
 		E72E67311AB630300082E7B4 /* Warrior-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-death.atlas"; sourceTree = "<group>"; };
 		E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
-		E7D4B9DD1AC0AF9C002D5675 /* E_Gold01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = E_Gold01.png; sourceTree = "<group>"; };
 		E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VIDA_10.png; path = GameCoreClasses/VIDA_10.png; sourceTree = "<group>"; };
 		E7E5E2781AB6345E00554839 /* Mage-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-ability.atlas"; sourceTree = "<group>"; };
 		E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-walk.atlas"; sourceTree = "<group>"; };
@@ -491,8 +495,9 @@
 				682944DE1AB5787000680A36 /* Heal.swift */,
 				68DADF4E1AB5738800A20800 /* AreaHeal.swift */,
 				68DADF4F1AB5738800A20800 /* Enrage.swift */,
-				68DADF511AB5738800A20800 /* Taunt.swift */,
 				682944E01AB578A200680A36 /* Shrink.swift */,
+				E722FC9F1AC1262A000651E0 /* ArmorUp.swift */,
+				68DADF511AB5738800A20800 /* Taunt.swift */,
 			);
 			path = Abilities;
 			sourceTree = "<group>";
@@ -516,7 +521,7 @@
 		68F35CAD1A84C540004905BF /* GameCoreClasses */ = {
 			isa = PBXGroup;
 			children = (
-				E7D4B9DD1AC0AF9C002D5675 /* E_Gold01.png */,
+				E722FCA31AC12AE5000651E0 /* A_Armor04.png */,
 				68DADF4C1AB5738800A20800 /* Orders */,
 				F4B562E81AB0D8180094B2A7 /* Abilities */,
 				F4B5047E1A907A2A007CDBA8 /* Units */,
@@ -569,6 +574,7 @@
 				F4B562F71AB38A9A0094B2A7 /* ButtonEnrage.swift */,
 				F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */,
 				68DADF481AB56FE800A20800 /* ButtonTaunt.swift */,
+				E722FCA11AC12AA3000651E0 /* ButtonArmorUp.swift */,
 			);
 			name = Abilities;
 			sourceTree = "<group>";
@@ -1062,7 +1068,6 @@
 				F4B5638B1AB3A5CF0094B2A7 /* burp.wav in Resources */,
 				F4B563981AB3A5CF0094B2A7 /* giant4.wav in Resources */,
 				F4B563C51AB3A5CF0094B2A7 /* slime7.wav in Resources */,
-				E7D4B9DE1AC0AF9C002D5675 /* E_Gold01.png in Resources */,
 				F4B5636C1AB3A5CF0094B2A7 /* swing2.wav in Resources */,
 				F4B5636A1AB3A5CF0094B2A7 /* spell.wav in Resources */,
 				F4B563931AB3A5CF0094B2A7 /* bite-small2.wav in Resources */,
@@ -1083,6 +1088,7 @@
 				E72E672D1AB626B20082E7B4 /* Warrior-attack.atlas in Resources */,
 				F4B563C71AB3A5CF0094B2A7 /* slime9.wav in Resources */,
 				E7E5E27F1AB6364B00554839 /* Mage-stumble.atlas in Resources */,
+				E722FCA41AC12AE5000651E0 /* A_Armor04.png in Resources */,
 				F4B5636E1AB3A5CF0094B2A7 /* sword-unsheathe.wav in Resources */,
 				F4B563721AB3A5CF0094B2A7 /* sword-unsheathe5.wav in Resources */,
 				F4DC7F361ABC3DAF00E98AD6 /* NewMage-ability.atlas in Resources */,
@@ -1156,6 +1162,7 @@
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				68DADF491AB56FE800A20800 /* ButtonTaunt.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
+				E722FCA01AC1262A000651E0 /* ArmorUp.swift in Sources */,
 				F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */,
 				F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */,
 				F4E96AF91AC0A7B300021DFD /* MageBolt.swift in Sources */,
@@ -1172,6 +1179,7 @@
 				68F35CB91A84C540004905BF /* Warrior.swift in Sources */,
 				F4E896421AA128E000406784 /* Game.swift in Sources */,
 				68B7DBFA1A84C306003D9398 /* RoomListener.swift in Sources */,
+				E722FCA21AC12AA3000651E0 /* ButtonArmorUp.swift in Sources */,
 				68B7DBFB1A84C306003D9398 /* ZoneListener.swift in Sources */,
 				68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */,
 				F4B562F81AB38A9A0094B2A7 /* ButtonEnrage.swift in Sources */,

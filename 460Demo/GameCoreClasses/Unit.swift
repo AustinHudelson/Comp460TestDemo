@@ -16,6 +16,7 @@ class Unit: SerializableJSON, PType
     var type: String = "Unit"
     var ID: String = ""
     var health: CGFloat = 0.0
+    var damageMultiplier: Attribute = Attribute(baseValue: 1.0)
     var maxhealth: Attribute = Attribute(baseValue: 0.0)
     var healthregen: Int = 0
     var speed: Attribute = Attribute(baseValue: 0.0)
@@ -131,7 +132,7 @@ class Unit: SerializableJSON, PType
     func takeDamage(damage:CGFloat)
     {
         
-        health-=damage
+        health -= self.damageMultiplier.get() *  damage
         if health > maxhealth.get()
         {
             health=maxhealth.get()
