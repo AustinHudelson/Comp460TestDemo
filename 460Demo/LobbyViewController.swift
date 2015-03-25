@@ -142,53 +142,78 @@ class LobbyViewController: UIViewController {
             levelPicker.userInteractionEnabled = false
         }
         
-        // default the level to Level One. Need to do this because we only handle changing levels when the host sends the level msg over the network (i.e. in updateLevelPicker)
-        Game.global.level = levelDelegate.levels[0]
+//        // default the level to Level One. Need to do this because we only handle changing levels when the host sends the level msg over the network (i.e. in updateLevelPicker)
+//        Game.global.level = levelDelegate.levels[0]
     }
     
-    /*
-        This function sends host's selected level over the network. It will be called
-        from LevelSelection.pickerView(...didSelectRow...), and that function should only be
-        called by the host program
-    */
-    func sendPickedLevel(levelTxt: String, col: Int, row: Int) {
-        var sendLevelMsg: Dictionary<String, Array<AnyObject>> = [:]
-        sendLevelMsg["SelectedLevel"] = []
-        
-        var levelInfo: Dictionary<String, AnyObject> = [:]
-        levelInfo["levelTxt"] = levelTxt
-        // These two values tells us the column & row index of the selected level in the picker view
-        levelInfo["col"] = col
-        levelInfo["row"] = row
-        
-        sendLevelMsg["SelectedLevel"]!.append(levelInfo)
-        NetworkManager.sendMsg(&sendLevelMsg)
-    }
+//    /*
+//        This function sends host's selected level over the network. It will be called
+//        from LevelSelection.pickerView(...didSelectRow...), and that function should only be
+//        called by the host program
+//    */
+//    func sendPickedLevel(levelTxt: String, col: Int, row: Int) {
+//        var sendLevelMsg: Dictionary<String, Array<AnyObject>> = [:]
+//        sendLevelMsg["SelectedLevel"] = []
+//        
+//        var levelInfo: Dictionary<String, AnyObject> = [:]
+//        levelInfo["levelTxt"] = levelTxt
+//        // These two values tells us the column & row index of the selected level in the picker view
+//        levelInfo["col"] = col
+//        levelInfo["row"] = row
+//        
+//        sendLevelMsg["SelectedLevel"]!.append(levelInfo)
+//        NetworkManager.sendMsg(&sendLevelMsg)
+//    }
     
     /*
         This function updates the picker view & the selected level based on what host sends over the network when host is picking levels
     */
-    func updateLevelPicker(levelInfo: Dictionary<String, AnyObject>) {
-        let levelTxt = levelInfo["levelTxt"] as String
-        let col = levelInfo["col"] as Int
-        let row = levelInfo["row"] as Int
-        
-        // set the level
-        switch levelTxt {
-            case "Level One":
-                Game.global.level = levelDelegate.levels[0]
-            case "Level Two":
-                Game.global.level = levelDelegate.levels[1]
-            case "Level Three":
-                Game.global.level = levelDelegate.levels[2]
-            default:
-                println("updateLevelPicker found an unrecognized level \"\(levelTxt)\" in levelInfo")
+//    func updateLevelPicker(levelInfo: Dictionary<String, AnyObject>) {
+//        let levelTxt = levelInfo["levelTxt"] as String
+//        let col = levelInfo["col"] as Int
+//        let row = levelInfo["row"] as Int
+//        
+//        // set the level
+//        switch levelTxt {
+//            case "Level One":
+//                Game.global.level = levelDelegate.levels[0]
+//            case "Level Two":
+//                Game.global.level = levelDelegate.levels[1]
+//            case "Level Three":
+//                Game.global.level = levelDelegate.levels[2]
+//            default:
+//                println("updateLevelPicker found an unrecognized level \"\(levelTxt)\" in levelInfo")
+//        }
+//        
+//        // Only need to update my picker view if i'm the client
+//        if myPlayerName != AppWarpHelper.sharedInstance.host {
+//            levelPicker.selectRow(row, inComponent: col, animated: true)
+//        }
+//    }
+    /*
+    This is just a helper function to get rid of all the whitespaces in a string so we can go from Strings to Class Names faster (eg. "Level One" to "LevelOne1").
+    http://stackoverflow.com/questions/7628470/remove-all-whitespace-from-nsstring
+    http://stackoverflow.com/questions/26963379/remove-whitespace-character-set-from-string-excluding-space-swift
+    */
+    func removeWhiteSpaces(inputStr: String) -> String {
+        let words = inputStr.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        var outputStr: String = ""
+        for word in words {
+            outputStr += word
         }
+        return outputStr
+    }
+    
+    func pickLevel(levelTxt: String) {
+        var noSpace: String = removeWhiteSpaces(levelTxt) // get rid of the spaces in the level text
+        noSpace += AppWarpHelper.sharedInstance.userName_list.count.description // append the sublevel number, which will correspond to # of players in the game
         
-        // Only need to update my picker view if i'm the client
-        if myPlayerName != AppWarpHelper.sharedInstance.host {
-            levelPicker.selectRow(row, inComponent: col, animated: true)
-        }
+         /* Go from a string to its corresponding level class */
+        var anyObjType: AnyObject.Type = NSClassFromString(noSpace)
+        var levelType: Level.Type = anyObjType as Level.Type
+        var newLevel: Level = levelType()
+        
+        Game.global.level = newLevel
     }
     
     /* =========================================================== */

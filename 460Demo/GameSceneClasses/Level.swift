@@ -12,7 +12,7 @@ class Level
 {
     var title: String = "UNTITLED"
     
-    init() {
+    required init() {
         
     }
     
