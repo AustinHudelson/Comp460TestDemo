@@ -69,6 +69,7 @@
 		F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
 		F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */ = {isa = PBXBuildFile; fileRef = F42FD5AE1A895D4F002C6624 /* Background1.png */; };
+		F44C42F81AC3557C00CAA983 /* 9iz8yXEiE.png in Resources */ = {isa = PBXBuildFile; fileRef = F44C42F71AC3557C00CAA983 /* 9iz8yXEiE.png */; };
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
 		F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562EB1AB0D8C20094B2A7 /* Ability.swift */; };
@@ -289,6 +290,7 @@
 		F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonShrink.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F42FD5AE1A895D4F002C6624 /* Background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background1.png; path = ../Background1.png; sourceTree = "<group>"; };
+		F44C42F71AC3557C00CAA983 /* 9iz8yXEiE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9iz8yXEiE.png; sourceTree = "<group>"; };
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
 		F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonHeal.swift; sourceTree = "<group>"; };
@@ -956,6 +958,7 @@
 				F4E96AEB1ABE3C0F00021DFD /* MagicBolt.sks */,
 				F4E96AF51AC09B5B00021DFD /* HealParticle.sks */,
 				F4F126171AC0D5A100A032D1 /* FrostboltProjectileParticle.sks */,
+				F44C42F71AC3557C00CAA983 /* 9iz8yXEiE.png */,
 				F4E96AEC1ABE3C0F00021DFD /* spark.png */,
 				F4E96AEF1ABE3E7300021DFD /* RainParticle.sks */,
 				F4E96AF11ABE3EAC00021DFD /* FireParticle.sks */,
@@ -1069,6 +1072,7 @@
 				F4B563771AB3A5CF0094B2A7 /* interface5.wav in Resources */,
 				F4DC7F3B1ABC3DAF00E98AD6 /* NewMage-walk.atlas in Resources */,
 				F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */,
+				F44C42F81AC3557C00CAA983 /* 9iz8yXEiE.png in Resources */,
 				F4B563C01AB3A5CF0094B2A7 /* slime2.wav in Resources */,
 				F4DC7F381ABC3DAF00E98AD6 /* NewMage-death.atlas in Resources */,
 				E72E67331AB630300082E7B4 /* Warrior-death.atlas in Resources */,
