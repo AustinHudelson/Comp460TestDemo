@@ -25,7 +25,7 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var p4Img: UIImageView!
     @IBOutlet weak var levelPicker: UIPickerView!
     
-    let levels: LevelSelection = LevelSelection()
+    let levelDelegate: LevelSelection = LevelSelection()
     
     var classImages: Array<UIImageView> = Array<UIImageView>()
     var playerNames: Array<UITextView> = Array<UITextView>()
@@ -46,7 +46,6 @@ class LobbyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(myClass)
         // Do any additional setup after loading the view.
         /*
             Initalize AppWarp
@@ -73,18 +72,14 @@ class LobbyViewController: UIViewController {
         classImages.append(p2Img)
         classImages.append(p3Img)
         classImages.append(p4Img)
-        
-        setLevelPickerDelegate()
     }
     
-    // This function sets the level picker view's delegate & data source
-    func setLevelPickerDelegate() {
-        levelPicker.dataSource = levels
-        levelPicker.delegate = levels
-    }
-    
+    /* ============ Player names and icons functions ============ */
+    /*
+        This function sends my class over the network so other ppl can set the display icon properly
+    */
     func sendMyClass() {
-        /* Send my class over the network so other ppl can set the display icon properly */
+        
         var sendClassMsg: Dictionary<String, Array<AnyObject>> = [:]
         sendClassMsg["LobbyClassIcon"] = []
         
@@ -93,7 +88,6 @@ class LobbyViewController: UIViewController {
         myClassDict["Class"] = myClass
         
         sendClassMsg["LobbyClassIcon"]!.append(myClassDict)
-        
         NetworkManager.sendMsg(&sendClassMsg)
     }
     
@@ -130,15 +124,92 @@ class LobbyViewController: UIViewController {
                 classImages[index].image = nil
             }
         }
-        
-        
     }
-    func updateUserList() {
+    /* =========================================================== */
+    
+    
+    /* ================== Level Picker functions ================= */
+    /*
+        This function configures the level picker view & sets its delegate & data source
+    */
+    func configLevelPicker() {
+        levelPicker.dataSource = levelDelegate
+        levelPicker.delegate = levelDelegate
+        
+        if myPlayerName == AppWarpHelper.sharedInstance.host {
+            levelPicker.userInteractionEnabled = true
+        } else {
+            levelPicker.userInteractionEnabled = false
+        }
+        
+        // default the level to Level One. Need to do this because we only handle changing levels when the host sends the level msg over the network (i.e. in updateLevelPicker)
+        Game.global.level = levelDelegate.levels[0]
+    }
+    
+    /*
+        This function sends host's selected level over the network. It will be called
+        from LevelSelection.pickerView(...didSelectRow...), and that function should only be
+        called by the host program
+    */
+    func sendPickedLevel(levelTxt: String, col: Int, row: Int) {
+        var sendLevelMsg: Dictionary<String, Array<AnyObject>> = [:]
+        sendLevelMsg["SelectedLevel"] = []
+        
+        var levelInfo: Dictionary<String, AnyObject> = [:]
+        levelInfo["levelTxt"] = levelTxt
+        // These two values tells us the column & row index of the selected level in the picker view
+        levelInfo["col"] = col
+        levelInfo["row"] = row
+        
+        sendLevelMsg["SelectedLevel"]!.append(levelInfo)
+        NetworkManager.sendMsg(&sendLevelMsg)
+    }
+    
+    /*
+        This function updates the picker view & the selected level based on what host sends over the network when host is picking levels
+    */
+    func updateLevelPicker(levelInfo: Dictionary<String, AnyObject>) {
+        let levelTxt = levelInfo["levelTxt"] as String
+        let col = levelInfo["col"] as Int
+        let row = levelInfo["row"] as Int
+        
+        // set the level
+        switch levelTxt {
+            case "Level One":
+                Game.global.level = levelDelegate.levels[0]
+            case "Level Two":
+                Game.global.level = levelDelegate.levels[1]
+            case "Level Three":
+                Game.global.level = levelDelegate.levels[2]
+            default:
+                println("updateLevelPicker found an unrecognized level \"\(levelTxt)\" in levelInfo")
+        }
+        
+        // Only need to update my picker view if i'm the client
+        if myPlayerName != AppWarpHelper.sharedInstance.host {
+            levelPicker.selectRow(row, inComponent: col, animated: true)
+        }
+    }
+    
+    /* =========================================================== */
+    
+    /*
+        This function configures the lobby view based on whether you're host or not and whatever other people sent over the network (eg. their classes, host's selected level...etc).
+    
+        It also sets the host.
+    
+        For now, it is getting called from RoomListener.onGetLiveRoomInforDone():
+            RoomListener.onGetLiveRoomInforDone() -> AppWarpHelper.configLobbyView()->LobbyViewController.configLobbyView9)
+    */
+    func configLobbyView() {
         /* print the updated user list and set host to be the first guy in that list*/
         println("Current users in the room lobby:")
         println(AppWarpHelper.sharedInstance.userName_list)
         
-        AppWarpHelper.sharedInstance.host = (AppWarpHelper.sharedInstance.userName_list[0] as String) // designate host
+        // set host
+        AppWarpHelper.sharedInstance.host = (AppWarpHelper.sharedInstance.userName_list[0] as String)
+        
+        /* Configure the lobby view based on whether you're host or not */
         if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host
         {
             startGameButton.enabled = false
@@ -149,6 +220,7 @@ class LobbyViewController: UIViewController {
         }
         
         setPlayerNames()
+        configLevelPicker()
         sendMyClass()
     }
 

@@ -129,14 +129,18 @@ class Game {
      * loads a new wave if you are the host
      */
     func loadLevel() {
-        var firstWave: Array<Unit> = Game.global.level!.loadWave(scene!)
-        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host{
-            if (firstWave.count != 0) {        //If we receive an empty wave assume that we have defeated all waves
-                for enemy in firstWave{
-                    scene!.sendUnitOverNetwork(enemy)
+        if level != nil && scene != nil {
+            println("!!!!Loading \(level?.title)")
+            
+            var firstWave: Array<Unit> = level!.loadWave(scene!)
+            if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host{
+                if (firstWave.count != 0) {        //If we receive an empty wave assume that we have defeated all waves
+                    for enemy in firstWave{
+                        scene!.sendUnitOverNetwork(enemy)
+                    }
+                } else {
+                    winGame()
                 }
-            } else {
-                winGame()
             }
         }
         

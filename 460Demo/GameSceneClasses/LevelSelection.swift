@@ -13,6 +13,12 @@ import Foundation
 */
 class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     var levels: Array<Level> = [LevelOne(), LevelTwo(), LevelThree()]
+    var numCols: Int = 1 // number of columns in this picker view
+    var numRows: Int { // number of rows within a column
+        get {
+            return levels.count
+        }
+    }
     
     override init(){
         super.init()
@@ -21,13 +27,13 @@ class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     /* The picker view will call this function to get the number of columns in the picker */
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         // We only have 1 column for our level picker in lobby
-        return 1
+        return numCols
     }
     
     /* The picker view will call this function to get the number of rows in a column */
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         // We'll have picker's number rows = number of levels
-        return levels.count
+        return numRows
     }
     
     /* The picker view will call this function to get the text for each row */
@@ -37,6 +43,14 @@ class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
     /* This listener function will be called when the user changes the level selection from the picker view */
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        println("[c,r]: [\(component), \(row)]")
+        /*
+            If you're the host, you can interact with the pickerview to select a level. You send a msg over the network telling other ppl what you selected, and other ppl's program will automatically select whatever you selected
+        */
+        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
+            if let lobby = AppWarpHelper.sharedInstance.lobby {
+                lobby.sendPickedLevel(levels[row].title, col: component, row: row)
+            }
+        }
+        
     }
 }

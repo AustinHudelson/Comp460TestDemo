@@ -53,8 +53,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         sendUnitOverNetwork(playerChar) //Adds and send the unit
-        
-        Game.global.level = LevelThree()
         Game.global.loadLevel()
         
         
