@@ -25,6 +25,11 @@ class Unit: SerializableJSON, PType
     var attackRange: CGFloat = 20.0
     var attackSpeed: Attribute = Attribute(baseValue: 3.0)
     var attackDamage: Attribute = Attribute(baseValue: 3.0)
+    /* 
+    if isHealer is true, then this unit will only be able to target allies 
+    with attack commands (only applies to players)
+    */
+    var isHealer: Bool = false
     var sprite: SKSpriteNode = SKSpriteNode(imageNamed: "WarriorStand350x350")
     var redColor: Attribute = Attribute(baseValue: 1.0)
     var blueColor: Attribute = Attribute(baseValue: 1.0)
@@ -43,6 +48,7 @@ class Unit: SerializableJSON, PType
     var DS_attackTarget: Unit?
     var DS_isCommandable: Bool = true   /*Private*/
     var DS_queuedOrder: Order?
+    var DS_isFacingLeft: Bool = true
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "health_bar_green")
@@ -185,8 +191,24 @@ class Unit: SerializableJSON, PType
         //self.DS_health_bar.runAction(SKAction.resizeToWidth(width:(self.health/self.maxhealth.get()*100)))
         self.DS_health_bar.size = newSize
         self.DS_health_bar.position = CGPoint(x:self.sprite.position.x - self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
+    }
+    
+    func dealHealing(heal: CGFloat, target: Unit) {
+        target.takeHealing(heal)
+    }
+    
+    func takeHealing(heal: CGFloat){
+        health += heal
         
+        if health > maxhealth.get()
+        {
+            health=maxhealth.get()
+        }
         
+        let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth.get()*100), height: CGFloat(25))
+        //self.DS_health_bar.runAction(SKAction.resizeToWidth(width:(self.health/self.maxhealth.get()*100)))
+        self.DS_health_bar.size = newSize
+        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x - self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
     }
     
     func faceLeft(){

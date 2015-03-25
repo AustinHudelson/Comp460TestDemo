@@ -35,7 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             /*
                 TEMPORARY to test a mage class: If playerName == "Mage", give him a mage & set ID = playerName
             */
-            playerChar = Mage(ID: playerName, spawnLocation: playerCharPos)
+            playerChar = Priest(ID: playerName, spawnLocation: playerCharPos)
         }
             //change for class 3
         else if AppWarpHelper.sharedInstance.playerClass == "saldfjals;jkf" {
@@ -195,18 +195,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             //Code only reaches here if touch is not a button press.
             if playerIsTouched == true || playerIsTouched == false {
-                
+                /*Just return if the player is dead */
+                if (Game.global.getMyPlayer() == nil || Game.global.getMyPlayer()!.alive == false){
+                    return
+                }
                 var unitTouched = false;
                 var touchedUnitID: String = ""
-                for (name, unit) in Game.global.enemyMap
-                {
-                    //Attack target conditions go here
-                    /* you touched the sprite, The target is not you, and the target is an enemy. */
-                    if(unit.sprite.containsPoint(touchLocation) && (unit.isEnemy == true))
+                if (Game.global.getMyPlayer()?.isHealer == false){
+                    for (name, unit) in Game.global.enemyMap
                     {
-                        unitTouched = true;
-                        touchedUnitID = unit.ID
-                        break
+                        //Attack target conditions go here
+                        /* you touched the sprite, The target is not you, and the target is an enemy. */
+                        if(unit.sprite.containsPoint(touchLocation) && (unit.isEnemy == true))
+                        {
+                            unitTouched = true;
+                            touchedUnitID = unit.ID
+                            break
+                        }
+                    }
+                } else {
+                    //My Player IS a healer
+                    for (name, unit) in Game.global.playerMap   //Iterate over player map instead
+                    {
+                        //Attack target conditions go here
+                        /* you touched the sprite, The target is not you, and the target is an enemy. */
+                        if(unit.sprite.containsPoint(touchLocation) && (unit.isEnemy == false))
+                        {
+                            unitTouched = true;
+                            touchedUnitID = unit.ID
+                            break
+                        }
                     }
                 }
                 
