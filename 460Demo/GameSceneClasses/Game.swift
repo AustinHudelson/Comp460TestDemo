@@ -219,6 +219,7 @@ class Game {
     /* Returns your Unit
     */
     func getMyPlayer() -> Unit? {
+        //TODO: Cache who my player is so you dont have to get from the map every time.
         return playerMap[AppWarpHelper.sharedInstance.playerName]
     }
     

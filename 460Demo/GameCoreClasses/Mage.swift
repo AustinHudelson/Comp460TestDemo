@@ -48,9 +48,9 @@ class Mage: Unit, PType
         self.sprite.position = spawnLocation
         self.sprite.zPosition = 1
         /* Initialize Warrior buttons. They will automatically be added to the scene */
-        let Button0: Ability = ButtonAreaHeal(slot: 0)
-        let Button1: Ability = ButtonShrink(slot: 1)
-        let Button2: Ability = ButtonFrostbolt(slot: 2)
+        let Button0: Ability = ButtonFrostbolt(slot: 0)
+        let Button1: Ability = ButtonFlameStrike(slot: 1)
+        let Button2: Ability = ButtonBlink(slot: 2)
     }
     
     /*

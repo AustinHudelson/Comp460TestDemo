@@ -38,10 +38,12 @@ class Priest: Unit, PType
         self.speed = Attribute(baseValue: 80.0)
         self.attackRange = 1000.0
         self.attackSpeed = Attribute(baseValue: 2.0)
-        self.attackDamage = Attribute(baseValue: 5.0)
+        self.attackDamage = Attribute(baseValue: 10.0)
         self.isEnemy = false
         self.xSize = 300.0
         self.ySize = 300.0
+        
+        self.isHealer = true
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -49,8 +51,8 @@ class Priest: Unit, PType
         self.sprite.zPosition = 1
         /* Initialize Warrior buttons. They will automatically be added to the scene */
         let Button0: Ability = ButtonAreaHeal(slot: 0)
-        let Button1: Ability = ButtonShrink(slot: 1)
-        let Button2: Ability = ButtonFrostbolt(slot: 2)
+        let Button1: Ability = ButtonBlindingFlash(slot: 1)
+        let Button2: Ability = ButtonSoulExchange(slot: 2)
     }
     
     /*
@@ -190,6 +192,24 @@ class Priest: Unit, PType
     }
     
     override func weaponHandle(target: Unit){
-        let projectile = MageBolt(target: target, caster: self)
+        //Setup heal particle emitter
+        let emitterPath: String = NSBundle.mainBundle().pathForResource("HealParticle", ofType: "sks")!
+        let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as SKEmitterNode
+        //emitterNode.position = self.sprite!.position
+        emitterNode.name = "Healing"
+        emitterNode.zPosition = self.sprite.zPosition+1
+        emitterNode.targetNode = self.sprite
+        
+        let halfWaitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(0.2))
+        let removeNodeBlock: SKAction = SKAction.runBlock({
+            emitterNode.removeFromParent()
+        })
+        let applyHealingBlock: SKAction = SKAction.runBlock({
+            self.dealHealing(self.attackDamage.get(), target: target)
+        })
+        
+        //Start the emitter node, wait half, heal, wait half again, remove the emitter node
+        self.sprite.addChild(emitterNode)   //Start the emitter node
+        self.sprite.runAction(SKAction.sequence([halfWaitAction, applyHealingBlock, halfWaitAction, removeNodeBlock]))
     }
 }

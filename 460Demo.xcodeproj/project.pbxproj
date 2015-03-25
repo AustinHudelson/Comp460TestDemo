@@ -196,6 +196,10 @@
 		F4F126181AC0D5A100A032D1 /* FrostboltProjectileParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4F126171AC0D5A100A032D1 /* FrostboltProjectileParticle.sks */; };
 		F4F1261A1AC0D90500A032D1 /* Frostbolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F126191AC0D90500A032D1 /* Frostbolt.swift */; };
 		F4F1261D1AC342B700A032D1 /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1261C1AC342B700A032D1 /* Priest.swift */; };
+		F4F1261F1AC3496A00A032D1 /* ButtonBlindingFlash.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1261E1AC3496900A032D1 /* ButtonBlindingFlash.swift */; };
+		F4F126211AC3497F00A032D1 /* ButtonFlameStrike.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F126201AC3497F00A032D1 /* ButtonFlameStrike.swift */; };
+		F4F126231AC3498E00A032D1 /* ButtonBlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F126221AC3498E00A032D1 /* ButtonBlink.swift */; };
+		F4F126251AC34A0300A032D1 /* ButtonSoulExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F126241AC34A0300A032D1 /* ButtonSoulExchange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,6 +413,10 @@
 		F4F126171AC0D5A100A032D1 /* FrostboltProjectileParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FrostboltProjectileParticle.sks; sourceTree = "<group>"; };
 		F4F126191AC0D90500A032D1 /* Frostbolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Frostbolt.swift; path = ../Frostbolt.swift; sourceTree = "<group>"; };
 		F4F1261C1AC342B700A032D1 /* Priest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
+		F4F1261E1AC3496900A032D1 /* ButtonBlindingFlash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBlindingFlash.swift; sourceTree = "<group>"; };
+		F4F126201AC3497F00A032D1 /* ButtonFlameStrike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFlameStrike.swift; sourceTree = "<group>"; };
+		F4F126221AC3498E00A032D1 /* ButtonBlink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBlink.swift; sourceTree = "<group>"; };
+		F4F126241AC34A0300A032D1 /* ButtonSoulExchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSoulExchange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -586,6 +594,10 @@
 				F4B562EB1AB0D8C20094B2A7 /* Ability.swift */,
 				F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */,
 				F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */,
+				F4F1261E1AC3496900A032D1 /* ButtonBlindingFlash.swift */,
+				F4F126201AC3497F00A032D1 /* ButtonFlameStrike.swift */,
+				F4F126241AC34A0300A032D1 /* ButtonSoulExchange.swift */,
+				F4F126221AC3498E00A032D1 /* ButtonBlink.swift */,
 				F4B562F71AB38A9A0094B2A7 /* ButtonEnrage.swift */,
 				F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */,
 				68DADF481AB56FE800A20800 /* ButtonTaunt.swift */,
@@ -1188,6 +1200,7 @@
 				F4DC7F2A1ABB5BDB00E98AD6 /* LevelTwo.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				F4F1261D1AC342B700A032D1 /* Priest.swift in Sources */,
+				F4F126211AC3497F00A032D1 /* ButtonFlameStrike.swift in Sources */,
 				68DADF491AB56FE800A20800 /* ButtonTaunt.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
 				E722FCA01AC1262A000651E0 /* ArmorUp.swift in Sources */,
@@ -1195,6 +1208,7 @@
 				F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */,
 				F4E96AF91AC0A7B300021DFD /* MageBolt.swift in Sources */,
 				F4DC7F2F1ABB5EAD00E98AD6 /* EnemyBoss.swift in Sources */,
+				F4F126231AC3498E00A032D1 /* ButtonBlink.swift in Sources */,
 				6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */,
 				F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */,
 				F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */,
@@ -1213,6 +1227,7 @@
 				68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */,
 				F4B562F81AB38A9A0094B2A7 /* ButtonEnrage.swift in Sources */,
 				F4F126131AC0BB7D00A032D1 /* ButtonFrostbolt.swift in Sources */,
+				F4F1261F1AC3496A00A032D1 /* ButtonBlindingFlash.swift in Sources */,
 				F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */,
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,
 				68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */,
@@ -1232,6 +1247,7 @@
 				68A18D4F1AA8719E001CCE1D /* NetworkClock.m in Sources */,
 				682944E11AB578A200680A36 /* Shrink.swift in Sources */,
 				F4DC7F2C1ABB5C0E00E98AD6 /* LevelThree.swift in Sources */,
+				F4F126251AC34A0300A032D1 /* ButtonSoulExchange.swift in Sources */,
 				F4B562EE1AB21B290094B2A7 /* ButtonHeal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
