@@ -43,6 +43,7 @@ class Unit: SerializableJSON, PType
     var DS_attackTarget: Unit?
     var DS_isCommandable: Bool = true   /*Private*/
     var DS_queuedOrder: Order?
+    var DS_isFacingLeft: Bool = true
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "health_bar_green")

@@ -194,6 +194,7 @@
 		F4F126151AC0C0C300A032D1 /* FrostboltProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F126141AC0C0C300A032D1 /* FrostboltProjectile.swift */; };
 		F4F126181AC0D5A100A032D1 /* FrostboltProjectileParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4F126171AC0D5A100A032D1 /* FrostboltProjectileParticle.sks */; };
 		F4F1261A1AC0D90500A032D1 /* Frostbolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F126191AC0D90500A032D1 /* Frostbolt.swift */; };
+		F4F1261D1AC342B700A032D1 /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1261C1AC342B700A032D1 /* Priest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -405,6 +406,7 @@
 		F4F126141AC0C0C300A032D1 /* FrostboltProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrostboltProjectile.swift; sourceTree = "<group>"; };
 		F4F126171AC0D5A100A032D1 /* FrostboltProjectileParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FrostboltProjectileParticle.sks; sourceTree = "<group>"; };
 		F4F126191AC0D90500A032D1 /* Frostbolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Frostbolt.swift; path = ../Frostbolt.swift; sourceTree = "<group>"; };
+		F4F1261C1AC342B700A032D1 /* Priest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,7 +505,6 @@
 				682944DE1AB5787000680A36 /* Heal.swift */,
 				68DADF4E1AB5738800A20800 /* AreaHeal.swift */,
 				68DADF4F1AB5738800A20800 /* Enrage.swift */,
-				682944E01AB578A200680A36 /* Shrink.swift */,
 				E722FC9F1AC1262A000651E0 /* ArmorUp.swift */,
 				68DADF511AB5738800A20800 /* Taunt.swift */,
 				F4F126191AC0D90500A032D1 /* Frostbolt.swift */,
@@ -531,7 +532,6 @@
 		68F35CAD1A84C540004905BF /* GameCoreClasses */ = {
 			isa = PBXGroup;
 			children = (
-				E7D4B9DD1AC0AF9C002D5675 /* E_Gold01.png */,
 				F42FD5AC1A880282002C6624 /* SerializableJSON.swift */,
 				68DADF4C1AB5738800A20800 /* Orders */,
 				F4B562E81AB0D8180094B2A7 /* Abilities */,
@@ -567,6 +567,7 @@
 				F4DC7F2D1ABB5E8900E98AD6 /* Enemy Boss */,
 				F402F68D1AB51AC200A930C2 /* Enemy Mage */,
 				F4B562F61AB2880A0094B2A7 /* Enemy */,
+				F4F1261B1AC3429900A032D1 /* Priest */,
 				F4B562F51AB287FB0094B2A7 /* Mage */,
 				F4BC9DC81A900C9A00F3B617 /* Warrior */,
 				F4B5047A1A900D98007CDBA8 /* Target Dummy */,
@@ -935,6 +936,14 @@
 			name = Projectiles;
 			sourceTree = "<group>";
 		};
+		F4F1261B1AC3429900A032D1 /* Priest */ = {
+			isa = PBXGroup;
+			children = (
+				F4F1261C1AC342B700A032D1 /* Priest.swift */,
+			);
+			name = Priest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1174,6 +1183,7 @@
 				68DADF5C1AB5738800A20800 /* Taunt.swift in Sources */,
 				F4DC7F2A1ABB5BDB00E98AD6 /* LevelTwo.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
+				F4F1261D1AC342B700A032D1 /* Priest.swift in Sources */,
 				68DADF491AB56FE800A20800 /* ButtonTaunt.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
 				E722FCA01AC1262A000651E0 /* ArmorUp.swift in Sources */,
