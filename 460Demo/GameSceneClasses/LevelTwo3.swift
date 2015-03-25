@@ -10,7 +10,7 @@ import SpriteKit
 @objc(LevelTwo3)
 class LevelTwo3:Level
 {
-    override init() {
+    required init() {
         super.init()
         self.title = "Level Two3"
     }

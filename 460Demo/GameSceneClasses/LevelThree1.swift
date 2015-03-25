@@ -11,7 +11,7 @@ import SpriteKit
 @objc(LevelThree1)
 class LevelThree1:Level
 {
-    override init() {
+    required init() {
         super.init()
         self.title = "Level Three 1"
     }
