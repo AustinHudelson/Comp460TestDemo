@@ -16,6 +16,7 @@ class Unit: SerializableJSON, PType
     var type: String = "Unit"
     var ID: String = ""
     var health: CGFloat = 0.0
+    var damageMultiplier: Attribute = Attribute(baseValue: 1.0)
     var maxhealth: Attribute = Attribute(baseValue: 0.0)
     var healthregen: Int = 0
     var speed: Attribute = Attribute(baseValue: 0.0)
@@ -39,6 +40,9 @@ class Unit: SerializableJSON, PType
     var isEnemy: Bool = true
     //var isMoving: Bool = false
     var isAttacking: Bool = false
+    var DS_attackTarget: Unit?
+    var DS_isCommandable: Bool = true   /*Private*/
+    var DS_queuedOrder: Order?
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "health_bar_green")
@@ -111,17 +115,43 @@ class Unit: SerializableJSON, PType
         
     }
     
-    func sendOrder(order: Order){
-        println(order.type)
-        if order is Transient {
-            println("Running transient ability")
-            order.apply()
-            order.remove()
-            return
+    /*
+    Flags a unit as uncommandable. Causes all orders to be ignored
+    except the last order sent before makeCommandable() is called.
+    */
+    func makeUncommandable(){
+        self.DS_isCommandable = false
+    }
+    
+    /*
+    Revokes the previous makeUncommandable call.
+    Allows orders to be sent to this unit and if an
+    order was attempted to be sent to this unit then
+    the last sent order will be applied.
+    */
+    func makeCommandable(){
+        self.DS_isCommandable = true
+        if (self.DS_queuedOrder != nil) {
+            sendOrder(DS_queuedOrder!)
+            DS_queuedOrder = nil
         }
-        currentOrder.remove()
-        currentOrder = order
-        order.apply()
+    }
+    
+    func sendOrder(order: Order){
+        if self.DS_isCommandable {
+            if order is Transient {
+                println("Running transient ability")
+                order.apply()
+                order.remove()
+                return
+            }
+            currentOrder.remove()
+            currentOrder = order
+            order.apply()
+        } else {
+            //If this unit is uncommandable queue the order instead
+            self.DS_queuedOrder = order
+        }
     }
     
     func dealDamage(damage: CGFloat, target: Unit){
@@ -131,7 +161,7 @@ class Unit: SerializableJSON, PType
     func takeDamage(damage:CGFloat)
     {
         
-        health-=damage
+        health -= self.damageMultiplier.get() *  damage
         if health > maxhealth.get()
         {
             health=maxhealth.get()
@@ -301,6 +331,7 @@ class Unit: SerializableJSON, PType
     
     func attack(target: Unit, complete:(()->Void)!){
         clearAttack()
+        DS_attackTarget = target
         attackCycle(target, complete)
     }
     
@@ -352,7 +383,7 @@ class Unit: SerializableJSON, PType
                 self.sprite.runAction(attackSequence, withKey: "attack")
                 self.sprite.runAction(self.DS_attackAnim!, withKey: "attackAnim")
                 //Apply the damage to the enemy. NOTE: Might be more realistic to do this half way though the attack animation.
-                dealDamage(self.attackDamage.get(), target: target)
+                weaponHandle(target)
                 if self.type == "Warrior"
                 {
                     let soundAction = SKAction.playSoundFileNamed("swing3.wav", waitForCompletion: true)
@@ -378,8 +409,13 @@ class Unit: SerializableJSON, PType
     }
     
     func clearAttack(){
+        DS_attackTarget = nil
         clearMove()
         self.sprite.removeActionForKey("attack")
+    }
+    
+    func weaponHandle(target: Unit){
+        dealDamage(self.attackDamage.get(), target: target)
     }
     
     

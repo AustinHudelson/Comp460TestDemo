@@ -50,6 +50,7 @@ class Mage: Unit, PType
         /* Initialize Warrior buttons. They will automatically be added to the scene */
         let Button0: Ability = ButtonAreaHeal(slot: 0)
         let Button1: Ability = ButtonShrink(slot: 1)
+        let Button2: Ability = ButtonFrostbolt(slot: 2)
     }
     
     /*
@@ -183,5 +184,11 @@ class Mage: Unit, PType
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
+        
+        
+    }
+    
+    override func weaponHandle(target: Unit){
+        let projectile = MageBolt(target: target, caster: self)
     }
 }

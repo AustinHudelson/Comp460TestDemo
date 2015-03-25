@@ -30,7 +30,6 @@ class Attack: Order, PType
     required init(receivedData: Dictionary<String, AnyObject>) {
         super.init(receivedData: receivedData)
         restoreProperties(Attack.self, receivedData: receivedData)
-        println(tID)
         DS_receiver = Game.global.getUnit(self.ID!)
         DS_target = Game.global.getUnit(tID)
     }
@@ -55,7 +54,4 @@ class Attack: Order, PType
         }
         DS_receiver?.clearAttack()
     }
-    
-    
-    
 }
