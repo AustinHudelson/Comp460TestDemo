@@ -503,11 +503,11 @@
 				682944DE1AB5787000680A36 /* Heal.swift */,
 				68DADF4E1AB5738800A20800 /* AreaHeal.swift */,
 				68DADF4F1AB5738800A20800 /* Enrage.swift */,
-				68DADF511AB5738800A20800 /* Taunt.swift */,
-				F4F126191AC0D90500A032D1 /* Frostbolt.swift */,
 				682944E01AB578A200680A36 /* Shrink.swift */,
 				E722FC9F1AC1262A000651E0 /* ArmorUp.swift */,
 				68DADF511AB5738800A20800 /* Taunt.swift */,
+				F4F126191AC0D90500A032D1 /* Frostbolt.swift */,
+				682944E01AB578A200680A36 /* Shrink.swift */,
 			);
 			path = Abilities;
 			sourceTree = "<group>";
@@ -584,6 +584,7 @@
 				F4B562F71AB38A9A0094B2A7 /* ButtonEnrage.swift */,
 				F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */,
 				68DADF481AB56FE800A20800 /* ButtonTaunt.swift */,
+				E722FCA11AC12AA3000651E0 /* ButtonArmorUp.swift */,
 				F4F126121AC0BB7D00A032D1 /* ButtonFrostbolt.swift */,
 			);
 			name = Abilities;

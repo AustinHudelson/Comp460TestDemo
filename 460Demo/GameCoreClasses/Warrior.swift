@@ -50,7 +50,7 @@ class Warrior: Unit, PType
         /* Initialize Warrior buttons. They will automatically be added to the scene */
         let Button0: Ability = ButtonTaunt(slot: 0)
         let Button1: Ability = ButtonEnrage(slot: 1)
-        let Button2: Ability = ButtonHeal(slot: 2)
+        let Button2: Ability = ButtonArmorUp(slot: 2)
     }
     
     /*
