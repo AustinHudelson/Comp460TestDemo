@@ -78,9 +78,9 @@ class RoomListener: NSObject,RoomRequestListener
         AppWarpHelper.sharedInstance.userName_list = event.joinedUsers
         
         
-        /* If gameScene is nil that means we're in the lobby, so do the lobby's updateUserList() */
+        /* If gameScene is nil that means we're in the lobby, so configure the lobby view */
         if AppWarpHelper.sharedInstance.gameScene == nil {
-            AppWarpHelper.sharedInstance.updateUserList()
+            AppWarpHelper.sharedInstance.configLobbyView()
         }
         else {
             let userName_list = AppWarpHelper.sharedInstance.userName_list

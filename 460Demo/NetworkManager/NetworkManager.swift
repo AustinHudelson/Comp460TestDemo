@@ -45,7 +45,7 @@ class NetworkManager {
 
         } else {
             /*
-            print error msg if convertion failed
+                print error msg if convertion failed
             */
             println("!!!WARNING: Error in converting the msg to be sent!!!!")
             println(error!)
@@ -76,10 +76,16 @@ class NetworkManager {
                     AppWarpHelper.sharedInstance.startGame()
                 
                 case "LobbyClassIcon":
-                    println(arrayOfObjects)
                     if let lobby = AppWarpHelper.sharedInstance.lobby {
                         lobby.updatePlayerIcons(arrayOfObjects[0] as Dictionary<String, String>)
                     }
+                
+                case "SelectedLevel":
+                    if let lobby = AppWarpHelper.sharedInstance.lobby {
+                        lobby.updateLevelPicker(arrayOfObjects[0] as Dictionary<String, AnyObject>)
+                    }
+                
+                /* =============================== */
                 
                 /* === Game related cases === */
                 case "Units":
@@ -99,6 +105,7 @@ class NetworkManager {
                         var diff: NSTimeInterval = Timer.diffDateNow(sentTime) // get difference between sent time and now
                         println("SentTime: \(sentTimeStr); RecvTime: \(recvTimeStr); diff between SentTime & recvTime: \(diff) seconds")
                     }
+                /* =============================== */
                 default:
                     // Placeholder default
                     println("proccesRecvMsg found a key \"\(key)\" in recvDict that's not yet implemented")
