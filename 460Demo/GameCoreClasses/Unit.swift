@@ -204,6 +204,11 @@ class Unit: SerializableJSON, PType
         {
             health=maxhealth.get()
         }
+        
+        let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth.get()*100), height: CGFloat(25))
+        //self.DS_health_bar.runAction(SKAction.resizeToWidth(width:(self.health/self.maxhealth.get()*100)))
+        self.DS_health_bar.size = newSize
+        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x - self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
     }
     
     func faceLeft(){
