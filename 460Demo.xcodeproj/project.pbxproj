@@ -49,6 +49,8 @@
 		E72E672F1AB629CB0082E7B4 /* Warrior-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E672E1AB629CB0082E7B4 /* Warrior-stumble.atlas */; };
 		E72E67321AB630300082E7B4 /* Warrior-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E67301AB630300082E7B4 /* Warrior-ability.atlas */; };
 		E72E67331AB630300082E7B4 /* Warrior-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E67311AB630300082E7B4 /* Warrior-death.atlas */; };
+		E759EDAA1AC3433C00D23AF8 /* LevelOne1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDA91AC3433C00D23AF8 /* LevelOne1.swift */; };
+		E759EDAC1AC3449700D23AF8 /* LevelTwo1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDAB1AC3449700D23AF8 /* LevelTwo1.swift */; };
 		E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */; };
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
 		E7E2DDBC1ABA0E1E003C9812 /* VIDA_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */; };
@@ -256,6 +258,8 @@
 		E72E672E1AB629CB0082E7B4 /* Warrior-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-stumble.atlas"; sourceTree = "<group>"; };
 		E72E67301AB630300082E7B4 /* Warrior-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-ability.atlas"; sourceTree = "<group>"; };
 		E72E67311AB630300082E7B4 /* Warrior-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-death.atlas"; sourceTree = "<group>"; };
+		E759EDA91AC3433C00D23AF8 /* LevelOne1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne1.swift; sourceTree = "<group>"; };
+		E759EDAB1AC3449700D23AF8 /* LevelTwo1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTwo1.swift; sourceTree = "<group>"; };
 		E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VIDA_10.png; path = GameCoreClasses/VIDA_10.png; sourceTree = "<group>"; };
@@ -503,7 +507,6 @@
 				682944DE1AB5787000680A36 /* Heal.swift */,
 				68DADF4E1AB5738800A20800 /* AreaHeal.swift */,
 				68DADF4F1AB5738800A20800 /* Enrage.swift */,
-				682944E01AB578A200680A36 /* Shrink.swift */,
 				E722FC9F1AC1262A000651E0 /* ArmorUp.swift */,
 				68DADF511AB5738800A20800 /* Taunt.swift */,
 				F4F126191AC0D90500A032D1 /* Frostbolt.swift */,
@@ -524,6 +527,8 @@
 				F4DC7F291ABB5BDB00E98AD6 /* LevelTwo.swift */,
 				F4DC7F2B1ABB5C0E00E98AD6 /* LevelThree.swift */,
 				E75F4FBA1AB0DE1B00C3D76E /* Level.swift */,
+				E759EDA91AC3433C00D23AF8 /* LevelOne1.swift */,
+				E759EDAB1AC3449700D23AF8 /* LevelTwo1.swift */,
 			);
 			path = GameSceneClasses;
 			sourceTree = "<group>";
@@ -531,7 +536,6 @@
 		68F35CAD1A84C540004905BF /* GameCoreClasses */ = {
 			isa = PBXGroup;
 			children = (
-				E7D4B9DD1AC0AF9C002D5675 /* E_Gold01.png */,
 				F42FD5AC1A880282002C6624 /* SerializableJSON.swift */,
 				68DADF4C1AB5738800A20800 /* Orders */,
 				F4B562E81AB0D8180094B2A7 /* Abilities */,
@@ -1169,6 +1173,7 @@
 				F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */,
 				68DADF611AB5738800A20800 /* Order.swift in Sources */,
 				E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */,
+				E759EDAC1AC3449700D23AF8 /* LevelTwo1.swift in Sources */,
 				68DADF621AB5738800A20800 /* RoamAttack.swift in Sources */,
 				68DADF5E1AB5738800A20800 /* Idle.swift in Sources */,
 				68DADF5C1AB5738800A20800 /* Taunt.swift in Sources */,
@@ -1193,6 +1198,7 @@
 				68F35CB91A84C540004905BF /* Warrior.swift in Sources */,
 				F4E896421AA128E000406784 /* Game.swift in Sources */,
 				68B7DBFA1A84C306003D9398 /* RoomListener.swift in Sources */,
+				E759EDAA1AC3433C00D23AF8 /* LevelOne1.swift in Sources */,
 				E722FCA21AC12AA3000651E0 /* ButtonArmorUp.swift in Sources */,
 				68B7DBFB1A84C306003D9398 /* ZoneListener.swift in Sources */,
 				68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */,
