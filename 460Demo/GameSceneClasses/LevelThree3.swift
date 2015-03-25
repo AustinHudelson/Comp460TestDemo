@@ -53,7 +53,7 @@ class LevelThree3:Level
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+125);
-            let dummy4 = EnemyM(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy4 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+125);
@@ -140,7 +140,7 @@ class LevelThree3:Level
             
         else if self.counter == 5 {
             //wave 5. 1 Boss/1 Warrior / 1 Mage
-            Game.global.getNextEnemyID()
+            DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+200);
             let dummy18 = EnemyBoss(ID: DUMMY_ID, spawnLocation: dummy_position)
             
