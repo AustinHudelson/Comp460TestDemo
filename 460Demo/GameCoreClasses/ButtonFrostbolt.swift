@@ -14,7 +14,7 @@ class ButtonFrostbolt: Ability
     * Creates a enrage icon at the specified ability use slot
     */
     init(slot: Int){
-        super.init(imageNamed: "E_Gold01", slot: slot)
+        super.init(imageNamed: "S_Ice02", slot: slot)
     }
     
     override func apply(receiverIn: Unit) {
