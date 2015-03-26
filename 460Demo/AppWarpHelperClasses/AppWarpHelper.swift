@@ -147,7 +147,7 @@ class AppWarpHelper: NSObject
                     // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
     func recvUpdate(data: NSData) {
-        println("Received data (\(data.length) bytes)")
+        //println("Received data (\(data.length) bytes)")
         
         var recvDict: Dictionary<String, Array<AnyObject>> = [:]
         

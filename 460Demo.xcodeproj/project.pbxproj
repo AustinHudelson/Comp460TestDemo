@@ -560,9 +560,9 @@
 				F4B562E81AB0D8180094B2A7 /* Abilities */,
 				F4B5047E1A907A2A007CDBA8 /* Units */,
 				F4E96AF71AC0A54900021DFD /* Projectiles */,
+				F4E96AE61ABE3B8400021DFD /* Particle Effects */,
 				F4B5047B1A90175B007CDBA8 /* PType.swift */,
 				68038FE01AA56B8C0053A963 /* Timer.swift */,
-				F4E96AE61ABE3B8400021DFD /* Particle Effects */,
 			);
 			path = GameCoreClasses;
 			sourceTree = "<group>";

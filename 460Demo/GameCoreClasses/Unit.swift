@@ -25,6 +25,7 @@ class Unit: SerializableJSON, PType
     var attackRange: CGFloat = 20.0
     var attackSpeed: Attribute = Attribute(baseValue: 3.0)
     var attackDamage: Attribute = Attribute(baseValue: 3.0)
+    var DS_lastAttackTime: NSDate = Timer.getCurrentTime()
     /* 
     if isHealer is true, then this unit will only be able to target allies 
     with attack commands (only applies to players)
@@ -397,6 +398,19 @@ class Unit: SerializableJSON, PType
                 }
                 //Clear movement. (should not be executing a move action, just a walk animation action)
                 clearMove()
+                let currentTime = Timer.getCurrentTime()
+                let timeSinceLastAttack: NSTimeInterval = currentTime.timeIntervalSinceDate(DS_lastAttackTime)
+                if (timeSinceLastAttack < NSTimeInterval(attackSpeed.get()-0.01)){ //Give a bit of leeway for floating point madness
+                    println("Delaying attack cycle due to recent attack")           //Debug, should only print if the unit gets an additional attack command.
+                    println(timeSinceLastAttack)
+                    let delayAttack = SKAction.waitForDuration(NSTimeInterval(attackSpeed.get()+0.05)-timeSinceLastAttack) //Give attack some leeway
+                    let delayComplete = SKAction.runBlock({
+                        self.attackCycle(target, complete: complete)
+                    })
+                    self.sprite.runAction(SKAction.sequence([delayAttack, delayComplete]), withKey: "attack")
+                    return
+                }
+                DS_lastAttackTime = currentTime
                 //Setup action. Delay by attack speed then call attack again.
                 let delay = SKAction.waitForDuration(NSTimeInterval(attackSpeed.get()))
                 let completeBlock = SKAction.runBlock({
