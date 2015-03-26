@@ -80,10 +80,10 @@ class NetworkManager {
                         lobby.updatePlayerIcons(arrayOfObjects[0] as Dictionary<String, String>)
                     }
                 
-                case "SelectedLevel":
-                    if let lobby = AppWarpHelper.sharedInstance.lobby {
-                        lobby.updateLevelPicker(arrayOfObjects[0] as Dictionary<String, AnyObject>)
-                    }
+//                case "SelectedLevel":
+//                    if let lobby = AppWarpHelper.sharedInstance.lobby {
+//                        lobby.updateLevelPicker(arrayOfObjects[0] as Dictionary<String, AnyObject>)
+//                    }
                 
                 /* =============================== */
                 

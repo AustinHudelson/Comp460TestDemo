@@ -12,16 +12,62 @@ import Foundation
     This object takes care of receiving which level the host picks in lobby and set up the Game scene with the picked level
 */
 class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
-    var levels: Array<Level> = [LevelOne(), LevelTwo(), LevelThree()]
-    var numCols: Int = 1 // number of columns in this picker view
-    var numRows: Int { // number of rows within a column
+    // This variable is ONLY used for displaying the level texts in lobby
+    var levelTitles: Array<String> = ["Level One",
+                                        "Level Two",
+                                        "Level Three"]
+    
+    /*
+        This dictionary contains the actual Level objects that we will need in Game.swift
+        For now, we will have one column that just shows which level it is:
+            Eg.
+                Level One
+                Level Two
+                Level Three
+        The reason we have a dictionary is because within each level, we have sublevels which are loaded depending on number of players in the game
+    */
+    var levels: Dictionary<String, Array<Level>> = [:]
+    var numSubLevels = 3
+    
+    /*
+        Number of columns in this picker viewer.
+    */
+    var numCols: Int = 1
+    
+    /*
+         Number of rows within a column, which just corresponds to number of levels in the game
+    */
+    var numRows: Int {
         get {
-            return levels.count
+            return levelTitles.count
         }
     }
     
+    
     override init(){
         super.init()
+        
+//        /* Initialize the keys and arrays in our "levels" variable */
+//        for levelTxt in levelTitles {
+//            var noSpace: String = removeWhiteSpaces(levelTxt) // get rid of white spaces in levelTxt so we can go from a string to a class
+//            levels[noSpace] = []
+//        }
+//        
+//        /* Initialize sublevels here */
+//        for (levelTxt, levelArray) in levels {
+//            for i in 1...numSubLevels {
+//                var noSpace: String = removeWhiteSpaces(levelTxt) // get rid of white spaces in levelTxt so we can go from a string to a class
+//                noSpace += i.description
+//                
+//                /* Go from a string to its corresponding level class */
+//                var anyObjType: AnyObject.Type = NSClassFromString(noSpace)
+//                var levelType: Level.Type = anyObjType as Level.Type
+//                var newLevel: Level = levelType()
+//                
+//                /* put this new level obj into our levels dictionary */
+//                levels[noSpace]!.append(newLevel)
+//            }
+//        }
     }
     
     /* The picker view will call this function to get the number of columns in the picker */
@@ -38,19 +84,22 @@ class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
     /* The picker view will call this function to get the text for each row */
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return levels[row].title
+        return levelTitles[row]
     }
     
     /* This listener function will be called when the user changes the level selection from the picker view */
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        /*
-            If you're the host, you can interact with the pickerview to select a level. You send a msg over the network telling other ppl what you selected, and other ppl's program will automatically select whatever you selected
-        */
-        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
-            if let lobby = AppWarpHelper.sharedInstance.lobby {
-                lobby.sendPickedLevel(levels[row].title, col: component, row: row)
-            }
+//        /*
+//            If you're the host, you can interact with the pickerview to select a level. You send a msg over the network telling other ppl what you selected, and other ppl's program will automatically select whatever you selected
+//        */
+//        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
+//            if let lobby = AppWarpHelper.sharedInstance.lobby {
+//                lobby.sendPickedLevel(levels, col: component, row: row)
+//            }
+//        }
+//        
+        if let lobby = AppWarpHelper.sharedInstance.lobby {
+            lobby.pickLevel(levelTitles[row])
         }
-        
     }
 }

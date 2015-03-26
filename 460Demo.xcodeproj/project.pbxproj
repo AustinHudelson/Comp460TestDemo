@@ -50,7 +50,13 @@
 		E72E67331AB630300082E7B4 /* Warrior-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E72E67311AB630300082E7B4 /* Warrior-death.atlas */; };
 		E759EDAA1AC3433C00D23AF8 /* LevelOne1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDA91AC3433C00D23AF8 /* LevelOne1.swift */; };
 		E759EDAC1AC3449700D23AF8 /* LevelTwo1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDAB1AC3449700D23AF8 /* LevelTwo1.swift */; };
-		E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */; };
+		E759EDAE1AC3466400D23AF8 /* LevelThree1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDAD1AC3466400D23AF8 /* LevelThree1.swift */; };
+		E759EDB01AC3482F00D23AF8 /* LevelOne2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDAF1AC3482F00D23AF8 /* LevelOne2.swift */; };
+		E759EDB21AC3497E00D23AF8 /* LevelTwo2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDB11AC3497E00D23AF8 /* LevelTwo2.swift */; };
+		E759EDB41AC34E1900D23AF8 /* LevelThree2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDB31AC34E1900D23AF8 /* LevelThree2.swift */; };
+		E759EDB61AC3502700D23AF8 /* LevelOne3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDB51AC3502700D23AF8 /* LevelOne3.swift */; };
+		E759EDB81AC351AA00D23AF8 /* LevelTwo3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDB71AC351AA00D23AF8 /* LevelTwo3.swift */; };
+		E759EDBA1AC352E800D23AF8 /* LevelThree3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDB91AC352E800D23AF8 /* LevelThree3.swift */; };
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
 		E7E2DDBC1ABA0E1E003C9812 /* VIDA_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */; };
 		E7E5E2791AB6345E00554839 /* Mage-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E2781AB6345E00554839 /* Mage-ability.atlas */; };
@@ -178,8 +184,6 @@
 		F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */; };
 		F4D33B731A71EF7300DCD868 /* _60DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */; };
 		F4DC7F281ABA0BDE00E98AD6 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F271ABA0BDE00E98AD6 /* Attribute.swift */; };
-		F4DC7F2A1ABB5BDB00E98AD6 /* LevelTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F291ABB5BDB00E98AD6 /* LevelTwo.swift */; };
-		F4DC7F2C1ABB5C0E00E98AD6 /* LevelThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F2B1ABB5C0E00E98AD6 /* LevelThree.swift */; };
 		F4DC7F2F1ABB5EAD00E98AD6 /* EnemyBoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F2E1ABB5EAD00E98AD6 /* EnemyBoss.swift */; };
 		F4DC7F361ABC3DAF00E98AD6 /* NewMage-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F301ABC3DAF00E98AD6 /* NewMage-ability.atlas */; };
 		F4DC7F371ABC3DAF00E98AD6 /* NewMage-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F311ABC3DAF00E98AD6 /* NewMage-attack.atlas */; };
@@ -268,7 +272,13 @@
 		E72E67311AB630300082E7B4 /* Warrior-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Warrior-death.atlas"; sourceTree = "<group>"; };
 		E759EDA91AC3433C00D23AF8 /* LevelOne1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne1.swift; sourceTree = "<group>"; };
 		E759EDAB1AC3449700D23AF8 /* LevelTwo1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTwo1.swift; sourceTree = "<group>"; };
-		E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
+		E759EDAD1AC3466400D23AF8 /* LevelThree1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelThree1.swift; sourceTree = "<group>"; };
+		E759EDAF1AC3482F00D23AF8 /* LevelOne2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne2.swift; sourceTree = "<group>"; };
+		E759EDB11AC3497E00D23AF8 /* LevelTwo2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTwo2.swift; sourceTree = "<group>"; };
+		E759EDB31AC34E1900D23AF8 /* LevelThree2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelThree2.swift; sourceTree = "<group>"; };
+		E759EDB51AC3502700D23AF8 /* LevelOne3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne3.swift; sourceTree = "<group>"; };
+		E759EDB71AC351AA00D23AF8 /* LevelTwo3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTwo3.swift; sourceTree = "<group>"; };
+		E759EDB91AC352E800D23AF8 /* LevelThree3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelThree3.swift; sourceTree = "<group>"; };
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VIDA_10.png; path = GameCoreClasses/VIDA_10.png; sourceTree = "<group>"; };
 		E7E5E2781AB6345E00554839 /* Mage-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-ability.atlas"; sourceTree = "<group>"; };
@@ -400,8 +410,6 @@
 		F4D33B711A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _60DemoTests.swift; sourceTree = "<group>"; };
 		F4DC7F271ABA0BDE00E98AD6 /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
-		F4DC7F291ABB5BDB00E98AD6 /* LevelTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTwo.swift; sourceTree = "<group>"; };
-		F4DC7F2B1ABB5C0E00E98AD6 /* LevelThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelThree.swift; sourceTree = "<group>"; };
 		F4DC7F2E1ABB5EAD00E98AD6 /* EnemyBoss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBoss.swift; sourceTree = "<group>"; };
 		F4DC7F301ABC3DAF00E98AD6 /* NewMage-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NewMage-ability.atlas"; sourceTree = "<group>"; };
 		F4DC7F311ABC3DAF00E98AD6 /* NewMage-attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NewMage-attack.atlas"; sourceTree = "<group>"; };
@@ -542,12 +550,16 @@
 				F42FD5AE1A895D4F002C6624 /* Background1.png */,
 				68F35CAA1A84C4D5004905BF /* GameScene.swift */,
 				F4E896411AA128E000406784 /* Game.swift */,
-				E75F4FB81AB0DA0F00C3D76E /* LevelOne.swift */,
-				F4DC7F291ABB5BDB00E98AD6 /* LevelTwo.swift */,
-				F4DC7F2B1ABB5C0E00E98AD6 /* LevelThree.swift */,
 				E75F4FBA1AB0DE1B00C3D76E /* Level.swift */,
 				E759EDA91AC3433C00D23AF8 /* LevelOne1.swift */,
 				E759EDAB1AC3449700D23AF8 /* LevelTwo1.swift */,
+				E759EDAD1AC3466400D23AF8 /* LevelThree1.swift */,
+				E759EDAF1AC3482F00D23AF8 /* LevelOne2.swift */,
+				E759EDB11AC3497E00D23AF8 /* LevelTwo2.swift */,
+				E759EDB31AC34E1900D23AF8 /* LevelThree2.swift */,
+				E759EDB51AC3502700D23AF8 /* LevelOne3.swift */,
+				E759EDB71AC351AA00D23AF8 /* LevelTwo3.swift */,
+				E759EDB91AC352E800D23AF8 /* LevelThree3.swift */,
 			);
 			path = GameSceneClasses;
 			sourceTree = "<group>";
@@ -1210,9 +1222,10 @@
 				68A18D521AA8719E001CCE1D /* GCDAsyncUdpSocket.m in Sources */,
 				F44C42FC1AC3714E00CAA983 /* Flamestrike.swift in Sources */,
 				F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */,
+				E759EDBA1AC352E800D23AF8 /* LevelThree3.swift in Sources */,
 				68DADF611AB5738800A20800 /* Order.swift in Sources */,
-				E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */,
 				E759EDAC1AC3449700D23AF8 /* LevelTwo1.swift in Sources */,
+				E759EDB01AC3482F00D23AF8 /* LevelOne2.swift in Sources */,
 				68DADF621AB5738800A20800 /* RoamAttack.swift in Sources */,
 				68DADF5E1AB5738800A20800 /* Idle.swift in Sources */,
 				68DADF5C1AB5738800A20800 /* Taunt.swift in Sources */,
@@ -1222,6 +1235,7 @@
 				F4F1261D1AC342B700A032D1 /* Priest.swift in Sources */,
 				F4F126211AC3497F00A032D1 /* ButtonFlameStrike.swift in Sources */,
 				68DADF491AB56FE800A20800 /* ButtonTaunt.swift in Sources */,
+				E759EDAE1AC3466400D23AF8 /* LevelThree1.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
 				E722FCA01AC1262A000651E0 /* ArmorUp.swift in Sources */,
 				F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */,
@@ -1244,6 +1258,7 @@
 				E759EDAA1AC3433C00D23AF8 /* LevelOne1.swift in Sources */,
 				E722FCA21AC12AA3000651E0 /* ButtonArmorUp.swift in Sources */,
 				68B7DBFB1A84C306003D9398 /* ZoneListener.swift in Sources */,
+				E759EDB81AC351AA00D23AF8 /* LevelTwo3.swift in Sources */,
 				68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */,
 				F4B562F81AB38A9A0094B2A7 /* ButtonEnrage.swift in Sources */,
 				F4F126131AC0BB7D00A032D1 /* ButtonFrostbolt.swift in Sources */,
@@ -1266,9 +1281,9 @@
 				68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */,
 				68A18D4F1AA8719E001CCE1D /* NetworkClock.m in Sources */,
 				682944E11AB578A200680A36 /* Shrink.swift in Sources */,
-				F4DC7F2C1ABB5C0E00E98AD6 /* LevelThree.swift in Sources */,
 				F4F126251AC34A0300A032D1 /* ButtonSoulExchange.swift in Sources */,
 				F4B562EE1AB21B290094B2A7 /* ButtonHeal.swift in Sources */,
+				E759EDB21AC3497E00D23AF8 /* LevelTwo2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

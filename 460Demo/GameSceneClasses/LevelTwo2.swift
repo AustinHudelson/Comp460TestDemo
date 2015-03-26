@@ -1,5 +1,5 @@
 //
-//  LevelTwo1.swift
+//  LevelTwo2.swift
 //  460Demo
 //
 //  Created by Olyver on 3/25/15.
@@ -7,13 +7,12 @@
 //
 
 import SpriteKit
-
-@objc(LevelTwo1)
-class LevelTwo1:Level
+@objc(LevelTwo2)
+class LevelTwo2:Level
 {
     required init() {
         super.init()
-        self.title = "Level Two 1"
+        self.title = "Level Two2"
     }
     
     override func loadWave(scene: GameScene) -> Array<Unit> {
@@ -23,15 +22,20 @@ class LevelTwo1:Level
         self.counter++
         
         if self.counter == 1 {
-            //wave 1. A single Warrior.
+            //wave 1. 2 Warrior.
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+100);
             let dummy1 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
             
+            DUMMY_ID = Game.global.getNextEnemyID()
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+100);
+            let dummy2 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
+            
             wave.append(dummy1)
+            wave.append(dummy2)
         } else if self.counter == 2 {
-            //wave 2. 1 Warrio/ 1 Mage
+            //wave 2. 2 Warrior/ 1 mage
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-200);
@@ -39,70 +43,98 @@ class LevelTwo1:Level
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame));
-            let dummy3 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy3 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
+            
+            DUMMY_ID = Game.global.getNextEnemyID()
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+125);
+            let dummy4 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             //DUMMY_ID = "ENEMY6"
             //dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-100);
             //let dummy6 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             wave.append(dummy2)
             wave.append(dummy3)
+            wave.append(dummy4)
         } else if self.counter == 3 {
-            //wave 3. 1 Warriors/1 Mage/1 Priest
+            //wave 3. 2 Warriors/1 Mage/1 Priest
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+200);
-            let dummy4 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy5 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+125);
-            let dummy5 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy6 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
             
-            //needs to be a priest
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-125);
-            let dummy6 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy7 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
-            wave.append(dummy4)
-            wave.append(dummy5)
-            wave.append(dummy6)
-        }
-        else if self.counter == 4 {
-            //wave 4. 1 Warriors/2 Mage
+            //should be priest
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+200);
-            let dummy7 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
-            
-            DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+125);
-           
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
             let dummy8 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
-            DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-125);
             
-            let dummy9 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
-            
+            wave.append(dummy5)
+            wave.append(dummy6)
             wave.append(dummy7)
             wave.append(dummy8)
-            wave.append(dummy9)
         }
-        else if self.counter == 5 {
-            //wave 5. 3 Mage
+        else if self.counter == 4 {
+            //wave 4. 3 Warriors/1 Mage/1 Priest
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+200);
-            let dummy10 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy9 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+125);
-            let dummy11 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            
+            let dummy10 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
+            
+            DUMMY_ID = Game.global.getNextEnemyID()
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-125);
+            
+            let dummy11 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
+            
+            DUMMY_ID = Game.global.getNextEnemyID()
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
+            
+            let dummy12 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            
+            DUMMY_ID = Game.global.getNextEnemyID()
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+125);
+            //needs to be priest
+            let dummy13 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            
+            
+            wave.append(dummy9)
+            wave.append(dummy10)
+            wave.append(dummy11)
+        }
+        else if self.counter == 5 {
+            //wave 5. 3 Warriors/2 Mage
+            DUMMY_ID = Game.global.getNextEnemyID()
+            dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+200);
+            let dummy12 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
+            
+            DUMMY_ID = Game.global.getNextEnemyID()
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+125);
+            let dummy13 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-125);
-            let dummy12 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy14 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            // needs to be a priest
             
-            wave.append(dummy10)
-            wave.append(dummy11)
+            DUMMY_ID = Game.global.getNextEnemyID()
+            dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
+            let dummy15 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            
             wave.append(dummy12)
+            wave.append(dummy13)
+            wave.append(dummy14)
+            wave.append(dummy15)
         }
         return wave
         
