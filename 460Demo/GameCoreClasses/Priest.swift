@@ -63,14 +63,14 @@ class Priest: Unit, PType
         //Define Animations here
         //
         
-        let animPrefix = "NewMage"
+        let animPrefix = "Priest"
         var Atlas:SKTextureAtlas
         let walkAnimName = "-walk"
-        let attackAnimName = "-attack"
+        let attackAnimName = "-heal"
         let abilityAnimName = "-ability"
         let deathAnimName = "-death"
         let stumbleAnimName = "-stumble"
-        let standAnimName = "-attack"
+        let standAnimName = "-stand"
         
         Atlas = SKTextureAtlas(named: animPrefix+walkAnimName)
         var walkTextures = SKAction.animateWithTextures([
@@ -111,6 +111,7 @@ class Priest: Unit, PType
             Atlas.textureNamed(AnimationName+attackAnimName+"9"),
             Atlas.textureNamed(AnimationName+attackAnimName+"10"),
             Atlas.textureNamed(AnimationName+attackAnimName+"11"),
+            Atlas.textureNamed(AnimationName+attackAnimName+"12"),
             ], timePerFrame: 0.05)
         
         Atlas = SKTextureAtlas(named: animPrefix+deathAnimName)
@@ -170,8 +171,16 @@ class Priest: Unit, PType
         
         Atlas = SKTextureAtlas(named: animPrefix+standAnimName)
         var standTextures = SKAction.animateWithTextures([
-            Atlas.textureNamed(AnimationName+standAnimName+"0")
-            ], timePerFrame: 0.1)
+            Atlas.textureNamed(AnimationName+standAnimName+"0"),
+            Atlas.textureNamed(AnimationName+standAnimName+"1"),
+            Atlas.textureNamed(AnimationName+standAnimName+"2"),
+            Atlas.textureNamed(AnimationName+standAnimName+"3"),
+            Atlas.textureNamed(AnimationName+standAnimName+"4"),
+            Atlas.textureNamed(AnimationName+standAnimName+"5"),
+            Atlas.textureNamed(AnimationName+standAnimName+"6"),
+            Atlas.textureNamed(AnimationName+standAnimName+"7"),
+            Atlas.textureNamed(AnimationName+standAnimName+"8"),
+            ], timePerFrame: 0.2)
         
         self.DS_walkAnim = SKAction.repeatActionForever(walkTextures)
         self.DS_standAnim = SKAction.repeatActionForever(standTextures)
@@ -186,9 +195,6 @@ class Priest: Unit, PType
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
-        self.applyTint("PriestColor", red: 0.5, blue:1.25, green: 2.0)
-        
-        
     }
     
     override func weaponHandle(target: Unit){

@@ -176,6 +176,13 @@
 		F4B563C71AB3A5CF0094B2A7 /* slime9.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563661AB3A5CF0094B2A7 /* slime9.wav */; };
 		F4B563C81AB3A5CF0094B2A7 /* door.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563681AB3A5CF0094B2A7 /* door.wav */; };
 		F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8348F1A9BB95200A839E5 /* Enemy.swift */; };
+		F4B925ED1AC40136007ED564 /* Priest-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B925E61AC40136007ED564 /* Priest-ability.atlas */; };
+		F4B925EE1AC40136007ED564 /* Priest-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B925E71AC40136007ED564 /* Priest-attack.atlas */; };
+		F4B925EF1AC40136007ED564 /* Priest-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B925E81AC40136007ED564 /* Priest-death.atlas */; };
+		F4B925F01AC40136007ED564 /* Priest-heal.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B925E91AC40136007ED564 /* Priest-heal.atlas */; };
+		F4B925F11AC40136007ED564 /* Priest-stand.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B925EA1AC40136007ED564 /* Priest-stand.atlas */; };
+		F4B925F21AC40136007ED564 /* Priest-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B925EB1AC40136007ED564 /* Priest-stumble.atlas */; };
+		F4B925F31AC40136007ED564 /* Priest-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B925EC1AC40136007ED564 /* Priest-walk.atlas */; };
 		F4CA5DE31AB55D92006DB177 /* TextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
 		F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */; };
@@ -398,6 +405,13 @@
 		F4B563661AB3A5CF0094B2A7 /* slime9.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slime9.wav; sourceTree = "<group>"; };
 		F4B563681AB3A5CF0094B2A7 /* door.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = door.wav; sourceTree = "<group>"; };
 		F4B8348F1A9BB95200A839E5 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		F4B925E61AC40136007ED564 /* Priest-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Priest-ability.atlas"; sourceTree = "<group>"; };
+		F4B925E71AC40136007ED564 /* Priest-attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Priest-attack.atlas"; sourceTree = "<group>"; };
+		F4B925E81AC40136007ED564 /* Priest-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Priest-death.atlas"; sourceTree = "<group>"; };
+		F4B925E91AC40136007ED564 /* Priest-heal.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Priest-heal.atlas"; sourceTree = "<group>"; };
+		F4B925EA1AC40136007ED564 /* Priest-stand.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Priest-stand.atlas"; sourceTree = "<group>"; };
+		F4B925EB1AC40136007ED564 /* Priest-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Priest-stumble.atlas"; sourceTree = "<group>"; };
+		F4B925EC1AC40136007ED564 /* Priest-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Priest-walk.atlas"; sourceTree = "<group>"; };
 		F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextureLoader.swift; path = GameSceneClasses/TextureLoader.swift; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B571A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -633,6 +647,7 @@
 		F4B562F51AB287FB0094B2A7 /* Mage */ = {
 			isa = PBXGroup;
 			children = (
+				F4B562F31AB287F40094B2A7 /* Mage.swift */,
 				F4DC7F301ABC3DAF00E98AD6 /* NewMage-ability.atlas */,
 				F4DC7F311ABC3DAF00E98AD6 /* NewMage-attack.atlas */,
 				F4DC7F321ABC3DAF00E98AD6 /* NewMage-death.atlas */,
@@ -644,7 +659,6 @@
 				E7E5E27C1AB6364B00554839 /* Mage-death.atlas */,
 				E7E5E27D1AB6364B00554839 /* Mage-attack.atlas */,
 				E7E5E2781AB6345E00554839 /* Mage-ability.atlas */,
-				F4B562F31AB287F40094B2A7 /* Mage.swift */,
 			);
 			name = Mage;
 			sourceTree = "<group>";
@@ -983,6 +997,13 @@
 			isa = PBXGroup;
 			children = (
 				F4F1261C1AC342B700A032D1 /* Priest.swift */,
+				F4B925E61AC40136007ED564 /* Priest-ability.atlas */,
+				F4B925E71AC40136007ED564 /* Priest-attack.atlas */,
+				F4B925E81AC40136007ED564 /* Priest-death.atlas */,
+				F4B925E91AC40136007ED564 /* Priest-heal.atlas */,
+				F4B925EA1AC40136007ED564 /* Priest-stand.atlas */,
+				F4B925EB1AC40136007ED564 /* Priest-stumble.atlas */,
+				F4B925EC1AC40136007ED564 /* Priest-walk.atlas */,
 			);
 			name = Priest;
 			sourceTree = "<group>";
@@ -1099,6 +1120,7 @@
 				F4B563741AB3A5CF0094B2A7 /* interface2.wav in Resources */,
 				F4B563C41AB3A5CF0094B2A7 /* slime6.wav in Resources */,
 				F4B563861AB3A5CF0094B2A7 /* metal-ringing.wav in Resources */,
+				F4B925EF1AC40136007ED564 /* Priest-death.atlas in Resources */,
 				F4B563AB1AB3A5CF0094B2A7 /* ogre2.wav in Resources */,
 				F4B563821AB3A5CF0094B2A7 /* cloth.wav in Resources */,
 				F4E96AF61AC09B5B00021DFD /* HealParticle.sks in Resources */,
@@ -1137,12 +1159,15 @@
 				F4B563C51AB3A5CF0094B2A7 /* slime7.wav in Resources */,
 				F4B5636C1AB3A5CF0094B2A7 /* swing2.wav in Resources */,
 				F4B5636A1AB3A5CF0094B2A7 /* spell.wav in Resources */,
+				F4B925ED1AC40136007ED564 /* Priest-ability.atlas in Resources */,
 				F4B563931AB3A5CF0094B2A7 /* bite-small2.wav in Resources */,
 				F4B5639F1AB3A5CF0094B2A7 /* mnstr14.wav in Resources */,
 				E72E672B1AB624DC0082E7B4 /* Warrior-walk.atlas in Resources */,
 				F4B5638C1AB3A5CF0094B2A7 /* random1.wav in Resources */,
 				68F35CAB1A84C4D5004905BF /* GameScene.sks in Resources */,
 				F4B563881AB3A5CF0094B2A7 /* metal-small2.wav in Resources */,
+				F4B925F21AC40136007ED564 /* Priest-stumble.atlas in Resources */,
+				F4B925F11AC40136007ED564 /* Priest-stand.atlas in Resources */,
 				F4B563B91AB3A5CF0094B2A7 /* shade5.wav in Resources */,
 				F4B563BA1AB3A5CF0094B2A7 /* shade6.wav in Resources */,
 				F4B563951AB3A5CF0094B2A7 /* giant1.wav in Resources */,
@@ -1153,6 +1178,7 @@
 				F4DC7F391ABC3DAF00E98AD6 /* NewMage-stand.atlas in Resources */,
 				F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */,
 				E72E672D1AB626B20082E7B4 /* Warrior-attack.atlas in Resources */,
+				F4B925F01AC40136007ED564 /* Priest-heal.atlas in Resources */,
 				F4B563C71AB3A5CF0094B2A7 /* slime9.wav in Resources */,
 				E7E5E27F1AB6364B00554839 /* Mage-stumble.atlas in Resources */,
 				F4B5636E1AB3A5CF0094B2A7 /* sword-unsheathe.wav in Resources */,
@@ -1190,6 +1216,8 @@
 				F4B563901AB3A5CF0094B2A7 /* random5.wav in Resources */,
 				F4B563831AB3A5CF0094B2A7 /* coin.wav in Resources */,
 				F4B563AE1AB3A5CF0094B2A7 /* ogre5.wav in Resources */,
+				F4B925F31AC40136007ED564 /* Priest-walk.atlas in Resources */,
+				F4B925EE1AC40136007ED564 /* Priest-attack.atlas in Resources */,
 				F4B563A21AB3A5CF0094B2A7 /* mnstr3.wav in Resources */,
 				F4D33B621A71EF7300DCD868 /* Main.storyboard in Resources */,
 				F4B563BE1AB3A5CF0094B2A7 /* slime1.wav in Resources */,
@@ -1231,7 +1259,6 @@
 				68DADF5C1AB5738800A20800 /* Taunt.swift in Sources */,
 				E759EDB41AC34E1900D23AF8 /* LevelThree2.swift in Sources */,
 				E759EDB61AC3502700D23AF8 /* LevelOne3.swift in Sources */,
-				F4DC7F2A1ABB5BDB00E98AD6 /* LevelTwo.swift in Sources */,
 				F44C42FA1AC3597700CAA983 /* FlamestrikeProjectile.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				F4F1261D1AC342B700A032D1 /* Priest.swift in Sources */,
