@@ -1229,6 +1229,8 @@
 				68DADF621AB5738800A20800 /* RoamAttack.swift in Sources */,
 				68DADF5E1AB5738800A20800 /* Idle.swift in Sources */,
 				68DADF5C1AB5738800A20800 /* Taunt.swift in Sources */,
+				E759EDB41AC34E1900D23AF8 /* LevelThree2.swift in Sources */,
+				E759EDB61AC3502700D23AF8 /* LevelOne3.swift in Sources */,
 				F4DC7F2A1ABB5BDB00E98AD6 /* LevelTwo.swift in Sources */,
 				F44C42FA1AC3597700CAA983 /* FlamestrikeProjectile.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
