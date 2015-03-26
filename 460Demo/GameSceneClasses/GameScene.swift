@@ -35,7 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             /*
                 TEMPORARY to test a mage class: If playerName == "Mage", give him a mage & set ID = playerName
             */
-            playerChar = Priest(ID: playerName, spawnLocation: playerCharPos)
+            playerChar = Mage(ID: playerName, spawnLocation: playerCharPos)
         }
             //change for class 3
         else if AppWarpHelper.sharedInstance.playerClass == "saldfjals;jkf" {

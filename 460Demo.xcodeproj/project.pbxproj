@@ -63,6 +63,10 @@
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
 		F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */ = {isa = PBXBuildFile; fileRef = F42FD5AE1A895D4F002C6624 /* Background1.png */; };
 		F44C42F81AC3557C00CAA983 /* 9iz8yXEiE.png in Resources */ = {isa = PBXBuildFile; fileRef = F44C42F71AC3557C00CAA983 /* 9iz8yXEiE.png */; };
+		F44C42FA1AC3597700CAA983 /* FlamestrikeProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C42F91AC3597700CAA983 /* FlamestrikeProjectile.swift */; };
+		F44C42FC1AC3714E00CAA983 /* Flamestrike.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C42FB1AC3714E00CAA983 /* Flamestrike.swift */; };
+		F44C43001AC39CE800CAA983 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F44C42FF1AC39CE800CAA983 /* MyParticle.sks */; };
+		F44C43021AC3A01B00CAA983 /* solidSpark.png in Resources */ = {isa = PBXBuildFile; fileRef = F44C43011AC3A01B00CAA983 /* solidSpark.png */; };
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
 		F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562EB1AB0D8C20094B2A7 /* Ability.swift */; };
@@ -189,7 +193,7 @@
 		F4E96AED1ABE3C0F00021DFD /* MagicBolt.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AEB1ABE3C0F00021DFD /* MagicBolt.sks */; };
 		F4E96AEE1ABE3C0F00021DFD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AEC1ABE3C0F00021DFD /* spark.png */; };
 		F4E96AF01ABE3E7300021DFD /* RainParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AEF1ABE3E7300021DFD /* RainParticle.sks */; };
-		F4E96AF21ABE3EAC00021DFD /* FireParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AF11ABE3EAC00021DFD /* FireParticle.sks */; };
+		F4E96AF21ABE3EAC00021DFD /* FlamestrikeParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AF11ABE3EAC00021DFD /* FlamestrikeParticle.sks */; };
 		F4E96AF61AC09B5B00021DFD /* HealParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4E96AF51AC09B5B00021DFD /* HealParticle.sks */; };
 		F4E96AF91AC0A7B300021DFD /* MageBolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E96AF81AC0A7B300021DFD /* MageBolt.swift */; };
 		F4F126131AC0BB7D00A032D1 /* ButtonFrostbolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F126121AC0BB7D00A032D1 /* ButtonFrostbolt.swift */; };
@@ -277,6 +281,10 @@
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F42FD5AE1A895D4F002C6624 /* Background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background1.png; path = ../Background1.png; sourceTree = "<group>"; };
 		F44C42F71AC3557C00CAA983 /* 9iz8yXEiE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9iz8yXEiE.png; sourceTree = "<group>"; };
+		F44C42F91AC3597700CAA983 /* FlamestrikeProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlamestrikeProjectile.swift; sourceTree = "<group>"; };
+		F44C42FB1AC3714E00CAA983 /* Flamestrike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flamestrike.swift; sourceTree = "<group>"; };
+		F44C42FF1AC39CE800CAA983 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		F44C43011AC3A01B00CAA983 /* solidSpark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solidSpark.png; sourceTree = "<group>"; };
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
 		F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonHeal.swift; sourceTree = "<group>"; };
@@ -407,7 +415,7 @@
 		F4E96AEB1ABE3C0F00021DFD /* MagicBolt.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MagicBolt.sks; sourceTree = "<group>"; };
 		F4E96AEC1ABE3C0F00021DFD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		F4E96AEF1ABE3E7300021DFD /* RainParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainParticle.sks; sourceTree = "<group>"; };
-		F4E96AF11ABE3EAC00021DFD /* FireParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticle.sks; sourceTree = "<group>"; };
+		F4E96AF11ABE3EAC00021DFD /* FlamestrikeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FlamestrikeParticle.sks; sourceTree = "<group>"; };
 		F4E96AF51AC09B5B00021DFD /* HealParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HealParticle.sks; sourceTree = "<group>"; };
 		F4E96AF81AC0A7B300021DFD /* MageBolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MageBolt.swift; sourceTree = "<group>"; };
 		F4F126121AC0BB7D00A032D1 /* ButtonFrostbolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFrostbolt.swift; sourceTree = "<group>"; };
@@ -520,6 +528,7 @@
 				E722FC9F1AC1262A000651E0 /* ArmorUp.swift */,
 				68DADF511AB5738800A20800 /* Taunt.swift */,
 				F4F126191AC0D90500A032D1 /* Frostbolt.swift */,
+				F44C42FB1AC3714E00CAA983 /* Flamestrike.swift */,
 				682944E01AB578A200680A36 /* Shrink.swift */,
 			);
 			path = Abilities;
@@ -937,10 +946,12 @@
 				F4E96AEB1ABE3C0F00021DFD /* MagicBolt.sks */,
 				F4E96AF51AC09B5B00021DFD /* HealParticle.sks */,
 				F4F126171AC0D5A100A032D1 /* FrostboltProjectileParticle.sks */,
+				F44C42FF1AC39CE800CAA983 /* MyParticle.sks */,
 				F44C42F71AC3557C00CAA983 /* 9iz8yXEiE.png */,
 				F4E96AEC1ABE3C0F00021DFD /* spark.png */,
+				F44C43011AC3A01B00CAA983 /* solidSpark.png */,
 				F4E96AEF1ABE3E7300021DFD /* RainParticle.sks */,
-				F4E96AF11ABE3EAC00021DFD /* FireParticle.sks */,
+				F4E96AF11ABE3EAC00021DFD /* FlamestrikeParticle.sks */,
 			);
 			name = "Particle Effects";
 			sourceTree = "<group>";
@@ -951,6 +962,7 @@
 				68F35CB11A84C540004905BF /* Projectile.swift */,
 				F4E96AF81AC0A7B300021DFD /* MageBolt.swift */,
 				F4F126141AC0C0C300A032D1 /* FrostboltProjectile.swift */,
+				F44C42F91AC3597700CAA983 /* FlamestrikeProjectile.swift */,
 			);
 			name = Projectiles;
 			sourceTree = "<group>";
@@ -1051,6 +1063,7 @@
 				F4B563771AB3A5CF0094B2A7 /* interface5.wav in Resources */,
 				F4DC7F3B1ABC3DAF00E98AD6 /* NewMage-walk.atlas in Resources */,
 				F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */,
+				F44C43001AC39CE800CAA983 /* MyParticle.sks in Resources */,
 				F44C42F81AC3557C00CAA983 /* 9iz8yXEiE.png in Resources */,
 				F4B563C01AB3A5CF0094B2A7 /* slime2.wav in Resources */,
 				F4DC7F381ABC3DAF00E98AD6 /* NewMage-death.atlas in Resources */,
@@ -1140,7 +1153,7 @@
 				F4B563B61AB3A5CF0094B2A7 /* shade2.wav in Resources */,
 				F4B563811AB3A5CF0094B2A7 /* cloth-heavy.wav in Resources */,
 				F4B563BF1AB3A5CF0094B2A7 /* slime10.wav in Resources */,
-				F4E96AF21ABE3EAC00021DFD /* FireParticle.sks in Resources */,
+				F4E96AF21ABE3EAC00021DFD /* FlamestrikeParticle.sks in Resources */,
 				F4B563851AB3A5CF0094B2A7 /* coin3.wav in Resources */,
 				F42FD5AF1A895D4F002C6624 /* Background1.png in Resources */,
 				F4B563921AB3A5CF0094B2A7 /* bite-small.wav in Resources */,
@@ -1155,6 +1168,7 @@
 				F4E96AF01ABE3E7300021DFD /* RainParticle.sks in Resources */,
 				F4B563841AB3A5CF0094B2A7 /* coin2.wav in Resources */,
 				F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */,
+				F44C43021AC3A01B00CAA983 /* solidSpark.png in Resources */,
 				F4B563961AB3A5CF0094B2A7 /* giant2.wav in Resources */,
 				F4B563891AB3A5CF0094B2A7 /* metal-small3.wav in Resources */,
 				F4B5639B1AB3A5CF0094B2A7 /* mnstr10.wav in Resources */,
@@ -1194,6 +1208,7 @@
 				F4CA5DE31AB55D92006DB177 /* TextureLoader.swift in Sources */,
 				68C08F6E1ABA198700AEEF3E /* NetworkManager.swift in Sources */,
 				68A18D521AA8719E001CCE1D /* GCDAsyncUdpSocket.m in Sources */,
+				F44C42FC1AC3714E00CAA983 /* Flamestrike.swift in Sources */,
 				F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */,
 				68DADF611AB5738800A20800 /* Order.swift in Sources */,
 				E75F4FB91AB0DA0F00C3D76E /* LevelOne.swift in Sources */,
@@ -1202,6 +1217,7 @@
 				68DADF5E1AB5738800A20800 /* Idle.swift in Sources */,
 				68DADF5C1AB5738800A20800 /* Taunt.swift in Sources */,
 				F4DC7F2A1ABB5BDB00E98AD6 /* LevelTwo.swift in Sources */,
+				F44C42FA1AC3597700CAA983 /* FlamestrikeProjectile.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				F4F1261D1AC342B700A032D1 /* Priest.swift in Sources */,
 				F4F126211AC3497F00A032D1 /* ButtonFlameStrike.swift in Sources */,

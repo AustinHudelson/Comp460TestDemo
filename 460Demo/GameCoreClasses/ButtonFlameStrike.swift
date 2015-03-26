@@ -21,11 +21,11 @@ class ButtonFlameStrike: Ability
     
     override func apply(receiverIn: Unit) {
         super.apply(receiverIn)
-        //        var sendData: Dictionary<String, Array<AnyObject>> = [:]
-        //        var ability: Order = AreaHeal(receiverIn: receiverIn)
-        //        sendData["Orders"] = []
-        //        sendData["Orders"]!.append(ability.toJSON())
-        //        NetworkManager.sendMsg(&sendData)
+                var sendData: Dictionary<String, Array<AnyObject>> = [:]
+                var ability: Order = Flamestrike(receiverIn: receiverIn)
+                sendData["Orders"] = []
+                sendData["Orders"]!.append(ability.toJSON())
+                NetworkManager.sendMsg(&sendData)
     }
     
     /*

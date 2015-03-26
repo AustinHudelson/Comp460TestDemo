@@ -156,7 +156,7 @@ class Game {
         winText.fontSize = 50
         winText.fontName = "AvenirNext-Bold"
         winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
-        winText.zPosition = 1
+        winText.zPosition = 1000
         if let localLoseText = self.scene!.childNodeWithName("localLoseText") {
             localLoseText.removeFromParent()
         }
@@ -169,7 +169,7 @@ class Game {
         localLoseText.name = "localLoseText"
         localLoseText.fontName = "AvenirNext-Bold"
         localLoseText.fontSize = 50
-        localLoseText.zPosition = 1
+        localLoseText.zPosition = 1000
         localLoseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         self.scene!.addChild(localLoseText)
     }
@@ -179,7 +179,7 @@ class Game {
         let loseText: SKLabelNode = SKLabelNode(text: "You Lose!\n Game Over")
         loseText.fontName = "HelveticaNeue-Bold"
         loseText.name = "loseText"
-        loseText.zPosition = 1
+        loseText.zPosition = 1000
         loseText.fontSize = 50
         loseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         
@@ -322,6 +322,25 @@ class Game {
         return nearbyUnits
     }
     
+    /*
+    Get all units within range of a point in a given Array
+    */
+    func getNearbyUnits(point: CGPoint, distance: CGFloat, units: Array<Unit>) -> Array<Unit>{
+        var nearbyUnits = Array<Unit>()
+        
+        for unit in units {
+            if unit.alive == false {
+                continue
+            }
+            if (getDistance(point, p2: unit.sprite.position) > distance){
+                continue
+            }
+            nearbyUnits.append(unit)
+        }
+        
+        return nearbyUnits
+    }
+    
     // Host will call this to send host's char and every enemy's health and position every X seconds
     /*
         Our sent dicitonary will look like this:
@@ -434,6 +453,18 @@ class Game {
                     //If the player is NOT YOU give it a slightly grey tint.
                     if newUnit.ID != AppWarpHelper.sharedInstance.playerName {
                         newUnit.applyTint("OtherPlayer", red: 0.8, blue: 0.8, green: 0.8)
+                    } else {
+                        //This is my unit
+                        let myPlayerCircle = SKSpriteNode(imageNamed: "Selection Circle Green heavy")
+                        let yOffset = (-0.225 * newUnit.sprite.size.height)
+                        let xyRatio: CGFloat = 2.25     /*Value calcuated xSize/ySize of the circle image*/
+                        let xSize = 0.5 * newUnit.sprite.size.width
+                        let ySize = xSize/xyRatio
+                        myPlayerCircle.size = CGSize(width: xSize, height: ySize)
+                        myPlayerCircle.position = CGPoint(x: 0.0, y: yOffset)
+                        myPlayerCircle.zPosition = newUnit.sprite.zPosition-5.0
+                        newUnit.sprite.addChild(myPlayerCircle)
+                        
                     }
                 }
                 else

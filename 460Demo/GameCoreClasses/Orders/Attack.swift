@@ -16,6 +16,7 @@ class Attack: Order, PType
     var tID: String = ""
     //var ID: String = ""
     var DS_moveState = false
+    var DS_targetCircle: SKSpriteNode?
     
     init(receiverIn: Unit, target: Unit){
         super.init()
@@ -35,22 +36,32 @@ class Attack: Order, PType
     }
     
     override func apply(){
-        //apply blue tint to target
-        if (DS_receiver!.isLocalPlayer()){
-            DS_target!.applyTint("Target", red: 0.5, blue: 2.0, green: 0.7)
-        }
         //Dont apply this if we cannot confirm the target and receiver were restored correctly
         if (DS_target != nil && DS_receiver != nil){
             DS_receiver!.attack(DS_target!, complete:{self.DS_receiver!.sendOrder(Idle(receiverIn: self.DS_receiver!))})
         } else {
             self.DS_receiver?.sendOrder(Idle(receiverIn: self.DS_receiver!))
+            return
         }
+        //Apply a red circle under the target
+        if (DS_receiver!.isLocalPlayer()){
+            DS_targetCircle = SKSpriteNode(imageNamed: "Selection Circle Red heavy")
+            let yOffset = (-0.26 * DS_target!.sprite.size.height)
+            let xyRatio: CGFloat = 2.25     /*Value calcuated xSize/ySize of the circle image*/
+            let xSize = 0.5 * DS_target!.sprite.size.width
+            let ySize = xSize/xyRatio
+            DS_targetCircle!.size = CGSize(width: xSize, height: ySize)
+            DS_targetCircle!.position = CGPoint(x: 0.0, y: yOffset)
+            DS_targetCircle!.zPosition = DS_target!.sprite.zPosition-5.0
+            DS_target?.sprite.addChild(DS_targetCircle!)
+        }
+        
     }
     
     override func remove(){
-        //remove blue tint from target
-        if (DS_receiver!.isLocalPlayer()){
-            DS_target?.removeTint("Target")
+        //Remove the red circle under the target
+        if (DS_receiver != nil && DS_receiver!.isLocalPlayer()){
+            DS_targetCircle?.removeFromParent()
         }
         DS_receiver?.clearAttack()
     }

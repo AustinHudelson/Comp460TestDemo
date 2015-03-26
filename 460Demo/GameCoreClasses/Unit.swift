@@ -212,10 +212,12 @@ class Unit: SerializableJSON, PType
     }
     
     func faceLeft(){
+        self.DS_isFacingLeft = true
         self.sprite.runAction(SKAction.scaleXTo(-1.0, duration: 0.0))
     }
     
     func faceRight(){
+        self.DS_isFacingLeft = false
         self.sprite.runAction(SKAction.scaleXTo(1.0, duration: 0.0))
     }
     
