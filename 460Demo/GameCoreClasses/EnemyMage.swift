@@ -192,7 +192,7 @@ class EnemyMage: Unit, PType
             self.move(CGPoint(x: CGRectGetMinX(Game.global.scene!.frame)+80, y: self.sprite.position.y), complete: {
                 self.sendOrder(RoamAttack(receiverIn: self))
             })
-        } else if (Game.global.scene != nil && (self.sprite.position.y > CGRectGetMaxX(Game.global.scene!.frame))) {
+        } else if (Game.global.scene != nil && (self.sprite.position.x > CGRectGetMaxX(Game.global.scene!.frame))) {
             //Mage is off the side of the screen on the right side. Send order to move on to the screen then roam attack.
             self.move(CGPoint(x: CGRectGetMaxX(Game.global.scene!.frame)-80, y: self.sprite.position.y), complete: {
                 self.sendOrder(RoamAttack(receiverIn: self))
