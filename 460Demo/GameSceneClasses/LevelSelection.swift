@@ -89,17 +89,13 @@ class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
     /* This listener function will be called when the user changes the level selection from the picker view */
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        /*
-//            If you're the host, you can interact with the pickerview to select a level. You send a msg over the network telling other ppl what you selected, and other ppl's program will automatically select whatever you selected
-//        */
-//        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
-//            if let lobby = AppWarpHelper.sharedInstance.lobby {
-//                lobby.sendPickedLevel(levels, col: component, row: row)
-//            }
-//        }
-//        
-        if let lobby = AppWarpHelper.sharedInstance.lobby {
-            lobby.pickLevel(levelTitles[row])
+        /*
+            If you're the host, you can interact with the pickerview to select a level. You send a msg over the network telling other ppl what you selected, and other ppl's program will automatically select whatever you selected
+        */
+        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
+            if let lobby = AppWarpHelper.sharedInstance.lobby {
+                lobby.sendPickedLevel(component, row: row)
+            }
         }
     }
 }

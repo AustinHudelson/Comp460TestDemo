@@ -63,35 +63,21 @@ class NetworkManager {
             switch key {
                 /* === Lobby & Start Game cases === */
                 case "Start Game!":
-                    // Putting this block of code here for now. Maybe should make a function for it somewhere
-                    /* Print the start time and received time */
-                    let sentTimeStr = (recvDict["SentTime"]!)[0] as String
-                    var sentTime: NSDate = Timer.StrToDate(sentTimeStr)!
-                    var recvTime: NSDate = Timer.getCurrentTime()
-                    var recvTimeStr = Timer.DateToStr(recvTime)
-                    var diff: NSTimeInterval = Timer.diffDateNow(sentTime) // get difference between sent time and now
-                    //println("SentTime: \(sentTimeStr); RecvTime: \(recvTimeStr); diff between SentTime & recvTime: \(diff) seconds")
-                    
-                    /* start the game */
-                    AppWarpHelper.sharedInstance.startGame()
+                    Game.global.transToGameScene(arrayOfObjects[0] as Dictionary<String, AnyObject>)
                 
                 case "LobbyClassIcon":
                     if let lobby = AppWarpHelper.sharedInstance.lobby {
                         lobby.updatePlayerIcons(arrayOfObjects[0] as Dictionary<String, String>)
                     }
                 
-//                case "SelectedLevel":
-//                    if let lobby = AppWarpHelper.sharedInstance.lobby {
-//                        lobby.updateLevelPicker(arrayOfObjects[0] as Dictionary<String, AnyObject>)
-//                    }
+                case "SelectedLevel":
+                    if let lobby = AppWarpHelper.sharedInstance.lobby {
+                        lobby.updateLevelPicker(arrayOfObjects[0] as Dictionary<String, AnyObject>)
+                    }
                 
                 /* =============================== */
                 
                 /* === Game related cases === */
-                case "Units":
-                    Game.global.updateNewUnits(arrayOfObjects)
-                case "SyncPlayer", "SyncEnemies":
-                    Game.global.updateUnits(arrayOfObjects)
                 case "Orders":
                     Game.global.updateUnitOrders(arrayOfObjects)
                 case "SentTime":
@@ -105,6 +91,12 @@ class NetworkManager {
                         var diff: NSTimeInterval = Timer.diffDateNow(sentTime) // get difference between sent time and now
                         //println("SentTime: \(sentTimeStr); RecvTime: \(recvTimeStr); diff between SentTime & recvTime: \(diff) seconds")
                     }
+                case "SyncPlayer", "SyncEnemies":
+                    Game.global.updateUnits(arrayOfObjects)
+                case "Units":
+                    Game.global.updateNewUnits(arrayOfObjects)
+                case "Win!":
+                    Game.global.winGame()
                 /* =============================== */
                 default:
                     // Placeholder default

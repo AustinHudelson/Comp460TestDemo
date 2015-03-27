@@ -187,22 +187,6 @@ class AppWarpHelper: NSObject
         }
     }
     
-    
-    /*
-        This function is the one that actually tells everyone to segue to GameViewController.
-        It should only be called when 
-    */
-    func startGame() {
-        println("AppWarpHelper startGame()")
-        
-        /* if you're the host, set roomProperty to unjoinable */
-        if playerName == host {
-            updateRoomToUnjoinable()
-        }
-        
-        lobby!.performSegueWithIdentifier("gameSegue", sender: nil)
-    }
-    
     func leaveGame(){
         //WarpClient.getInstance().unsubscribeRoom(self.roomId)
         WarpClient.getInstance().leaveRoom(self.roomId)
