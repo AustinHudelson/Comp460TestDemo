@@ -114,6 +114,8 @@ class LobbyViewController: UIViewController {
                         classImages[i].image = UIImage(named: "Warrior Icon")
                     case "Mage":
                         classImages[i].image = UIImage(named: "Mage Icon")
+                    case "Priest":
+                        classImages[i].image = UIImage(named: "Priest Icon")
                     default:
                         println("updatePlayerIcon() found a class that has not yet been implemented")
                 }
@@ -185,18 +187,6 @@ class LobbyViewController: UIViewController {
             levelPicker.selectRow(row, inComponent: col, animated: true)
         }
     }
-    
-//    func pickLevel(levelTxt: String) {
-//        var noSpace: String = removeWhiteSpaces(levelTxt) // get rid of the spaces in the level text
-//        noSpace += AppWarpHelper.sharedInstance.userName_list.count.description // append the sublevel number, which will correspond to # of players in the game
-//        
-//         /* Go from a string to its corresponding level class */
-//        var anyObjType: AnyObject.Type = NSClassFromString(noSpace)
-//        var levelType: Level.Type = anyObjType as Level.Type
-//        var newLevel: Level = levelType()
-//        
-//        Game.global.level = newLevel
-//    }
     
     /* =========================================================== */
     

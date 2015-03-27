@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68038FE11AA56B8C0053A963 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68038FE01AA56B8C0053A963 /* Timer.swift */; };
+		680CD85C1AC5D38F00AEFBEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 680CD85A1AC5D38F00AEFBEB /* Main.storyboard */; };
 		682944DF1AB5787000680A36 /* Heal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682944DE1AB5787000680A36 /* Heal.swift */; };
 		682944E11AB578A200680A36 /* Shrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682944E01AB578A200680A36 /* Shrink.swift */; };
 		6850A0861A91606100B8CAD4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0851A91606100B8CAD4 /* SplashViewController.swift */; };
@@ -186,7 +187,6 @@
 		F4CA5DE31AB55D92006DB177 /* TextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
 		F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */; };
-		F4D33B621A71EF7300DCD868 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B601A71EF7300DCD868 /* Main.storyboard */; };
 		F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B631A71EF7300DCD868 /* Images.xcassets */; };
 		F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */; };
 		F4D33B731A71EF7300DCD868 /* _60DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */; };
@@ -195,7 +195,6 @@
 		F4DC7F361ABC3DAF00E98AD6 /* NewMage-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F301ABC3DAF00E98AD6 /* NewMage-ability.atlas */; };
 		F4DC7F371ABC3DAF00E98AD6 /* NewMage-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F311ABC3DAF00E98AD6 /* NewMage-attack.atlas */; };
 		F4DC7F381ABC3DAF00E98AD6 /* NewMage-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F321ABC3DAF00E98AD6 /* NewMage-death.atlas */; };
-		F4DC7F391ABC3DAF00E98AD6 /* NewMage-stand.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F331ABC3DAF00E98AD6 /* NewMage-stand.atlas */; };
 		F4DC7F3A1ABC3DAF00E98AD6 /* NewMage-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F341ABC3DAF00E98AD6 /* NewMage-stumble.atlas */; };
 		F4DC7F3B1ABC3DAF00E98AD6 /* NewMage-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4DC7F351ABC3DAF00E98AD6 /* NewMage-walk.atlas */; };
 		F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */; };
@@ -230,6 +229,7 @@
 
 /* Begin PBXFileReference section */
 		68038FE01AA56B8C0053A963 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		680CD85B1AC5D38F00AEFBEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		682944DE1AB5787000680A36 /* Heal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heal.swift; sourceTree = "<group>"; };
 		682944E01AB578A200680A36 /* Shrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shrink.swift; sourceTree = "<group>"; };
 		6850A0851A91606100B8CAD4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -417,7 +417,6 @@
 		F4D33B571A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D33B581A71EF7300DCD868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		F4D33B611A71EF7300DCD868 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4D33B631A71EF7300DCD868 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F4D33B661A71EF7300DCD868 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F4D33B6C1A71EF7300DCD868 /* 460DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 460DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -912,8 +911,8 @@
 		F4D33B551A71EF7300DCD868 /* 460Demo */ = {
 			isa = PBXGroup;
 			children = (
+				680CD85A1AC5D38F00AEFBEB /* Main.storyboard */,
 				F4D33B581A71EF7300DCD868 /* AppDelegate.swift */,
-				F4D33B601A71EF7300DCD868 /* Main.storyboard */,
 				F4D33B631A71EF7300DCD868 /* Images.xcassets */,
 				E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */,
 				F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */,
@@ -1095,6 +1094,7 @@
 				F4B5638A1AB3A5CF0094B2A7 /* wood-small.wav in Resources */,
 				F4B563771AB3A5CF0094B2A7 /* interface5.wav in Resources */,
 				F4DC7F3B1ABC3DAF00E98AD6 /* NewMage-walk.atlas in Resources */,
+				680CD85C1AC5D38F00AEFBEB /* Main.storyboard in Resources */,
 				F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */,
 				F44C43001AC39CE800CAA983 /* MyParticle.sks in Resources */,
 				F44C42F81AC3557C00CAA983 /* 9iz8yXEiE.png in Resources */,
@@ -1175,7 +1175,6 @@
 				F4B563AC1AB3A5CF0094B2A7 /* ogre3.wav in Resources */,
 				F4B5637B1AB3A5CF0094B2A7 /* bottle.wav in Resources */,
 				F4B5639C1AB3A5CF0094B2A7 /* mnstr11.wav in Resources */,
-				F4DC7F391ABC3DAF00E98AD6 /* NewMage-stand.atlas in Resources */,
 				F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */,
 				E72E672D1AB626B20082E7B4 /* Warrior-attack.atlas in Resources */,
 				F4B925F01AC40136007ED564 /* Priest-heal.atlas in Resources */,
@@ -1219,7 +1218,6 @@
 				F4B925F31AC40136007ED564 /* Priest-walk.atlas in Resources */,
 				F4B925EE1AC40136007ED564 /* Priest-attack.atlas in Resources */,
 				F4B563A21AB3A5CF0094B2A7 /* mnstr3.wav in Resources */,
-				F4D33B621A71EF7300DCD868 /* Main.storyboard in Resources */,
 				F4B563BE1AB3A5CF0094B2A7 /* slime1.wav in Resources */,
 				F4B563871AB3A5CF0094B2A7 /* metal-small1.wav in Resources */,
 				F4B5639A1AB3A5CF0094B2A7 /* mnstr1.wav in Resources */,
@@ -1335,10 +1333,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F4D33B601A71EF7300DCD868 /* Main.storyboard */ = {
+		680CD85A1AC5D38F00AEFBEB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F4D33B611A71EF7300DCD868 /* Base */,
+				680CD85B1AC5D38F00AEFBEB /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

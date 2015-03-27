@@ -9,27 +9,33 @@
 import UIKit
 
 class SplashViewController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var mageSelectionButton: UIButton!
-    @IBOutlet weak var warriorSelectionButton: UIButton!
+    @IBOutlet weak var warSelButton: UIButton!
+    @IBOutlet weak var mageSelButton: UIButton!
+    @IBOutlet weak var priestSelButton: UIButton!
+    
     @IBOutlet weak var playerNameTxtField: UITextField!
-    @IBOutlet weak var startButton: UIButton!
     
     var selectedClass:String = "Warrior"
     
-    @IBAction func mageSelectionButtonAction(sender: AnyObject) {
-        
-        selectedClass = "Mage"
-        println(selectedClass)
-        mageSelectionButton.selected = true
-        warriorSelectionButton.selected = false
+    @IBAction func warSelButtonAction(sender: AnyObject) {
+        selectedClass = "Warrior"
+        warSelButton.selected = true
+        mageSelButton.selected = false
+        priestSelButton.selected = false
     }
     
-    @IBAction func warriorSelectionButtonAction(sender: AnyObject) {
-        selectedClass = "Warrior"
-        println(selectedClass)
-        mageSelectionButton.selected = false
-        warriorSelectionButton.selected = true
+    @IBAction func mageSelButtonAction(sender: AnyObject) {
+        selectedClass = "Mage"
+        warSelButton.selected = false
+        mageSelButton.selected = true
+        priestSelButton.selected = false
+    }
+    
+    @IBAction func priestSelButtonAction(sender: AnyObject) {
+        selectedClass = "Priest"
+        warSelButton.selected = false
+        mageSelButton.selected = false
+        priestSelButton.selected = true
     }
     
     @IBAction func startButtonAction(sender: AnyObject) {
@@ -55,10 +61,7 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
                 println(selectedClass)
                 performSegueWithIdentifier("playerNameSegue",  sender: self)
             }
-            
         }
-        
-        
     }
     
     override func viewDidLoad() {
@@ -66,9 +69,9 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
         
         playerNameTxtField.delegate = self
         
-        //PRELOAD GAME TEXTURE ATLASES
-        TextureLoader.global.preload()
-        warriorSelectionButton.selected = true
+//        //PRELOAD GAME TEXTURE ATLASES
+//        TextureLoader.global.preload()
+        warSelButton.selected = true
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="671" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="vcW-7f-CbY" userLabel="Background">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="671" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="vcW-7f-CbY" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="671"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -70,10 +70,10 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="startButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="wzC-le-b0v"/>
+                                    <action selector="startButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="iMC-eb-Izv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
                                 <rect key="frame" x="74" y="398" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="GDR-Z8-eOf"/>
@@ -94,10 +94,10 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="warriorSelectionButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="OeL-gq-d0r"/>
+                                    <action selector="warSelButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="sGd-2X-7Wn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQD-pF-9Vz" userLabel="Mage">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQD-pF-9Vz" userLabel="Mage">
                                 <rect key="frame" x="407" y="398" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="1My-vs-Rei"/>
@@ -120,7 +120,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="mageSelectionButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="hqQ-ul-zaX"/>
+                                    <action selector="mageSelButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Vzp-gV-5BT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGk-HZ-9UO" userLabel="Priest">
@@ -132,6 +132,7 @@
                                 <state key="normal" image="Priest Icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" image="Priest Icon_selected"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="dA7-Xl-qaI"/>
@@ -144,14 +145,14 @@
                                         <include reference="pC5-I7-2B4"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="priestSelButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="AWI-Te-Dul"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Player Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzJ-mn-bze">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Player Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzJ-mn-bze">
                                 <rect key="frame" x="211" y="297" width="178" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                <variation key="widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="250" y="348" width="300" height="50"/>
-                                </variation>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -194,6 +195,8 @@
                                 <exclude reference="uGk-HZ-9UO"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="A0A-2E-kQ3"/>
+                                <exclude reference="yVS-rJ-voS"/>
                                 <exclude reference="5o0-lQ-oWe"/>
                                 <exclude reference="GJV-5D-Xsa"/>
                                 <exclude reference="at0-6M-jk4"/>
@@ -209,8 +212,6 @@
                                 <exclude reference="Dig-Ih-zgX"/>
                                 <exclude reference="IGp-P4-Aap"/>
                                 <exclude reference="XwN-iC-IdW"/>
-                                <exclude reference="A0A-2E-kQ3"/>
-                                <exclude reference="yVS-rJ-voS"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -218,6 +219,8 @@
                                 <include reference="uGk-HZ-9UO"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="A0A-2E-kQ3"/>
+                                <include reference="yVS-rJ-voS"/>
                                 <include reference="5o0-lQ-oWe"/>
                                 <include reference="GJV-5D-Xsa"/>
                                 <include reference="at0-6M-jk4"/>
@@ -233,16 +236,14 @@
                                 <include reference="Dig-Ih-zgX"/>
                                 <include reference="IGp-P4-Aap"/>
                                 <include reference="XwN-iC-IdW"/>
-                                <include reference="A0A-2E-kQ3"/>
-                                <include reference="yVS-rJ-voS"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="mageSelectionButton" destination="sQD-pF-9Vz" id="1U1-tR-P5K"/>
-                        <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="crp-bz-6Tv"/>
-                        <outlet property="startButton" destination="sWx-W1-Kxd" id="IQt-ur-sKN"/>
-                        <outlet property="warriorSelectionButton" destination="W4s-Kd-Kh5" id="m49-Kc-bsp"/>
+                        <outlet property="mageSelButton" destination="sQD-pF-9Vz" id="tEc-oz-qsk"/>
+                        <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="WR0-cI-6i2"/>
+                        <outlet property="priestSelButton" destination="uGk-HZ-9UO" id="Ce0-bi-psW"/>
+                        <outlet property="warSelButton" destination="W4s-Kd-Kh5" id="SFu-gl-9lb"/>
                         <segue destination="by4-gA-Hf9" kind="presentation" identifier="playerNameSegue" id="zCE-ET-SiP"/>
                     </connections>
                 </viewController>
@@ -529,27 +530,27 @@
                                 <exclude reference="bYL-HO-kK0"/>
                                 <exclude reference="d2H-t2-LKl"/>
                                 <exclude reference="AvE-Bl-egD"/>
-                                <exclude reference="bR1-uK-Qcw"/>
-                                <exclude reference="u0e-lF-JDT"/>
-                                <exclude reference="yqY-mW-HD0"/>
-                                <exclude reference="PMG-Ds-nsO"/>
-                                <exclude reference="2z9-57-oBu"/>
-                                <exclude reference="Bko-Kb-hLr"/>
-                                <exclude reference="jxG-JD-HjS"/>
-                                <exclude reference="2xW-sq-AGF"/>
-                                <exclude reference="rG2-Ja-sx7"/>
-                                <exclude reference="mDk-9t-Iqy"/>
-                                <exclude reference="tFb-87-FU2"/>
-                                <exclude reference="5oz-b4-VvN"/>
-                                <exclude reference="g9G-Nb-Sm0"/>
-                                <exclude reference="gXV-xX-Gcv"/>
                                 <exclude reference="5Jg-FE-Rqm"/>
                                 <exclude reference="AOX-S6-Fwd"/>
                                 <exclude reference="N12-iU-g2M"/>
+                                <exclude reference="5oz-b4-VvN"/>
+                                <exclude reference="g9G-Nb-Sm0"/>
+                                <exclude reference="PMG-Ds-nsO"/>
+                                <exclude reference="bR1-uK-Qcw"/>
+                                <exclude reference="u0e-lF-JDT"/>
+                                <exclude reference="yqY-mW-HD0"/>
+                                <exclude reference="2z9-57-oBu"/>
+                                <exclude reference="Bko-Kb-hLr"/>
+                                <exclude reference="jxG-JD-HjS"/>
                                 <exclude reference="L3d-MT-jua"/>
                                 <exclude reference="gJT-p8-Sk2"/>
                                 <exclude reference="irK-ch-UVE"/>
                                 <exclude reference="tyq-fM-wH2"/>
+                                <exclude reference="mDk-9t-Iqy"/>
+                                <exclude reference="tFb-87-FU2"/>
+                                <exclude reference="2xW-sq-AGF"/>
+                                <exclude reference="rG2-Ja-sx7"/>
+                                <exclude reference="gXV-xX-Gcv"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -564,27 +565,27 @@
                                 <include reference="bYL-HO-kK0"/>
                                 <include reference="d2H-t2-LKl"/>
                                 <include reference="AvE-Bl-egD"/>
-                                <include reference="bR1-uK-Qcw"/>
-                                <include reference="u0e-lF-JDT"/>
-                                <include reference="yqY-mW-HD0"/>
-                                <include reference="PMG-Ds-nsO"/>
-                                <include reference="2z9-57-oBu"/>
-                                <include reference="Bko-Kb-hLr"/>
-                                <include reference="jxG-JD-HjS"/>
-                                <include reference="2xW-sq-AGF"/>
-                                <include reference="rG2-Ja-sx7"/>
-                                <include reference="mDk-9t-Iqy"/>
-                                <include reference="tFb-87-FU2"/>
-                                <include reference="5oz-b4-VvN"/>
-                                <include reference="g9G-Nb-Sm0"/>
-                                <exclude reference="gXV-xX-Gcv"/>
                                 <include reference="5Jg-FE-Rqm"/>
                                 <include reference="AOX-S6-Fwd"/>
                                 <include reference="N12-iU-g2M"/>
+                                <include reference="5oz-b4-VvN"/>
+                                <include reference="g9G-Nb-Sm0"/>
+                                <include reference="PMG-Ds-nsO"/>
+                                <include reference="bR1-uK-Qcw"/>
+                                <include reference="u0e-lF-JDT"/>
+                                <include reference="yqY-mW-HD0"/>
+                                <include reference="2z9-57-oBu"/>
+                                <include reference="Bko-Kb-hLr"/>
+                                <include reference="jxG-JD-HjS"/>
                                 <include reference="L3d-MT-jua"/>
                                 <include reference="gJT-p8-Sk2"/>
                                 <include reference="irK-ch-UVE"/>
                                 <include reference="tyq-fM-wH2"/>
+                                <include reference="mDk-9t-Iqy"/>
+                                <include reference="tFb-87-FU2"/>
+                                <include reference="2xW-sq-AGF"/>
+                                <include reference="rG2-Ja-sx7"/>
+                                <exclude reference="gXV-xX-Gcv"/>
                             </mask>
                         </variation>
                     </view>
@@ -634,6 +635,7 @@
         <image name="Mage Icon" width="128" height="128"/>
         <image name="Mage Icon_selected" width="128" height="128"/>
         <image name="Priest Icon" width="128" height="128"/>
+        <image name="Priest Icon_selected" width="128" height="128"/>
         <image name="SplashArt1" width="523" height="124"/>
         <image name="Warrior Icon" width="128" height="128"/>
         <image name="Warrior Icon_selected" width="128" height="128"/>
