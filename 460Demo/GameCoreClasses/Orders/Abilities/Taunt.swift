@@ -42,6 +42,8 @@ class Taunt: Order, PType
             DS_tauntedEnemy!.currentOrder as RoamAttack).redirect(self.DS_receiver!)
         }
         
+        
+        
     }
     
     func taunt()
@@ -54,18 +56,25 @@ class Taunt: Order, PType
                 continue
             }
             //this line isn't working if the closest one is attacking it doesn't check the next one
-            if (unit.currentOrder as RoamAttack).DS_target?.ID == self.DS_receiver!.ID
+            if unit.currentOrder is RoamAttack
             {
-                continue
+                if (unit.currentOrder as RoamAttack).DS_target?.ID == self.DS_receiver!.ID
+                {
+                    continue
+                }
+                else
+                {
+                    var p2 = unit.sprite.position
+                    var dist = Game.global.getRelativeDistance(DS_receiver!.sprite.position, p2:p2)
+                    if dist < near{
+                        nearby = unit
+                        near = dist
+                    }
+                }
             }
-            
-            var p2 = unit.sprite.position
-            var dist = Game.global.getRelativeDistance(DS_receiver!.sprite.position, p2:p2)
-            if dist < near{
-                nearby = unit
-                near = dist
-            }
+           
         }
+        
         DS_tauntedEnemy = nearby;
         
         
