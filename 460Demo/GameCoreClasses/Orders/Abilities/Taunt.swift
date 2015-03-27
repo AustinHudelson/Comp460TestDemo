@@ -75,6 +75,7 @@ class Taunt: Order, PType
            
         }
         
+       
         DS_tauntedEnemy = nearby;
         
         
