@@ -206,6 +206,25 @@ class Game {
         
         self.scene!.addChild(loseText)
         self.scene!.removeActionForKey("SyncAction")
+        
+        
+//        let healBlock: SKAction = SKAction.runBlock({
+//            if target.alive == true {
+//                target.takeDamage(-2)
+//                self.healOverTime(heal-2, target:target)
+//            }
+//        })
+//        self.DS_receiver?.sprite.runAction(SKAction.sequence([waitAction, healBlock]))
+        
+        
+        //attempt at making segue to mainMenu
+        //above is the example code i was using
+        
+//        let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(5.0))
+//        
+//        let segueBlock: SKAction  = SKAction.runBlock({  self.scene!.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)})
+//        SKAction.sequence([sendInterval, segueBlock])
+    
     }
     
     /* Gets a unit given a String

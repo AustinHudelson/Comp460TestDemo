@@ -18,6 +18,7 @@ class ButtonFrostbolt: InstantAbility
     }
     
     override func apply(receiverIn: Unit) {
+        
         if (receiverIn.DS_attackTarget != nil) {
             super.apply(receiverIn) /* Dont call super (cooldown) unless there is a valid target*/
             var sendData: Dictionary<String, Array<AnyObject>> = [:]

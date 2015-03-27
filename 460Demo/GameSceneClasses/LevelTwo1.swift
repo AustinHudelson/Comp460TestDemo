@@ -34,11 +34,11 @@ class LevelTwo1:Level
             //wave 2. 1 Warrio/ 1 Mage
             
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-200);
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-200);
             let dummy2 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame));
+            dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame));
             let dummy3 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             //DUMMY_ID = "ENEMY6"
@@ -65,6 +65,7 @@ class LevelTwo1:Level
             wave.append(dummy5)
             wave.append(dummy6)
         }
+        
         else if self.counter == 4 {
             //wave 4. 1 Warriors/2 Mage
             DUMMY_ID = Game.global.getNextEnemyID()
