@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class ButtonFlameStrike: Ability
+class ButtonFlameStrike: InstantAbility
 {
     
     /*

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ButtonFrostbolt: Ability
+class ButtonFrostbolt: InstantAbility
 {
     /*
     * Creates a enrage icon at the specified ability use slot

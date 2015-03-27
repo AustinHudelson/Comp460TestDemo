@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ButtonTaunt: Ability
+class ButtonTaunt: InstantAbility
 {
     /*
     * Creates a enrage icon at the specified ability use slot

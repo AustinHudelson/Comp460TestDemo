@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class ButtonSoulExchange: Ability
+class ButtonSoulExchange: InstantAbility
 {
     
     /*

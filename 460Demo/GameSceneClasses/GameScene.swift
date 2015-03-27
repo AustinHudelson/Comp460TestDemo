@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var playerIsTouched = false
     var viewController: UIViewController?
     var sceneActive: Bool = true
+    var targetingAbility: TargetedAbility?
     
     //begins game scene by making your player and loading enemy waves if you are host
     func startGameScene() {
@@ -157,19 +158,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if Game.global.myPlayerIsDead == true || Game.global.getMyPlayer()!.alive == false {
                     return
                 }
+                //Check if targeting
+                if (self.targetingAbility != nil){
+                    self.targetingAbility!.giveTarget(touchLocation)
+                }
                 
+                
+                //Check button presses
                 if self.childNodeWithName("Ability0")!.containsPoint(touchLocation) {
                     //Button at slot 0
                     let button = self.childNodeWithName("Ability0") as Ability
                     if button.cooldownReady == true {
-                        button.apply(Game.global.getMyPlayer()!)
+                        button.buttonPressed(Game.global.getMyPlayer()!)
                         return
                     }
                 } else if self.childNodeWithName("Ability1")!.containsPoint(touchLocation) {
                     //Button at slot 1
                     let button = self.childNodeWithName("Ability1") as Ability
                     if button.cooldownReady == true {
-                        button.apply(Game.global.getMyPlayer()!)
+                        button.buttonPressed(Game.global.getMyPlayer()!)
                         return
                     }
                 }
@@ -177,7 +184,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     //Button at slot 2
                     let button = self.childNodeWithName("Ability2") as Ability
                     if button.cooldownReady == true {
-                        button.apply(Game.global.getMyPlayer()!)
+                        button.buttonPressed(Game.global.getMyPlayer()!)
                         return
                         }
                     }

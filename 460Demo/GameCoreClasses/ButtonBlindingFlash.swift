@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class ButtonBlindingFlash: Ability
+class ButtonBlindingFlash: InstantAbility
 {
     
     /*

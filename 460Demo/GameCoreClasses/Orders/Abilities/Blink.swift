@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 @objc(Blink)
-class Blink: Order, PType, Transient
+class Blink: Order, PType
 {
     var destX: CGFloat = 0.0
     var destY: CGFloat = 0.0
@@ -31,7 +31,7 @@ class Blink: Order, PType, Transient
     
     required init(receivedData: Dictionary<String, AnyObject>) {
         super.init(receivedData: receivedData)
-        self.restoreProperties(Enrage.self, receivedData: receivedData)
+        self.restoreProperties(Blink.self, receivedData: receivedData)
         
         self.DS_receiver = Game.global.getUnit(ID!)
     }
@@ -45,8 +45,26 @@ class Blink: Order, PType, Transient
         //let removeAction: SKAction = SKAction.runBlock(removeBuff)
         //let applySeq: SKAction = SKAction.sequence([applyAction, waitAction, removeAction])
         //self.DS_receiver?.sprite.runAction(applySeq)
-        //let destination = CGPoint(x:destX, y:destY)
-        //self.DS_receiver?.sprite.position = destination
+        
+        //Immediate return on invalid caster.
+        if DS_receiver == nil || !DS_receiver!.alive{
+            return
+        }
+        let blockCommands: SKAction = SKAction.runBlock({
+            self.DS_receiver!.makeUncommandable()
+        })
+        let unblockCommands: SKAction = SKAction.runBlock({
+            self.DS_receiver!.makeCommandable()
+        })
+        let fadeOut: SKAction = SKAction.fadeAlphaTo(0.2, duration: NSTimeInterval(0.05))
+        let fadeIn: SKAction = SKAction.fadeAlphaTo(1.0, duration: NSTimeInterval(0.05))
+        let destination = CGPoint(x:destX, y:destY)
+        let moveAction: SKAction = SKAction.moveTo(destination, duration: NSTimeInterval(0.5))
+        
+        let finalBlinkAction = SKAction.sequence([blockCommands, fadeOut, moveAction, fadeIn, unblockCommands])
+        
+        
+        self.DS_receiver?.sprite.runAction(finalBlinkAction)
     }
     
     override func remove() {

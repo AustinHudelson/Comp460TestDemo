@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class ButtonBlink: Ability
+class ButtonBlink: InstantAbility
 {
     
     /*

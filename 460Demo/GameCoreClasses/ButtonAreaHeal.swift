@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class ButtonAreaHeal: Ability
+class ButtonAreaHeal: InstantAbility
 {
     
     /*

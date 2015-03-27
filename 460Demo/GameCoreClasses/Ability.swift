@@ -37,11 +37,15 @@ class Ability: SKSpriteNode
         self.hidden = false
     }
     
+    func buttonPressed(user: Unit){
+        //SHOULD BE OVERRIDDEN
+    }
+    
     /*
      * Default action handeler for this button being pressed.
      * should be overwritten by subclasses. Triggers ability cooldown.
      */
-    func apply(user: Unit){
+    func cooldown(user: Unit){
         cooldownReady = false
         let delay = SKAction.waitForDuration(cooldown)
         let shrink = SKAction.scaleTo(0.8, duration:NSTimeInterval(0.5))

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class ButtonArmorUp: Ability
+class ButtonArmorUp: InstantAbility
 {
     /*
     * Creates a enrage icon at the specified ability use slot

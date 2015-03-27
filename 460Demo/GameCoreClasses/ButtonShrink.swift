@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class ButtonShrink: Ability
+class ButtonShrink: InstantAbility
 {
     
     /*
