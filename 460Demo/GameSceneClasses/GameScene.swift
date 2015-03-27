@@ -32,7 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let playerCharPos: CGPoint = CGPoint(x:CGRectGetMidX(self.frame).advancedBy(CGFloat(charDisplacement*100-150)), y:CGRectGetMidY(self.frame))
         
         if AppWarpHelper.sharedInstance.playerClass == "Mage" {
-            playerChar = Priest(ID: playerName, spawnLocation: playerCharPos)
+            playerChar = Mage(ID: playerName, spawnLocation: playerCharPos)
         }
             //change for class 3
         else if AppWarpHelper.sharedInstance.playerClass == "saldfjals;jkf" {
