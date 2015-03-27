@@ -74,6 +74,7 @@
 		F44C42FC1AC3714E00CAA983 /* Flamestrike.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C42FB1AC3714E00CAA983 /* Flamestrike.swift */; };
 		F44C43001AC39CE800CAA983 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F44C42FF1AC39CE800CAA983 /* MyParticle.sks */; };
 		F44C43021AC3A01B00CAA983 /* solidSpark.png in Resources */ = {isa = PBXBuildFile; fileRef = F44C43011AC3A01B00CAA983 /* solidSpark.png */; };
+		F48B20B61AC5DB1F007487F6 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20B51AC5DB1F007487F6 /* CGFloat+Extensions.swift */; };
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
 		F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562EB1AB0D8C20094B2A7 /* Ability.swift */; };
@@ -184,6 +185,7 @@
 		F4B925F11AC40136007ED564 /* Priest-stand.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B925EA1AC40136007ED564 /* Priest-stand.atlas */; };
 		F4B925F21AC40136007ED564 /* Priest-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B925EB1AC40136007ED564 /* Priest-stumble.atlas */; };
 		F4B925F31AC40136007ED564 /* Priest-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F4B925EC1AC40136007ED564 /* Priest-walk.atlas */; };
+		F4B925F51AC5D929007ED564 /* Blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B925F41AC5D929007ED564 /* Blink.swift */; };
 		F4CA5DE31AB55D92006DB177 /* TextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
 		F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */; };
@@ -302,6 +304,7 @@
 		F44C42FB1AC3714E00CAA983 /* Flamestrike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flamestrike.swift; sourceTree = "<group>"; };
 		F44C42FF1AC39CE800CAA983 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		F44C43011AC3A01B00CAA983 /* solidSpark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solidSpark.png; sourceTree = "<group>"; };
+		F48B20B51AC5DB1F007487F6 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
 		F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonHeal.swift; sourceTree = "<group>"; };
@@ -412,6 +415,7 @@
 		F4B925EA1AC40136007ED564 /* Priest-stand.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Priest-stand.atlas"; sourceTree = "<group>"; };
 		F4B925EB1AC40136007ED564 /* Priest-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Priest-stumble.atlas"; sourceTree = "<group>"; };
 		F4B925EC1AC40136007ED564 /* Priest-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Priest-walk.atlas"; sourceTree = "<group>"; };
+		F4B925F41AC5D929007ED564 /* Blink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blink.swift; sourceTree = "<group>"; };
 		F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextureLoader.swift; path = GameSceneClasses/TextureLoader.swift; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B571A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -547,6 +551,7 @@
 				68DADF4E1AB5738800A20800 /* AreaHeal.swift */,
 				68DADF4F1AB5738800A20800 /* Enrage.swift */,
 				E722FC9F1AC1262A000651E0 /* ArmorUp.swift */,
+				F4B925F41AC5D929007ED564 /* Blink.swift */,
 				68DADF511AB5738800A20800 /* Taunt.swift */,
 				F4F126191AC0D90500A032D1 /* Frostbolt.swift */,
 				F44C42FB1AC3714E00CAA983 /* Flamestrike.swift */,
@@ -913,6 +918,7 @@
 			children = (
 				680CD85A1AC5D38F00AEFBEB /* Main.storyboard */,
 				F4D33B581A71EF7300DCD868 /* AppDelegate.swift */,
+				F48B20B51AC5DB1F007487F6 /* CGFloat+Extensions.swift */,
 				F4D33B631A71EF7300DCD868 /* Images.xcassets */,
 				E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */,
 				F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */,
@@ -1242,6 +1248,7 @@
 			files = (
 				68DADF591AB5738800A20800 /* AreaHeal.swift in Sources */,
 				6850A0861A91606100B8CAD4 /* SplashViewController.swift in Sources */,
+				F48B20B61AC5DB1F007487F6 /* CGFloat+Extensions.swift in Sources */,
 				F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */,
 				F4CA5DE31AB55D92006DB177 /* TextureLoader.swift in Sources */,
 				68C08F6E1ABA198700AEEF3E /* NetworkManager.swift in Sources */,
@@ -1270,6 +1277,7 @@
 				F4E96AF91AC0A7B300021DFD /* MageBolt.swift in Sources */,
 				F4DC7F2F1ABB5EAD00E98AD6 /* EnemyBoss.swift in Sources */,
 				F4F126231AC3498E00A032D1 /* ButtonBlink.swift in Sources */,
+				F4B925F51AC5D929007ED564 /* Blink.swift in Sources */,
 				6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */,
 				F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */,
 				F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */,

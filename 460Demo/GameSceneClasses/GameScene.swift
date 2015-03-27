@@ -31,8 +31,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
         let playerCharPos: CGPoint = CGPoint(x:CGRectGetMidX(self.frame).advancedBy(CGFloat(charDisplacement*100-150)), y:CGRectGetMidY(self.frame))
         
-        if AppWarpHelper.sharedInstance.playerClass == "Mage" {
-            playerChar = Mage(ID: playerName, spawnLocation: playerCharPos)
+        /* Spawn the player's Unit based on which class he/she picked & sends this unit over the network */
+        switch AppWarpHelper.sharedInstance.playerClass {
+            case "Mage":
+                playerChar = Mage(ID: playerName, spawnLocation: playerCharPos)
+            case "Priest":
+                playerChar = Priest(ID: playerName, spawnLocation: playerCharPos)
+            default:
+                playerChar = Warrior(ID: playerName, spawnLocation: playerCharPos)
         }
         sendUnitOverNetwork(playerChar) //Adds and send the unit
         

@@ -12,7 +12,7 @@ import SpriteKit
 @objc(AreaHeal)
 class AreaHeal: Order, PType
 {
-    let DS_healAmount: Int = 20
+    let DS_healAmount: Int = 40
     init(receiverIn: Unit)
     {
         super.init()
