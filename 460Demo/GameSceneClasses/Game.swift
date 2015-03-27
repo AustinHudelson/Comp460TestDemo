@@ -35,6 +35,20 @@ class Game {
     }
     
     /*
+        This is just a helper function to get rid of all the whitespaces in a string so we can go from Strings to Class Names faster (eg. "Level One" to "LevelOne1").
+        http://stackoverflow.com/questions/7628470/remove-all-whitespace-from-nsstring
+        http://stackoverflow.com/questions/26963379/remove-whitespace-character-set-from-string-excluding-space-swift
+    */
+    func removeWhiteSpaces(inputStr: String) -> String {
+        let words = inputStr.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        var outputStr: String = ""
+        for word in words {
+            outputStr += word
+        }
+        return outputStr
+    }
+    
+    /*
      * Clears all the global data in this class to the default values
      */
     func clearGlobals(){
@@ -102,7 +116,7 @@ class Game {
             }
         }
             
-        else if enemyMap[ID] != nil//it's an enemy
+        else if enemyMap[ID] != nil
         {
             println("removing enemy")
             var enemy = enemyMap[ID]!
@@ -110,10 +124,10 @@ class Game {
             let remove: SKAction = SKAction.removeFromParent()
             enemy.DS_health_txt.runAction(remove)
             enemy.sprite.runAction(remove)
-           
-            if enemyMap.count == 0
+            
+            if enemyMap.count == 0 && AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
             {
-                println("getting new wave")
+                println("Host is getting new wave")
                 loadLevel()
             }
             
@@ -131,16 +145,16 @@ class Game {
     func loadLevel() {
         if level != nil && scene != nil {
             println("!!!!Loading \(level?.title)")
-            
-            if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host{
-                var firstWave: Array<Unit> = level!.loadWave(scene!)
-                if (firstWave.count != 0) {        //If we receive an empty wave assume that we have defeated all waves
-                    for enemy in firstWave{
-                        scene!.sendUnitOverNetwork(enemy)
-                    }
-                } else {
-                    winGame()
+            var firstWave: Array<Unit> = level!.loadWave(scene!)
+            if (firstWave.count != 0) {        //If we receive an empty wave assume that we have defeated all waves
+                for enemy in firstWave{
+                    scene!.sendUnitOverNetwork(enemy)
                 }
+            } else {
+                /* Send a win game msg to everyone */
+                var winMsg: Dictionary<String, Array<AnyObject>> = [:]
+                winMsg["Win!"] = []
+                NetworkManager.sendMsg(&winMsg)
             }
         }
         
@@ -151,7 +165,6 @@ class Game {
     
     func winGame()
     {
-        println("You Win!!!")
         let winText: SKLabelNode = SKLabelNode(text: "You Win!")
         winText.fontSize = 50
         winText.fontName = "AvenirNext-Bold"
@@ -161,10 +174,11 @@ class Game {
             localLoseText.removeFromParent()
         }
         self.scene!.addChild(winText)
+        self.scene!.removeActionForKey("SyncAction")
     }
+    
     func localPlayerloseGame()
     {
-        println("You have died...")
         let localLoseText: SKLabelNode = SKLabelNode(text: "You have died...")
         localLoseText.name = "localLoseText"
         localLoseText.fontName = "AvenirNext-Bold"
@@ -173,9 +187,9 @@ class Game {
         localLoseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         self.scene!.addChild(localLoseText)
     }
+    
     func loseGame()
     {
-        println("Your team has lost...")
         let loseText: SKLabelNode = SKLabelNode(text: "You Lose!\n Game Over")
         loseText.fontName = "HelveticaNeue-Bold"
         loseText.name = "loseText"
@@ -432,6 +446,34 @@ class Game {
         ====================================================
         These functions should be called from processRecvMsg()
     */
+    /*
+        This func receives the start game msg, sets the host's Game.global.level variable to whatever was selected in the lobby, and transistions the app from LobbyViewController to GameScene
+    */
+    func transToGameScene(startMsg: Dictionary<String, AnyObject>) {
+        /*
+            If i'm host:
+                1. set the room property to unjoinable
+                2. make a new level object & set the Game.global.level variable
+        */
+        if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
+            /* Set roomProperty to unjoinable */
+            AppWarpHelper.sharedInstance.updateRoomToUnjoinable()
+            
+            /* Go from a string to its corresponding level class */
+            let levelTxt = startMsg["level"] as String
+            var noSpace: String = removeWhiteSpaces(levelTxt) // get rid of the spaces in the level text
+            noSpace += AppWarpHelper.sharedInstance.userName_list.count.description // append the sublevel number, which will correspond to # of players in the game
+            var anyObjType: AnyObject.Type = NSClassFromString(noSpace)
+            var levelType: Level.Type = anyObjType as Level.Type
+            var newLevel: Level = levelType()
+            
+            self.level = newLevel // set Game.global.level = newLevel
+        }
+        
+        /* Everyone perform segue to transition into game scene */
+        AppWarpHelper.sharedInstance.lobby!.performSegueWithIdentifier("gameSegue", sender: nil)
+    }
+    
     /*
         This func adds new unit to the game based on msg received.
         (For now) This func should only be called at the start of the game b/c after game starts,
