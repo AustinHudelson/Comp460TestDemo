@@ -132,6 +132,7 @@ class AppWarpHelper: NSObject
         } else {
             println("!!!WARNING: Error in sending msg (\(convertedData.length) bytes)!!!!") // print data's number of bytes
             println("!!!Error code: \(error)!!!")
+            
         }
     }
     

@@ -126,9 +126,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 AppWarpHelper.sharedInstance.leaveGame()
                 println("exit pressed")
                 
-                self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
                 self.removeAllActions()
                 self.removeAllChildren()
+                self.removeActionForKey("SyncAction")
+                self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
+                
                 
             }
             
