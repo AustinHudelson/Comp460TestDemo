@@ -31,7 +31,7 @@ class Unit: SerializableJSON, PType
     with attack commands (only applies to players)
     */
     var isHealer: Bool = false
-    var sprite: SKSpriteNode = SKSpriteNode(imageNamed: "WarriorStand350x350")
+    var sprite: SKSpriteNode = SKSpriteNode(imageNamed: "") // init a sprite with no texture, subclass should override this variable
     var redColor: Attribute = Attribute(baseValue: 1.0)
     var blueColor: Attribute = Attribute(baseValue: 1.0)
     var greenColor: Attribute = Attribute(baseValue: 1.0)
@@ -52,7 +52,7 @@ class Unit: SerializableJSON, PType
     var DS_isFacingLeft: Bool = true
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
-    var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "health_bar_green")
+    var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "HealthBar_Green")
     
     var health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
     var health_bar_x_dspl: CGFloat = 35
@@ -93,6 +93,26 @@ class Unit: SerializableJSON, PType
         self.DS_health_bar.zPosition = 2
     }
     
+    /* Helper function that loads an animation into SKAction */
+    func getAnimationAction(AnimationName: String, classPrefix: String, animGroupName: String, timePerFrame: NSTimeInterval) -> SKAction {
+        
+        var Atlas: SKTextureAtlas = SKTextureAtlas(named: classPrefix+animGroupName)
+        var animTextures: Array<SKTexture> = []
+        
+        /*
+            - String formatting in Swift:
+            https://thatthinginswift.com/string-formatting/
+            https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
+            - %@ means input.description (eg. %@, animPrefix will result in %@ being replaced by animPrefix.description)
+            - %d means an integer
+        */
+        for index in 0..<Atlas.textureNames.count {
+            let textureName = String(format: "%@%@%d", AnimationName, animGroupName, index)
+            animTextures.append(Atlas.textureNamed(textureName))
+        }
+        
+        return SKAction.animateWithTextures(animTextures, timePerFrame: timePerFrame)
+    }
     
     
     /*

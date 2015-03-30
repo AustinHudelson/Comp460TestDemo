@@ -111,11 +111,11 @@ class LobbyViewController: UIViewController {
             if playerNames[i].text == playerClass["ID"] {
                 switch playerClass["Class"]! {
                     case "Warrior":
-                        classImages[i].image = UIImage(named: "Warrior Icon")
+                        classImages[i].image = UIImage(named: "WarriorIcon")
                     case "Mage":
-                        classImages[i].image = UIImage(named: "Mage Icon")
+                        classImages[i].image = UIImage(named: "MageIcon")
                     case "Priest":
-                        classImages[i].image = UIImage(named: "Priest Icon")
+                        classImages[i].image = UIImage(named: "PriestIcon")
                     default:
                         println("updatePlayerIcon() found a class that has not yet been implemented")
                 }

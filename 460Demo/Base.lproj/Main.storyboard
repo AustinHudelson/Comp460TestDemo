@@ -446,10 +446,10 @@
                                     <constraint firstAttribute="width" constant="400" id="dTH-r3-VzO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="Start Game" backgroundImage="GreyBackgroundBar">
+                                <state key="normal" title="Start Game" backgroundImage="GreyBgBar">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="disabled" backgroundImage="GreyBackgroundBarDisabled"/>
+                                <state key="disabled" backgroundImage="GreyBgBar_Disabled"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="QFc-xB-I9B"/>
@@ -631,8 +631,6 @@
     </scenes>
     <resources>
         <image name="GameLogo" width="523" height="124"/>
-        <image name="GreyBackgroundBar" width="361" height="51"/>
-        <image name="GreyBackgroundBarDisabled" width="361" height="51"/>
         <image name="GreyBgBar" width="361" height="51"/>
         <image name="GreyBgBar_Disabled" width="361" height="51"/>
         <image name="MageIcon" width="128" height="128"/>
