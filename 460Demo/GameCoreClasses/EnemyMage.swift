@@ -32,11 +32,11 @@ class EnemyMage: Unit, PType
         //INITILIZE THE UNITS STATS HERE!!!
         self.type = "EnemyMage"
         self.health = 30
-        self.maxhealth = Attribute(baseValue: 30.0)
+        self.maxhealth = Attribute(baseValue: 45.0)
         self.healthregen = 0
         self.attackSpeed = Attribute(baseValue:  1.88)
-        self.attackDamage = Attribute(baseValue: 4.0)
-        self.speed = Attribute(baseValue: 30.0)
+        self.attackDamage = Attribute(baseValue: 6.0)
+        self.speed = Attribute(baseValue: 50.0)
         self.attackRange = 300.0
         self.isEnemy = true
         self.xSize = 250.0
