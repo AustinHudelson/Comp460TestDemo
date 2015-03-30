@@ -55,7 +55,7 @@ class Unit: SerializableJSON, PType
     var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "health_bar_green")
     
     var health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
-    var health_bar_x_dspl: CGFloat = 35
+    var health_bar_x_dspl: CGFloat = -35
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init()
@@ -111,7 +111,7 @@ class Unit: SerializableJSON, PType
         
         var health_bar_pos: CGPoint = pos
         health_bar_pos.y += self.health_txt_y_dspl
-        health_bar_pos.x = pos.x - health_bar_x_dspl //can't get it to work other than hard coding
+        health_bar_pos.x = pos.x + health_bar_x_dspl //can't get it to work other than hard coding
         self.DS_health_bar.position = health_bar_pos
         //gameScene.addChild(self.DS_health_txt)
         gameScene.addChild(self.DS_health_bar)
@@ -191,7 +191,7 @@ class Unit: SerializableJSON, PType
         let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth.get()*100), height: CGFloat(25))
         //self.DS_health_bar.runAction(SKAction.resizeToWidth(width:(self.health/self.maxhealth.get()*100)))
         self.DS_health_bar.size = newSize
-        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x - self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
+        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x + self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
     }
     
     func dealHealing(heal: CGFloat, target: Unit) {
@@ -209,7 +209,7 @@ class Unit: SerializableJSON, PType
         let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth.get()*100), height: CGFloat(25))
         //self.DS_health_bar.runAction(SKAction.resizeToWidth(width:(self.health/self.maxhealth.get()*100)))
         self.DS_health_bar.size = newSize
-        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x - self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
+        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x + self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
     }
     
     func faceLeft(){
@@ -325,7 +325,7 @@ class Unit: SerializableJSON, PType
         //Create movement action for health text
         var healthTextAdjustedMove = adjustedMove
         healthTextAdjustedMove.y += health_txt_y_dspl
-        healthTextAdjustedMove.x -= health_bar_x_dspl
+        healthTextAdjustedMove.x += health_bar_x_dspl
         let healthTextMovementAction = SKAction.moveTo(healthTextAdjustedMove, duration:NSTimeInterval(duration))
         
         //Start looping the walk animation if it is not already playing.

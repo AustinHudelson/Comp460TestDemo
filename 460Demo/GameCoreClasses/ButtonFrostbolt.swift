@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ButtonFrostbolt: InstantAbility
+class ButtonFrostbolt: TargetEnemyAbility
 {
     /*
     * Creates a enrage icon at the specified ability use slot
@@ -17,12 +17,11 @@ class ButtonFrostbolt: InstantAbility
         super.init(imageNamed: "S_Ice02", slot: slot)
     }
     
-    override func apply(receiverIn: Unit) {
-        
-        if (receiverIn.DS_attackTarget != nil) {
-            super.apply(receiverIn) /* Dont call super (cooldown) unless there is a valid target*/
+    override func apply(receiverIn: Unit, target: Unit? ) {
+        if (target != nil) {
+            super.apply(receiverIn, target: target!) /* Dont call super (cooldown) unless there is a valid target*/
             var sendData: Dictionary<String, Array<AnyObject>> = [:]
-            var frostbolt: Frostbolt = Frostbolt(receiverIn: receiverIn, target: receiverIn.DS_attackTarget!)
+            var frostbolt: Frostbolt = Frostbolt(receiverIn: receiverIn, target: target!)
             sendData["Orders"] = []
             sendData["Orders"]!.append(frostbolt.toJSON())
             NetworkManager.sendMsg(&sendData)
