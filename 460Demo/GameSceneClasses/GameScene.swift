@@ -88,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         AppWarpHelper.sharedInstance.gameScene = self
         startGameScene()
         
-        Game.global.addSyncActionToScene()
+//        Game.global.addSyncActionToScene()
     }
     
     /// physics

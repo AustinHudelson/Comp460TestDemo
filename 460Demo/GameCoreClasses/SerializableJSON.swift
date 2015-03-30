@@ -43,7 +43,7 @@ class SerializableJSON: NSObject {
             //Check if the key is in the dictionary (only DS_ and sprite should not appear here)
             if receivedData[propName] != nil {
                 
-                let propValue = receivedData[propName]
+                let propValue: AnyObject? = receivedData[propName]
                 
                 //println("RESTORING PROP: "+propName)
                 //println(propValue.Type)

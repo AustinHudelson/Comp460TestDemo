@@ -25,7 +25,7 @@
                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="SplashArt1" translatesAutoresizingMaskIntoConstraints="NO" id="QkX-kG-UfX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="GameLogo" translatesAutoresizingMaskIntoConstraints="NO" id="QkX-kG-UfX">
                                 <rect key="frame" x="74" y="70" width="452" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="500" id="S17-oH-rff"/>
@@ -51,10 +51,10 @@
                                     <constraint firstAttribute="height" constant="50" id="tj9-qY-b4V"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <state key="normal" title="S t a r t" backgroundImage="GreyBackgroundBar">
+                                <state key="normal" title="S t a r t" backgroundImage="GreyBgBar">
                                     <color key="titleColor" red="0.98567255565191503" green="0.89777552887159773" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <state key="disabled" title="S t a r t" backgroundImage="GreyBackgroundBarDisabled">
+                                <state key="disabled" title="S t a r t" backgroundImage="GreyBgBar_Disabled">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -79,8 +79,8 @@
                                     <constraint firstAttribute="height" constant="150" id="GDR-Z8-eOf"/>
                                     <constraint firstAttribute="width" constant="150" id="bsr-ys-PQN"/>
                                 </constraints>
-                                <state key="normal" image="Warrior Icon"/>
-                                <state key="selected" image="Warrior Icon_selected"/>
+                                <state key="normal" image="WarriorIcon"/>
+                                <state key="selected" image="WarriorIcon_Selected"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="GDR-Z8-eOf"/>
@@ -103,10 +103,10 @@
                                     <constraint firstAttribute="width" constant="150" id="1My-vs-Rei"/>
                                     <constraint firstAttribute="height" constant="150" id="vAK-wk-kht"/>
                                 </constraints>
-                                <state key="normal" image="Mage Icon">
+                                <state key="normal" image="MageIcon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" image="Mage Icon_selected"/>
+                                <state key="selected" image="MageIcon_Selected"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="1My-vs-Rei"/>
@@ -129,10 +129,10 @@
                                     <constraint firstAttribute="height" constant="150" id="dA7-Xl-qaI"/>
                                     <constraint firstAttribute="width" constant="150" id="pC5-I7-2B4"/>
                                 </constraints>
-                                <state key="normal" image="Priest Icon">
+                                <state key="normal" image="PriestIcon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" image="Priest Icon_selected"/>
+                                <state key="selected" image="PriestIcon_Selected"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="dA7-Xl-qaI"/>
@@ -446,10 +446,10 @@
                                     <constraint firstAttribute="width" constant="400" id="dTH-r3-VzO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="Start Game" backgroundImage="GreyBackgroundBar">
+                                <state key="normal" title="Start Game" backgroundImage="GreyBgBar">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="disabled" backgroundImage="GreyBackgroundBarDisabled"/>
+                                <state key="disabled" backgroundImage="GreyBgBar_Disabled"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="QFc-xB-I9B"/>
@@ -630,15 +630,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="GreyBackgroundBar" width="361" height="51"/>
-        <image name="GreyBackgroundBarDisabled" width="361" height="51"/>
-        <image name="Mage Icon" width="128" height="128"/>
-        <image name="Mage Icon_selected" width="128" height="128"/>
-        <image name="Priest Icon" width="128" height="128"/>
-        <image name="Priest Icon_selected" width="128" height="128"/>
-        <image name="SplashArt1" width="523" height="124"/>
-        <image name="Warrior Icon" width="128" height="128"/>
-        <image name="Warrior Icon_selected" width="128" height="128"/>
+        <image name="GameLogo" width="523" height="124"/>
+        <image name="GreyBgBar" width="361" height="51"/>
+        <image name="GreyBgBar_Disabled" width="361" height="51"/>
+        <image name="MageIcon" width="128" height="128"/>
+        <image name="MageIcon_Selected" width="128" height="128"/>
+        <image name="PriestIcon" width="128" height="128"/>
+        <image name="PriestIcon_Selected" width="128" height="128"/>
+        <image name="WarriorIcon" width="128" height="128"/>
+        <image name="WarriorIcon_Selected" width="128" height="128"/>
         <image name="gate" width="1034" height="1000"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
