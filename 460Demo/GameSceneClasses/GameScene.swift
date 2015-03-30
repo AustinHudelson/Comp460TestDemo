@@ -16,6 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var sceneActive: Bool = true
     var targetingAbility: TargetedAbility?
     
+    
     //begins game scene by making your player and loading enemy waves if you are host
     func startGameScene() {
         println("GAME SCENE START")
@@ -163,6 +164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //Check if targeting
                 if (self.targetingAbility != nil){
                     self.targetingAbility!.giveTarget(touchLocation)
+                    return
                 }
                 
                 
@@ -193,7 +195,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             //Code only reaches here if touch is not a button press.
-            if playerIsTouched == true || playerIsTouched == false {
+           if playerIsTouched == true || playerIsTouched == false {
                 /*Just return if the player is dead */
                 if (Game.global.getMyPlayer() == nil || Game.global.getMyPlayer()!.alive == false){
                     return
@@ -239,7 +241,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 else
                 {
-                    if Game.global.getMyPlayer() != nil {
+                    if Game.global.getMyPlayer() != nil  {
                         var move_loc: Move = Move(receiverIn: Game.global.getMyPlayer()!, moveToLoc: touchLocation)
                         sendData["Orders"] = []
                         sendData["Orders"]!.append(move_loc.toJSON())
