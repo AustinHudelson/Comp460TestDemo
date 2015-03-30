@@ -45,7 +45,7 @@ class Attack: Order, PType
         }
         //Apply a red circle under the target
         if (DS_receiver!.isLocalPlayer()){
-            DS_targetCircle = SKSpriteNode(imageNamed: "Selection Circle Red heavy")
+            DS_targetCircle = SKSpriteNode(imageNamed: "SelectionCircle_Red_Heavy")
             let yOffset = (-0.26 * DS_target!.sprite.size.height)
             let xyRatio: CGFloat = 2.25     /*Value calcuated xSize/ySize of the circle image*/
             let xSize = 0.5 * DS_target!.sprite.size.width

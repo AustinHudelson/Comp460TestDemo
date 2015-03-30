@@ -516,7 +516,7 @@ class Game {
                         newUnit.applyTint("OtherPlayer", red: 0.8, blue: 0.8, green: 0.8)
                     } else {
                         //This is my unit
-                        let myPlayerCircle = SKSpriteNode(imageNamed: "Selection Circle Green heavy")
+                        let myPlayerCircle = SKSpriteNode(imageNamed: "SelectionCircle_Green_Heavy")
                         let yOffset = (-0.225 * newUnit.sprite.size.height)
                         let xyRatio: CGFloat = 2.25     /*Value calcuated xSize/ySize of the circle image*/
                         let xSize = 0.5 * newUnit.sprite.size.width
