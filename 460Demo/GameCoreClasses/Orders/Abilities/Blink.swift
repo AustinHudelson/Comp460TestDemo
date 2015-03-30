@@ -50,6 +50,7 @@ class Blink: Order, PType
         if DS_receiver == nil || !DS_receiver!.alive{
             return
         }
+        self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
         let blockCommands: SKAction = SKAction.runBlock({
             self.DS_receiver!.makeUncommandable()
         })

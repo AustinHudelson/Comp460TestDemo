@@ -42,7 +42,7 @@ class Taunt: Order, PType
             DS_tauntedEnemy!.currentOrder as RoamAttack).redirect(self.DS_receiver!)
         }
         
-        
+        self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
         
     }
     

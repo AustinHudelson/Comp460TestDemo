@@ -29,6 +29,7 @@ class Flamestrike: Order, PType, Transient
     
     override func apply(){
         let flamestrike: Projectile = FlamestrikeProjectile(caster: DS_receiver!)
+        self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }
     
     override func remove(){

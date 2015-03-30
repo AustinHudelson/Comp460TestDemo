@@ -40,6 +40,7 @@ class ArmorUp: Order, PType
         let removeAction: SKAction = SKAction.runBlock(removeBuff)
         let applySeq: SKAction = SKAction.sequence([applyAction, waitAction, removeAction])
         self.DS_receiver?.sprite.runAction(applySeq)
+        self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }
     
     func applyBuff()

@@ -47,6 +47,7 @@ class SoulExchange: Order, PType, Transient
         println("their health \(otherHealth)\n")
         DS_receiver!.takeDamage(yourHealth-otherHealth)
         DS_target!.takeDamage(otherHealth-yourHealth)
+        self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }
     
     override func remove(){

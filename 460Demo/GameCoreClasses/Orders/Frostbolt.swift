@@ -40,6 +40,7 @@ class Frostbolt: Order, PType, Transient
             return
         }
         let frostbolt: FrostboltProjectile = FrostboltProjectile(target: DS_target!, caster: DS_receiver!)
+        self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }
     
     override func remove(){
