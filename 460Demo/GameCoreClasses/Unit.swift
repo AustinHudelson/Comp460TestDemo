@@ -56,6 +56,8 @@ class Unit: SerializableJSON, PType
     
     var health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
     var health_bar_x_dspl: CGFloat = -35
+    var DS_zSpriteOffset: CGFloat = 2
+    var DS_zHealthOffset: CGFloat = 3
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init()
@@ -73,8 +75,10 @@ class Unit: SerializableJSON, PType
         
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
         self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
-        self.DS_health_txt.zPosition = 2
-        self.DS_health_bar.zPosition = 2
+        
+        self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 2
+        self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
+        
        
     }
     
@@ -89,8 +93,8 @@ class Unit: SerializableJSON, PType
         // ===TESTING
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
         self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
-        self.DS_health_txt.zPosition = 2
-        self.DS_health_bar.zPosition = 2
+        self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 2
+        self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
     }
     
     /* Helper function that loads an animation into SKAction */
@@ -176,7 +180,7 @@ class Unit: SerializableJSON, PType
             currentOrder = order
             order.apply()
         } else {
-            //If this unit is uncommandable queue the order instead
+            //If this unit is uncommandable queue the wd instead
             self.DS_queuedOrder = order
         }
     }
@@ -365,6 +369,8 @@ class Unit: SerializableJSON, PType
         DS_health_bar.runAction(healthTextMovementAction, withKey:"move")
        // adjustBarAnchorPoint()
         sprite.runAction(walkSequence, withKey: "move")
+        self.sprite.zPosition = setZPosition(self.sprite.position.y) + self.DS_zSpriteOffset
+        self.DS_health_bar.zPosition = setZPosition(self.DS_health_bar.position.y) + self.DS_zHealthOffset
     }
     
     func clearMove(){
@@ -532,6 +538,12 @@ class Unit: SerializableJSON, PType
         self.DS_health_bar.anchorPoint = newAnchorPoint
     }
     
+    
+    //put in the y position of the sprite to get the zposition you should have
+    func setZPosition (y:CGFloat)-> CGFloat
+    {
+        return Game.global.scene!.frame.maxY - self.sprite.position.y
+    }
     
     
 }

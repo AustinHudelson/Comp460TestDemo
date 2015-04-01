@@ -44,7 +44,7 @@ class Warrior: Unit, PType
         //Initializes all the DS_ animations
         initializeAnimations()
         self.sprite.position = spawnLocation
-        self.sprite.zPosition = 1
+       
         /* Initialize Warrior buttons. They will automatically be added to the scene */
         let Button0: Ability = ButtonTaunt(slot: 0)
         let Button1: Ability = ButtonEnrage(slot: 1)

@@ -48,11 +48,11 @@ class LevelThree3:Level
             let dummy5 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-125);
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-200);
             let dummy6 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+125);
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+200);
             let dummy4 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
@@ -81,12 +81,12 @@ class LevelThree3:Level
             
           
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
+            dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
             let dummy9 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             //should be priest
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
+            dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-300);
             let dummy12 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             
@@ -104,28 +104,28 @@ class LevelThree3:Level
             let dummy14 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+125);
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+200);
             
             let dummy15 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-125);
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame));
             
             let dummy12 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-125);
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-200);
             
             let dummy16 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             //priest
             
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
+            dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-200);
             
             let dummy13 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             //priest
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
+            dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame));
             
             let dummy17 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
