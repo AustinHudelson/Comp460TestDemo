@@ -89,6 +89,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Game.global.addSyncActionToScene()
     }
     
+    override func willMoveFromView(view: SKView)
+    {
+        Game.global.scene = nil
+        AppWarpHelper.sharedInstance.gameScene = nil
+    }
     /// physics
     func didBeginContact(contact: SKPhysicsContact) {
         
@@ -129,6 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.removeAllChildren()
                 self.removeActionForKey("SyncAction")
                 self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
+                
                 
                 
             }

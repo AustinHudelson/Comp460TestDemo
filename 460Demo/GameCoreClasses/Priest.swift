@@ -33,14 +33,14 @@ class Priest: Unit, PType
         self.type = "Priest"
         self.health = 80
         self.maxhealth = Attribute(baseValue: 80.0)
-        self.healthregen = 0
+        self.DS_healthregen = 0
         self.speed = Attribute(baseValue: 80.0)
-        self.attackRange = 1000.0
+        self.DS_attackRange = 1000.0
         self.attackSpeed = Attribute(baseValue: 2.0)
         self.attackDamage = Attribute(baseValue: 7.5)
         self.isEnemy = false
-        self.xSize = 300.0
-        self.ySize = 300.0
+        self.DS_xSize = 300.0
+        self.DS_ySize = 300.0
         
         self.isHealer = true
         
@@ -103,8 +103,8 @@ class Priest: Unit, PType
         self.sprite = SKSpriteNode(imageNamed: "PriestStand200x200")
         
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
-        self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
-        self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
+        self.sprite.runAction(SKAction.resizeToWidth(self.DS_xSize, duration:0.0))
+        self.sprite.runAction(SKAction.resizeToHeight(self.DS_ySize, duration:0.0))
         
     }
     

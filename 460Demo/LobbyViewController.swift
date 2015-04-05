@@ -82,6 +82,7 @@ class LobbyViewController: UIViewController {
         classImages.append(p4Img)
         
         /* Disable the start game button until RoomListenter calls configLobbyView(), since we need some data to be set in configLobbyView() before game can be started */
+        
         startGameButton.enabled = false
     }
     

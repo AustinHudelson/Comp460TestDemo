@@ -35,14 +35,14 @@ class EnemyPriest: Unit, PType
         self.type = "EnemyPriest"
         self.health = 30
         self.maxhealth = Attribute(baseValue: 45.0)
-        self.healthregen = 0
+        self.DS_healthregen = 0
         self.attackSpeed = Attribute(baseValue:  1.88)
         self.attackDamage = Attribute(baseValue: 6.0)
         self.speed = Attribute(baseValue: 50.0)
-        self.attackRange = 300.0
+        self.DS_attackRange = 300.0
         self.isEnemy = true
-        self.xSize = 250.0
-        self.ySize = 250.0
+        self.DS_xSize = 250.0
+        self.DS_ySize = 250.0
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -105,8 +105,8 @@ class EnemyPriest: Unit, PType
         self.sprite = SKSpriteNode(imageNamed: "NewPriestStand200x200")
         
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
-        self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
-        self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
+        self.sprite.runAction(SKAction.resizeToWidth(self.DS_xSize, duration:0.0))
+        self.sprite.runAction(SKAction.resizeToHeight(self.DS_ySize, duration:0.0))
         
     }
     

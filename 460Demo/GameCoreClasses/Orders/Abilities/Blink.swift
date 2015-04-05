@@ -62,7 +62,7 @@ class Blink: Order, PType
         let destination = CGPoint(x:destX, y:destY)
         let moveAction: SKAction = SKAction.moveTo(destination, duration: NSTimeInterval(0.5))
         
-        let healthDestination = CGPoint(x:destX + self.DS_receiver!.health_bar_x_dspl, y:destY + self.DS_receiver!.health_txt_y_dspl)
+        let healthDestination = CGPoint(x:destX + self.DS_receiver!.DS_health_bar_x_dspl, y:destY + self.DS_receiver!.DS_health_txt_y_dspl)
         let moveActionHealth: SKAction = SKAction.moveTo(healthDestination, duration: NSTimeInterval(0.5))
         let finalBlinkAction = SKAction.sequence([blockCommands, fadeOut, moveAction, fadeIn, unblockCommands])
         let finalBlinkActionHealth = SKAction.sequence([fadeOut, moveActionHealth, fadeIn ])

@@ -561,7 +561,7 @@ class Game {
                             
                             let recvUnitPos: CGPoint = CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat))
                             var health_txt_pos = recvUnitPos
-                            health_txt_pos.y += updateUnit.health_txt_y_dspl
+                            health_txt_pos.y += updateUnit.DS_health_txt_y_dspl
                             
                             updateUnit.sprite.position = recvUnitPos
                             updateUnit.DS_health_txt.position = health_txt_pos
@@ -578,7 +578,7 @@ class Game {
                                 
                                 let recvUnitPos: CGPoint = CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat))
                                 var health_txt_pos = recvUnitPos
-                                health_txt_pos.y += updateUnit.health_txt_y_dspl
+                                health_txt_pos.y += updateUnit.DS_health_txt_y_dspl
                                 
                                 updateUnit.sprite.position = recvUnitPos
                                 updateUnit.DS_health_txt.position = health_txt_pos

@@ -16,13 +16,14 @@ class Unit: SerializableJSON, PType
     var type: String = "Unit"
     var ID: String = ""
     var health: CGFloat = 0.0
+    
     var damageMultiplier: Attribute = Attribute(baseValue: 1.0)
     var maxhealth: Attribute = Attribute(baseValue: 0.0)
-    var healthregen: Int = 0
+    var DS_healthregen: Int = 0
     var speed: Attribute = Attribute(baseValue: 0.0)
-    var xSize: CGFloat = 200.0
-    var ySize: CGFloat = 200.0
-    var attackRange: CGFloat = 20.0
+    var DS_xSize: CGFloat = 200.0
+    var DS_ySize: CGFloat = 200.0
+    var DS_attackRange: CGFloat = 20.0
     var attackSpeed: Attribute = Attribute(baseValue: 3.0)
     var attackDamage: Attribute = Attribute(baseValue: 3.0)
     var DS_lastAttackTime: NSDate = Timer.getCurrentTime()
@@ -54,8 +55,8 @@ class Unit: SerializableJSON, PType
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "HealthBar_Green")
     
-    var health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
-    var health_bar_x_dspl: CGFloat = -35
+    var DS_health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
+    var DS_health_bar_x_dspl: CGFloat = -35
     var DS_zSpriteOffset: CGFloat = 2
     var DS_zHealthOffset: CGFloat = 3
     required init(receivedData: Dictionary<String, AnyObject>){
@@ -130,12 +131,12 @@ class Unit: SerializableJSON, PType
         
         /* Add health text */
         var health_txt_pos: CGPoint = pos
-        health_txt_pos.y += self.health_txt_y_dspl
+        health_txt_pos.y += self.DS_health_txt_y_dspl
         self.DS_health_txt.position = health_txt_pos
         
         var health_bar_pos: CGPoint = pos
-        health_bar_pos.y += self.health_txt_y_dspl
-        health_bar_pos.x = pos.x + health_bar_x_dspl //can't get it to work other than hard coding
+        health_bar_pos.y += self.DS_health_txt_y_dspl
+        health_bar_pos.x = pos.x + DS_health_bar_x_dspl //can't get it to work other than hard coding
         self.DS_health_bar.position = health_bar_pos
         //gameScene.addChild(self.DS_health_txt)
         gameScene.addChild(self.DS_health_bar)
@@ -215,7 +216,7 @@ class Unit: SerializableJSON, PType
         let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth.get()*100), height: CGFloat(25))
         //self.DS_health_bar.runAction(SKAction.resizeToWidth(width:(self.health/self.maxhealth.get()*100)))
         self.DS_health_bar.size = newSize
-        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x + self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
+        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x + self.DS_health_bar_x_dspl, y: self.sprite.position.y + DS_health_txt_y_dspl)
     }
     
     func dealHealing(heal: CGFloat, target: Unit) {
@@ -233,7 +234,7 @@ class Unit: SerializableJSON, PType
         let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth.get()*100), height: CGFloat(25))
         //self.DS_health_bar.runAction(SKAction.resizeToWidth(width:(self.health/self.maxhealth.get()*100)))
         self.DS_health_bar.size = newSize
-        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x + self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
+        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x + self.DS_health_bar_x_dspl, y: self.sprite.position.y + DS_health_txt_y_dspl)
     }
     
     func faceLeft(){
@@ -348,8 +349,8 @@ class Unit: SerializableJSON, PType
         
         //Create movement action for health text
         var healthTextAdjustedMove = adjustedMove
-        healthTextAdjustedMove.y += health_txt_y_dspl
-        healthTextAdjustedMove.x += health_bar_x_dspl
+        healthTextAdjustedMove.y += DS_health_txt_y_dspl
+        healthTextAdjustedMove.x += DS_health_bar_x_dspl
         let healthTextMovementAction = SKAction.moveTo(healthTextAdjustedMove, duration:NSTimeInterval(duration))
         
         //Start looping the walk animation if it is not already playing.
@@ -394,7 +395,7 @@ class Unit: SerializableJSON, PType
      * or clearMove() if the unit is in the process of moving to the attack target.
      */
     func attackCycle(target: Unit, complete:(()->Void)!){
-        let tolerence = attackRange
+        let tolerence = DS_attackRange
         let animationGapDistance: CGFloat = 80.0 //Default value is overwritten in init
         let refreshRate: CGFloat = 0.25
         
@@ -534,7 +535,7 @@ class Unit: SerializableJSON, PType
     func adjustBarAnchorPoint()
     {
         let spritePos:CGPoint = self.sprite.position
-        let newAnchorPoint:CGPoint = CGPoint(x: spritePos.x, y: spritePos.y + health_txt_y_dspl)
+        let newAnchorPoint:CGPoint = CGPoint(x: spritePos.x, y: spritePos.y + DS_health_txt_y_dspl)
         self.DS_health_bar.anchorPoint = newAnchorPoint
     }
     

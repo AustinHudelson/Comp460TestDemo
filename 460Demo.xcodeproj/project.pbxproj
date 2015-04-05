@@ -244,7 +244,6 @@
 		68F3FFCC1AC92A8B009FAB4F /* W_Sword019.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FF041AC92A8B009FAB4F /* W_Sword019.png */; };
 		68F3FFCD1AC92A8B009FAB4F /* W_Sword020.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FF051AC92A8B009FAB4F /* W_Sword020.png */; };
 		68F3FFCE1AC92A8B009FAB4F /* W_Sword021.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FF061AC92A8B009FAB4F /* W_Sword021.png */; };
-		68F3FFD11AC932FA009FAB4F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FFD01AC932FA009FAB4F /* Info.plist */; };
 		68F3FFD81AC93A1F009FAB4F /* Warrior-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FFD31AC93A1F009FAB4F /* Warrior-ability.atlas */; };
 		68F3FFD91AC93A1F009FAB4F /* Warrior-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FFD41AC93A1F009FAB4F /* Warrior-attack.atlas */; };
 		68F3FFDA1AC93A1F009FAB4F /* Warrior-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FFD51AC93A1F009FAB4F /* Warrior-death.atlas */; };
@@ -253,6 +252,7 @@
 		68FAEA141AC9B46F0045259A /* WarriorStand200x200.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FAEA131AC9B46F0045259A /* WarriorStand200x200.png */; };
 		68FAEA161AC9C3B30045259A /* NewMageStand200x200.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FAEA151AC9C3B30045259A /* NewMageStand200x200.png */; };
 		68FAEA181AC9C6470045259A /* PriestStand200x200.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FAEA171AC9C6470045259A /* PriestStand200x200.png */; };
+		E70A14AC1AD1BFD50096F376 /* BlindingFlash.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70A14AB1AD1BFD50096F376 /* BlindingFlash.swift */; };
 		E70C33741ACC835400BEFC18 /* EnemyPriest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C33731ACC835400BEFC18 /* EnemyPriest.swift */; };
 		E722FCA01AC1262A000651E0 /* ArmorUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722FC9F1AC1262A000651E0 /* ArmorUp.swift */; };
 		E722FCA21AC12AA3000651E0 /* ButtonArmorUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722FCA11AC12AA3000651E0 /* ButtonArmorUp.swift */; };
@@ -666,6 +666,7 @@
 		68FAEA131AC9B46F0045259A /* WarriorStand200x200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WarriorStand200x200.png; sourceTree = "<group>"; };
 		68FAEA151AC9C3B30045259A /* NewMageStand200x200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewMageStand200x200.png; sourceTree = "<group>"; };
 		68FAEA171AC9C6470045259A /* PriestStand200x200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PriestStand200x200.png; sourceTree = "<group>"; };
+		E70A14AB1AD1BFD50096F376 /* BlindingFlash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlindingFlash.swift; sourceTree = "<group>"; };
 		E70C33731ACC835400BEFC18 /* EnemyPriest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyPriest.swift; sourceTree = "<group>"; };
 		E722FC9F1AC1262A000651E0 /* ArmorUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArmorUp.swift; sourceTree = "<group>"; };
 		E722FCA11AC12AA3000651E0 /* ButtonArmorUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonArmorUp.swift; sourceTree = "<group>"; };
@@ -920,6 +921,7 @@
 		68DADF4D1AB5738800A20800 /* Abilities */ = {
 			isa = PBXGroup;
 			children = (
+				E70A14AB1AD1BFD50096F376 /* BlindingFlash.swift */,
 				682944DE1AB5787000680A36 /* Heal.swift */,
 				68DADF4E1AB5738800A20800 /* AreaHeal.swift */,
 				68DADF4F1AB5738800A20800 /* Enrage.swift */,
@@ -930,7 +932,6 @@
 				682944E01AB578A200680A36 /* Shrink.swift */,
 				F4F126191AC0D90500A032D1 /* Frostbolt.swift */,
 				E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */,
-				E787EB7F1ACB57C5007CBAE2 /* BlindingFlash.swift */,
 			);
 			path = Abilities;
 			sourceTree = "<group>";
@@ -1723,7 +1724,7 @@
 		F4D33B4B1A71EF7300DCD868 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Austin Hudelson";
 				TargetAttributes = {
 					F4D33B521A71EF7300DCD868 = {
@@ -2034,7 +2035,6 @@
 				F4B563B71AB3A5CF0094B2A7 /* shade3.wav in Resources */,
 				68F3FF5A1AC92A8B009FAB4F /* S_Buff02.png in Resources */,
 				68FAEA141AC9B46F0045259A /* WarriorStand200x200.png in Resources */,
-				68F3FFD11AC932FA009FAB4F /* Info.plist in Resources */,
 				68F3FF0A1AC92A8B009FAB4F /* NewMage-death.atlas in Resources */,
 				68F3FFB11AC92A8B009FAB4F /* S_Water05.png in Resources */,
 				68F3FFBA1AC92A8B009FAB4F /* S_Wind07.png in Resources */,
@@ -2113,13 +2113,13 @@
 				68DADF491AB56FE800A20800 /* ButtonTaunt.swift in Sources */,
 				E759EDAE1AC3466400D23AF8 /* LevelThree1.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
-				E787EB801ACB57C5007CBAE2 /* BlindingFlash.swift in Sources */,
 				E722FCA01AC1262A000651E0 /* ArmorUp.swift in Sources */,
 				F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */,
 				F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */,
 				F4E96AF91AC0A7B300021DFD /* MageBolt.swift in Sources */,
 				6800B5961ACC6E7100C3D64D /* FileManager.swift in Sources */,
 				F4DC7F2F1ABB5EAD00E98AD6 /* EnemyBoss.swift in Sources */,
+				E70A14AC1AD1BFD50096F376 /* BlindingFlash.swift in Sources */,
 				F4F126231AC3498E00A032D1 /* ButtonBlink.swift in Sources */,
 				E70C33741ACC835400BEFC18 /* EnemyPriest.swift in Sources */,
 				F4B925F51AC5D929007ED564 /* Blink.swift in Sources */,
