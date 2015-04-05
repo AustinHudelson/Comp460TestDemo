@@ -21,9 +21,9 @@ class Unit: SerializableJSON, PType
     var maxhealth: Attribute = Attribute(baseValue: 0.0)
     var DS_healthregen: Int = 0
     var speed: Attribute = Attribute(baseValue: 0.0)
-    var DS_xSize: CGFloat = 200.0
-    var DS_ySize: CGFloat = 200.0
-    var DS_attackRange: CGFloat = 20.0
+    var xSize: CGFloat = 200.0
+    var ySize: CGFloat = 200.0
+    var attackRange: CGFloat = 20.0
     var attackSpeed: Attribute = Attribute(baseValue: 3.0)
     var attackDamage: Attribute = Attribute(baseValue: 3.0)
     var DS_lastAttackTime: NSDate = Timer.getCurrentTime()
@@ -50,7 +50,7 @@ class Unit: SerializableJSON, PType
     var DS_attackTarget: Unit?
     var DS_isCommandable: Bool = true   /*Private*/
     var DS_queuedOrder: Order?
-    var DS_isFacingLeft: Bool = true
+    var DS_isFacingLeft: Bool = false
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "HealthBar_Green")
@@ -395,7 +395,7 @@ class Unit: SerializableJSON, PType
      * or clearMove() if the unit is in the process of moving to the attack target.
      */
     func attackCycle(target: Unit, complete:(()->Void)!){
-        let tolerence = DS_attackRange
+        let tolerence = attackRange
         let animationGapDistance: CGFloat = 80.0 //Default value is overwritten in init
         let refreshRate: CGFloat = 0.25
         

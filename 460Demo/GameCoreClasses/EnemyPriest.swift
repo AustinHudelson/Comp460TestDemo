@@ -37,12 +37,12 @@ class EnemyPriest: Unit, PType
         self.maxhealth = Attribute(baseValue: 45.0)
         self.DS_healthregen = 0
         self.attackSpeed = Attribute(baseValue:  1.88)
-        self.attackDamage = Attribute(baseValue: 6.0)
+        self.attackDamage = Attribute(baseValue: 3.0)
         self.speed = Attribute(baseValue: 50.0)
-        self.DS_attackRange = 300.0
+        self.attackRange = 300.0
         self.isEnemy = true
-        self.DS_xSize = 250.0
-        self.DS_ySize = 250.0
+        self.xSize = 250.0
+        self.ySize = 250.0
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -105,8 +105,8 @@ class EnemyPriest: Unit, PType
         self.sprite = SKSpriteNode(imageNamed: "NewPriestStand200x200")
         
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
-        self.sprite.runAction(SKAction.resizeToWidth(self.DS_xSize, duration:0.0))
-        self.sprite.runAction(SKAction.resizeToHeight(self.DS_ySize, duration:0.0))
+        self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
+        self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
         
     }
     
@@ -124,15 +124,36 @@ class EnemyPriest: Unit, PType
         if Game.global.scene != nil && (self.sprite.position.x < CGRectGetMinX(Game.global.scene!.frame)) {
             //Mage is off the side of the screen on the left side. Send order to move on to the screen then roam attack.
             self.move(CGPoint(x: CGRectGetMinX(Game.global.scene!.frame)+80, y: self.sprite.position.y), complete: {
-                self.sendOrder(RoamAttack(receiverIn: self))
+                self.sendOrder(RoamHeal(receiverIn: self))
             })
         } else if (Game.global.scene != nil && (self.sprite.position.x > CGRectGetMaxX(Game.global.scene!.frame))) {
-            //Mage is off the side of the screen on the right side. Send order to move on to the screen then roam attack.
+            //Priest is off the side of the screen on the right side. Send order to move on to the screen then roam attack.
             self.move(CGPoint(x: CGRectGetMaxX(Game.global.scene!.frame)-80, y: self.sprite.position.y), complete: {
-                self.sendOrder(RoamAttack(receiverIn: self))
+                self.sendOrder(RoamHeal(receiverIn: self))
             })
         } else {
-            self.sendOrder(RoamAttack(receiverIn: self))
+            self.sendOrder(RoamHeal(receiverIn: self))
         }
+    }
+    override func weaponHandle(target: Unit){
+        //Setup heal particle emitter
+        let emitterPath: String = NSBundle.mainBundle().pathForResource("HealParticle", ofType: "sks")!
+        let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as SKEmitterNode
+        //emitterNode.position = self.sprite!.position
+        emitterNode.name = "Healing"
+        emitterNode.zPosition = self.sprite.zPosition+2
+        emitterNode.targetNode = target.sprite
+        
+        let halfWaitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(0.2))
+        let removeNodeBlock: SKAction = SKAction.runBlock({
+            emitterNode.removeFromParent()
+        })
+        let applyHealingBlock: SKAction = SKAction.runBlock({
+            self.dealHealing(self.attackDamage.get(), target: target)
+        })
+        
+        //Start the emitter node, wait half, heal, wait half again, remove the emitter node
+        self.sprite.addChild(emitterNode)   //Start the emitter node
+        self.sprite.runAction(SKAction.sequence([halfWaitAction, applyHealingBlock, halfWaitAction, removeNodeBlock]))
     }
 }
