@@ -20,12 +20,14 @@ class ButtonBlindingFlash: InstantAbility
     }
     
     override func apply(receiverIn: Unit) {
+        
         super.apply(receiverIn)
-//        var sendData: Dictionary<String, Array<AnyObject>> = [:]
-//        var ability: Order = AreaHeal(receiverIn: receiverIn)
-//        sendData["Orders"] = []
-//        sendData["Orders"]!.append(ability.toJSON())
-//        NetworkManager.sendMsg(&sendData)
+        var sendData: Dictionary<String, Array<AnyObject>> = [:]
+        var blindingFlash: BlindingFlash = BlindingFlash(receiverIn: receiverIn)
+        sendData["Orders"] = []
+        sendData["Orders"]!.append(blindingFlash.toJSON())
+        NetworkManager.sendMsg(&sendData)
+        println("Send blinding flash")
     }
     
     /*
