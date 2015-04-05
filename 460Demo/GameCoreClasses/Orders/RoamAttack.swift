@@ -14,7 +14,6 @@ class RoamAttack: Order, PType
     var DS_target: Unit?
     //var DS_receiver: Unit?
     var animationGapDistance: CGFloat = 20.0 //Default value is overwritten in init
-    var tID: String = "" // target ID
     //var ID: String = ""
     var DS_moveState = false
     

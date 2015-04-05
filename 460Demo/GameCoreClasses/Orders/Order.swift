@@ -16,6 +16,7 @@ class Order: SerializableJSON, PType
     var type: String = "UNDEFINED"
     var DS_receiver: Unit?
     var ID: String?
+    var tID: String = "" // Target ID. Not every order needs this variable, but just putting it here to make sending sync msgs over easier
     
     required init(receivedData: Dictionary<String, AnyObject>){
         super.init(receivedData: receivedData)

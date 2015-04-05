@@ -189,7 +189,6 @@ class SerializableJSON: NSObject {
                 propertiesDictionary[propName] = propValue
             }
         }
-        
         return propertiesDictionary
     }
 }

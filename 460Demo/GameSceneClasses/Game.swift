@@ -415,14 +415,23 @@ class Game {
         outerDict["SyncEnemies"] = []
         var enemyStats: Dictionary<String, AnyObject> = [:]
         
+        /* Need this to sync enemy's orders */
+        outerDict["Orders"] = []
+        
         for (enemyID, enemyUnit) in enemyMap {
             enemyStats["health"] = enemyUnit.health
             enemyStats["posX"] = Float(enemyUnit.sprite.position.x)
             enemyStats["posY"] = Float(enemyUnit.sprite.position.y)
             enemyStats["ID"] = enemyID
+
+            /* Send every enemy's Orders for sync...Except for Idle Order */
+            if !(enemyUnit.currentOrder is Idle) {
+                outerDict["Orders"]!.append(enemyUnit.currentOrder.toJSON())
+            }
         }
         outerDict["SyncEnemies"]!.append(enemyStats)
         
+//        println(outerDict)
         NetworkManager.sendMsg(&outerDict)
     }
     
