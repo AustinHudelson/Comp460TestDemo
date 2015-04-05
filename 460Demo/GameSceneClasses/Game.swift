@@ -21,6 +21,7 @@ class Game {
     var level: Level?
     var myPlayerIsDead = false
     var enemyIDCounter = 0
+    var fileManager: FileManager?
     
     class var global:Game{
         struct Static{

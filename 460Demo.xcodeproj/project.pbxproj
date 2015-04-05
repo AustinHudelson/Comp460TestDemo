@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6800B5961ACC6E7100C3D64D /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800B5951ACC6E7100C3D64D /* FileManager.swift */; };
+		6800B5981ACC6EC700C3D64D /* PersistGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800B5971ACC6EC700C3D64D /* PersistGameData.swift */; };
 		68038FE11AA56B8C0053A963 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68038FE01AA56B8C0053A963 /* Timer.swift */; };
 		680CD85C1AC5D38F00AEFBEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 680CD85A1AC5D38F00AEFBEB /* Main.storyboard */; };
 		682944DF1AB5787000680A36 /* Heal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682944DE1AB5787000680A36 /* Heal.swift */; };
@@ -265,12 +267,6 @@
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
 		E787EB7C1AC8ED03007CBAE2 /* TargetAllyAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787EB7B1AC8ED03007CBAE2 /* TargetAllyAbility.swift */; };
 		E787EB7E1AC8EE0F007CBAE2 /* SoulExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */; };
-		E7E2DDBC1ABA0E1E003C9812 /* VIDA_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */; };
-		E7E5E2791AB6345E00554839 /* Mage-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E2781AB6345E00554839 /* Mage-ability.atlas */; };
-		E7E5E27E1AB6364B00554839 /* Mage-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */; };
-		E7E5E27F1AB6364B00554839 /* Mage-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27B1AB6364B00554839 /* Mage-stumble.atlas */; };
-		E7E5E2801AB6364B00554839 /* Mage-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27C1AB6364B00554839 /* Mage-death.atlas */; };
-		E7E5E2811AB6364B00554839 /* Mage-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27D1AB6364B00554839 /* Mage-attack.atlas */; };
 		F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402F68E1AB51AF300A930C2 /* EnemyMage.swift */; };
 		F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
@@ -384,7 +380,6 @@
 		F4B563C81AB3A5CF0094B2A7 /* door.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563681AB3A5CF0094B2A7 /* door.wav */; };
 		F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8348F1A9BB95200A839E5 /* Enemy.swift */; };
 		F4B925F51AC5D929007ED564 /* Blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B925F41AC5D929007ED564 /* Blink.swift */; };
-		F4CA5DE31AB55D92006DB177 /* TextureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
 		F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */; };
 		F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B631A71EF7300DCD868 /* Images.xcassets */; };
@@ -417,6 +412,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6800B5951ACC6E7100C3D64D /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		6800B5971ACC6EC700C3D64D /* PersistGameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistGameData.swift; sourceTree = "<group>"; };
 		68038FE01AA56B8C0053A963 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		680CD85B1AC5D38F00AEFBEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		682944DE1AB5787000680A36 /* Heal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heal.swift; sourceTree = "<group>"; };
@@ -682,12 +679,6 @@
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		E787EB7B1AC8ED03007CBAE2 /* TargetAllyAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetAllyAbility.swift; sourceTree = "<group>"; };
 		E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoulExchange.swift; sourceTree = "<group>"; };
-		E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VIDA_10.png; path = GameCoreClasses/VIDA_10.png; sourceTree = "<group>"; };
-		E7E5E2781AB6345E00554839 /* Mage-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-ability.atlas"; sourceTree = "<group>"; };
-		E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-walk.atlas"; sourceTree = "<group>"; };
-		E7E5E27B1AB6364B00554839 /* Mage-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-stumble.atlas"; sourceTree = "<group>"; };
-		E7E5E27C1AB6364B00554839 /* Mage-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-death.atlas"; sourceTree = "<group>"; };
-		E7E5E27D1AB6364B00554839 /* Mage-attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-attack.atlas"; sourceTree = "<group>"; };
 		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
 		F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonShrink.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
@@ -801,7 +792,6 @@
 		F4B563681AB3A5CF0094B2A7 /* door.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = door.wav; sourceTree = "<group>"; };
 		F4B8348F1A9BB95200A839E5 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		F4B925F41AC5D929007ED564 /* Blink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blink.swift; sourceTree = "<group>"; };
-		F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextureLoader.swift; path = GameSceneClasses/TextureLoader.swift; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B581A71EF7300DCD868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -845,6 +835,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6800B5941ACC6E5E00C3D64D /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				6800B5951ACC6E7100C3D64D /* FileManager.swift */,
+				6800B5971ACC6EC700C3D64D /* PersistGameData.swift */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
 		68A18D3F1AA8719E001CCE1D /* iosNtp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1603,6 +1602,7 @@
 		F4D33B551A71EF7300DCD868 /* 460Demo */ = {
 			isa = PBXGroup;
 			children = (
+				6800B5941ACC6E5E00C3D64D /* FileManager */,
 				680CD85A1AC5D38F00AEFBEB /* Main.storyboard */,
 				F4D33B581A71EF7300DCD868 /* AppDelegate.swift */,
 				F48B20B51AC5DB1F007487F6 /* CGFloat+Extensions.swift */,
@@ -1617,7 +1617,6 @@
 				F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */,
 				6850A0851A91606100B8CAD4 /* SplashViewController.swift */,
 				6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */,
-				F4CA5DE21AB55D92006DB177 /* TextureLoader.swift */,
 				68F3FE321AC92A8A009FAB4F /* Supporting Files */,
 				F4B562FB1AB3A5AC0094B2A7 /* Sounds */,
 			);
@@ -2082,7 +2081,6 @@
 				6850A0861A91606100B8CAD4 /* SplashViewController.swift in Sources */,
 				F48B20B61AC5DB1F007487F6 /* CGFloat+Extensions.swift in Sources */,
 				F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */,
-				F4CA5DE31AB55D92006DB177 /* TextureLoader.swift in Sources */,
 				68C08F6E1ABA198700AEEF3E /* NetworkManager.swift in Sources */,
 				68A18D521AA8719E001CCE1D /* GCDAsyncUdpSocket.m in Sources */,
 				F44C42FC1AC3714E00CAA983 /* Flamestrike.swift in Sources */,
@@ -2107,6 +2105,7 @@
 				F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */,
 				F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */,
 				F4E96AF91AC0A7B300021DFD /* MageBolt.swift in Sources */,
+				6800B5961ACC6E7100C3D64D /* FileManager.swift in Sources */,
 				F4DC7F2F1ABB5EAD00E98AD6 /* EnemyBoss.swift in Sources */,
 				F4F126231AC3498E00A032D1 /* ButtonBlink.swift in Sources */,
 				F4B925F51AC5D929007ED564 /* Blink.swift in Sources */,
@@ -2137,6 +2136,7 @@
 				F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */,
 				F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */,
 				68B7DBF81A84C306003D9398 /* ConnectionListener.swift in Sources */,
+				6800B5981ACC6EC700C3D64D /* PersistGameData.swift in Sources */,
 				68DADF5A1AB5738800A20800 /* Enrage.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
 				F4F1261A1AC0D90500A032D1 /* Frostbolt.swift in Sources */,

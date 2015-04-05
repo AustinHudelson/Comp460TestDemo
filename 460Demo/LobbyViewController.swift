@@ -63,12 +63,11 @@ class LobbyViewController: UIViewController {
             http://thatthinginswift.com/singletons/
         */
         AppWarpHelper.sharedInstance.initializeWarp()
-        
         println("Finished initializing AppWarp")
         
-        println("Now connecting w/ username = \(myPlayerName)")
+        println("Now connecting w/ name = \(myPlayerName!)")
         AppWarpHelper.sharedInstance.connectWithAppWarpWithUserName(myPlayerName!)
-        println("Completed connection w/ username = \(myPlayerName)")
+        println("Completed connection w/ name = \(myPlayerName!)")
         
         AppWarpHelper.sharedInstance.lobby = self
         AppWarpHelper.sharedInstance.playerClass = myClass

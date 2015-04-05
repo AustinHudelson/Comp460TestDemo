@@ -72,8 +72,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Setup your scene here */
         println("Moved in to scene is Active:")
         println(sceneActive)
-        println("Textures done loading: ")
-        println(TextureLoader.global.preloaded)
         Game.global.clearGlobals()
         Game.global.scene = self
 //        /* Setup game background image */

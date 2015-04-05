@@ -38,8 +38,8 @@ class AppWarpHelper: NSObject
     var secret_key = "e493311e8192cb2d424d16c7588e834abbbf35a7fbd0d2459d53ccc7a990ebf1"
     
     var enemyName: String = ""
-    //Player name is defined in ConnectWithAppWarpWithUserName and is identicle to the User name
     var playerName: String = ""
+    var deviceName: String = UIDevice.currentDevice().identifierForVendor.UUIDString
     var userName_list: NSMutableArray = [] // used to store the list of users currently in room
     var lobby: LobbyViewController? = nil
     var playerClass: String = ""
