@@ -176,6 +176,7 @@ class Game {
         }
         self.scene!.addChild(winText)
         self.scene!.removeActionForKey("SyncAction")
+        self.gameOverTransition()
     }
     
     func localPlayerloseGame()
@@ -209,23 +210,20 @@ class Game {
         self.scene!.removeActionForKey("SyncAction")
         
         
-//        let healBlock: SKAction = SKAction.runBlock({
-//            if target.alive == true {
-//                target.takeDamage(-2)
-//                self.healOverTime(heal-2, target:target)
-//            }
-//        })
-//        self.DS_receiver?.sprite.runAction(SKAction.sequence([waitAction, healBlock]))
-        
-        
-        //attempt at making segue to mainMenu
-        //above is the example code i was using
-        
-//        let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(5.0))
-//        
-//        let segueBlock: SKAction  = SKAction.runBlock({  self.scene!.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)})
-//        SKAction.sequence([sendInterval, segueBlock])
+ 
+        self.gameOverTransition()
     
+    }
+    
+    func gameOverTransition()
+    {
+        let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(3.0))
+        
+        let segueBlock: SKAction  = SKAction.runBlock({  self.scene!.viewController?.performSegueWithIdentifier("mainMenuSegue", sender:  nil)
+            return ()
+        })
+        let endSequence: SKAction = SKAction.sequence([sendInterval, segueBlock])
+        self.scene!.runAction(endSequence)
     }
     
     /* Gets a unit given a String
@@ -314,12 +312,16 @@ class Game {
     /*
     * Returns the closest ENEMY to the given point
     */
-    func getClosestEnemy(p1: CGPoint) -> Unit? {
+    func getClosestEnemy(p1: CGPoint, ID: String) -> Unit? {
         var nearby: Unit? = nil
         var near: CGFloat = CGFloat.infinity
         
         for (id, unit) in Game.global.enemyMap {
             if unit.alive == false {
+                continue
+            }
+            if unit.ID == ID
+            {
                 continue
             }
             var p2 = unit.sprite.position

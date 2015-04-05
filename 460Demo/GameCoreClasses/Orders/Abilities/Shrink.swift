@@ -37,7 +37,7 @@ class Shrink: Order, PType
             return
         }
         
-        DS_target = Game.global.getClosestEnemy(DS_receiver!.sprite.position)
+        DS_target = Game.global.getClosestEnemy(DS_receiver!.sprite.position, ID: DS_receiver!.ID)
         
         if DS_target == nil {
             return

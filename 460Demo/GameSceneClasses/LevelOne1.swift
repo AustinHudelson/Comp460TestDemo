@@ -46,7 +46,7 @@ class LevelOne1:Level
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame));
-            let dummy3 = Enemy(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy3 = EnemyPriest(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             wave.append(dummy2)
             wave.append(dummy3)

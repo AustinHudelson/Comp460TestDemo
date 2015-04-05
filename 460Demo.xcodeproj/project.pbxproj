@@ -253,6 +253,7 @@
 		68FAEA161AC9C3B30045259A /* NewMageStand200x200.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FAEA151AC9C3B30045259A /* NewMageStand200x200.png */; };
 		68FAEA181AC9C6470045259A /* PriestStand200x200.png in Resources */ = {isa = PBXBuildFile; fileRef = 68FAEA171AC9C6470045259A /* PriestStand200x200.png */; };
 		E70A14AC1AD1BFD50096F376 /* BlindingFlash.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70A14AB1AD1BFD50096F376 /* BlindingFlash.swift */; };
+		E70A14AE1AD1CED60096F376 /* RoamHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70A14AD1AD1CED60096F376 /* RoamHeal.swift */; };
 		E70C33741ACC835400BEFC18 /* EnemyPriest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C33731ACC835400BEFC18 /* EnemyPriest.swift */; };
 		E722FCA01AC1262A000651E0 /* ArmorUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722FC9F1AC1262A000651E0 /* ArmorUp.swift */; };
 		E722FCA21AC12AA3000651E0 /* ButtonArmorUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E722FCA11AC12AA3000651E0 /* ButtonArmorUp.swift */; };
@@ -667,6 +668,7 @@
 		68FAEA151AC9C3B30045259A /* NewMageStand200x200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewMageStand200x200.png; sourceTree = "<group>"; };
 		68FAEA171AC9C6470045259A /* PriestStand200x200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PriestStand200x200.png; sourceTree = "<group>"; };
 		E70A14AB1AD1BFD50096F376 /* BlindingFlash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlindingFlash.swift; sourceTree = "<group>"; };
+		E70A14AD1AD1CED60096F376 /* RoamHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoamHeal.swift; sourceTree = "<group>"; };
 		E70C33731ACC835400BEFC18 /* EnemyPriest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyPriest.swift; sourceTree = "<group>"; };
 		E722FC9F1AC1262A000651E0 /* ArmorUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArmorUp.swift; sourceTree = "<group>"; };
 		E722FCA11AC12AA3000651E0 /* ButtonArmorUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonArmorUp.swift; sourceTree = "<group>"; };
@@ -913,6 +915,7 @@
 				68DADF551AB5738800A20800 /* NoneOrder.swift */,
 				68DADF561AB5738800A20800 /* Order.swift */,
 				68DADF571AB5738800A20800 /* RoamAttack.swift */,
+				E70A14AD1AD1CED60096F376 /* RoamHeal.swift */,
 				68DADF581AB5738800A20800 /* Transient.swift */,
 			);
 			path = Orders;
@@ -2118,6 +2121,7 @@
 				F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */,
 				F4E96AF91AC0A7B300021DFD /* MageBolt.swift in Sources */,
 				6800B5961ACC6E7100C3D64D /* FileManager.swift in Sources */,
+				E70A14AE1AD1CED60096F376 /* RoamHeal.swift in Sources */,
 				F4DC7F2F1ABB5EAD00E98AD6 /* EnemyBoss.swift in Sources */,
 				E70A14AC1AD1BFD50096F376 /* BlindingFlash.swift in Sources */,
 				F4F126231AC3498E00A032D1 /* ButtonBlink.swift in Sources */,

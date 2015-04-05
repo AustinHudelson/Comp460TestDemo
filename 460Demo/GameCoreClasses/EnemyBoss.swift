@@ -39,10 +39,10 @@ class EnemyBoss: Unit, PType
         self.attackSpeed = Attribute(baseValue: 1.5)
         self.attackDamage = Attribute(baseValue: 35.0)
         self.speed = Attribute(baseValue: 45.0)
-        self.DS_attackRange = 80.0
+        self.attackRange = 80.0
         self.isEnemy = true
-        self.DS_xSize = 450.0
-        self.DS_ySize = 450.0
+        self.xSize = 450.0
+        self.ySize = 450.0
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -105,8 +105,8 @@ class EnemyBoss: Unit, PType
         self.sprite = SKSpriteNode(imageNamed: "WarriorStand200x200")
         
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
-        self.sprite.runAction(SKAction.resizeToWidth(self.DS_xSize, duration:0.0))
-        self.sprite.runAction(SKAction.resizeToHeight(self.DS_ySize, duration:0.0))
+        self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
+        self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
     }
     
 //    /*
