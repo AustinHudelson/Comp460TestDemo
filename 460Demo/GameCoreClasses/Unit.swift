@@ -52,45 +52,32 @@ class Unit: SerializableJSON, PType
     var DS_isFacingLeft: Bool = true
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
-    var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "HealthBar_Green")
+    var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "InnerHealthBar")
+    var DS_health_bar_outline: SKSpriteNode = SKSpriteNode(imageNamed: "OutterHealthBar")
+    let DS_health_bar_outline_padding: CGFloat = 2.0
+    var DS_health_bar_y: CGFloat = 32.0
+    var DS_health_bar_max_x: CGFloat?
     
-    var health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
-    var health_bar_x_dspl: CGFloat = -35
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init()
         
         restoreProperties(Unit.self, receivedData: receivedData)
         
-        /* Configure Health Text (SHOULD MATH OTHER INIT() FUNCTION) */
-        self.DS_health_txt.fontColor = UIColor.greenColor()
-        self.DS_health_txt.text = self.health.description
-        self.DS_health_txt.fontName = "AvenirNext-Bold"
-        self.DS_health_txt.fontSize = 40
         // ===TESTING
         var barSize: CGSize = CGSize(width: CGFloat(100), height: CGFloat(25))
         self.DS_health_bar.size = barSize
         
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
-        self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
-        self.DS_health_txt.zPosition = 2
-        self.DS_health_bar.zPosition = 2
-       
     }
     
     init(ID: String, spawnLocation: CGPoint) {
         super.init()
         self.ID = ID
         self.currentOrder = NoneOrder()
-        /* Configure our health text */
-        self.DS_health_txt.fontColor = UIColor.redColor()
-        self.DS_health_txt.text = self.health.description
-        self.DS_health_txt.fontSize = 40
+        
         // ===TESTING
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
-        self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
-        self.DS_health_txt.zPosition = 2
-        self.DS_health_bar.zPosition = 2
     }
     
     /* Helper function that loads an animation into SKAction */
@@ -122,19 +109,50 @@ class Unit: SerializableJSON, PType
     func addUnitToGameScene(gameScene: GameScene, pos: CGPoint)
     {
         self.sprite.position = pos
+        
+        //Setup health bars here.
+        self.sprite.addChild(self.DS_health_bar_outline)
+        self.sprite.addChild(self.DS_health_bar)
+        self.DS_health_bar.position = CGPoint(x: 0, y: self.sprite.size.height*0.5)
+        self.DS_health_bar_outline.position = CGPoint(x: 0, y: self.sprite.size.height*0.5)
+        //Setup healthbar size based on size of sprite.
+        self.DS_health_bar_outline.size = CGSize(width: self.sprite.size.width*0.7, height: self.DS_health_bar_y)
+        //Setup inside of the healthbar based on the size of the outline.
+        self.DS_health_bar.size = CGSize(width: self.DS_health_bar_outline.size.width-(2.0 * DS_health_bar_outline_padding), height: self.DS_health_bar_y-(2.0*DS_health_bar_outline_padding))
+        self.DS_health_bar.zPosition = 99999.0
+        self.DS_health_bar.zPosition = 88888.0
+        self.DS_health_bar_max_x = self.DS_health_bar.size.width
+        
+        //Setup health bar color
+        var color: UIColor = UIColor.whiteColor()
+        if (self.isEnemy == true) {
+            color = UIColor.redColor()
+        } else {
+            let player = Game.global.getMyPlayer()
+            if (player != nil && player! == self){
+                color = UIColor.greenColor()
+            } else {
+                color = UIColor.blueColor()
+            }
+        }
+        
+        let changeColorAction = SKAction.colorizeWithColor(color, colorBlendFactor: 1.0, duration: NSTimeInterval(0.0))
+        self.DS_health_bar.runAction(changeColorAction)
+        
         gameScene.addChild(self.sprite)
+        self.faceRight()
         
         /* Add health text */
-        var health_txt_pos: CGPoint = pos
-        health_txt_pos.y += self.health_txt_y_dspl
-        self.DS_health_txt.position = health_txt_pos
+        //var health_txt_pos: CGPoint = pos
+        //health_txt_pos.y += self.health_txt_y_dspl
+        //self.DS_health_txt.position = health_txt_pos
         
-        var health_bar_pos: CGPoint = pos
-        health_bar_pos.y += self.health_txt_y_dspl
-        health_bar_pos.x = pos.x + health_bar_x_dspl //can't get it to work other than hard coding
-        self.DS_health_bar.position = health_bar_pos
+        //var health_bar_pos: CGPoint = pos
+        //health_bar_pos.y += self.health_txt_y_dspl
+        //health_bar_pos.x = pos.x + health_bar_x_dspl //can't get it to work other than hard coding
+        //self.DS_health_bar.position = health_bar_pos
         //gameScene.addChild(self.DS_health_txt)
-        gameScene.addChild(self.DS_health_bar)
+        //gameScene.addChild(self.DS_health_bar)
         //adjustBarAnchorPoint()
         //PRINTLN MYSELF AS JSON
         //println("PRINTING SELF AS JSON LOOK HERE!!!!")
@@ -206,12 +224,7 @@ class Unit: SerializableJSON, PType
             }
         }
         
-        //println("\(ID), \(health)")
-        
-        let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth.get()*100), height: CGFloat(25))
-        //self.DS_health_bar.runAction(SKAction.resizeToWidth(width:(self.health/self.maxhealth.get()*100)))
-        self.DS_health_bar.size = newSize
-        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x + self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
+        self.updateHealthBar()
     }
     
     func dealHealing(heal: CGFloat, target: Unit) {
@@ -226,20 +239,19 @@ class Unit: SerializableJSON, PType
             health=maxhealth.get()
         }
         
-        let newSize: CGSize = CGSize(width: CGFloat(self.health/self.maxhealth.get()*100), height: CGFloat(25))
-        //self.DS_health_bar.runAction(SKAction.resizeToWidth(width:(self.health/self.maxhealth.get()*100)))
-        self.DS_health_bar.size = newSize
-        self.DS_health_bar.position = CGPoint(x:self.sprite.position.x + self.health_bar_x_dspl, y: self.sprite.position.y + health_txt_y_dspl)
+        self.updateHealthBar()
     }
     
     func faceLeft(){
         self.DS_isFacingLeft = true
         self.sprite.runAction(SKAction.scaleXTo(-1.0, duration: 0.0))
+        self.DS_health_bar.position.x = fabs(self.DS_health_bar.position.x)
     }
     
     func faceRight(){
         self.DS_isFacingLeft = false
         self.sprite.runAction(SKAction.scaleXTo(1.0, duration: 0.0))
+        self.DS_health_bar.position.x = -fabs(self.DS_health_bar.position.x)
     }
     
     /* Applies a tint to this unit. You can remove this tint modifier later by calling removeTint
@@ -343,10 +355,10 @@ class Unit: SerializableJSON, PType
         }
         
         //Create movement action for health text
-        var healthTextAdjustedMove = adjustedMove
-        healthTextAdjustedMove.y += health_txt_y_dspl
-        healthTextAdjustedMove.x += health_bar_x_dspl
-        let healthTextMovementAction = SKAction.moveTo(healthTextAdjustedMove, duration:NSTimeInterval(duration))
+        //var healthTextAdjustedMove = adjustedMove
+        //healthTextAdjustedMove.y += health_txt_y_dspl
+        //healthTextAdjustedMove.x += health_bar_x_dspl
+        //let healthTextMovementAction = SKAction.moveTo(healthTextAdjustedMove, duration:NSTimeInterval(duration))
         
         //Start looping the walk animation if it is not already playing.
         if self.sprite.actionForKey("moveAnim") == nil {
@@ -361,9 +373,9 @@ class Unit: SerializableJSON, PType
         }
         
         //Apply the actions to the health text and sprite
-        DS_health_txt.runAction(healthTextMovementAction, withKey: "move")
-        DS_health_bar.runAction(healthTextMovementAction, withKey:"move")
-       // adjustBarAnchorPoint()
+        //DS_health_txt.runAction(healthTextMovementAction, withKey: "move")
+        //DS_health_bar.runAction(healthTextMovementAction, withKey:"move")
+        // adjustBarAnchorPoint()
         sprite.runAction(walkSequence, withKey: "move")
     }
     
@@ -525,11 +537,25 @@ class Unit: SerializableJSON, PType
         
     }
     
-    func adjustBarAnchorPoint()
+//    func adjustBarAnchorPoint()
+//    {
+//        let spritePos:CGPoint = self.sprite.position
+//        let newAnchorPoint:CGPoint = CGPoint(x: spritePos.x, y: spritePos.y + health_txt_y_dspl)
+//        self.DS_health_bar.anchorPoint = newAnchorPoint
+//    }
+    
+    func updateHealthBar()
     {
-        let spritePos:CGPoint = self.sprite.position
-        let newAnchorPoint:CGPoint = CGPoint(x: spritePos.x, y: spritePos.y + health_txt_y_dspl)
-        self.DS_health_bar.anchorPoint = newAnchorPoint
+        let newX: CGFloat = DS_health_bar_max_x! * (self.health/self.maxhealth.get())
+        //When bar is oriented around center, offset by half of the differance in the size of the bar
+        let newXOffset: CGFloat = 0.5 * (DS_health_bar_max_x! - newX)
+        DS_health_bar.size.width = newX
+        if (self.DS_isFacingLeft == true){
+            DS_health_bar.position.x = fabs(newXOffset)
+        } else {
+            DS_health_bar.position.x = newXOffset
+        }
+        
     }
     
     

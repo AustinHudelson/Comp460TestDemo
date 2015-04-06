@@ -17,6 +17,7 @@ class Ability: SKSpriteNode
     
     var cooldown: NSTimeInterval = 10.0
     var cooldownReady: Bool = true
+    var tooltip: String = "MISSING TOOLTIP"
     
     /*
      * Builds the button and ACTUALLY PLACES IT IN THE GAME SCENE.

@@ -265,12 +265,6 @@
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
 		E787EB7C1AC8ED03007CBAE2 /* TargetAllyAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787EB7B1AC8ED03007CBAE2 /* TargetAllyAbility.swift */; };
 		E787EB7E1AC8EE0F007CBAE2 /* SoulExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */; };
-		E7E2DDBC1ABA0E1E003C9812 /* VIDA_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */; };
-		E7E5E2791AB6345E00554839 /* Mage-ability.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E2781AB6345E00554839 /* Mage-ability.atlas */; };
-		E7E5E27E1AB6364B00554839 /* Mage-walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */; };
-		E7E5E27F1AB6364B00554839 /* Mage-stumble.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27B1AB6364B00554839 /* Mage-stumble.atlas */; };
-		E7E5E2801AB6364B00554839 /* Mage-death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27C1AB6364B00554839 /* Mage-death.atlas */; };
-		E7E5E2811AB6364B00554839 /* Mage-attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E7E5E27D1AB6364B00554839 /* Mage-attack.atlas */; };
 		F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402F68E1AB51AF300A930C2 /* EnemyMage.swift */; };
 		F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
@@ -280,6 +274,8 @@
 		F48B20B81AC5F13B007487F6 /* TargetEnemyAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20B71AC5F13B007487F6 /* TargetEnemyAbility.swift */; };
 		F48B20BA1AC5F152007487F6 /* TargetedAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20B91AC5F152007487F6 /* TargetedAbility.swift */; };
 		F48B20BC1AC5F8D4007487F6 /* InstantAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20BB1AC5F8D4007487F6 /* InstantAbility.swift */; };
+		F48B20BF1ACC8568007487F6 /* InnerHealthbar.png in Resources */ = {isa = PBXBuildFile; fileRef = F48B20BD1ACC8568007487F6 /* InnerHealthbar.png */; };
+		F48B20C01ACC8568007487F6 /* OutterHealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = F48B20BE1ACC8568007487F6 /* OutterHealthBar.png */; };
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
 		F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562EB1AB0D8C20094B2A7 /* Ability.swift */; };
@@ -682,12 +678,6 @@
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		E787EB7B1AC8ED03007CBAE2 /* TargetAllyAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetAllyAbility.swift; sourceTree = "<group>"; };
 		E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoulExchange.swift; sourceTree = "<group>"; };
-		E7E2DDBB1ABA0E1E003C9812 /* VIDA_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VIDA_10.png; path = GameCoreClasses/VIDA_10.png; sourceTree = "<group>"; };
-		E7E5E2781AB6345E00554839 /* Mage-ability.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-ability.atlas"; sourceTree = "<group>"; };
-		E7E5E27A1AB6364B00554839 /* Mage-walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-walk.atlas"; sourceTree = "<group>"; };
-		E7E5E27B1AB6364B00554839 /* Mage-stumble.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-stumble.atlas"; sourceTree = "<group>"; };
-		E7E5E27C1AB6364B00554839 /* Mage-death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-death.atlas"; sourceTree = "<group>"; };
-		E7E5E27D1AB6364B00554839 /* Mage-attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Mage-attack.atlas"; sourceTree = "<group>"; };
 		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
 		F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonShrink.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
@@ -697,6 +687,8 @@
 		F48B20B71AC5F13B007487F6 /* TargetEnemyAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetEnemyAbility.swift; sourceTree = "<group>"; };
 		F48B20B91AC5F152007487F6 /* TargetedAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetedAbility.swift; sourceTree = "<group>"; };
 		F48B20BB1AC5F8D4007487F6 /* InstantAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantAbility.swift; sourceTree = "<group>"; };
+		F48B20BD1ACC8568007487F6 /* InnerHealthbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InnerHealthbar.png; sourceTree = "<group>"; };
+		F48B20BE1ACC8568007487F6 /* OutterHealthBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OutterHealthBar.png; sourceTree = "<group>"; };
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
 		F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonHeal.swift; sourceTree = "<group>"; };
@@ -957,7 +949,6 @@
 		68F35CAD1A84C540004905BF /* GameCoreClasses */ = {
 			isa = PBXGroup;
 			children = (
-				68F3FE1C1AC7A0E4009FAB4F /* ParticleEffects */,
 				F42FD5AC1A880282002C6624 /* SerializableJSON.swift */,
 				68DADF4C1AB5738800A20800 /* Orders */,
 				F4B562E81AB0D8180094B2A7 /* Abilities */,
@@ -979,13 +970,15 @@
 				68F3FE211AC7A0E4009FAB4F /* MyParticle.sks */,
 				68F3FE221AC7A0E4009FAB4F /* RainParticle.sks */,
 			);
-			path = ParticleEffects;
+			name = ParticleEffects;
+			path = ../GameCoreClasses/ParticleEffects;
 			sourceTree = "<group>";
 		};
 		68F3FE321AC92A8A009FAB4F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				68F3FFD01AC932FA009FAB4F /* Info.plist */,
+				68F3FE1C1AC7A0E4009FAB4F /* ParticleEffects */,
 				68F3FE331AC92A8A009FAB4F /* GameArt */,
 			);
 			path = "Supporting Files";
@@ -1081,6 +1074,8 @@
 				68FAEA151AC9C3B30045259A /* NewMageStand200x200.png */,
 				68FAEA131AC9B46F0045259A /* WarriorStand200x200.png */,
 				68F3FE531AC92A8A009FAB4F /* HealthBar_Green.png */,
+				F48B20BD1ACC8568007487F6 /* InnerHealthbar.png */,
+				F48B20BE1ACC8568007487F6 /* OutterHealthBar.png */,
 				68F3FE541AC92A8A009FAB4F /* SelectionCircle_Green.png */,
 				68F3FE551AC92A8A009FAB4F /* SelectionCircle_Green_Heavy.png */,
 				68F3FE561AC92A8A009FAB4F /* SelectionCircle_Red.png */,
@@ -1769,6 +1764,7 @@
 				68F3FF781AC92A8B009FAB4F /* S_Holy02.png in Resources */,
 				680CD85C1AC5D38F00AEFBEB /* Main.storyboard in Resources */,
 				F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */,
+				F48B20BF1ACC8568007487F6 /* InnerHealthbar.png in Resources */,
 				F4B563C01AB3A5CF0094B2A7 /* slime2.wav in Resources */,
 				68F3FF121AC92A8B009FAB4F /* Priest-stumble.atlas in Resources */,
 				68F3FF621AC92A8B009FAB4F /* S_Buff10.png in Resources */,
@@ -1902,6 +1898,7 @@
 				68A18D531AA8719E001CCE1D /* ntp.hosts in Resources */,
 				68F3FF3F1AC92A8B009FAB4F /* I_Rock04.png in Resources */,
 				F4B563A61AB3A5CF0094B2A7 /* mnstr7.wav in Resources */,
+				F48B20C01ACC8568007487F6 /* OutterHealthBar.png in Resources */,
 				F4B563781AB3A5CF0094B2A7 /* interface6.wav in Resources */,
 				68F3FF2A1AC92A8B009FAB4F /* Ac_Medal04.png in Resources */,
 				68F3FF0D1AC92A8B009FAB4F /* Priest-ability.atlas in Resources */,
