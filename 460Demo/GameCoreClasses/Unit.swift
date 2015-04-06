@@ -59,6 +59,10 @@ class Unit: SerializableJSON, PType
     var DS_health_bar_y: CGFloat = 32.0
     var DS_health_bar_max_x: CGFloat?
     
+    var DS_health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
+    var DS_health_bar_x_dspl: CGFloat = -35
+    var DS_zSpriteOffset: CGFloat = 2
+    var DS_zHealthOffset: CGFloat = 3
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init()
@@ -70,6 +74,12 @@ class Unit: SerializableJSON, PType
         self.DS_health_bar.size = barSize
         
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
+        self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
+        
+        self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 2
+        self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
+        
+       
     }
     
     init(ID: String, spawnLocation: CGPoint) {
@@ -79,6 +89,9 @@ class Unit: SerializableJSON, PType
         
         // ===TESTING
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
+        self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
+        self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 2
+        self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
     }
     
     /* Helper function that loads an animation into SKAction */
