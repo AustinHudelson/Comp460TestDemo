@@ -12,7 +12,6 @@ import SpriteKit
 class SoulExchange: Order, PType, Transient
 {
     var DS_target: Unit?
-    var tID: String = ""
     //var ID: String = ""
     var DS_moveState = false
     

@@ -1,16 +1,17 @@
 //
-//  Warrior.swift
+//  EnemyPriest.swift
 //  460Demo
 //
-//  Created by Olyver on 1/31/15.
+//  Created by Olyver on 4/1/15.
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
+
 
 import SpriteKit
 import Foundation
 
-@objc(Enemy)
-class Enemy: Unit, PType
+@objc(EnemyPriest)
+class EnemyPriest: Unit, PType
 {
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
@@ -31,21 +32,22 @@ class Enemy: Unit, PType
     {
         super.init(ID:ID, spawnLocation: spawnLocation)
         //INITILIZE THE UNITS STATS HERE!!!
-        self.type = "Enemy"
-        self.health = 40
-        self.maxhealth = Attribute(baseValue: 55.0)
+        self.type = "EnemyPriest"
+        self.health = 30
+        self.maxhealth = Attribute(baseValue: 45.0)
         self.DS_healthregen = 0
-        self.attackSpeed = Attribute(baseValue: 1.5)
-        self.attackDamage = Attribute(baseValue: 12.0)
-        self.speed = Attribute(baseValue: 100.0)
-        self.attackRange = 20.0
+        self.attackSpeed = Attribute(baseValue:  1.88)
+        self.attackDamage = Attribute(baseValue: 3.0)
+        self.speed = Attribute(baseValue: 50.0)
+        self.attackRange = 300.0
         self.isEnemy = true
-        self.xSize = 275.0
-        self.ySize = 275.0
+        self.xSize = 250.0
+        self.ySize = 250.0
         
         //Initializes all the DS_ animations
         initializeAnimations()
         self.sprite.position = spawnLocation
+        
         self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 1
         self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
     }
@@ -53,7 +55,7 @@ class Enemy: Unit, PType
     func initializeAnimations() {
         let AnimationName = "character1basecolorization"
         
-        let classPrefix = "Warrior"
+        let classPrefix = "Priest"
         
         let standAnimName = "-attack"
         let walkAnimName = "-walk"
@@ -99,22 +101,59 @@ class Enemy: Unit, PType
         self.DS_deathAnim = SKAction.repeatAction(deathAnim, count: 1)
         self.DS_stumbleAnim = SKAction.repeatAction(stumbleAnim, count: 1)
         
-        
         /* Sprite setup */
-        self.sprite = SKSpriteNode(imageNamed: "WarriorStand200x200")
+        self.sprite = SKSpriteNode(imageNamed: "NewPriestStand200x200")
         
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
         self.sprite.runAction(SKAction.resizeToHeight(self.ySize, duration:0.0))
+        
     }
     
-
+   
     override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint) {
-        //Enemy has a red health text color
-        //self.DS_health_txt.fontColor = UIColor.redColor()
+        //Enemies have a red health text color
+        self.DS_health_txt.fontColor = UIColor.redColor()
+        
         super.addUnitToGameScene(gameScene, pos: pos)
-        self.sendOrder(RoamAttack(receiverIn: self))
-        self.applyTint("Enemy", red: 1.0, blue: 0.5, green: 0.5)
-
+        
+        //Give a light red tint.
+        self.applyTint("Enemy", red: 1.5, blue: 1.5, green: 0.5)
+        
+        //Mage should walk on to the screen before being allowed to attack.
+        if Game.global.scene != nil && (self.sprite.position.x < CGRectGetMinX(Game.global.scene!.frame)) {
+            //Mage is off the side of the screen on the left side. Send order to move on to the screen then roam attack.
+            self.move(CGPoint(x: CGRectGetMinX(Game.global.scene!.frame)+80, y: self.sprite.position.y), complete: {
+                self.sendOrder(RoamHeal(receiverIn: self))
+            })
+        } else if (Game.global.scene != nil && (self.sprite.position.x > CGRectGetMaxX(Game.global.scene!.frame))) {
+            //Priest is off the side of the screen on the right side. Send order to move on to the screen then roam attack.
+            self.move(CGPoint(x: CGRectGetMaxX(Game.global.scene!.frame)-80, y: self.sprite.position.y), complete: {
+                self.sendOrder(RoamHeal(receiverIn: self))
+            })
+        } else {
+            self.sendOrder(RoamHeal(receiverIn: self))
+        }
+    }
+    override func weaponHandle(target: Unit){
+        //Setup heal particle emitter
+        let emitterPath: String = NSBundle.mainBundle().pathForResource("HealParticle", ofType: "sks")!
+        let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as SKEmitterNode
+        //emitterNode.position = self.sprite!.position
+        emitterNode.name = "Healing"
+        emitterNode.zPosition = self.sprite.zPosition+2
+        emitterNode.targetNode = target.sprite
+        
+        let halfWaitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(0.2))
+        let removeNodeBlock: SKAction = SKAction.runBlock({
+            emitterNode.removeFromParent()
+        })
+        let applyHealingBlock: SKAction = SKAction.runBlock({
+            self.dealHealing(self.attackDamage.get(), target: target)
+        })
+        
+        //Start the emitter node, wait half, heal, wait half again, remove the emitter node
+        self.sprite.addChild(emitterNode)   //Start the emitter node
+        self.sprite.runAction(SKAction.sequence([halfWaitAction, applyHealingBlock, halfWaitAction, removeNodeBlock]))
     }
 }

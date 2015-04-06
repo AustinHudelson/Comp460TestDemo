@@ -21,6 +21,7 @@ class Game {
     var level: Level?
     var myPlayerIsDead = false
     var enemyIDCounter = 0
+    var fileManager: FileManager?
     
     class var global:Game{
         struct Static{
@@ -175,6 +176,7 @@ class Game {
         }
         self.scene!.addChild(winText)
         self.scene!.removeActionForKey("SyncAction")
+        self.gameOverTransition()
     }
     
     func localPlayerloseGame()
@@ -208,23 +210,20 @@ class Game {
         self.scene!.removeActionForKey("SyncAction")
         
         
-//        let healBlock: SKAction = SKAction.runBlock({
-//            if target.alive == true {
-//                target.takeDamage(-2)
-//                self.healOverTime(heal-2, target:target)
-//            }
-//        })
-//        self.DS_receiver?.sprite.runAction(SKAction.sequence([waitAction, healBlock]))
-        
-        
-        //attempt at making segue to mainMenu
-        //above is the example code i was using
-        
-//        let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(5.0))
-//        
-//        let segueBlock: SKAction  = SKAction.runBlock({  self.scene!.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)})
-//        SKAction.sequence([sendInterval, segueBlock])
+ 
+        self.gameOverTransition()
     
+    }
+    
+    func gameOverTransition()
+    {
+        let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(3.0))
+        
+        let segueBlock: SKAction  = SKAction.runBlock({  self.scene!.viewController?.performSegueWithIdentifier("mainMenuSegue", sender:  nil)
+            return ()
+        })
+        let endSequence: SKAction = SKAction.sequence([sendInterval, segueBlock])
+        self.scene!.runAction(endSequence)
     }
     
     /* Gets a unit given a String
@@ -313,12 +312,16 @@ class Game {
     /*
     * Returns the closest ENEMY to the given point
     */
-    func getClosestEnemy(p1: CGPoint) -> Unit? {
+    func getClosestEnemy(p1: CGPoint, ID: String) -> Unit? {
         var nearby: Unit? = nil
         var near: CGFloat = CGFloat.infinity
         
         for (id, unit) in Game.global.enemyMap {
             if unit.alive == false {
+                continue
+            }
+            if unit.ID == ID
+            {
                 continue
             }
             var p2 = unit.sprite.position
@@ -414,13 +417,26 @@ class Game {
         outerDict["SyncEnemies"] = []
         var enemyStats: Dictionary<String, AnyObject> = [:]
         
+        /* Need this to sync enemy's orders */
+        outerDict["Orders"] = []
+        
         for (enemyID, enemyUnit) in enemyMap {
             enemyStats["health"] = enemyUnit.health
             enemyStats["posX"] = Float(enemyUnit.sprite.position.x)
             enemyStats["posY"] = Float(enemyUnit.sprite.position.y)
             enemyStats["ID"] = enemyID
+
+//            /* Send every enemy's Orders for sync...Except for Idle Order */
+//            if !(enemyUnit.currentOrder is Idle) {
+//                outerDict["Orders"]!.append(enemyUnit.currentOrder.toJSON())
+//            }
         }
         outerDict["SyncEnemies"]!.append(enemyStats)
+        
+        let pname = AppWarpHelper.sharedInstance.playerName
+        let host = AppWarpHelper.sharedInstance.host
+        println("!!\(pname) =? \(host) is now sending the following synchostmsg:")
+        println(outerDict)
         
         NetworkManager.sendMsg(&outerDict)
     }
@@ -591,10 +607,15 @@ class Game {
             var anyobjecttype: AnyObject.Type = NSClassFromString(order["type"] as NSString)
             var nsobjecttype: Order.Type = anyobjecttype as Order.Type
             var newOrder: Order = nsobjecttype(receivedData: order)
+            
+            println("!!Received Order for ID: \(newOrder.ID!)")
+            
             if getUnit(newOrder.ID!) != nil
             {
+                /*
+                    Check if this Order was meant for the enemy, if it is, further check whether we need to update
+                */
                 getUnit(newOrder.ID!)!.sendOrder(newOrder)   //SEND THE ORDER TO ITS UNIT
-                //newOrder.valueForKey("DS_receiver")
             }
         }
     }

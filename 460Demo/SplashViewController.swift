@@ -69,13 +69,27 @@ class SplashViewController: UIViewController, UITextFieldDelegate {
         
         playerNameTxtField.delegate = self
         
-//        //PRELOAD GAME TEXTURE ATLASES
-//        TextureLoader.global.preload()
         warSelButton.selected = true
+        
+        println(UIDevice.currentDevice().identifierForVendor.UUIDString)
+        
+        /* Initialize FileMangager to get the save game data file path. If it doesn't create one, this initialize function will create it */
+        Game.global.fileManager = FileManager()
+        Game.global.fileManager!.initialize()
+        
+        /* Load myPlayerName from file */
+        Game.global.fileManager!.loadGameData()
+        playerNameTxtField.text = PersistGameData.sharedInstance.myPlayerName
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "playerNameSegue") {
+            /* On segue into lobby screen, set & save the player name to file */
+            PersistGameData.sharedInstance.myPlayerName = playerNameTxtField.text
+            Game.global.fileManager!.saveGameData()
+            
+            /* Set the player name and class variables */
             var svc = segue.destinationViewController as LobbyViewController
             svc.myPlayerName = playerNameTxtField.text
             svc.myClass = selectedClass

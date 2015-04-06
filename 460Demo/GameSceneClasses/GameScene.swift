@@ -72,8 +72,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Setup your scene here */
         println("Moved in to scene is Active:")
         println(sceneActive)
-        println("Textures done loading: ")
-        println(TextureLoader.global.preloaded)
         Game.global.clearGlobals()
         Game.global.scene = self
 //        /* Setup game background image */
@@ -91,6 +89,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Game.global.addSyncActionToScene()
     }
     
+    override func willMoveFromView(view: SKView)
+    {
+        Game.global.scene = nil
+        AppWarpHelper.sharedInstance.gameScene = nil
+    }
     /// physics
     func didBeginContact(contact: SKPhysicsContact) {
         
@@ -131,6 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.removeAllChildren()
                 self.removeActionForKey("SyncAction")
                 self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
+                
                 
                 
             }

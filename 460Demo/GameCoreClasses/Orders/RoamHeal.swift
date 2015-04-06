@@ -1,5 +1,5 @@
 //
-//  Attack.swift
+//  RoamHeal.swift
 //  460Demo
 //
 //  Created by Olyver on 2/4/15.
@@ -8,10 +8,10 @@
 
 import SpriteKit
 
-@objc(RoamAttack)
-class RoamAttack: Order, PType
+@objc(RoamHeal)
+class RoamHeal: Order, PType
 {
-    var DS_target: Unit?
+    var DS_target: Unit? = nil
     //var DS_receiver: Unit?
     var animationGapDistance: CGFloat = 20.0 //Default value is overwritten in init
     //var ID: String = ""
@@ -20,13 +20,13 @@ class RoamAttack: Order, PType
     init(receiverIn: Unit){
         super.init()
         self.DS_receiver = receiverIn
-        self.DS_target = Game.global.getClosestPlayer(receiverIn.sprite.position) // might be nil when all the players die
+        self.DS_target = Game.global.getClosestEnemy(receiverIn.sprite.position, ID: receiverIn.ID) // might be nil when all the other units die
         self.animationGapDistance = 20.0
         if self.DS_target != nil {
             tID = DS_target!.ID
         } // else tID's an empty string
         ID = receiverIn.ID
-        type = "RoamAttack"
+        type = "RoamHeal"
     }
     
     required init(receivedData: Dictionary<String, AnyObject>) {
@@ -38,22 +38,26 @@ class RoamAttack: Order, PType
     }
     
     override func apply(){
-        
+        println("looking for heal target outside")
+        println("Hello\(self.tID)")
         //check if have valid target/dead
         if self.DS_target == nil || !self.DS_target!.alive
         {
-            self.DS_target = Game.global.getClosestPlayer(self.DS_receiver!.sprite.position) // might be nil when all the players die
+            self.DS_target = Game.global.getClosestEnemy(self.DS_receiver!.sprite.position, ID: DS_receiver!.ID) // might be nil when all the players die
+            println("looking for heal target")
         }
         
         //if its still nil
         if self.DS_target == nil {
-            // no more players to kill so send idle order to this unit
-            let idle: Idle = Idle(receiverIn: self.DS_receiver!)
-            self.DS_receiver?.sendOrder(idle)
+            // no more players to kill so send heal to self order to this unit
+            println("healing self")
+            self.DS_target = self.DS_receiver!
+            self.DS_receiver!.attack(self.DS_target!, complete: {self.apply()})
         }
             
         else {
             //Players left alive. Send attack to unit with complete to recall apply and find a new player to attack.
+            println("apply")
             self.DS_receiver!.attack(self.DS_target!, complete: {self.apply()})
         }
     }

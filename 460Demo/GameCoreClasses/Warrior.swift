@@ -32,7 +32,7 @@ class Warrior: Unit, PType
         self.type = "Warrior"
         self.health = 100
         self.maxhealth = Attribute(baseValue: 100)
-        self.healthregen = 1
+        self.DS_healthregen = 1
         self.speed = Attribute(baseValue: 90.0)
         self.attackSpeed = Attribute(baseValue: 1.88)
         self.attackRange = 20.0
@@ -44,7 +44,7 @@ class Warrior: Unit, PType
         //Initializes all the DS_ animations
         initializeAnimations()
         self.sprite.position = spawnLocation
-        self.sprite.zPosition = 1
+       
         /* Initialize Warrior buttons. They will automatically be added to the scene */
         let Button0: Ability = ButtonTaunt(slot: 0)
         let Button1: Ability = ButtonEnrage(slot: 1)

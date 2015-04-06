@@ -13,7 +13,6 @@ class Attack: Order, PType
 {
     var DS_target: Unit?
     var animationGapDistance: CGFloat = 20.0
-    var tID: String = ""
     //var ID: String = ""
     var DS_moveState = false
     var DS_targetCircle: SKSpriteNode?

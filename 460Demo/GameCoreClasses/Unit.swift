@@ -16,9 +16,10 @@ class Unit: SerializableJSON, PType
     var type: String = "Unit"
     var ID: String = ""
     var health: CGFloat = 0.0
+    
     var damageMultiplier: Attribute = Attribute(baseValue: 1.0)
     var maxhealth: Attribute = Attribute(baseValue: 0.0)
-    var healthregen: Int = 0
+    var DS_healthregen: Int = 0
     var speed: Attribute = Attribute(baseValue: 0.0)
     var xSize: CGFloat = 200.0
     var ySize: CGFloat = 200.0
@@ -49,7 +50,7 @@ class Unit: SerializableJSON, PType
     var DS_attackTarget: Unit?
     var DS_isCommandable: Bool = true   /*Private*/
     var DS_queuedOrder: Order?
-    var DS_isFacingLeft: Bool = true
+    var DS_isFacingLeft: Bool = false
     
     var DS_health_txt: SKLabelNode = SKLabelNode(text: "")
     var DS_health_bar: SKSpriteNode = SKSpriteNode(imageNamed: "InnerHealthBar")
@@ -194,7 +195,7 @@ class Unit: SerializableJSON, PType
             currentOrder = order
             order.apply()
         } else {
-            //If this unit is uncommandable queue the order instead
+            //If this unit is uncommandable queue the wd instead
             self.DS_queuedOrder = order
         }
     }
@@ -377,6 +378,8 @@ class Unit: SerializableJSON, PType
         //DS_health_bar.runAction(healthTextMovementAction, withKey:"move")
         // adjustBarAnchorPoint()
         sprite.runAction(walkSequence, withKey: "move")
+        self.sprite.zPosition = setZPosition(self.sprite.position.y) + self.DS_zSpriteOffset
+        self.DS_health_bar.zPosition = setZPosition(self.DS_health_bar.position.y) + self.DS_zHealthOffset
     }
     
     func clearMove(){
@@ -558,6 +561,12 @@ class Unit: SerializableJSON, PType
         
     }
     
+    
+    //put in the y position of the sprite to get the zposition you should have
+    func setZPosition (y:CGFloat)-> CGFloat
+    {
+        return Game.global.scene!.frame.maxY - self.sprite.position.y
+    }
     
     
 }
