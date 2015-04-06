@@ -50,7 +50,7 @@ class LevelThree1:Level
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame), y:CGRectGetMidY(scene.frame)+125);
-            let dummy5 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy5 = EnemyPriest(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             //DUMMY_ID = "ENEMY6"
             //dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-100);
@@ -71,7 +71,7 @@ class LevelThree1:Level
             //needs to be a priest
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-200);
-            let dummy8 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy8 = EnemyPriest(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             wave.append(dummy6)
             wave.append(dummy7)
@@ -86,12 +86,12 @@ class LevelThree1:Level
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)+125);
             
-            let dummy8 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy8 = EnemyPriest(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
             
-            let dummy9 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy9 = EnemyPriest(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             wave.append(dummy7)
             wave.append(dummy8)

@@ -59,7 +59,7 @@ class LevelTwo1:Level
             //needs to be a priest
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-125);
-            let dummy6 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy6 = EnemyPriest(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             wave.append(dummy4)
             wave.append(dummy5)
