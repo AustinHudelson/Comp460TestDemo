@@ -141,7 +141,7 @@ class EnemyPriest: Unit, PType
         let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as SKEmitterNode
         //emitterNode.position = self.sprite!.position
         emitterNode.name = "Healing"
-        emitterNode.zPosition = self.sprite.zPosition+2
+        emitterNode.zPosition = target.sprite.zPosition+2
         emitterNode.targetNode = target.sprite
         
         let halfWaitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(0.2))
@@ -153,7 +153,7 @@ class EnemyPriest: Unit, PType
         })
         
         //Start the emitter node, wait half, heal, wait half again, remove the emitter node
-        self.sprite.addChild(emitterNode)   //Start the emitter node
-        self.sprite.runAction(SKAction.sequence([halfWaitAction, applyHealingBlock, halfWaitAction, removeNodeBlock]))
+        target.sprite.addChild(emitterNode)   //Start the emitter node
+        target.sprite.runAction(SKAction.sequence([halfWaitAction, applyHealingBlock, halfWaitAction, removeNodeBlock]))
     }
 }
