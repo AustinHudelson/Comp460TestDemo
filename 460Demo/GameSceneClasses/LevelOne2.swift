@@ -78,7 +78,7 @@ class LevelOne2:Level
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-125);
             //needs to be priest
-            let dummy11 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy11 = EnemyPriest(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             
             wave.append(dummy9)
@@ -103,7 +103,7 @@ class LevelOne2:Level
             
             DUMMY_ID = Game.global.getNextEnemyID()
             dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
-            let dummy15 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
+            let dummy15 = EnemyPriest(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             wave.append(dummy12)
             wave.append(dummy13)
