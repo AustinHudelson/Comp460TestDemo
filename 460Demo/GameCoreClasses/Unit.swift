@@ -74,7 +74,7 @@ class Unit: SerializableJSON, PType
         self.DS_health_bar.size = barSize
         
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
-        self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
+        //self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
         
         self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 2
         self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
@@ -89,7 +89,7 @@ class Unit: SerializableJSON, PType
         
         // ===TESTING
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
-        self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
+        //self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
         self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 2
         self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
     }
