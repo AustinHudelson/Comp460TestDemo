@@ -533,9 +533,9 @@ class Game {
                     } else {
                         //This is my unit
                         let myPlayerCircle = SKSpriteNode(imageNamed: "SelectionCircle_Green_Heavy")
-                        let yOffset = (-0.225 * newUnit.sprite.size.height)
+                        let yOffset = (-0.4 * newUnit.sprite.size.height)
                         let xyRatio: CGFloat = 2.25     /*Value calcuated xSize/ySize of the circle image*/
-                        let xSize = 0.5 * newUnit.sprite.size.width
+                        let xSize = 0.85 * newUnit.sprite.size.width
                         let ySize = xSize/xyRatio
                         myPlayerCircle.size = CGSize(width: xSize, height: ySize)
                         myPlayerCircle.position = CGPoint(x: 0.0, y: yOffset)
