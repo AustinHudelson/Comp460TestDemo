@@ -45,13 +45,15 @@ class Enrage: Order, PType, Transient
     
     func applyBuff()
     {
-        self.DS_receiver?.speed.addModifier("Enraged", value: 2.0)
+        self.DS_receiver?.speed.addModifier("Enraged", value: 3.0)
+        self.DS_receiver?.attackSpeed.addModifier("Enraged", value: 0.6)
         self.DS_receiver?.applyTint("Enraged", red: 1.0, blue: 0.5, green: 0.5)
     }
     
     func removeBuff()
     {
         self.DS_receiver?.speed.removeModifier("Enraged")
+        self.DS_receiver?.attackSpeed.removeModifier("Enraged")
         //SPECIAL CASE. BECAUSE MULTIPLE TINTS IS NOT YET IMPLEMENTED BE SURE TO RESTORE TO GREY COLOR AFTER ENRAGE ENDS IF THE AFFECTED PLAYER IS NOT THE LOCALLY CONTROLLED PLAYER. Because players that are not you are tinted grey atm so you can tell the differance. REMOVE THIS ONCE WE CHANGE HOW THIS WORKS.
         self.DS_receiver?.removeTint("Enraged")
         

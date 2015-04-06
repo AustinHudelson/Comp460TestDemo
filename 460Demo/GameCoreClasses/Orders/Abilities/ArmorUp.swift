@@ -13,7 +13,7 @@ import SpriteKit
 class ArmorUp: Order, PType
 {
     let DS_duration = NSTimeInterval(5.0)
-    let DS_armorAmount: CGFloat = 0.5
+    let DS_armorAmount: CGFloat = 0.2
     init(receiverIn: Unit)
     {
         super.init()

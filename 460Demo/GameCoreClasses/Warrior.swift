@@ -33,13 +33,14 @@ class Warrior: Unit, PType
         self.health = 100
         self.maxhealth = Attribute(baseValue: 100)
         self.DS_healthregen = 1
-        self.speed = Attribute(baseValue: 90.0)
+        self.speed = Attribute(baseValue: 70.0)
         self.attackSpeed = Attribute(baseValue: 1.88)
         self.attackRange = 20.0
         self.attackDamage = Attribute(baseValue: 10.0)
         self.isEnemy = false
         self.xSize = 300.0
         self.ySize = 300.0
+        self.damageMultiplier.addModifier("war", value: 0.8)
         
         //Initializes all the DS_ animations
         initializeAnimations()
