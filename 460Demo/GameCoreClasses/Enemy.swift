@@ -37,7 +37,7 @@ class Enemy: Unit, PType
         self.DS_healthregen = 0
         self.attackSpeed = Attribute(baseValue: 1.5)
         self.attackDamage = Attribute(baseValue: 12.0)
-        self.speed = Attribute(baseValue: 100.0)
+        self.speed = Attribute(baseValue: 120.0)
         self.attackRange = 20.0
         self.isEnemy = true
         self.xSize = 275.0

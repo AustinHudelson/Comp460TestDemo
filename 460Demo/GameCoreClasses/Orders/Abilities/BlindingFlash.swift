@@ -15,7 +15,7 @@ class BlindingFlash: Order, PType
     let DS_radius: CGFloat = 400
     let DS_bump: CGFloat = 300
     let DS_stunDuration: NSTimeInterval = 2.0
-    let DS_damage: CGFloat = 30
+    let DS_damage: CGFloat = 10.0
     init(receiverIn: Unit)
     {
         super.init()

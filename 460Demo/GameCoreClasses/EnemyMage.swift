@@ -37,7 +37,7 @@ class EnemyMage: Unit, PType
         self.DS_healthregen = 0
         self.attackSpeed = Attribute(baseValue:  1.88)
         self.attackDamage = Attribute(baseValue: 6.0)
-        self.speed = Attribute(baseValue: 50.0)
+        self.speed = Attribute(baseValue: 80.0)
         self.attackRange = 300.0
         self.isEnemy = true
         self.xSize = 250.0
