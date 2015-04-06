@@ -569,7 +569,7 @@ class Unit: SerializableJSON, PType
         if (self.DS_isFacingLeft == true){
             DS_health_bar.position.x = fabs(newXOffset)
         } else {
-            DS_health_bar.position.x = newXOffset
+            DS_health_bar.position.x = -fabs(newXOffset)
         }
         
     }
