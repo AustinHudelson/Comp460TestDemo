@@ -426,14 +426,18 @@ class Game {
             enemyStats["posY"] = Float(enemyUnit.sprite.position.y)
             enemyStats["ID"] = enemyID
 
-            /* Send every enemy's Orders for sync...Except for Idle Order */
-            if !(enemyUnit.currentOrder is Idle) {
-                outerDict["Orders"]!.append(enemyUnit.currentOrder.toJSON())
-            }
+//            /* Send every enemy's Orders for sync...Except for Idle Order */
+//            if !(enemyUnit.currentOrder is Idle) {
+//                outerDict["Orders"]!.append(enemyUnit.currentOrder.toJSON())
+//            }
         }
         outerDict["SyncEnemies"]!.append(enemyStats)
         
-//        println(outerDict)
+        let pname = AppWarpHelper.sharedInstance.playerName
+        let host = AppWarpHelper.sharedInstance.host
+        println("!!\(pname) =? \(host) is now sending the following synchostmsg:")
+        println(outerDict)
+        
         NetworkManager.sendMsg(&outerDict)
     }
     
@@ -611,10 +615,15 @@ class Game {
             var anyobjecttype: AnyObject.Type = NSClassFromString(order["type"] as NSString)
             var nsobjecttype: Order.Type = anyobjecttype as Order.Type
             var newOrder: Order = nsobjecttype(receivedData: order)
+            
+            println("!!Received Order for ID: \(newOrder.ID!)")
+            
             if getUnit(newOrder.ID!) != nil
             {
+                /*
+                    Check if this Order was meant for the enemy, if it is, further check whether we need to update
+                */
                 getUnit(newOrder.ID!)!.sendOrder(newOrder)   //SEND THE ORDER TO ITS UNIT
-                //newOrder.valueForKey("DS_receiver")
             }
         }
     }

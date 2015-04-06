@@ -40,6 +40,7 @@ class FileManager {
         
         /* If file doesnt exist, create one by saving junk data */
         if !fileUrl.checkResourceIsReachableAndReturnError(nil) {
+            println("The file \(saveFileName) does not exist! Creating a new \(saveFileName) by first saving junk data onto it (this can be overwritten later in subsequent saves)")
             saveGameData()
         }
         fileCreated = true
