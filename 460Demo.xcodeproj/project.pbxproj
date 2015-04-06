@@ -67,7 +67,6 @@
 		68F3FF1B1AC92A8B009FAB4F /* Spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FE4F1AC92A8A009FAB4F /* Spark.png */; };
 		68F3FF1C1AC92A8B009FAB4F /* Spark_Solid.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FE501AC92A8A009FAB4F /* Spark_Solid.png */; };
 		68F3FF1D1AC92A8B009FAB4F /* WhiteCircle_Solid.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FE511AC92A8A009FAB4F /* WhiteCircle_Solid.png */; };
-		68F3FF1E1AC92A8B009FAB4F /* HealthBar_Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FE531AC92A8A009FAB4F /* HealthBar_Green.png */; };
 		68F3FF1F1AC92A8B009FAB4F /* SelectionCircle_Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FE541AC92A8A009FAB4F /* SelectionCircle_Green.png */; };
 		68F3FF201AC92A8B009FAB4F /* SelectionCircle_Green_Heavy.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FE551AC92A8A009FAB4F /* SelectionCircle_Green_Heavy.png */; };
 		68F3FF211AC92A8B009FAB4F /* SelectionCircle_Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FE561AC92A8A009FAB4F /* SelectionCircle_Red.png */; };
@@ -278,7 +277,7 @@
 		F48B20B81AC5F13B007487F6 /* TargetEnemyAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20B71AC5F13B007487F6 /* TargetEnemyAbility.swift */; };
 		F48B20BA1AC5F152007487F6 /* TargetedAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20B91AC5F152007487F6 /* TargetedAbility.swift */; };
 		F48B20BC1AC5F8D4007487F6 /* InstantAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20BB1AC5F8D4007487F6 /* InstantAbility.swift */; };
-		F48B20BF1ACC8568007487F6 /* InnerHealthbar.png in Resources */ = {isa = PBXBuildFile; fileRef = F48B20BD1ACC8568007487F6 /* InnerHealthbar.png */; };
+		F48B20BF1ACC8568007487F6 /* InnerHealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = F48B20BD1ACC8568007487F6 /* InnerHealthBar.png */; };
 		F48B20C01ACC8568007487F6 /* OutterHealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = F48B20BE1ACC8568007487F6 /* OutterHealthBar.png */; };
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
@@ -483,7 +482,6 @@
 		68F3FE4F1AC92A8A009FAB4F /* Spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spark.png; sourceTree = "<group>"; };
 		68F3FE501AC92A8A009FAB4F /* Spark_Solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spark_Solid.png; sourceTree = "<group>"; };
 		68F3FE511AC92A8A009FAB4F /* WhiteCircle_Solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteCircle_Solid.png; sourceTree = "<group>"; };
-		68F3FE531AC92A8A009FAB4F /* HealthBar_Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HealthBar_Green.png; sourceTree = "<group>"; };
 		68F3FE541AC92A8A009FAB4F /* SelectionCircle_Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectionCircle_Green.png; sourceTree = "<group>"; };
 		68F3FE551AC92A8A009FAB4F /* SelectionCircle_Green_Heavy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectionCircle_Green_Heavy.png; sourceTree = "<group>"; };
 		68F3FE561AC92A8A009FAB4F /* SelectionCircle_Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectionCircle_Red.png; sourceTree = "<group>"; };
@@ -695,7 +693,7 @@
 		F48B20B71AC5F13B007487F6 /* TargetEnemyAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetEnemyAbility.swift; sourceTree = "<group>"; };
 		F48B20B91AC5F152007487F6 /* TargetedAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetedAbility.swift; sourceTree = "<group>"; };
 		F48B20BB1AC5F8D4007487F6 /* InstantAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantAbility.swift; sourceTree = "<group>"; };
-		F48B20BD1ACC8568007487F6 /* InnerHealthbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InnerHealthbar.png; sourceTree = "<group>"; };
+		F48B20BD1ACC8568007487F6 /* InnerHealthBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InnerHealthBar.png; sourceTree = "<group>"; };
 		F48B20BE1ACC8568007487F6 /* OutterHealthBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OutterHealthBar.png; sourceTree = "<group>"; };
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
@@ -1091,8 +1089,7 @@
 				68FAEA171AC9C6470045259A /* PriestStand200x200.png */,
 				68FAEA151AC9C3B30045259A /* NewMageStand200x200.png */,
 				68FAEA131AC9B46F0045259A /* WarriorStand200x200.png */,
-				68F3FE531AC92A8A009FAB4F /* HealthBar_Green.png */,
-				F48B20BD1ACC8568007487F6 /* InnerHealthbar.png */,
+				F48B20BD1ACC8568007487F6 /* InnerHealthBar.png */,
 				F48B20BE1ACC8568007487F6 /* OutterHealthBar.png */,
 				68F3FE541AC92A8A009FAB4F /* SelectionCircle_Green.png */,
 				68F3FE551AC92A8A009FAB4F /* SelectionCircle_Green_Heavy.png */,
@@ -1791,7 +1788,7 @@
 				68F3FF781AC92A8B009FAB4F /* S_Holy02.png in Resources */,
 				680CD85C1AC5D38F00AEFBEB /* Main.storyboard in Resources */,
 				F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */,
-				F48B20BF1ACC8568007487F6 /* InnerHealthbar.png in Resources */,
+				F48B20BF1ACC8568007487F6 /* InnerHealthBar.png in Resources */,
 				F4B563C01AB3A5CF0094B2A7 /* slime2.wav in Resources */,
 				68F3FF121AC92A8B009FAB4F /* Priest-stumble.atlas in Resources */,
 				68F3FF621AC92A8B009FAB4F /* S_Buff10.png in Resources */,
@@ -1864,7 +1861,6 @@
 				F4B563C11AB3A5CF0094B2A7 /* slime3.wav in Resources */,
 				F4B563701AB3A5CF0094B2A7 /* sword-unsheathe3.wav in Resources */,
 				F4B5638F1AB3A5CF0094B2A7 /* random4.wav in Resources */,
-				68F3FF1E1AC92A8B009FAB4F /* HealthBar_Green.png in Resources */,
 				F4B5637E1AB3A5CF0094B2A7 /* bubble3.wav in Resources */,
 				68F3FF671AC92A8B009FAB4F /* S_Death01.png in Resources */,
 				68F3FF221AC92A8B009FAB4F /* SelectionCircle_Red_Heavy.png in Resources */,
