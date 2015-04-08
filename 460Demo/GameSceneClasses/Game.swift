@@ -103,7 +103,6 @@ class Game {
             var player = playerMap[ID]!
             playerMap[ID] = nil
             let remove: SKAction = SKAction.removeFromParent()
-            player.DS_health_txt.runAction(remove)
             player.sprite.runAction(remove)
             if ID == AppWarpHelper.sharedInstance.playerName
             {
@@ -425,11 +424,17 @@ class Game {
             enemyStats["posX"] = Float(enemyUnit.sprite.position.x)
             enemyStats["posY"] = Float(enemyUnit.sprite.position.y)
             enemyStats["ID"] = enemyID
+            
+            if enemyUnit.health <= 0 {
+                assert(enemyUnit.alive == false, "ENEMY WITH NEGITIVE HEALTH IS NOT DEAD")
+                enemyUnit.kill()
+            }
 
 //            /* Send every enemy's Orders for sync...Except for Idle Order */
 //            if !(enemyUnit.currentOrder is Idle) {
 //                outerDict["Orders"]!.append(enemyUnit.currentOrder.toJSON())
 //            }
+            
         }
         outerDict["SyncEnemies"]!.append(enemyStats)
         

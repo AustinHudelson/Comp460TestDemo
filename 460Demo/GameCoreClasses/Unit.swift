@@ -58,11 +58,14 @@ class Unit: SerializableJSON, PType
     let DS_health_bar_outline_padding: CGFloat = 2.0
     var DS_health_bar_y: CGFloat = 32.0
     var DS_health_bar_max_x: CGFloat?
-    
     var DS_health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
     var DS_health_bar_x_dspl: CGFloat = -35
     var DS_zSpriteOffset: CGFloat = 2
     var DS_zHealthOffset: CGFloat = 3
+    
+    var DS_deadOrder: Order?
+    
+    
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
         super.init()
@@ -512,18 +515,29 @@ class Unit: SerializableJSON, PType
     */
     func synchronize(receivedLife: CGFloat, receivedPosition: CGPoint){
         //Sync Health
-        self.health = receivedLife
+        if (self.alive == true){
+            //is alive
+            if (receivedLife > 0.0){
+                //Should be alive
+                self.health = receivedLife
+            } else {
+                //Should be dead
+                self.kill()
+            }
+        } else {
+            //is dead
+            if (receivedLife > 0.0){
+                //Should be alive
+                self.revive()
+            } else {
+                //Should be dead
+                self.kill()
+            }
+        }
         
         //Sync Position
         self.sprite.position = receivedPosition
     }
-    
-    /*
-     * Call every 1 second or so to update units.
-     */
-    
-        //self.currentOrder.update()
-    
     
     /*
     * LOCAL DEATH
@@ -537,12 +551,15 @@ class Unit: SerializableJSON, PType
         //applyTint(SKColor.blackColor(), factor: 1.0, blendDuration: 1.0)
         self.clearAttack()
         self.clearMove()
+        //Store the dead order
+        self.DS_deadOrder = self.currentOrder
+        
         sendOrder(Idle(receiverIn: self))
         self.sprite.removeActionForKey("stand")
         //SETUP DEATH SEQUENCE! Play Death. Wait. Then remove. REMOVING LOCALLY IS DANGEROUS
         let waitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(0.0))
         let removeBlockAction:SKAction = SKAction.runBlock({
-            Game.global.removeUnit(self.ID)
+            self.sprite.hidden = true
         })
         let soundAction = SKAction.playSoundFileNamed("mnstr12.wav", waitForCompletion: true)
         self.sprite.runAction(soundAction)
@@ -554,7 +571,54 @@ class Unit: SerializableJSON, PType
      * Actually removes the unit from memory. Should not be called until a negitive update unit is called
      */
     func kill(){
-        
+        if alive == true {
+            //COPY OF DEATH()
+            
+            if alive == false {
+                return
+            }
+            alive = false
+            //applyTint(SKColor.blackColor(), factor: 1.0, blendDuration: 1.0)
+            self.clearAttack()
+            self.clearMove()
+            //Store the dead order
+            self.DS_deadOrder = self.currentOrder
+            
+            sendOrder(Idle(receiverIn: self))
+            self.sprite.removeActionForKey("stand")
+            //SETUP DEATH SEQUENCE! Play Death. Wait. Then remove. REMOVING LOCALLY IS DANGEROUS
+            let waitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(0.0))
+            let removeBlockAction:SKAction = SKAction.runBlock({
+                //MODIFIED DEATH() COPY. ADDED COPY OF ELSE STATEMENT TO REMOVE AND HIDE
+                Game.global.removeUnit(self.ID)
+                self.sprite.removeAllChildren()
+                self.sprite.removeAllActions()
+                self.sprite.removeFromParent()
+            })
+            let soundAction = SKAction.playSoundFileNamed("mnstr12.wav", waitForCompletion: true)
+            self.sprite.runAction(soundAction)
+            let deathThenRemove: SKAction = SKAction.sequence([DS_deathAnim!, waitAction, removeBlockAction])
+            self.sprite.runAction(deathThenRemove)
+            
+            //END COPY OF DEATH()
+        } else {
+            //alive == false
+            Game.global.removeUnit(self.ID)
+            self.sprite.removeAllChildren()
+            self.sprite.removeAllActions()
+            self.sprite.removeFromParent()
+        }
+    }
+    
+    /*
+     * Used to restore a unit to existance after it has been locally killed but then a sync
+     * message is received notifying that it should still be alive.
+     */
+    func revive(){
+        self.sprite.hidden = false
+        self.alive = true
+        self.sendOrder(DS_deadOrder!)
+        DS_deadOrder = nil
     }
     
 //    func adjustBarAnchorPoint()
