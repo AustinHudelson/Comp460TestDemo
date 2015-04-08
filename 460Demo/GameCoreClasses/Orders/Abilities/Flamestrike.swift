@@ -10,7 +10,7 @@
 import SpriteKit
 
 @objc(Flamestrike)
-class Flamestrike: Order, PType, Transient
+class Flamestrike: Order, PType
 {
     var DS_moveState = false
     
