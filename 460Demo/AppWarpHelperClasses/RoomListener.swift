@@ -78,9 +78,22 @@ class RoomListener: NSObject,RoomRequestListener
         AppWarpHelper.sharedInstance.userName_list = event.joinedUsers
         
         
-        /* If gameScene is nil that means we're in the lobby, so configure the lobby view */
+        /*
+            If gameScene is nil that means we're in the lobby, so configure the lobby view &
+            broadcast which level is select if I'm host
+        */
         if AppWarpHelper.sharedInstance.gameScene == nil {
             AppWarpHelper.sharedInstance.configLobbyView()
+            
+            // Send over selected lvl if I'm host
+            if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
+                if let lobby = AppWarpHelper.sharedInstance.lobby {
+                    let component = 0
+                    let row = lobby.levelPicker.selectedRowInComponent(component)
+                    lobby.sendPickedLevel(component, row: row)
+                }
+                
+            }
         }
         else {
             let userName_list = AppWarpHelper.sharedInstance.userName_list

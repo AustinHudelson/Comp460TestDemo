@@ -38,6 +38,7 @@ class Unit: SerializableJSON, PType
     var greenColor: Attribute = Attribute(baseValue: 1.0)
     var currentOrder: Order = NoneOrder()
     var alive: Bool = true
+    var DS_moveDestination: CGPoint = CGPoint(x: 0, y: 0)
     var DS_walkAnim: SKAction?
     var DS_attackAnim: SKAction?
     var DS_standAnim: SKAction?
@@ -310,35 +311,9 @@ class Unit: SerializableJSON, PType
     }
     
     func move(destination:CGPoint, complete:(()->Void)!) {
+        DS_moveDestination = destination
         moveCycle(destination, complete: complete)
-//        let charPos = sprite.position
-//        let xdif = destination.x-charPos.x
-//        let ydif = destination.y-charPos.y
-//        
-//        //Check facing
-//        if (xdif < -0.1) {
-//            self.faceLeft()
-//        } else if (xdif > 0.1) {
-//            self.faceRight()
-//        }
-//        
-//        let distance = sqrt((xdif*xdif)+(ydif*ydif))
-//        let duration = distance/speed
-//        
-//        let movementAction = SKAction.moveTo(destination, duration:NSTimeInterval(duration))
-//        let walkAnimationAction = self.DS_walkAnim
-//        //Create action for "Walk to point then do "complete""
-//        let walkSequence = SKAction.sequence([movementAction, SKAction.runBlock(complete)])
-//        /* Move the health text */
-//        var health_txt_des = destination
-//        
-//        health_txt_des.y += health_txt_y_dspl
-//        let moveHealthTxtAction = SKAction.moveTo(health_txt_des, duration: NSTimeInterval(duration))
-//        DS_health_txt.runAction(moveHealthTxtAction, withKey: "move")
-//        sprite.runAction(walkSequence, withKey: "move")
-//        if self.sprite.actionForKey("moveAnim") == nil {
-//            sprite.runAction(self.DS_walkAnim!, withKey: "moveAnim")
-//        }
+
     }
     
     
@@ -535,8 +510,23 @@ class Unit: SerializableJSON, PType
             }
         }
         
+        
         //Sync Position
-        self.sprite.position = receivedPosition
+        
+        if Game.global.getDistance(self.sprite.position, p2: receivedPosition) > self.speed.get()
+        {
+            if self.sprite.valueForKey("move") != nil
+            {
+                let completionBlock = self.sprite.valueForKey("move")!.completionBlock
+                self.clearMove()
+                self.sprite.position = receivedPosition
+                self.move(DS_moveDestination, complete: completionBlock)
+            }
+            else
+            {
+                self.sprite.position = receivedPosition
+            }
+        }
     }
     
     /*
