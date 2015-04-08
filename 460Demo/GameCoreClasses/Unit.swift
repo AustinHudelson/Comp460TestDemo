@@ -518,7 +518,7 @@ class Unit: SerializableJSON, PType
         
         //Sync Position
         
-        if Game.global.getDistance(self.sprite.position, p2: receivedPosition) > self.speed.get()
+        if Game.global.getDistance(self.sprite.position, p2: receivedPosition) > self.speed.get() * 0.25
         {
             if self.sprite.actionForKey("move") != nil
             {
