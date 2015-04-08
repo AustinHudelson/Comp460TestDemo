@@ -38,7 +38,7 @@ class EnemyBoss: Unit, PType
         self.DS_healthregen = 0
         self.attackSpeed = Attribute(baseValue: 1.5)
         self.attackDamage = Attribute(baseValue: 35.0)
-        self.speed = Attribute(baseValue: 45.0)
+        self.speed = Attribute(baseValue: 80.0)
         self.attackRange = 80.0
         self.isEnemy = true
         self.xSize = 450.0
