@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 @objc(ArmorUp)
-class ArmorUp: Order, PType
+class ArmorUp: Order, PType, Transient
 {
     let DS_duration = NSTimeInterval(5.0)
     let DS_armorAmount: CGFloat = 0.2

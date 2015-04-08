@@ -91,6 +91,7 @@ class Unit: SerializableJSON, PType
         self.ID = ID
         self.currentOrder = NoneOrder()
         
+        
         // ===TESTING
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
         //self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
@@ -590,6 +591,7 @@ class Unit: SerializableJSON, PType
             self.sprite.runAction(soundAction)
             let deathThenRemove: SKAction = SKAction.sequence([DS_deathAnim!, waitAction, removeBlockAction])
             self.sprite.runAction(deathThenRemove)
+            
             
             //END COPY OF DEATH()
         } else {
