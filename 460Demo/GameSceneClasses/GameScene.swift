@@ -43,7 +43,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 playerChar = Warrior(ID: playerName, spawnLocation: playerCharPos)
         }
         sendUnitOverNetwork(playerChar) //Adds and send the unit
-        
+        let soundAction = SKAction.playSoundFileNamed("DST-MapLands.mp3", waitForCompletion: true)
+        let repeatSound = SKAction.repeatActionForever(soundAction)
+        self.runAction(repeatSound, withKey: "BackgroundMusic")
         /* Load the level & send the units within this level over the network if I'm host */
         if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
             Game.global.loadLevel()
@@ -133,6 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.removeAllActions()
                 self.removeAllChildren()
                 self.removeActionForKey("SyncAction")
+                self.removeActionForKey("BackgroundMusic")
                 self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
                 
                 

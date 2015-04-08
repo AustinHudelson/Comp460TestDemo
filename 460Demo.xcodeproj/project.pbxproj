@@ -266,6 +266,12 @@
 		E759EDB81AC351AA00D23AF8 /* LevelTwo3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDB71AC351AA00D23AF8 /* LevelTwo3.swift */; };
 		E759EDBA1AC352E800D23AF8 /* LevelThree3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759EDB91AC352E800D23AF8 /* LevelThree3.swift */; };
 		E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F4FBA1AB0DE1B00C3D76E /* Level.swift */; };
+		E78493631AD31E1B00291509 /* tamper_data-11.0.1-fx.xpi in Resources */ = {isa = PBXBuildFile; fileRef = E78493621AD31E1B00291509 /* tamper_data-11.0.1-fx.xpi */; };
+		E78493691AD31E9100291509 /* DST-MapOfDoom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E78493641AD31E9100291509 /* DST-MapOfDoom.mp3 */; };
+		E784936A1AD31E9100291509 /* DST-MapLands.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E78493651AD31E9100291509 /* DST-MapLands.mp3 */; };
+		E784936B1AD31E9100291509 /* DST-Glory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E78493661AD31E9100291509 /* DST-Glory.mp3 */; };
+		E784936C1AD31E9100291509 /* DST-BarbarianBros.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E78493671AD31E9100291509 /* DST-BarbarianBros.mp3 */; };
+		E784936D1AD31E9100291509 /* DST-Aronara.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E78493681AD31E9100291509 /* DST-Aronara.mp3 */; };
 		E787EB7C1AC8ED03007CBAE2 /* TargetAllyAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787EB7B1AC8ED03007CBAE2 /* TargetAllyAbility.swift */; };
 		E787EB7E1AC8EE0F007CBAE2 /* SoulExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */; };
 		F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402F68E1AB51AF300A930C2 /* EnemyMage.swift */; };
@@ -682,6 +688,12 @@
 		E759EDB71AC351AA00D23AF8 /* LevelTwo3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTwo3.swift; sourceTree = "<group>"; };
 		E759EDB91AC352E800D23AF8 /* LevelThree3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelThree3.swift; sourceTree = "<group>"; };
 		E75F4FBA1AB0DE1B00C3D76E /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		E78493621AD31E1B00291509 /* tamper_data-11.0.1-fx.xpi */ = {isa = PBXFileReference; lastKnownFileType = file; path = "tamper_data-11.0.1-fx.xpi"; sourceTree = "<group>"; };
+		E78493641AD31E9100291509 /* DST-MapOfDoom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "DST-MapOfDoom.mp3"; path = "Supporting Files/DST-MapOfDoom.mp3"; sourceTree = "<group>"; };
+		E78493651AD31E9100291509 /* DST-MapLands.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "DST-MapLands.mp3"; path = "Supporting Files/DST-MapLands.mp3"; sourceTree = "<group>"; };
+		E78493661AD31E9100291509 /* DST-Glory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "DST-Glory.mp3"; path = "Supporting Files/DST-Glory.mp3"; sourceTree = "<group>"; };
+		E78493671AD31E9100291509 /* DST-BarbarianBros.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "DST-BarbarianBros.mp3"; path = "Supporting Files/DST-BarbarianBros.mp3"; sourceTree = "<group>"; };
+		E78493681AD31E9100291509 /* DST-Aronara.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "DST-Aronara.mp3"; path = "Supporting Files/DST-Aronara.mp3"; sourceTree = "<group>"; };
 		E787EB7B1AC8ED03007CBAE2 /* TargetAllyAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetAllyAbility.swift; sourceTree = "<group>"; };
 		E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoulExchange.swift; sourceTree = "<group>"; };
 		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
@@ -1314,6 +1326,19 @@
 			name = EnemyPriest;
 			sourceTree = "<group>";
 		};
+		E78493611AD31DEB00291509 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				E78493641AD31E9100291509 /* DST-MapOfDoom.mp3 */,
+				E78493651AD31E9100291509 /* DST-MapLands.mp3 */,
+				E78493661AD31E9100291509 /* DST-Glory.mp3 */,
+				E78493671AD31E9100291509 /* DST-BarbarianBros.mp3 */,
+				E78493681AD31E9100291509 /* DST-Aronara.mp3 */,
+				E78493621AD31E1B00291509 /* tamper_data-11.0.1-fx.xpi */,
+			);
+			name = Background;
+			sourceTree = "<group>";
+		};
 		F402F68D1AB51AC200A930C2 /* Enemy Mage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1389,6 +1414,7 @@
 		F4B562FB1AB3A5AC0094B2A7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E78493611AD31DEB00291509 /* Background */,
 				F4B562FC1AB3A5CE0094B2A7 /* battle */,
 				F4B563071AB3A5CE0094B2A7 /* interface */,
 				F4B5630E1AB3A5CE0094B2A7 /* inventory */,
@@ -1870,6 +1896,7 @@
 				F4B5636B1AB3A5CF0094B2A7 /* swing.wav in Resources */,
 				68F3FF351AC92A8B009FAB4F /* I_Book.png in Resources */,
 				68F3FF3C1AC92A8B009FAB4F /* I_Map.png in Resources */,
+				E784936D1AD31E9100291509 /* DST-Aronara.mp3 in Resources */,
 				F4B563A51AB3A5CF0094B2A7 /* mnstr6.wav in Resources */,
 				68F3FFA11AC92A8B009FAB4F /* S_Sword06.png in Resources */,
 				F4B5636F1AB3A5CF0094B2A7 /* sword-unsheathe2.wav in Resources */,
@@ -1926,6 +1953,7 @@
 				68F3FF2A1AC92A8B009FAB4F /* Ac_Medal04.png in Resources */,
 				68F3FF0D1AC92A8B009FAB4F /* Priest-ability.atlas in Resources */,
 				68FAEA181AC9C6470045259A /* PriestStand200x200.png in Resources */,
+				E784936A1AD31E9100291509 /* DST-MapLands.mp3 in Resources */,
 				68F3FFA71AC92A8B009FAB4F /* S_Thunder02.png in Resources */,
 				68F3FF371AC92A8B009FAB4F /* I_Crystal01.png in Resources */,
 				F4B563B51AB3A5CF0094B2A7 /* shade15.wav in Resources */,
@@ -1949,10 +1977,12 @@
 				68F3FF2C1AC92A8B009FAB4F /* C_Elm04.png in Resources */,
 				68F3FF921AC92A8B009FAB4F /* S_Poison05.png in Resources */,
 				68F3FF4C1AC92A8B009FAB4F /* P_Red01.png in Resources */,
+				E78493631AD31E1B00291509 /* tamper_data-11.0.1-fx.xpi in Resources */,
 				68F3FE2B1AC7A0E4009FAB4F /* MagicBolt.sks in Resources */,
 				F4B5639F1AB3A5CF0094B2A7 /* mnstr14.wav in Resources */,
 				F4B5638C1AB3A5CF0094B2A7 /* random1.wav in Resources */,
 				68F35CAB1A84C4D5004905BF /* GameScene.sks in Resources */,
+				E78493691AD31E9100291509 /* DST-MapOfDoom.mp3 in Resources */,
 				68F3FFCE1AC92A8B009FAB4F /* W_Sword021.png in Resources */,
 				68F3FF421AC92A8B009FAB4F /* I_Saphire.png in Resources */,
 				F4B563881AB3A5CF0094B2A7 /* metal-small2.wav in Resources */,
@@ -2048,12 +2078,14 @@
 				68F3FFBA1AC92A8B009FAB4F /* S_Wind07.png in Resources */,
 				68F3FFB01AC92A8B009FAB4F /* S_Water04.png in Resources */,
 				F4B563901AB3A5CF0094B2A7 /* random5.wav in Resources */,
+				E784936B1AD31E9100291509 /* DST-Glory.mp3 in Resources */,
 				68F3FF281AC92A8B009FAB4F /* Ac_Medal01.png in Resources */,
 				F4B563831AB3A5CF0094B2A7 /* coin.wav in Resources */,
 				F4B563AE1AB3A5CF0094B2A7 /* ogre5.wav in Resources */,
 				68F3FF7F1AC92A8B009FAB4F /* S_Ice02.png in Resources */,
 				F4B563A21AB3A5CF0094B2A7 /* mnstr3.wav in Resources */,
 				68F3FF431AC92A8B009FAB4F /* I_Scroll.png in Resources */,
+				E784936C1AD31E9100291509 /* DST-BarbarianBros.mp3 in Resources */,
 				68F3FF091AC92A8B009FAB4F /* NewMage-attack.atlas in Resources */,
 				68F3FF6A1AC92A8B009FAB4F /* S_Earth02.png in Resources */,
 				68F3FF7C1AC92A8B009FAB4F /* S_Holy06.png in Resources */,
