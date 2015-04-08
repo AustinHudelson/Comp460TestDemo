@@ -85,6 +85,7 @@ class BlindingFlash: Order, PType
                 
                 // set idle and then roam attack
                 let idleAction: SKAction = SKAction.runBlock({
+                    unit.clearMove()
                     unit.sendOrder(Idle(receiverIn: unit))
                     unit.sprite.runAction(unit.DS_stumbleAnim)
                     unit.takeDamage(self.DS_damage)
