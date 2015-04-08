@@ -488,6 +488,10 @@ class Unit: SerializableJSON, PType
     func synchronize(receivedLife: CGFloat, receivedPosition: CGPoint){
         //Sync Health
         self.health = receivedLife
+        
+        
+        //Sync Position
+        
         if Game.global.getDistance(self.sprite.position, p2: receivedPosition) > self.speed.get()
         {
             if self.sprite.valueForKey("move") != nil
@@ -502,9 +506,6 @@ class Unit: SerializableJSON, PType
                 self.sprite.position = receivedPosition
             }
         }
-        
-        //Sync Position
-        self.sprite.position = receivedPosition
     }
     
     /*
