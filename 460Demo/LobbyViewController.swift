@@ -158,9 +158,9 @@ class LobbyViewController: UIViewController {
     }
     
     /*
-        This function sends host's selected level over the network for display. It will be called
-        from LevelSelection.pickerView(...didSelectRow...), and that function should only be
-        called by the host program
+        This function sends host's selected level over the network for display. It should be called
+        from BOTH LevelSelection.pickerView(...didSelectRow...) (that function should only be
+        called by the host program) AND configLevelPicker() (which is called from onGetLiveRoomInfoDone())
     */
     func sendPickedLevel(col: Int, row: Int) {
         var sendLevelMsg: Dictionary<String, Array<AnyObject>> = [:]

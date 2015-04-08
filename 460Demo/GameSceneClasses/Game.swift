@@ -571,7 +571,7 @@ class Game {
                     */
                     if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host {
                         if let updateUnit = getUnit(id) {
-                            updateUnit.synchronize(recvUnit["health"] as CGFloat, receivedPosition: CGPoint(x: (recvUnit["posx"] as CGFloat), y: (recvUnit["posY"] as CGFloat)))
+                            updateUnit.synchronize(recvUnit["health"] as CGFloat, receivedPosition: CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat)))
                         }
                     }
                     /*
