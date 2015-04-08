@@ -38,7 +38,8 @@ class Unit: SerializableJSON, PType
     var greenColor: Attribute = Attribute(baseValue: 1.0)
     var currentOrder: Order = NoneOrder()
     var alive: Bool = true
-    var DS_moveDestination: CGPoint = CGPoint(x: 0, y: 0)
+    var DS_moveDestination: CGPoint? // used in synching positions
+    var DS_completeBlock: (()->Void)!?//used in synching positions
     var DS_walkAnim: SKAction?
     var DS_attackAnim: SKAction?
     var DS_standAnim: SKAction?
@@ -312,7 +313,8 @@ class Unit: SerializableJSON, PType
     }
     
     func move(destination:CGPoint, complete:(()->Void)!) {
-        DS_moveDestination = destination
+        DS_moveDestination! = destination
+        DS_completeBlock! = complete
         moveCycle(destination, complete: complete)
 
     }
@@ -375,6 +377,8 @@ class Unit: SerializableJSON, PType
     }
     
     func clearMove(){
+        DS_moveDestination = nil
+        DS_completeBlock = nil
         self.sprite.removeActionForKey("move")
         self.sprite.removeActionForKey("moveAnim")
         self.DS_health_txt.removeActionForKey("move")
@@ -516,17 +520,19 @@ class Unit: SerializableJSON, PType
         
         if Game.global.getDistance(self.sprite.position, p2: receivedPosition) > self.speed.get()
         {
-            if self.sprite.valueForKey("move") != nil
+            if self.sprite.actionForKey("move") != nil
             {
-                let completionBlock = self.sprite.valueForKey("move")!.completionBlock
                 self.clearMove()
                 self.sprite.position = receivedPosition
-                self.move(DS_moveDestination, complete: completionBlock)
+                self.move(DS_moveDestination!, complete: self.DS_completeBlock!)
+                println("replacing move")
             }
             else
             {
                 self.sprite.position = receivedPosition
+                println("Not moving")
             }
+            println("changing position")
         }
     }
     
