@@ -510,14 +510,18 @@ class Unit: SerializableJSON, PType
     * Call the synchronize this unit with the host. Will correct current life and 
     * position if it has deviated too far from the host.
     */
-    func synchronize(recievedLife: Int, recievedPosition: CGPoint){
+    func synchronize(receivedLife: CGFloat, receivedPosition: CGPoint){
+        //Sync Health
+        self.health = receivedLife
         
+        //Sync Position
+        self.sprite.position = receivedPosition
     }
     
     /*
      * Call every 1 second or so to update units.
      */
-        
+    
         //self.currentOrder.update()
     
     
