@@ -562,6 +562,7 @@ class Unit: SerializableJSON, PType
      */
     func kill(){
         if alive == true {
+            Game.global.removeUnit(self.ID)
             //COPY OF DEATH()
             
             if alive == false {
