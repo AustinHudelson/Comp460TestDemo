@@ -8,18 +8,19 @@
 
 import SpriteKit
 
+@objc(Level)
 class Level
 {
     var title: String = "UNTITLED"
     
     required init() {
-        
+        title = NSStringFromClass(self.dynamicType) // This basically dynamically gets the class name and convert it into a string (eg, if this obj is an instance of LevelOne1, title = "LevelOne1")
     }
     
     var counter = 0
     
     func loadWave(scene: GameScene)-> Array<Unit>
     {
-        fatalError("Must override loadWave() for level")
+        fatalError("Must override loadWave() for class Level")
     }
 }

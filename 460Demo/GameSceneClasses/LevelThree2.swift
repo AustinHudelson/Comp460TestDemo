@@ -12,7 +12,6 @@ class LevelThree2:Level
 {
     required init() {
         super.init()
-        self.title = "Level Three2"
     }
     
     override func loadWave(scene: GameScene) -> Array<Unit> {

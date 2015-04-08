@@ -33,11 +33,11 @@ class LobbyViewController: UIViewController {
     @IBAction func startGameButtonAction(sender: AnyObject) {
         if myPlayerName != nil && myPlayerName == AppWarpHelper.sharedInstance.host {
             /*
-                Send a msg to AppWarp to tell everyone to start the game.
+                If i'm the host, send a msg to AppWarp to tell everyone to start the game.
                 The game won't start until everyone receives this message.
             */
-            var startGameMsg: Dictionary<String, Array<AnyObject>> = [:]
-            startGameMsg["Start Game!"] = []
+            var outerDict: Dictionary<String, Array<AnyObject>> = [:]
+            outerDict["Start Game!"] = []
             
             /* Put the selected level information into the start msg */
             var startMsg: Dictionary<String, AnyObject> = [:]
@@ -45,9 +45,9 @@ class LobbyViewController: UIViewController {
             let levelTxt = levelDelegate.pickerView(levelPicker, titleForRow: selRow, forComponent: 0)
             startMsg["level"] = levelTxt
             
-            startGameMsg["Start Game!"]!.append(startMsg)
+            outerDict["Start Game!"]!.append(startMsg)
             
-            NetworkManager.sendMsg(&startGameMsg)
+            NetworkManager.sendMsg(&outerDict)
         } else {
             println("You need to wait for host to start the game!")
         }

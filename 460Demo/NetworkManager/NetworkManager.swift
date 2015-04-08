@@ -78,6 +78,8 @@ class NetworkManager {
                 /* =============================== */
                 
                 /* === Game related cases === */
+                case "LoadLevel":
+                    Game.global.loadLevel()
                 case "Orders":
                     Game.global.updateUnitOrders(arrayOfObjects)
                 case "SentTime":
@@ -95,8 +97,8 @@ class NetworkManager {
                     Game.global.updateUnits(arrayOfObjects)
                 case "Units":
                     Game.global.updateNewUnits(arrayOfObjects)
-                case "Win!":
-                    Game.global.winGame()
+//                case "Win!":
+//                    Game.global.winGame()
                 /* =============================== */
                 default:
                     // Placeholder default

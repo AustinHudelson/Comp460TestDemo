@@ -43,12 +43,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 playerChar = Warrior(ID: playerName, spawnLocation: playerCharPos)
         }
         sendUnitOverNetwork(playerChar) //Adds and send the unit
+        
+        // Bg Music
         let soundAction = SKAction.playSoundFileNamed("DST-MapLands.mp3", waitForCompletion: true)
         let repeatSound = SKAction.repeatActionForever(soundAction)
         self.runAction(repeatSound, withKey: "BackgroundMusic")
-        /* Load the level & send the units within this level over the network if I'm host */
+        
+        /*
+            If I'm host, send a msg over the network telling everyone (including myself, the host) to load their level / first wave.
+            The reason that the host dont immediately load the level here, but instead just send a msg about which level to load, is because game will be better synced if host waits until it gets it's own load level msg back before loading the level rather than loading the level before everyone else
+        */
         if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
-            Game.global.loadLevel()
+            Game.global.sendLoadLevelMsg()
         }
     }
     

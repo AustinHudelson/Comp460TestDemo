@@ -83,6 +83,8 @@ class Game {
     {
         if enemyMap[enemy.ID] == nil{
             enemyMap[enemy.ID] = enemy
+            let spawnLoc = enemy.sprite.position
+            enemy.addUnitToGameScene(self.scene!, pos: spawnLoc)
         } else {
             println("WARNING: ADDED UNIT WITH ALREADY EXISTING ID TO GAME")
         }
@@ -126,10 +128,10 @@ class Game {
             enemy.DS_health_txt.runAction(remove)
             enemy.sprite.runAction(remove)
             
+            /* If I'm host and, when the enemy I removed was the last one, send a load level msg to everyone to tell them to load the next wave */
             if enemyMap.count == 0 && AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
             {
-                println("Host is getting new wave")
-                loadLevel()
+                sendLoadLevelMsg()
             }
             
         }
@@ -141,21 +143,25 @@ class Game {
      }
     
     /*
-     * loads a new wave if you are the host
+        This function loads a new wave from the stored "level" variable.
+        Everyone (i.e. host & clients) should already have, locally, their "level" variable initialized from 
+        startMsg -> transToGameScene()
      */
     func loadLevel() {
-        if level != nil && scene != nil {
+        if scene != nil {
             println("!!!!Loading \(level?.title)")
-            var firstWave: Array<Unit> = level!.loadWave(scene!)
-            if (firstWave.count != 0) {        //If we receive an empty wave assume that we have defeated all waves
-                for enemy in firstWave{
-                    scene!.sendUnitOverNetwork(enemy)
+            var wave: Array<Unit> = level!.loadWave(scene!)
+            if (wave.count != 0) {        //If we receive an empty wave assume that we have defeated all waves
+                for enemy in wave{
+                    // Copy the wave Array's Units into the enemyMap dictionary by calling addEnemy()
+                    addEnemy(enemy)
                 }
             } else {
-                /* Send a win game msg to everyone */
-                var winMsg: Dictionary<String, Array<AnyObject>> = [:]
-                winMsg["Win!"] = []
-                NetworkManager.sendMsg(&winMsg)
+                winGame()
+//                /* Send a win game msg to everyone */
+//                var winMsg: Dictionary<String, Array<AnyObject>> = [:]
+//                winMsg["Win!"] = []
+//                NetworkManager.sendMsg(&winMsg)
             }
         }
         
@@ -377,6 +383,25 @@ class Game {
         return nearbyUnits
     }
     
+    /*
+        Host will call this, when appropriate (right now it's called from GameScene.startGameScene & Game.removeUnit(),
+            to send a load lvl msg to everyone
+    */
+    func sendLoadLevelMsg() {
+        var outerDict: Dictionary<String, Array<AnyObject>> = [:]
+        outerDict["LoadLevel"] = []
+        
+        var levelTxt: String = Game.global.level!.title
+        
+        outerDict["LoadLevel"]!.append(levelTxt)
+        
+        println("!!!!====")
+        println(outerDict)
+        println("!!!!====")
+        
+        NetworkManager.sendMsg(&outerDict)
+    }
+    
     // Host will call this to send host's char and every enemy's health and position every X seconds
     /*
         Our sent dicitonary will look like this:
@@ -482,28 +507,33 @@ class Game {
         These functions should be called from processRecvMsg()
     */
     /*
-        This func receives the start game msg, sets the host's Game.global.level variable to whatever was selected in the lobby, and transistions the app from LobbyViewController to GameScene
+        This func receives the start game msg,
+        sets the Game.global.level variable to whatever level host selected & send over,
+        and transistions the app from LobbyViewController to GameScene
     */
     func transToGameScene(startMsg: Dictionary<String, AnyObject>) {
         /*
             If i'm host:
                 1. set the room property to unjoinable
-                2. make a new level object & set the Game.global.level variable
         */
         if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
             /* Set roomProperty to unjoinable */
             AppWarpHelper.sharedInstance.updateRoomToUnjoinable()
-            
-            /* Go from a string to its corresponding level class */
-            let levelTxt = startMsg["level"] as String
-            var noSpace: String = removeWhiteSpaces(levelTxt) // get rid of the spaces in the level text
-            noSpace += AppWarpHelper.sharedInstance.userName_list.count.description // append the sublevel number, which will correspond to # of players in the game
-            var anyObjType: AnyObject.Type = NSClassFromString(noSpace)
-            var levelType: Level.Type = anyObjType as Level.Type
-            var newLevel: Level = levelType()
-            
-            self.level = newLevel // set Game.global.level = newLevel
         }
+        
+        /*
+            Make a new level object by reading the level from the received startMsg
+            & set the Game.global.level variable
+        */
+        /* Go from a string to its corresponding level class */
+        let levelTxt = startMsg["level"] as String
+        var noSpace: String = removeWhiteSpaces(levelTxt) // get rid of the spaces in the level text (eg. "Level Two" -> "LevelTwo")
+        noSpace += AppWarpHelper.sharedInstance.userName_list.count.description // append the sublevel number, which will correspond to # of players in the game
+        var anyObjType: AnyObject.Type = NSClassFromString(noSpace)
+        var levelType: Level.Type = anyObjType as Level.Type
+        var newLevel: Level = levelType()
+        
+        self.level = newLevel // set Game.global.level = newLevel
         
         /* Everyone perform segue to transition into game scene */
         AppWarpHelper.sharedInstance.lobby!.performSegueWithIdentifier("gameSegue", sender: nil)
@@ -544,10 +574,11 @@ class Game {
                         
                     }
                 }
-                else
-                {
-                    addEnemy(newUnit)
-                }
+                // Not sending enemy units over the network anymore, so this is commented out
+//                else
+//                {
+//                    addEnemy(newUnit)
+//                }
                 
                 let spawnLoc = CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat))
                 
