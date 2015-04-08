@@ -28,6 +28,9 @@ class ConnectionListener: NSObject,ConnectionRequestListener
         else if event.result == 1  // AUTH_ERROR
         {
             println("onConnectDone AUTH_ERROR")
+            
+            // Auto reconnect if you failed to connect
+            AppWarpHelper.sharedInstance.connectWithAppWarpWithUserName(AppWarpHelper.sharedInstance.playerName)
         }
         else if event.result == 2 // RESOURCE_NOT_FOUND
         {
