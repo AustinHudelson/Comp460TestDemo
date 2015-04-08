@@ -510,7 +510,7 @@ class Unit: SerializableJSON, PType
     * Call the synchronize this unit with the host. Will correct current life and 
     * position if it has deviated too far from the host.
     */
-    func synchronize(syncTime: NSTimeInterval, recievedLife: Int, recievedPosition: CGPoint){
+    func synchronize(recievedLife: Int, recievedPosition: CGPoint){
         
     }
     
