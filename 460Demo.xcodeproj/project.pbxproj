@@ -282,12 +282,18 @@
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
 		F44C42FA1AC3597700CAA983 /* FlamestrikeProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C42F91AC3597700CAA983 /* FlamestrikeProjectile.swift */; };
 		F44C42FC1AC3714E00CAA983 /* Flamestrike.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C42FB1AC3714E00CAA983 /* Flamestrike.swift */; };
+		F46D9E2C1AD864C600BADEAC /* EliteWarriorB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D9E2B1AD864C600BADEAC /* EliteWarriorB.swift */; };
+		F46D9E2E1AD86C6600BADEAC /* TwoChampions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D9E2D1AD86C6600BADEAC /* TwoChampions.swift */; };
+		F46D9E301AD87A0100BADEAC /* EnemyPermEnrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D9E2F1AD87A0100BADEAC /* EnemyPermEnrage.swift */; };
 		F48B20B61AC5DB1F007487F6 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20B51AC5DB1F007487F6 /* CGFloat+Extensions.swift */; };
 		F48B20B81AC5F13B007487F6 /* TargetEnemyAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20B71AC5F13B007487F6 /* TargetEnemyAbility.swift */; };
 		F48B20BA1AC5F152007487F6 /* TargetedAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20B91AC5F152007487F6 /* TargetedAbility.swift */; };
 		F48B20BC1AC5F8D4007487F6 /* InstantAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20BB1AC5F8D4007487F6 /* InstantAbility.swift */; };
 		F48B20BF1ACC8568007487F6 /* InnerHealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = F48B20BD1ACC8568007487F6 /* InnerHealthBar.png */; };
 		F48B20C01ACC8568007487F6 /* OutterHealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = F48B20BE1ACC8568007487F6 /* OutterHealthBar.png */; };
+		F49336EB1AD8574F0007A970 /* AreaHealParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F49336E91AD8574F0007A970 /* AreaHealParticle.sks */; };
+		F49336EE1AD861680007A970 /* EliteWarrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49336ED1AD861680007A970 /* EliteWarrior.swift */; };
+		F49336F01AD862190007A970 /* EnemyArmorUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49336EF1AD862190007A970 /* EnemyArmorUp.swift */; };
 		F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5047B1A90175B007CDBA8 /* PType.swift */; };
 		F4B504821A9234B9007CDBA8 /* TargetDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B504811A9234B9007CDBA8 /* TargetDummy.swift */; };
 		F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B562EB1AB0D8C20094B2A7 /* Ability.swift */; };
@@ -707,12 +713,18 @@
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F44C42F91AC3597700CAA983 /* FlamestrikeProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlamestrikeProjectile.swift; sourceTree = "<group>"; };
 		F44C42FB1AC3714E00CAA983 /* Flamestrike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flamestrike.swift; sourceTree = "<group>"; };
+		F46D9E2B1AD864C600BADEAC /* EliteWarriorB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EliteWarriorB.swift; sourceTree = "<group>"; };
+		F46D9E2D1AD86C6600BADEAC /* TwoChampions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoChampions.swift; sourceTree = "<group>"; };
+		F46D9E2F1AD87A0100BADEAC /* EnemyPermEnrage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyPermEnrage.swift; sourceTree = "<group>"; };
 		F48B20B51AC5DB1F007487F6 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		F48B20B71AC5F13B007487F6 /* TargetEnemyAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetEnemyAbility.swift; sourceTree = "<group>"; };
 		F48B20B91AC5F152007487F6 /* TargetedAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetedAbility.swift; sourceTree = "<group>"; };
 		F48B20BB1AC5F8D4007487F6 /* InstantAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantAbility.swift; sourceTree = "<group>"; };
 		F48B20BD1ACC8568007487F6 /* InnerHealthBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InnerHealthBar.png; sourceTree = "<group>"; };
 		F48B20BE1ACC8568007487F6 /* OutterHealthBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OutterHealthBar.png; sourceTree = "<group>"; };
+		F49336E91AD8574F0007A970 /* AreaHealParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AreaHealParticle.sks; sourceTree = "<group>"; };
+		F49336ED1AD861680007A970 /* EliteWarrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EliteWarrior.swift; sourceTree = "<group>"; };
+		F49336EF1AD862190007A970 /* EnemyArmorUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyArmorUp.swift; sourceTree = "<group>"; };
 		F4B5047B1A90175B007CDBA8 /* PType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PType.swift; sourceTree = "<group>"; };
 		F4B504811A9234B9007CDBA8 /* TargetDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDummy.swift; sourceTree = "<group>"; };
 		F4B562E91AB0D82E0094B2A7 /* ButtonHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonHeal.swift; sourceTree = "<group>"; };
@@ -948,7 +960,9 @@
 				682944DE1AB5787000680A36 /* Heal.swift */,
 				68DADF4E1AB5738800A20800 /* AreaHeal.swift */,
 				68DADF4F1AB5738800A20800 /* Enrage.swift */,
+				F46D9E2F1AD87A0100BADEAC /* EnemyPermEnrage.swift */,
 				E722FC9F1AC1262A000651E0 /* ArmorUp.swift */,
+				F49336EF1AD862190007A970 /* EnemyArmorUp.swift */,
 				F4B925F41AC5D929007ED564 /* Blink.swift */,
 				68DADF511AB5738800A20800 /* Taunt.swift */,
 				F44C42FB1AC3714E00CAA983 /* Flamestrike.swift */,
@@ -976,6 +990,7 @@
 				E759EDB51AC3502700D23AF8 /* LevelOne3.swift */,
 				E759EDB71AC351AA00D23AF8 /* LevelTwo3.swift */,
 				E759EDB91AC352E800D23AF8 /* LevelThree3.swift */,
+				F46D9E2D1AD86C6600BADEAC /* TwoChampions.swift */,
 			);
 			path = GameSceneClasses;
 			sourceTree = "<group>";
@@ -1000,6 +1015,7 @@
 				68F3FE1D1AC7A0E4009FAB4F /* FlamestrikeParticle.sks */,
 				68F3FE1E1AC7A0E4009FAB4F /* FrostboltProjectileParticle.sks */,
 				68F3FE1F1AC7A0E4009FAB4F /* HealParticle.sks */,
+				F49336E91AD8574F0007A970 /* AreaHealParticle.sks */,
 				68F3FE201AC7A0E4009FAB4F /* MagicBolt.sks */,
 				68F3FE211AC7A0E4009FAB4F /* MyParticle.sks */,
 				68F3FE221AC7A0E4009FAB4F /* RainParticle.sks */,
@@ -1416,6 +1432,8 @@
 			isa = PBXGroup;
 			children = (
 				F4B8348F1A9BB95200A839E5 /* Enemy.swift */,
+				F49336ED1AD861680007A970 /* EliteWarrior.swift */,
+				F46D9E2B1AD864C600BADEAC /* EliteWarriorB.swift */,
 			);
 			name = Enemy;
 			sourceTree = "<group>";
@@ -1915,6 +1933,7 @@
 				68F3FF721AC92A8B009FAB4F /* S_Fire03.png in Resources */,
 				F4B5639E1AB3A5CF0094B2A7 /* mnstr13.wav in Resources */,
 				68F3FF331AC92A8B009FAB4F /* E_Wood03.png in Resources */,
+				F49336EB1AD8574F0007A970 /* AreaHealParticle.sks in Resources */,
 				68F3FF881AC92A8B009FAB4F /* S_Magic01.png in Resources */,
 				F4B563A11AB3A5CF0094B2A7 /* mnstr2.wav in Resources */,
 				68A031C41AD882AE00281487 /* exitConfirm.png in Resources */,
@@ -2145,6 +2164,7 @@
 				6850A0861A91606100B8CAD4 /* SplashViewController.swift in Sources */,
 				F48B20B61AC5DB1F007487F6 /* CGFloat+Extensions.swift in Sources */,
 				F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */,
+				F46D9E301AD87A0100BADEAC /* EnemyPermEnrage.swift in Sources */,
 				68C08F6E1ABA198700AEEF3E /* NetworkManager.swift in Sources */,
 				68A18D521AA8719E001CCE1D /* GCDAsyncUdpSocket.m in Sources */,
 				F44C42FC1AC3714E00CAA983 /* Flamestrike.swift in Sources */,
@@ -2181,8 +2201,10 @@
 				F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */,
 				F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */,
 				F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */,
+				F46D9E2E1AD86C6600BADEAC /* TwoChampions.swift in Sources */,
 				68A18D511AA8719E001CCE1D /* NSDate+NetworkClock.m in Sources */,
 				F48B20BC1AC5F8D4007487F6 /* InstantAbility.swift in Sources */,
+				F46D9E2C1AD864C600BADEAC /* EliteWarriorB.swift in Sources */,
 				F4B562F41AB287F40094B2A7 /* Mage.swift in Sources */,
 				68DADF5F1AB5738800A20800 /* Move.swift in Sources */,
 				68F35CB81A84C540004905BF /* Unit.swift in Sources */,
@@ -2217,8 +2239,10 @@
 				68DADF601AB5738800A20800 /* NoneOrder.swift in Sources */,
 				F4F126151AC0C0C300A032D1 /* FrostboltProjectile.swift in Sources */,
 				68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */,
+				F49336F01AD862190007A970 /* EnemyArmorUp.swift in Sources */,
 				68A18D4F1AA8719E001CCE1D /* NetworkClock.m in Sources */,
 				682944E11AB578A200680A36 /* Shrink.swift in Sources */,
+				F49336EE1AD861680007A970 /* EliteWarrior.swift in Sources */,
 				F4F126251AC34A0300A032D1 /* ButtonSoulExchange.swift in Sources */,
 				F4B562EE1AB21B290094B2A7 /* ButtonHeal.swift in Sources */,
 				E759EDB21AC3497E00D23AF8 /* LevelTwo2.swift in Sources */,

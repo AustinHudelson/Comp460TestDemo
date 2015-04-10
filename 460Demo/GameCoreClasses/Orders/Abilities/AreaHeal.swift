@@ -12,7 +12,7 @@ import SpriteKit
 @objc(AreaHeal)
 class AreaHeal: Order, PType
 {
-    let DS_healAmount: Int = 40
+    let DS_healAmount: Int = 30
     init(receiverIn: Unit)
     {
         super.init()
@@ -31,13 +31,42 @@ class AreaHeal: Order, PType
     override func apply()
     {
         for (id, unit) in Game.global.playerMap{
-            self.healOverTime(DS_healAmount, target:unit)
+            
+            //Actually call the heal over time.
+            self.healOverTimeStart(DS_healAmount, unit:unit)
         }
         println("\(self.DS_receiver!.ID) health after Heal: \(self.DS_receiver!.health)")
         self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }
     
+    func healOverTimeStart(heal: Int, unit: Unit){
+        let emitterPath: String = NSBundle.mainBundle().pathForResource("AreaHealParticle", ofType: "sks")!
+        let emitterNode: SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as SKEmitterNode
+        //Setup heal particle emitter
+        emitterNode.name = "AreaHealing"
+        emitterNode.zPosition = unit.sprite.zPosition+2
+        emitterNode.targetNode = unit.sprite
+        
+        let stopEmittingDelayAction: SKAction = SKAction.waitForDuration(NSTimeInterval(2.0))
+        let stopEmittingAction: SKAction = SKAction.runBlock({
+            emitterNode.particleBirthRate = 0.0
+        })
+        let removeNodeDelayAction: SKAction = SKAction.waitForDuration(NSTimeInterval(3.0))
+        let removeNodeBlock: SKAction = SKAction.runBlock({
+            emitterNode.removeFromParent()
+        })
+        //Start the emitter node, wait half, heal, wait half again, remove the emitter node
+        unit.sprite.addChild(emitterNode)   //Start the emitter node
+        //Action sequence: Wait. Stop Emitting. Wait. Destroy Node.
+        unit.sprite.runAction(SKAction.sequence([stopEmittingDelayAction, stopEmittingAction, removeNodeDelayAction, removeNodeBlock]))
+        
+        self.healOverTime(heal, target:unit)
+    }
+    
     func healOverTime(heal: Int, target:Unit){
+        
+        
+        
         let soundAction = SKAction.playSoundFileNamed("spell.wav", waitForCompletion: true)
         self.DS_receiver?.sprite.runAction(soundAction)
         let wait = NSTimeInterval(0.0625)

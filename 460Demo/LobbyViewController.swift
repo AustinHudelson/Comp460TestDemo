@@ -41,9 +41,9 @@ class LobbyViewController: UIViewController {
             
             /* Put the selected level information into the start msg */
             var startMsg: Dictionary<String, AnyObject> = [:]
-            let selRow = levelPicker.selectedRowInComponent(0)
-            let levelTxt = levelDelegate.pickerView(levelPicker, titleForRow: selRow, forComponent: 0)
-            startMsg["level"] = levelTxt
+            let selRow: Int = levelPicker.selectedRowInComponent(0)
+            //let levelTxt: String = levelDelegate.pickerView(levelPicker, titleForRow: selRow, forComponent: 0)
+            startMsg["level"] = selRow
             
             outerDict["Start Game!"]!.append(startMsg)
             
@@ -219,6 +219,7 @@ class LobbyViewController: UIViewController {
         setPlayerNames()
         configLevelPicker()
         sendMyClass()
+        updateNumberOfPlayers(AppWarpHelper.sharedInstance.userName_list.count)
     }
 
     override func didReceiveMemoryWarning() {
@@ -226,7 +227,9 @@ class LobbyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func updateNumberOfPlayers(players: Int){
+        levelDelegate.updateNumberOfPlayers(levelPicker, players: players)
+    }
     
 
 }
