@@ -23,7 +23,6 @@ class Mage: Unit, PType
         /* Sprite setup. Needs to be done in every subclass of Unit */
         initializeAnimations()
         self.sprite.position = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
-        self.sprite.zPosition = 1
     }
     
     override init(ID:String, spawnLocation: CGPoint)

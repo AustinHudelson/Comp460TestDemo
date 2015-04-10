@@ -23,6 +23,27 @@ class Game {
     var enemyIDCounter = 0
     var fileManager: FileManager?
     
+    /*
+        zPosition values kept here for easier reference.
+        The zPositions are seperated into different intervals to make sure, for example, UI stuff are always on top of all the sprites.
+        Follwing are the intervals currently allocated to each category:
+        background: [0.0]
+        sprites, projectiles, game related nodes: [1.0, 10001.0]
+        UI stuff: [10002.0, Inf)
+    */
+    var zPosInc: CGFloat
+    var backgroundZ: CGFloat
+    var spriteMinZ: CGFloat
+    var UIMinZ: CGFloat
+    
+    init() {
+        // Had to initialize these variables within the constructor because swift was giving me errors if I just initilize them above
+        self.zPosInc = 10000.0 // constant that is used to seperate game elements' zPos into different intervals
+        self.backgroundZ = 0.0
+        self.spriteMinZ = self.backgroundZ + 1.0
+        self.UIMinZ = self.spriteMinZ + self.zPosInc + 1.0
+    }
+    
     class var global:Game{
         struct Static{
             static var instance:Game?
@@ -32,6 +53,7 @@ class Game {
         dispatch_once(&Static.token){
             Static.instance = Game()
         }
+        
         return Static.instance!
     }
     
@@ -175,7 +197,7 @@ class Game {
         winText.fontSize = 50
         winText.fontName = "AvenirNext-Bold"
         winText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
-        winText.zPosition = 1000
+        winText.zPosition = Game.global.UIMinZ
         if let localLoseText = self.scene!.childNodeWithName("localLoseText") {
             localLoseText.removeFromParent()
         }
@@ -190,7 +212,7 @@ class Game {
         localLoseText.name = "localLoseText"
         localLoseText.fontName = "AvenirNext-Bold"
         localLoseText.fontSize = 50
-        localLoseText.zPosition = 1000
+        localLoseText.zPosition = Game.global.UIMinZ
         localLoseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         self.scene!.addChild(localLoseText)
     }
@@ -200,7 +222,7 @@ class Game {
         let loseText: SKLabelNode = SKLabelNode(text: "You Lose!\n Game Over")
         loseText.fontName = "HelveticaNeue-Bold"
         loseText.name = "loseText"
-        loseText.zPosition = 1000
+        loseText.zPosition = Game.global.UIMinZ
         loseText.fontSize = 50
         loseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
         

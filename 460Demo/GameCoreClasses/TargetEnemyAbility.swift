@@ -30,7 +30,7 @@ class TargetEnemyAbility: TargetedAbility {
         chooseText.fontSize = 50
         chooseText.fontName = "AvenirNext-Bold"
         chooseText.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidX(self.scene!.frame) + 50)
-        chooseText.zPosition = 1000
+        chooseText.zPosition = Game.global.UIMinZ
         
         Game.global.scene!.addChild(chooseText)
         
