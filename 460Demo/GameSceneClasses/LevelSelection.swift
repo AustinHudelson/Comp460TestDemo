@@ -13,9 +13,9 @@ import Foundation
 */
 class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     // This variable is ONLY used for displaying the level texts in lobby
-    var levelTitles: Array<String> = ["Level One",
-                                        "Level Two",
-                                        "Level Three"]
+    var allLevels: Array<Array<Level>> = [[LevelOne1(), LevelTwo1(), LevelThree1()], [LevelOne2(), LevelTwo2(), LevelThree2()], [LevelOne3(), LevelTwo3(), LevelThree3(), TwoChampions()]]
+    var levelsDataSource: Array<Level> = [LevelOne1(), LevelTwo1(), LevelThree1()]
+    
     
     /*
         This dictionary contains the actual Level objects that we will need in Game.swift
@@ -39,7 +39,7 @@ class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     */
     var numRows: Int {
         get {
-            return levelTitles.count
+            return levelsDataSource.count
         }
     }
     
@@ -84,7 +84,7 @@ class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
     /* The picker view will call this function to get the text for each row */
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return levelTitles[row]
+        return levelsDataSource[row].title
     }
     
     /* This listener function will be called when the user changes the level selection from the picker view */
@@ -97,5 +97,10 @@ class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
                 lobby.sendPickedLevel(component, row: row)
             }
         }
+    }
+    
+    func updateNumberOfPlayers(pickerView: UIPickerView, players: Int){
+        levelsDataSource = allLevels[min(players-1, 2)]
+        pickerView.reloadAllComponents()
     }
 }

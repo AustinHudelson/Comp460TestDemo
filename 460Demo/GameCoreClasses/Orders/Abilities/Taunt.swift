@@ -37,9 +37,7 @@ class Taunt: Order, PType
         println("\(self.DS_receiver!.ID) taunted: \(DS_tauntedEnemy?.ID)")
         
         if DS_tauntedEnemy != nil{
-            
-        (
-            DS_tauntedEnemy!.currentOrder as RoamAttack).redirect(self.DS_receiver!)
+            (DS_tauntedEnemy!.currentOrder as RoamAttack).redirect(self.DS_receiver!)
         }
         
         self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)

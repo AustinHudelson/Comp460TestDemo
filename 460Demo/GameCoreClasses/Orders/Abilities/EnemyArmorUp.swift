@@ -1,31 +1,31 @@
 //
-//  ArmorUp.swift
+//  EnemyArmorUp.swift
 //  460Demo
 //
-//  Created by Robert Ko on 3/15/15.
+//  Created by Austin Hudelson on 4/10/15.
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-@objc(ArmorUp)
-class ArmorUp: Order, PType, Transient
+@objc(EnemyArmorUp)
+class EnemyArmorUp: Order, PType, Transient
 {
-    let DS_duration = NSTimeInterval(5.0)
-    let DS_armorAmount: CGFloat = 0.2
+    let DS_duration = NSTimeInterval(8.0)
+    let DS_armorAmount: CGFloat = 0.0
     init(receiverIn: Unit)
     {
         super.init()
         self.DS_receiver = receiverIn
         self.ID = receiverIn.ID
-        self.type = "ArmorUp"
+        self.type = "EnemyArmorUp"
         
     }
     
     required init(receivedData: Dictionary<String, AnyObject>) {
         super.init(receivedData: receivedData)
-        self.restoreProperties(ArmorUp.self, receivedData: receivedData)
+        self.restoreProperties(EnemyArmorUp.self, receivedData: receivedData)
         
         self.DS_receiver = Game.global.getUnit(ID!)
     }
@@ -45,15 +45,15 @@ class ArmorUp: Order, PType, Transient
     
     func applyBuff()
     {
-        self.DS_receiver?.damageMultiplier.addModifier("ArmorUp", value: DS_armorAmount)
-        self.DS_receiver?.applyTint("ArmoredUp", red: 0.5, blue: 0.5, green: 0.5)
+        self.DS_receiver?.damageMultiplier.addModifier("EnemyArmorUp", value: DS_armorAmount)
+        self.DS_receiver?.applyTint("EnemyArmoredUp", red: 0.1, blue: 0.25, green: 0.25)
         //self.DS_receiver?.sprite.runAction(SKAction.scaleBy(0.5, duration: 1.0))
     }
     
     func removeBuff()
     {
-        self.DS_receiver?.damageMultiplier.removeModifier("ArmorUp")
-        self.DS_receiver?.removeTint("ArmoredUp")
+        self.DS_receiver?.damageMultiplier.removeModifier("EnemyArmorUp")
+        self.DS_receiver?.removeTint("EnemyArmoredUp")
         //self.DS_receiver?.sprite.runAction(SKAction.scaleBy(2.0, duration: 1.0))
         
     }

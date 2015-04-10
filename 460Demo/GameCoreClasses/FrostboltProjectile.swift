@@ -43,6 +43,28 @@ class FrostboltProjectile: Projectile {
         for impactTarget in targets {
             impactEffect(impactTarget)
         }
+        
+        //Setup Frostbolt frost explosion emitter.
+        let emitterPath: String = NSBundle.mainBundle().pathForResource("MyParticle", ofType: "sks")!
+        let emitterNode: SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as SKEmitterNode
+        //emitterNode.position = self.sprite!.position
+        emitterNode.name = "Frostbolt"
+        emitterNode.zPosition = target.sprite.zPosition+2
+        emitterNode.targetNode = target.sprite
+        
+        let stopEmittingDelayAction: SKAction = SKAction.waitForDuration(NSTimeInterval(0.1))
+        let stopEmittingAction: SKAction = SKAction.runBlock({
+            emitterNode.particleBirthRate = 0.0
+        })
+        let removeNodeDelayAction: SKAction = SKAction.waitForDuration(NSTimeInterval(1.5))
+        let removeNodeBlock: SKAction = SKAction.runBlock({
+            emitterNode.removeFromParent()
+        })
+        
+        //Start the emitter node, wait half, heal, wait half again, remove the emitter node
+        target.sprite.addChild(emitterNode)   //Start the emitter node
+        //Action sequence: Wait. Apply Healing. Wait. Stop Creating Particles. Long Wait. Destroy
+        target.sprite.runAction(SKAction.sequence([stopEmittingDelayAction, stopEmittingAction, removeNodeDelayAction, removeNodeBlock]))
     }
     
     func impactEffect(affectedUnit: Unit){

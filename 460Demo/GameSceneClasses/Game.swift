@@ -308,9 +308,6 @@ class Game {
                 near = dist
             }
         }
-        
-
-        
         return nearby
     }
 
@@ -531,12 +528,10 @@ class Game {
             & set the Game.global.level variable
         */
         /* Go from a string to its corresponding level class */
-        let levelTxt = startMsg["level"] as String
-        var noSpace: String = removeWhiteSpaces(levelTxt) // get rid of the spaces in the level text (eg. "Level Two" -> "LevelTwo")
-        noSpace += AppWarpHelper.sharedInstance.userName_list.count.description // append the sublevel number, which will correspond to # of players in the game
-        var anyObjType: AnyObject.Type = NSClassFromString(noSpace)
-        var levelType: Level.Type = anyObjType as Level.Type
-        var newLevel: Level = levelType()
+        let levelRow: Int = startMsg["level"] as Int
+        //THIS IS NOT SAFE BECAUSE YOU CANNOT GAURANTEE THE SAME DATA SOURCE FOR ALL THE PICKERVIEWS AT ONCE.
+        //SHOULD SEND THE ACTUALLY LEVEL @OBJC STRING NAME AND INSTANTIATE A LEVEL FROM THAT INSTEAD OF JUST A SELECTED ROW NUMBER
+        var newLevel: Level = AppWarpHelper.sharedInstance.lobby!.levelDelegate.levelsDataSource[levelRow]
         
         self.level = newLevel // set Game.global.level = newLevel
         

@@ -111,13 +111,17 @@ class Priest: Unit, PType
     override func weaponHandle(target: Unit){
         //Setup heal particle emitter
         let emitterPath: String = NSBundle.mainBundle().pathForResource("HealParticle", ofType: "sks")!
-        let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as SKEmitterNode
+        let emitterNode: SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as SKEmitterNode
         //emitterNode.position = self.sprite!.position
         emitterNode.name = "Healing"
         emitterNode.zPosition = target.sprite.zPosition+2
         emitterNode.targetNode = target.sprite
         
         let halfWaitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(0.2))
+        let stopEmittingAction: SKAction = SKAction.runBlock({
+            emitterNode.particleBirthRate = 0.0
+        })
+        let removeNodeDelayAction: SKAction = SKAction.waitForDuration(NSTimeInterval(3.0))
         let removeNodeBlock: SKAction = SKAction.runBlock({
             emitterNode.removeFromParent()
         })
@@ -127,6 +131,7 @@ class Priest: Unit, PType
         
         //Start the emitter node, wait half, heal, wait half again, remove the emitter node
         target.sprite.addChild(emitterNode)   //Start the emitter node
-        self.sprite.runAction(SKAction.sequence([halfWaitAction, applyHealingBlock, halfWaitAction, removeNodeBlock]))
+        //Action sequence: Wait. Apply Healing. Wait. Stop Creating Particles. Long Wait. Destroy
+        self.sprite.runAction(SKAction.sequence([halfWaitAction, applyHealingBlock, halfWaitAction, stopEmittingAction, removeNodeDelayAction, removeNodeBlock]))
     }
 }

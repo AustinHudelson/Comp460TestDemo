@@ -313,8 +313,8 @@ class Unit: SerializableJSON, PType
     }
     
     func move(destination:CGPoint, complete:(()->Void)!) {
-        DS_moveDestination! = destination
-        DS_completeBlock! = complete
+        DS_moveDestination = destination
+        DS_completeBlock = complete
         moveCycle(destination, complete: complete)
 
     }
@@ -377,8 +377,6 @@ class Unit: SerializableJSON, PType
     }
     
     func clearMove(){
-        DS_moveDestination = nil
-        DS_completeBlock = nil
         self.sprite.removeActionForKey("move")
         self.sprite.removeActionForKey("moveAnim")
         self.DS_health_txt.removeActionForKey("move")
@@ -518,7 +516,7 @@ class Unit: SerializableJSON, PType
         
         //Sync Position
         
-        if Game.global.getDistance(self.sprite.position, p2: receivedPosition) > self.speed.get() * 0.25
+        if Game.global.getDistance(self.sprite.position, p2: receivedPosition) > self.speed.get() * 0.5
         {
             if self.sprite.actionForKey("move") != nil
             {

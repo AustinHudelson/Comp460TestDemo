@@ -41,7 +41,7 @@ class Warrior: Unit, PType
         self.isEnemy = false
         self.xSize = 300.0
         self.ySize = 300.0
-        self.damageMultiplier.addModifier("war", value: 0.8)
+        self.damageMultiplier.addModifier("war", value: 0.6)
         
         //Initializes all the DS_ animations
         initializeAnimations()
