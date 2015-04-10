@@ -127,13 +127,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode(self)
 
-            
+            /* variables related to exit confirmation window */
+            var exitConfirm: SKNode? = self.childNodeWithName("exitConfirm")
+            var exitConfirmYes: SKNode?
+            var exitConfirmNo: SKNode?
             
             /*
-            *  Determines if touch end button
+                Determines if touch is on the exit button
             */
             if exitButton!.containsPoint(touchLocation)
             {
+                /* Display exit confirmation window if it's not already there */
+                if exitConfirm == nil {
+                    println("displaying exit Window")
+                    
+                    exitConfirm = SKSpriteNode(imageNamed: "exitConfirm")
+                    exitConfirm!.name = "exitConfirm"
+                    exitConfirm!.position = CGPointMake(self.size.width/2, self.size.height/2)
+                    self.addChild(exitConfirm!)
+                    
+//                    let exitConfirmYes = SKSpriteNode(imageNamed: "exitConfirmYes")
+//                    exitConfirmYes.name = "exitConfirmYes"
+//                    exitConfirm.position = CGPointMake(self.size.width/2, self.size.height/2)
+//                    self.addChild(exitConfirm)
+                }
+                
                 sceneActive = false
                 AppWarpHelper.sharedInstance.leaveGame()
                 println("exit pressed")

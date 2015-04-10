@@ -15,6 +15,9 @@
 		682944E11AB578A200680A36 /* Shrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682944E01AB578A200680A36 /* Shrink.swift */; };
 		6850A0861A91606100B8CAD4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0851A91606100B8CAD4 /* SplashViewController.swift */; };
 		6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */; };
+		68A031C41AD882AE00281487 /* exitConfirm.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A031C11AD882AE00281487 /* exitConfirm.png */; };
+		68A031C51AD882AE00281487 /* exitConfirmNo.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A031C21AD882AE00281487 /* exitConfirmNo.png */; };
+		68A031C61AD882AE00281487 /* exitConfirmYes.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A031C31AD882AE00281487 /* exitConfirmYes.png */; };
 		68A18D4E1AA8719E001CCE1D /* NetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A18D441AA8719E001CCE1D /* NetAssociation.m */; };
 		68A18D4F1AA8719E001CCE1D /* NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A18D461AA8719E001CCE1D /* NetworkClock.m */; };
 		68A18D501AA8719E001CCE1D /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 68A18D471AA8719E001CCE1D /* Notes */; };
@@ -429,6 +432,9 @@
 		682944E01AB578A200680A36 /* Shrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shrink.swift; sourceTree = "<group>"; };
 		6850A0851A91606100B8CAD4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		68A031C11AD882AE00281487 /* exitConfirm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitConfirm.png; sourceTree = "<group>"; };
+		68A031C21AD882AE00281487 /* exitConfirmNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitConfirmNo.png; sourceTree = "<group>"; };
+		68A031C31AD882AE00281487 /* exitConfirmYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitConfirmYes.png; sourceTree = "<group>"; };
 		68A18D411AA8719E001CCE1D /* ios-ntp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ios-ntp.h"; sourceTree = "<group>"; };
 		68A18D421AA8719E001CCE1D /* ios-ntp.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ios-ntp.pch"; sourceTree = "<group>"; };
 		68A18D431AA8719E001CCE1D /* NetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetAssociation.h; sourceTree = "<group>"; };
@@ -1122,6 +1128,9 @@
 		68F3FE591AC92A8A009FAB4F /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				68A031C11AD882AE00281487 /* exitConfirm.png */,
+				68A031C21AD882AE00281487 /* exitConfirmNo.png */,
+				68A031C31AD882AE00281487 /* exitConfirmYes.png */,
 				68F3FE5A1AC92A8A009FAB4F /* ExitButton.png */,
 				68F3FE5B1AC92A8A009FAB4F /* icons34x34byailsenglish */,
 			);
@@ -1908,6 +1917,7 @@
 				68F3FF331AC92A8B009FAB4F /* E_Wood03.png in Resources */,
 				68F3FF881AC92A8B009FAB4F /* S_Magic01.png in Resources */,
 				F4B563A11AB3A5CF0094B2A7 /* mnstr2.wav in Resources */,
+				68A031C41AD882AE00281487 /* exitConfirm.png in Resources */,
 				68F3FF411AC92A8B009FAB4F /* I_Rubi.png in Resources */,
 				F4B563B41AB3A5CF0094B2A7 /* shade14.wav in Resources */,
 				68F3FFDA1AC93A1F009FAB4F /* Warrior-death.atlas in Resources */,
@@ -1983,6 +1993,7 @@
 				F4B5638C1AB3A5CF0094B2A7 /* random1.wav in Resources */,
 				68F35CAB1A84C4D5004905BF /* GameScene.sks in Resources */,
 				E78493691AD31E9100291509 /* DST-MapOfDoom.mp3 in Resources */,
+				68A031C61AD882AE00281487 /* exitConfirmYes.png in Resources */,
 				68F3FFCE1AC92A8B009FAB4F /* W_Sword021.png in Resources */,
 				68F3FF421AC92A8B009FAB4F /* I_Saphire.png in Resources */,
 				F4B563881AB3A5CF0094B2A7 /* metal-small2.wav in Resources */,
@@ -2006,6 +2017,7 @@
 				F4B5637B1AB3A5CF0094B2A7 /* bottle.wav in Resources */,
 				F4B5639C1AB3A5CF0094B2A7 /* mnstr11.wav in Resources */,
 				68F3FF951AC92A8B009FAB4F /* S_Shadow01.png in Resources */,
+				68A031C51AD882AE00281487 /* exitConfirmNo.png in Resources */,
 				F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */,
 				F4B563C71AB3A5CF0094B2A7 /* slime9.wav in Resources */,
 				F4B5636E1AB3A5CF0094B2A7 /* sword-unsheathe.wav in Resources */,
