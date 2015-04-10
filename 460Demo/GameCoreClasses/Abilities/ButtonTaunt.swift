@@ -14,7 +14,7 @@ class ButtonTaunt: InstantAbility
     * Creates a enrage icon at the specified ability use slot
     */
     init(slot: Int){
-        super.init(imageNamed: "S_Buff08", slot: slot)
+        super.init(imageNamed: "S_Shadow07", slot: slot)
     }
     
     override func apply(receiverIn: Unit) {

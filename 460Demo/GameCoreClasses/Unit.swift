@@ -81,8 +81,8 @@ class Unit: SerializableJSON, PType
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
         //self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
         
-        self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 2
-        self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
+        self.sprite.zPosition = Game.global.spriteMinZ + Game.global.scene!.frame.maxY - self.sprite.position.y
+        self.DS_health_bar.zPosition = self.sprite.zPosition + 3
         
        
     }
@@ -96,8 +96,9 @@ class Unit: SerializableJSON, PType
         // ===TESTING
         self.sprite.anchorPoint = CGPoint(x:0, y:0)
         //self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
-        self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 2
-        self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
+        
+        self.sprite.zPosition = Game.global.spriteMinZ + Game.global.scene!.frame.maxY - self.sprite.position.y
+        self.DS_health_bar.zPosition = self.sprite.zPosition + 3
     }
     
     /* Helper function that loads an animation into SKAction */

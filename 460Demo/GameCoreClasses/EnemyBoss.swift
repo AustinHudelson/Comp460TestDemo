@@ -24,8 +24,8 @@ class EnemyBoss: Unit, PType
         let spawnLoc = CGPoint(x: (receivedData["posX"] as CGFloat), y: (receivedData["posY"] as CGFloat))
         sprite.position = spawnLoc
         
-        self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 1
-        self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
+        self.sprite.zPosition = Game.global.spriteMinZ + Game.global.scene!.frame.maxY - self.sprite.position.y
+        self.DS_health_bar.zPosition = self.sprite.zPosition + 3
     }
     
     override init(ID:String, spawnLocation: CGPoint)
@@ -47,8 +47,9 @@ class EnemyBoss: Unit, PType
         //Initializes all the DS_ animations
         initializeAnimations()
         self.sprite.position = spawnLocation
-        self.sprite.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 1
-        self.DS_health_bar.zPosition = Game.global.scene!.frame.maxY - self.sprite.position.y + 3
+        
+        self.sprite.zPosition = Game.global.spriteMinZ + Game.global.scene!.frame.maxY - self.sprite.position.y
+        self.DS_health_bar.zPosition = self.sprite.zPosition + 3
     }
     
     func initializeAnimations() {
