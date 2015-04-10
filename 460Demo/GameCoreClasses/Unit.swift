@@ -47,9 +47,8 @@ class Unit: SerializableJSON, PType
     var DS_stumbleAnim: SKAction?
     var DS_abilityAnim: SKAction?
     var isEnemy: Bool = true
-    //var isMoving: Bool = false
-    var isAttacking: Bool = false
-    var DS_attackTarget: Unit?
+    var DS_attackTarget: Unit?                  //used in synching positions and other things
+    var DS_attackCompleteBlock: (()->Void)!?    //used in synching positions
     var DS_isCommandable: Bool = true   /*Private*/
     var DS_queuedOrder: Order?
     var DS_isFacingLeft: Bool = false
@@ -387,6 +386,7 @@ class Unit: SerializableJSON, PType
     func attack(target: Unit, complete:(()->Void)!){
         clearAttack()
         DS_attackTarget = target
+        DS_attackCompleteBlock = complete
         attackCycle(target, complete)
     }
     
@@ -523,8 +523,15 @@ class Unit: SerializableJSON, PType
             {
                 self.clearMove()
                 self.sprite.position = receivedPosition
-                self.move(DS_moveDestination!, complete: self.DS_completeBlock!)
-                println("replacing move")
+                if self.DS_attackTarget != nil {
+                    let currentTarget = self.DS_attackTarget!
+                    self.clearAttack()
+                    self.attack(currentTarget, complete: DS_attackCompleteBlock)
+                    println("replaced attack")
+                } else {
+                    self.move(DS_moveDestination!, complete: self.DS_completeBlock!)
+                    println("replaced move")
+                }
             }
             else
             {
