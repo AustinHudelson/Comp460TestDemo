@@ -11,6 +11,7 @@ import SpriteKit
 @objc(LevelTwo1)
 class LevelTwo1:Level
 {
+    
     required init() {
         super.init()
         title = "The Ice Caves (Solo)"
