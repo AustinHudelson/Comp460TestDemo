@@ -13,7 +13,8 @@ class LevelTwo1:Level
 {
     required init() {
         super.init()
-        title = "Level Two"
+        title = "The Ice Caves (Solo)"
+        background = "ice background"
     }
     
     override func loadWave(scene: GameScene) -> Array<Unit> {

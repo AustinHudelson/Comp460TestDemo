@@ -17,6 +17,7 @@ class ButtonEnrage: InstantAbility
     */
     init(slot: Int){
         super.init(imageNamed: "S_Buff04", slot: slot)
+        self.cooldown = 7.0
     }
     
     override func apply(receiverIn: Unit) {

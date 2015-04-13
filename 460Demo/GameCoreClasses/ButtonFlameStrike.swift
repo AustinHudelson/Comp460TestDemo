@@ -17,6 +17,7 @@ class ButtonFlameStrike: InstantAbility
     */
     init(slot: Int){
         super.init(imageNamed: "S_Fire02", slot: slot)
+        self.cooldown = 10.0
     }
     
     override func apply(receiverIn: Unit) {

@@ -12,7 +12,8 @@ class LevelOne3:Level
 {
     required init() {
         super.init()
-        title = "Level One"
+        title = "Rolling Hills"
+        background = "field background"
     }
     
     override func loadWave(scene: GameScene) -> Array<Unit> {

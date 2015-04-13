@@ -92,6 +92,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         AppWarpHelper.sharedInstance.gameScene = self
+        let background: SKSpriteNode = self.childNodeWithName("background") as SKSpriteNode
+        background.texture = SKTexture(imageNamed: Game.global.level!.background)
         startGameScene()
         
         Game.global.addSyncActionToScene()

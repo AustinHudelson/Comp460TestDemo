@@ -17,6 +17,7 @@ class ButtonBlindingFlash: InstantAbility
     */
     init(slot: Int){
         super.init(imageNamed: "S_Light02", slot: slot)
+        self.cooldown = 20.0
     }
     
     override func apply(receiverIn: Unit) {

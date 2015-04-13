@@ -17,6 +17,7 @@ class ButtonBlink: InstantAbility
     */
     init(slot: Int){
         super.init(imageNamed: "S_Buff10", slot: slot)
+        self.cooldown = 8.0
     }
     
     override func apply(receiverIn: Unit) {

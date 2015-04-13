@@ -395,6 +395,11 @@
 		F4B563C81AB3A5CF0094B2A7 /* door.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4B563681AB3A5CF0094B2A7 /* door.wav */; };
 		F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8348F1A9BB95200A839E5 /* Enemy.swift */; };
 		F4B925F51AC5D929007ED564 /* Blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B925F41AC5D929007ED564 /* Blink.swift */; };
+		F4C1ACCF1ADC282B0001E9ED /* desert background.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C1ACCE1ADC282B0001E9ED /* desert background.png */; };
+		F4C1ACD11ADC283B0001E9ED /* Dungon Background.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C1ACD01ADC283B0001E9ED /* Dungon Background.png */; };
+		F4C1ACD31ADC284C0001E9ED /* field background.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C1ACD21ADC284C0001E9ED /* field background.png */; };
+		F4C1ACD51ADC285B0001E9ED /* forest background.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C1ACD41ADC285B0001E9ED /* forest background.png */; };
+		F4C1ACD71ADC28720001E9ED /* ice background.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C1ACD61ADC28720001E9ED /* ice background.png */; };
 		F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B581A71EF7300DCD868 /* AppDelegate.swift */; };
 		F4D33B5F1A71EF7300DCD868 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */; };
 		F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B631A71EF7300DCD868 /* Images.xcassets */; };
@@ -823,6 +828,11 @@
 		F4B563681AB3A5CF0094B2A7 /* door.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = door.wav; sourceTree = "<group>"; };
 		F4B8348F1A9BB95200A839E5 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		F4B925F41AC5D929007ED564 /* Blink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blink.swift; sourceTree = "<group>"; };
+		F4C1ACCE1ADC282B0001E9ED /* desert background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "desert background.png"; sourceTree = "<group>"; };
+		F4C1ACD01ADC283B0001E9ED /* Dungon Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dungon Background.png"; sourceTree = "<group>"; };
+		F4C1ACD21ADC284C0001E9ED /* field background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "field background.png"; sourceTree = "<group>"; };
+		F4C1ACD41ADC285B0001E9ED /* forest background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forest background.png"; sourceTree = "<group>"; };
+		F4C1ACD61ADC28720001E9ED /* ice background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ice background.png"; sourceTree = "<group>"; };
 		F4D33B531A71EF7300DCD868 /* 460Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 460Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B581A71EF7300DCD868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -1096,6 +1106,11 @@
 			isa = PBXGroup;
 			children = (
 				68F3FE4C1AC92A8A009FAB4F /* Background1.png */,
+				F4C1ACCE1ADC282B0001E9ED /* desert background.png */,
+				F4C1ACD41ADC285B0001E9ED /* forest background.png */,
+				F4C1ACD61ADC28720001E9ED /* ice background.png */,
+				F4C1ACD21ADC284C0001E9ED /* field background.png */,
+				F4C1ACD01ADC283B0001E9ED /* Dungon Background.png */,
 			);
 			path = Backgrounds;
 			sourceTree = "<group>";
@@ -1895,6 +1910,7 @@
 				68F3FF321AC92A8B009FAB4F /* E_Metal04.png in Resources */,
 				F4B563861AB3A5CF0094B2A7 /* metal-ringing.wav in Resources */,
 				68F3FE2C1AC7A0E4009FAB4F /* MyParticle.sks in Resources */,
+				F4C1ACD11ADC283B0001E9ED /* Dungon Background.png in Resources */,
 				F4B563AB1AB3A5CF0094B2A7 /* ogre2.wav in Resources */,
 				68F3FF0C1AC92A8B009FAB4F /* NewMage-walk.atlas in Resources */,
 				68F3FF961AC92A8B009FAB4F /* S_Shadow02.png in Resources */,
@@ -1931,6 +1947,7 @@
 				F4B563B41AB3A5CF0094B2A7 /* shade14.wav in Resources */,
 				68F3FFDA1AC93A1F009FAB4F /* Warrior-death.atlas in Resources */,
 				68F3FFAE1AC92A8B009FAB4F /* S_Water02.png in Resources */,
+				F4C1ACD71ADC28720001E9ED /* ice background.png in Resources */,
 				F4B5637A1AB3A5CF0094B2A7 /* beads.wav in Resources */,
 				68F3FFB21AC92A8B009FAB4F /* S_Water06.png in Resources */,
 				68F3FF4A1AC92A8B009FAB4F /* P_Orange01.png in Resources */,
@@ -2092,6 +2109,7 @@
 				F4B563B71AB3A5CF0094B2A7 /* shade3.wav in Resources */,
 				68F3FF5A1AC92A8B009FAB4F /* S_Buff02.png in Resources */,
 				68FAEA141AC9B46F0045259A /* WarriorStand200x200.png in Resources */,
+				F4C1ACCF1ADC282B0001E9ED /* desert background.png in Resources */,
 				68F3FF0A1AC92A8B009FAB4F /* NewMage-death.atlas in Resources */,
 				68F3FFB11AC92A8B009FAB4F /* S_Water05.png in Resources */,
 				68F3FFBA1AC92A8B009FAB4F /* S_Wind07.png in Resources */,
@@ -2103,11 +2121,13 @@
 				F4B563AE1AB3A5CF0094B2A7 /* ogre5.wav in Resources */,
 				68F3FF7F1AC92A8B009FAB4F /* S_Ice02.png in Resources */,
 				F4B563A21AB3A5CF0094B2A7 /* mnstr3.wav in Resources */,
+				F4C1ACD31ADC284C0001E9ED /* field background.png in Resources */,
 				68F3FF431AC92A8B009FAB4F /* I_Scroll.png in Resources */,
 				E784936C1AD31E9100291509 /* DST-BarbarianBros.mp3 in Resources */,
 				68F3FF091AC92A8B009FAB4F /* NewMage-attack.atlas in Resources */,
 				68F3FF6A1AC92A8B009FAB4F /* S_Earth02.png in Resources */,
 				68F3FF7C1AC92A8B009FAB4F /* S_Holy06.png in Resources */,
+				F4C1ACD51ADC285B0001E9ED /* forest background.png in Resources */,
 				F4B563BE1AB3A5CF0094B2A7 /* slime1.wav in Resources */,
 				68F3FF591AC92A8B009FAB4F /* S_Buff01.png in Resources */,
 				68F3FFA31AC92A8B009FAB4F /* S_Sword08.png in Resources */,
