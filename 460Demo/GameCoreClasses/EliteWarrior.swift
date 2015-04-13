@@ -43,7 +43,7 @@ class EliteWarrior: Unit, PType
         self.xSize = 325.0
         self.ySize = 325.0
         
-        self.damageMultiplier.addModifier("eliteWar", value: 0.7)
+        self.damageMultiplier.addModifier("eliteWar", value: 1.0)
         
         //Initializes all the DS_ animations
         initializeAnimations()
