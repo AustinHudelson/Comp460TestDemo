@@ -578,7 +578,6 @@ class Unit: SerializableJSON, PType
         if alive == true {
             Game.global.removeUnit(self.ID)
             //COPY OF DEATH()
-            
             if alive == false {
                 return
             }

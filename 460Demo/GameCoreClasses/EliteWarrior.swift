@@ -43,7 +43,7 @@ class EliteWarrior: Unit, PType
         self.xSize = 325.0
         self.ySize = 325.0
         
-        self.damageMultiplier.addModifier("eliteWar", value: 0.7)
+        self.damageMultiplier.addModifier("eliteWar", value: 1.0)
         
         //Initializes all the DS_ animations
         initializeAnimations()
@@ -178,8 +178,18 @@ class EliteWarrior: Unit, PType
         var newTarget: Unit?
         //If there is atleast 1 potential target assign one at random
         if (potentialTargets.count >= 1){
-            let randomTargetIndex: Int = Int(arc4random_uniform(UInt32(potentialTargets.count)))
-            newTarget = potentialTargets[randomTargetIndex]
+            //Get the farthest away player
+            var nearby: Unit? = nil
+            var near: CGFloat = 0.0
+            for unit in potentialTargets {
+                var p2 = unit.sprite.position
+                var dist = Game.global.getRelativeDistance(self.sprite.position, p2:p2)
+                if dist >= near{
+                    nearby = unit
+                    near = dist
+                }
+            }
+            newTarget = nearby
         } else {
             return
         }

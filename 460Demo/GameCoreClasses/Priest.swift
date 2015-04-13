@@ -36,7 +36,7 @@ class Priest: Unit, PType
         self.speed = Attribute(baseValue: 80.0)
         self.attackRange = 1000.0
         self.attackSpeed = Attribute(baseValue: 1.5)
-        self.attackDamage = Attribute(baseValue: 7.5)
+        self.attackDamage = Attribute(baseValue: 9.0)
         self.isEnemy = false
         self.xSize = 300.0
         self.ySize = 300.0
