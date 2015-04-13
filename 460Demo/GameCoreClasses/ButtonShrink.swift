@@ -17,6 +17,7 @@ class ButtonShrink: InstantAbility
     */
     init(slot: Int){
         super.init(imageNamed: "S_Wind01", slot: slot)
+        self.cooldown = 10.0
     }
     
     override func apply(receiverIn: Unit) {

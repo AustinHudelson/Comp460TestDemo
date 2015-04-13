@@ -15,6 +15,7 @@ class ButtonTaunt: InstantAbility
     */
     init(slot: Int){
         super.init(imageNamed: "S_Shadow07", slot: slot)
+        self.cooldown = 6.0
     }
     
     override func apply(receiverIn: Unit) {

@@ -34,18 +34,19 @@ class SoulExchange: Order, PType, Transient
     
     override func apply(){
         if (DS_target == nil || DS_receiver == nil){
-           
             return
         }
         if (DS_target!.alive == false){
             return
         }
-        var yourHealth: CGFloat = DS_receiver!.health
-        var otherHealth: CGFloat = DS_target!.health
-        println("your health \(yourHealth)\n")
-        println("their health \(otherHealth)\n")
-        DS_receiver!.takeDamage(yourHealth-otherHealth)
-        DS_target!.takeDamage(otherHealth-yourHealth)
+        var yourHealth: CGFloat = DS_receiver!.health/DS_receiver!.maxhealth.get()
+        var otherHealth: CGFloat = DS_target!.health/DS_target!.maxhealth.get()
+        println("your health% \(yourHealth)\n")
+        println("their health% \(otherHealth)\n")
+        DS_receiver!.health = otherHealth * DS_receiver!.maxhealth.get()
+        DS_target!.health = yourHealth * DS_target!.maxhealth.get()
+        DS_receiver!.updateHealthBar()
+        DS_target!.updateHealthBar()
         self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }
     

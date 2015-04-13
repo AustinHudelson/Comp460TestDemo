@@ -316,7 +316,6 @@ class Unit: SerializableJSON, PType
         DS_moveDestination = destination
         DS_completeBlock = complete
         moveCycle(destination, complete: complete)
-
     }
     
     
@@ -499,6 +498,7 @@ class Unit: SerializableJSON, PType
             if (receivedLife > 0.0){
                 //Should be alive
                 self.health = receivedLife
+                updateHealthBar()
             } else {
                 //Should be dead
                 self.kill()
@@ -508,6 +508,7 @@ class Unit: SerializableJSON, PType
             if (receivedLife > 0.0){
                 //Should be alive
                 self.revive()
+                updateHealthBar()
             } else {
                 //Should be dead
                 self.kill()

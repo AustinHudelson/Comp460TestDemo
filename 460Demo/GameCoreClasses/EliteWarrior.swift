@@ -171,6 +171,7 @@ class EliteWarrior: Unit, PType
                     potentialTargets.removeAtIndex(i)
                     break
                 }
+                i++
             }
         }
         

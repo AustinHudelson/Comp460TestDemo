@@ -14,6 +14,7 @@ class ButtonArmorUp: InstantAbility
     */
     init(slot: Int){
         super.init(imageNamed: "A_Armor04", slot: slot)
+        self.cooldown = 8.0
     }
     
     override func apply(receiverIn: Unit) {

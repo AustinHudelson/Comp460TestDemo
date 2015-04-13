@@ -12,6 +12,7 @@ import SpriteKit
 class Level
 {
     var title: String = "UNTITLED"
+    var background: String = "Background1"
     
     required init() {
         title = NSStringFromClass(self.dynamicType) // This basically dynamically gets the class name and convert it into a string (eg, if this obj is an instance of LevelOne1, title = "LevelOne1")

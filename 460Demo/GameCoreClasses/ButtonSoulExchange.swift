@@ -17,6 +17,7 @@ class ButtonSoulExchange: TargetAllyAbility
     */
     init(slot: Int){
         super.init(imageNamed: "S_Magic01", slot: slot)
+        self.cooldown = 14.0
     }
     
     override func apply(receiverIn: Unit, target: Unit? ) {
