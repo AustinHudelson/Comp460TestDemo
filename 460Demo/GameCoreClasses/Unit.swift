@@ -595,9 +595,12 @@ class Unit: SerializableJSON, PType
      * message is received notifying that it should still be alive.
      */
     func revive(position: CGPoint){
+        self.sprite.removeActionForKey("death")
         self.sprite.hidden = false
         self.alive = true
-        self.addUnitToGameScene(Game.global.scene!, pos: position)
+        self.sprite.runAction(SKAction.fadeAlphaTo(1.0, duration:NSTimeInterval(0.0)))
+        self.sprite.addChild(DS_health_bar)
+        self.sprite.addChild(DS_health_bar_outline)
         self.sendOrder(DS_deadOrder!)
         DS_deadOrder = nil
     }
