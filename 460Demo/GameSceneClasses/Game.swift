@@ -127,8 +127,6 @@ class Game {
             
             var player = playerMap[ID]!
             playerMap[ID] = nil
-            let remove: SKAction = SKAction.removeFromParent()
-            player.sprite.runAction(remove)
             if ID == AppWarpHelper.sharedInstance.playerName
             {
                 myPlayerIsDead = true
@@ -146,9 +144,6 @@ class Game {
             println("removing enemy")
             var enemy = enemyMap[ID]!
             enemyMap[ID] = nil
-            let remove: SKAction = SKAction.removeFromParent()
-            enemy.DS_health_txt.runAction(remove)
-            enemy.sprite.runAction(remove)
             
             /* If I'm host and, when the enemy I removed was the last one, send a load level msg to everyone to tell them to load the next wave */
             if enemyMap.count == 0 && AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host
@@ -453,6 +448,9 @@ class Game {
             playerStats["posX"] = Float(playerUnit.sprite.position.x)
             playerStats["posY"] = Float(playerUnit.sprite.position.y)
             playerStats["ID"] = playerID
+            if (playerUnit.health <= 0.0){    //Remove from my memory
+                playerUnit.kill()
+            }
         }
         outerDict["SyncPlayer"]!.append(playerStats)
         
@@ -462,8 +460,7 @@ class Game {
         var enemyStats: Dictionary<String, AnyObject> = [:]
         
         /* Need this to sync enemy's orders */
-        outerDict["Orders"] = []
-        
+        var killEnemies: Array<Unit> = []
         for (enemyID, enemyUnit) in enemyMap {
             enemyStats["health"] = enemyUnit.health
             enemyStats["posX"] = Float(enemyUnit.sprite.position.x)
@@ -472,7 +469,7 @@ class Game {
             
             if enemyUnit.health <= 0 {
                 assert(enemyUnit.alive == false, "ENEMY WITH NEGITIVE HEALTH IS NOT DEAD")
-                enemyUnit.kill()
+                killEnemies.append(enemyUnit)
             }
 
 //            /* Send every enemy's Orders for sync...Except for Idle Order */
@@ -489,6 +486,11 @@ class Game {
         println(outerDict)
         
         NetworkManager.sendMsg(&outerDict)
+        
+        //Go back and kill the enemies
+        for killEnemy in killEnemies {
+            killEnemy.kill()
+        }
     }
     
     // Clients will call this to send their own char's health and pos
@@ -504,6 +506,9 @@ class Game {
             playerStats["posX"] = Float(playerUnit.sprite.position.x)
             playerStats["posY"] = Float(playerUnit.sprite.position.y)
             playerStats["ID"] = playerID
+            if (playerUnit.health <= 0.0){    //Remove from my memory
+                playerUnit.kill()
+            }
         }
         outerDict["SyncPlayer"]!.append(playerStats)
             
@@ -632,13 +637,9 @@ class Game {
                         If i'm the host, I don't update enemies
                     */
                     else {
-                        if playerMap[id] != nil {
+                        if playerMap[id] != nil {       //Unit is a player not an enemy.
                             if let updateUnit = getUnit(id) {
-                                updateUnit.health = recvUnit["health"] as CGFloat
-                                updateUnit.DS_health_txt.text = updateUnit.health.description
-                                
-                                let recvUnitPos: CGPoint = CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat))
-                                updateUnit.sprite.position = recvUnitPos
+                                updateUnit.synchronize(recvUnit["health"] as CGFloat, receivedPosition: CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat)))
                             }
                         }
                     }
