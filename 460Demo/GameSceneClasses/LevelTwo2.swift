@@ -72,7 +72,7 @@ class LevelTwo2:Level
             
             //should be priest
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
+            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)-50, y:CGRectGetMidY(scene.frame)-125);
             let dummy8 = EnemyPriest(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             

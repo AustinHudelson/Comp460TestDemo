@@ -7,7 +7,7 @@
 //
 
 import SpriteKit
-import Foundation
+import AVFoundation
 
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -15,6 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var viewController: UIViewController?
     var sceneActive: Bool = true
     var targetingAbility: TargetedAbility?
+    var audioPlayer = AVAudioPlayer()
     
     
     //begins game scene by making your player and loading enemy waves if you are host
@@ -45,10 +46,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sendUnitOverNetwork(playerChar) //Adds and send the unit
         
         // Bg Music
-        let soundAction = SKAction.playSoundFileNamed("DST-MapLands.mp3", waitForCompletion: true)
-        let repeatSound = SKAction.repeatActionForever(soundAction)
-        self.runAction(repeatSound, withKey: "BackgroundMusic")
+//        let soundAction = SKAction.playSoundFileNamed("DST-MapLands.mp3", waitForCompletion: true)
+//        let repeatSound = SKAction.repeatActionForever(soundAction)
+//        self.runAction(repeatSound, withKey: "BackgroundMusic")
         
+        audioPlayer = AVAudioPlayer()
+        var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("DST-MapLands", ofType: "mp3")!)
+        var error:NSError?
+        audioPlayer = AVAudioPlayer(contentsOfURL: alertSound, error: &error)
+        audioPlayer.numberOfLoops = -1
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+
         /*
             If I'm host, send a msg over the network telling everyone (including myself, the host) to load their level / first wave.
             The reason that the host dont immediately load the level here, but instead just send a msg about which level to load, is because game will be better synced if host waits until it gets it's own load level msg back before loading the level rather than loading the level before everyone else
@@ -101,6 +110,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func willMoveFromView(view: SKView)
     {
+        
         Game.global.scene = nil
         AppWarpHelper.sharedInstance.gameScene = nil
     }
@@ -158,10 +168,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 AppWarpHelper.sharedInstance.leaveGame()
                 println("exit pressed")
                 
+                println("willmovefromview")
                 self.removeAllActions()
                 self.removeAllChildren()
                 self.removeActionForKey("SyncAction")
-                self.removeActionForKey("BackgroundMusic")
+                //self.removeActionForKey("BackgroundMusic")
+                audioPlayer.stop()
                 self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
                 
                 
