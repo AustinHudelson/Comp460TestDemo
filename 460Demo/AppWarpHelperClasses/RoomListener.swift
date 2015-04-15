@@ -113,7 +113,14 @@ class RoomListener: NSObject,RoomRequestListener
                 
                 // Get rid of the old sync msgs & add the new host one
                 Game.global.scene?.removeActionForKey("SyncAction")
-                Game.global.addSyncActionToScene()
+                
+                /*
+                    When the old host press Exit, he gives up his host position to some other new guy, but he hasn't disconnected yet
+                */
+                if(userName_list.containsObject(AppWarpHelper.sharedInstance.playerName))
+                {
+                    Game.global.addSyncActionToScene()
+                }
             }
             
         }
