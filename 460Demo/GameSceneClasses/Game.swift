@@ -476,9 +476,10 @@ class Game {
 //            if !(enemyUnit.currentOrder is Idle) {
 //                outerDict["Orders"]!.append(enemyUnit.currentOrder.toJSON())
 //            }
+            outerDict["SyncEnemies"]!.append(enemyStats)
             
         }
-        outerDict["SyncEnemies"]!.append(enemyStats)
+        
         
         let pname = AppWarpHelper.sharedInstance.playerName
         let host = AppWarpHelper.sharedInstance.host
