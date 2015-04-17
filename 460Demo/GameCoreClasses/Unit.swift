@@ -21,6 +21,7 @@ class Unit: SerializableJSON, PType
     var maxhealth: Attribute = Attribute(baseValue: 0.0)
     var DS_healthregen: Int = 0
     var speed: Attribute = Attribute(baseValue: 0.0)
+    var DS_deadButAliveCounter: Int = 0
     var xSize: CGFloat = 200.0
     var ySize: CGFloat = 200.0
     var attackRange: CGFloat = 20.0
@@ -510,9 +511,18 @@ class Unit: SerializableJSON, PType
             //is dead
             if (receivedLife > 0.0){
                 //Should be alive
-                self.health = receivedLife
-                self.revive(receivedPosition)
-                updateHealthBar()
+                if DS_deadButAliveCounter == 0
+                {
+                    DS_deadButAliveCounter += 1
+                }
+                else
+                {
+                    self.health = receivedLife
+                    self.revive(receivedPosition)
+                    updateHealthBar()
+                    DS_deadButAliveCounter = 0
+                }
+                
             } else {
                 //Should be dead
                 self.kill()

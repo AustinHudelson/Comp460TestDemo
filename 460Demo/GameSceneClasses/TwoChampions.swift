@@ -13,7 +13,7 @@ class TwoChampions:Level
 {
     required init() {
         super.init()
-        title = "Two Champions"
+        title = "Two Champions (Three Players)"
         background = "Dungon Background"
     }
     

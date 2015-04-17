@@ -87,12 +87,22 @@ class BlindingFlash: Order, PType
                 let idleAction: SKAction = SKAction.runBlock({
                     unit.clearMove()
                     unit.sendOrder(Idle(receiverIn: unit))
+                    //unit.addModifier("BlindingFlash", DS_stunDuration - unit.DS_lastAttackTime )
+                    //This is what austin wrote(currentTIme-stunduration-dsCastattackTime)/attackspeed.get
                     unit.sprite.runAction(unit.DS_stumbleAnim)
                     unit.takeDamage(self.DS_damage)
                 })
                 let waitAction: SKAction = SKAction.waitForDuration(self.DS_stunDuration)
                 let roamAction: SKAction = SKAction.runBlock({ unit.sendOrder(RoamAttack(receiverIn: unit)) })
-                let applySeq: SKAction = SKAction.sequence([idleAction, waitAction,roamAction])
+                var applySeq: SKAction
+                if unit.alive
+                {
+                    applySeq = SKAction.sequence([idleAction, waitAction,roamAction])
+                }
+                else
+                {
+                    applySeq = idleAction
+                }
                 unit.sprite.runAction(applySeq)
             }
         }

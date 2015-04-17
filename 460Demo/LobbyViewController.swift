@@ -17,12 +17,10 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var p1Name: UITextView!
     @IBOutlet weak var p2Name: UITextView!
     @IBOutlet weak var p3Name: UITextView!
-    @IBOutlet weak var p4Name: UITextView!
     
     @IBOutlet weak var p1Img: UIImageView!
     @IBOutlet weak var p2Img: UIImageView!
     @IBOutlet weak var p3Img: UIImageView!
-    @IBOutlet weak var p4Img: UIImageView!
     @IBOutlet weak var levelPicker: UIPickerView!
     
     let levelDelegate: LevelSelection = LevelSelection()
@@ -74,12 +72,10 @@ class LobbyViewController: UIViewController {
         playerNames.append(p1Name)
         playerNames.append(p2Name)
         playerNames.append(p3Name)
-        playerNames.append(p4Name)
         
         classImages.append(p1Img)
         classImages.append(p2Img)
         classImages.append(p3Img)
-        classImages.append(p4Img)
         
         /* Disable the start game button until RoomListenter calls configLobbyView(), since we need some data to be set in configLobbyView() before game can be started */
         
@@ -123,16 +119,22 @@ class LobbyViewController: UIViewController {
         }
     }
     
+    /* This function updates the lobby's player names and icons when ppl joins the room */
     func setPlayerNames()
     {
+        /* Fill out the player names for ppl in the lobby */
         for index in 0 ..< AppWarpHelper.sharedInstance.userName_list.count
         {
             playerNames[index].text = AppWarpHelper.sharedInstance.userName_list[index] as String
             
         }
-        if AppWarpHelper.sharedInstance.userName_list.count != 4
+        
+        /* Fill out the empty slots with empty strings and nil img */
+        let maxUsers: Int = Int(AppWarpHelper.sharedInstance.maxUsers)
+        
+        if AppWarpHelper.sharedInstance.userName_list.count != maxUsers
         {
-            for index in AppWarpHelper.sharedInstance.userName_list.count ..< 4
+            for index in AppWarpHelper.sharedInstance.userName_list.count ..< maxUsers
             {
                 playerNames[index].text = ""
                 classImages[index].image = nil
@@ -195,7 +197,7 @@ class LobbyViewController: UIViewController {
     
         It also sets the host.
     
-        For now, it is getting called from RoomListener.onGetLiveRoomInforDone():
+        For now, it is getting called from RoomListener.onGetLiveRoomInfoDone():
             RoomListener.onGetLiveRoomInforDone() -> AppWarpHelper.configLobbyView()->LobbyViewController.configLobbyView9)
     */
     func configLobbyView() {

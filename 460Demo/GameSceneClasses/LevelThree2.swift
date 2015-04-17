@@ -12,7 +12,7 @@ class LevelThree2:Level
 {
     required init() {
         super.init()
-        title = "Enchanted Forest (2)"
+        title = "Enchanted Forest (Two Players)"
         background = "forest background"
     }
     

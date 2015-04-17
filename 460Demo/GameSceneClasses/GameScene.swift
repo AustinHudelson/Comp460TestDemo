@@ -168,13 +168,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 AppWarpHelper.sharedInstance.leaveGame()
                 println("exit pressed")
                 
-                println("willmovefromview")
-                self.removeAllActions()
-                self.removeAllChildren()
-                self.removeActionForKey("SyncAction")
-                //self.removeActionForKey("BackgroundMusic")
-                audioPlayer.stop()
-                self.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
+                Game.global.endScene()
                 
                 
                 

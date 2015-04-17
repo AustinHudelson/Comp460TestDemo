@@ -38,7 +38,7 @@ class RoomListener: NSObject,RoomRequestListener
             if firstRoom == true || Timer.diffDateNow(lastCreatedRoomTime) < NSTimeInterval(3.0){
                 println("onJoinRoomDone: Failed to find a room that isn't full! Creating one instead")
                 let playerName = AppWarpHelper.sharedInstance.playerName
-                let maxUsers = AppWarpHelper.sharedInstance.roomMaxUsers
+                let maxUsers = AppWarpHelper.sharedInstance.maxUsers
                 //Update variables for last created room check
                 firstRoom = false
                 lastCreatedRoomTime = Timer.getCurrentTime()
