@@ -324,7 +324,7 @@ class Unit: SerializableJSON, PType
      * and then calls itself again. calls complete upon reaching the destination
      */
     func moveCycle(destination: CGPoint, complete:(()->Void)!){
-        let refreshRate: CGFloat = 0.25
+        let refreshRate: CGFloat = 0.75
         let maxMoveDistance: CGFloat = self.speed.get()*refreshRate
         let remainingDistance: CGFloat = Game.global.getDistance(self.sprite.position, p2: destination)
         
@@ -397,6 +397,7 @@ class Unit: SerializableJSON, PType
      * or clearMove() if the unit is in the process of moving to the attack target.
      */
     func attackCycle(target: Unit, complete:(()->Void)!){
+        let moveTolerence: CGFloat = 5.0
         let tolerence = attackRange
         let animationGapDistance: CGFloat = 80.0 //Default value is overwritten in init
         let refreshRate: CGFloat = 0.25
@@ -415,6 +416,7 @@ class Unit: SerializableJSON, PType
             if Game.global.getDistance(self.sprite.position, p2: movePos) > tolerence {
                 //Move a short distance towards the movePos. Dont move more than the distance to the move pos (hence the min function for distance). And call attack cycle again once the move is complete.
                 let adjustedMove: CGPoint = Game.global.getPointOffsetTowardPoint(self.sprite.position, p2:movePos, distance: min(self.speed.get()*refreshRate, Game.global.getDistance(self.sprite.position, p2:movePos)))
+                // IF this adjusted move should put you within Attack Range, then
                 self.move(adjustedMove, complete:{
                     self.attackCycle(target, complete: complete)
                 })
@@ -521,7 +523,7 @@ class Unit: SerializableJSON, PType
         
         //Sync Position
         
-        if Game.global.getDistance(self.sprite.position, p2: receivedPosition) > self.speed.get() * 0.5
+        if Game.global.getDistance(self.sprite.position, p2: receivedPosition) > self.speed.get() * 0.6
         {
             if self.sprite.actionForKey("move") != nil
             {
