@@ -242,7 +242,8 @@ class Game {
     {
         let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(3.0))
         
-        let segueBlock: SKAction  = SKAction.runBlock({  self.scene!.viewController?.performSegueWithIdentifier("mainMenuSegue", sender:  nil)
+        let segueBlock: SKAction  = SKAction.runBlock({
+            Game.global.endScene()
             return ()
         })
         let endSequence: SKAction = SKAction.sequence([sendInterval, segueBlock])
@@ -670,5 +671,14 @@ class Game {
                 getUnit(newOrder.ID!)!.sendOrder(newOrder)   //SEND THE ORDER TO ITS UNIT
             }
         }
+    }
+    
+    func endScene()
+    {
+        println("willmovefromview")
+        self.scene!.removeAllActions()
+        self.scene!.removeAllChildren()
+        self.scene!.audioPlayer.stop()
+        Game.global.scene!.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
     }
 }
