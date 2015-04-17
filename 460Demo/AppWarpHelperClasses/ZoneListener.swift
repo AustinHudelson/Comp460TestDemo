@@ -41,7 +41,7 @@ class ZoneListener: NSObject,ZoneRequestListener
                 
                 // Create a room name with roomName = playerName & maxUsers = roomMaxUsers
                 let playerName = AppWarpHelper.sharedInstance.playerName
-                let maxUsers = AppWarpHelper.sharedInstance.roomMaxUsers
+                let maxUsers = AppWarpHelper.sharedInstance.maxUsers
                 AppWarpHelper.sharedInstance.createRoom(playerName, maxUsers: maxUsers)
             }
         }
