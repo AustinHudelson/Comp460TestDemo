@@ -12,7 +12,7 @@ class LevelOne2:Level
 {
     required init() {
         super.init()
-        title = "Rolling Hills (2)"
+        title = "Rolling Hills (Two Players)"
         background = "field background"
     }
     

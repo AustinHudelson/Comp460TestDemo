@@ -12,7 +12,7 @@ class LevelTwo3:Level
 {
     required init() {
         super.init()
-        title = "The Ice Caves"
+        title = "The Ice Caves (Three Players)"
         background = "ice background"
     }
     
