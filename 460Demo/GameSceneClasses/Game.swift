@@ -468,15 +468,16 @@ class Game {
             enemyStats["posY"] = Float(enemyUnit.sprite.position.y)
             enemyStats["ID"] = enemyID
             
+        
+            
             if enemyUnit.health <= 0 {
                 assert(enemyUnit.alive == false, "ENEMY WITH NEGITIVE HEALTH IS NOT DEAD")
                 killEnemies.append(enemyUnit)
             }
 
-//            /* Send every enemy's Orders for sync...Except for Idle Order */
-//            if !(enemyUnit.currentOrder is Idle) {
-//                outerDict["Orders"]!.append(enemyUnit.currentOrder.toJSON())
-//            }
+            /* Send every enemy's target id for sync. We're assuming our enemies will only have the following Orders: Idle, RoamAttack, RoamHeal */
+            enemyStats["tID"] = enemyUnit.currentOrder.tID
+            
             outerDict["SyncEnemies"]!.append(enemyStats)
             
         }

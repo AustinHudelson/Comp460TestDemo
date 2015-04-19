@@ -43,6 +43,10 @@ class RoamAttack: Order, PType
         if self.DS_target == nil || !self.DS_target!.alive
         {
             self.DS_target = Game.global.getClosestPlayer(self.DS_receiver!.sprite.position) // might be nil when all the players die
+            
+            if self.DS_target != nil {
+                self.tID = self.DS_target!.ID
+            }
         }
         
         //if its still nil
@@ -55,6 +59,8 @@ class RoamAttack: Order, PType
         else {
             //Players left alive. Send attack to unit with complete to recall apply and find a new player to attack.
             self.DS_receiver!.attack(self.DS_target!, complete: {self.apply()})
+            
+            self.tID = self.DS_target!.ID
         }
     }
     

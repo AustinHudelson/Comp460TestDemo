@@ -45,6 +45,11 @@ class RoamHeal: Order, PType
         {
             self.DS_target = Game.global.getClosestEnemy(self.DS_receiver!.sprite.position, ID: DS_receiver!.ID) // might be nil when all the players die
             println("looking for heal target")
+            
+            if self.DS_target != nil {
+                self.tID = self.DS_target!.ID
+            }
+            println("RoamHeal apply() if: \(self.tID)")
         }
         
         //if its still nil
@@ -59,6 +64,10 @@ class RoamHeal: Order, PType
             //Players left alive. Send attack to unit with complete to recall apply and find a new player to attack.
             println("apply")
             self.DS_receiver!.attack(self.DS_target!, complete: {self.apply()})
+            
+            self.tID = self.DS_target!.ID
+            
+            println("RoamAttack apply() else: \(self.tID)")
         }
     }
     

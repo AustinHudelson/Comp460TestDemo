@@ -491,8 +491,10 @@ class Unit: SerializableJSON, PType
     
     
     /*
-    * Call the synchronize this unit with the host. Will correct current life and 
+    * Call to synchronize this unit with the host. Will correct current life and
     * position if it has deviated too far from the host.
+    *
+    * Will also replace the current order this Unit is an enemy & tID is different.
     */
     func synchronize(receivedLife: CGFloat, receivedPosition: CGPoint){
         //Sync Health
