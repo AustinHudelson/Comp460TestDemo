@@ -67,6 +67,8 @@ class Unit: SerializableJSON, PType
     
     var DS_deadOrder: Order?
     
+    var DS_enemySyncOrderCounter: Int = 0
+    
     
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
@@ -534,19 +536,28 @@ class Unit: SerializableJSON, PType
         
         // If this unit is an enemy, check to see if its order needs to be updated
         if self.isEnemy {
-            if (tID != "") && (self.currentOrder.tID != tID) {
+            if !(self.currentOrder is Idle) && (tID != "") && (self.currentOrder.tID != tID) {
                 var newTarget: Unit? = Game.global.getUnit(tID)
                 
-                if self.type == "EnemyPriest" {
-                    if newTarget != nil {
-                        (self.currentOrder as RoamHeal).redirect(newTarget!)
-                    }
+                // This counter is for waiting until 2 sync msgs come, and you only update the order after 2 msgs, b/c else you get some problem similar to death
+                if DS_enemySyncOrderCounter == 0
+                {
+                    DS_enemySyncOrderCounter += 1
                 }
                 else {
-                    // It's an Enemy with Roam attack
-                    if newTarget != nil {
-                        (self.currentOrder as RoamAttack).redirect(newTarget!)
+                    if self.type == "EnemyPriest" {
+                        if newTarget != nil {
+                            (self.currentOrder as RoamHeal).redirect(newTarget!)
+                        }
                     }
+                    else {
+                        // It's an Enemy with Roam attack
+                        if newTarget != nil {
+                            (self.currentOrder as RoamAttack).redirect(newTarget!)
+                        }
+                    }
+                    
+                    DS_enemySyncOrderCounter = 0
                 }
             }
         }

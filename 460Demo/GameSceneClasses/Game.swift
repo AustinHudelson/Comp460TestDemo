@@ -628,7 +628,6 @@ class Game {
     func updateUnits(arrayOfUnits: Array<AnyObject>) {
         for object in arrayOfUnits {
             let recvUnit = object as Dictionary<String, AnyObject>  // had to do this to get around Swift compile error
-            println(recvUnit)
             
             // need to check for null on recvUnit["ID"] b/c if player is dead, the recvUnit dictionary will be empty, which means recvUnit["ID"] = nil
             if let id = recvUnit["ID"] as? String {
@@ -669,8 +668,6 @@ class Game {
             var nsobjecttype: Order.Type = anyobjecttype as Order.Type
             var newOrder: Order = nsobjecttype(receivedData: order)
             
-            println("!!Received Order for ID: \(newOrder.ID!)")
-            
             if getUnit(newOrder.ID!) != nil
             {
                 /*
@@ -683,7 +680,6 @@ class Game {
     
     func endScene()
     {
-        println("Ending game")
         self.scene!.sceneActive = false
         AppWarpHelper.sharedInstance.leaveGame()
         self.scene!.removeAllActions()

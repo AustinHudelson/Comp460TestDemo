@@ -58,7 +58,6 @@ class NetworkManager {
         Add to this function when you want to do new things with the recevied message
     */
     class func processRecvMsg(recvDict: Dictionary<String, Array<AnyObject>>) {
-        //println(recvDict)
         for (key: String, arrayOfObjects: Array<AnyObject>) in recvDict {
             switch key {
                 /* === Lobby & Start Game cases === */
@@ -91,7 +90,6 @@ class NetworkManager {
                         var recvTime: NSDate = Timer.getCurrentTime()
                         var recvTimeStr = Timer.DateToStr(recvTime)
                         var diff: NSTimeInterval = Timer.diffDateNow(sentTime) // get difference between sent time and now
-                        //println("SentTime: \(sentTimeStr); RecvTime: \(recvTimeStr); diff between SentTime & recvTime: \(diff) seconds")
                     }
                 case "SyncPlayer", "SyncEnemies":
                     Game.global.updateUnits(arrayOfObjects)
