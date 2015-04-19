@@ -452,8 +452,11 @@ class Game {
             if (playerUnit.health <= 0.0){    //Remove from my memory
                 playerUnit.kill()
             }
+            
+            playerStats["tID"] = "" // This is not a good way to do it, but we're just setting this to empty string here b/c right now we kind of grouped sending both players & enemies sync together
+            
+            outerDict["SyncPlayer"]!.append(playerStats)
         }
-        outerDict["SyncPlayer"]!.append(playerStats)
         
         
         // ==== syncing enemies =====
@@ -512,8 +515,11 @@ class Game {
             if (playerUnit.health <= 0.0){    //Remove from my memory
                 playerUnit.kill()
             }
+            
+            playerStats["tID"] = "" // This is not a good way to do it, but we're just setting this to empty string here b/c right now we kind of grouped sending both players & enemies sync together
+            
+            outerDict["SyncPlayer"]!.append(playerStats)
         }
-        outerDict["SyncPlayer"]!.append(playerStats)
             
         NetworkManager.sendMsg(&outerDict)
 
@@ -622,6 +628,7 @@ class Game {
     func updateUnits(arrayOfUnits: Array<AnyObject>) {
         for object in arrayOfUnits {
             let recvUnit = object as Dictionary<String, AnyObject>  // had to do this to get around Swift compile error
+            println(recvUnit)
             
             // need to check for null on recvUnit["ID"] b/c if player is dead, the recvUnit dictionary will be empty, which means recvUnit["ID"] = nil
             if let id = recvUnit["ID"] as? String {
@@ -633,7 +640,7 @@ class Game {
                     */
                     if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host {
                         if let updateUnit = getUnit(id) {
-                            updateUnit.synchronize(recvUnit["health"] as CGFloat, receivedPosition: CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat)))
+                            updateUnit.synchronize(recvUnit["health"] as CGFloat, receivedPosition: CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat)), tID: recvUnit["tID"] as String)
                         }
                     }
                     /*
@@ -642,7 +649,7 @@ class Game {
                     else {
                         if playerMap[id] != nil {       //Unit is a player not an enemy.
                             if let updateUnit = getUnit(id) {
-                                updateUnit.synchronize(recvUnit["health"] as CGFloat, receivedPosition: CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat)))
+                                updateUnit.synchronize(recvUnit["health"] as CGFloat, receivedPosition: CGPoint(x: (recvUnit["posX"] as CGFloat), y: (recvUnit["posY"] as CGFloat)), tID: recvUnit["tID"] as String)
                             }
                         }
                     }

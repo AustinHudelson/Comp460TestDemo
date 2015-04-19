@@ -496,7 +496,7 @@ class Unit: SerializableJSON, PType
     *
     * Will also replace the current order this Unit is an enemy & tID is different.
     */
-    func synchronize(receivedLife: CGFloat, receivedPosition: CGPoint){
+    func synchronize(receivedLife: CGFloat, receivedPosition: CGPoint, tID: String){
         //Sync Health
         if (self.alive == true){
             //is alive
@@ -532,6 +532,24 @@ class Unit: SerializableJSON, PType
             }
         }
         
+        // If this unit is an enemy, check to see if its order needs to be updated
+        if self.isEnemy {
+            if (tID != "") && (self.currentOrder.tID != tID) {
+                var newTarget: Unit? = Game.global.getUnit(tID)
+                
+                if self.type == "EnemyPriest" {
+                    if newTarget != nil {
+                        (self.currentOrder as RoamHeal).redirect(newTarget!)
+                    }
+                }
+                else {
+                    // It's an Enemy with Roam attack
+                    if newTarget != nil {
+                        (self.currentOrder as RoamAttack).redirect(newTarget!)
+                    }
+                }
+            }
+        }
         
         //Sync Position
         
