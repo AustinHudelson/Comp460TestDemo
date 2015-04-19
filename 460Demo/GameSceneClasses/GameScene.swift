@@ -107,13 +107,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Game.global.addSyncActionToScene()
     }
-    
-    override func willMoveFromView(view: SKView)
-    {
-        
+    override func willMoveFromView(view: SKView) {
         Game.global.scene = nil
         AppWarpHelper.sharedInstance.gameScene = nil
     }
+    
     /// physics
     func didBeginContact(contact: SKPhysicsContact) {
         
@@ -164,8 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                    self.addChild(exitConfirm)
                 }
                 
-                sceneActive = false
-                AppWarpHelper.sharedInstance.leaveGame()
+            
                 println("exit pressed")
                 
                 Game.global.endScene()
