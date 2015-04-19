@@ -675,10 +675,13 @@ class Game {
     
     func endScene()
     {
-        println("willmovefromview")
+        println("Ending game")
+        self.scene!.sceneActive = false
+        AppWarpHelper.sharedInstance.leaveGame()
         self.scene!.removeAllActions()
         self.scene!.removeAllChildren()
         self.scene!.audioPlayer.stop()
         Game.global.scene!.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
+        
     }
 }
