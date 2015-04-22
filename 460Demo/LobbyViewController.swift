@@ -13,6 +13,7 @@ class LobbyViewController: UIViewController {
     var myPlayerName: String? = nil
     var myClass: String = ""
     @IBOutlet weak var startGameButton: UIButton!
+    @IBOutlet weak var exitButton: UIButton!
     
     @IBOutlet weak var p1Name: UITextView!
     @IBOutlet weak var p2Name: UITextView!
@@ -49,6 +50,11 @@ class LobbyViewController: UIViewController {
         } else {
             println("You need to wait for host to start the game!")
         }
+    }
+    
+    /* Pressing this button will move the screen back to character selection screen */
+    @IBAction func exitButtonAction(sender: AnyObject) {
+        
     }
     
     override func viewDidLoad() {

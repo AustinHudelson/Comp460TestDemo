@@ -526,6 +526,7 @@ class Game {
     }
     
     func addSyncActionToScene() {
+        // number of seconds to send sync msg
         let sendInterval: SKAction = SKAction.waitForDuration(NSTimeInterval(0.5))
         
         var syncAction: SKAction
