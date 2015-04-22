@@ -38,6 +38,8 @@ class Frostbolt: Order, PType
         if (DS_target!.alive == false){
             return
         }
+        let soundAction = SKAction.playSoundFileNamed("freeze.wav", waitForCompletion: true)
+        self.DS_receiver?.sprite.runAction(soundAction)
         let frostbolt: FrostboltProjectile = FrostboltProjectile(target: DS_target!, caster: DS_receiver!)
         self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }

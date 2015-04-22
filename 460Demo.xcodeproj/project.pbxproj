@@ -278,6 +278,10 @@
 		E784936D1AD31E9100291509 /* DST-Aronara.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E78493681AD31E9100291509 /* DST-Aronara.mp3 */; };
 		E787EB7C1AC8ED03007CBAE2 /* TargetAllyAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787EB7B1AC8ED03007CBAE2 /* TargetAllyAbility.swift */; };
 		E787EB7E1AC8EE0F007CBAE2 /* SoulExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */; };
+		E7E3815E1AE588F200A60DB9 /* swords_clashing.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E3815C1AE588F200A60DB9 /* swords_clashing.wav */; };
+		E7E3815F1AE588F200A60DB9 /* fireball.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E3815D1AE588F200A60DB9 /* fireball.wav */; };
+		E7E381621AE58BE100A60DB9 /* freeze.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E381601AE58BE100A60DB9 /* freeze.wav */; };
+		E7E381631AE58BE100A60DB9 /* teleport.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E381611AE58BE100A60DB9 /* teleport.wav */; };
 		F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402F68E1AB51AF300A930C2 /* EnemyMage.swift */; };
 		F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
@@ -715,6 +719,10 @@
 		E78493681AD31E9100291509 /* DST-Aronara.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "DST-Aronara.mp3"; path = "Supporting Files/DST-Aronara.mp3"; sourceTree = "<group>"; };
 		E787EB7B1AC8ED03007CBAE2 /* TargetAllyAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetAllyAbility.swift; sourceTree = "<group>"; };
 		E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoulExchange.swift; sourceTree = "<group>"; };
+		E7E3815C1AE588F200A60DB9 /* swords_clashing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swords_clashing.wav; sourceTree = "<group>"; };
+		E7E3815D1AE588F200A60DB9 /* fireball.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fireball.wav; sourceTree = "<group>"; };
+		E7E381601AE58BE100A60DB9 /* freeze.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = freeze.wav; sourceTree = "<group>"; };
+		E7E381611AE58BE100A60DB9 /* teleport.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport.wav; sourceTree = "<group>"; };
 		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
 		F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonShrink.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
@@ -1472,6 +1480,10 @@
 		F4B562FC1AB3A5CE0094B2A7 /* battle */ = {
 			isa = PBXGroup;
 			children = (
+				E7E381601AE58BE100A60DB9 /* freeze.wav */,
+				E7E381611AE58BE100A60DB9 /* teleport.wav */,
+				E7E3815C1AE588F200A60DB9 /* swords_clashing.wav */,
+				E7E3815D1AE588F200A60DB9 /* fireball.wav */,
 				F4B562FD1AB3A5CE0094B2A7 /* magic1.wav */,
 				F4B562FE1AB3A5CE0094B2A7 /* spell.wav */,
 				F4B562FF1AB3A5CE0094B2A7 /* swing.wav */,
@@ -1858,6 +1870,7 @@
 				68F3FE2D1AC7A0E4009FAB4F /* RainParticle.sks in Resources */,
 				68F3FF781AC92A8B009FAB4F /* S_Holy02.png in Resources */,
 				680CD85C1AC5D38F00AEFBEB /* Main.storyboard in Resources */,
+				E7E3815E1AE588F200A60DB9 /* swords_clashing.wav in Resources */,
 				F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */,
 				F48B20BF1ACC8568007487F6 /* InnerHealthBar.png in Resources */,
 				F4B563C01AB3A5CF0094B2A7 /* slime2.wav in Resources */,
@@ -2025,6 +2038,7 @@
 				68F3FF511AC92A8B009FAB4F /* S_Bow03.png in Resources */,
 				68F3FF2C1AC92A8B009FAB4F /* C_Elm04.png in Resources */,
 				68F3FF921AC92A8B009FAB4F /* S_Poison05.png in Resources */,
+				E7E381621AE58BE100A60DB9 /* freeze.wav in Resources */,
 				68F3FF4C1AC92A8B009FAB4F /* P_Red01.png in Resources */,
 				E78493631AD31E1B00291509 /* tamper_data-11.0.1-fx.xpi in Resources */,
 				68F3FE2B1AC7A0E4009FAB4F /* MagicBolt.sks in Resources */,
@@ -2080,6 +2094,7 @@
 				F4B563811AB3A5CF0094B2A7 /* cloth-heavy.wav in Resources */,
 				68F3FFB81AC92A8B009FAB4F /* S_Wind05.png in Resources */,
 				68F3FFCD1AC92A8B009FAB4F /* W_Sword020.png in Resources */,
+				E7E381631AE58BE100A60DB9 /* teleport.wav in Resources */,
 				68F3FF531AC92A8B009FAB4F /* S_Bow05.png in Resources */,
 				F4B563BF1AB3A5CF0094B2A7 /* slime10.wav in Resources */,
 				F4B563851AB3A5CF0094B2A7 /* coin3.wav in Resources */,
@@ -2119,6 +2134,7 @@
 				68F3FFB61AC92A8B009FAB4F /* S_Wind03.png in Resources */,
 				68F3FF401AC92A8B009FAB4F /* I_Rock05.png in Resources */,
 				F4B563A01AB3A5CF0094B2A7 /* mnstr15.wav in Resources */,
+				E7E3815F1AE588F200A60DB9 /* fireball.wav in Resources */,
 				68F3FFC41AC92A8B009FAB4F /* W_Mace007.png in Resources */,
 				68A18D501AA8719E001CCE1D /* Notes in Resources */,
 				F4B563B71AB3A5CF0094B2A7 /* shade3.wav in Resources */,

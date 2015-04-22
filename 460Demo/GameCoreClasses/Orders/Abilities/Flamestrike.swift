@@ -28,6 +28,8 @@ class Flamestrike: Order, PType
     }
     
     override func apply(){
+        let soundAction = SKAction.playSoundFileNamed("fireball.wav", waitForCompletion: true)
+        self.DS_receiver?.sprite.runAction(soundAction)
         let flamestrike: Projectile = FlamestrikeProjectile(caster: DS_receiver!)
         self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }

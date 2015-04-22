@@ -93,7 +93,16 @@ class BlindingFlash: Order, PType
                     unit.takeDamage(self.DS_damage)
                 })
                 let waitAction: SKAction = SKAction.waitForDuration(self.DS_stunDuration)
-                let roamAction: SKAction = SKAction.runBlock({ unit.sendOrder(RoamAttack(receiverIn: unit)) })
+                let roamAction: SKAction = SKAction.runBlock({
+                    if unit is EnemyPriest
+                    {
+                        unit.sendOrder(RoamHeal(receiverIn: unit))
+                    }
+                    else
+                    {
+                    unit.sendOrder(RoamAttack(receiverIn: unit))
+                    }
+                })
                 var applySeq: SKAction
                 if unit.alive
                 {

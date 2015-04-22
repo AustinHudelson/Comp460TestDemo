@@ -50,6 +50,8 @@ class Blink: Order, PType
         if DS_receiver == nil || !DS_receiver!.alive{
             return
         }
+        let soundAction = SKAction.playSoundFileNamed("teleport.wav", waitForCompletion: true)
+        self.DS_receiver?.sprite.runAction(soundAction)
         self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
         let blockCommands: SKAction = SKAction.runBlock({
             self.DS_receiver!.makeUncommandable()

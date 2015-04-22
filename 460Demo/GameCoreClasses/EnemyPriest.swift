@@ -128,7 +128,7 @@ class EnemyPriest: Unit, PType
                 self.sendOrder(RoamHeal(receiverIn: self))
             })
         } else if (Game.global.scene != nil && (self.sprite.position.x > CGRectGetMaxX(Game.global.scene!.frame))) {
-            //Priest is off the side of the screen on the right side. Send order to move on to the screen then roam attack.
+            //Priest is off the side of the screen on the right side. Send order to move on to the screen then roam heal.
             self.move(CGPoint(x: CGRectGetMaxX(Game.global.scene!.frame)-80, y: self.sprite.position.y), complete: {
                 self.sendOrder(RoamHeal(receiverIn: self))
             })
