@@ -67,7 +67,6 @@ class AreaHeal: Order, PType
         
         
         
-        let soundAction = SKAction.playSoundFileNamed("spell.wav", waitForCompletion: true)
         self.DS_receiver?.sprite.runAction(soundAction)
         let wait = NSTimeInterval(0.0625)
         if (heal <= 0) {
