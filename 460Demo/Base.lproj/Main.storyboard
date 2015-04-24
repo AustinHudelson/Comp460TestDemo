@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FjS-He-3bJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FjS-He-3bJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -134,7 +134,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="671" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="vcW-7f-CbY" userLabel="Background">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="671" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="vcW-7f-CbY" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="671"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -326,23 +326,23 @@
                                 <exclude reference="gIx-IX-XvS"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="ZzR-Cd-k7B"/>
+                                <exclude reference="nTD-zR-DHn"/>
+                                <exclude reference="UJm-gL-Mwk"/>
+                                <exclude reference="lEo-16-TG8"/>
                                 <exclude reference="ESc-UQ-Ko6"/>
                                 <exclude reference="b8M-Ai-4rr"/>
                                 <exclude reference="yTs-RF-Csw"/>
                                 <exclude reference="yVJ-Dc-5fK"/>
-                                <exclude reference="UJm-gL-Mwk"/>
-                                <exclude reference="lEo-16-TG8"/>
-                                <exclude reference="1oP-Mb-ZtH"/>
-                                <exclude reference="ZHs-3c-3at"/>
                                 <exclude reference="D8K-Vi-ion"/>
                                 <exclude reference="jJz-nh-CvZ"/>
                                 <exclude reference="ncm-zi-ng2"/>
+                                <exclude reference="1oP-Mb-ZtH"/>
+                                <exclude reference="ZHs-3c-3at"/>
                                 <exclude reference="wrt-Cu-krY"/>
                                 <exclude reference="ElH-5R-PEc"/>
                                 <exclude reference="hjM-l1-qfl"/>
                                 <exclude reference="txw-hm-SAj"/>
-                                <exclude reference="ZzR-Cd-k7B"/>
-                                <exclude reference="nTD-zR-DHn"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -351,23 +351,23 @@
                                 <include reference="gIx-IX-XvS"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="ZzR-Cd-k7B"/>
+                                <include reference="nTD-zR-DHn"/>
+                                <include reference="UJm-gL-Mwk"/>
+                                <include reference="lEo-16-TG8"/>
                                 <include reference="ESc-UQ-Ko6"/>
                                 <include reference="b8M-Ai-4rr"/>
                                 <include reference="yTs-RF-Csw"/>
                                 <include reference="yVJ-Dc-5fK"/>
-                                <include reference="UJm-gL-Mwk"/>
-                                <include reference="lEo-16-TG8"/>
-                                <include reference="1oP-Mb-ZtH"/>
-                                <include reference="ZHs-3c-3at"/>
                                 <include reference="D8K-Vi-ion"/>
                                 <include reference="jJz-nh-CvZ"/>
                                 <include reference="ncm-zi-ng2"/>
+                                <include reference="1oP-Mb-ZtH"/>
+                                <include reference="ZHs-3c-3at"/>
                                 <include reference="wrt-Cu-krY"/>
                                 <include reference="ElH-5R-PEc"/>
                                 <include reference="hjM-l1-qfl"/>
                                 <include reference="txw-hm-SAj"/>
-                                <include reference="ZzR-Cd-k7B"/>
-                                <include reference="nTD-zR-DHn"/>
                             </mask>
                         </variation>
                     </view>
@@ -560,25 +560,13 @@
                                     <action selector="startGameButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="4fi-wH-bAc"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eGV-h8-NcW">
-                                <rect key="frame" x="0.0" y="331" width="600" height="162"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="7w4-xK-3CN"/>
-                                    <constraint firstAttribute="height" constant="160" id="VsS-hb-TPt"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="7w4-xK-3CN"/>
-                                        <exclude reference="VsS-hb-TPt"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="7w4-xK-3CN"/>
-                                        <include reference="VsS-hb-TPt"/>
-                                    </mask>
-                                </variation>
-                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Begin your adventure by fighting generic level description text that I am making up." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TMC-aO-CzG">
+                                <rect key="frame" x="16" y="331" width="167" height="261"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="0.48999999999999999" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDa-ZG-q5A" userLabel="exit">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -604,6 +592,25 @@
                                     <action selector="exitButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="0GP-nB-PmY"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eGV-h8-NcW">
+                                <rect key="frame" x="0.0" y="331" width="600" height="203"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="7w4-xK-3CN"/>
+                                    <constraint firstAttribute="height" constant="160" id="VsS-hb-TPt"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7w4-xK-3CN"/>
+                                        <exclude reference="VsS-hb-TPt"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="7w4-xK-3CN"/>
+                                        <include reference="VsS-hb-TPt"/>
+                                    </mask>
+                                </variation>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -618,21 +625,25 @@
                             <constraint firstItem="3Jb-UG-vi2" firstAttribute="top" secondItem="kq4-de-Sna" secondAttribute="bottom" constant="16" id="Bbg-lu-aD7"/>
                             <constraint firstItem="6O2-F1-5jM" firstAttribute="top" secondItem="OJg-J2-uNF" secondAttribute="bottom" constant="10" id="GJq-Jd-W3j"/>
                             <constraint firstAttribute="centerX" secondItem="D9D-1P-Scm" secondAttribute="centerX" id="I3c-kf-DHP"/>
+                            <constraint firstItem="D9D-1P-Scm" firstAttribute="leading" secondItem="TMC-aO-CzG" secondAttribute="trailing" constant="9" id="IGr-Il-X6H"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VDa-ZG-q5A" secondAttribute="trailing" constant="-16" id="Jv5-yf-GKI"/>
                             <constraint firstItem="6TD-pi-Psd" firstAttribute="top" secondItem="kq4-de-Sna" secondAttribute="bottom" constant="16" id="MGS-sO-mqO"/>
                             <constraint firstAttribute="centerX" secondItem="kq4-de-Sna" secondAttribute="centerX" id="N4u-JD-Nmt"/>
                             <constraint firstAttribute="centerX" secondItem="4Mk-rO-cWr" secondAttribute="centerX" id="S6R-dW-sbI"/>
                             <constraint firstAttribute="centerX" secondItem="SUN-Ty-zZa" secondAttribute="centerX" id="SW2-ZI-gJg"/>
+                            <constraint firstItem="TMC-aO-CzG" firstAttribute="leading" secondItem="tVp-UM-yKM" secondAttribute="leadingMargin" constant="38" id="UPf-AZ-77W"/>
                             <constraint firstItem="eGV-h8-NcW" firstAttribute="top" secondItem="D9D-1P-Scm" secondAttribute="bottom" constant="31" id="XjX-3Y-xuE"/>
                             <constraint firstAttribute="centerX" secondItem="eGV-h8-NcW" secondAttribute="centerX" id="ay7-TK-cYa"/>
                             <constraint firstItem="SUN-Ty-zZa" firstAttribute="top" secondItem="6TD-pi-Psd" secondAttribute="bottom" constant="10" id="dH5-DZ-bSk"/>
                             <constraint firstAttribute="height" secondItem="4Mk-rO-cWr" secondAttribute="height" id="ehp-V4-43d"/>
                             <constraint firstItem="kq4-de-Sna" firstAttribute="top" secondItem="yRe-Yf-8Mf" secondAttribute="bottom" id="fCc-pM-Dd1"/>
                             <constraint firstItem="6O2-F1-5jM" firstAttribute="leading" secondItem="SUN-Ty-zZa" secondAttribute="trailing" constant="100" id="iMB-kZ-jWV"/>
+                            <constraint firstItem="ucj-rz-4bk" firstAttribute="top" secondItem="TMC-aO-CzG" secondAttribute="bottom" constant="248" id="kAO-Jq-A1W"/>
                             <constraint firstAttribute="centerX" secondItem="eGV-h8-NcW" secondAttribute="centerX" id="mUK-5P-x75"/>
                             <constraint firstAttribute="centerX" secondItem="6TD-pi-Psd" secondAttribute="centerX" id="mr8-Tw-MQh"/>
                             <constraint firstItem="6TD-pi-Psd" firstAttribute="leading" secondItem="3Jb-UG-vi2" secondAttribute="trailing" constant="100" id="uYk-GZ-9gr"/>
                             <constraint firstAttribute="width" secondItem="4Mk-rO-cWr" secondAttribute="width" id="w0s-ec-ZVP"/>
+                            <constraint firstItem="eGV-h8-NcW" firstAttribute="top" secondItem="TMC-aO-CzG" secondAttribute="top" constant="-30" id="xib-JA-0Gg"/>
                             <constraint firstAttribute="centerY" secondItem="4Mk-rO-cWr" secondAttribute="centerY" id="yg6-0a-qbj"/>
                         </constraints>
                         <variation key="default">
@@ -719,7 +730,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVX-m0-sSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="349.5" y="117"/>
+            <point key="canvasLocation" x="349" y="117"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="n3C-XH-PIy">

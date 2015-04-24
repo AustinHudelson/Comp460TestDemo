@@ -85,8 +85,12 @@ class BlindingFlash: Order, PType
                 
                 // set idle and then roam attack
                 let idleAction: SKAction = SKAction.runBlock({
-                    unit.clearMove()
-                    unit.sendOrder(Idle(receiverIn: unit))
+                    let currentTime = Timer.getCurrentTime()
+                    let newAttackSpeed: Double = ((Double)(currentTime.timeIntervalSinceDate(unit.DS_lastAttackTime)))-(self.DS_stunDuration)
+                    let newAttackSpeedFloat = CGFloat(newAttackSpeed)
+                    let modifier: CGFloat = newAttackSpeedFloat/unit.attackSpeed.get()
+                    unit.attackSpeed.addModifier("FlashStun", value: modifier)
+                    unit.speed.addModifier("FlashStun", value: 0.0)
                     //unit.addModifier("BlindingFlash", DS_stunDuration - unit.DS_lastAttackTime )
                     //This is what austin wrote(currentTIme-stunduration-dsCastattackTime)/attackspeed.get
                     unit.sprite.runAction(unit.DS_stumbleAnim)
@@ -94,14 +98,8 @@ class BlindingFlash: Order, PType
                 })
                 let waitAction: SKAction = SKAction.waitForDuration(self.DS_stunDuration)
                 let roamAction: SKAction = SKAction.runBlock({
-                    if unit is EnemyPriest
-                    {
-                        unit.sendOrder(RoamHeal(receiverIn: unit))
-                    }
-                    else
-                    {
-                    unit.sendOrder(RoamAttack(receiverIn: unit))
-                    }
+                    unit.speed.removeModifier("FlashStun")
+                    unit.attackSpeed.removeModifier("FlashStun")
                 })
                 var applySeq: SKAction
                 if unit.alive
