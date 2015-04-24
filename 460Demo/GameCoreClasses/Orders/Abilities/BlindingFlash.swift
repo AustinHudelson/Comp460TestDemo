@@ -59,7 +59,6 @@ class BlindingFlash: Order, PType
                     else
                     {
                         destination = CGPoint(x:Game.global.scene!.frame.maxX, y:unitY)
-                
                     }
                 }
                 else
@@ -72,7 +71,6 @@ class BlindingFlash: Order, PType
                     else
                     {
                         destination = CGPoint(x:Game.global.scene!.frame.minX, y:unitY)
-                        
                     }
                 }
                 
