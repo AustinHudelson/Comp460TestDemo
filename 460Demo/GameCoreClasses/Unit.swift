@@ -458,17 +458,18 @@ class Unit: SerializableJSON, PType
                 weaponHandle(target)
                 if self.type == "Warrior"
                 {
-                    let soundAction = SKAction.playSoundFileNamed("swing3.wav", waitForCompletion: true)
+                    let soundAction = SKAction.playSoundFileNamed("swords_clashing.mp3", waitForCompletion: true)
                     self.sprite.runAction(soundAction)
                 }
                 else if self.type == "Mage" || self.type == "EnemyMage"
                 {
+                    //can we make this softeR?
                     let soundAction = SKAction.playSoundFileNamed("magic1.wav", waitForCompletion: true)
                     self.sprite.runAction(soundAction)
                 }
                 else
                 {
-                    let soundAction = SKAction.playSoundFileNamed("swing2.wav", waitForCompletion: true)
+                    let soundAction = SKAction.playSoundFileNamed("spell.mp3", waitForCompletion: true)
                     self.sprite.runAction(soundAction)
                 }
          

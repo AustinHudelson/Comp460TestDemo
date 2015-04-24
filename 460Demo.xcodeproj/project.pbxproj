@@ -278,6 +278,11 @@
 		E784936D1AD31E9100291509 /* DST-Aronara.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E78493681AD31E9100291509 /* DST-Aronara.mp3 */; };
 		E787EB7C1AC8ED03007CBAE2 /* TargetAllyAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787EB7B1AC8ED03007CBAE2 /* TargetAllyAbility.swift */; };
 		E787EB7E1AC8EE0F007CBAE2 /* SoulExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */; };
+		E7BB74BB1AEAD38D00E5288D /* heal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74B61AEAD38D00E5288D /* heal.mp3 */; };
+		E7BB74BC1AEAD38D00E5288D /* spell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74B71AEAD38D00E5288D /* spell.mp3 */; };
+		E7BB74BD1AEAD38D00E5288D /* freeze2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74B81AEAD38D00E5288D /* freeze2.mp3 */; };
+		E7BB74BE1AEAD38D00E5288D /* blessing2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74B91AEAD38D00E5288D /* blessing2.mp3 */; };
+		E7BB74BF1AEAD38D00E5288D /* swords_clashing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74BA1AEAD38D00E5288D /* swords_clashing.mp3 */; };
 		E7E3815E1AE588F200A60DB9 /* swords_clashing.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E3815C1AE588F200A60DB9 /* swords_clashing.wav */; };
 		E7E3815F1AE588F200A60DB9 /* fireball.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E3815D1AE588F200A60DB9 /* fireball.wav */; };
 		E7E381621AE58BE100A60DB9 /* freeze.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E381601AE58BE100A60DB9 /* freeze.wav */; };
@@ -719,6 +724,11 @@
 		E78493681AD31E9100291509 /* DST-Aronara.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "DST-Aronara.mp3"; path = "Supporting Files/DST-Aronara.mp3"; sourceTree = "<group>"; };
 		E787EB7B1AC8ED03007CBAE2 /* TargetAllyAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetAllyAbility.swift; sourceTree = "<group>"; };
 		E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoulExchange.swift; sourceTree = "<group>"; };
+		E7BB74B61AEAD38D00E5288D /* heal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heal.mp3; sourceTree = "<group>"; };
+		E7BB74B71AEAD38D00E5288D /* spell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spell.mp3; sourceTree = "<group>"; };
+		E7BB74B81AEAD38D00E5288D /* freeze2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = freeze2.mp3; sourceTree = "<group>"; };
+		E7BB74B91AEAD38D00E5288D /* blessing2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blessing2.mp3; sourceTree = "<group>"; };
+		E7BB74BA1AEAD38D00E5288D /* swords_clashing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swords_clashing.mp3; sourceTree = "<group>"; };
 		E7E3815C1AE588F200A60DB9 /* swords_clashing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swords_clashing.wav; sourceTree = "<group>"; };
 		E7E3815D1AE588F200A60DB9 /* fireball.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fireball.wav; sourceTree = "<group>"; };
 		E7E381601AE58BE100A60DB9 /* freeze.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = freeze.wav; sourceTree = "<group>"; };
@@ -1480,6 +1490,11 @@
 		F4B562FC1AB3A5CE0094B2A7 /* battle */ = {
 			isa = PBXGroup;
 			children = (
+				E7BB74B61AEAD38D00E5288D /* heal.mp3 */,
+				E7BB74B71AEAD38D00E5288D /* spell.mp3 */,
+				E7BB74B81AEAD38D00E5288D /* freeze2.mp3 */,
+				E7BB74B91AEAD38D00E5288D /* blessing2.mp3 */,
+				E7BB74BA1AEAD38D00E5288D /* swords_clashing.mp3 */,
 				E7E381601AE58BE100A60DB9 /* freeze.wav */,
 				E7E381611AE58BE100A60DB9 /* teleport.wav */,
 				E7E3815C1AE588F200A60DB9 /* swords_clashing.wav */,
@@ -1907,8 +1922,10 @@
 				F4B563731AB3A5CF0094B2A7 /* interface1.wav in Resources */,
 				68F3FF441AC92A8B009FAB4F /* I_Scroll02.png in Resources */,
 				F4B563B11AB3A5CF0094B2A7 /* shade11.wav in Resources */,
+				E7BB74BD1AEAD38D00E5288D /* freeze2.mp3 in Resources */,
 				F4B5636D1AB3A5CF0094B2A7 /* swing3.wav in Resources */,
 				68F3FFBC1AC92A8B009FAB4F /* W_Book02.png in Resources */,
+				E7BB74BB1AEAD38D00E5288D /* heal.mp3 in Resources */,
 				68F3FF9F1AC92A8B009FAB4F /* S_Sword04.png in Resources */,
 				F4B5637C1AB3A5CF0094B2A7 /* bubble.wav in Resources */,
 				68F3FF4D1AC92A8B009FAB4F /* P_White01.png in Resources */,
@@ -1951,6 +1968,7 @@
 				68F3FF221AC92A8B009FAB4F /* SelectionCircle_Red_Heavy.png in Resources */,
 				68F3FF8D1AC92A8B009FAB4F /* S_Physic02.png in Resources */,
 				68F3FF481AC92A8B009FAB4F /* P_Green01.png in Resources */,
+				E7BB74BE1AEAD38D00E5288D /* blessing2.mp3 in Resources */,
 				68F3FFB71AC92A8B009FAB4F /* S_Wind04.png in Resources */,
 				F4B5636B1AB3A5CF0094B2A7 /* swing.wav in Resources */,
 				68F3FF351AC92A8B009FAB4F /* I_Book.png in Resources */,
@@ -2085,6 +2103,7 @@
 				68F3FFA91AC92A8B009FAB4F /* S_Thunder04.png in Resources */,
 				68F3FF6B1AC92A8B009FAB4F /* S_Earth03.png in Resources */,
 				68F3FF8F1AC92A8B009FAB4F /* S_Poison02.png in Resources */,
+				E7BB74BC1AEAD38D00E5288D /* spell.mp3 in Resources */,
 				68F3FF7A1AC92A8B009FAB4F /* S_Holy04.png in Resources */,
 				F4B563791AB3A5CF0094B2A7 /* armor-light.wav in Resources */,
 				F4B5639D1AB3A5CF0094B2A7 /* mnstr12.wav in Resources */,
@@ -2152,6 +2171,7 @@
 				F4B563AE1AB3A5CF0094B2A7 /* ogre5.wav in Resources */,
 				68F3FF7F1AC92A8B009FAB4F /* S_Ice02.png in Resources */,
 				F4B563A21AB3A5CF0094B2A7 /* mnstr3.wav in Resources */,
+				E7BB74BF1AEAD38D00E5288D /* swords_clashing.mp3 in Resources */,
 				F4C1ACD31ADC284C0001E9ED /* field background.png in Resources */,
 				68F3FF431AC92A8B009FAB4F /* I_Scroll.png in Resources */,
 				E784936C1AD31E9100291509 /* DST-BarbarianBros.mp3 in Resources */,
