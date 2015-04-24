@@ -75,40 +75,9 @@ class BlindingFlash: Order, PType
                 }
                 
                 let moveAction: SKAction = SKAction.moveTo(destination, duration: NSTimeInterval(0.5))
-                //let healthDestination = CGPoint(x:destination.x + self.DS_receiver!.DS_health_bar_x_dspl, y:destination.y + self.DS_receiver!.DS_health_txt_y_dspl)
-                //let moveActionHealth: SKAction = SKAction.moveTo(healthDestination, duration: NSTimeInterval(0.5))
                 unit.sprite.runAction(moveAction)
-                //unit.DS_health_bar.runAction(moveActionHealth)
                 println("in the middle of stuff")
-                
-                // set idle and then roam attack
-                let idleAction: SKAction = SKAction.runBlock({
-                    let currentTime = Timer.getCurrentTime()
-                    let newAttackSpeed: Double = ((Double)(currentTime.timeIntervalSinceDate(unit.DS_lastAttackTime)))-(self.DS_stunDuration)
-                    let newAttackSpeedFloat = CGFloat(newAttackSpeed)
-                    let modifier: CGFloat = newAttackSpeedFloat/unit.attackSpeed.get()
-                    unit.attackSpeed.addModifier("FlashStun", value: modifier)
-                    unit.speed.addModifier("FlashStun", value: 0.0)
-                    //unit.addModifier("BlindingFlash", DS_stunDuration - unit.DS_lastAttackTime )
-                    //This is what austin wrote(currentTIme-stunduration-dsCastattackTime)/attackspeed.get
-                    unit.sprite.runAction(unit.DS_stumbleAnim)
-                    unit.takeDamage(self.DS_damage)
-                })
-                let waitAction: SKAction = SKAction.waitForDuration(self.DS_stunDuration)
-                let roamAction: SKAction = SKAction.runBlock({
-                    unit.speed.removeModifier("FlashStun")
-                    unit.attackSpeed.removeModifier("FlashStun")
-                })
-                var applySeq: SKAction
-                if unit.alive
-                {
-                    applySeq = SKAction.sequence([idleAction, waitAction,roamAction])
-                }
-                else
-                {
-                    applySeq = idleAction
-                }
-                unit.sprite.runAction(applySeq)
+                unit.takeDamage(self.DS_damage)
             }
         }
     }
