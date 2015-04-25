@@ -39,6 +39,8 @@ class SoulExchange: Order, PType, Transient
         if (DS_target!.alive == false){
             return
         }
+        let soundAction = SKAction.playSoundFileNamed("zap.mp3", waitForCompletion: true)
+        self.DS_receiver?.sprite.runAction(soundAction)
         var yourHealth: CGFloat = DS_receiver!.health/DS_receiver!.maxhealth.get()
         var otherHealth: CGFloat = DS_target!.health/DS_target!.maxhealth.get()
         println("your health% \(yourHealth)\n")

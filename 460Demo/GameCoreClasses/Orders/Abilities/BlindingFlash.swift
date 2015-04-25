@@ -43,6 +43,8 @@ class BlindingFlash: Order, PType
     
     func blindingFlash()
     {
+        let soundAction = SKAction.playSoundFileNamed("warp.mp3", waitForCompletion: true)
+        self.DS_receiver?.sprite.runAction(soundAction)
         for (id, unit) in Game.global.enemyMap{
             if Game.global.getDistance(DS_receiver!.sprite.position, p2: unit.sprite.position) < DS_radius
             {
@@ -80,6 +82,7 @@ class BlindingFlash: Order, PType
                 unit.takeDamage(self.DS_damage)
             }
         }
+        self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }
     
 }

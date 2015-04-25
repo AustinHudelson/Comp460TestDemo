@@ -283,7 +283,8 @@
 		E7BB74BD1AEAD38D00E5288D /* freeze2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74B81AEAD38D00E5288D /* freeze2.mp3 */; };
 		E7BB74BE1AEAD38D00E5288D /* blessing2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74B91AEAD38D00E5288D /* blessing2.mp3 */; };
 		E7BB74BF1AEAD38D00E5288D /* swords_clashing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74BA1AEAD38D00E5288D /* swords_clashing.mp3 */; };
-		E7E3815E1AE588F200A60DB9 /* swords_clashing.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E3815C1AE588F200A60DB9 /* swords_clashing.wav */; };
+		E7BB74C21AEC4BA400E5288D /* warp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74C01AEC4BA400E5288D /* warp.mp3 */; };
+		E7BB74C31AEC4BA400E5288D /* zap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74C11AEC4BA400E5288D /* zap.mp3 */; };
 		E7E3815F1AE588F200A60DB9 /* fireball.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E3815D1AE588F200A60DB9 /* fireball.wav */; };
 		E7E381621AE58BE100A60DB9 /* freeze.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E381601AE58BE100A60DB9 /* freeze.wav */; };
 		E7E381631AE58BE100A60DB9 /* teleport.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E381611AE58BE100A60DB9 /* teleport.wav */; };
@@ -729,7 +730,8 @@
 		E7BB74B81AEAD38D00E5288D /* freeze2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = freeze2.mp3; sourceTree = "<group>"; };
 		E7BB74B91AEAD38D00E5288D /* blessing2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blessing2.mp3; sourceTree = "<group>"; };
 		E7BB74BA1AEAD38D00E5288D /* swords_clashing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swords_clashing.mp3; sourceTree = "<group>"; };
-		E7E3815C1AE588F200A60DB9 /* swords_clashing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swords_clashing.wav; sourceTree = "<group>"; };
+		E7BB74C01AEC4BA400E5288D /* warp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = warp.mp3; sourceTree = "<group>"; };
+		E7BB74C11AEC4BA400E5288D /* zap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zap.mp3; sourceTree = "<group>"; };
 		E7E3815D1AE588F200A60DB9 /* fireball.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fireball.wav; sourceTree = "<group>"; };
 		E7E381601AE58BE100A60DB9 /* freeze.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = freeze.wav; sourceTree = "<group>"; };
 		E7E381611AE58BE100A60DB9 /* teleport.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport.wav; sourceTree = "<group>"; };
@@ -1490,6 +1492,8 @@
 		F4B562FC1AB3A5CE0094B2A7 /* battle */ = {
 			isa = PBXGroup;
 			children = (
+				E7BB74C01AEC4BA400E5288D /* warp.mp3 */,
+				E7BB74C11AEC4BA400E5288D /* zap.mp3 */,
 				E7BB74B61AEAD38D00E5288D /* heal.mp3 */,
 				E7BB74B71AEAD38D00E5288D /* spell.mp3 */,
 				E7BB74B81AEAD38D00E5288D /* freeze2.mp3 */,
@@ -1497,7 +1501,6 @@
 				E7BB74BA1AEAD38D00E5288D /* swords_clashing.mp3 */,
 				E7E381601AE58BE100A60DB9 /* freeze.wav */,
 				E7E381611AE58BE100A60DB9 /* teleport.wav */,
-				E7E3815C1AE588F200A60DB9 /* swords_clashing.wav */,
 				E7E3815D1AE588F200A60DB9 /* fireball.wav */,
 				F4B562FD1AB3A5CE0094B2A7 /* magic1.wav */,
 				F4B562FE1AB3A5CE0094B2A7 /* spell.wav */,
@@ -1875,6 +1878,7 @@
 				68F3FFC91AC92A8B009FAB4F /* W_Sword015.png in Resources */,
 				68F3FF991AC92A8B009FAB4F /* S_Shadow05.png in Resources */,
 				68F3FF8A1AC92A8B009FAB4F /* S_Magic03.png in Resources */,
+				E7BB74C31AEC4BA400E5288D /* zap.mp3 in Resources */,
 				F4B563C81AB3A5CF0094B2A7 /* door.wav in Resources */,
 				68F3FF741AC92A8B009FAB4F /* S_Fire05.png in Resources */,
 				F4B563B31AB3A5CF0094B2A7 /* shade13.wav in Resources */,
@@ -1885,7 +1889,6 @@
 				68F3FE2D1AC7A0E4009FAB4F /* RainParticle.sks in Resources */,
 				68F3FF781AC92A8B009FAB4F /* S_Holy02.png in Resources */,
 				680CD85C1AC5D38F00AEFBEB /* Main.storyboard in Resources */,
-				E7E3815E1AE588F200A60DB9 /* swords_clashing.wav in Resources */,
 				F4B563A71AB3A5CF0094B2A7 /* mnstr8.wav in Resources */,
 				F48B20BF1ACC8568007487F6 /* InnerHealthBar.png in Resources */,
 				F4B563C01AB3A5CF0094B2A7 /* slime2.wav in Resources */,
@@ -2186,6 +2189,7 @@
 				68F3FFC01AC92A8B009FAB4F /* W_Book06.png in Resources */,
 				F4B563871AB3A5CF0094B2A7 /* metal-small1.wav in Resources */,
 				68F3FFAD1AC92A8B009FAB4F /* S_Water01.png in Resources */,
+				E7BB74C21AEC4BA400E5288D /* warp.mp3 in Resources */,
 				68F3FF5D1AC92A8B009FAB4F /* S_Buff05.png in Resources */,
 				F4B5639A1AB3A5CF0094B2A7 /* mnstr1.wav in Resources */,
 				68F3FF8C1AC92A8B009FAB4F /* S_Physic01.png in Resources */,
