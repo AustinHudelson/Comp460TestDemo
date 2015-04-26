@@ -74,8 +74,16 @@ class RoomListener: NSObject,RoomRequestListener
     func onGetLiveRoomInfoDone(event: LiveRoomInfoEvent)
     {
         println("getting live info")
+        
         /* update the user list */
         AppWarpHelper.sharedInstance.userName_list = event.joinedUsers
+        let userName_list = AppWarpHelper.sharedInstance.userName_list
+        if userName_list.count <= 0
+        {
+            println("Deleting room")
+            WarpClient.getInstance().deleteRoom(event.roomData.roomId)
+            return
+        }
         
         
         /*
@@ -83,6 +91,7 @@ class RoomListener: NSObject,RoomRequestListener
             broadcast which level is select if I'm host
         */
         if AppWarpHelper.sharedInstance.gameScene == nil {
+            
             AppWarpHelper.sharedInstance.configLobbyView()
             println("gamescene is nil")
             // Send over selected lvl if I'm host
@@ -97,15 +106,14 @@ class RoomListener: NSObject,RoomRequestListener
         }
         else {
             println("there was a gamescene")
-            let userName_list = AppWarpHelper.sharedInstance.userName_list
             // We're requesting live room info when host leaves the room, so designate new host
             let oldHost = AppWarpHelper.sharedInstance.host
             
-            if userName_list.count <= 0
-            {
-                println("Deleting room")
-                WarpClient.getInstance().deleteRoom(event.roomData.roomId)
-            }
+//            if userName_list.count <= 0
+//            {
+//                println("Deleting room")
+//                WarpClient.getInstance().deleteRoom(event.roomData.roomId)
+//            }
             
             if (!userName_list.containsObject(oldHost!)) && (userName_list.count > 0) {
                 println("count of list \(userName_list.count)")
