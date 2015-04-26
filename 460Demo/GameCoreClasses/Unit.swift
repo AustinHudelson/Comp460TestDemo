@@ -316,9 +316,31 @@ class Unit: SerializableJSON, PType
     }
     
     func move(destination:CGPoint, complete:(()->Void)!) {
-        DS_moveDestination = destination
+        var editDestination = destination
+        
+        //Making sure we can't move outside of the borders
+        if editDestination.x < Game.global.scene!.frame.minX
+        {
+            editDestination.x = Game.global.scene!.frame.minX
+        }
+        if editDestination.x > Game.global.scene!.frame.maxX
+        {
+            editDestination.x = Game.global.scene!.frame.maxX
+        }
+        if editDestination.y < Game.global.scene!.frame.minY
+        {
+            editDestination.y = Game.global.scene!.frame.minY
+        }
+        if editDestination.y > Game.global.scene!.frame.maxY-55
+        {
+            editDestination.y = Game.global.scene!.frame.maxY-55
+        }
+        
+        
+        DS_moveDestination = editDestination
+        
         DS_completeBlock = complete
-        moveCycle(destination, complete: complete)
+        moveCycle(editDestination, complete: complete)
     }
     
     
@@ -409,7 +431,8 @@ class Unit: SerializableJSON, PType
             
             /* Determine move position */
             var movePos: CGPoint
-            if(self.sprite.position.x < target.sprite.position.x){
+            if((self.sprite.position.x < target.sprite.position.x && target.sprite.frame.minX-animationGapDistance > Game.global.scene!.frame.minX) || (target.sprite.frame.maxX+animationGapDistance > Game.global.scene!.frame.maxX))
+            {
                 movePos = CGPoint(x: target.sprite.frame.minX-animationGapDistance, y: target.sprite.frame.midY)
             }else{
                 movePos = CGPoint(x: target.sprite.frame.maxX+animationGapDistance,y : target.sprite.frame.midY)
