@@ -479,7 +479,7 @@ class Unit: SerializableJSON, PType
                 self.sprite.runAction(self.DS_attackAnim!, withKey: "attackAnim")
                 //Apply the damage to the enemy. NOTE: Might be more realistic to do this half way though the attack animation.
                 weaponHandle(target)
-                if self.type == "Warrior"
+                if self.type == "Warrior" || self.type == "Enemy" || self.type == "EliteWarrior" || self.type == "EliteWarriorB" || self.type == "EnemyBoss"
                 {
                     let soundAction = SKAction.playSoundFileNamed("swords_clashing.mp3", waitForCompletion: true)
                     self.sprite.runAction(soundAction)
@@ -611,6 +611,8 @@ class Unit: SerializableJSON, PType
             }
             println("changing position")
         }
+       
+        
     }
     
     /*
@@ -641,7 +643,7 @@ class Unit: SerializableJSON, PType
             self.sprite.removeAllChildren()
             self.sprite.removeFromParent()
         })
-        let soundAction = SKAction.playSoundFileNamed("mnstr12.wav", waitForCompletion: true)
+        let soundAction = SKAction.playSoundFileNamed("giant2.wav", waitForCompletion: true)
         self.sprite.runAction(soundAction)
         let deathThenRemove: SKAction = SKAction.sequence([DS_deathAnim!, waitFadeAction, fadeOutAction, waitSceneRemove, removeFromSceneAction])
         self.sprite.runAction(deathThenRemove, withKey: "death")

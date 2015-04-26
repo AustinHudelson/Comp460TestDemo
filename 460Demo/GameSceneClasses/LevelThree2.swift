@@ -51,7 +51,7 @@ class LevelThree2:Level
             let dummy4 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             DUMMY_ID = Game.global.getNextEnemyID()
-            dummy_position = CGPoint(x:CGRectGetMinX(scene.frame)+50, y:CGRectGetMidY(scene.frame)-125);
+            dummy_position = CGPoint(x:CGRectGetMaxX(scene.frame)+50, y:CGRectGetMidY(scene.frame)+125);
             let dummy5 = EnemyMage(ID: DUMMY_ID, spawnLocation: dummy_position)
             
             //DUMMY_ID = "ENEMY6"

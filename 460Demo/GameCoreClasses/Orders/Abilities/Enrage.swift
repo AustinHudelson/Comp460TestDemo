@@ -34,7 +34,7 @@ class Enrage: Order, PType, Transient
     
     override func apply()
     {
-        let soundAction = SKAction.playSoundFileNamed("ogre3.wav", waitForCompletion: true)
+        let soundAction = SKAction.playSoundFileNamed("mnstr10.wav", waitForCompletion: true)
         self.DS_receiver?.sprite.runAction(soundAction)
         let applyAction: SKAction = SKAction.runBlock(applyBuff)
         let waitAction: SKAction = SKAction.waitForDuration(self.duration)
@@ -47,7 +47,7 @@ class Enrage: Order, PType, Transient
     {
         self.DS_receiver?.speed.addModifier("Enraged", value: 3.0)
         self.DS_receiver?.attackSpeed.addModifier("Enraged", value: 0.6)
-        self.DS_receiver?.applyTint("Enraged", red: 1.0, blue: 0.5, green: 0.5)
+        self.DS_receiver?.applyTint("Enraged", red: 0.0, blue: 1.0, green: 0.5)
     }
     
     func removeBuff()

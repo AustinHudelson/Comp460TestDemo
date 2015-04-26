@@ -285,6 +285,10 @@
 		E7BB74BF1AEAD38D00E5288D /* swords_clashing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74BA1AEAD38D00E5288D /* swords_clashing.mp3 */; };
 		E7BB74C21AEC4BA400E5288D /* warp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74C01AEC4BA400E5288D /* warp.mp3 */; };
 		E7BB74C31AEC4BA400E5288D /* zap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BB74C11AEC4BA400E5288D /* zap.mp3 */; };
+		E7BBE97F1AED82C40039A827 /* explode.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BBE97C1AED82C40039A827 /* explode.mp3 */; };
+		E7BBE9801AED82C40039A827 /* shot2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BBE97D1AED82C40039A827 /* shot2.mp3 */; };
+		E7BBE9811AED82C40039A827 /* zap13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7BBE97E1AED82C40039A827 /* zap13.mp3 */; };
+		E7BBE9891AED89740039A827 /* BlindingFlashParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = E7BBE9881AED89740039A827 /* BlindingFlashParticle.sks */; };
 		E7E3815F1AE588F200A60DB9 /* fireball.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E3815D1AE588F200A60DB9 /* fireball.wav */; };
 		E7E381621AE58BE100A60DB9 /* freeze.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E381601AE58BE100A60DB9 /* freeze.wav */; };
 		E7E381631AE58BE100A60DB9 /* teleport.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E381611AE58BE100A60DB9 /* teleport.wav */; };
@@ -732,6 +736,10 @@
 		E7BB74BA1AEAD38D00E5288D /* swords_clashing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swords_clashing.mp3; sourceTree = "<group>"; };
 		E7BB74C01AEC4BA400E5288D /* warp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = warp.mp3; sourceTree = "<group>"; };
 		E7BB74C11AEC4BA400E5288D /* zap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zap.mp3; sourceTree = "<group>"; };
+		E7BBE97C1AED82C40039A827 /* explode.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explode.mp3; sourceTree = "<group>"; };
+		E7BBE97D1AED82C40039A827 /* shot2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shot2.mp3; sourceTree = "<group>"; };
+		E7BBE97E1AED82C40039A827 /* zap13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zap13.mp3; sourceTree = "<group>"; };
+		E7BBE9881AED89740039A827 /* BlindingFlashParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlindingFlashParticle.sks; sourceTree = "<group>"; };
 		E7E3815D1AE588F200A60DB9 /* fireball.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fireball.wav; sourceTree = "<group>"; };
 		E7E381601AE58BE100A60DB9 /* freeze.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = freeze.wav; sourceTree = "<group>"; };
 		E7E381611AE58BE100A60DB9 /* teleport.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport.wav; sourceTree = "<group>"; };
@@ -1051,6 +1059,7 @@
 				68F3FE201AC7A0E4009FAB4F /* MagicBolt.sks */,
 				68F3FE211AC7A0E4009FAB4F /* MyParticle.sks */,
 				68F3FE221AC7A0E4009FAB4F /* RainParticle.sks */,
+				E7BBE9881AED89740039A827 /* BlindingFlashParticle.sks */,
 			);
 			name = ParticleEffects;
 			path = ../GameCoreClasses/ParticleEffects;
@@ -1492,6 +1501,9 @@
 		F4B562FC1AB3A5CE0094B2A7 /* battle */ = {
 			isa = PBXGroup;
 			children = (
+				E7BBE97C1AED82C40039A827 /* explode.mp3 */,
+				E7BBE97D1AED82C40039A827 /* shot2.mp3 */,
+				E7BBE97E1AED82C40039A827 /* zap13.mp3 */,
 				E7BB74C01AEC4BA400E5288D /* warp.mp3 */,
 				E7BB74C11AEC4BA400E5288D /* zap.mp3 */,
 				E7BB74B61AEAD38D00E5288D /* heal.mp3 */,
@@ -1998,6 +2010,7 @@
 				F4B5637A1AB3A5CF0094B2A7 /* beads.wav in Resources */,
 				68F3FFB21AC92A8B009FAB4F /* S_Water06.png in Resources */,
 				68F3FF4A1AC92A8B009FAB4F /* P_Orange01.png in Resources */,
+				E7BBE9891AED89740039A827 /* BlindingFlashParticle.sks in Resources */,
 				F4B563B01AB3A5CF0094B2A7 /* shade10.wav in Resources */,
 				F4B563C61AB3A5CF0094B2A7 /* slime8.wav in Resources */,
 				F4B563801AB3A5CF0094B2A7 /* chainmail2.wav in Resources */,
@@ -2035,6 +2048,7 @@
 				F4B563781AB3A5CF0094B2A7 /* interface6.wav in Resources */,
 				68F3FF2A1AC92A8B009FAB4F /* Ac_Medal04.png in Resources */,
 				68F3FF0D1AC92A8B009FAB4F /* Priest-ability.atlas in Resources */,
+				E7BBE9811AED82C40039A827 /* zap13.mp3 in Resources */,
 				68FAEA181AC9C6470045259A /* PriestStand200x200.png in Resources */,
 				E784936A1AD31E9100291509 /* DST-MapLands.mp3 in Resources */,
 				68F3FFA71AC92A8B009FAB4F /* S_Thunder02.png in Resources */,
@@ -2074,6 +2088,7 @@
 				68F3FF3A1AC92A8B009FAB4F /* I_Feather01.png in Resources */,
 				F4B563B91AB3A5CF0094B2A7 /* shade5.wav in Resources */,
 				68F3FFC61AC92A8B009FAB4F /* W_Mace010.png in Resources */,
+				E7BBE9801AED82C40039A827 /* shot2.mp3 in Resources */,
 				68F3FFCB1AC92A8B009FAB4F /* W_Sword017.png in Resources */,
 				F4B563BA1AB3A5CF0094B2A7 /* shade6.wav in Resources */,
 				68F3FF9D1AC92A8B009FAB4F /* S_Sword02.png in Resources */,
@@ -2094,6 +2109,7 @@
 				68A031C51AD882AE00281487 /* exitConfirmNo.png in Resources */,
 				F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */,
 				F4B563C71AB3A5CF0094B2A7 /* slime9.wav in Resources */,
+				E7BBE97F1AED82C40039A827 /* explode.mp3 in Resources */,
 				F4B5636E1AB3A5CF0094B2A7 /* sword-unsheathe.wav in Resources */,
 				F4B563721AB3A5CF0094B2A7 /* sword-unsheathe5.wav in Resources */,
 				68F3FF751AC92A8B009FAB4F /* S_Fire06.png in Resources */,
