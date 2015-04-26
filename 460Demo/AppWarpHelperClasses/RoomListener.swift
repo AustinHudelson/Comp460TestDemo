@@ -90,9 +90,10 @@ class RoomListener: NSObject,RoomRequestListener
             If gameScene is nil that means we're in the lobby, so configure the lobby view &
             broadcast which level is select if I'm host
         */
-        if AppWarpHelper.sharedInstance.gameScene == nil {
+        if Game.global.scene == nil {
             
             AppWarpHelper.sharedInstance.configLobbyView()
+            
             println("gamescene is nil")
             // Send over selected lvl if I'm host
             if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
@@ -108,12 +109,6 @@ class RoomListener: NSObject,RoomRequestListener
             println("there was a gamescene")
             // We're requesting live room info when host leaves the room, so designate new host
             let oldHost = AppWarpHelper.sharedInstance.host
-            
-//            if userName_list.count <= 0
-//            {
-//                println("Deleting room")
-//                WarpClient.getInstance().deleteRoom(event.roomData.roomId)
-//            }
             
             if (!userName_list.containsObject(oldHost!)) && (userName_list.count > 0) {
                 println("count of list \(userName_list.count)")

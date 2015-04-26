@@ -43,7 +43,7 @@ class AppWarpHelper: NSObject
     var userName_list: NSMutableArray = [] // used to store the list of users currently in room
     var lobby: LobbyViewController? = nil
     var playerClass: String = ""
-    var gameScene: GameScene? = nil
+    //var gameScene: GameScene? = nil
     var host: String? = nil
     
     class var sharedInstance:AppWarpHelper{
@@ -141,14 +141,9 @@ class AppWarpHelper: NSObject
         - Params:
             data: NSData
                 - This should be a JSON serialized data
-            - Converts the JSON data & its corresponding dictionary as "JSON" object (see sendUpate()'s comments for an example of a data) & calls gameScene.updateGameState
-            - Even though the returned object is a "JSON" object, its use is similar to a dictionary
-                - Eg. usage, assuming the data sent is the example from sendUpdate():
-                    let unit_list = JSON["Units"].arrayObject
-                    // unit_list is now [Unit(player1), Unit(player2), Unit(enemy1), Unit(enemey2)],
     */
     func recvUpdate(data: NSData) {
-        //println("Received data (\(data.length) bytes)")
+        println("Received data (\(data.length) bytes)")
         
         var recvDict: Dictionary<String, Array<AnyObject>> = [:]
         
@@ -193,15 +188,12 @@ class AppWarpHelper: NSObject
         WarpClient.getInstance().leaveRoom(self.roomId)
     }
     
+    /*
+        This function is normally called from RoomListener.onUnSubscribeRoomDone()
+        Otherwise it'll be called when there's error connecting / creating room..etc
+    */
     func disconnectFromAppWarp() {
         println("Disconnecting from AppWarp...")
-        if gameScene != nil && gameScene!.viewController != nil {
-            self.gameScene!.viewController!.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
-        } else {
-            println("Unable to move to main menu, no specified game or lobby scene")
-        }
-        gameScene?.sceneActive = false  //Flag the scene as no longer active so that it will not attempt to send any more updates.
-        self.gameScene = nil
         self.lobby = nil
         WarpClient.getInstance().disconnect()
     }

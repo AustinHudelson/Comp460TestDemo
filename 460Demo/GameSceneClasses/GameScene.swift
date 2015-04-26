@@ -100,17 +100,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        addChild(background)
         
         
-        AppWarpHelper.sharedInstance.gameScene = self
+        //AppWarpHelper.sharedInstance.gameScene = self
         let background: SKSpriteNode = self.childNodeWithName("background") as SKSpriteNode
         background.texture = SKTexture(imageNamed: Game.global.level!.background)
         startGameScene()
         
         Game.global.addSyncActionToScene()
     }
-    override func willMoveFromView(view: SKView) {
-        Game.global.scene = nil
-        AppWarpHelper.sharedInstance.gameScene = nil
-    }
+//    override func willMoveFromView(view: SKView) {
+//        Game.global.scene = nil
+//        //AppWarpHelper.sharedInstance.gameScene = nil
+//    }
     
     /// physics
     func didBeginContact(contact: SKPhysicsContact) {
@@ -147,20 +147,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             */
             if exitButton!.containsPoint(touchLocation)
             {
-                /* Display exit confirmation window if it's not already there */
-                if exitConfirm == nil {
-                    println("displaying exit Window")
-                    
-                    exitConfirm = SKSpriteNode(imageNamed: "exitConfirm")
-                    exitConfirm!.name = "exitConfirm"
-                    exitConfirm!.position = CGPointMake(self.size.width/2, self.size.height/2)
-                    self.addChild(exitConfirm!)
-                    
+//                /* Display exit confirmation window if it's not already there */
+//                if exitConfirm == nil {
+//                    println("displaying exit Window")
+//                    
+//                    exitConfirm = SKSpriteNode(imageNamed: "exitConfirm")
+//                    exitConfirm!.name = "exitConfirm"
+//                    exitConfirm!.position = CGPointMake(self.size.width/2, self.size.height/2)
+//                    self.addChild(exitConfirm!)
+//                    
 //                    let exitConfirmYes = SKSpriteNode(imageNamed: "exitConfirmYes")
 //                    exitConfirmYes.name = "exitConfirmYes"
 //                    exitConfirm.position = CGPointMake(self.size.width/2, self.size.height/2)
 //                    self.addChild(exitConfirm)
-                }
+//                }
                 
             
                 println("exit pressed")

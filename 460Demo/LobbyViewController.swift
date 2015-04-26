@@ -26,8 +26,8 @@ class LobbyViewController: UIViewController {
     
     let levelDelegate: LevelSelection = LevelSelection()
     
-    var classImages: Array<UIImageView> = Array<UIImageView>()
-    var playerNames: Array<UITextView> = Array<UITextView>()
+    var classImages: Array<UIImageView> = Array<UIImageView>() // list of all our class img views
+    var playerNames: Array<UITextView> = Array<UITextView>() // list of all our player name text views
     
     @IBAction func startGameButtonAction(sender: AnyObject) {
         if myPlayerName != nil && myPlayerName == AppWarpHelper.sharedInstance.host {
@@ -55,7 +55,7 @@ class LobbyViewController: UIViewController {
     /* Pressing this button will move the screen back to character selection screen */
     @IBAction func exitButtonAction(sender: AnyObject) {
         AppWarpHelper.sharedInstance.leaveGame()
-        performSegueWithIdentifier("exitLobbySegue", sender: nil)
+        performSegueWithIdentifier("LobbyToCharSelect", sender: nil)
     }
     
     override func viewDidLoad() {
@@ -76,6 +76,8 @@ class LobbyViewController: UIViewController {
         
         AppWarpHelper.sharedInstance.lobby = self
         AppWarpHelper.sharedInstance.playerClass = myClass
+        
+        /* Add all the player text and image views to their list */
         playerNames.append(p1Name)
         playerNames.append(p2Name)
         playerNames.append(p3Name)
@@ -124,6 +126,7 @@ class LobbyViewController: UIViewController {
                 }
             }
         }
+        
     }
     
     /* This function updates the lobby's player names and icons when ppl joins the room */

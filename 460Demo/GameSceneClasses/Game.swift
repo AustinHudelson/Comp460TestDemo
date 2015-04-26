@@ -574,7 +574,7 @@ class Game {
         self.level = newLevel // set Game.global.level = newLevel
         
         /* Everyone perform segue to transition into game scene */
-        AppWarpHelper.sharedInstance.lobby!.performSegueWithIdentifier("gameSegue", sender: nil)
+        AppWarpHelper.sharedInstance.lobby!.performSegueWithIdentifier("LobbyToGameScene", sender: nil)
     }
     
     /*
@@ -686,7 +686,9 @@ class Game {
         self.scene!.removeAllActions()
         self.scene!.removeAllChildren()
         self.scene!.audioPlayer.stop()
-        Game.global.scene!.viewController?.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
+        Game.global.scene!.viewController?.performSegueWithIdentifier("GameSceneToCharSelect",sender:  nil)
+        
+        Game.global.scene = nil
         
     }
 }

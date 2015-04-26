@@ -22,7 +22,7 @@ class SplashViewController: UIViewController {
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        performSegueWithIdentifier("charSelectSegue",  sender: self)
+        performSegueWithIdentifier("SplashToCharSelect",  sender: self)
     }
     
 

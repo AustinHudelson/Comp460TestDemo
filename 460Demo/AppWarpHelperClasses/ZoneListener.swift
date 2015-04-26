@@ -49,7 +49,6 @@ class ZoneListener: NSObject,ZoneRequestListener
         {
             println("onGetMatchedRoomsDone: Failed")
             AppWarpHelper.sharedInstance.disconnectFromAppWarp()
-            //AppWarpHelper.sharedInstance.viewController.performSegueWithIdentifier("mainMenuSegue",sender:  nil)
         }
     }
     

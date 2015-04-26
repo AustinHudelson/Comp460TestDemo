@@ -59,7 +59,7 @@ class CharSelectViewController: UIViewController, UITextFieldDelegate {
             }
             if notWhitespace{
                 println(selectedClass)
-                performSegueWithIdentifier("playerNameSegue",  sender: self)
+                performSegueWithIdentifier("CharSelectToLobby",  sender: self)
             }
         }
     }
@@ -84,7 +84,7 @@ class CharSelectViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "playerNameSegue") {
+        if (segue.identifier == "CharSelectToLobby") {
             /* On segue into lobby screen, set & save the player name to file */
             PersistGameData.sharedInstance.myPlayerName = playerNameTxtField.text
             Game.global.fileManager!.saveGameData()

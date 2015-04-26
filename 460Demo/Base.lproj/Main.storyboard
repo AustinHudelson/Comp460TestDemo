@@ -80,14 +80,14 @@
                                 <exclude reference="G9R-cF-jQc"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="AaD-G8-laV"/>
+                                <exclude reference="aGw-fQ-dD7"/>
+                                <exclude reference="bEd-f9-N0b"/>
+                                <exclude reference="jFz-P5-EMA"/>
                                 <exclude reference="3Cj-0z-MHB"/>
                                 <exclude reference="8mo-h6-J4g"/>
                                 <exclude reference="Dsk-K1-9DD"/>
                                 <exclude reference="jWA-dH-OiA"/>
-                                <exclude reference="jFz-P5-EMA"/>
-                                <exclude reference="AaD-G8-laV"/>
-                                <exclude reference="aGw-fQ-dD7"/>
-                                <exclude reference="bEd-f9-N0b"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -97,24 +97,24 @@
                                 <include reference="G9R-cF-jQc"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="AaD-G8-laV"/>
+                                <include reference="aGw-fQ-dD7"/>
+                                <include reference="bEd-f9-N0b"/>
+                                <include reference="jFz-P5-EMA"/>
                                 <include reference="3Cj-0z-MHB"/>
                                 <include reference="8mo-h6-J4g"/>
                                 <include reference="Dsk-K1-9DD"/>
                                 <include reference="jWA-dH-OiA"/>
-                                <include reference="jFz-P5-EMA"/>
-                                <include reference="AaD-G8-laV"/>
-                                <include reference="aGw-fQ-dD7"/>
-                                <include reference="bEd-f9-N0b"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="charSelectSegue" id="ABG-so-kri"/>
+                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="SplashToCharSelect" id="ABG-so-kri"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymM-Bj-1Dc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1267.5" y="183"/>
+            <point key="canvasLocation" x="-1504" y="115"/>
         </scene>
         <!--Char Select View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -135,6 +135,9 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                                 </accessibility>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWx-W1-Kxd" colorLabel="IBBuiltInLabel-Red">
                                 <rect key="frame" x="203" y="212" width="195" height="64"/>
@@ -155,7 +158,8 @@
                                         <exclude reference="tj9-qY-b4V"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="151" y="275" width="300" height="50"/>
                                     <mask key="constraints">
                                         <include reference="58C-fD-dYo"/>
                                         <include reference="tj9-qY-b4V"/>
@@ -179,7 +183,8 @@
                                         <exclude reference="bsr-ys-PQN"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="-25" y="395" width="150" height="150"/>
                                     <mask key="constraints">
                                         <include reference="GDR-Z8-eOf"/>
                                         <include reference="bsr-ys-PQN"/>
@@ -205,7 +210,8 @@
                                         <exclude reference="vAK-wk-kht"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="225" y="395" width="150" height="150"/>
                                     <mask key="constraints">
                                         <include reference="1My-vs-Rei"/>
                                         <include reference="vAK-wk-kht"/>
@@ -227,7 +233,8 @@
                                         <exclude reference="Bwb-mT-NXT"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="150" y="175" width="300" height="30"/>
                                     <mask key="constraints">
                                         <include reference="Bwb-mT-NXT"/>
                                     </mask>
@@ -249,7 +256,8 @@
                                         <exclude reference="pC5-I7-2B4"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="475" y="395" width="150" height="150"/>
                                     <mask key="constraints">
                                         <include reference="dA7-Xl-qaI"/>
                                         <include reference="pC5-I7-2B4"/>
@@ -273,7 +281,8 @@
                                         <exclude reference="hBT-bN-qk4"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="-17" y="41" width="634" height="70"/>
                                     <mask key="constraints">
                                         <include reference="PCu-6z-1no"/>
                                         <include reference="hBT-bN-qk4"/>
@@ -370,12 +379,12 @@
                         <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="WR0-cI-6i2"/>
                         <outlet property="priestSelButton" destination="uGk-HZ-9UO" id="Ce0-bi-psW"/>
                         <outlet property="warSelButton" destination="W4s-Kd-Kh5" id="SFu-gl-9lb"/>
-                        <segue destination="by4-gA-Hf9" kind="presentation" identifier="playerNameSegue" id="zCE-ET-SiP"/>
+                        <segue destination="by4-gA-Hf9" kind="presentation" identifier="CharSelectToLobby" id="zCE-ET-SiP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-295.5" y="129"/>
+            <point key="canvasLocation" x="-456" y="129"/>
         </scene>
         <!--Lobby View Controller-->
         <scene sceneID="n9G-As-8Mi">
@@ -391,6 +400,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="4Mk-rO-cWr" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="100" verticalHuggingPriority="100" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Cm-dP-ebt" userLabel="p1Img">
                                 <constraints>
@@ -422,7 +434,8 @@
                                         <exclude reference="gM9-2r-e4Z"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="250" y="-545" width="100" height="100"/>
                                     <mask key="constraints">
                                         <include reference="ef1-CH-NYv"/>
                                         <include reference="gM9-2r-e4Z"/>
@@ -482,7 +495,8 @@
                                         <exclude reference="RUi-7O-3CB"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="250" y="-605" width="100" height="50"/>
                                     <mask key="constraints">
                                         <include reference="3x3-dA-emF"/>
                                         <include reference="RUi-7O-3CB"/>
@@ -524,7 +538,8 @@
                                         <exclude reference="tIf-Bm-Ib1"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="-17" y="20" width="634" height="60"/>
                                     <mask key="constraints">
                                         <include reference="Zjf-mm-6ox"/>
                                         <include reference="tIf-Bm-Ib1"/>
@@ -548,7 +563,8 @@
                                         <exclude reference="dTH-r3-VzO"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="101" y="-400" width="400" height="50"/>
                                     <mask key="constraints">
                                         <include reference="QFc-xB-I9B"/>
                                         <include reference="dTH-r3-VzO"/>
@@ -564,6 +580,9 @@
                                 <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="0.48999999999999999" colorSpace="calibratedRGB"/>
                                 <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="54" y="-289" width="38" height="641"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDa-ZG-q5A" userLabel="exit">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -580,7 +599,8 @@
                                         <exclude reference="GFK-ww-hTx"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="442" y="558" width="158" height="42"/>
                                     <mask key="constraints">
                                         <include reference="ES1-0C-K23"/>
                                         <include reference="GFK-ww-hTx"/>
@@ -588,7 +608,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="exitButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="0GP-nB-PmY"/>
-                                    <segue destination="BV1-FR-VrT" kind="presentation" identifier="exitLobbySegue" id="gCl-V4-L5b"/>
+                                    <segue destination="BV1-FR-VrT" kind="presentation" identifier="LobbyToCharSelect" id="gCl-V4-L5b"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eGV-h8-NcW">
@@ -603,7 +623,8 @@
                                         <exclude reference="VsS-hb-TPt"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular">
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="150" y="-320" width="300" height="162"/>
                                     <mask key="constraints">
                                         <include reference="7w4-xK-3CN"/>
                                         <include reference="VsS-hb-TPt"/>
@@ -724,12 +745,12 @@
                         <outlet property="p3Img" destination="6O2-F1-5jM" id="EnP-WF-fe2"/>
                         <outlet property="p3Name" destination="OJg-J2-uNF" id="ak9-l7-XMX"/>
                         <outlet property="startGameButton" destination="D9D-1P-Scm" id="gzQ-o5-BtI"/>
-                        <segue destination="2ym-kd-4K2" kind="presentation" identifier="gameSegue" id="EZS-Fw-Yde"/>
+                        <segue destination="2ym-kd-4K2" kind="presentation" identifier="LobbyToGameScene" id="EZS-Fw-Yde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVX-m0-sSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="349" y="117"/>
+            <point key="canvasLocation" x="633" y="115"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="n3C-XH-PIy">
@@ -745,12 +766,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="mainMenuSegue" id="uEM-lo-oZ7"/>
+                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="GameSceneToCharSelect" id="uEM-lo-oZ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qz-R0-fPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="129"/>
+            <point key="canvasLocation" x="1748" y="173"/>
         </scene>
     </scenes>
     <resources>
@@ -769,7 +790,7 @@
         <image name="tapBeginOrange" width="500" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gCl-V4-L5b"/>
+        <segue reference="uEM-lo-oZ7"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
