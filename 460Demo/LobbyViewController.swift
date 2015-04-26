@@ -54,7 +54,8 @@ class LobbyViewController: UIViewController {
     
     /* Pressing this button will move the screen back to character selection screen */
     @IBAction func exitButtonAction(sender: AnyObject) {
-        
+        AppWarpHelper.sharedInstance.leaveGame()
+        performSegueWithIdentifier("exitLobbySegue", sender: nil)
     }
     
     override func viewDidLoad() {
