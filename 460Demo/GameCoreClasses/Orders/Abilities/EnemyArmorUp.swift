@@ -33,7 +33,7 @@ class EnemyArmorUp: Order, PType, Transient
     override func apply()
     {
         
-        let soundAction = SKAction.playSoundFileNamed("bite-small.wav", waitForCompletion: true)
+        let soundAction = SKAction.playSoundFileNamed("explode.mp3", waitForCompletion: true)
         self.DS_receiver?.sprite.runAction(soundAction)
         let applyAction: SKAction = SKAction.runBlock(applyBuff)
         let waitAction: SKAction = SKAction.waitForDuration(self.DS_duration)

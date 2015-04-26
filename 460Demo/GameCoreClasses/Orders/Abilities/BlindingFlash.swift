@@ -77,7 +77,8 @@ class BlindingFlash: Order, PType
                 }
                 
                 let moveAction: SKAction = SKAction.moveTo(destination, duration: NSTimeInterval(0.5))
-                unit.sprite.runAction(moveAction)
+                unit.sprite.runAction(moveAction, withKey: "BlindingFlash")
+                
                 println("in the middle of stuff")
                 unit.takeDamage(self.DS_damage)
             }

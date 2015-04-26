@@ -24,7 +24,7 @@ class Blink: Order, PType
         let minX: CGFloat = Game.global.scene!.frame.minX+50.0
         let maxX: CGFloat = Game.global.scene!.frame.maxX-50.0
         let minY: CGFloat = Game.global.scene!.frame.minY+50.0
-        let maxY: CGFloat = Game.global.scene!.frame.maxY-50.0
+        let maxY: CGFloat = Game.global.scene!.frame.maxY-55.0
         destX = CGFloat.random(min: minX, max: maxX)
         destY = CGFloat.random(min: minY, max: maxY)
     }

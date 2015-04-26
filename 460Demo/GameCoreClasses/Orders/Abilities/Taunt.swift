@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SpriteKit
 @objc(Taunt)
 class Taunt: Order, PType
 {
@@ -48,7 +48,10 @@ class Taunt: Order, PType
     {
         var nearby: Unit? = nil
         var near: CGFloat = CGFloat.infinity
+        let soundAction = SKAction.playSoundFileNamed("zap13.mp3", waitForCompletion: true)
         
+        self.DS_receiver?.sprite.runAction(soundAction)
+    
         for (id, unit) in Game.global.enemyMap {
             if unit.alive == false {
                 continue
@@ -77,10 +80,26 @@ class Taunt: Order, PType
         DS_tauntedEnemy = nearby;
         
         
+        let applyAction: SKAction = SKAction.runBlock(applyBuff)
+        let waitAction: SKAction = SKAction.waitForDuration(NSTimeInterval(1.5))
+        let removeAction: SKAction = SKAction.runBlock(removeBuff)
+        let applySeq: SKAction = SKAction.sequence([applyAction, waitAction, removeAction])
+        self.DS_receiver?.sprite.runAction(applySeq)
+     }
+    func applyBuff()
+    {
         
-       
+        self.DS_receiver?.applyTint("Taunted", red: 0.5, blue: 1.0, green: 0.5)
+        //self.DS_receiver?.sprite.runAction(SKAction.scaleBy(0.5, duration: 1.0))
     }
     
+    func removeBuff()
+    {
+       
+        self.DS_receiver?.removeTint("Taunted")
+        //self.DS_receiver?.sprite.runAction(SKAction.scaleBy(2.0, duration: 1.0))
+        
+    }
     
   
             

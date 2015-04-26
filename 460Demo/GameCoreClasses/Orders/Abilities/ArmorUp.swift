@@ -33,7 +33,7 @@ class ArmorUp: Order, PType, Transient
     override func apply()
     {
         
-        let soundAction = SKAction.playSoundFileNamed("bite-small.wav", waitForCompletion: true)
+        let soundAction = SKAction.playSoundFileNamed("explode.mp3", waitForCompletion: true)
         self.DS_receiver?.sprite.runAction(soundAction)
         let applyAction: SKAction = SKAction.runBlock(applyBuff)
         let waitAction: SKAction = SKAction.waitForDuration(self.DS_duration)
@@ -46,7 +46,7 @@ class ArmorUp: Order, PType, Transient
     func applyBuff()
     {
         self.DS_receiver?.damageMultiplier.addModifier("ArmorUp", value: DS_armorAmount)
-        self.DS_receiver?.applyTint("ArmoredUp", red: 0.5, blue: 0.5, green: 0.5)
+        self.DS_receiver?.applyTint("ArmoredUp", red: 0.5, blue: 1.0, green: 0.5)
         //self.DS_receiver?.sprite.runAction(SKAction.scaleBy(0.5, duration: 1.0))
     }
     
