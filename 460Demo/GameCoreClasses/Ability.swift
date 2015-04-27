@@ -34,7 +34,7 @@ class Ability: SKSpriteNode
         self.name="Ability\(slot)"
         self.zPosition = Game.global.UIMinZ
         
-        if Game.global.scene !=nil
+        if Game.global.scene != nil
         {
             Game.global.scene!.addChild(self)
         }
