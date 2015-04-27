@@ -43,7 +43,34 @@ class BlindingFlash: Order, PType
     
     func blindingFlash()
     {
+        if (DS_receiver == nil){
+            return
+        }
+        if (DS_receiver!.alive == false){
+            return
+        }
         let soundAction = SKAction.playSoundFileNamed("warp.mp3", waitForCompletion: true)
+        //Setup Blinding flash explosion emitter.
+        let emitterPath: String = NSBundle.mainBundle().pathForResource("BlindingFlash", ofType: "sks")!
+        let emitterNode: SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as SKEmitterNode
+        //emitterNode.position = self.sprite!.position
+        emitterNode.name = "BlindingFlash"
+        emitterNode.zPosition = DS_receiver!.sprite.zPosition+2
+        emitterNode.targetNode = DS_receiver!.sprite
+        
+        let stopEmittingDelayAction: SKAction = SKAction.waitForDuration(NSTimeInterval(0.1))
+        let stopEmittingAction: SKAction = SKAction.runBlock({
+            emitterNode.particleBirthRate = 0.0
+        })
+        let removeNodeDelayAction: SKAction = SKAction.waitForDuration(NSTimeInterval(1.5))
+        let removeNodeBlock: SKAction = SKAction.runBlock({
+            emitterNode.removeFromParent()
+        })
+        
+        //Start the emitter node, wait half, heal, wait half again, remove the emitter node
+        DS_receiver!.sprite.addChild(emitterNode)   //Start the emitter node
+        //Action sequence: Wait. Apply Healing. Wait. Stop Creating Particles. Long Wait. Destroy
+        DS_receiver!.sprite.runAction(SKAction.sequence([stopEmittingDelayAction, stopEmittingAction, removeNodeDelayAction, removeNodeBlock]))
         self.DS_receiver?.sprite.runAction(soundAction)
         for (id, unit) in Game.global.enemyMap{
             if Game.global.getDistance(DS_receiver!.sprite.position, p2: unit.sprite.position) < DS_radius

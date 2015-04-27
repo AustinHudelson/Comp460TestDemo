@@ -306,6 +306,7 @@
 		F48B20BC1AC5F8D4007487F6 /* InstantAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B20BB1AC5F8D4007487F6 /* InstantAbility.swift */; };
 		F48B20BF1ACC8568007487F6 /* InnerHealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = F48B20BD1ACC8568007487F6 /* InnerHealthBar.png */; };
 		F48B20C01ACC8568007487F6 /* OutterHealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = F48B20BE1ACC8568007487F6 /* OutterHealthBar.png */; };
+		F48E3B921AEDC57D00B7215B /* BlindingFlash.sks in Resources */ = {isa = PBXBuildFile; fileRef = F48E3B901AEDC57D00B7215B /* BlindingFlash.sks */; };
 		F49336EB1AD8574F0007A970 /* AreaHealParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F49336E91AD8574F0007A970 /* AreaHealParticle.sks */; };
 		F49336EE1AD861680007A970 /* EliteWarrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49336ED1AD861680007A970 /* EliteWarrior.swift */; };
 		F49336F01AD862190007A970 /* EnemyArmorUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49336EF1AD862190007A970 /* EnemyArmorUp.swift */; };
@@ -757,6 +758,7 @@
 		F48B20BB1AC5F8D4007487F6 /* InstantAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantAbility.swift; sourceTree = "<group>"; };
 		F48B20BD1ACC8568007487F6 /* InnerHealthBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InnerHealthBar.png; sourceTree = "<group>"; };
 		F48B20BE1ACC8568007487F6 /* OutterHealthBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OutterHealthBar.png; sourceTree = "<group>"; };
+		F48E3B901AEDC57D00B7215B /* BlindingFlash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlindingFlash.sks; sourceTree = "<group>"; };
 		F49336E91AD8574F0007A970 /* AreaHealParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AreaHealParticle.sks; sourceTree = "<group>"; };
 		F49336ED1AD861680007A970 /* EliteWarrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EliteWarrior.swift; sourceTree = "<group>"; };
 		F49336EF1AD862190007A970 /* EnemyArmorUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyArmorUp.swift; sourceTree = "<group>"; };
@@ -1057,6 +1059,7 @@
 				68F3FE1F1AC7A0E4009FAB4F /* HealParticle.sks */,
 				F49336E91AD8574F0007A970 /* AreaHealParticle.sks */,
 				68F3FE201AC7A0E4009FAB4F /* MagicBolt.sks */,
+				F48E3B901AEDC57D00B7215B /* BlindingFlash.sks */,
 				68F3FE211AC7A0E4009FAB4F /* MyParticle.sks */,
 				68F3FE221AC7A0E4009FAB4F /* RainParticle.sks */,
 				E7BBE9881AED89740039A827 /* BlindingFlashParticle.sks */,
@@ -2087,6 +2090,7 @@
 				F4B563881AB3A5CF0094B2A7 /* metal-small2.wav in Resources */,
 				68F3FF3A1AC92A8B009FAB4F /* I_Feather01.png in Resources */,
 				F4B563B91AB3A5CF0094B2A7 /* shade5.wav in Resources */,
+				F48E3B921AEDC57D00B7215B /* BlindingFlash.sks in Resources */,
 				68F3FFC61AC92A8B009FAB4F /* W_Mace010.png in Resources */,
 				E7BBE9801AED82C40039A827 /* shot2.mp3 in Resources */,
 				68F3FFCB1AC92A8B009FAB4F /* W_Sword017.png in Resources */,
