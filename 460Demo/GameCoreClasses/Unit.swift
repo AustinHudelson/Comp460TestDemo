@@ -670,7 +670,15 @@ class Unit: SerializableJSON, PType
         self.sprite.runAction(SKAction.fadeAlphaTo(1.0, duration:NSTimeInterval(0.0)))
         self.sprite.addChild(DS_health_bar)
         self.sprite.addChild(DS_health_bar_outline)
-        self.sendOrder(DS_deadOrder!)
+        if (self.isEnemy == true){
+            if (self is EnemyPriest){
+                self.sendOrder(RoamHeal(receiverIn: self))
+            } else {
+                self.sendOrder(RoamAttack(receiverIn: self))
+            }
+        } else {
+            self.sendOrder(DS_deadOrder!)
+        }
         DS_deadOrder = nil
     }
     

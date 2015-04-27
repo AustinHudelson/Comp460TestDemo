@@ -78,10 +78,25 @@ class BlindingFlash: Order, PType
                 
                 let moveAction: SKAction = SKAction.moveTo(destination, duration: NSTimeInterval(0.5))
                 unit.sprite.runAction(moveAction, withKey: "BlindingFlash")
-                
-                println("in the middle of stuff")
                 unit.takeDamage(self.DS_damage)
+                let applyIdle: SKAction = SKAction.runBlock({
+                    unit.sendOrder(Idle(receiverIn: unit))
+                })
+                let applyOldOrder: SKAction = SKAction.runBlock({
+                    if (unit.alive == true){
+                        if (unit is EnemyPriest) {
+                            unit.sendOrder(RoamHeal(receiverIn: unit))
+                        } else {
+                            unit.sendOrder(RoamAttack(receiverIn: unit))
+                        }
+                    }
+                })
+                let waitStunDuration: SKAction = SKAction.waitForDuration(2.0)
+                let stunSequence: SKAction = SKAction.sequence([applyIdle, waitStunDuration, applyOldOrder])
+                unit.sprite.runAction(stunSequence)
             }
+            
+
         }
         self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
     }
