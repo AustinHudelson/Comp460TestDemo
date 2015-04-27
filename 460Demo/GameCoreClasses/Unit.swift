@@ -63,7 +63,9 @@ class Unit: SerializableJSON, PType
     var DS_health_txt_y_dspl: CGFloat = 100 // The y displacement of health text relative to this unit's sprite
     var DS_health_bar_x_dspl: CGFloat = -35
     var DS_zSpriteOffset: CGFloat = 2
+    var DS_zHealthOutlineOffset: CGFloat = 2.9
     var DS_zHealthOffset: CGFloat = 3
+    
     
     var DS_deadOrder: Order?
     
@@ -84,7 +86,7 @@ class Unit: SerializableJSON, PType
         //self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
         
         self.sprite.zPosition = Game.global.spriteMinZ + Game.global.scene!.frame.maxY - self.sprite.position.y
-        self.DS_health_bar.zPosition = self.sprite.zPosition + 3
+        self.DS_health_bar.zPosition = self.sprite.zPosition + DS_zHealthOffset
         
        
     }
@@ -100,7 +102,7 @@ class Unit: SerializableJSON, PType
         //self.DS_health_bar.anchorPoint = CGPoint(x:0, y:0)
         
         self.sprite.zPosition = Game.global.spriteMinZ + Game.global.scene!.frame.maxY - self.sprite.position.y
-        self.DS_health_bar.zPosition = self.sprite.zPosition + 3
+        self.DS_health_bar.zPosition = self.sprite.zPosition + self.DS_zHealthOffset
     }
     
     /* Helper function that loads an animation into SKAction */
@@ -141,7 +143,7 @@ class Unit: SerializableJSON, PType
         //Setup healthbar size based on size of sprite.
         self.DS_health_bar_outline.size = CGSize(width: self.sprite.size.width*0.7, height: self.DS_health_bar_y)
         //Setup inside of the healthbar based on the size of the outline.
-        self.DS_health_bar.size = CGSize(width: self.DS_health_bar_outline.size.width-(2.0 * DS_health_bar_outline_padding), height: self.DS_health_bar_y-(2.0*DS_health_bar_outline_padding))
+        self.DS_health_bar.size = CGSize(width: self.DS_health_bar_outline.size.width-(2.0 * DS_health_bar_outline_padding), height: self.DS_health_bar_y-(2.0 * DS_health_bar_outline_padding))
         self.DS_health_bar.zPosition = 99999.0
         self.DS_health_bar.zPosition = 88888.0
         self.DS_health_bar_max_x = self.DS_health_bar.size.width
@@ -327,13 +329,13 @@ class Unit: SerializableJSON, PType
         {
             editDestination.x = Game.global.scene!.frame.maxX
         }
-        if editDestination.y < Game.global.scene!.frame.minY
+        if editDestination.y < Game.global.scene!.frame.minY+75
         {
-            editDestination.y = Game.global.scene!.frame.minY
+            editDestination.y = Game.global.scene!.frame.minY+75
         }
-        if editDestination.y > Game.global.scene!.frame.maxY-55
+        if editDestination.y > Game.global.scene!.frame.maxY-100
         {
-            editDestination.y = Game.global.scene!.frame.maxY-55
+            editDestination.y = Game.global.scene!.frame.maxY-100
         }
         
         
@@ -398,6 +400,7 @@ class Unit: SerializableJSON, PType
         sprite.runAction(walkSequence, withKey: "move")
         self.sprite.zPosition = setZPosition(self.sprite.position.y) + self.DS_zSpriteOffset
         self.DS_health_bar.zPosition = setZPosition(self.DS_health_bar.position.y) + self.DS_zHealthOffset
+        self.DS_health_bar_outline.zPosition = setZPosition(self.DS_health_bar.position.y) + self.DS_zHealthOutlineOffset
     }
     
     func clearMove(){
@@ -670,7 +673,15 @@ class Unit: SerializableJSON, PType
         self.sprite.runAction(SKAction.fadeAlphaTo(1.0, duration:NSTimeInterval(0.0)))
         self.sprite.addChild(DS_health_bar)
         self.sprite.addChild(DS_health_bar_outline)
-        self.sendOrder(DS_deadOrder!)
+        if (self.isEnemy == true){
+            if (self is EnemyPriest){
+                self.sendOrder(RoamHeal(receiverIn: self))
+            } else {
+                self.sendOrder(RoamAttack(receiverIn: self))
+            }
+        } else {
+            self.sendOrder(DS_deadOrder!)
+        }
         DS_deadOrder = nil
     }
     
