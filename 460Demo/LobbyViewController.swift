@@ -231,6 +231,11 @@ class LobbyViewController: UIViewController {
         setPlayerNames()
         configLevelPicker()
         sendMyClass()
+        // sending my class multiple times b/c we dont know what's causing icons to not show up sometimes
+        sendMyClass()
+        sendMyClass()
+        sendMyClass()
+        sendMyClass()
         updateNumberOfPlayers(AppWarpHelper.sharedInstance.userName_list.count)
     }
 
