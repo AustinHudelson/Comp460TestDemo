@@ -92,6 +92,7 @@ class RoomListener: NSObject,RoomRequestListener
         */
         if Game.global.scene == nil {
             
+            // configLobbyView() will also set the new host (i.e. transfer host) if users left inside lobby screen
             AppWarpHelper.sharedInstance.configLobbyView()
             
             println("gamescene is nil")
@@ -107,11 +108,10 @@ class RoomListener: NSObject,RoomRequestListener
         }
         else {
             println("there was a gamescene")
-            // We're requesting live room info when host leaves the room, so designate new host
+            // We're requesting live room info when host leaves during the game, so designate new host
             let oldHost = AppWarpHelper.sharedInstance.host
             
             if (!userName_list.containsObject(oldHost!)) && (userName_list.count > 0) {
-                println("count of list \(userName_list.count)")
                 let newHost = userName_list[0] as String
                 AppWarpHelper.sharedInstance.host = newHost
                 println("Transfering host from \"\(oldHost)\" to \"\(newHost)\"")

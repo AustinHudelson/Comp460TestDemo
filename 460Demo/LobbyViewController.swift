@@ -216,6 +216,7 @@ class LobbyViewController: UIViewController {
         println(AppWarpHelper.sharedInstance.userName_list)
         
         // set host
+        println("configLobbyView(): setting host to \(AppWarpHelper.sharedInstance.userName_list[0] as String)")
         AppWarpHelper.sharedInstance.host = (AppWarpHelper.sharedInstance.userName_list[0] as String)
         
         /* Configure the lobby view based on whether you're host or not */
