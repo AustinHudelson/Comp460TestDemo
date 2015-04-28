@@ -141,7 +141,7 @@ class EliteMage: Unit, PType
     override func synchronize(receivedLife: CGFloat, receivedPosition: CGPoint, tID: String){
         super.synchronize(receivedLife, receivedPosition: receivedPosition, tID: tID)
         let percent = self.health/self.maxhealth.get()
-        if (percent <= 0.75 && DS_Frosting == false) {
+        if (percent <= 0.9 && DS_Frosting == false) {
             DS_Frosting = true
             //Start Frost Loop
             let commandFrostStrike: SKAction = SKAction.runBlock({

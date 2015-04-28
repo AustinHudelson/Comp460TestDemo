@@ -39,7 +39,7 @@ class FrostStrikeVolly: Order, PType, Transient
         }
         DS_receiver!.damageMultiplier.addModifier("frostvolly", value: 0.0)
         
-        let blinkSoundAction = SKAction.playSoundFileNamed("teleport.wav", waitForCompletion: true)
+        let blinkSoundAction = SKAction.playSoundFileNamed("teleport.wav", waitForCompletion: false)
         self.DS_receiver!.sprite.runAction(self.DS_receiver!.DS_abilityAnim!)
         let blockCommands: SKAction = SKAction.runBlock({
             self.DS_receiver!.makeUncommandable()
@@ -62,7 +62,7 @@ class FrostStrikeVolly: Order, PType, Transient
         let finalBlinkDAction = SKAction.sequence([startBlink, moveDAction, fadeIn])
         
         
-        let frostSoundAction = SKAction.playSoundFileNamed("freeze.wav", waitForCompletion: true)
+        let frostSoundAction = SKAction.playSoundFileNamed("freeze.wav", waitForCompletion: false)
         let launchFrostStrikeAction = SKAction.runBlock({
             let froststrike: Projectile = FroststrikeProjectile(caster: self.DS_receiver!)
         })
