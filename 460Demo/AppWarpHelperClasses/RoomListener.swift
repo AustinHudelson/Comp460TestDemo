@@ -87,15 +87,14 @@ class RoomListener: NSObject,RoomRequestListener
         
         
         /*
-            If gameScene is nil that means we're in the lobby, so configure the lobby view &
+            If scene isnt active, that means we're in the lobby, so configure the lobby view &
             broadcast which level is select if I'm host
         */
-        if Game.global.scene == nil {
+        if !Game.global.sceneActive {
             
             // configLobbyView() will also set the new host (i.e. transfer host) if users left inside lobby screen
             AppWarpHelper.sharedInstance.configLobbyView()
             
-            println("gamescene is nil")
             // Send over selected lvl if I'm host
             if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
                 if let lobby = AppWarpHelper.sharedInstance.lobby {

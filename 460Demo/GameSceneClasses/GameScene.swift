@@ -13,7 +13,7 @@ import AVFoundation
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var playerIsTouched = false
     var viewController: UIViewController?
-    var sceneActive: Bool = true
+    
     var targetingAbility: TargetedAbility?
     var audioPlayer = AVAudioPlayer()
     var exitButtonEnabled: Bool = true
@@ -72,7 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func sendUnitOverNetwork(newUnit: Unit){
         
         //Dont send anything if this scene is no longer active (destroyed)
-        if sceneActive == false {
+        if !Game.global.sceneActive {
             println("Warning tried to send create unit from a non active scene")
             return
         }
@@ -89,10 +89,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         exitButtonEnabled = true
-        println("Moved in to scene is Active:")
-        println(sceneActive)
+        
+        
         Game.global.clearGlobals()
         Game.global.scene = self
+        
+        Game.global.sceneActive = true
+        
 //        /* Setup game background image */
 //        let background = SKSpriteNode(imageNamed: "Background1")
 //        background.position = CGPointMake(self.size.width/2, self.size.height/2)
@@ -109,6 +112,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Game.global.addSyncActionToScene()
     }
+    
 //    override func willMoveFromView(view: SKView) {
 //        Game.global.scene = nil
 //        //AppWarpHelper.sharedInstance.gameScene = nil

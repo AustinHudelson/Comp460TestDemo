@@ -41,7 +41,7 @@ class NotificationListener: NSObject,NotifyListener
             This code structure is kind of bad, but it's just a quick fix now for users pressing Exit in lobby.
             Basically tell everyone who's not the leaver to request live room info so they can update their lobby
         */
-        if (Game.global.scene == nil && (username != AppWarpHelper.sharedInstance.playerName)) {
+        if !(Game.global.sceneActive) == false && (username != AppWarpHelper.sharedInstance.playerName) {
             WarpClient.getInstance().getLiveRoomInfo(AppWarpHelper.sharedInstance.roomId)
         }
     }
