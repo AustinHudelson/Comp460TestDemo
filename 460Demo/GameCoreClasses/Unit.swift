@@ -320,6 +320,10 @@ class Unit: SerializableJSON, PType
     func move(destination:CGPoint, complete:(()->Void)!) {
         var editDestination = destination
         
+        if (Game.global.scene == nil){
+            return
+        }
+        
         //Making sure we can't move outside of the borders
         if editDestination.x < Game.global.scene!.frame.minX
         {

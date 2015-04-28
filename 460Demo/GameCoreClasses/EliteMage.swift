@@ -154,4 +154,8 @@ class EliteMage: Unit, PType
             self.sprite.runAction(SKAction.sequence([initialCommandFrostStrikeDelay, commandLoop]))
         }
     }
+    
+    override func weaponHandle(target: Unit){
+        let projectile = MageBolt(target: target, caster: self)
+    }
 }
