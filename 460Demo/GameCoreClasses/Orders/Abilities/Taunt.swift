@@ -90,6 +90,10 @@ class Taunt: Order, PType
     {
         
         self.DS_receiver?.applyTint("Taunted", red: 0.5, blue: 1.0, green: 0.5)
+        if DS_tauntedEnemy != nil{
+            self.DS_tauntedEnemy!.applyTint("Taunted", red: 0.5, blue: 1.0, green: 0.5)
+        }
+        
         //self.DS_receiver?.sprite.runAction(SKAction.scaleBy(0.5, duration: 1.0))
     }
     
@@ -97,6 +101,9 @@ class Taunt: Order, PType
     {
        
         self.DS_receiver?.removeTint("Taunted")
+        if DS_tauntedEnemy != nil{
+            self.DS_tauntedEnemy!.removeTint("Taunted")
+        }
         //self.DS_receiver?.sprite.runAction(SKAction.scaleBy(2.0, duration: 1.0))
         
     }

@@ -46,7 +46,7 @@ class ArmorUp: Order, PType, Transient
     func applyBuff()
     {
         self.DS_receiver?.damageMultiplier.addModifier("ArmorUp", value: DS_armorAmount)
-        self.DS_receiver?.applyTint("ArmoredUp", red: 0.5, blue: 1.0, green: 0.5)
+        self.DS_receiver?.applyTint("ArmoredUp", red: 0.25, blue: 0.25, green: 0.25)
         //self.DS_receiver?.sprite.runAction(SKAction.scaleBy(0.5, duration: 1.0))
     }
     

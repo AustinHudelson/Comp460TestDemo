@@ -484,7 +484,7 @@ class Unit: SerializableJSON, PType
                 weaponHandle(target)
                 if self.type == "Warrior" || self.type == "Enemy" || self.type == "EliteWarrior" || self.type == "EliteWarriorB" || self.type == "EnemyBoss"
                 {
-                    let soundAction = SKAction.playSoundFileNamed("swords_clashing.mp3", waitForCompletion: true)
+                    let soundAction = SKAction.playSoundFileNamed("swing.wav", waitForCompletion: true)
                     self.sprite.runAction(soundAction)
                 }
                 else if self.type == "Mage" || self.type == "EnemyMage"
