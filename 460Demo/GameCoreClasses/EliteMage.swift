@@ -43,8 +43,8 @@ class EliteMage: Unit, PType
         self.speed = Attribute(baseValue: 120.0)
         self.attackRange = 200.0
         self.isEnemy = true
-        self.xSize = 325.0
-        self.ySize = 325.0
+        self.xSize = 400.0
+        self.ySize = 400.0
         
         self.damageMultiplier.addModifier("eliteWar", value: 1.0)
         
@@ -118,41 +118,17 @@ class EliteMage: Unit, PType
         //self.DS_health_txt.fontColor = UIColor.redColor()
         super.addUnitToGameScene(gameScene, pos: pos)
         self.sendOrder(RoamAttack(receiverIn: self))
-        self.applyTint("Enemy", red: 1.0, blue: 0.75, green: 0.75)
-    }
-    
-    override func takeDamage(damage: CGFloat){
-        super.takeDamage(damage)
-        let percent = self.health/self.maxhealth.get()
-        if (percent <= 0.9 && DS_Frosting == false) {
-            DS_Frosting = true
-            //Start Frost Loop
-            let commandFrostStrike: SKAction = SKAction.runBlock({
-                self.sendOrder(FrostStrikeVolly(receiverIn: self))
-            })
-            //Delay set to double the duration of enemy Armor up for 50% damage reduction
-            let commandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(18.0))
-            let initialCommandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(0.0))
-            let commandLoop: SKAction = SKAction.repeatActionForever(SKAction.sequence([commandFrostStrikeDelay, commandFrostStrike]))
-            self.sprite.runAction(SKAction.sequence([initialCommandFrostStrikeDelay, commandLoop]))
-        }
-    }
-    
-    override func synchronize(receivedLife: CGFloat, receivedPosition: CGPoint, tID: String){
-        super.synchronize(receivedLife, receivedPosition: receivedPosition, tID: tID)
-        let percent = self.health/self.maxhealth.get()
-        if (percent <= 0.9 && DS_Frosting == false) {
-            DS_Frosting = true
-            //Start Frost Loop
-            let commandFrostStrike: SKAction = SKAction.runBlock({
-                self.sendOrder(FrostStrikeVolly(receiverIn: self))
-            })
-            //Delay set to double the duration of enemy Armor up for 50% damage reduction
-            let commandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(18.0))
-            let initialCommandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(0.0))
-            let commandLoop: SKAction = SKAction.repeatActionForever(SKAction.sequence([commandFrostStrikeDelay, commandFrostStrike]))
-            self.sprite.runAction(SKAction.sequence([initialCommandFrostStrikeDelay, commandLoop]))
-        }
+        self.applyTint("Enemy", red: 0.1, blue: 2.0, green: 0.1)
+        
+        //Start Frost Loop
+        let commandFrostStrike: SKAction = SKAction.runBlock({
+            self.sendOrder(FrostStrikeVolly(receiverIn: self))
+        })
+        
+        let commandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(18.0))
+        let initialCommandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(0.0))
+        let commandLoop: SKAction = SKAction.repeatActionForever(SKAction.sequence([commandFrostStrikeDelay, commandFrostStrike]))
+        self.sprite.runAction(SKAction.sequence([initialCommandFrostStrikeDelay, commandLoop]))
     }
     
     override func weaponHandle(target: Unit){
