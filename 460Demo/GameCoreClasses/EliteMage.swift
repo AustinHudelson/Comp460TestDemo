@@ -129,7 +129,9 @@ class EliteMage: Unit, PType
     }
     
     override func synchronize(receivedLife: CGFloat, receivedPosition: CGPoint, tID: String){
-        super.synchronize(receivedLife, receivedPosition: receivedPosition, tID: tID)
+        if (receivedLife <= 0 || !(self.currentOrder is Idle || self.currentOrder is FrostStrikeVolly)){
+            super.synchronize(receivedLife, receivedPosition: receivedPosition, tID: tID)
+        }
         let percent = self.health/self.maxhealth.get()
         checkFrostJumpTime()
     }
