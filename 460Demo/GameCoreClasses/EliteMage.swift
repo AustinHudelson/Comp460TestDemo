@@ -131,8 +131,8 @@ class EliteMage: Unit, PType
                 self.sendOrder(FrostStrikeVolly(receiverIn: self))
             })
             //Delay set to double the duration of enemy Armor up for 50% damage reduction
-            let commandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(20.0))
-            let initialCommandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(10.0))
+            let commandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(18.0))
+            let initialCommandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(0.0))
             let commandLoop: SKAction = SKAction.repeatActionForever(SKAction.sequence([commandFrostStrikeDelay, commandFrostStrike]))
             self.sprite.runAction(SKAction.sequence([initialCommandFrostStrikeDelay, commandLoop]))
         }
@@ -148,8 +148,8 @@ class EliteMage: Unit, PType
                 self.sendOrder(FrostStrikeVolly(receiverIn: self))
             })
             //Delay set to double the duration of enemy Armor up for 50% damage reduction
-            let commandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(20.0))
-            let initialCommandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(5.0))
+            let commandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(18.0))
+            let initialCommandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(0.0))
             let commandLoop: SKAction = SKAction.repeatActionForever(SKAction.sequence([commandFrostStrikeDelay, commandFrostStrike]))
             self.sprite.runAction(SKAction.sequence([initialCommandFrostStrikeDelay, commandLoop]))
         }
