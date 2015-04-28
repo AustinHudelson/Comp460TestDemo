@@ -40,8 +40,8 @@ class EliteMage: Unit, PType
         self.health = 250.0
         self.maxhealth = Attribute(baseValue: 250.0)
         self.DS_healthregen = 0
-        self.attackSpeed = Attribute(baseValue: 0.6)
-        self.attackDamage = Attribute(baseValue: 15.0)
+        self.attackSpeed = Attribute(baseValue: 0.8)
+        self.attackDamage = Attribute(baseValue: 10.0)
         self.speed = Attribute(baseValue: 120.0)
         self.attackRange = 200.0
         self.isEnemy = true
