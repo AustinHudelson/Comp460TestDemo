@@ -626,6 +626,7 @@ class Unit: SerializableJSON, PType
         if alive == false {
             return
         }
+        self.health = -10000.0
         alive = false
         self.DS_health_bar.removeFromParent()
         self.DS_health_bar_outline.removeFromParent()
