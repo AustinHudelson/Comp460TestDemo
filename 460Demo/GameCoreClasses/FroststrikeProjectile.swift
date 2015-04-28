@@ -14,7 +14,7 @@ class FroststrikeProjectile: Projectile {
     var potentialTargets: Array<Unit> = []
     
     let searchArea: CGFloat = 70.0      /* Thickness of the fireball's search area */
-    let damage: CGFloat = 20.0           /* Amount of damage done */
+    let damage: CGFloat = 60.0           /* Amount of damage done */
     let searchRate: NSTimeInterval = NSTimeInterval(0.125) //.125 is 8 updates a second.
     
     init(caster: Unit){
