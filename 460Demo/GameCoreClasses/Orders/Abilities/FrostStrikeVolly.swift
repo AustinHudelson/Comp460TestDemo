@@ -10,11 +10,11 @@ import Foundation
 import SpriteKit
 
 @objc(FrostStrikeVolly)
-class FrostStrikeVolly: Order, PType
+class FrostStrikeVolly: Order, PType, Transient
 {
     let DS_destA = CGPoint(x: Game.global.scene!.frame.minX+80.0, y: Game.global.scene!.frame.maxY-200.0)
     let DS_destB = CGPoint(x: Game.global.scene!.frame.maxX-80.0, y: Game.global.scene!.frame.midY)
-    let DS_destC = CGPoint(x: Game.global.scene!.frame.minX-80.0, y: Game.global.scene!.frame.minY+100.0)
+    let DS_destC = CGPoint(x: Game.global.scene!.frame.minX+80.0, y: Game.global.scene!.frame.minY+100.0)
     let DS_destD = CGPoint(x: Game.global.scene!.frame.midX, y: Game.global.scene!.frame.midY)
     init(receiverIn: Unit)
     {
@@ -49,10 +49,10 @@ class FrostStrikeVolly: Order, PType
         })
         let fadeOut: SKAction = SKAction.fadeAlphaTo(0.2, duration: NSTimeInterval(0.05))
         let fadeIn: SKAction = SKAction.fadeAlphaTo(1.0, duration: NSTimeInterval(0.05))
-        let moveAAction: SKAction = SKAction.moveTo(DS_destA, duration: NSTimeInterval(0.5))
-        let moveBAction: SKAction = SKAction.moveTo(DS_destB, duration: NSTimeInterval(0.5))
-        let moveCAction: SKAction = SKAction.moveTo(DS_destC, duration: NSTimeInterval(0.5))
-        let moveDAction: SKAction = SKAction.moveTo(DS_destD, duration: NSTimeInterval(0.5))
+        let moveAAction: SKAction = SKAction.moveTo(DS_destA, duration: NSTimeInterval(0.3))
+        let moveBAction: SKAction = SKAction.moveTo(DS_destB, duration: NSTimeInterval(0.3))
+        let moveCAction: SKAction = SKAction.moveTo(DS_destC, duration: NSTimeInterval(0.3))
+        let moveDAction: SKAction = SKAction.moveTo(DS_destD, duration: NSTimeInterval(0.3))
         
         let startBlink: SKAction = SKAction.group([blinkSoundAction, self.DS_receiver!.DS_abilityAnim!, fadeOut])
         
@@ -75,16 +75,18 @@ class FrostStrikeVolly: Order, PType
         let faceRightAction = SKAction.runBlock({
             self.DS_receiver!.faceRight()
         })
-        let delayAction = SKAction.waitForDuration(NSTimeInterval(0.35))
+        let delayAction = SKAction.waitForDuration(NSTimeInterval(0.125))
         let removeInvulAction = SKAction.runBlock({
             self.DS_receiver!.damageMultiplier.removeModifier("frostvolly")
         })
         let restoreRoamAttackAction = SKAction.runBlock({
             self.DS_receiver!.sendOrder(RoamAttack(receiverIn: self.DS_receiver!))
         })
+        let giveIdleAction = SKAction.runBlock({
+            self.DS_receiver!.sendOrder(Idle(receiverIn: self.DS_receiver!))
+        })
         
-        
-        let FinalA:SKAction = SKAction.sequence([blockCommands, finalBlinkAAction, faceRightAction, delayAction, faceRightAction, frostStrikeAction, delayAction])
+        let FinalA:SKAction = SKAction.sequence([giveIdleAction, blockCommands, finalBlinkAAction, faceRightAction, delayAction, faceRightAction, frostStrikeAction, delayAction])
         let FinalB:SKAction = SKAction.sequence([finalBlinkBAction, faceLeftAction, delayAction, faceLeftAction, frostStrikeAction, delayAction])
         let FinalC:SKAction = SKAction.sequence([finalBlinkCAction, faceRightAction, delayAction, faceRightAction, frostStrikeAction, delayAction])
         let FinalD:SKAction = SKAction.sequence([finalBlinkDAction, removeInvulAction, unblockCommands, restoreRoamAttackAction])

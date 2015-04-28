@@ -63,7 +63,7 @@ class FroststrikeProjectile: Projectile {
         emitterNode.targetNode = self.sprite!
         self.sprite!.addChild(emitterNode)
         
-        self.speed = 125.0
+        self.speed = 250.0
         
         //Setup loop that searches for enemies periodically.
         let waitBlock = SKAction.waitForDuration(searchRate)
