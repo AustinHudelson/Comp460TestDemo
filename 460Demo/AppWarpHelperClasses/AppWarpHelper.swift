@@ -29,13 +29,13 @@ import UIKit
 class AppWarpHelper: NSObject
 {
 //    /* Austin's AppWarp key */
-//    var api_key = "8f4823c2a1bca11bb4ad1349d127b62a312481af36cc74cda1994f9ca6564857"
-//    var secret_key = "c36ad65cbc48eb1df497ee91ccac5a19693ba83d6ac4b72d2aa537f563a94069"
+    var api_key = "8f4823c2a1bca11bb4ad1349d127b62a312481af36cc74cda1994f9ca6564857"
+    var secret_key = "c36ad65cbc48eb1df497ee91ccac5a19693ba83d6ac4b72d2aa537f563a94069"
     var roomId: String?
     var maxUsers: Int32 = 3 // max user per room
    /* Robert's AppWarp key */
-    var api_key = "7eab7838469013d4378f912ce41c1dcb2801686185fc7ae48694976b9d67380f"
-    var secret_key = "e493311e8192cb2d424d16c7588e834abbbf35a7fbd0d2459d53ccc7a990ebf1"
+    //var api_key = "7eab7838469013d4378f912ce41c1dcb2801686185fc7ae48694976b9d67380f"
+    //var secret_key = "e493311e8192cb2d424d16c7588e834abbbf35a7fbd0d2459d53ccc7a990ebf1"
     
     var enemyName: String = ""
     var playerName: String = ""

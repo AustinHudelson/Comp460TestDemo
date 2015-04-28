@@ -120,7 +120,9 @@ class EliteWarrior: Unit, PType
         
         //Start Armor Up Loop
         let commandArmorUp: SKAction = SKAction.runBlock({
-            self.sendOrder(EnemyArmorUp(receiverIn: self))
+            if (self.alive == true) {
+                self.sendOrder(EnemyArmorUp(receiverIn: self))
+            }
         })
         //Delay set to double the duration of enemy Armor up for 50% damage reduction
         let commandArmorUpDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(16.0))
@@ -132,7 +134,9 @@ class EliteWarrior: Unit, PType
         let retargetDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(20.0))
         let initialRetargetDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(10.0))
         let retargetAction: SKAction = SKAction.runBlock({
-            self.retarget()
+            if (self.alive == true){
+                self.retarget()
+            }
         })
         let retargetLoop: SKAction = SKAction.repeatActionForever(SKAction.sequence([retargetAction, retargetDelay]))
         self.sprite.runAction(SKAction.sequence([initialRetargetDelay, retargetLoop]))
