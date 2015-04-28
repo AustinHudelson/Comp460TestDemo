@@ -59,6 +59,9 @@ class CharSelectViewController: UIViewController, UITextFieldDelegate {
             }
             if notWhitespace{
                 println(selectedClass)
+                
+                println("====Going from Char Select to Lobby====")
+                
                 performSegueWithIdentifier("CharSelectToLobby",  sender: self)
             }
         }

@@ -51,6 +51,10 @@ class LobbyViewController: UIViewController {
             outerDict["Start Game!"]!.append(startMsg)
             
             NetworkManager.sendMsg(&outerDict)
+            
+            // Disable the start game button
+            println("====Sending start game msg====")
+            startGameButton.enabled = false
         } else {
             println("You need to wait for host to start the game!")
         }
@@ -59,6 +63,11 @@ class LobbyViewController: UIViewController {
     /* Pressing this button will move the screen back to character selection screen */
     @IBAction func exitButtonAction(sender: AnyObject) {
         AppWarpHelper.sharedInstance.leaveGame()
+        
+        // Disable the button
+        println("====Exiting from Lobby to Char Select====")
+        exitButton.enabled = false
+        
         performSegueWithIdentifier("LobbyToCharSelect", sender: nil)
     }
     

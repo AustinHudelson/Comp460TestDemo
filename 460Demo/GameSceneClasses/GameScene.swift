@@ -16,6 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var sceneActive: Bool = true
     var targetingAbility: TargetedAbility?
     var audioPlayer = AVAudioPlayer()
+    var exitButtonEnabled: Bool = true
     
     
     //begins game scene by making your player and loading enemy waves if you are host
@@ -87,6 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        exitButtonEnabled = true
         println("Moved in to scene is Active:")
         println(sceneActive)
         Game.global.clearGlobals()
@@ -162,13 +164,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                    self.addChild(exitConfirm)
 //                }
                 
-            
-                println("exit pressed")
-                
-                Game.global.endScene()
-                
-                
-                
+                // Make sure user can't spam press exit button
+                if exitButtonEnabled {
+                    println("====Exit pressed. Going from GameScene to Char Select=====")
+                    
+                    Game.global.endScene()
+                    
+                    exitButtonEnabled = false
+                } else {
+                    println("====Exit pressed. BUT IT'S DISABLED=====")
+                }
             }
             
             /* When touching your own player
