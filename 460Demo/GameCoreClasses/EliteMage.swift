@@ -41,7 +41,7 @@ class EliteMage: Unit, PType
         self.attackSpeed = Attribute(baseValue: 1.1)
         self.attackDamage = Attribute(baseValue: 8.0)
         self.speed = Attribute(baseValue: 120.0)
-        self.attackRange = 600.0
+        self.attackRange = 200.0
         self.isEnemy = true
         self.xSize = 325.0
         self.ySize = 325.0
