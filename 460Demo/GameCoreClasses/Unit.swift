@@ -577,13 +577,13 @@ class Unit: SerializableJSON, PType
                 }
                 else {
                     if self.type == "EnemyPriest" {
-                        if newTarget != nil {
+                        if (newTarget != nil && self.currentOrder is RoamHeal) {
                             (self.currentOrder as RoamHeal).redirect(newTarget!)
                         }
                     }
                     else {
                         // It's an Enemy with Roam attack
-                        if newTarget != nil {
+                        if (newTarget != nil && self.currentOrder is RoamAttack) {
                             (self.currentOrder as RoamAttack).redirect(newTarget!)
                         }
                     }
