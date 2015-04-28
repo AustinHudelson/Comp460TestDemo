@@ -13,7 +13,9 @@ import Foundation
 class EliteMage: Unit, PType
 {
     
-    var DS_Frosting = false
+    var DS_FrostingA = false
+    var DS_FrostingB = false
+    var DS_FrostingC = false
     
     required init(receivedData: Dictionary<String, AnyObject>){
         //Special case for sprite
@@ -118,20 +120,40 @@ class EliteMage: Unit, PType
         //self.DS_health_txt.fontColor = UIColor.redColor()
         super.addUnitToGameScene(gameScene, pos: pos)
         self.sendOrder(RoamAttack(receiverIn: self))
-        self.applyTint("Enemy", red: 0.1, blue: 2.0, green: 0.1)
-        
-        //Start Frost Loop
-        let commandFrostStrike: SKAction = SKAction.runBlock({
-            self.sendOrder(FrostStrikeVolly(receiverIn: self))
-        })
-        
-        let commandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(18.0))
-        let initialCommandFrostStrikeDelay: SKAction = SKAction.waitForDuration(NSTimeInterval(0.0))
-        let commandLoop: SKAction = SKAction.repeatActionForever(SKAction.sequence([commandFrostStrikeDelay, commandFrostStrike]))
-        self.sprite.runAction(SKAction.sequence([initialCommandFrostStrikeDelay, commandLoop]))
+        self.applyTint("Enemy", red: 0.1, blue: 2.0, green: 0.3)
+    }
+    
+    override func takeDamage(damage: CGFloat){
+        super.takeDamage(damage)
+        checkFrostJumpTime()
+    }
+    
+    override func synchronize(receivedLife: CGFloat, receivedPosition: CGPoint, tID: String){
+        super.synchronize(receivedLife, receivedPosition: receivedPosition, tID: tID)
+        let percent = self.health/self.maxhealth.get()
+        checkFrostJumpTime()
     }
     
     override func weaponHandle(target: Unit){
         let projectile = MageBolt(target: target, caster: self)
+    }
+    
+    func checkFrostJumpTime(){
+        let percent = self.health/self.maxhealth.get()
+        if (percent <= 0.75 && DS_FrostingA == false){
+            DS_FrostingA = true
+            self.sendOrder(FrostStrikeVolly(receiverIn:self))
+            return
+        }
+        if (percent <= 0.5 && DS_FrostingB == false){
+            DS_FrostingB = true
+            self.sendOrder(FrostStrikeVolly(receiverIn:self))
+            return
+        }
+        if (percent <= 0.25 && DS_FrostingC == false){
+            DS_FrostingC = true
+            self.sendOrder(FrostStrikeVolly(receiverIn:self))
+            return
+        }
     }
 }

@@ -75,6 +75,9 @@ class BlindingFlash: Order, PType
         for (id, unit) in Game.global.enemyMap{
             if Game.global.getDistance(DS_receiver!.sprite.position, p2: unit.sprite.position) < DS_radius
             {
+                if (unit is EliteMage){
+                    continue
+                }
                 var destination = CGPoint(x:0,y:0)
                 var unitX = unit.sprite.position.x
                 var unitY = unit.sprite.position.y

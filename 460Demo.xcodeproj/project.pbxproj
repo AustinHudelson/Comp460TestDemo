@@ -294,6 +294,8 @@
 		E7E381631AE58BE100A60DB9 /* teleport.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E381611AE58BE100A60DB9 /* teleport.wav */; };
 		F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402F68E1AB51AF300A930C2 /* EnemyMage.swift */; };
 		F4255E231AEF15AE0088723D /* CavernOfTheEvilWizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4255E221AEF15AE0088723D /* CavernOfTheEvilWizard.swift */; };
+		F4255E251AEF3CB20088723D /* LevelFour2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4255E241AEF3CB20088723D /* LevelFour2.swift */; };
+		F4255E271AEF3CC10088723D /* LevelFive2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4255E261AEF3CC10088723D /* LevelFive2.swift */; };
 		F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
 		F44C42FA1AC3597700CAA983 /* FlamestrikeProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C42F91AC3597700CAA983 /* FlamestrikeProjectile.swift */; };
@@ -754,6 +756,8 @@
 		E7E381611AE58BE100A60DB9 /* teleport.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport.wav; sourceTree = "<group>"; };
 		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
 		F4255E221AEF15AE0088723D /* CavernOfTheEvilWizard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CavernOfTheEvilWizard.swift; sourceTree = "<group>"; };
+		F4255E241AEF3CB20088723D /* LevelFour2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFour2.swift; sourceTree = "<group>"; };
+		F4255E261AEF3CC10088723D /* LevelFive2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFive2.swift; sourceTree = "<group>"; };
 		F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonShrink.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F44C42F91AC3597700CAA983 /* FlamestrikeProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlamestrikeProjectile.swift; sourceTree = "<group>"; };
@@ -1042,13 +1046,15 @@
 				F4E896411AA128E000406784 /* Game.swift */,
 				E75F4FBA1AB0DE1B00C3D76E /* Level.swift */,
 				E759EDA91AC3433C00D23AF8 /* LevelOne1.swift */,
-				F4D8527E1AEEFFD900367EC5 /* LevelFour1.swift */,
-				F4D852801AEEFFE600367EC5 /* LevelFive1.swift */,
 				E759EDAB1AC3449700D23AF8 /* LevelTwo1.swift */,
 				E759EDAD1AC3466400D23AF8 /* LevelThree1.swift */,
+				F4D8527E1AEEFFD900367EC5 /* LevelFour1.swift */,
+				F4D852801AEEFFE600367EC5 /* LevelFive1.swift */,
 				E759EDAF1AC3482F00D23AF8 /* LevelOne2.swift */,
 				E759EDB11AC3497E00D23AF8 /* LevelTwo2.swift */,
 				E759EDB31AC34E1900D23AF8 /* LevelThree2.swift */,
+				F4255E241AEF3CB20088723D /* LevelFour2.swift */,
+				F4255E261AEF3CC10088723D /* LevelFive2.swift */,
 				E759EDB51AC3502700D23AF8 /* LevelOne3.swift */,
 				E759EDB71AC351AA00D23AF8 /* LevelTwo3.swift */,
 				E759EDB91AC352E800D23AF8 /* LevelThree3.swift */,
@@ -2291,6 +2297,7 @@
 				F44C42FA1AC3597700CAA983 /* FlamestrikeProjectile.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				F4F1261D1AC342B700A032D1 /* Priest.swift in Sources */,
+				F4255E271AEF3CC10088723D /* LevelFive2.swift in Sources */,
 				F4F126211AC3497F00A032D1 /* ButtonFlameStrike.swift in Sources */,
 				F4D852951AEF070300367EC5 /* FrostStrikeVolly.swift in Sources */,
 				68DADF491AB56FE800A20800 /* ButtonTaunt.swift in Sources */,
@@ -2348,6 +2355,7 @@
 				682944DF1AB5787000680A36 /* Heal.swift in Sources */,
 				F4E96AE11ABCD20700021DFD /* LevelSelection.swift in Sources */,
 				E75F4FBB1AB0DE1B00C3D76E /* Level.swift in Sources */,
+				F4255E251AEF3CB20088723D /* LevelFour2.swift in Sources */,
 				68DADF5D1AB5738800A20800 /* Attack.swift in Sources */,
 				68DADF631AB5738800A20800 /* Transient.swift in Sources */,
 				68038FE11AA56B8C0053A963 /* Timer.swift in Sources */,

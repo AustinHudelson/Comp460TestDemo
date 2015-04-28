@@ -13,7 +13,7 @@ import Foundation
 */
 class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     // This variable is ONLY used for displaying the level texts in lobby
-    var allLevels: Array<Array<Level>> = [[LevelOne1(), LevelTwo1(), LevelThree1(), LevelFour1(), LevelFive1()], [LevelOne2(), LevelTwo2(), LevelThree2()], [LevelOne3(), LevelTwo3(), LevelThree3(), TwoChampions(), CavernOfTheEvilWizard()]]
+    var allLevels: Array<Array<Level>> = [[LevelOne1(), LevelTwo1(), LevelThree1(), LevelFour1(), LevelFive1()], [LevelOne2(), LevelTwo2(), LevelThree2(), LevelFour2(), LevelFive2()], [LevelOne3(), LevelTwo3(), LevelThree3(), TwoChampions(), CavernOfTheEvilWizard()]]
     var levelsDataSource: Array<Level> = [LevelOne1(), LevelTwo1(), LevelThree1(), LevelFour1(), LevelFive1()]
     
     
