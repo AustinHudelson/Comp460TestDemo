@@ -58,7 +58,7 @@ class EliteMage: Unit, PType
     func initializeAnimations() {
         let AnimationName = "character1basecolorization"
         
-        let classPrefix = "Mage"
+        let classPrefix = "NewMage"
         
         let standAnimName = "-attack"
         let walkAnimName = "-walk"
@@ -104,9 +104,8 @@ class EliteMage: Unit, PType
         self.DS_deathAnim = SKAction.repeatAction(deathAnim, count: 1)
         self.DS_stumbleAnim = SKAction.repeatAction(stumbleAnim, count: 1)
         
-        
         /* Sprite setup */
-        self.sprite = SKSpriteNode(imageNamed: "WarriorStand200x200")
+        self.sprite = SKSpriteNode(imageNamed: "NewMageStand200x200")
         
         self.sprite.runAction(self.DS_standAnim!, withKey: "stand")
         self.sprite.runAction(SKAction.resizeToWidth(self.xSize, duration:0.0))
