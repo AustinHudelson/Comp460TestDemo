@@ -293,6 +293,7 @@
 		E7E381621AE58BE100A60DB9 /* freeze.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E381601AE58BE100A60DB9 /* freeze.wav */; };
 		E7E381631AE58BE100A60DB9 /* teleport.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7E381611AE58BE100A60DB9 /* teleport.wav */; };
 		F402F68F1AB51AF300A930C2 /* EnemyMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402F68E1AB51AF300A930C2 /* EnemyMage.swift */; };
+		F4255E231AEF15AE0088723D /* CavernOfTheEvilWizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4255E221AEF15AE0088723D /* CavernOfTheEvilWizard.swift */; };
 		F42A960F1AB56CD300E07C67 /* ButtonShrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */; };
 		F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FD5AC1A880282002C6624 /* SerializableJSON.swift */; };
 		F44C42FA1AC3597700CAA983 /* FlamestrikeProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C42F91AC3597700CAA983 /* FlamestrikeProjectile.swift */; };
@@ -424,6 +425,13 @@
 		F4D33B641A71EF7300DCD868 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B631A71EF7300DCD868 /* Images.xcassets */; };
 		F4D33B671A71EF7300DCD868 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D33B651A71EF7300DCD868 /* LaunchScreen.xib */; };
 		F4D33B731A71EF7300DCD868 /* _60DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */; };
+		F4D8527F1AEEFFDA00367EC5 /* LevelFour1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D8527E1AEEFFD900367EC5 /* LevelFour1.swift */; };
+		F4D852811AEEFFE600367EC5 /* LevelFive1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D852801AEEFFE600367EC5 /* LevelFive1.swift */; };
+		F4D8528D1AEF02FB00367EC5 /* EliteMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D8528C1AEF02FB00367EC5 /* EliteMage.swift */; };
+		F4D8528F1AEF03E500367EC5 /* Froststrike.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D8528E1AEF03E500367EC5 /* Froststrike.swift */; };
+		F4D852911AEF045900367EC5 /* FroststrikeParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4D852901AEF045900367EC5 /* FroststrikeParticle.sks */; };
+		F4D852931AEF05BB00367EC5 /* FroststrikeProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D852921AEF05BB00367EC5 /* FroststrikeProjectile.swift */; };
+		F4D852951AEF070300367EC5 /* FrostStrikeVolly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D852941AEF070300367EC5 /* FrostStrikeVolly.swift */; };
 		F4DC7F281ABA0BDE00E98AD6 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F271ABA0BDE00E98AD6 /* Attribute.swift */; };
 		F4DC7F2F1ABB5EAD00E98AD6 /* EnemyBoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC7F2E1ABB5EAD00E98AD6 /* EnemyBoss.swift */; };
 		F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */; };
@@ -745,6 +753,7 @@
 		E7E381601AE58BE100A60DB9 /* freeze.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = freeze.wav; sourceTree = "<group>"; };
 		E7E381611AE58BE100A60DB9 /* teleport.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport.wav; sourceTree = "<group>"; };
 		F402F68E1AB51AF300A930C2 /* EnemyMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMage.swift; sourceTree = "<group>"; };
+		F4255E221AEF15AE0088723D /* CavernOfTheEvilWizard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CavernOfTheEvilWizard.swift; sourceTree = "<group>"; };
 		F42A960E1AB56CD300E07C67 /* ButtonShrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonShrink.swift; sourceTree = "<group>"; };
 		F42FD5AC1A880282002C6624 /* SerializableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableJSON.swift; sourceTree = "<group>"; };
 		F44C42F91AC3597700CAA983 /* FlamestrikeProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlamestrikeProjectile.swift; sourceTree = "<group>"; };
@@ -879,6 +888,13 @@
 		F4D33B6C1A71EF7300DCD868 /* 460DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 460DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D33B711A71EF7300DCD868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4D33B721A71EF7300DCD868 /* _60DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _60DemoTests.swift; sourceTree = "<group>"; };
+		F4D8527E1AEEFFD900367EC5 /* LevelFour1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFour1.swift; sourceTree = "<group>"; };
+		F4D852801AEEFFE600367EC5 /* LevelFive1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFive1.swift; sourceTree = "<group>"; };
+		F4D8528C1AEF02FB00367EC5 /* EliteMage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EliteMage.swift; sourceTree = "<group>"; };
+		F4D8528E1AEF03E500367EC5 /* Froststrike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Froststrike.swift; sourceTree = "<group>"; };
+		F4D852901AEF045900367EC5 /* FroststrikeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FroststrikeParticle.sks; sourceTree = "<group>"; };
+		F4D852921AEF05BB00367EC5 /* FroststrikeProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FroststrikeProjectile.swift; sourceTree = "<group>"; };
+		F4D852941AEF070300367EC5 /* FrostStrikeVolly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrostStrikeVolly.swift; sourceTree = "<group>"; };
 		F4DC7F271ABA0BDE00E98AD6 /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		F4DC7F2E1ABB5EAD00E98AD6 /* EnemyBoss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBoss.swift; sourceTree = "<group>"; };
 		F4DD1DCE1AB54F30006B200A /* ButtonAreaHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAreaHeal.swift; sourceTree = "<group>"; };
@@ -1006,8 +1022,10 @@
 				E722FC9F1AC1262A000651E0 /* ArmorUp.swift */,
 				F49336EF1AD862190007A970 /* EnemyArmorUp.swift */,
 				F4B925F41AC5D929007ED564 /* Blink.swift */,
+				F4D852941AEF070300367EC5 /* FrostStrikeVolly.swift */,
 				68DADF511AB5738800A20800 /* Taunt.swift */,
 				F44C42FB1AC3714E00CAA983 /* Flamestrike.swift */,
+				F4D8528E1AEF03E500367EC5 /* Froststrike.swift */,
 				682944E01AB578A200680A36 /* Shrink.swift */,
 				F4F126191AC0D90500A032D1 /* Frostbolt.swift */,
 				E787EB7D1AC8EE0F007CBAE2 /* SoulExchange.swift */,
@@ -1024,6 +1042,8 @@
 				F4E896411AA128E000406784 /* Game.swift */,
 				E75F4FBA1AB0DE1B00C3D76E /* Level.swift */,
 				E759EDA91AC3433C00D23AF8 /* LevelOne1.swift */,
+				F4D8527E1AEEFFD900367EC5 /* LevelFour1.swift */,
+				F4D852801AEEFFE600367EC5 /* LevelFive1.swift */,
 				E759EDAB1AC3449700D23AF8 /* LevelTwo1.swift */,
 				E759EDAD1AC3466400D23AF8 /* LevelThree1.swift */,
 				E759EDAF1AC3482F00D23AF8 /* LevelOne2.swift */,
@@ -1033,6 +1053,7 @@
 				E759EDB71AC351AA00D23AF8 /* LevelTwo3.swift */,
 				E759EDB91AC352E800D23AF8 /* LevelThree3.swift */,
 				F46D9E2D1AD86C6600BADEAC /* TwoChampions.swift */,
+				F4255E221AEF15AE0088723D /* CavernOfTheEvilWizard.swift */,
 			);
 			path = GameSceneClasses;
 			sourceTree = "<group>";
@@ -1059,6 +1080,7 @@
 				68F3FE1F1AC7A0E4009FAB4F /* HealParticle.sks */,
 				F49336E91AD8574F0007A970 /* AreaHealParticle.sks */,
 				68F3FE201AC7A0E4009FAB4F /* MagicBolt.sks */,
+				F4D852901AEF045900367EC5 /* FroststrikeParticle.sks */,
 				F48E3B901AEDC57D00B7215B /* BlindingFlash.sks */,
 				68F3FE211AC7A0E4009FAB4F /* MyParticle.sks */,
 				68F3FE221AC7A0E4009FAB4F /* RainParticle.sks */,
@@ -1482,6 +1504,7 @@
 			children = (
 				F4B8348F1A9BB95200A839E5 /* Enemy.swift */,
 				F49336ED1AD861680007A970 /* EliteWarrior.swift */,
+				F4D8528C1AEF02FB00367EC5 /* EliteMage.swift */,
 				F46D9E2B1AD864C600BADEAC /* EliteWarriorB.swift */,
 			);
 			name = Enemy;
@@ -1791,6 +1814,7 @@
 				F4E96AF81AC0A7B300021DFD /* MageBolt.swift */,
 				F4F126141AC0C0C300A032D1 /* FrostboltProjectile.swift */,
 				F44C42F91AC3597700CAA983 /* FlamestrikeProjectile.swift */,
+				F4D852921AEF05BB00367EC5 /* FroststrikeProjectile.swift */,
 			);
 			name = Projectiles;
 			sourceTree = "<group>";
@@ -2026,6 +2050,7 @@
 				68F3FF631AC92A8B009FAB4F /* S_Buff11.png in Resources */,
 				68F3FF8B1AC92A8B009FAB4F /* S_Magic04.png in Resources */,
 				F4B563BB1AB3A5CF0094B2A7 /* shade7.wav in Resources */,
+				F4D852911AEF045900367EC5 /* FroststrikeParticle.sks in Resources */,
 				68F3FFC71AC92A8B009FAB4F /* W_Mace011.png in Resources */,
 				68F3FF201AC92A8B009FAB4F /* SelectionCircle_Green_Heavy.png in Resources */,
 				68F3FE281AC7A0E4009FAB4F /* FlamestrikeParticle.sks in Resources */,
@@ -2252,6 +2277,7 @@
 				68A18D521AA8719E001CCE1D /* GCDAsyncUdpSocket.m in Sources */,
 				F44C42FC1AC3714E00CAA983 /* Flamestrike.swift in Sources */,
 				F4B5047C1A90175B007CDBA8 /* PType.swift in Sources */,
+				F4D852811AEEFFE600367EC5 /* LevelFive1.swift in Sources */,
 				E759EDBA1AC352E800D23AF8 /* LevelThree3.swift in Sources */,
 				68DADF611AB5738800A20800 /* Order.swift in Sources */,
 				E759EDAC1AC3449700D23AF8 /* LevelTwo1.swift in Sources */,
@@ -2261,10 +2287,12 @@
 				68DADF5C1AB5738800A20800 /* Taunt.swift in Sources */,
 				E759EDB41AC34E1900D23AF8 /* LevelThree2.swift in Sources */,
 				E759EDB61AC3502700D23AF8 /* LevelOne3.swift in Sources */,
+				F4D852931AEF05BB00367EC5 /* FroststrikeProjectile.swift in Sources */,
 				F44C42FA1AC3597700CAA983 /* FlamestrikeProjectile.swift in Sources */,
 				68F35CAC1A84C4D5004905BF /* GameScene.swift in Sources */,
 				F4F1261D1AC342B700A032D1 /* Priest.swift in Sources */,
 				F4F126211AC3497F00A032D1 /* ButtonFlameStrike.swift in Sources */,
+				F4D852951AEF070300367EC5 /* FrostStrikeVolly.swift in Sources */,
 				68DADF491AB56FE800A20800 /* ButtonTaunt.swift in Sources */,
 				E759EDAE1AC3466400D23AF8 /* LevelThree1.swift in Sources */,
 				68B7DBF91A84C306003D9398 /* NotificationListener.swift in Sources */,
@@ -2288,11 +2316,13 @@
 				68A18D511AA8719E001CCE1D /* NSDate+NetworkClock.m in Sources */,
 				F48B20BC1AC5F8D4007487F6 /* InstantAbility.swift in Sources */,
 				F46D9E2C1AD864C600BADEAC /* EliteWarriorB.swift in Sources */,
+				F4255E231AEF15AE0088723D /* CavernOfTheEvilWizard.swift in Sources */,
 				F4B562F41AB287F40094B2A7 /* Mage.swift in Sources */,
 				68DADF5F1AB5738800A20800 /* Move.swift in Sources */,
 				68F35CB81A84C540004905BF /* Unit.swift in Sources */,
 				68F35CB71A84C540004905BF /* Projectile.swift in Sources */,
 				68F35CB91A84C540004905BF /* Warrior.swift in Sources */,
+				F4D8527F1AEEFFDA00367EC5 /* LevelFour1.swift in Sources */,
 				F4E896421AA128E000406784 /* Game.swift in Sources */,
 				68B7DBFA1A84C306003D9398 /* RoomListener.swift in Sources */,
 				E759EDAA1AC3433C00D23AF8 /* LevelOne1.swift in Sources */,
@@ -2301,6 +2331,7 @@
 				E759EDB81AC351AA00D23AF8 /* LevelTwo3.swift in Sources */,
 				E787EB7C1AC8ED03007CBAE2 /* TargetAllyAbility.swift in Sources */,
 				68B7DBF71A84C306003D9398 /* AppWarpHelper.swift in Sources */,
+				F4D8528D1AEF02FB00367EC5 /* EliteMage.swift in Sources */,
 				F4B562F81AB38A9A0094B2A7 /* ButtonEnrage.swift in Sources */,
 				F4F126131AC0BB7D00A032D1 /* ButtonFrostbolt.swift in Sources */,
 				F4F1261F1AC3496A00A032D1 /* ButtonBlindingFlash.swift in Sources */,
@@ -2311,6 +2342,7 @@
 				6800B5981ACC6EC700C3D64D /* PersistGameData.swift in Sources */,
 				68DADF5A1AB5738800A20800 /* Enrage.swift in Sources */,
 				F4D33B591A71EF7300DCD868 /* AppDelegate.swift in Sources */,
+				F4D8528F1AEF03E500367EC5 /* Froststrike.swift in Sources */,
 				F4F1261A1AC0D90500A032D1 /* Frostbolt.swift in Sources */,
 				F4DC7F281ABA0BDE00E98AD6 /* Attribute.swift in Sources */,
 				682944DF1AB5787000680A36 /* Heal.swift in Sources */,
