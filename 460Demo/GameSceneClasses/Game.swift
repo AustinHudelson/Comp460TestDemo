@@ -22,6 +22,7 @@ class Game {
     var myPlayerIsDead = false
     var enemyIDCounter = 0
     var fileManager: FileManager?
+    var sceneActive: Bool = false
     
     /*
         zPosition values kept here for easier reference.
@@ -681,14 +682,15 @@ class Game {
     
     func endScene()
     {
-        self.scene!.sceneActive = false
+        self.sceneActive = false
         AppWarpHelper.sharedInstance.leaveGame()
         self.scene!.removeAllActions()
         self.scene!.removeAllChildren()
         self.scene!.audioPlayer.stop()
         Game.global.scene!.viewController?.performSegueWithIdentifier("GameSceneToCharSelect",sender:  nil)
         
-        Game.global.scene = nil
+        // Running into too many problems with nil pointers...so don't set game scene to nil
+        //Game.global.scene = nil
         
     }
 }
