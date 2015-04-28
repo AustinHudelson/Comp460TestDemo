@@ -49,10 +49,10 @@ class FrostStrikeVolly: Order, PType, Transient
         })
         let fadeOut: SKAction = SKAction.fadeAlphaTo(0.2, duration: NSTimeInterval(0.05))
         let fadeIn: SKAction = SKAction.fadeAlphaTo(1.0, duration: NSTimeInterval(0.05))
-        let moveAAction: SKAction = SKAction.moveTo(DS_destA, duration: NSTimeInterval(0.2))
-        let moveBAction: SKAction = SKAction.moveTo(DS_destB, duration: NSTimeInterval(0.2))
-        let moveCAction: SKAction = SKAction.moveTo(DS_destC, duration: NSTimeInterval(0.2))
-        let moveDAction: SKAction = SKAction.moveTo(DS_destD, duration: NSTimeInterval(0.2))
+        let moveAAction: SKAction = SKAction.moveTo(DS_destA, duration: NSTimeInterval(0.5))
+        let moveBAction: SKAction = SKAction.moveTo(DS_destB, duration: NSTimeInterval(0.5))
+        let moveCAction: SKAction = SKAction.moveTo(DS_destC, duration: NSTimeInterval(0.5))
+        let moveDAction: SKAction = SKAction.moveTo(DS_destD, duration: NSTimeInterval(0.5))
         
         let startBlink: SKAction = SKAction.group([blinkSoundAction, self.DS_receiver!.DS_abilityAnim!, fadeOut])
         
@@ -75,7 +75,7 @@ class FrostStrikeVolly: Order, PType, Transient
         let faceRightAction = SKAction.runBlock({
             self.DS_receiver!.faceRight()
         })
-        let delayAction = SKAction.waitForDuration(NSTimeInterval(0.125))
+        let delayAction = SKAction.waitForDuration(NSTimeInterval(0.0))
         let removeInvulAction = SKAction.runBlock({
             self.DS_receiver!.damageMultiplier.removeModifier("frostvolly")
         })
