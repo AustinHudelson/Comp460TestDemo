@@ -15,6 +15,9 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
     
+    @IBOutlet weak var titleText: UITextView!
+    var titleTextFont: UIFont = UIFont(name: "Papyrus", size: 40.0)!
+    
     @IBOutlet weak var p1Name: UITextView!
     @IBOutlet weak var p2Name: UITextView!
     @IBOutlet weak var p3Name: UITextView!
@@ -28,6 +31,7 @@ class LobbyViewController: UIViewController {
     
     var classImages: Array<UIImageView> = Array<UIImageView>() // list of all our class img views
     var playerNames: Array<UITextView> = Array<UITextView>() // list of all our player name text views
+    var playerNamesFont: UIFont = UIFont(name: "Helvetica Neue", size: 18.0)!
     
     @IBAction func startGameButtonAction(sender: AnyObject) {
         if myPlayerName != nil && myPlayerName == AppWarpHelper.sharedInstance.host {
@@ -61,6 +65,7 @@ class LobbyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
         /*
             Initalize AppWarp
             - sharedInstance seems to be a way to get diff swift class/files to talk to the same (AppWarp) obj
@@ -150,6 +155,12 @@ class LobbyViewController: UIViewController {
                 classImages[index].image = nil
             }
         }
+        
+        // don't know why stupid xcode won't just apply the old font, so have to reapply them manually
+        for playerName in playerNames {
+            playerName.font = playerNamesFont
+            playerName.textAlignment = NSTextAlignment.Center
+        }
     }
     /* =========================================================== */
     
@@ -222,12 +233,19 @@ class LobbyViewController: UIViewController {
         /* Configure the lobby view based on whether you're host or not */
         if AppWarpHelper.sharedInstance.playerName != AppWarpHelper.sharedInstance.host
         {
+            // not the host
+            titleText.text = "Waiting for host to start the game..."
             startGameButton.enabled = false
         }
         else
         {
+            // is the host
+            titleText.text = "Pick a level and start the game!"
             startGameButton.enabled = true
         }
+        // don't know why stupid xcode won't just apply the old font, so have to reapply them manually
+        titleText.font = titleTextFont
+        titleText.textAlignment = NSTextAlignment.Center
         
         setPlayerNames()
         configLevelPicker()
