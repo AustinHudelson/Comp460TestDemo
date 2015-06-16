@@ -44,7 +44,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             default:
                 playerChar = Warrior(ID: playerName, spawnLocation: playerCharPos)
         }
+        
         sendUnitOverNetwork(playerChar) //Adds and send the unit
+        
         
         // Bg Music
 //        let soundAction = SKAction.playSoundFileNamed("DST-MapLands.mp3", waitForCompletion: true)

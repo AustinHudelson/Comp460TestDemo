@@ -50,7 +50,7 @@ class GameViewController: UIViewController {
             // Configure the view.
             let skView = self.view as SKView
             skView.showsFPS = true
-            skView.showsNodeCount = true
+            skView.showsNodeCount = false
             skView.multipleTouchEnabled = true
             // skView.showsPhysics = true
             

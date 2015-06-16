@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FjS-He-3bJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wcb-ig-Hti">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -108,13 +108,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="mhf-mh-lzt"/>
                     <connections>
-                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="SplashToCharSelect" id="ABG-so-kri"/>
+                        <segue destination="PfP-DK-l6f" kind="presentation" identifier="SplashToCharSelect" id="ABG-so-kri"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymM-Bj-1Dc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1147.5" y="129"/>
+            <point key="canvasLocation" x="-168" y="73.5"/>
         </scene>
         <!--Char Select View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -135,6 +136,9 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                                 </accessibility>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                </variation>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Select your character" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIx-IX-XvS" userLabel="SelectChar">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -155,6 +159,9 @@
                                         <include reference="PCu-6z-1no"/>
                                         <include reference="hBT-bN-qk4"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="-17" y="41" width="633" height="70"/>
                                 </variation>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWx-W1-Kxd" colorLabel="IBBuiltInLabel-Red">
@@ -182,6 +189,9 @@
                                         <include reference="tj9-qY-b4V"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="151" y="275" width="300" height="50"/>
+                                </variation>
                                 <connections>
                                     <action selector="startButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="iMC-eb-Izv"/>
                                 </connections>
@@ -205,6 +215,9 @@
                                         <include reference="GDR-Z8-eOf"/>
                                         <include reference="bsr-ys-PQN"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="-25" y="395" width="150" height="150"/>
                                 </variation>
                                 <connections>
                                     <action selector="warSelButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="sGd-2X-7Wn"/>
@@ -232,6 +245,9 @@
                                         <include reference="vAK-wk-kht"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="225" y="395" width="150" height="150"/>
+                                </variation>
                                 <connections>
                                     <action selector="mageSelButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Vzp-gV-5BT"/>
                                 </connections>
@@ -252,6 +268,9 @@
                                     <mask key="constraints">
                                         <include reference="Bwb-mT-NXT"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="150" y="175" width="300" height="30"/>
                                 </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGk-HZ-9UO" userLabel="Priest">
@@ -275,6 +294,9 @@
                                         <include reference="dA7-Xl-qaI"/>
                                         <include reference="pC5-I7-2B4"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="475" y="395" width="150" height="150"/>
                                 </variation>
                                 <connections>
                                     <action selector="priestSelButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="AWI-Te-Dul"/>
@@ -350,17 +372,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="Dgg-md-JIR"/>
                     <connections>
                         <outlet property="mageSelButton" destination="sQD-pF-9Vz" id="tEc-oz-qsk"/>
                         <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="WR0-cI-6i2"/>
                         <outlet property="priestSelButton" destination="uGk-HZ-9UO" id="Ce0-bi-psW"/>
                         <outlet property="warSelButton" destination="W4s-Kd-Kh5" id="SFu-gl-9lb"/>
-                        <segue destination="by4-gA-Hf9" kind="presentation" identifier="CharSelectToLobby" id="zCE-ET-SiP"/>
+                        <segue destination="Yaa-tu-5fX" kind="presentation" identifier="CharSelectToLobby" id="zCE-ET-SiP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-456" y="129"/>
+            <point key="canvasLocation" x="991.5" y="73.5"/>
         </scene>
         <!--Lobby View Controller-->
         <scene sceneID="n9G-As-8Mi">
@@ -376,6 +399,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="4Mk-rO-cWr" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                </variation>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Connecting to game lobby..." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kq4-de-Sna" userLabel="titleText">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -398,6 +424,9 @@
                                         <include reference="tIf-Bm-Ib1"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="-17" y="30" width="633" height="60"/>
+                                </variation>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-UG-vi2" userLabel="p1Name">
                                 <constraints>
@@ -417,6 +446,9 @@
                                         <include reference="El7-ZL-TXi"/>
                                         <include reference="YSh-Cx-mdB"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="50" y="90" width="100" height="50"/>
                                 </variation>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-pi-Psd" userLabel="p2Name">
@@ -439,6 +471,9 @@
                                         <include reference="RUi-7O-3CB"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="250" y="90" width="100" height="50"/>
+                                </variation>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJg-J2-uNF" userLabel="p3Name">
                                 <constraints>
@@ -459,6 +494,9 @@
                                         <include reference="QtZ-BH-iHE"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="450" y="96" width="100" height="50"/>
+                                </variation>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="100" verticalHuggingPriority="100" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Cm-dP-ebt" userLabel="p1Img">
                                 <constraints>
@@ -477,6 +515,9 @@
                                         <include reference="Ptl-wq-UfR"/>
                                         <include reference="uWF-pV-yvV"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="50" y="150" width="100" height="100"/>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUN-Ty-zZa" userLabel="p2Img">
@@ -497,6 +538,9 @@
                                         <include reference="gM9-2r-e4Z"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="250" y="150" width="100" height="100"/>
+                                </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6O2-F1-5jM" userLabel="p3Img">
                                 <constraints>
@@ -514,6 +558,9 @@
                                         <include reference="5F3-u6-kxK"/>
                                         <include reference="Sws-UR-Zyf"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="450" y="156" width="100" height="100"/>
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9D-1P-Scm">
@@ -547,6 +594,9 @@
                                         <include reference="dTH-r3-VzO"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="50" y="270" width="500" height="60"/>
+                                </variation>
                                 <connections>
                                     <action selector="startGameButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="4fi-wH-bAc"/>
                                 </connections>
@@ -573,9 +623,12 @@
                                         <include reference="GFK-ww-hTx"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="442" y="558" width="158" height="42"/>
+                                </variation>
                                 <connections>
                                     <action selector="exitButtonAction:" destination="by4-gA-Hf9" eventType="touchUpInside" id="0GP-nB-PmY"/>
-                                    <segue destination="BV1-FR-VrT" kind="presentation" identifier="LobbyToCharSelect" id="gCl-V4-L5b"/>
+                                    <segue destination="b4C-1a-tfn" kind="unwind" identifier="unwindToCharSelect" unwindAction="unwindToCharSelect:" id="LfW-bL-LXu"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eGV-h8-NcW">
@@ -593,7 +646,8 @@
                                 <variation key="widthClass=regular" misplaced="YES">
                                     <rect key="frame" x="250" y="-320" width="300" height="162"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="370" width="600" height="180"/>
                                     <mask key="constraints">
                                         <include reference="9bd-v0-8Hr"/>
                                         <include reference="L2H-iA-u0b"/>
@@ -703,6 +757,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="ObN-vt-otx"/>
                     <connections>
                         <outlet property="exitButton" destination="VDa-ZG-q5A" id="5OA-IW-VFu"/>
                         <outlet property="levelPicker" destination="eGV-h8-NcW" id="bsD-v6-LAJ"/>
@@ -714,12 +769,13 @@
                         <outlet property="p3Name" destination="OJg-J2-uNF" id="ak9-l7-XMX"/>
                         <outlet property="startGameButton" destination="D9D-1P-Scm" id="gzQ-o5-BtI"/>
                         <outlet property="titleText" destination="kq4-de-Sna" id="mvm-zt-qIc"/>
-                        <segue destination="2ym-kd-4K2" kind="presentation" identifier="LobbyToGameScene" id="EZS-Fw-Yde"/>
+                        <segue destination="qUb-by-48i" kind="presentation" identifier="LobbyToGameScene" id="EZS-Fw-Yde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVX-m0-sSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="b4C-1a-tfn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="243" y="165"/>
+            <point key="canvasLocation" x="1968" y="117"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="n3C-XH-PIy">
@@ -732,15 +788,110 @@
                     <view key="view" contentMode="scaleToFill" id="NaS-5h-RBS" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jac-iE-813">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Exit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="754" y="770" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="PO9-we-qbF" kind="unwind" identifier="unwindToCharSelect" unwindAction="unwindToCharSelect:" id="e2o-8B-vmF"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="jac-iE-813"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="jac-iE-813"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <connections>
-                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="GameSceneToCharSelect" id="uEM-lo-oZ7"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="hfa-D1-4oj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qz-R0-fPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PO9-we-qbF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="928.5" y="129"/>
+            <point key="canvasLocation" x="2842.5" y="-24"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="V50-B5-3uk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wcb-ig-Hti" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zCk-RT-yfR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FjS-He-3bJ" kind="relationship" relationship="rootViewController" id="9Mu-uy-qB9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVH-7N-7DO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-78" y="-808.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8ri-pB-7UV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PfP-DK-l6f" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Vt-JO-xNs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BV1-FR-VrT" kind="relationship" relationship="rootViewController" id="WWg-88-QGy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ek9-r5-gfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889.5" y="-793.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="61X-Ou-sqi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yaa-tu-5fX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fn6-Qh-OOo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="by4-gA-Hf9" kind="relationship" relationship="rootViewController" id="mOw-uo-gy0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xfq-4c-zfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1854" y="-744"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fDn-pN-6bP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qUb-by-48i" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M0B-tb-o52">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2ym-kd-4K2" kind="relationship" relationship="rootViewController" id="NoA-L4-PGF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y30-gG-apR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2767.5" y="-759"/>
         </scene>
     </scenes>
     <resources>
@@ -759,8 +910,5 @@
         <image name="screenshot1Crop" width="1021" height="670"/>
         <image name="tapBeginOrange" width="500" height="200"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="gCl-V4-L5b"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

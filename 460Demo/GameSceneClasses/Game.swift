@@ -687,7 +687,9 @@ class Game {
         self.scene!.removeAllActions()
         self.scene!.removeAllChildren()
         self.scene!.audioPlayer.stop()
-        Game.global.scene!.viewController?.performSegueWithIdentifier("GameSceneToCharSelect",sender:  nil)
+        
+        (Game.global.scene!.viewController!.view as SKView).presentScene(nil)
+        Game.global.scene!.viewController?.performSegueWithIdentifier("unwindToCharSelect",sender:  nil)
         
         // Running into too many problems with nil pointers...so don't set game scene to nil
         //Game.global.scene = nil

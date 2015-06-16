@@ -66,9 +66,11 @@ class LobbyViewController: UIViewController {
         
         // Disable the button
         println("====Exiting from Lobby to Char Select====")
+        
         exitButton.enabled = false
         
-        performSegueWithIdentifier("LobbyToCharSelect", sender: nil)
+        //performSegueWithIdentifier("LobbyToCharSelect", sender: nil)
+        
     }
     
     override func viewDidLoad() {

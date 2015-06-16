@@ -76,7 +76,7 @@ class CharSelectViewController: UIViewController, UITextFieldDelegate {
         
         println(UIDevice.currentDevice().identifierForVendor.UUIDString)
         
-        /* Initialize FileMangager to get the save game data file path. If it doesn't create one, this initialize function will create it */
+        /* Initialize FileMangager to get the save game data file path. If it doesn'dt create one, this initialize function will create it */
         Game.global.fileManager = FileManager()
         Game.global.fileManager!.initialize()
         
@@ -86,6 +86,7 @@ class CharSelectViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "CharSelectToLobby") {
             /* On segue into lobby screen, set & save the player name to file */
@@ -93,9 +94,12 @@ class CharSelectViewController: UIViewController, UITextFieldDelegate {
             Game.global.fileManager!.saveGameData()
             
             /* Set the player name and class variables */
-            var svc = segue.destinationViewController as LobbyViewController
-            svc.myPlayerName = playerNameTxtField.text
-            svc.myClass = selectedClass
+            let navVC = segue.destinationViewController as UINavigationController
+            let IVC: LobbyViewController = navVC.viewControllers.first as LobbyViewController
+            //var svc = segue.destinationViewController as LobbyViewController
+            IVC.myPlayerName = playerNameTxtField.text
+            IVC.myClass = selectedClass
+            
             
         }
     }
@@ -107,5 +111,9 @@ class CharSelectViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    @IBAction func unwindToCharSelect(segue: UIStoryboardSegue)
+    {
+    
     }
 }
