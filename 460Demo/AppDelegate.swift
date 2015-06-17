@@ -15,7 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+//        // Hide navigation bars
+//        // EDIT: apparently you can hide navigation bars by just clicking a checkbox in the storyboard
+//        var myVC: UIViewController?
+//        if let vcs = window?.rootViewController?.childViewControllers {
+//            for vc in vcs {
+//                myVC = vc as? UIViewController
+//                myVC?.navigationController?.setNavigationBarHidden(true, animated: false)
+//            }
+//        }
+        
+        
         return true
     }
 
