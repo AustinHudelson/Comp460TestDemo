@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wcb-ig-Hti">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wcb-ig-Hti">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -110,17 +110,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="mhf-mh-lzt"/>
                     <connections>
-                        <segue destination="PfP-DK-l6f" kind="presentation" identifier="SplashToCharSelect" id="ABG-so-kri"/>
+                        <segue destination="PfP-DK-l6f" kind="presentation" identifier="SplashToCharSel" id="ABG-so-kri"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymM-Bj-1Dc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-168" y="73.5"/>
         </scene>
-        <!--Char Select View Controller-->
+        <!--Char Sel View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="CharSelectViewController" customModule="_60Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="CharSelViewController" customModule="_60Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="maK-i9-Uhn"/>
                         <viewControllerLayoutGuide type="bottom" id="khH-OB-KpY"/>
@@ -187,7 +187,8 @@
                                     <rect key="frame" x="151" y="375" width="300" height="50"/>
                                 </variation>
                                 <connections>
-                                    <action selector="startButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="iMC-eb-Izv"/>
+                                    <action selector="connectButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7mk-ap-sQW"/>
+                                    <segue destination="ekG-Jw-nsD" kind="presentation" identifier="CharSelToGameLobby" id="5eM-79-yoU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
@@ -360,17 +361,56 @@
                         <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="WR0-cI-6i2"/>
                         <outlet property="priestSelButton" destination="uGk-HZ-9UO" id="Ce0-bi-psW"/>
                         <outlet property="warSelButton" destination="W4s-Kd-Kh5" id="SFu-gl-9lb"/>
-                        <segue destination="Yaa-tu-5fX" kind="presentation" identifier="CharSelectToLobby" id="zCE-ET-SiP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="841.5" y="58.5"/>
         </scene>
-        <!--Lobby View Controller-->
+        <!--Game Lobby Table View Controller-->
+        <scene sceneID="EDf-uJ-Uz4">
+            <objects>
+                <tableViewController id="qMh-ZA-opk" customClass="GameLobbyTableViewController" customModule="_60Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V9x-Mv-VFc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="664-Jg-IeY">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="664-Jg-IeY" id="Qck-RV-hM4">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="qMh-ZA-opk" id="UZq-Ud-Svr"/>
+                            <outlet property="delegate" destination="qMh-ZA-opk" id="xfb-qh-cdc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="yOd-vS-m7d">
+                        <barButtonItem key="leftBarButtonItem" title="Create Room" id="YcX-ua-FJy">
+                            <connections>
+                                <action selector="createRoomAction:" destination="qMh-ZA-opk" id="OYo-zn-prA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Join Room" id="Qvi-3g-ENs">
+                            <connections>
+                                <action selector="joinRoomAction:" destination="qMh-ZA-opk" id="d1r-1G-jwa"/>
+                                <segue destination="Yaa-tu-5fX" kind="presentation" identifier="GameLobbyToGameRoom" id="sur-0L-K0K"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wcz-Ba-bGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1591.5" y="304.5"/>
+        </scene>
+        <!--Game Room View Controller-->
         <scene sceneID="n9G-As-8Mi">
             <objects>
-                <viewController id="by4-gA-Hf9" customClass="LobbyViewController" customModule="_60Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="by4-gA-Hf9" customClass="GameRoomViewController" customModule="_60Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yRe-Yf-8Mf"/>
                         <viewControllerLayoutGuide type="bottom" id="ucj-rz-4bk"/>
@@ -720,13 +760,13 @@
                         <outlet property="p3Name" destination="OJg-J2-uNF" id="ak9-l7-XMX"/>
                         <outlet property="startGameButton" destination="D9D-1P-Scm" id="gzQ-o5-BtI"/>
                         <outlet property="titleText" destination="kq4-de-Sna" id="mvm-zt-qIc"/>
-                        <segue destination="qUb-by-48i" kind="presentation" identifier="LobbyToGameScene" id="EZS-Fw-Yde"/>
+                        <segue destination="qUb-by-48i" kind="presentation" identifier="GameRoomToGameScene" id="EZS-Fw-Yde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVX-m0-sSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="b4C-1a-tfn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1968" y="117"/>
+            <point key="canvasLocation" x="2727" y="117"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="n3C-XH-PIy">
@@ -770,7 +810,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qz-R0-fPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="PO9-we-qbF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2842.5" y="-24"/>
+            <point key="canvasLocation" x="3601.5" y="-24"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V50-B5-3uk">
@@ -824,7 +864,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfq-4c-zfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="-744"/>
+            <point key="canvasLocation" x="2613" y="-744"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fDn-pN-6bP">
@@ -842,7 +882,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y30-gG-apR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2767.5" y="-759"/>
+            <point key="canvasLocation" x="3526.5" y="-759"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TUb-xB-o5t">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ekG-Jw-nsD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8vk-jG-GQ2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qMh-ZA-opk" kind="relationship" relationship="rootViewController" id="fg9-Cv-MA2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DNe-20-yMB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1591.5" y="-379.5"/>
         </scene>
     </scenes>
     <resources>

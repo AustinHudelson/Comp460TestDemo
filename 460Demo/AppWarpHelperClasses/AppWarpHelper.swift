@@ -37,13 +37,14 @@ class AppWarpHelper: NSObject
     //var api_key = "7eab7838469013d4378f912ce41c1dcb2801686185fc7ae48694976b9d67380f"
     //var secret_key = "e493311e8192cb2d424d16c7588e834abbbf35a7fbd0d2459d53ccc7a990ebf1"
     
+    var gameLobbyVC: GameLobbyTableViewController?
+    var gameRoomVC: GameRoomViewController?
     var enemyName: String = ""
     var playerName: String = ""
     var deviceName: String = UIDevice.currentDevice().identifierForVendor.UUIDString
     var userName_list: NSMutableArray = [] // used to store the list of users currently in room
-    var lobby: LobbyViewController? = nil
-    var playerClass: String = ""
-    //var gameScene: GameScene? = nil
+    var playerClass: String = "" // used in GameRoom & GameScene
+
     var host: String? = nil
     
     class var sharedInstance:AppWarpHelper{
@@ -176,14 +177,14 @@ class AppWarpHelper: NSObject
     }
     
     
-    /* ======= Lobby and designate host stuff ========= */
-    func configLobbyView() {
-        if let lobby = self.lobby {
-            lobby.configLobbyView()
+    /* ======= Game Room and designate host stuff ========= */
+    func configGameRoomView() {
+        if let gameRoom = self.gameRoomVC {
+            gameRoom.configGameRoomView()
         }
     }
     
-    func leaveGame(){
+    func leaveRoom(){
         //WarpClient.getInstance().unsubscribeRoom(self.roomId)
         WarpClient.getInstance().leaveRoom(self.roomId)
     }
@@ -194,7 +195,8 @@ class AppWarpHelper: NSObject
     */
     func disconnectFromAppWarp() {
         println("Disconnecting from AppWarp...")
-        self.lobby = nil
+        self.gameLobbyVC = nil
+        self.gameRoomVC = nil
         WarpClient.getInstance().disconnect()
     }
 }

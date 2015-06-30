@@ -14,8 +14,8 @@
 		682944DF1AB5787000680A36 /* Heal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682944DE1AB5787000680A36 /* Heal.swift */; };
 		682944E11AB578A200680A36 /* Shrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682944E01AB578A200680A36 /* Shrink.swift */; };
 		682B28CE1AE80319006CFAF9 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682B28CD1AE80319006CFAF9 /* SplashViewController.swift */; };
-		6850A0861A91606100B8CAD4 /* CharSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0851A91606100B8CAD4 /* CharSelectViewController.swift */; };
-		6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */; };
+		6850A0861A91606100B8CAD4 /* CharSelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0851A91606100B8CAD4 /* CharSelViewController.swift */; };
+		6850A0881A91632F00B8CAD4 /* GameRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850A0871A91632F00B8CAD4 /* GameRoomViewController.swift */; };
 		68A031C41AD882AE00281487 /* exitConfirm.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A031C11AD882AE00281487 /* exitConfirm.png */; };
 		68A031C51AD882AE00281487 /* exitConfirmNo.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A031C21AD882AE00281487 /* exitConfirmNo.png */; };
 		68A031C61AD882AE00281487 /* exitConfirmYes.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A031C31AD882AE00281487 /* exitConfirmYes.png */; };
@@ -32,6 +32,7 @@
 		68B7DBFB1A84C306003D9398 /* ZoneListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7DBF51A84C306003D9398 /* ZoneListener.swift */; };
 		68B7DBFD1A84C316003D9398 /* AppWarp_iOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B7DBFC1A84C316003D9398 /* AppWarp_iOS_SDK.framework */; };
 		68C08F6E1ABA198700AEEF3E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C08F6D1ABA198700AEEF3E /* NetworkManager.swift */; };
+		68CFDDC01B426B610004BFCC /* GameLobbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CFDDBF1B426B610004BFCC /* GameLobbyTableViewController.swift */; };
 		68DADF491AB56FE800A20800 /* ButtonTaunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DADF481AB56FE800A20800 /* ButtonTaunt.swift */; };
 		68DADF591AB5738800A20800 /* AreaHeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DADF4E1AB5738800A20800 /* AreaHeal.swift */; };
 		68DADF5A1AB5738800A20800 /* Enrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DADF4F1AB5738800A20800 /* Enrage.swift */; };
@@ -468,8 +469,8 @@
 		682944DE1AB5787000680A36 /* Heal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heal.swift; sourceTree = "<group>"; };
 		682944E01AB578A200680A36 /* Shrink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shrink.swift; sourceTree = "<group>"; };
 		682B28CD1AE80319006CFAF9 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		6850A0851A91606100B8CAD4 /* CharSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharSelectViewController.swift; sourceTree = "<group>"; };
-		6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		6850A0851A91606100B8CAD4 /* CharSelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharSelViewController.swift; sourceTree = "<group>"; };
+		6850A0871A91632F00B8CAD4 /* GameRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRoomViewController.swift; sourceTree = "<group>"; };
 		68A031C11AD882AE00281487 /* exitConfirm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitConfirm.png; sourceTree = "<group>"; };
 		68A031C21AD882AE00281487 /* exitConfirmNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitConfirmNo.png; sourceTree = "<group>"; };
 		68A031C31AD882AE00281487 /* exitConfirmYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitConfirmYes.png; sourceTree = "<group>"; };
@@ -493,6 +494,7 @@
 		68B7DBF51A84C306003D9398 /* ZoneListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneListener.swift; sourceTree = "<group>"; };
 		68B7DBFC1A84C316003D9398 /* AppWarp_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppWarp_iOS_SDK.framework; sourceTree = "<group>"; };
 		68C08F6D1ABA198700AEEF3E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		68CFDDBF1B426B610004BFCC /* GameLobbyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLobbyTableViewController.swift; sourceTree = "<group>"; };
 		68DADF481AB56FE800A20800 /* ButtonTaunt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTaunt.swift; path = Abilities/ButtonTaunt.swift; sourceTree = "<group>"; };
 		68DADF4E1AB5738800A20800 /* AreaHeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaHeal.swift; sourceTree = "<group>"; };
 		68DADF4F1AB5738800A20800 /* Enrage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enrage.swift; sourceTree = "<group>"; };
@@ -1779,8 +1781,9 @@
 				68F35CAD1A84C540004905BF /* GameCoreClasses */,
 				68F35CA81A84C4D5004905BF /* GameSceneClasses */,
 				682B28CD1AE80319006CFAF9 /* SplashViewController.swift */,
-				6850A0851A91606100B8CAD4 /* CharSelectViewController.swift */,
-				6850A0871A91632F00B8CAD4 /* LobbyViewController.swift */,
+				6850A0851A91606100B8CAD4 /* CharSelViewController.swift */,
+				68CFDDBF1B426B610004BFCC /* GameLobbyTableViewController.swift */,
+				6850A0871A91632F00B8CAD4 /* GameRoomViewController.swift */,
 				F4D33B5E1A71EF7300DCD868 /* GameViewController.swift */,
 				68F3FE321AC92A8A009FAB4F /* Supporting Files */,
 				F4B562FB1AB3A5AC0094B2A7 /* Sounds */,
@@ -2275,7 +2278,7 @@
 			files = (
 				68DADF591AB5738800A20800 /* AreaHeal.swift in Sources */,
 				E787EB7E1AC8EE0F007CBAE2 /* SoulExchange.swift in Sources */,
-				6850A0861A91606100B8CAD4 /* CharSelectViewController.swift in Sources */,
+				6850A0861A91606100B8CAD4 /* CharSelViewController.swift in Sources */,
 				F48B20B61AC5DB1F007487F6 /* CGFloat+Extensions.swift in Sources */,
 				F42FD5AD1A880282002C6624 /* SerializableJSON.swift in Sources */,
 				F46D9E301AD87A0100BADEAC /* EnemyPermEnrage.swift in Sources */,
@@ -2291,6 +2294,7 @@
 				68DADF621AB5738800A20800 /* RoamAttack.swift in Sources */,
 				68DADF5E1AB5738800A20800 /* Idle.swift in Sources */,
 				68DADF5C1AB5738800A20800 /* Taunt.swift in Sources */,
+				68CFDDC01B426B610004BFCC /* GameLobbyTableViewController.swift in Sources */,
 				E759EDB41AC34E1900D23AF8 /* LevelThree2.swift in Sources */,
 				E759EDB61AC3502700D23AF8 /* LevelOne3.swift in Sources */,
 				F4D852931AEF05BB00367EC5 /* FroststrikeProjectile.swift in Sources */,
@@ -2315,7 +2319,7 @@
 				E70C33741ACC835400BEFC18 /* EnemyPriest.swift in Sources */,
 				F4B925F51AC5D929007ED564 /* Blink.swift in Sources */,
 				F48B20B81AC5F13B007487F6 /* TargetEnemyAbility.swift in Sources */,
-				6850A0881A91632F00B8CAD4 /* LobbyViewController.swift in Sources */,
+				6850A0881A91632F00B8CAD4 /* GameRoomViewController.swift in Sources */,
 				F4DD1DCF1AB54F30006B200A /* ButtonAreaHeal.swift in Sources */,
 				F4B562EC1AB0D8C20094B2A7 /* Ability.swift in Sources */,
 				F4B834901A9BB95300A839E5 /* Enemy.swift in Sources */,

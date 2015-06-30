@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class LobbyViewController: UIViewController {
+class GameRoomViewController: UIViewController {
     var myPlayerName: String? = nil
     var myClass: String = ""
     @IBOutlet weak var startGameButton: UIButton!
@@ -53,7 +53,6 @@ class LobbyViewController: UIViewController {
             NetworkManager.sendMsg(&outerDict)
             
             // Disable the start game button
-            println("====Sending start game msg====")
             startGameButton.enabled = false
         } else {
             println("You need to wait for host to start the game!")
@@ -62,37 +61,16 @@ class LobbyViewController: UIViewController {
     
     /* Pressing this button will move the screen back to character selection screen */
     @IBAction func exitButtonAction(sender: AnyObject) {
-        AppWarpHelper.sharedInstance.leaveGame()
+        AppWarpHelper.sharedInstance.leaveRoom()
         
         // Disable the button
-        println("====Exiting from Lobby to Char Select====")
-        
         exitButton.enabled = false
-        
-        //performSegueWithIdentifier("LobbyToCharSelect", sender: nil)
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        /*
-            Initalize AppWarp
-            - sharedInstance seems to be a way to get diff swift class/files to talk to the same (AppWarp) obj
-            - sharedInstance IS A SINGLETON, which means it's an obj that is created once & has its state shared:
-            http://thatthinginswift.com/singletons/
-        */
-        AppWarpHelper.sharedInstance.initializeWarp()
-        println("Finished initializing AppWarp")
-        
-        println("Now connecting w/ name = \(myPlayerName!)")
-        AppWarpHelper.sharedInstance.connectWithAppWarpWithUserName(myPlayerName!)
-        println("Completed connection w/ name = \(myPlayerName!)")
-        
-        AppWarpHelper.sharedInstance.lobby = self
-        AppWarpHelper.sharedInstance.playerClass = myClass
-        
         /* Add all the player text and image views to their list */
         playerNames.append(p1Name)
         playerNames.append(p2Name)
@@ -230,9 +208,9 @@ class LobbyViewController: UIViewController {
         It also sets the host.
     
         For now, it is getting called from RoomListener.onGetLiveRoomInfoDone():
-            RoomListener.onGetLiveRoomInforDone() -> AppWarpHelper.configLobbyView()->LobbyViewController.configLobbyView9)
+            RoomListener.onGetLiveRoomInforDone() -> AppWarpHelper.configGameRoomView()->GameRoomViewController.configGameRoomView()
     */
-    func configLobbyView() {
+    func configGameRoomView() {
         /* print the updated user list and set host to be the first guy in that list*/
         println("Current users in the room lobby:")
         println(AppWarpHelper.sharedInstance.userName_list)

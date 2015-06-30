@@ -31,22 +31,23 @@ class RoomListener: NSObject,RoomRequestListener
         else
         {
             /*
-                Failed to join the room. This probably happens when room a room is joinable because host hasnt started the game
+                Failed to join the room. This probably happens when a room is joinable because host hasnt started the game
                 yet but the room is full. Therefore we should create a new room.
                 The time check is to make sure that you do not try to create more than 1 room every 3 seconds to not bog down the appwarp servers.
             */
-            if firstRoom == true || Timer.diffDateNow(lastCreatedRoomTime) < NSTimeInterval(3.0){
-                println("onJoinRoomDone: Failed to find a room that isn't full! Creating one instead")
-                let playerName = AppWarpHelper.sharedInstance.playerName
-                let maxUsers = AppWarpHelper.sharedInstance.maxUsers
-                //Update variables for last created room check
-                firstRoom = false
-                lastCreatedRoomTime = Timer.getCurrentTime()
-                AppWarpHelper.sharedInstance.createRoom(playerName, maxUsers: maxUsers)
-            } else {
-                println("Attempted to create 2 rooms within 3 seconds of one another. Exiting")
-                AppWarpHelper.sharedInstance.disconnectFromAppWarp()
-            }
+            println("Error: the room you're trying to join (roomID: \(AppWarpHelper.sharedInstance.roomId)) is full!")
+//            if firstRoom == true || Timer.diffDateNow(lastCreatedRoomTime) < NSTimeInterval(3.0){
+//                println("onJoinRoomDone: Failed to find a room that isn't full! Creating one instead")
+//                let playerName = AppWarpHelper.sharedInstance.playerName
+//                let maxUsers = AppWarpHelper.sharedInstance.maxUsers
+//                //Update variables for last created room check
+//                firstRoom = false
+//                lastCreatedRoomTime = Timer.getCurrentTime()
+//                AppWarpHelper.sharedInstance.createRoom(playerName, maxUsers: maxUsers)
+//            } else {
+//                println("Attempted to create 2 rooms within 3 seconds of one another. Exiting")
+//                AppWarpHelper.sharedInstance.disconnectFromAppWarp()
+//            }
             
         }
     }
@@ -57,6 +58,8 @@ class RoomListener: NSObject,RoomRequestListener
         {
             println("onSubscribeRoomDone Success")
             
+            /* Segue to GameRoomView */
+            AppWarpHelper.sharedInstance.gameLobbyVC?.performSegueWithIdentifier("GameLobbyToGameRoom", sender: nil)
             /*
                 Send a request to AppWarp to get live room info.
                 If success, RoomListener.onGetLiveRoomInfoDone() will be called and that function
@@ -93,14 +96,14 @@ class RoomListener: NSObject,RoomRequestListener
         if !Game.global.sceneActive {
             
             // configLobbyView() will also set the new host (i.e. transfer host) if users left inside lobby screen
-            AppWarpHelper.sharedInstance.configLobbyView()
+            AppWarpHelper.sharedInstance.configGameRoomView()
             
             // Send over selected lvl if I'm host
             if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
-                if let lobby = AppWarpHelper.sharedInstance.lobby {
+                if let gameRoom = AppWarpHelper.sharedInstance.gameRoomVC {
                     let component = 0
-                    let row = lobby.levelPicker.selectedRowInComponent(component)
-                    lobby.sendPickedLevel(component, row: row)
+                    let row = gameRoom.levelPicker.selectedRowInComponent(component)
+                    gameRoom.sendPickedLevel(component, row: row)
                 }
                 
             }

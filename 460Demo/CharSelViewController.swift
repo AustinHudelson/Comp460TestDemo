@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharSelectViewController: UIViewController, UITextFieldDelegate {
+class CharSelViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var warSelButton: UIButton!
     @IBOutlet weak var mageSelButton: UIButton!
     @IBOutlet weak var priestSelButton: UIButton!
@@ -38,7 +38,7 @@ class CharSelectViewController: UIViewController, UITextFieldDelegate {
         priestSelButton.selected = true
     }
     
-    @IBAction func startButtonAction(sender: AnyObject) {
+    @IBAction func connectButtonAction(sender: AnyObject) {
         let letter = NSCharacterSet.letterCharacterSet()
         let digits = NSCharacterSet.decimalDigitCharacterSet()
         var notWhitespace: Bool = false
@@ -60,9 +60,9 @@ class CharSelectViewController: UIViewController, UITextFieldDelegate {
             if notWhitespace{
                 println(selectedClass)
                 
-                println("====Going from Char Select to Lobby====")
+                println("====Going from Char Select to Game Lobby====")
                 
-                performSegueWithIdentifier("CharSelectToLobby",  sender: self)
+                performSegueWithIdentifier("CharSelToGameLobby",  sender: self)
             }
         }
     }
@@ -88,19 +88,17 @@ class CharSelectViewController: UIViewController, UITextFieldDelegate {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "CharSelectToLobby") {
-            /* On segue into lobby screen, set & save the player name to file */
+        if (segue.identifier == "CharSelToGameLobby") {
+            /* On preparing for segue into lobby screen, set & save the player name to file */
             PersistGameData.sharedInstance.myPlayerName = playerNameTxtField.text
             Game.global.fileManager!.saveGameData()
             
             /* Set the player name and class variables */
             let navVC = segue.destinationViewController as UINavigationController
-            let IVC: LobbyViewController = navVC.viewControllers.first as LobbyViewController
+            let dVC: GameLobbyTableViewController = navVC.viewControllers.first as GameLobbyTableViewController
             //var svc = segue.destinationViewController as LobbyViewController
-            IVC.myPlayerName = playerNameTxtField.text
-            IVC.myClass = selectedClass
-            
-            
+            dVC.myPlayerName = playerNameTxtField.text
+            dVC.myClass = selectedClass
         }
     }
     override func didReceiveMemoryWarning() {

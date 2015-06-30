@@ -570,12 +570,12 @@ class Game {
         let levelRow: Int = startMsg["level"] as Int
         //THIS IS NOT SAFE BECAUSE YOU CANNOT GAURANTEE THE SAME DATA SOURCE FOR ALL THE PICKERVIEWS AT ONCE.
         //SHOULD SEND THE ACTUALLY LEVEL @OBJC STRING NAME AND INSTANTIATE A LEVEL FROM THAT INSTEAD OF JUST A SELECTED ROW NUMBER
-        var newLevel: Level = AppWarpHelper.sharedInstance.lobby!.levelDelegate.levelsDataSource[levelRow]
+        var newLevel: Level = AppWarpHelper.sharedInstance.gameRoomVC!.levelDelegate.levelsDataSource[levelRow]
         
         self.level = newLevel // set Game.global.level = newLevel
         
         /* Everyone perform segue to transition into game scene */
-        AppWarpHelper.sharedInstance.lobby!.performSegueWithIdentifier("LobbyToGameScene", sender: nil)
+        AppWarpHelper.sharedInstance.gameRoomVC!.performSegueWithIdentifier("GameRoomToGameScene", sender: nil)
     }
     
     /*
@@ -683,7 +683,7 @@ class Game {
     func endScene()
     {
         self.sceneActive = false
-        AppWarpHelper.sharedInstance.leaveGame()
+        AppWarpHelper.sharedInstance.leaveRoom()
         self.scene!.removeAllActions()
         self.scene!.removeAllChildren()
         self.scene!.audioPlayer.stop()

@@ -65,13 +65,13 @@ class NetworkManager {
                     Game.global.transToGameScene(arrayOfObjects[0] as Dictionary<String, AnyObject>)
                 
                 case "LobbyClassIcon":
-                    if let lobby = AppWarpHelper.sharedInstance.lobby {
-                        lobby.updatePlayerIcons(arrayOfObjects[0] as Dictionary<String, String>)
+                    if let gameRoom = AppWarpHelper.sharedInstance.gameRoomVC {
+                        gameRoom.updatePlayerIcons(arrayOfObjects[0] as Dictionary<String, String>)
                     }
                 
                 case "SelectedLevel":
-                    if let lobby = AppWarpHelper.sharedInstance.lobby {
-                        lobby.updateLevelPicker(arrayOfObjects[0] as Dictionary<String, AnyObject>)
+                    if let gameRoom = AppWarpHelper.sharedInstance.gameRoomVC {
+                        gameRoom.updateLevelPicker(arrayOfObjects[0] as Dictionary<String, AnyObject>)
                     }
                 
                 /* =============================== */

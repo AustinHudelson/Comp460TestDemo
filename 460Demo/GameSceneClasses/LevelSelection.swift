@@ -93,7 +93,7 @@ class LevelSelection: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
             If you're the host, you can interact with the pickerview to select a level. You send a msg over the network telling other ppl what you selected, and other ppl's program will automatically select whatever you selected
         */
         if AppWarpHelper.sharedInstance.playerName == AppWarpHelper.sharedInstance.host {
-            if let lobby = AppWarpHelper.sharedInstance.lobby {
+            if let lobby = AppWarpHelper.sharedInstance.gameRoomVC {
                 lobby.sendPickedLevel(component, row: row)
             }
         }
