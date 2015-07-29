@@ -8,16 +8,17 @@
 
 import UIKit
 
-class GameLobbyTableViewController: UITableViewController {
+class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     var myPlayerName: String? = nil
     var myClass: String = ""
     
-    @IBAction func createRoomAction(sender: AnyObject) {
+    @IBAction func createGameAction(sender: AnyObject) {
         // Create a room name with roomName = playerName & maxUsers = roomMaxUsers
         let playerName = AppWarpHelper.sharedInstance.playerName
         let maxUsers = AppWarpHelper.sharedInstance.maxUsers
         AppWarpHelper.sharedInstance.createRoom(playerName, maxUsers: maxUsers)
     }
+   
     
     @IBAction func joinRoomAction(sender: AnyObject) {
     }
@@ -42,7 +43,7 @@ class GameLobbyTableViewController: UITableViewController {
         
         AppWarpHelper.sharedInstance.playerClass = myClass
         
-        
+        //self.
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -55,20 +56,46 @@ class GameLobbyTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    //added by Olyver
+   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if tableView.indexPathForSelectedRow() != nil
+        {
+            //showSelected.text = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow()!)!.textLabel!.text
+            println("something selected")
+        }
+    }
+    func numberOfSectionsInTableView(tableView:UITableView)->Int
+    {
+        return 1
+    }
+    
+   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->Int
+    {
+        return 5
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell
+    {
+        var cell = UITableViewCell()
+        cell.textLabel?.text = "hello"
+        return cell
+        
+    }
+}
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
-    }
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        // #warning Potentially incomplete method implementation.
+//        // Return the number of sections.
+//        return 0
+//    }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
-    }
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete method implementation.
+//        // Return the number of rows in the section.
+//        return 0
+//    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -125,4 +152,4 @@ class GameLobbyTableViewController: UITableViewController {
     }
     */
 
-}
+

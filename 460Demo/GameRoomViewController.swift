@@ -56,6 +56,8 @@ class GameRoomViewController: UIViewController {
             startGameButton.enabled = false
         } else {
             println("You need to wait for host to start the game!")
+            println("Current Host \(AppWarpHelper.sharedInstance.host)")
+            println("YourName \(AppWarpHelper.sharedInstance.playerName)")
         }
     }
     
@@ -72,6 +74,7 @@ class GameRoomViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         /* Add all the player text and image views to their list */
+        AppWarpHelper.sharedInstance.gameRoomVC = self
         playerNames.append(p1Name)
         playerNames.append(p2Name)
         playerNames.append(p3Name)
@@ -83,6 +86,7 @@ class GameRoomViewController: UIViewController {
         /* Disable the start game button until RoomListenter calls configLobbyView(), since we need some data to be set in configLobbyView() before game can be started */
         
         startGameButton.enabled = false
+        self.myPlayerName = AppWarpHelper.sharedInstance.playerName
     }
     
     /* ============ Player names and icons functions ============ */
