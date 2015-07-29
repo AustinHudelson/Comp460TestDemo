@@ -22,6 +22,7 @@ class LevelFour2:Level
         super.init()
         title = "Lost Desert (Two Players)"
         background = "desert background"
+        players = 2
     }
     
     override func loadWave(scene: GameScene) -> Array<Unit> {

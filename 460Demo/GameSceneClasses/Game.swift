@@ -19,6 +19,7 @@ class Game {
     var enemyMap: Dictionary<String,Unit> = [:] //our list of AI characters
     var scene: GameScene?
     var level: Level?
+    var playerCount: Int?
     var myPlayerIsDead = false
     var enemyIDCounter = 0
     var fileManager: FileManager?
@@ -86,6 +87,7 @@ class Game {
         enemyMap = [:]
         myPlayerIsDead = false
         enemyIDCounter = 0
+        playerCount = 0
         //Not clearing level here because that is set in lobby
     }
     
@@ -573,6 +575,7 @@ class Game {
         var newLevel: Level = AppWarpHelper.sharedInstance.lobby!.levelDelegate.levelsDataSource[levelRow]
         
         self.level = newLevel // set Game.global.level = newLevel
+        self.playerCount = newLevel.players
         
         /* Everyone perform segue to transition into game scene */
         AppWarpHelper.sharedInstance.lobby!.performSegueWithIdentifier("LobbyToGameScene", sender: nil)

@@ -22,6 +22,7 @@ class LevelOne1:Level
         super.init()
         title = "Rolling Hills (Solo)"
         background = "field background"
+        players = 1
     }
     
     override func loadWave(scene: GameScene) -> Array<Unit> {

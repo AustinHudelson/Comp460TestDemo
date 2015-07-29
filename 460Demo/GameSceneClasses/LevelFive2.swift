@@ -15,6 +15,7 @@ class LevelFive2:Level
         super.init()
         title = "The Dark Dungon (Two Players)"
         background = "Dungon Background"
+        players = 2
     }
     
     override func loadWave(scene: GameScene) -> Array<Unit> {
