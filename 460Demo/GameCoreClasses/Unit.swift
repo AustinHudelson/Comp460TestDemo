@@ -87,8 +87,6 @@ class Unit: SerializableJSON, PType
         
         self.sprite.zPosition = Game.global.spriteMinZ + Game.global.scene!.frame.maxY - self.sprite.position.y
         self.DS_health_bar.zPosition = self.sprite.zPosition + DS_zHealthOffset
-        
-       
     }
     
     init(ID: String, spawnLocation: CGPoint) {
@@ -134,6 +132,19 @@ class Unit: SerializableJSON, PType
     func addUnitToGameScene(gameScene: GameScene, pos: CGPoint)
     {
         self.sprite.position = pos
+        
+        //Modify enemy health and damage for 1 or 2 players
+        if (self.isEnemy == true){
+            if (Game.global.playerCount == 1){
+                self.maxhealth.addModifier("1P", value: 0.5773) //Sqrt of 1/3
+                self.health = self.maxhealth.get()
+                self.attackDamage.addModifier("1P", value: 0.5773)
+            } else if (Game.global.playerCount == 2){
+                self.maxhealth.addModifier("2P", value: 0.8165) //Sqrt of 2/3
+                self.health = self.maxhealth.get()
+                self.attackDamage.addModifier("2P", value: 0.8165)
+            }
+        }
         
         //Setup health bars here.
         self.sprite.addChild(self.DS_health_bar_outline)
