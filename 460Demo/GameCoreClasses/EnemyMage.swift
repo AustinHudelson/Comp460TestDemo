@@ -141,11 +141,11 @@ class EnemyMage: Unit, PType
     override func kill()
     {
         for (id, unit) in Game.global.playerMap{
-            if playerCount == 1
+            if Game.global.playerCount == 1
             {
                 unit.takeDamage(-20)
             }
-            else if playerCount == 2
+            else if Game.global.playerCount == 2
             {
                 unit.takeDamage(-10)
             }
