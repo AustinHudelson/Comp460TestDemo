@@ -672,6 +672,7 @@ class Unit: SerializableJSON, PType
      * Actually removes the unit from memory. Should not be called until a negitive update unit is called
      */
     func kill(){
+        println("RIGHT HERE HERE HERE HERE HEREHEREADJKFASJKDFJKLSADFALJKSDFKLASDFKLASDFKLASDFKLASDFKLASDLKFAKLSDFLAKSDFKL")
         Game.global.removeUnit(self.ID)
         if alive == true {
             death()

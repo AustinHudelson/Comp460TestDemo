@@ -87,7 +87,6 @@ class Game {
         enemyMap = [:]
         myPlayerIsDead = false
         enemyIDCounter = 0
-        playerCount = 0
         //Not clearing level here because that is set in lobby
     }
     
