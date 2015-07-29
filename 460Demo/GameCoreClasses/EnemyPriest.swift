@@ -162,11 +162,11 @@ class EnemyPriest: Unit, PType
         for (id, unit) in Game.global.playerMap{
             if Game.global.playerCount == 1
             {
-                unit.takeDamage(-20)
+                unit.takeHealing(20)
             }
             else if Game.global.playerCount == 2
             {
-                unit.takeDamage(-10)
+                unit.takeHealing(10)
             }
             
         }
