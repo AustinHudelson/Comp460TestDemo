@@ -157,4 +157,22 @@ class EnemyPriest: Unit, PType
         target.sprite.addChild(emitterNode)   //Start the emitter node
         target.sprite.runAction(SKAction.sequence([halfWaitAction, applyHealingBlock, halfWaitAction, removeNodeBlock]))
     }
+    override func kill()
+    {
+        for (id, unit) in Game.global.playerMap{
+            if playerCount == 1
+            {
+                unit.takeDamage(-20)
+            }
+            else if playerCount == 2
+            {
+                unit.takeDamage(-10)
+            }
+            
+        }
+        Game.global.removeUnit(self.ID)
+        if alive == true {
+            death()
+        }
+    }
 }

@@ -119,4 +119,22 @@ class Enemy: Unit, PType
         self.applyTint("Enemy", red: 1.0, blue: 0.5, green: 0.5)
 
     }
+    override func kill()
+    {
+        for (id, unit) in Game.global.playerMap{
+            if playerCount == 1
+            {
+                unit.takeDamage(-20)
+            }
+            else if playerCount == 2
+            {
+                unit.takeDamage(-10)
+            }
+            
+        }
+        Game.global.removeUnit(self.ID)
+        if alive == true {
+            death()
+        }
+    }
 }
