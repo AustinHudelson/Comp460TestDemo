@@ -249,4 +249,5 @@ class EnemyBoss: Unit, PType
         self.applyTint("Enemy", red: 1.0, blue: 0.5, green: 0.5)
         
     }
+    
 }

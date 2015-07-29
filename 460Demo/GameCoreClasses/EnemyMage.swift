@@ -138,4 +138,22 @@ class EnemyMage: Unit, PType
     override func weaponHandle(target: Unit){
         let projectile = MageBolt(target: target, caster: self)
     }
+    override func kill()
+    {
+        for (id, unit) in Game.global.playerMap{
+            if playerCount == 1
+            {
+                unit.takeDamage(-20)
+            }
+            else if playerCount == 2
+            {
+                unit.takeDamage(-10)
+            }
+            
+        }
+        Game.global.removeUnit(self.ID)
+        if alive == true {
+            death()
+        }
+    }
 }
