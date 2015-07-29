@@ -14,6 +14,7 @@ class LevelThree2:Level
         super.init()
         title = "Enchanted Forest (Two Players)"
         background = "forest background"
+        self.players = 2
     }
     
     override func loadWave(scene: GameScene) -> Array<Unit> {

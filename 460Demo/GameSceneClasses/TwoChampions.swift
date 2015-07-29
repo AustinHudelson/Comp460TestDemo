@@ -15,6 +15,7 @@ class TwoChampions:Level
         super.init()
         title = "Two Champions (Boss Level)"
         background = "Dungon Background"
+        self.players = 3
     }
     
     override func loadWave(scene: GameScene) -> Array<Unit> {

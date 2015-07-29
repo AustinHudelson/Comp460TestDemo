@@ -15,6 +15,7 @@ class CavernOfTheEvilWizard:Level
         super.init()
         title = "Cavern of The Evil Wizard (Boss)"
         background = "ice background"
+        self.players = 3
     }
     
     override func loadWave(scene: GameScene) -> Array<Unit> {
