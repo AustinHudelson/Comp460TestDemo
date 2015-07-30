@@ -1,10 +1,15 @@
 //
+<<<<<<< HEAD
 //  LevelOne1.swift
+=======
+//  LevelOne2.swift
+>>>>>>> origin/master
 //  460Demo
 //
 //  Created by Olyver on 3/25/15.
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
+<<<<<<< HEAD
 
 //
 //  LevelOne.swift
@@ -15,12 +20,20 @@
 //
 
 import SpriteKit
+=======
+import SpriteKit
+
+>>>>>>> origin/master
 @objc(LevelOne1)
 class LevelOne1:Level
 {
     required init() {
         super.init()
+<<<<<<< HEAD
         title = "Rolling Hills (Solo)"
+=======
+        title = "Rolling Hills"
+>>>>>>> origin/master
         background = "field background"
         players = 1
     }
@@ -152,5 +165,10 @@ class LevelOne1:Level
         return wave
         
     }
+<<<<<<< HEAD
 
 }
+=======
+    
+}
+>>>>>>> origin/master
