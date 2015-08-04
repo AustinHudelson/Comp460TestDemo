@@ -68,11 +68,13 @@ class FrostboltProjectile: Projectile {
     }
     
     func impactEffect(affectedUnit: Unit){
-        let duration = NSTimeInterval(6.0)
+        let duration = NSTimeInterval(9.0)
         
         affectedUnit.applyTint("frostbolt", red: 0.5, blue: 2.0, green: 0.65)
         affectedUnit.speed.addModifier("frostbolt", value: 0.5)
-        affectedUnit.attackSpeed.addModifier("frostbolt", value: 1.5)
+        affectedUnit.attackSpeed.addModifier("frostbolt", value: 2.0)
+        
+        caster.dealDamage(20, target: affectedUnit)
         
         let waitAction: SKAction = SKAction.waitForDuration(duration)
         

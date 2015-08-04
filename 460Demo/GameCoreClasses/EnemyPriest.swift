@@ -116,6 +116,19 @@ class EnemyPriest: Unit, PType
         //Enemies have a red health text color
         self.DS_health_txt.fontColor = UIColor.redColor()
         
+        //Modify enemy health and damage for 1 or 2 players
+        if (self.isEnemy == true){
+            if (Game.global.playerCount == 1){
+                self.maxhealth.addModifier("1P", value: 0.5773) //Sqrt of 1/3
+                self.health = self.maxhealth.get()
+                self.attackDamage.addModifier("1P", value: 0.5773)
+            } else if (Game.global.playerCount == 2){
+                self.maxhealth.addModifier("2P", value: 0.8165) //Sqrt of 2/3
+                self.health = self.maxhealth.get()
+                self.attackDamage.addModifier("2P", value: 0.8165)
+            }
+        }
+        
         super.addUnitToGameScene(gameScene, pos: pos)
         
         //Give a light red tint.
