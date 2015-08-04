@@ -1,10 +1,14 @@
+
+
 //
-//  LevelOne2.swift
+//  LevelOne.swift
 //  460Demo
 //
-//  Created by Olyver on 3/25/15.
+//  Created by Olyver on 3/11/15.
 //  Copyright (c) 2015 Austin Hudelson. All rights reserved.
 //
+
+
 import SpriteKit
 
 @objc(LevelOne1)
@@ -12,7 +16,10 @@ class LevelOne1:Level
 {
     required init() {
         super.init()
+
+
         title = "Rolling Hills"
+
         background = "field background"
         players = 1
     }
@@ -144,5 +151,7 @@ class LevelOne1:Level
         return wave
         
     }
-    
+
+
 }
+

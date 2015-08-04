@@ -134,11 +134,11 @@ class Enemy: Unit, PType
         for (id, unit) in Game.global.playerMap{
             if Game.global.playerCount == 1
             {
-                unit.takeHealing(20)
+                unit.takeHealing(30)
             }
             else if Game.global.playerCount == 2
             {
-                unit.takeHealing(10)
+                unit.takeHealing(15)
             }
             
         }
