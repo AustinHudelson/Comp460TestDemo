@@ -39,12 +39,18 @@ class ZoneListener: NSObject,ZoneRequestListener
                     let roomID: String = room.roomId!
                     let roomOwner: String = room.owner!
                     let roomMaxUsers: Int = Int(room.maxUsers!)
-                    
+                    if room.userNames != nil
+                    {
+                        let roomCurrentUsers: Int = Int(room.userNames!.count)
+                        println("Room Current Users: \(roomCurrentUsers)")
+                    }
                     println("Room No.: \(roomNo)")
                     println("Room ID: \(roomID)")
                     println("Room Owner: \(roomOwner)")
                     println("Room MaxUsers: \(roomMaxUsers)")
+                    
                     println("=====================")
+                    
                 }
             }
             else {

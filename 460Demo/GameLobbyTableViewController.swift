@@ -12,6 +12,7 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
     var myPlayerName: String? = nil
     var myClass: String = ""
     
+    
     @IBOutlet weak var tableView: UITableView!
     @IBAction func createGameAction(sender: AnyObject) {
         // Create a room name with roomName = playerName & maxUsers = roomMaxUsers
@@ -34,6 +35,7 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
             - sharedInstance IS A SINGLETON, which means it's an obj that is created once & has its state shared:
             http://thatthinginswift.com/singletons/
         */
+        
         AppWarpHelper.sharedInstance.gameLobbyVC = self
         AppWarpHelper.sharedInstance.initializeWarp()
         println("Finished initializing AppWarp")
@@ -69,17 +71,20 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     func numberOfSectionsInTableView(tableView:UITableView)->Int
     {
+        println("1")
         return 1
     }
     
    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->Int
     {
+        println("5")
         return 5
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell
     {
         var cell = UITableViewCell()
         cell.textLabel?.text = "hello"
+        println("input text into table")
         return cell
         
     }
