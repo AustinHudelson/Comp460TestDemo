@@ -12,6 +12,7 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
     var myPlayerName: String? = nil
     var myClass: String = ""
     
+    @IBOutlet weak var tableView: UITableView!
     @IBAction func createGameAction(sender: AnyObject) {
         // Create a room name with roomName = playerName & maxUsers = roomMaxUsers
         let playerName = AppWarpHelper.sharedInstance.playerName
@@ -42,7 +43,7 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
         println("Completed connection w/ name = \(myPlayerName!)")
         
         AppWarpHelper.sharedInstance.playerClass = myClass
-        
+        self.tableView.reloadData()
         //self.
 
         // Uncomment the following line to preserve selection between presentations

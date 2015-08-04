@@ -376,6 +376,7 @@
                         <viewControllerLayoutGuide type="bottom" id="sum-oD-3hn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jko-Mc-cfM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJr-m5-rIn">
@@ -467,6 +468,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Dcy-AU-TfT"/>
+                    <connections>
+                        <outlet property="tableView" destination="5H8-bq-hpB" id="nBU-3f-PZz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Oc-6z-1gr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
