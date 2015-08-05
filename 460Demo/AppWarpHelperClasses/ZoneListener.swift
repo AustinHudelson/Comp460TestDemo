@@ -52,7 +52,7 @@ class ZoneListener: NSObject,ZoneRequestListener
                     println("=====================")
                     
                 }
-            }
+                AppWarpHelper.sharedInstance.gameLobbyVC.updateRooms(event.roomData)            }
             else {
                 println("---Can't find a joinable room!---")
             }
