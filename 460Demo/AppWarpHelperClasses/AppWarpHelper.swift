@@ -39,11 +39,14 @@ class AppWarpHelper: NSObject
     
     var gameLobbyVC: GameLobbyTableViewController?
     var gameRoomVC: GameRoomViewController?
+    
+    
     var enemyName: String = ""
     var playerName: String = ""
     var deviceName: String = UIDevice.currentDevice().identifierForVendor.UUIDString
     var userName_list: NSMutableArray = [] // used to store the list of users currently in room
     var playerClass: String = "" // used in GameRoom & GameScene
+    
 
     var host: String? = nil
     
@@ -198,5 +201,11 @@ class AppWarpHelper: NSObject
         self.gameLobbyVC = nil
         self.gameRoomVC = nil
         WarpClient.getInstance().disconnect()
+    }
+    func getJoinableRooms()
+    {
+        var roomProperties: Dictionary<String, AnyObject> = [:]
+        roomProperties["joinable"] = true
+        WarpClient.getInstance().getRoomWithProperties(roomProperties)
     }
 }
