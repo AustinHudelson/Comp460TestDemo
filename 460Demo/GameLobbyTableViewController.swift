@@ -83,6 +83,10 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
         return cell
         
     }
+    
+    func updateRooms(rooms: Array<AnyObject>){
+        
+    }
 }
     // MARK: - Table view data source
 
