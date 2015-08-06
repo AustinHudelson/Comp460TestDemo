@@ -22,6 +22,9 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
         AppWarpHelper.sharedInstance.createRoom(playerName, maxUsers: maxUsers)
     }
    
+    @IBAction func ExitAction(sender: AnyObject) {
+        AppWarpHelper.sharedInstance.disconnectFromAppWarp()
+    }
     
     @IBAction func joinGameAction(sender: AnyObject) {
         if selectedRow == nil
