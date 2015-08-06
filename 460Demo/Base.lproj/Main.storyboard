@@ -188,7 +188,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="connectButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7mk-ap-sQW"/>
-                                    <segue destination="S41-ab-mOC" kind="presentation" identifier="CharSelToGameLobby" id="ILM-UL-9Ql"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
@@ -361,11 +360,12 @@
                         <outlet property="playerNameTxtField" destination="mzJ-mn-bze" id="WR0-cI-6i2"/>
                         <outlet property="priestSelButton" destination="uGk-HZ-9UO" id="Ce0-bi-psW"/>
                         <outlet property="warSelButton" destination="W4s-Kd-Kh5" id="SFu-gl-9lb"/>
+                        <segue destination="S41-ab-mOC" kind="presentation" identifier="CharSelectToRoomSelection" id="Zz2-gf-1jL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841.5" y="58.5"/>
+            <point key="canvasLocation" x="1119" y="-130.5"/>
         </scene>
         <!--Game Lobby Table View Controller-->
         <scene sceneID="LXd-aI-xTr">
@@ -400,6 +400,9 @@
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="569" y="701" width="121" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="joinGameAction:" destination="hyE-Aw-dkx" eventType="touchUpInside" id="as0-ms-Oe1"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-Eh-coa">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
@@ -449,11 +452,12 @@
                     <navigationItem key="navigationItem" id="Dcy-AU-TfT"/>
                     <connections>
                         <outlet property="tableView" destination="5H8-bq-hpB" id="nBU-3f-PZz"/>
+                        <segue destination="Yaa-tu-5fX" kind="presentation" identifier="RoomSelectionToGameLobby" id="sbJ-na-f6S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Oc-6z-1gr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1716" y="141"/>
+            <point key="canvasLocation" x="1764" y="363"/>
         </scene>
         <!--Game Room View Controller-->
         <scene sceneID="n9G-As-8Mi">
@@ -814,7 +818,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVX-m0-sSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="b4C-1a-tfn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3042" y="321"/>
+            <point key="canvasLocation" x="3166.5" y="322.5"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="n3C-XH-PIy">
@@ -912,7 +916,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfq-4c-zfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2475" y="-432"/>
+            <point key="canvasLocation" x="2539.5" y="256.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fDn-pN-6bP">
@@ -967,5 +971,8 @@
         <image name="screenshot1Crop" width="1021" height="670"/>
         <image name="tapBeginOrange" width="500" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="sbJ-na-f6S"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

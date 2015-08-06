@@ -62,7 +62,7 @@ class CharSelViewController: UIViewController, UITextFieldDelegate {
                 
                 println("====Going from Char Select to Game Lobby====")
                 
-                performSegueWithIdentifier("CharSelToGameLobby",  sender: self)
+                performSegueWithIdentifier("CharSelectToRoomSelection",  sender: self)
             }
         }
     }
@@ -88,7 +88,7 @@ class CharSelViewController: UIViewController, UITextFieldDelegate {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "CharSelToGameLobby") {
+        if (segue.identifier == "CharSelectToRoomSelection") {
             /* On preparing for segue into lobby screen, set & save the player name to file */
             PersistGameData.sharedInstance.myPlayerName = playerNameTxtField.text
             Game.global.fileManager!.saveGameData()
@@ -97,6 +97,7 @@ class CharSelViewController: UIViewController, UITextFieldDelegate {
             let navVC = segue.destinationViewController as UINavigationController
             let dVC: GameLobbyTableViewController = navVC.viewControllers.first as GameLobbyTableViewController
             //var svc = segue.destinationViewController as LobbyViewController
+            
             dVC.myPlayerName = playerNameTxtField.text
             dVC.myClass = selectedClass
         }

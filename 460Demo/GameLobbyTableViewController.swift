@@ -11,7 +11,8 @@ import UIKit
 class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     var myPlayerName: String? = nil
     var myClass: String = ""
-    
+    var rooms: Array<AnyObject>? = nil
+    var selectedRow: Int? = nil
     
     @IBOutlet weak var tableView: UITableView!
     @IBAction func createGameAction(sender: AnyObject) {
@@ -22,9 +23,33 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
     }
    
     
-    @IBAction func joinRoomAction(sender: AnyObject) {
+    @IBAction func joinGameAction(sender: AnyObject) {
+        if selectedRow == nil
+        {
+            println("Selected Row:\(selectedRow)")
+        }
+
+        if rooms == nil
+        {
+            println("rooms is new")
+        }
+        println("hello")
+        if selectedRow != nil && rooms != nil
+        {
+
+            let joinRoomID = rooms![selectedRow!].roomId
+            println(joinRoomID)
+            WarpClient.getInstance().joinRoom(joinRoomID)
+
+            println("====Going from RoomSelection to Game Lobby====")
+
+            performSegueWithIdentifier("RoomSelectionToGameLobby",  sender: self)
+            
+            
+        }
     }
-    
+   
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +70,7 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
         println("Completed connection w/ name = \(myPlayerName!)")
         
         AppWarpHelper.sharedInstance.playerClass = myClass
+        tableView.delegate = self
         self.tableView.reloadData()
         //self.
 
@@ -61,14 +87,25 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     //added by Olyver
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        if tableView.indexPathForSelectedRow() != nil
+//        {
+//            showSelected.text = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow()!)!.textLabel!.text
+//            println("something selected")
+//        }
+//    }
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+    
+    println("in selection")
         if tableView.indexPathForSelectedRow() != nil
         {
-            //showSelected.text = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow()!)!.textLabel!.text
+            println(tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow()!)!.textLabel!.text)
             println("something selected")
+            self.selectedRow = indexPath.row
         }
     }
+    
     func numberOfSectionsInTableView(tableView:UITableView)->Int
     {
         println("1")
@@ -77,19 +114,39 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
     
    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->Int
     {
-        println("5")
-        return 5
+        println("\(rooms?.count)")
+        if rooms == nil{return 1}
+        
+        return rooms!.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell
     {
         var cell = UITableViewCell()
-        cell.textLabel?.text = "hello"
+        
+        println(indexPath.row)
+        if(rooms == nil)
+        {
+            println("room is nil")
+        }
+        if(rooms != nil && rooms!.count > indexPath.row)
+        {
+            
+            cell.textLabel?.text = rooms![indexPath.row].owner!
+            println("putting stuff in the table")
+            
+        }
+        else
+        {
+            cell.textLabel?.text = ""
+        }
         println("input text into table")
         return cell
         
     }
     
-    func updateRooms(rooms: Array<AnyObject>){
+    func updateRooms(){
+        
+        
         
     }
 }
