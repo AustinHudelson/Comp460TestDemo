@@ -379,39 +379,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJr-m5-rIn">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Create Game">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="63" y="701" width="122" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="createGameAction:" destination="hyE-Aw-dkx" eventType="touchUpInside" id="h9d-6k-EiU"/>
-                                    <segue destination="Yaa-tu-5fX" kind="presentation" identifier="GameLobbyToGameRoom" id="wnA-IQ-fqA"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mh1-Pw-ErM">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Join Game">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="400" y="695" width="121" height="30"/>
+                                    <rect key="frame" x="345" y="695" width="121" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="joinGameAction:" destination="hyE-Aw-dkx" eventType="touchUpInside" id="as0-ms-Oe1"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-Eh-coa">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="237" y="701" width="97" height="30"/>
-                                </variation>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5H8-bq-hpB">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -436,31 +415,56 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="608" y="695" width="46" height="30"/>
+                                    <rect key="frame" x="718" y="738" width="46" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="ExitAction:" destination="hyE-Aw-dkx" eventType="touchUpInside" id="8Vc-XL-gXR"/>
                                     <segue destination="5o6-2H-bLy" kind="unwind" unwindAction="unwindToCharSelect:" id="VV5-Ma-Rfv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8k-DX-bNd">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="570" y="695" width="60" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="refreshRooms:" destination="hyE-Aw-dkx" eventType="touchUpInside" id="Wem-lm-tMP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJr-m5-rIn">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Create Game">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="81" y="695" width="122" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="createGameAction:" destination="hyE-Aw-dkx" eventType="touchUpInside" id="h9d-6k-EiU"/>
+                                    <segue destination="Yaa-tu-5fX" kind="presentation" identifier="GameLobbyToGameRoom" id="wnA-IQ-fqA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="cJr-m5-rIn"/>
                                 <exclude reference="Mh1-Pw-ErM"/>
-                                <exclude reference="oF9-Eh-coa"/>
                                 <exclude reference="5H8-bq-hpB"/>
                                 <exclude reference="DBK-83-2m7"/>
+                                <exclude reference="u8k-DX-bNd"/>
+                                <exclude reference="cJr-m5-rIn"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
-                                <include reference="cJr-m5-rIn"/>
                                 <include reference="Mh1-Pw-ErM"/>
-                                <include reference="oF9-Eh-coa"/>
                                 <include reference="5H8-bq-hpB"/>
                                 <include reference="DBK-83-2m7"/>
+                                <include reference="u8k-DX-bNd"/>
+                                <include reference="cJr-m5-rIn"/>
                             </mask>
                         </variation>
                     </view>
@@ -490,28 +494,6 @@
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gate" translatesAutoresizingMaskIntoConstraints="NO" id="4Mk-rO-cWr" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Connecting to game lobby..." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kq4-de-Sna" userLabel="titleText">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Zjf-mm-6ox"/>
-                                    <constraint firstAttribute="width" constant="633" id="tIf-Bm-Ib1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="40"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Zjf-mm-6ox"/>
-                                        <exclude reference="tIf-Bm-Ib1"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="84" y="-220" width="633" height="60"/>
-                                    <mask key="constraints">
-                                        <include reference="Zjf-mm-6ox"/>
-                                        <include reference="tIf-Bm-Ib1"/>
-                                    </mask>
-                                </variation>
-                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-UG-vi2" userLabel="p1Name">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="El7-ZL-TXi"/>
@@ -713,6 +695,31 @@
                                     </mask>
                                 </variation>
                             </pickerView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Attempting to connect..." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kq4-de-Sna" userLabel="titleText">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Zjf-mm-6ox"/>
+                                    <constraint firstAttribute="width" constant="633" id="tIf-Bm-Ib1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Zjf-mm-6ox"/>
+                                        <exclude reference="tIf-Bm-Ib1"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="84" y="-220" width="633" height="60"/>
+                                    <mask key="constraints">
+                                        <include reference="Zjf-mm-6ox"/>
+                                        <include reference="tIf-Bm-Ib1"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="89" y="72" width="633" height="77"/>
+                                </variation>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -750,8 +757,8 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="4Mk-rO-cWr"/>
-                                <exclude reference="kq4-de-Sna"/>
                                 <exclude reference="VDa-ZG-q5A"/>
+                                <exclude reference="kq4-de-Sna"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="eOf-OX-cyz"/>
@@ -783,8 +790,8 @@
                         <variation key="widthClass=regular">
                             <mask key="subviews">
                                 <include reference="4Mk-rO-cWr"/>
-                                <include reference="kq4-de-Sna"/>
                                 <include reference="VDa-ZG-q5A"/>
+                                <include reference="kq4-de-Sna"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
