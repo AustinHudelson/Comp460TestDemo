@@ -67,7 +67,7 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
             - sharedInstance IS A SINGLETON, which means it's an obj that is created once & has its state shared:
             http://thatthinginswift.com/singletons/
         */
-        
+        self.navigationController?.navigationBarHidden = true
         AppWarpHelper.sharedInstance.gameLobbyVC = self
         AppWarpHelper.sharedInstance.initializeWarp()
         println("Finished initializing AppWarp")
