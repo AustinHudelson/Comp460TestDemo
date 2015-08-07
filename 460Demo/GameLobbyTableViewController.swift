@@ -14,6 +14,10 @@ class GameLobbyTableViewController: UIViewController, UITableViewDataSource, UIT
     var rooms: Array<AnyObject>? = nil
     var selectedRow: Int? = nil
     
+    @IBAction func refreshRooms(sender: AnyObject) {
+        AppWarpHelper.sharedInstance.getJoinableRooms()
+        
+    }
     @IBOutlet weak var tableView: UITableView!
     @IBAction func createGameAction(sender: AnyObject) {
         // Create a room name with roomName = playerName & maxUsers = roomMaxUsers
