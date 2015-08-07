@@ -94,7 +94,7 @@ class RoomListener: NSObject,RoomRequestListener
             broadcast which level is select if I'm host
         */
         if !Game.global.sceneActive {
-            
+            println("Active Scene and config game room")
             // configLobbyView() will also set the new host (i.e. transfer host) if users left inside lobby screen
             AppWarpHelper.sharedInstance.configGameRoomView()
             

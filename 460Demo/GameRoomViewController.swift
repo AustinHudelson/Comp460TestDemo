@@ -72,6 +72,9 @@ class GameRoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Get my class from the appwarp helper (sent in the gamelobbytableviewcontroller)
+        myClass = AppWarpHelper.sharedInstance.playerClass
+        myPlayerName = AppWarpHelper.sharedInstance.playerName
         // Do any additional setup after loading the view.
         /* Add all the player text and image views to their list */
         AppWarpHelper.sharedInstance.gameRoomVC = self
@@ -94,14 +97,14 @@ class GameRoomViewController: UIViewController {
         This function sends my class over the network so other ppl can set the display icon properly
     */
     func sendMyClass() {
-        
+        println("SENDING MY CLASS")
         var sendClassMsg: Dictionary<String, Array<AnyObject>> = [:]
         sendClassMsg["LobbyClassIcon"] = []
         
         var myClassDict: Dictionary<String, String> = [:]
         myClassDict["ID"] = myPlayerName
         myClassDict["Class"] = myClass
-        
+        println(myClass)
         sendClassMsg["LobbyClassIcon"]!.append(myClassDict)
         NetworkManager.sendMsg(&sendClassMsg)
     }
@@ -110,6 +113,8 @@ class GameRoomViewController: UIViewController {
         This funcion receives a player's class over the network and updates the icons
     */
     func updatePlayerIcons(playerClass: Dictionary<String, String>) {
+        println("UPDATING PLAYER ICONS")
+        println(playerClass)
         for i in 0 ..< playerNames.count {
             if playerNames[i].text == playerClass["ID"] {
                 switch playerClass["Class"]! {

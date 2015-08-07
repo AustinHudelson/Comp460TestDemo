@@ -184,6 +184,8 @@ class AppWarpHelper: NSObject
     func configGameRoomView() {
         if let gameRoom = self.gameRoomVC {
             gameRoom.configGameRoomView()
+        } else {
+            println("UNABLE TO RUN CONFIG GAME LOBY")
         }
     }
     
