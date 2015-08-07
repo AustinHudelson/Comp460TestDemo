@@ -159,38 +159,6 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWx-W1-Kxd" colorLabel="IBBuiltInLabel-Red">
-                                <rect key="frame" x="203" y="212" width="195" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="58C-fD-dYo"/>
-                                    <constraint firstAttribute="height" constant="50" id="tj9-qY-b4V"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <state key="normal" title="Connect" backgroundImage="GreyBgBar">
-                                    <color key="titleColor" red="0.98567255565191503" green="0.89777552887159773" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="disabled" title="S t a r t" backgroundImage="GreyBgBar_Disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="58C-fD-dYo"/>
-                                        <exclude reference="tj9-qY-b4V"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="58C-fD-dYo"/>
-                                        <include reference="tj9-qY-b4V"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="151" y="375" width="300" height="50"/>
-                                </variation>
-                                <connections>
-                                    <action selector="connectButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7mk-ap-sQW"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-Kd-Kh5" userLabel="Warrior">
                                 <rect key="frame" x="74" y="398" width="150" height="150"/>
                                 <constraints>
@@ -283,6 +251,38 @@
                                 </variation>
                                 <connections>
                                     <action selector="priestSelButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="AWI-Te-Dul"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWx-W1-Kxd" colorLabel="IBBuiltInLabel-Red">
+                                <rect key="frame" x="203" y="212" width="195" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="58C-fD-dYo"/>
+                                    <constraint firstAttribute="height" constant="50" id="tj9-qY-b4V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <state key="normal" title="Connect" backgroundImage="GreyBgBar">
+                                    <color key="titleColor" red="0.98567255565191503" green="0.89777552887159773" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled" title="S t a r t" backgroundImage="GreyBgBar_Disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="58C-fD-dYo"/>
+                                        <exclude reference="tj9-qY-b4V"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="58C-fD-dYo"/>
+                                        <include reference="tj9-qY-b4V"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="151" y="375" width="300" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="connectButtonAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7mk-ap-sQW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -397,9 +397,14 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mh1-Pw-ErM">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Join Game">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Join Game" backgroundImage="GreyBgBar">
+                                    <color key="titleColor" red="0.98567255570000001" green="0.89777552890000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="548" y="694" width="93" height="49"/>
+                                </variation>
                                 <connections>
                                     <action selector="joinGameAction:" destination="hyE-Aw-dkx" eventType="touchUpInside" id="as0-ms-Oe1"/>
                                 </connections>
@@ -436,7 +441,9 @@
                                     <constraint firstAttribute="width" constant="60" id="NUz-P6-BtT"/>
                                     <constraint firstAttribute="height" constant="30" id="vED-Wo-5uL"/>
                                 </constraints>
-                                <state key="normal" title="Refresh">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Refresh" backgroundImage="GreyBgBar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -445,7 +452,8 @@
                                         <exclude reference="vED-Wo-5uL"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="109" y="694" width="80" height="49"/>
                                     <mask key="constraints">
                                         <include reference="NUz-P6-BtT"/>
                                         <include reference="vED-Wo-5uL"/>
@@ -490,9 +498,14 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJr-m5-rIn">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Create Game">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Create Game" backgroundImage="GreyBgBar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="339" y="694" width="122" height="49"/>
+                                </variation>
                                 <connections>
                                     <action selector="createGameAction:" destination="hyE-Aw-dkx" eventType="touchUpInside" id="h9d-6k-EiU"/>
                                     <segue destination="Yaa-tu-5fX" kind="presentation" identifier="GameLobbyToGameRoom" id="wnA-IQ-fqA"/>
