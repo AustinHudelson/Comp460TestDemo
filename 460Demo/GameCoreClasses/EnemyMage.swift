@@ -116,6 +116,19 @@ class EnemyMage: Unit, PType
         
         super.addUnitToGameScene(gameScene, pos: pos)
         
+        //Modify enemy health and damage for 1 or 2 players
+        if (self.isEnemy == true){
+            if (Game.global.playerCount == 1){
+                self.maxhealth.addModifier("1P", value: 0.5773) //Sqrt of 1/3
+                self.health = self.maxhealth.get()
+                self.attackDamage.addModifier("1P", value: 0.5773)
+            } else if (Game.global.playerCount == 2){
+                self.maxhealth.addModifier("2P", value: 0.8165) //Sqrt of 2/3
+                self.health = self.maxhealth.get()
+                self.attackDamage.addModifier("2P", value: 0.8165)
+            }
+        }
+        
         //Give a light red tint.
         self.applyTint("Enemy", red: 0.75, blue: 0.2, green: 0.9)
         
@@ -137,5 +150,23 @@ class EnemyMage: Unit, PType
     
     override func weaponHandle(target: Unit){
         let projectile = MageBolt(target: target, caster: self)
+    }
+    override func kill()
+    {
+        for (id, unit) in Game.global.playerMap{
+            if Game.global.playerCount == 1
+            {
+                unit.takeHealing(20)
+            }
+            else if Game.global.playerCount == 2
+            {
+                unit.takeHealing(10)
+            }
+            
+        }
+        Game.global.removeUnit(self.ID)
+        if alive == true {
+            death()
+        }
     }
 }

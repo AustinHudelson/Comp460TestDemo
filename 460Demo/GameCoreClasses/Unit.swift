@@ -87,8 +87,6 @@ class Unit: SerializableJSON, PType
         
         self.sprite.zPosition = Game.global.spriteMinZ + Game.global.scene!.frame.maxY - self.sprite.position.y
         self.DS_health_bar.zPosition = self.sprite.zPosition + DS_zHealthOffset
-        
-       
     }
     
     init(ID: String, spawnLocation: CGPoint) {
@@ -661,6 +659,7 @@ class Unit: SerializableJSON, PType
      * Actually removes the unit from memory. Should not be called until a negitive update unit is called
      */
     func kill(){
+        println("RIGHT HERE HERE HERE HERE HEREHEREADJKFASJKDFJKLSADFALJKSDFKLASDFKLASDFKLASDFKLASDFKLASDLKFAKLSDFLAKSDFKL")
         Game.global.removeUnit(self.ID)
         if alive == true {
             death()

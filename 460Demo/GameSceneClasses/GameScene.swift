@@ -60,6 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         audioPlayer.numberOfLoops = -1
         audioPlayer.prepareToPlay()
         audioPlayer.play()
+        audioPlayer.volume = 0.5
 
         /*
             If I'm host, send a msg over the network telling everyone (including myself, the host) to load their level / first wave.

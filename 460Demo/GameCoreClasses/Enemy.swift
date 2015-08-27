@@ -112,11 +112,39 @@ class Enemy: Unit, PType
     
 
     override func addUnitToGameScene(gameScene: GameScene, pos: CGPoint) {
-        //Enemy has a red health text color
-        //self.DS_health_txt.fontColor = UIColor.redColor()
+        //Modify enemy health and damage for 1 or 2 players
+        if (self.isEnemy == true){
+            if (Game.global.playerCount == 1){
+                self.maxhealth.addModifier("1P", value: 0.5773) //Sqrt of 1/3
+                self.health = self.maxhealth.get()
+                self.attackDamage.addModifier("1P", value: 0.5000)
+            } else if (Game.global.playerCount == 2){
+                self.maxhealth.addModifier("2P", value: 0.8165) //Sqrt of 2/3
+                self.health = self.maxhealth.get()
+                self.attackDamage.addModifier("2P", value: 0.8165)
+            }
+        }
         super.addUnitToGameScene(gameScene, pos: pos)
         self.sendOrder(RoamAttack(receiverIn: self))
         self.applyTint("Enemy", red: 1.0, blue: 0.5, green: 0.5)
 
+    }
+    override func kill()
+    {
+        for (id, unit) in Game.global.playerMap{
+            if Game.global.playerCount == 1
+            {
+                unit.takeHealing(30)
+            }
+            else if Game.global.playerCount == 2
+            {
+                unit.takeHealing(15)
+            }
+            
+        }
+        Game.global.removeUnit(self.ID)
+        if alive == true {
+            death()
+        }
     }
 }
