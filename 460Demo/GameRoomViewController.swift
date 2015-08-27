@@ -135,12 +135,16 @@ class GameRoomViewController: UIViewController {
     /* This function updates the lobby's player names and icons when ppl joins the room */
     func setPlayerNames()
     {
+        println("Setting Player Names")
         /* Fill out the player names for ppl in the lobby */
         for index in 0 ..< AppWarpHelper.sharedInstance.userName_list.count
         {
             playerNames[index].text = AppWarpHelper.sharedInstance.userName_list[index] as String
-            
+            if playerNames[index].text.utf16Count == 0 {
+                playerNames[index].text = "Unknown"
+            }
         }
+        println(playerNames[0].text)
         
         /* Fill out the empty slots with empty strings and nil img */
         let maxUsers: Int = Int(AppWarpHelper.sharedInstance.maxUsers)
@@ -149,7 +153,6 @@ class GameRoomViewController: UIViewController {
         {
             for index in AppWarpHelper.sharedInstance.userName_list.count ..< maxUsers
             {
-                playerNames[index].text = ""
                 classImages[index].image = nil
             }
         }
